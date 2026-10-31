@@ -1,0 +1,6 @@
+
+> patriotinlays-pilot@0.1.0 check
+> node scripts/check-manifest.mjs
+
+Source Manifest gate: 15 page(s), 529 sentence(s), 292 with claim markers; 247 manifest claims, 247 referenced.
+PASSED: every factual claim maps to a verified manifest entry.

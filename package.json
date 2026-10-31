@@ -1,0 +1,22 @@
+{
+  "name": "patriotinlays-pilot",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "patriotinlays.com 90-day pilot: static site, two client-side tools, Source Manifest enforcement.",
+  "scripts": {
+    "test": "node scripts/test-service-window.mjs && node scripts/test-lineage-matrix.mjs && node scripts/test-gates.mjs",
+    "check": "node scripts/check-manifest.mjs",
+    "check:links": "node scripts/check-manifest.mjs --links",
+    "prebuild": "npm test && npm run check:links",
+    "build": "node scripts/build.mjs",
+    "postbuild": "node scripts/check-links.mjs",
+    "build:pages": "npm test && npm run check && node scripts/build.mjs && node scripts/check-links.mjs --offline",
+    "e2e": "node qa/e2e.mjs",
+    "gates:doc": "node scripts/gen-gates-doc.mjs",
+    "manifest": "python3 manifest/src/build_manifest.py"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

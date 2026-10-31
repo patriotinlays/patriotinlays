@@ -1,0 +1,56 @@
+# CI: headless-browser E2E suite (qa/e2e.mjs, 27 checks) for both client-side tools.
+# Runs on published releases, on manual dispatch, and on pull requests that touch tool code or anything that
+# changes how the tools render.
+# Path note: this repo has no src/components/ directory. Tool code lives in src/tools/** (logic + UI modules),
+# tool markup is emitted by scripts/build.mjs, and styles live in src/assets/**. src/components/** is listed
+# only so the trigger keeps working if that directory is added later.
+name: ci
+on:
+  release:
+    types: [published]
+  pull_request:
+    paths:
+      - "src/tools/**"
+      - "src/components/**"
+      - "src/assets/**"
+      - "scripts/build.mjs"
+      - "qa/e2e.mjs"
+      - "package.json"
+      - ".github/workflows/ci.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  e2e:
+    name: Build gates + headless browser E2E
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      PLAYWRIGHT_CORE_VERSION: "1.64.1"
+      E2E_USE_BUNDLED: "1"   # use the Chromium installed below, not whatever browser the runner image ships
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Install poppler-utils (pdftotext for the live Source Manifest check)
+        run: sudo apt-get update && sudo apt-get install -y poppler-utils
+      - name: Full build (tests, live manifest check, build, link check)
+        run: npm run build
+      - name: Install playwright-core (QA only; not a site dependency)
+        run: npm install --no-save --no-package-lock "playwright-core@${PLAYWRIGHT_CORE_VERSION}"
+      - name: Install Chromium and its system dependencies
+        run: npx playwright-core install --with-deps chromium
+      - name: Run E2E suite
+        run: npm run e2e
+      - name: Upload E2E results and screenshots
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: e2e-results
+          path: |
+            qa/e2e-results.json
+            qa/screens/
+          if-no-files-found: warn

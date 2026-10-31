@@ -1,0 +1,58 @@
+---
+title: "The Patriot Lineage Proof Roadmap: Proving Every Generation for DAR or SAR"
+slug: guides/lineage-proof-roadmap
+description: "A generation-by-generation plan for documenting descent from a Revolutionary War patriot, with DAR and SAR rules side by side."
+cornerstone: 1
+---
+# The Patriot Lineage Proof Roadmap: Proving Every Generation for DAR or SAR
+
+A lineage application is a chain. Each link is one generation, and each link holds only if the documents behind it hold. This roadmap shows how to plan that chain before you start filling in forms, using the published rules of the two largest Revolutionary War lineage societies. It is a planning aid, not a ruling: only the society's genealogists decide whether a line is approved.
+
+## How the generations are numbered
+
+On a DAR application the lineage starts with you, the applicant, as generation 1. [[claim:dar-gen1-applicant]]
+Your parents are generation 2, your grandparents generation 3, and your great-grandparents generation 4. [[claim:dar-gen-numbering]]
+DAR suggests numbering the generations on a separate pedigree chart or outline so you stay on track. [[claim:dar-pedigree]]
+SAR asks for the patriot to be a great-great-grandparent of some degree, so every SAR line runs at least five generations from the applicant. [[claim:sar-ggp]]
+
+The chain follows biology. DAR lineages list the biological parents in each generation. [[claim:dar-biological]]
+Step-parents and adoptive parents are left off the DAR form. [[claim:dar-no-step]]
+SAR states that it requires proof of bloodline descent, whether legitimate or illegitimate. [[claim:sar-bloodline]]
+
+## What each generation needs: DAR and SAR side by side
+
+| Question | DAR | SAR |
+|---|---|---|
+| Who counts as the patriot? | Military, civil or patriotic service between 19 April 1775 and 26 November 1783, with a few special windows [[claim:dar-window-core]] | Patriotic service, with some exceptions, between 19 April 1775 and 26 November 1783 [[claim:sar-window]] |
+| Generations 1–3 | Complete dates and places of birth and death for each person [[claim:dar-gen-1-3]] | Not stated on the SAR Step 1 page; SAR gives no preliminary decisions on a line of descent [[claim:sar-no-prelim]] |
+| Older generations | At least one documented date and place of birth or death for people who lived before modern vital records [[claim:dar-gen-older]] | Proof of bloodline descent from the patriot to the applicant [[claim:sar-bloodline]] |
+| Both parents? | Both the man and the woman in each generation are documented [[claim:dar-both-parents]] | Not separately stated on the SAR Step 1 page |
+| What has to be proven? | Every name, date, place and relationship [[claim:dar-each-relationship]] | Family tradition about service is not proof [[claim:sar-tradition]] |
+| Sponsors | Not covered on the pages used here | Two current SAR members sponsor the applicant [[claim:sar-sponsors]] |
+
+## The roadmap, step by step
+
+1. Write the chain first, evidence second. List every generation from you back to the patriot by number, with names only. Mark each link you believe but cannot yet show on paper.
+2. Check whether the patriot is already on file. The DAR electronic application works only for ancestors already fully established with DAR. [[claim:dar-eapp-established]] A new ancestor, or a line that needs an analysis compiling indirect evidence, goes on the traditional paper application. [[claim:dar-paper-analysis]]
+3. Build an evidence grid. For every generation, list birth, marriage, death and the parent-child link, and next to each one the record that supports it. The Lineage Evidence Matrix below does this in your browser.
+4. Use the record types reviewers see most often. DAR names vital records, census records, probate records, court records, land records and church records as the most common lineage sources. [[claim:dar-lineage-sources]]
+5. Replace trees with records. DAR states that online family trees from any website are not an acceptable form of documentation. [[claim:dar-online-trees]] Images of original records downloaded from a website are a different matter and are evaluated in the context of the whole lineage. [[claim:dar-images-ok]]
+6. Prefer original records over compiled books. DAR prefers primary and original records over compiled family genealogies. [[claim:dar-primary-preferred]]
+7. Cite as you go. For a census, DAR asks for the year, state, county, town, enumeration district and page number. [[claim:dar-census-cite]] Every uploaded document is cited at least once, and every cited document is uploaded. [[claim:dar-upload-each]]
+8. Prove the patriot's service separately from the lineage. DAR lists pensions, muster rolls, pay vouchers, oaths of allegiance, town meeting minutes and county court orders as typical service sources. [[claim:dar-service-sources]]
+
+## Practical details people miss
+
+DAR e-application uploads are JPG files only, so convert PDFs and phone scans before you start. [[claim:dar-jpg]]
+Years are entered as four digits. [[claim:dar-4digit]]
+Once submitted, DAR staff review generally takes about six weeks. [[claim:dar-six-weeks]]
+The DAR application cost includes a $75 application fee plus the first year's national dues, and chapters and state societies add their own dues. [[claim:dar-fee]]
+
+## Where to go next
+
+- If a generation has no birth certificate, use the substitute-evidence guide: [No Birth Certificate? Substitute Evidence That Can Prove Each Generation](/guides/substitute-evidence/).
+- If the gap is between a mid-1800s census family and a Revolutionary-era household, read the [census bridge guide](/guides/census-bridge/).
+- If two men share your ancestor's name, read [Same Name, Different Man](/guides/same-name/).
+- If an application came back with questions, read [Application Returned?](/guides/application-problems/).
+
+::tool lineage-matrix

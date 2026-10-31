@@ -1,0 +1,131 @@
+
+> patriotinlays-pilot@0.1.0 prebuild
+> npm test && npm run check:links
+
+
+> patriotinlays-pilot@0.1.0 test
+> node scripts/test-service-window.mjs && node scripts/test-lineage-matrix.mjs && node scripts/test-gates.mjs
+
+PASS  # 1  Core: 18 Apr 1775 (day before Lexington)  expected=inconsistent  actual=inconsistent
+PASS  # 2  Core: 19 Apr 1775 (first day of window)  expected=consistent  actual=consistent
+PASS  # 3  Core: 18 Apr – 19 Apr 1775 (straddles start)  expected=partial  actual=partial
+PASS  # 4  Core: 26 Nov 1783 (last day of window)  expected=consistent  actual=consistent
+PASS  # 5  Core: 27 Nov 1783 (day after window)  expected=inconsistent  actual=inconsistent
+PASS  # 6  Core: 26 Nov – 27 Nov 1783 (straddles end)  expected=partial  actual=partial
+PASS  # 7  Core: year-only 1775 (imprecise, straddles start)  expected=partial  actual=partial
+PASS  # 8  Core: year-only 1783 (imprecise, straddles end)  expected=partial  actual=partial
+PASS  # 9  Core: 1774-01 to 1774-12 (entirely before window)  expected=inconsistent  actual=inconsistent
+PASS  #10  Core: 1778-06 to 1780-12 (inside window); message is the mandated sentence  expected=Date range appears consistent with published rule; verify service category and primary evidence.  actual=Date range appears consistent with published rule; verify service category and primary evidence.
+PASS  #11  Committee service May 1774 (DAR: from April 1774)  expected=consistent  actual=consistent
+PASS  #12  Committee service March 1774 (before April 1774)  expected=inconsistent  actual=inconsistent
+PASS  #13  Virginia Oath of Fidelity, October 1779  expected=consistent  actual=consistent
+PASS  #14  Virginia Oath of Fidelity, September 1779  expected=inconsistent  actual=inconsistent
+PASS  #15  Gálvez troops, 24 Dec 1776 (not 'after')  expected=inconsistent  actual=inconsistent
+PASS  #16  Gálvez troops, 25 Dec 1776  expected=consistent  actual=consistent
+PASS  #17  Gálvez cattle supply, 24 Dec 1776 (not 'after')  expected=inconsistent  actual=inconsistent
+PASS  #18  Gálvez cattle supply, 1779-03 to 1780-05  expected=consistent  actual=consistent
+PASS  #19  End date (1777-05-01) before start (1778-02-01)  expected=invalid  actual=invalid
+PASS  #20  Impossible calendar date 1777-02-30  expected=invalid  actual=invalid
+PASS  #21  1836 act: married 1780-05-01, last service ended 1781-10-19, 24 months service  expected=consistent  actual=consistent
+PASS  #22  1836 act: married 1785-06-01, after last service ended 1781-10-19  expected=inconsistent  actual=inconsistent
+PASS  #23  1838 act: married 1793-12-31 vs 1794-01-01 (cutoff: before 1 Jan 1794)  expected=consistent|inconsistent  actual=consistent|inconsistent
+PASS  #24  Married 1800-01-02: 1848 act (before 2 Jan 1800) vs 1853 & Feb 1855 acts (not evaluated)  expected=inconsistent|not_evaluated|not_evaluated  actual=inconsistent|not_evaluated|not_evaluated
+PASS  #25  1878 act & 1855 bounty land: 13 days no engagement vs 14 days  expected=inconsistent|inconsistent|consistent|consistent  actual=inconsistent|inconsistent|consistent|consistent
+PASS  #26  Committee service 31 Mar 1774 (day before April 1774)  expected=inconsistent  actual=inconsistent
+PASS  #27  Committee service 1 Apr 1774 (first day of 'from April 1774')  expected=consistent  actual=consistent
+PASS  #28  Virginia Oath of Fidelity 30 Sep 1779 (day before October 1779)  expected=inconsistent  actual=inconsistent
+PASS  #29  Virginia Oath of Fidelity 1 Oct 1779 (first day of October 1779)  expected=consistent  actual=consistent
+PASS  #30  Virginia Oath of Fidelity 26 Nov 1783 vs 27 Nov 1783 (published end)  expected=consistent|inconsistent  actual=consistent|inconsistent
+PASS  #31  Gálvez troops 26 Nov 1783 vs 27 Nov 1783  expected=consistent|inconsistent  actual=consistent|inconsistent
+PASS  #32  Gálvez cattle supply 26 Nov 1783 vs 27 Nov 1783  expected=consistent|inconsistent  actual=consistent|inconsistent
+PASS  #33  Assumed Gálvez end is disclosed: ruleNote present for troops and cattle results  expected=true|true  actual=true|true
+PASS  #34  1836 act result carries the note that 1832 service-category rules are not evaluated  expected=true  actual=true
+Wording guard ("Qualif*" never appears in any output): PASS
+
+Service Window Checker: 34/34 scenarios passed.
+PASS  complete direct cell => Evidence Entered — Review Required
+PASS  same doc type, indirect => same label, adds caution (no grade by category)
+PASS  conflict flag overrides
+PASS  1850-70 census + parentage + direct => warning, not upgraded
+PASS  1850-70 census + residence => no caution (fact matters)
+PASS  missing toggle => Entry Incomplete
+PASS  empty => No Evidence Entered
+PASS  gaps: gen 2 without death/parentage listed
+PASS  the word "Documented" never appears in output
+
+Lineage Evidence Matrix: 9/9 sanity checks passed.
+Mixed-gate matrix: 19,906,560 metric combinations resolved, each to exactly one outcome; 24 rules, unreachable: none.
+Gate examples: 29/29 passed.
+
+> patriotinlays-pilot@0.1.0 check:links
+> node scripts/check-manifest.mjs --links
+
+Source Manifest gate: 15 page(s), 529 sentence(s), 292 with claim markers; 247 manifest claims, 247 referenced.
+  link 200  quotes found 17 / missing 0  https://www.dar.org/national-society/accepted-revolutionary-war-service
+  link 200  quotes found 28 / missing 0  https://membership.dar.org/NSDAR/AppFormz/App_Help_Step_By_Step_1.aspx
+  link 200  quotes found 13 / missing 0  https://membership.dar.org/NSDAR/AppFormz/FAQs.aspx
+  link 200  quotes found 14 / missing 0  https://blog.dar.org/2021/02/26/why-was-his-service-removed
+  link 200  quotes found 4 / missing 0  https://services.dar.org/Public/DAR_Research/search_revwar/?Tab_ID=14&Tab_ID_Sub=0&action=list
+  link 200  quotes found 13 / missing 0  https://www.sar.org/step-1/
+  link 200  quotes found 8 / missing 0  https://www.sar.org/wp-content/uploads/2019/10/Revolutionary-Taxes-as-Evidence-of-Patriotic-Service.pdf
+  link 200  quotes found 17 / missing 0  https://cincinnatisar.org/wp-content/uploads/2023/05/Presentation-How-to-Produce-Approval-Ready-Applications-and-Reduce-Turnaround-Time.pdf
+  link 200  quotes found 35 / missing 0  https://www.archives.gov/files/research/military/army/dc/m804.pdf
+  link 200  quotes found 14 / missing 0  https://www.archives.gov/files/research/military/american-revolution/service-records.pdf
+  link 200  quotes found 5 / missing 0  https://www.archives.gov/research/military/genealogy
+  link 200  quotes found 5 / missing 0  https://www.archives.gov/research/military/american-revolution
+  link 200  quotes found 8 / missing 0  https://www.archives.gov/research/census/1790-1840.html
+  link 200  quotes found 1 / missing 0  https://www.archives.gov/research/catalog/catalog-bulk-downloads/revwarpensionfiles
+  link 200  quotes found 4 / missing 0  https://www.archives.gov/publications/prologue/2015/summer/rev-war-pensions.html
+  link 200  quotes found 15 / missing 0  https://www.nps.gov/articles/000/what-might-you-find-in-the-revolutionary-war-pension-files.htm
+  link 200  quotes found 12 / missing 0  https://lva-virginia.libguides.com/bounty-claims/home
+  link 200  quotes found 6 / missing 0  https://libguides.nypl.org/military-genealogy/revolutionary-war
+  link 200  quotes found 21 / missing 0  https://nscdasnc.memberclicks.net/assets/membership/Standards%20of%20Proof%202025.pdf
+  link 200  quotes found 7 / missing 0  https://uelac.ca/loyalist-directory/help/
+PASSED: every factual claim maps to a verified manifest entry.
+
+> patriotinlays-pilot@0.1.0 build
+> node scripts/build.mjs
+
+LAUNCH SETUP REQUIRED (/contact/): contact@patriotinlays.com forwards through Cloudflare Email Routing (free). Tim sets the routing rule and destination inbox at launch; until then mail to this address is not delivered. See README.md, section "Email Routing for contact@patriotinlays.com".
+built /guides/application-problems/                658 words   34 claim refs   4 sources  tools: lineage-matrix
+built /guides/bounty-land-warrants/                622 words   27 claim refs   4 sources  tools: lineage-matrix
+built /guides/census-bridge/                       804 words   21 claim refs   5 sources  tools: lineage-matrix
+built /tools/lineage-matrix/                       271 words    7 claim refs   3 sources  tools: lineage-matrix
+built /guides/lineage-proof-roadmap/               789 words   30 claim refs   4 sources  tools: lineage-matrix
+built /guides/patriot-or-loyalist/                 663 words   16 claim refs   4 sources  tools: service-window
+built /guides/patriotic-service/                   819 words   39 claim refs   6 sources  tools: service-window
+built /guides/read-pension-file/                   927 words   41 claim refs   5 sources  tools: service-window
+built /guides/records-by-state/                    734 words   39 claim refs  10 sources  tools: service-window
+built /guides/same-name/                           699 words   17 claim refs   6 sources  tools: lineage-matrix
+built /tools/service-window-checker/               402 words   15 claim refs   3 sources  tools: service-window
+built /guides/substitute-evidence/                 824 words   32 claim refs   5 sources  tools: lineage-matrix
+built /about/                                      230 words    0 claim refs   0 sources  tools: -
+built /contact/                                     86 words    0 claim refs   0 sources  tools: -
+built /privacy/                                    320 words    0 claim refs   0 sources  tools: -
+sitemap.xml: 17 URLs; robots.txt, 404.html, 2 report pages written.
+
+> patriotinlays-pilot@0.1.0 postbuild
+> node scripts/check-links.mjs
+
+Link check: 20 HTML files, 622 internal links, 20 unique external URLs.
+  200  https://cincinnatisar.org/wp-content/uploads/2023/05/Presentation-How-to-Produce-Approval-Ready-Applications-and-Reduce-Turnaround-Time.pdf
+  200  https://blog.dar.org/2021/02/26/why-was-his-service-removed
+  200  https://membership.dar.org/NSDAR/AppFormz/App_Help_Step_By_Step_1.aspx
+  200  https://membership.dar.org/NSDAR/AppFormz/FAQs.aspx
+  200  https://www.archives.gov/files/research/military/army/dc/m804.pdf
+  200  https://www.archives.gov/research/military/genealogy
+  200  https://lva-virginia.libguides.com/bounty-claims/home
+  200  https://www.archives.gov/files/research/military/american-revolution/service-records.pdf
+  200  https://www.archives.gov/research/census/1790-1840.html
+  200  https://nscdasnc.memberclicks.net/assets/membership/Standards%20of%20Proof%202025.pdf
+  200  https://www.archives.gov/publications/prologue/2015/summer/rev-war-pensions.html
+  200  https://www.sar.org/step-1/
+  200  https://www.dar.org/national-society/accepted-revolutionary-war-service
+  200  https://www.nps.gov/articles/000/what-might-you-find-in-the-revolutionary-war-pension-files.htm
+  200  https://uelac.ca/loyalist-directory/help/
+  200  https://www.sar.org/wp-content/uploads/2019/10/Revolutionary-Taxes-as-Evidence-of-Patriotic-Service.pdf
+  200  https://www.archives.gov/research/military/american-revolution
+  200  https://www.archives.gov/research/catalog/catalog-bulk-downloads/revwarpensionfiles
+  200  https://libguides.nypl.org/military-genealogy/revolutionary-war
+  200  https://services.dar.org/Public/DAR_Research/search_revwar/?Tab_ID=14&Tab_ID_Sub=0&action=list
+PASSED: zero broken links.

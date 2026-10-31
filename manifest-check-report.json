@@ -1,0 +1,92 @@
+{
+  "checkedAt": "Sat Oct 31 2026 18:16:53 GMT-0500 (Central Daylight Time)",
+  "dirs": [
+    "src/content",
+    "src/pages"
+  ],
+  "files": 15,
+  "perFile": {
+    "src/content/application-problems.md": {
+      "units": 39,
+      "marked": 31,
+      "unmarked": 0
+    },
+    "src/content/bounty-land-warrants.md": {
+      "units": 41,
+      "marked": 26,
+      "unmarked": 0
+    },
+    "src/content/census-bridge.md": {
+      "units": 49,
+      "marked": 21,
+      "unmarked": 0
+    },
+    "src/content/lineage-matrix.md": {
+      "units": 15,
+      "marked": 7,
+      "unmarked": 0
+    },
+    "src/content/lineage-proof-roadmap.md": {
+      "units": 49,
+      "marked": 26,
+      "unmarked": 0
+    },
+    "src/content/patriot-or-loyalist.md": {
+      "units": 40,
+      "marked": 16,
+      "unmarked": 0
+    },
+    "src/content/patriotic-service.md": {
+      "units": 49,
+      "marked": 34,
+      "unmarked": 0
+    },
+    "src/content/read-pension-file.md": {
+      "units": 56,
+      "marked": 38,
+      "unmarked": 0
+    },
+    "src/content/records-by-state.md": {
+      "units": 46,
+      "marked": 35,
+      "unmarked": 0
+    },
+    "src/content/same-name.md": {
+      "units": 40,
+      "marked": 17,
+      "unmarked": 0
+    },
+    "src/content/service-window-checker.md": {
+      "units": 23,
+      "marked": 15,
+      "unmarked": 0
+    },
+    "src/content/substitute-evidence.md": {
+      "units": 47,
+      "marked": 26,
+      "unmarked": 0
+    },
+    "src/pages/about.md": {
+      "units": 12,
+      "marked": 0,
+      "unmarked": 0
+    },
+    "src/pages/contact.md": {
+      "units": 5,
+      "marked": 0,
+      "unmarked": 0
+    },
+    "src/pages/privacy.md": {
+      "units": 18,
+      "marked": 0,
+      "unmarked": 0
+    }
+  },
+  "sentences": 529,
+  "markedSentences": 292,
+  "manifestClaims": 247,
+  "referencedClaims": 247,
+  "links": "not run (use --links)",
+  "errors": [],
+  "warnings": []
+}

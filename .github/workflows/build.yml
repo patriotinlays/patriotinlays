@@ -1,0 +1,11 @@
+name: build
+on: [push, pull_request, workflow_dispatch]
+jobs:
+  build:
+    runs-on: ubuntu-latest   # standard GitHub-hosted runner: free for public repositories
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 20 }
+      - run: sudo apt-get update && sudo apt-get install -y poppler-utils   # pdftotext for PDF quote checks
+      - run: npm run build   # prebuild = service-window (34) + lineage (9) + gate tests + live Source Manifest gate; postbuild = link check

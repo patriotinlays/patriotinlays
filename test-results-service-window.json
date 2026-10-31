@@ -1,0 +1,281 @@
+{
+  "ranAt": "Sat Oct 31 2026 18:16:17 GMT-0500 (Central Daylight Time)",
+  "node": "v20.19.2",
+  "pass": 34,
+  "total": 34,
+  "wordingGuard": "PASS",
+  "rows": [
+    {
+      "id": 1,
+      "group": "Boundary 1775",
+      "desc": "Core: 18 Apr 1775 (day before Lexington)",
+      "expected": "inconsistent",
+      "actual": "inconsistent",
+      "result": "PASS"
+    },
+    {
+      "id": 2,
+      "group": "Boundary 1775",
+      "desc": "Core: 19 Apr 1775 (first day of window)",
+      "expected": "consistent",
+      "actual": "consistent",
+      "result": "PASS"
+    },
+    {
+      "id": 3,
+      "group": "Boundary 1775",
+      "desc": "Core: 18 Apr – 19 Apr 1775 (straddles start)",
+      "expected": "partial",
+      "actual": "partial",
+      "result": "PASS"
+    },
+    {
+      "id": 4,
+      "group": "Boundary 1783",
+      "desc": "Core: 26 Nov 1783 (last day of window)",
+      "expected": "consistent",
+      "actual": "consistent",
+      "result": "PASS"
+    },
+    {
+      "id": 5,
+      "group": "Boundary 1783",
+      "desc": "Core: 27 Nov 1783 (day after window)",
+      "expected": "inconsistent",
+      "actual": "inconsistent",
+      "result": "PASS"
+    },
+    {
+      "id": 6,
+      "group": "Boundary 1783",
+      "desc": "Core: 26 Nov – 27 Nov 1783 (straddles end)",
+      "expected": "partial",
+      "actual": "partial",
+      "result": "PASS"
+    },
+    {
+      "id": 7,
+      "group": "Boundary years",
+      "desc": "Core: year-only 1775 (imprecise, straddles start)",
+      "expected": "partial",
+      "actual": "partial",
+      "result": "PASS"
+    },
+    {
+      "id": 8,
+      "group": "Boundary years",
+      "desc": "Core: year-only 1783 (imprecise, straddles end)",
+      "expected": "partial",
+      "actual": "partial",
+      "result": "PASS"
+    },
+    {
+      "id": 9,
+      "group": "Boundary years",
+      "desc": "Core: 1774-01 to 1774-12 (entirely before window)",
+      "expected": "inconsistent",
+      "actual": "inconsistent",
+      "result": "PASS"
+    },
+    {
+      "id": 10,
+      "group": "Core",
+      "desc": "Core: 1778-06 to 1780-12 (inside window); message is the mandated sentence",
+      "expected": "Date range appears consistent with published rule; verify service category and primary evidence.",
+      "actual": "Date range appears consistent with published rule; verify service category and primary evidence.",
+      "result": "PASS"
+    },
+    {
+      "id": 11,
+      "group": "Special window",
+      "desc": "Committee service May 1774 (DAR: from April 1774)",
+      "expected": "consistent",
+      "actual": "consistent",
+      "result": "PASS"
+    },
+    {
+      "id": 12,
+      "group": "Special window",
+      "desc": "Committee service March 1774 (before April 1774)",
+      "expected": "inconsistent",
+      "actual": "inconsistent",
+      "result": "PASS"
+    },
+    {
+      "id": 13,
+      "group": "Special window",
+      "desc": "Virginia Oath of Fidelity, October 1779",
+      "expected": "consistent",
+      "actual": "consistent",
+      "result": "PASS"
+    },
+    {
+      "id": 14,
+      "group": "Special window",
+      "desc": "Virginia Oath of Fidelity, September 1779",
+      "expected": "inconsistent",
+      "actual": "inconsistent",
+      "result": "PASS"
+    },
+    {
+      "id": 15,
+      "group": "Special window",
+      "desc": "Gálvez troops, 24 Dec 1776 (not 'after')",
+      "expected": "inconsistent",
+      "actual": "inconsistent",
+      "result": "PASS"
+    },
+    {
+      "id": 16,
+      "group": "Special window",
+      "desc": "Gálvez troops, 25 Dec 1776",
+      "expected": "consistent",
+      "actual": "consistent",
+      "result": "PASS"
+    },
+    {
+      "id": 17,
+      "group": "Special window",
+      "desc": "Gálvez cattle supply, 24 Dec 1776 (not 'after')",
+      "expected": "inconsistent",
+      "actual": "inconsistent",
+      "result": "PASS"
+    },
+    {
+      "id": 18,
+      "group": "Special window",
+      "desc": "Gálvez cattle supply, 1779-03 to 1780-05",
+      "expected": "consistent",
+      "actual": "consistent",
+      "result": "PASS"
+    },
+    {
+      "id": 19,
+      "group": "Invalid/conflicting",
+      "desc": "End date (1777-05-01) before start (1778-02-01)",
+      "expected": "invalid",
+      "actual": "invalid",
+      "result": "PASS"
+    },
+    {
+      "id": 20,
+      "group": "Invalid/conflicting",
+      "desc": "Impossible calendar date 1777-02-30",
+      "expected": "invalid",
+      "actual": "invalid",
+      "result": "PASS"
+    },
+    {
+      "id": 21,
+      "group": "Widow claim",
+      "desc": "1836 act: married 1780-05-01, last service ended 1781-10-19, 24 months service",
+      "expected": "consistent",
+      "actual": "consistent",
+      "result": "PASS"
+    },
+    {
+      "id": 22,
+      "group": "Widow claim",
+      "desc": "1836 act: married 1785-06-01, after last service ended 1781-10-19",
+      "expected": "inconsistent",
+      "actual": "inconsistent",
+      "result": "PASS"
+    },
+    {
+      "id": 23,
+      "group": "Widow claim",
+      "desc": "1838 act: married 1793-12-31 vs 1794-01-01 (cutoff: before 1 Jan 1794)",
+      "expected": "consistent|inconsistent",
+      "actual": "consistent|inconsistent",
+      "result": "PASS"
+    },
+    {
+      "id": 24,
+      "group": "Widow claim",
+      "desc": "Married 1800-01-02: 1848 act (before 2 Jan 1800) vs 1853 & Feb 1855 acts (not evaluated)",
+      "expected": "inconsistent|not_evaluated|not_evaluated",
+      "actual": "inconsistent|not_evaluated|not_evaluated",
+      "result": "PASS"
+    },
+    {
+      "id": 25,
+      "group": "Widow claim",
+      "desc": "1878 act & 1855 bounty land: 13 days no engagement vs 14 days",
+      "expected": "inconsistent|inconsistent|consistent|consistent",
+      "actual": "inconsistent|inconsistent|consistent|consistent",
+      "result": "PASS"
+    },
+    {
+      "id": 26,
+      "group": "Boundary: committee",
+      "desc": "Committee service 31 Mar 1774 (day before April 1774)",
+      "expected": "inconsistent",
+      "actual": "inconsistent",
+      "result": "PASS"
+    },
+    {
+      "id": 27,
+      "group": "Boundary: committee",
+      "desc": "Committee service 1 Apr 1774 (first day of 'from April 1774')",
+      "expected": "consistent",
+      "actual": "consistent",
+      "result": "PASS"
+    },
+    {
+      "id": 28,
+      "group": "Boundary: VA oath",
+      "desc": "Virginia Oath of Fidelity 30 Sep 1779 (day before October 1779)",
+      "expected": "inconsistent",
+      "actual": "inconsistent",
+      "result": "PASS"
+    },
+    {
+      "id": 29,
+      "group": "Boundary: VA oath",
+      "desc": "Virginia Oath of Fidelity 1 Oct 1779 (first day of October 1779)",
+      "expected": "consistent",
+      "actual": "consistent",
+      "result": "PASS"
+    },
+    {
+      "id": 30,
+      "group": "Boundary: VA oath",
+      "desc": "Virginia Oath of Fidelity 26 Nov 1783 vs 27 Nov 1783 (published end)",
+      "expected": "consistent|inconsistent",
+      "actual": "consistent|inconsistent",
+      "result": "PASS"
+    },
+    {
+      "id": 31,
+      "group": "Boundary: Gálvez end (assumed)",
+      "desc": "Gálvez troops 26 Nov 1783 vs 27 Nov 1783",
+      "expected": "consistent|inconsistent",
+      "actual": "consistent|inconsistent",
+      "result": "PASS"
+    },
+    {
+      "id": 32,
+      "group": "Boundary: Gálvez end (assumed)",
+      "desc": "Gálvez cattle supply 26 Nov 1783 vs 27 Nov 1783",
+      "expected": "consistent|inconsistent",
+      "actual": "consistent|inconsistent",
+      "result": "PASS"
+    },
+    {
+      "id": 33,
+      "group": "Boundary: Gálvez end (assumed)",
+      "desc": "Assumed Gálvez end is disclosed: ruleNote present for troops and cattle results",
+      "expected": "true|true",
+      "actual": "true|true",
+      "result": "PASS"
+    },
+    {
+      "id": 34,
+      "group": "Widow claim: UI note",
+      "desc": "1836 act result carries the note that 1832 service-category rules are not evaluated",
+      "expected": "true",
+      "actual": "true",
+      "result": "PASS"
+    }
+  ]
+}

@@ -1,0 +1,147 @@
+{
+  "ranAt": "Sat Oct 31 2026 15:45:34 GMT-0500 (Central Daylight Time)",
+  "browser": "/usr/bin/google-chrome (headless) via playwright-core 1.64.1",
+  "passed": 27,
+  "total": 27,
+  "results": [
+    {
+      "name": "Tool A: core window 1775-04-19..1776-01-01 shows mandated consistent sentence",
+      "ok": true,
+      "detail": "Consistent with published ruleDate range appears consistent with published rule; verify service category and primary evi"
+    },
+    {
+      "name": "Tool A: Gálvez cattle 24 Dec 1776 is outside the rule",
+      "ok": true,
+      "detail": "Outside the rule as enteredDate range does not fall inside the published rule as entered; re-check d"
+    },
+    {
+      "name": "Tool A: widow table shows 1836 note about 1832 service categories",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "Tool A: 1853 and Feb-1855 acts display 'Not evaluated'",
+      "ok": true,
+      "detail": "Not evaluatedThis published ru | Not evaluatedThis published ru"
+    },
+    {
+      "name": "Tool A page: no 'Qualif' anywhere in rendered text",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "Tool A: saved under namespaced keys only",
+      "ok": true,
+      "detail": "other.app.key,pi.toolA.widow,pi.toolA.window"
+    },
+    {
+      "name": "Tool A report renders saved checks from localStorage",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "Tool A report: print CSS hides nav, footer and buttons",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "Tool A clear: removes pi.toolA.* only, keeps unrelated key",
+      "ok": true,
+      "detail": "other.app.key"
+    },
+    {
+      "name": "Tool A embed on guide #3 works (27 Nov 1783 outside)",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "Tool B: starts with 2 generations",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "Tool B: complete direct entry shows 'Evidence Entered — Review Required'",
+      "ok": true,
+      "detail": "Evidence Entered — Review Required"
+    },
+    {
+      "name": "Tool B: 1850-70 census for parentage marked direct gets NSCDA caution, not an upgrade",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "Tool B: conflict flag changes label to 'Conflict Flagged — Review Required'",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "Tool B: add generation works",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "Tool B: gap list shows conflict first and missing items",
+      "ok": true,
+      "detail": "Generation 2: conflict flagged on parentage — resolve before relying on it.Generation 1: no death evidence entered.Gener"
+    },
+    {
+      "name": "Tool B: state persists after reload (localStorage)",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "Tool B: the word 'Documented' never appears in tool output",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "Tool B report page renders generations, labels and gaps",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "Tool B embed card on guide #8 reads saved state",
+      "ok": true,
+      "detail": "Saved in this browser: 3 generations, 2 evidence entries, 7 open gaps or flags."
+    },
+    {
+      "name": "Tool B: saved under pi.toolB.v1 only",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "Tool B clear: removes pi.toolB.* only, keeps unrelated key",
+      "ok": true,
+      "detail": "other.app.key,pi.toolA.window"
+    },
+    {
+      "name": "Network: zero requests to any host other than the local site",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "Network: zero requests while using the tools (after page load)",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "Mobile 375px: no horizontal page overflow on 19 pages",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "Mobile: tool buttons are at least 44px tall",
+      "ok": true,
+      "detail": "0 small"
+    },
+    {
+      "name": "No JavaScript errors in the console on any page visited",
+      "ok": true,
+      "detail": ""
+    }
+  ],
+  "requestsTotal": 54,
+  "externalRequests": 0,
+  "interactionRequests": 0,
+  "faviconLate": 7
+}

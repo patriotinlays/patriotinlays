@@ -1,0 +1,33 @@
+
+> patriotinlays-pilot@0.1.0 e2e
+> node qa/e2e.mjs
+
+PASS  Tool A: core window 1775-04-19..1776-01-01 shows mandated consistent sentence — Consistent with published ruleDate range appears consistent with published rule; verify service category and primary evi
+PASS  Tool A: Gálvez cattle 24 Dec 1776 is outside the rule — Outside the rule as enteredDate range does not fall inside the published rule as entered; re-check d
+PASS  Tool A: widow table shows 1836 note about 1832 service categories
+PASS  Tool A: 1853 and Feb-1855 acts display 'Not evaluated' — Not evaluatedThis published ru | Not evaluatedThis published ru
+PASS  Tool A page: no 'Qualif' anywhere in rendered text
+PASS  Tool A: saved under namespaced keys only — other.app.key,pi.toolA.widow,pi.toolA.window
+PASS  Tool A report renders saved checks from localStorage
+PASS  Tool A report: print CSS hides nav, footer and buttons
+PASS  Tool A clear: removes pi.toolA.* only, keeps unrelated key — other.app.key
+PASS  Tool A embed on guide #3 works (27 Nov 1783 outside)
+PASS  Tool B: starts with 2 generations
+PASS  Tool B: complete direct entry shows 'Evidence Entered — Review Required' — Evidence Entered — Review Required
+PASS  Tool B: 1850-70 census for parentage marked direct gets NSCDA caution, not an upgrade
+PASS  Tool B: conflict flag changes label to 'Conflict Flagged — Review Required'
+PASS  Tool B: add generation works
+PASS  Tool B: gap list shows conflict first and missing items — Generation 2: conflict flagged on parentage — resolve before relying on it.Generation 1: no death evidence entered.Gener
+PASS  Tool B: state persists after reload (localStorage)
+PASS  Tool B: the word 'Documented' never appears in tool output
+PASS  Tool B report page renders generations, labels and gaps
+PASS  Tool B embed card on guide #8 reads saved state — Saved in this browser: 3 generations, 2 evidence entries, 7 open gaps or flags.
+PASS  Tool B: saved under pi.toolB.v1 only
+PASS  Tool B clear: removes pi.toolB.* only, keeps unrelated key — other.app.key,pi.toolA.window
+PASS  Network: zero requests to any host other than the local site
+PASS  Network: zero requests while using the tools (after page load)
+PASS  Mobile 375px: no horizontal page overflow on 19 pages
+PASS  Mobile: tool buttons are at least 44px tall — 0 small
+PASS  No JavaScript errors in the console on any page visited
+
+E2E: 27/27 checks passed.
