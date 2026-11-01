@@ -3,6 +3,8 @@
 // Every rule carries a claim_id that must exist (verified) in manifest/claims.json; check-manifest.mjs enforces this.
 // Output wording rule: never state "Qualifies". Consistent results use MSG.consistent verbatim; a result is never a ruling.
 
+import { CONTACT_STEP, APPLY_STEP, linksFor } from "./next-steps.js";
+
 export const MSG = Object.freeze({
   consistent: "Your dates fit the official service period for this type of service. This is not a ruling: your society decides. Next, find the original records that show the service.",
   partial: "Only part of your dates falls inside the official period. Check the exact dates in your records.",
@@ -42,11 +44,11 @@ export const SERVICE_RULES = [
 ];
 
 // Widow pension / bounty-land acts (NARA M804 descriptive pamphlet, pp. 3-4 of text).
-// Only requirements the pamphlet states are encoded; anything else is reported as not evaluated.
+// Only requirements the pamphlet states are encoded; anything else is reported as not checked (status not_evaluated).
 export const WIDOW_ACTS = [
   { id: "act1836", label: "Act of July 4, 1836 (5 Stat. 128)", claim: "nara-act-1836", claim1832: "nara-act-1832", claimCategories: "nara-act-1832-categories",
-    nextNote: "To check the type of service yourself: look at what kind of unit he served in. For state militia, the National Archives says to check the archives of the state he served.", nextLinks: ["serviceRecords"], nextClaim: "nara-svc-state",
-    uiNote: "Not evaluated: the service-category rules the 1836 act inherits from the act of June 7, 1832 (Continental Line or State troops, volunteers or militia; naval and marine service). Only total months of service and the marriage date are checked.",
+    nextNote: "What to do: find out what kind of unit he served in. For state militia, the National Archives says to check the archives of the state where he served; for Continental troops, see its service-records guide.", nextLinks: ["serviceRecords"], nextClaim: "nara-svc-state", claimHolds: "nara-svc-holds",
+    uiNote: "Not checked: whether his type of service counted. The 1836 law relied on the service rules of the 1832 law (Continental Line or State troops, volunteers or militia). This tool checks only the marriage date and the months of service.",
     test: (w) => {
       if (!w.marriage || !w.serviceEnd) return { status: "not_evaluated", text: "Needs the marriage date and the date his last period of service ended.", why: "Missing information.", next: FILL(!w.marriage ? "Marriage date" : "When his last service ended") };
       if (w.serviceMonths == null) return { status: "not_evaluated", text: "Needs total months of service (1832-act service required).", why: "Missing information.", next: FILL("Total months of service") };
@@ -73,7 +75,7 @@ export const WIDOW_ACTS = [
 
 // 1853 / Feb 1855 acts: the source gives only that marriage-date limits were removed.
 const NOT_IN_SOURCE = Object.freeze({ status: "not_evaluated",
-  text: "Source states only that marriage-date restrictions were removed; the act's full eligibility terms are not stated in the source used, so this act is not evaluated.",
+  text: "Source states only that marriage-date restrictions were removed; the act's full eligibility terms are not stated in the source used, so this tool does not check this law.",
   why: "Why: the National Archives guide this site uses says only that this law removed the marriage-date limits. It does not list the law's other terms, so the tool can't test them.",
   next: "What to do: read the widow's own pension papers (the National Archives lists the pension files online, free on FamilySearch with login), or ask your society's registrar.",
   links: ["pensionFiles", "m804"] });
@@ -138,4 +140,21 @@ export function checkWidowActs(input) {
     const links = [...(r.links || []), ...(a.nextLinks || [])].map((k) => NEXT_STEP_LINKS[k]);
     return { act: a.id, label: a.label, status: r.status, message, ruleText: r.text, uiNote: a.uiNote || null, claim: a.claim,
       why: r.why || null, next: r.next || null, nextNote: a.nextNote || null, links }; });
+}
+
+// "What to do next": a numbered plan that depends on the service-window result and on any "Not checked" widow laws.
+// window = result of checkServiceWindow() or null; widow = result of checkWidowActs() or null.
+export function nextSteps(window, widow) {
+  const steps = [];
+  const st = window?.status;
+  if (st === "invalid") steps.push({ title: "Fix the dates and check again", text: "Type numbers only: a year (1776), a year and month (1776-07), or a full date (1776-07-04).", claims: [], links: [] });
+  if (st === "inconsistent") steps.push({ title: "Double-check the dates and the type of service", text: "Look again at the dates in your records, and make sure you picked the right type of service: some types have their own start dates. If the dates still fall outside, ask your society's registrar before going further.", claims: ["dar-committee-1774", "dar-va-oath", "dar-galvez-troops"], links: linksFor("service", "sides") });
+  if (st === "partial") steps.push({ title: "Pin down the exact dates", text: "Part of your date range falls outside the official period. Find the exact dates in the original records, then check again.", claims: [], links: linksFor("pension") });
+  if (st === "consistent" || st === "partial") steps.push({ title: "Find the original records that prove the service", text: "DAR asks for original records (or transcriptions) such as pensions, muster rolls, pay vouchers, oaths of allegiance, town meeting minutes and county court orders. SAR does not take family tradition as proof of service.", claims: ["dar-service-sources", "sar-tradition"], links: linksFor("pensionFiles", "serviceRecords", "pension", "byState") });
+  const notChecked = (widow || []).filter((r) => r.status === "not_evaluated" && r.why && r.why !== "Missing information.");
+  if (notChecked.length) steps.push({ title: "For the laws marked \"Not checked\"", text: `${notChecked.map((r) => r.label).join("; ")}: read the widow's own pension papers, or ask your society's registrar.`, claims: ["nara-amrev-familysearch", "nps-applegate-widow"], links: linksFor("pensionFiles", "pension") });
+  if (!window && !notChecked.length) steps.push({ title: "Check your ancestor's service dates", text: "Fill in step 1 above and press \"Check these dates\".", claims: [], links: [] });
+  steps.push({ title: "Prove each generation back to the patriot", text: "Use the free worksheet to list the records you have for each person and get a list of what is still missing.", claims: ["dar-each-relationship"], links: linksFor("matrix", "roadmap") });
+  steps.push(CONTACT_STEP, APPLY_STEP);
+  return steps;
 }

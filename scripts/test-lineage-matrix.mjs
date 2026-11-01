@@ -1,5 +1,5 @@
 // Sanity tests for Tool B (not part of the 25-scenario requirement).
-import { evaluateCell, gaps, LABELS, FACTS, genLabel, genTitle, isEmptyCell, WHERE_TO_LOOK, WHERE_SOURCES, GUIDES, whereToLook, MODE_HELP } from "../src/tools/tool-b.js";
+import { actionPlan, evaluateCell, gaps, LABELS, FACTS, genLabel, genTitle, isEmptyCell, WHERE_TO_LOOK, WHERE_SOURCES, GUIDES, whereToLook, MODE_HELP } from "../src/tools/tool-b.js";
 import { readFileSync, readdirSync } from "node:fs";
 const manifest = JSON.parse(readFileSync(new URL("../manifest/claims.json", import.meta.url), "utf8"));
 const manifestUrls = new Set(manifest.claims.map((c) => c.source_url));
@@ -33,6 +33,22 @@ t("Where to look: every listed gap carries a Where-to-look note with the registr
   const g = gaps(rows); return g.length > 5 && g.every((x) => x.where && /registrar/.test(x.where.registrar) && (x.where.text || x.where.guides.length)) && gaps([]).every((x) => x.where); })());
 t("Where to look: older parentage points to the National Archives census page; recent birth says to ask the registrar",
   whereToLook("parentage", 5).links.some((l) => l.url.includes("archives.gov/research/census")) && /registrar/.test(whereToLook("birth", 1).registrar));
+// ---- "What to do next" action plan (built from the visitor's own gaps) ----
+{ const { CHAPTER_LINKS, SITE_LINKS, CONTACT_STEP, APPLY_STEP } = await import("../src/tools/next-steps.js");
+  const rows = [{ gen: 1, living: true, cells: [] }, { gen: 2, cells: [{ fact: "birth", docType: "birth_cert_long", mode: "direct", citation: "long form certificate", conflict: true }] }, { gen: 4, cells: [] }];
+  const plan = actionPlan(rows); const g = gaps(rows);
+  const order = plan.find((s) => s.title === "Find or order these records");
+  t("plan: 'Find or order these records' lists every missing item from the user's own gaps, each with Where to look", order && order.items.length === g.filter((x) => x.priority === 1 && x.gen != null).length && order.items.every((i) => i.where && i.where.text));
+  t("plan: flagged conflicts come first", plan[0].title.startsWith("Sort out"));
+  t("plan: ends with 'Contact a local chapter's registrar' then 'Start the application'", plan.at(-2) === CONTACT_STEP && plan.at(-1) === APPLY_STEP && /registrar/.test(CONTACT_STEP.title) && /application/.test(APPLY_STEP.title));
+  t("plan: chapter-finder and record links are all Source Manifest source URLs", Object.values(CHAPTER_LINKS).every((l) => manifestUrls.has(l.url)) && CONTACT_STEP.links.some((l) => l.url.includes("chapter-locator")));
+  t("plan: site links point to real pages", Object.values(SITE_LINKS).every((l) => slugs.has(l.url)));
+  t("plan: every claim behind a step is a verified manifest claim", plan.every((s) => s.claims.every((c) => verified.has(c))));
+  t("plan: no fees, prices or timelines are stated", !/\$|\bfee|\bweeks?\b|\bdays to\b|\bmonths? to\b/i.test(JSON.stringify(plan.map((s) => [s.title, s.text]))));
+  t("plan: an empty worksheet gets 'Fill in the worksheet' first", actionPlan([])[0].title === "Fill in the worksheet");
+  t("plan: nothing missing says so plainly (no false 'proven')", (() => { const full = (f) => ({ fact: f, docType: "other", mode: "direct", citation: "a record citation" });
+    const p = actionPlan([{ gen: 1, living: true, cells: [full("birth")] }, { gen: 2, cells: [full("birth"), full("death"), full("parentage")] }]); return p.some((s) => /Nothing is missing/.test(s.text)) && !/proven\b(?! by)/i.test(JSON.stringify(p).replace(/what is proven/g, "")); })());
+}
 const every = JSON.stringify([evaluateCell(full), evaluateCell({}), gaps([{ gen: 1, cells: [full] }]), LABELS]);
 t('the word "Documented" never appears in output', !/documented/i.test(every));
 let p = 0; for (const [n, ok] of T) { console.log(`${ok ? "PASS" : "FAIL"}  ${n}`); if (ok) p++; }

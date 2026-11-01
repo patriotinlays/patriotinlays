@@ -8,6 +8,10 @@ for f in glob.glob(os.path.join(root, "src/content/*.md")) + glob.glob(os.path.j
     for cid in re.findall(r"\[\[claim:([a-z0-9-]+)\]\]", open(f).read()): used.setdefault(cid, set()).add(slug)
 for f in glob.glob(os.path.join(root, "src/tools/*.js")):
     for cid in re.findall(r'claim\w*:\s*"([a-z0-9-]+)"', open(f).read()): used.setdefault(cid, set()).add("tool:" + os.path.basename(f))
+    for arr in re.findall(r'claims:\s*\[([^\]]*)\]', open(f).read()):
+        for cid in re.findall(r'"([a-z0-9-]+)"', arr): used.setdefault(cid, set()).add("tool:" + os.path.basename(f))
+for f in glob.glob(os.path.join(root, "src/partials/*.md")):
+    for cid in re.findall(r"\[\[claim:([a-z0-9-]+)\]\]", open(f).read()): used.setdefault(cid, set()).add("partial:" + os.path.basename(f)[:-3])
 out = []; unused = []
 for cid, sk, quote, text, page in C:
     if cid not in used: unused.append(cid); continue

@@ -18,5 +18,9 @@ SOURCES = {
  "LVA": ("https://lva-virginia.libguides.com/bounty-claims/home", "Library of Virginia — Revolutionary War Bounty Land Claims", "lva.html"),
  "NYPL": ("https://libguides.nypl.org/military-genealogy/revolutionary-war", "New York Public Library — Military Genealogy: Revolutionary War", "nypl.html"),
  "NSCDA": ("https://nscdasnc.memberclicks.net/assets/membership/Standards%20of%20Proof%202025.pdf", "NSCDA (South Carolina) — Standards of Proof (rev. 7/14/2025)", "nscda.pdf"),
+ "DAR_LOCATOR": ("https://www.dar.org/discover/become-member/chapter-locator", "DAR — Chapter Locator", "dar_locator.html"),
+ "DAR_JOIN": ("https://www.dar.org/discover/become-member/how-join", "DAR — How to Join", "dar_join.html"),
+ "SAR_APPLY": ("https://www.sar.org/how-to-apply/", "SAR — Apply in 4 Easy Steps", "sar_apply.html"),
+ "SAR_CONTACT": ("https://www.sar.org/find-your-contact/", "SAR — Find Your Local Society Contact", "sar_contact.html"),
  "UELAC": ("https://uelac.ca/loyalist-directory/help/", "United Empire Loyalists' Association of Canada — Loyalist Directory Detail Help", "uelac.html"),
 }

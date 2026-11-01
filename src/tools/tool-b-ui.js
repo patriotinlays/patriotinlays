@@ -1,7 +1,8 @@
 // Tool B browser UI: Lineage Evidence Matrix editor, embed card, and report page.
 // State lives only in localStorage under "pi.toolB.v1"; no network requests are made.
-import { evaluateCell, gaps, LABELS, FACTS, FACT_LABELS, DOC_TYPES, MODE_HELP, genLabel, genTitle, isEmptyCell } from "./tool-b.js";
+import { actionPlan, evaluateCell, gaps, LABELS, FACTS, FACT_LABELS, DOC_TYPES, MODE_HELP, genLabel, genTitle, isEmptyCell } from "./tool-b.js";
 import { ns, el } from "./storage.js";
+import { renderPlan } from "./plan-ui.js";
 const store = ns("pi.toolB.");
 const blank = () => ({ version: 1, generations: [newGen(1), newGen(2)], updated: null });
 function newGen(gen) { return { gen, who: "", living: gen === 1, cells: [] }; }
@@ -96,6 +97,7 @@ function mountEditor(root) {
       ...g.cells.map((c, i) => cellEditor(state, g, c, rerender, i + 1)),
       el("button", { type: "button", "data-add-evidence": g.gen, onclick: () => addRecord(g), text: `+ Add a record for ${genLabel(g.gen).toLowerCase()}` }))));
     gapBox.replaceChildren(renderGaps(state));
+    root.querySelector("[data-plan]")?.replaceChildren(renderPlan(actionPlan(state.generations), { heading: false }));
     if (focusId) document.getElementById(focusId)?.focus();
   };
   // Never stack blank records: if this generation already has an empty one, send the visitor to it instead.
@@ -130,8 +132,10 @@ function mountCard(root) {
 }
 function mountReport(root) {
   const s = store.get("v1", null); const body = root.querySelector("[data-report]");
-  if (!s) { body.replaceChildren(el("p", { text: "Nothing saved in this browser yet. Open the Lineage Evidence Matrix, enter what you have (or press \"Load an example\"), then come back." })); return; }
+  if (!s) { body.replaceChildren(el("p", { text: "Nothing saved in this browser yet. Open the Lineage Evidence Matrix, enter what you have (or press \"Load an example\"), then come back." }),
+    el("p", {}, el("a", { class: "button-link", href: "/tools/lineage-matrix/", text: "Go to the Lineage Evidence Matrix" }))); return; }
   const kids = [el("p", { class: "small", text: `Saved ${s.updated ? new Date(s.updated).toLocaleString() : ""}. This is your own worksheet, not a decision: a society's genealogists review every entry.` }),
+    renderPlan(actionPlan(s.generations)),
     el("h2", { text: "What's still missing, and where to look" }), renderGaps(s), el("h2", { text: "Your records, generation by generation" })];
   for (const g of s.generations) {
     const rows = g.cells.map((c) => { const ev = evaluateCell(c);

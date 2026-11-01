@@ -31,7 +31,7 @@ unknown or unverified claim, stale entry (> 120 days), quote that no longer appe
 | `manifest/` | Source Manifest (`claims.json`) and the Python that regenerates it (`npm run manifest`) |
 | `scripts/` | Static site generator, tests, manifest gate, link checker, gates doc generator |
 | `ops/gates.js`, `docs/gates.md` | Day 30/60/90 mixed-gate decision rules (code + generated doc) |
-| `qa/e2e.mjs` | Headless-browser end-to-end suite (41 checks) |
+| `qa/e2e.mjs` | Headless-browser end-to-end suite (53 checks) |
 | `.github/workflows/` | `build.yml` (build gates on every push/PR), `ci.yml` (E2E on releases and tool PRs) |
 | `dist/` | Build output (generated; this is what gets deployed) |
 
@@ -52,7 +52,7 @@ There is no `src/components/` directory; tool code lives in `src/tools/`.
 ## Local verification
 
 ```bash
-npm test          # service-window (34 + 7 plain-language), lineage-matrix (20), gate examples (29) + exhaustive gate sweep (~30 s)
+npm test          # service-window (34 + 14 plain-language and next-step), lineage-matrix (29), gate examples (29) + exhaustive gate sweep (~30 s)
 npm run check     # Source Manifest gate, offline: every factual sentence -> verified manifest claim
 npm run build     # prebuild: npm test + live manifest check (fetches all sources);
                   # build: writes dist/; postbuild: internal + external link check

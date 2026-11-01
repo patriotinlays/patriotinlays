@@ -1,8 +1,8 @@
 {
-  "ranAt": "Sat Oct 31 2026 19:10:48 GMT-0500 (Central Daylight Time)",
+  "ranAt": "Sat Oct 31 2026 19:18:03 GMT-0500 (Central Daylight Time)",
   "browser": "/usr/bin/google-chrome (headless) via playwright-core 1.64.1",
-  "passed": 41,
-  "total": 41,
+  "passed": 53,
+  "total": 53,
   "results": [
     {
       "name": "Tool A: core window 1775-04-19..1776-01-01 shows the mandated 'fits, not a ruling' sentence",
@@ -30,6 +30,11 @@
       "detail": "Outside the period as typedYour dates fall outside the official period as you typed them. Check the "
     },
     {
+      "name": "Tool A: plan for dates that don't fit starts with 'Double-check the dates'",
+      "ok": true,
+      "detail": ""
+    },
+    {
       "name": "Tool A: widow table shows 1836 note about 1832 service categories",
       "ok": true,
       "detail": ""
@@ -50,6 +55,26 @@
       "detail": ""
     },
     {
+      "name": "Tool A: 'What to do next' plan for fitting dates: find records, registrar (with DAR Chapter Locator link), start application",
+      "ok": true,
+      "detail": "Your plan, built from what you entered. Tip: in the print window you can choose "
+    },
+    {
+      "name": "Tool A: plan names the 'Not checked' laws in their own step",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "Tool A: 'Print or save this plan' prints in plan-only mode",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "Tool A: no 'Not evaluated' wording anywhere on the page",
+      "ok": true,
+      "detail": ""
+    },
+    {
       "name": "Tool A: 'Load an example' fills both steps and shows results at once",
       "ok": true,
       "detail": "Dates fit the official period (not a ruling)Your dates fit t"
@@ -66,6 +91,11 @@
     },
     {
       "name": "Tool A report renders saved checks from localStorage",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "Tool A report: has 'What to do next' plan with a 'Print or save this plan' button",
       "ok": true,
       "detail": ""
     },
@@ -155,6 +185,11 @@
       "detail": ""
     },
     {
+      "name": "Tool B report: numbered action plan (order records with where-to-look, registrar, start application) + print button",
+      "ok": true,
+      "detail": ""
+    },
+    {
       "name": "Tool B report: gaps carry 'Where to look' lines",
       "ok": true,
       "detail": ""
@@ -170,6 +205,11 @@
       "detail": ""
     },
     {
+      "name": "Tool B: action plan lists each missing record with a Where-to-look link, then registrar and application steps",
+      "ok": true,
+      "detail": "4 items"
+    },
+    {
       "name": "Tool B: 'Load an example' fills a made-up family and shows gaps with where to look",
       "ok": true,
       "detail": ""
@@ -178,6 +218,26 @@
       "name": "Tool B clear: removes pi.toolB.* only, keeps unrelated key",
       "ok": true,
       "detail": "other.app.key,pi.toolA.window"
+    },
+    {
+      "name": "Home: says in plain words what you can get done and where to start",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "Guides: all 10 end with 'What to do next' (both tools, chapter finder) and a next-guide link",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "Tools: each tool page links to matching guides",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "No dead ends: About, Privacy, Contact, Sources and 404 offer a 'Ready to start?' box",
+      "ok": true,
+      "detail": ""
     },
     {
       "name": "Network: zero requests to any host other than the local site",
@@ -210,8 +270,8 @@
       "detail": ""
     }
   ],
-  "requestsTotal": 54,
+  "requestsTotal": 75,
   "externalRequests": 0,
   "interactionRequests": 0,
-  "faviconLate": 7
+  "faviconLate": 8
 }

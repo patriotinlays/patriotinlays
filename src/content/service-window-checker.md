@@ -27,11 +27,11 @@ DAR gives no end date for the two Gálvez categories or for committee service, s
 The 1832 act covered veterans with at least 6 months of service, with full pay for life at 2 years or more. [[claim:nara-act-1832]]
 It covered service in the Continental Line or State troops, volunteers or militia. [[claim:nara-act-1832-categories]]
 The 1836 act required the widow to have married the veteran before his last period of service expired. [[claim:nara-act-1836]]
-The checker tests the 1836 marriage date and months of service only; it does not evaluate the 1832 service-category rules the 1836 act inherits. [[claim:nara-act-1832-categories]]
+The checker tests the 1836 marriage date and months of service only; it does not check the 1832 service-category rules the 1836 act inherits. [[claim:nara-act-1832-categories]]
 The 1838 act granted 5-year pensions to widows married before January 1, 1794. [[claim:nara-act-1838]]
 The July 1848 act granted life pensions to widows married before January 2, 1800. [[claim:nara-act-1848]]
 Acts in 1853 and 1855 removed the marriage-date restrictions. [[claim:nara-act-1853-1855]]
-The source used here gives no other terms for those two acts, so the checker reports them as not evaluated.
+The source used here gives no other terms for those two acts, so the checker marks them "Not checked".
 The 1878 act covered widows of soldiers who served as few as 14 days or were in any engagement. [[claim:nara-act-1878]]
 The March 1855 bounty-land act covered veterans with as few as 14 days of service, and their widows and minor children. [[claim:nara-bounty-1855]]
 

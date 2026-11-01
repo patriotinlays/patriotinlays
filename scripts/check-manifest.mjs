@@ -42,7 +42,7 @@ function requireClaim(id, where) {
 // Factual-sentence heuristic: years, statute cites, full dates, quantities, requirement language.
 const FACTUAL = [/\b1[6-9]\d\d\b/, /\bStat\.\s*\d/, /\b(January|February|March|April|May|June|July|August|September|October|November|December)\s+\d{1,2}\b/, /\b\d{1,2}\s+(January|February|March|April|May|June|July|August|September|October|November|December)\b/, /\b\d+\s*(acres|days|months|years|percent|%)/i, /\b(must|required|requires|eligible|accepts?|prohibit\w*)\b/i];
 const MARK = /\[\[claim:([a-z0-9-]+)\]\]/g;
-const dirs = args.includes("--content") ? [contentDir] : ["src/content", "src/pages"];
+const dirs = args.includes("--content") ? [contentDir] : ["src/content", "src/pages", "src/partials"];
 const files = [];
 for (const d of dirs) { const dir = join(ROOT, d); if (existsSync(dir)) for (const f of readdirSync(dir).filter((x) => x.endsWith(".md"))) files.push([d, f]); }
 let sentences = 0, marked = 0;

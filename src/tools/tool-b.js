@@ -5,6 +5,8 @@
 //  * Highest status the tool can ever show: "Evidence Entered — Review Required". It never says "Documented".
 //  * State lives only in localStorage on the user's device; this file makes no network calls.
 
+import { CONTACT_STEP, APPLY_STEP, linksFor } from "./next-steps.js";
+
 export const LABELS = Object.freeze({
   none: "No Evidence Entered",
   entered: "Evidence Entered — Review Required",
@@ -155,6 +157,20 @@ export function gaps(rows = []) {
       else if (ev.cautions.length) out.push({ gen: r.gen, fact: c.fact, priority: 2, text: `${who}: ${fl} record. ${ev.cautions[0].text}`, claim: ev.cautions[0].claim, where }); }
   }
   return out.sort((a, b) => a.priority - b.priority);
+}
+
+// "What to do next": a numbered action plan built from the visitor's own gaps.
+export function actionPlan(rows = []) {
+  const g = gaps(rows); const steps = [];
+  const conflicts = g.filter((x) => x.priority === 0), missing = g.filter((x) => x.priority === 1 && x.gen != null), fixes = g.filter((x) => x.priority === 2);
+  if (rows.length < 2) steps.push({ title: "Fill in the worksheet", text: "Start with yourself as generation 1, then add your parent, grandparent and so on back to the patriot.", claims: ["dar-gen1-applicant", "dar-gen-numbering"], links: linksFor("roadmap") });
+  if (conflicts.length) steps.push({ title: "Sort out the records that disagree", text: "You flagged these as conflicting. Find another record that settles each one before relying on it.", claims: [], links: [], items: conflicts.map((x) => ({ text: x.text, where: x.where })) });
+  if (missing.length) steps.push({ title: "Find or order these records", text: "Each item says where to look.", claims: ["dar-each-relationship"], links: [], items: missing.map((x) => ({ text: x.text.replace(/: no (\w+) evidence entered yet\./, ": find a $1 record.").replace(/: no record yet that links this person to the next generation in your line\./, ": find a record that links this person to the next generation."), where: x.where })) });
+  else if (rows.length >= 2) steps.push({ title: "Records", text: "Nothing is missing by this tool's rules. A society's genealogists still review every record.", claims: ["dar-review-staff"], links: [] });
+  if (fixes.length) steps.push({ title: "Finish or double-check these entries", text: "", claims: [], links: [], items: fixes.map((x) => ({ text: x.text, where: null })) });
+  steps.push({ title: "Check the patriot's service dates", text: "Use the free checker to see whether the service dates fit the official period.", claims: ["dar-window-core"], links: linksFor("checker") });
+  steps.push(CONTACT_STEP, APPLY_STEP);
+  return steps;
 }
 
 // Storage is handled by tool-b-ui.js (key "pi.toolB.v1", localStorage only).

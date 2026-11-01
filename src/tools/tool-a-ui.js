@@ -1,5 +1,6 @@
 // Tool A browser UI: service-window form, widow-act form, report page. localStorage key prefix "pi.toolA.".
-import { checkServiceWindow, checkWidowActs, SERVICE_RULES, FIELD_HELP } from "./tool-a.js";
+import { checkServiceWindow, checkWidowActs, SERVICE_RULES, FIELD_HELP, nextSteps } from "./tool-a.js";
+import { renderPlan } from "./plan-ui.js";
 import { ns, el } from "./storage.js";
 const store = ns("pi.toolA.");
 // Badges are deliberately not green: a matching date is a starting point, never an approval.
@@ -25,11 +26,17 @@ function renderWidow(rows) {
       r.links?.length ? el("ul", { class: "where-links small" }, ...r.links.map((l) => el("li", {}, el("a", { href: l.url, rel: "noopener", text: l.label })))) : null)));
   t.append(tb); return el("div", { class: "table-wrap" }, t);
 }
+// Rebuild the "What to do next" plan from whatever is saved in this browser.
+function updatePlan(root) {
+  const box = root.querySelector("[data-plan]"); if (!box) return;
+  const w = store.get("window", null), d = store.get("widow", null);
+  box.replaceChildren(renderPlan(nextSteps(w?.result || null, d?.result || null), { heading: false }));
+}
 function runWindow(form, out) {
   const f = Object.fromEntries(new FormData(form));
   const r = checkServiceWindow({ serviceType: f.serviceType, start: f.start, end: f.end || f.start });
   store.set("window", { input: f, result: r, at: new Date().toISOString() });
-  out.replaceChildren(renderWindow(r));
+  out.replaceChildren(renderWindow(r)); updatePlan(form.closest("[data-tool]"));
 }
 function runWidow(form, out) {
   const f = Object.fromEntries(new FormData(form));
@@ -37,7 +44,7 @@ function runWidow(form, out) {
   const input = { marriage: f.marriage || null, serviceEnd: f.serviceEnd || null, serviceMonths: num(f.serviceMonths), serviceDays: num(f.serviceDays), engagement: f.engagement === "on" ? true : null };
   const rows = checkWidowActs(input);
   store.set("widow", { input: { ...f, engagement: f.engagement === "on" }, result: rows, at: new Date().toISOString() });
-  out.replaceChildren(renderWidow(rows));
+  out.replaceChildren(renderWidow(rows)); updatePlan(form.closest("[data-tool]"));
 }
 function bindWindow(root) {
   const form = root.querySelector("form[data-form=window]"); if (!form) return;
@@ -71,17 +78,20 @@ function bindClear(root) {
   root.querySelectorAll("[data-clear=toolA]").forEach((b) => b.addEventListener("click", () => {
     const n = store.clear(); root.querySelectorAll("form").forEach((f) => f.reset());
     root.querySelectorAll("[data-out]").forEach((o) => o.replaceChildren(el("p", { class: "small", text: `Cleared ${n} saved item(s) from this browser.` })));
+    updatePlan(root); if (root.matches("[data-tool-report]")) renderReport(root);
   }));
 }
 function renderReport(root) {
   const w = store.get("window", null), d = store.get("widow", null);
   const body = root.querySelector("[data-report]");
-  if (!w && !d) { body.replaceChildren(el("p", { text: "Nothing saved in this browser yet. Open the checker, type your dates (or press \"Load an example\"), then come back." })); return; }
+  if (!w && !d) { body.replaceChildren(el("p", { text: "Nothing saved in this browser yet. Open the checker, type your dates (or press \"Load an example\"), then come back." }),
+    el("p", {}, el("a", { class: "button-link", href: "/tools/service-window-checker/", text: "Go to the Service Window Checker" }))); return; }
   const kids = [el("p", { class: "small", text: "These results compare your dates with published rules. They are not a ruling: only your lineage society decides." })];
   if (w) kids.push(el("h2", { text: "Step 1: Service dates check" }), el("p", { class: "small", text: `Saved ${new Date(w.at).toLocaleString()}. Type of service: ${SERVICE_RULES.find((r) => r.id === w.input.serviceType)?.label || w.input.serviceType}. Dates: ${w.input.start || "?"} to ${w.input.end || w.input.start || "?"}.` }), renderWindow(w.result));
   if (d) kids.push(el("h2", { text: "Step 2: Widow pension and bounty-land laws" }), el("p", { class: "small", text: `Saved ${new Date(d.at).toLocaleString()}. Marriage: ${d.input.marriage || "—"}. His last service ended: ${d.input.serviceEnd || "—"}. Months of service: ${d.input.serviceMonths || "—"}. Days of service: ${d.input.serviceDays || "—"}. In a battle: ${d.input.engagement ? "yes" : "—"}.` }), renderWidow(d.result));
+  kids.push(renderPlan(nextSteps(w?.result || null, d?.result || null)));
   body.replaceChildren(...kids);
 }
-document.querySelectorAll('[data-tool="service-window"]').forEach((root) => { bindWindow(root); bindWidow(root); bindExample(root); bindClear(root); });
+document.querySelectorAll('[data-tool="service-window"]').forEach((root) => { bindWindow(root); bindWidow(root); bindExample(root); bindClear(root); updatePlan(root); });
 document.querySelectorAll('[data-tool-report="service-window"]').forEach((root) => { renderReport(root); bindClear(root);
   root.querySelector("[data-print]")?.addEventListener("click", () => window.print()); });

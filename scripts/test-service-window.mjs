@@ -1,5 +1,5 @@
 // Service Window Checker suite: original 25 scenarios + 9 punch-list scenarios (34). Exits non-zero unless all pass. Wired into `npm test` / `prebuild`.
-import { checkServiceWindow, checkWidowActs, MSG, FIELD_HELP, NEXT_STEP_LINKS } from "../src/tools/tool-a.js";
+import { checkServiceWindow, checkWidowActs, MSG, WIDOW_MSG, FIELD_HELP, NEXT_STEP_LINKS, nextSteps } from "../src/tools/tool-a.js";
 import { readFileSync } from "node:fs";
 const manifest = JSON.parse(readFileSync(new URL("../manifest/claims.json", import.meta.url), "utf8"));
 const manifestUrls = new Set(manifest.claims.map((c) => c.source_url));
@@ -52,9 +52,9 @@ const S = [
   [32, "Boundary: Gálvez end (assumed)", "Gálvez cattle supply 26 Nov 1783 vs 27 Nov 1783", "consistent|inconsistent", () => sw("galvez_cattle", "1783-11-26").status + "|" + sw("galvez_cattle", "1783-11-27").status],
   [33, "Boundary: Gálvez end (assumed)", "Assumed Gálvez end is disclosed: ruleNote present for troops and cattle results", "true|true",
     () => [sw("galvez_troops", "1780").ruleNote, sw("galvez_cattle", "1780").ruleNote].map((n) => String(!!n && /end date applied is the general period end/.test(n))).join("|")],
-  [34, "Widow claim: UI note", "1836 act result carries the note that 1832 service-category rules are not evaluated", "true",
+  [34, "Widow claim: UI note", "1836 act result carries the plain note that 1832 service-category rules are not checked, with a What to do line", "true",
     () => { const r = checkWidowActs({ marriage: "1780-05-01", serviceEnd: "1781-10-19", serviceMonths: 24 }).find((x) => x.act === "act1836");
-      return String(!!r.uiNote && /1832/.test(r.uiNote) && /not evaluated/i.test(r.uiNote) && /Continental Line/.test(r.uiNote)); }],
+      return String(!!r.uiNote && /1832/.test(r.uiNote) && /^Not checked/.test(r.uiNote) && /Continental Line/.test(r.uiNote) && /^What to do/.test(r.nextNote) && r.links.length > 0); }],
 ];
 const EXPECTED_TOTAL = 34; // 25 original + 9 added for punch-list items 1-2
 
@@ -83,6 +83,22 @@ const U = [
   ["Next-step links are all Source Manifest source URLs with verified claims", Object.values(NEXT_STEP_LINKS).every((l) => manifestUrls.has(l.url) && verified.has(l.claim))],
   ["Each widow field has a one-line 'why it matters' tied to verified claims", ["marriage", "serviceEnd", "serviceMonths", "serviceDays"].every((k) => FIELD_HELP[k]?.text.startsWith("Why it matters") && FIELD_HELP[k].claims.every((c) => verified.has(c)))],
   ["Unreadable date gets a plain hint with the 1776-07 format", /1776-07/.test(sw("core", "July 1776").message) && /couldn't read/i.test(sw("core", "July 1776").message)],
+  ["No 'Not evaluated' wording remains in any visible output (all statuses, all laws, plan steps, labels)", (() => {
+    const visible = []; const walk = (x, k) => { if (typeof x === "string") { if (!["status", "act", "claim", "url"].includes(k)) visible.push(x); } else if (Array.isArray(x)) x.forEach((y) => walk(y, k)); else if (x && typeof x === "object") for (const [kk, v] of Object.entries(x)) walk(v, kk); };
+    const inputs = [{}, { marriage: "1780" }, { marriage: "1780-05-01", serviceEnd: "1781-10-19", serviceMonths: 24, serviceDays: 13 }, { marriage: "1800-01-02", serviceEnd: "1783", serviceMonths: 3, engagement: true }, { marriage: "x" }];
+    for (const i of inputs) walk(checkWidowActs(i)); for (const d of ["1770", "1776", "1783", "1790-02-30"]) walk(sw("core", d));
+    walk(MSG); walk(WIDOW_MSG); walk(FIELD_HELP); walk(nextSteps(sw("core", "1776"), checkWidowActs({ marriage: "1780" }))); walk(nextSteps(null, null));
+    return visible.length > 50 && !visible.some((t) => /not evaluated/i.test(t)); })()],
+  ["Next steps: dates fit -> 'Find the original records' (with National Archives links), then registrar, then application", (() => { const p = nextSteps(sw("core", "1778"), null).map((x) => x.title);
+    return p[0] === "Find the original records that prove the service" && p.at(-2).includes("registrar") && p.at(-1).includes("application"); })()],
+  ["Next steps: dates don't fit -> 'Double-check the dates and the type of service' first, no 'find records' step", (() => { const p = nextSteps(sw("core", "1790"), null).map((x) => x.title);
+    return p[0].startsWith("Double-check") && !p.some((x) => x.startsWith("Find the original")); })()],
+  ["Next steps: partly inside -> 'Pin down the exact dates' then find records", (() => { const p = nextSteps(sw("core", "1775"), null).map((x) => x.title); return p[0].startsWith("Pin down") && p[1].startsWith("Find the original"); })()],
+  ["Next steps: 'Not checked' laws get their own step naming them, with the pension-files link", (() => { const st = nextSteps(sw("core", "1778"), checkWidowActs({ marriage: "1780" })).find((x) => x.title.includes("Not checked"));
+    return st && /1853/.test(st.text) && /registrar/.test(st.text) && st.links.some((l) => l.url.includes("archives.gov")); })()],
+  ["Next steps: unreadable dates -> 'Fix the dates' first", nextSteps(sw("core", "July 1776"), null)[0].title.startsWith("Fix the dates")],
+  ["Next steps: every link is a manifest source or a site page; every claim verified; no fees or timelines", (() => { const all = [sw("core", "1778"), sw("core", "1790"), sw("core", "1775"), sw("core", "x"), null].flatMap((w) => nextSteps(w, checkWidowActs({ marriage: "1780" })));
+    return all.every((x) => x.links.every((l) => manifestUrls.has(l.url) || l.url.startsWith("/")) && x.claims.every((c) => verified.has(c))) && !/\$|\bfee|\bweeks?\b/i.test(JSON.stringify(all.map((x) => [x.title, x.text]))); })()],
   ["End-before-start error is plain", /end date is before the start date/.test(sw("core", "1778", "1777").message)],
 ];
 let uPass = 0; for (const [n, ok] of U) { console.log(`${ok ? "PASS" : "FAIL"}  [plain] ${n}`); if (ok) uPass++; }

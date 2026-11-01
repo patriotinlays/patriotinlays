@@ -1,5 +1,5 @@
 {
-  "builtAt": "Sat Oct 31 2026 19:10:41 GMT-0500 (Central Daylight Time)",
+  "builtAt": "Sat Oct 31 2026 19:17:43 GMT-0500 (Central Daylight Time)",
   "pages": [
     {
       "title": "Application Returned? Fixing Common DAR and SAR Proof Problems (Including Supplementals)",
@@ -8,8 +8,8 @@
       "cornerstone": "10",
       "path": "/guides/application-problems/",
       "words": 658,
-      "claims": 34,
-      "sources": 4,
+      "claims": 38,
+      "sources": 7,
       "tools": [
         "lineage-matrix"
       ]
@@ -21,8 +21,8 @@
       "cornerstone": "5",
       "path": "/guides/bounty-land-warrants/",
       "words": 622,
-      "claims": 27,
-      "sources": 4,
+      "claims": 31,
+      "sources": 7,
       "tools": [
         "lineage-matrix"
       ]
@@ -34,8 +34,8 @@
       "cornerstone": "6",
       "path": "/guides/census-bridge/",
       "words": 804,
-      "claims": 21,
-      "sources": 5,
+      "claims": 25,
+      "sources": 8,
       "tools": [
         "lineage-matrix"
       ]
@@ -60,8 +60,8 @@
       "cornerstone": "1",
       "path": "/guides/lineage-proof-roadmap/",
       "words": 789,
-      "claims": 30,
-      "sources": 4,
+      "claims": 34,
+      "sources": 7,
       "tools": [
         "lineage-matrix"
       ]
@@ -73,8 +73,8 @@
       "cornerstone": "9",
       "path": "/guides/patriot-or-loyalist/",
       "words": 663,
-      "claims": 16,
-      "sources": 4,
+      "claims": 20,
+      "sources": 7,
       "tools": [
         "service-window"
       ]
@@ -86,8 +86,8 @@
       "cornerstone": "7",
       "path": "/guides/patriotic-service/",
       "words": 819,
-      "claims": 39,
-      "sources": 6,
+      "claims": 43,
+      "sources": 9,
       "tools": [
         "service-window"
       ]
@@ -99,8 +99,8 @@
       "cornerstone": "3",
       "path": "/guides/read-pension-file/",
       "words": 927,
-      "claims": 41,
-      "sources": 5,
+      "claims": 45,
+      "sources": 8,
       "tools": [
         "service-window"
       ]
@@ -112,8 +112,8 @@
       "cornerstone": "4",
       "path": "/guides/records-by-state/",
       "words": 734,
-      "claims": 39,
-      "sources": 10,
+      "claims": 43,
+      "sources": 13,
       "tools": [
         "service-window"
       ]
@@ -125,8 +125,8 @@
       "cornerstone": "8",
       "path": "/guides/same-name/",
       "words": 699,
-      "claims": 17,
-      "sources": 6,
+      "claims": 21,
+      "sources": 9,
       "tools": [
         "lineage-matrix"
       ]
@@ -137,7 +137,7 @@
       "description": "Check whether an ancestor's service dates fall inside the published DAR/SAR windows, and test a widow's marriage date against the federal widow pension acts.",
       "tool": "service-window",
       "path": "/tools/service-window-checker/",
-      "words": 491,
+      "words": 490,
       "claims": 15,
       "sources": 3,
       "tools": [
@@ -151,8 +151,8 @@
       "cornerstone": "2",
       "path": "/guides/substitute-evidence/",
       "words": 824,
-      "claims": 32,
-      "sources": 5,
+      "claims": 36,
+      "sources": 8,
       "tools": [
         "lineage-matrix"
       ]

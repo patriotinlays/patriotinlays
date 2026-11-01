@@ -280,4 +280,14 @@ C = [
 ("uelac-enlistment","UELAC","Date of first enlistment into the Loyalist military","UELAC directory entries record first enlistment into the Loyalist military.",None),
 ("uelac-settled-before","UELAC","Place where the Loyalist was settled immediately before or in war and from which he and/or his family was expelled","UELAC entries record where the Loyalist lived before expulsion.",None),
 ("uelac-digit","UELAC","If the surname and given names are the same for two or more people, a digit in this field will differentiate them.","UELAC uses a digit to tell same-name Loyalists apart.",None),
+# ---- Finding a chapter and starting an application (added 2026-10-31, fetched and quote-matched that day) ----
+("dar-chapter-locator","DAR_LOCATOR","Use the Chapter Locator to find a DAR group in your area.","DAR's Chapter Locator finds DAR chapters in your area.",None),
+("dar-interest-form","DAR_LOCATOR","Fill out a Membership Interest Form to get connected to a chapter in your local area.","DAR's Membership Interest Form connects you to a local chapter.",None),
+("dar-join-locator","DAR_JOIN","Utilize our chapter locator to find a chapter near you.","DAR's How to Join page points to the chapter locator to find a chapter near you.",None),
+("dar-member-guides","DAR_JOIN","A member will help guide you through completing and submitting your DAR membership application","A DAR member helps guide applicants through completing and submitting the application.",None),
+("dar-join-docs","DAR_JOIN","She must provide documentation for each statement of birth, marriage and death, as well as of the Revolutionary War service of her Patriot ancestor.","DAR applicants document each birth, marriage and death, and the patriot's service.",None),
+("sar-sponsor-registrar","SAR_APPLY","the next step is to find a SAR sponsor in close proximity to you (often the local SAR Chapter Registrar)","SAR's next step is finding a sponsor near you, often the local chapter registrar.",None),
+("sar-sponsor-guides","SAR_APPLY","This person will help guide you through the SAR membership application process","The SAR sponsor helps guide you through the application.",None),
+("sar-state-residence","SAR_APPLY","Visit the link below and click on your state of residence.","SAR's apply page sends you to pick your state of residence to find a contact.",None),
+("sar-find-contact","SAR_CONTACT","Find Your Local Society Contact","SAR's contact finder lists a contact for each state society.",None),
 ]

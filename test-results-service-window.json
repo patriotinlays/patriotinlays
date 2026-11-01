@@ -1,9 +1,9 @@
 {
-  "ranAt": "Sat Oct 31 2026 19:10:03 GMT-0500 (Central Daylight Time)",
+  "ranAt": "Sat Oct 31 2026 19:17:03 GMT-0500 (Central Daylight Time)",
   "node": "v20.19.2",
   "pass": 34,
   "total": 34,
-  "plainChecks": "7/7",
+  "plainChecks": "14/14",
   "wordingGuard": "PASS",
   "rows": [
     {
@@ -273,7 +273,7 @@
     {
       "id": 34,
       "group": "Widow claim: UI note",
-      "desc": "1836 act result carries the note that 1832 service-category rules are not evaluated",
+      "desc": "1836 act result carries the plain note that 1832 service-category rules are not checked, with a What to do line",
       "expected": "true",
       "actual": "true",
       "result": "PASS"

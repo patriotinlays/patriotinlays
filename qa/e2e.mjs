@@ -50,6 +50,7 @@ check("Tool A: date hint reads 'e.g. 1776 or 1776-07'", (await page.textContent(
 await page.selectOption("#ta-type", "galvez_cattle"); await page.fill("#ta-start", "1776-12-24"); await page.fill("#ta-end", ""); await page.click('form[data-form=window] button[type=submit]');
 txt = await page.textContent('[data-out=window]');
 check("Tool A: Gálvez cattle 24 Dec 1776 is outside the rule", /Outside the period/.test(txt), txt.slice(0, 100));
+check("Tool A: plan for dates that don't fit starts with 'Double-check the dates'", (await page.textContent('[data-tool="service-window"] [data-plan] .plan-steps > li')).startsWith("Double-check the dates"));
 await page.fill("#tw-m", "1780-05-01"); await page.fill("#tw-e", "1781-10-19"); await page.fill("#tw-mo", "24"); await page.fill("#tw-d", "730"); await page.click('form[data-form=widow] button[type=submit]');
 txt = await page.textContent('[data-out=widow]');
 check("Tool A: widow table shows 1836 note about 1832 service categories", /1832/.test(txt) && /Continental Line/.test(txt), "");
@@ -61,6 +62,14 @@ check("Tool A: 'Not checked' row says why and what to do (pension papers / regis
 check("Tool A: each widow field shows a 'Why it matters' line", (await page.$$eval("form[data-form=widow] [data-why]", (ps) => ps.filter((p) => p.textContent.startsWith("Why it matters")).length)) === 4);
 await page.click('[data-tool="service-window"] [data-load-example]');
 const exW = await page.textContent('[data-out=window]'), exD = await page.textContent('[data-out=widow]');
+const planA = await page.textContent('[data-tool="service-window"] [data-plan]');
+check("Tool A: 'What to do next' plan for fitting dates: find records, registrar (with DAR Chapter Locator link), start application", /Find the original records/.test(planA) && /Contact a local chapter's registrar/.test(planA) && /Start the application/.test(planA)
+  && (await page.$$('[data-tool="service-window"] [data-plan] a[href="https://www.dar.org/discover/become-member/chapter-locator"]')).length === 1, planA.slice(0, 80));
+check("Tool A: plan names the 'Not checked' laws in their own step", /For the laws marked "Not checked"/.test(planA) && /1853/.test(planA));
+await page.evaluate(() => { window.__printed = 0; window.__planOnly = null; window.print = () => { window.__printed++; window.__planOnly = document.body.classList.contains("print-plan"); }; });
+await page.click('[data-tool="service-window"] [data-print-plan]');
+check("Tool A: 'Print or save this plan' prints in plan-only mode", (await page.evaluate(() => window.__printed === 1 && window.__planOnly === true)));
+check("Tool A: no 'Not evaluated' wording anywhere on the page", !/not evaluated/i.test(await page.textContent("main")));
 check("Tool A: 'Load an example' fills both steps and shows results at once", /not a ruling/.test(exW) && /Fits this law's date rule/.test(exD), exW.slice(0, 60));
 const bodyA = await page.textContent("body"); check("Tool A page: no 'Qualif' anywhere in rendered text", !/qualif/i.test(bodyA));
 let store = await ls();
@@ -70,6 +79,7 @@ await page.screenshot({ path: join(SHOTS, "desktop-tool-a.png"), fullPage: false
 phase("load"); await page.goto(`${BASE}/tools/service-window-checker/report/`); phase("interact");
 txt = await page.textContent("[data-report]");
 check("Tool A report renders saved checks from localStorage", txt.includes("Service dates check") && txt.includes("Widow pension"), "");
+check("Tool A report: has 'What to do next' plan with a 'Print or save this plan' button", /What to do next/.test(txt) && /Contact a local chapter's registrar/.test(txt) && (await page.$$("[data-report] [data-print-plan]")).length === 1);
 await page.emulateMedia({ media: "print" });
 const printHidden = await page.$$eval("header.site, footer.site, .tool button", (els) => els.every((e) => getComputedStyle(e).display === "none"));
 check("Tool A report: print CSS hides nav, footer and buttons", printHidden); await page.emulateMedia({ media: "screen" });
@@ -122,6 +132,8 @@ const bText = await page.textContent('[data-tool="lineage-matrix"]'); check("Too
 phase("load"); await page.goto(`${BASE}/tools/lineage-matrix/report/`); phase("interact");
 txt = await page.textContent("[data-report]");
 check("Tool B report page renders generations, labels and gaps", /Generation 1: You/.test(txt) && /Conflict Flagged/.test(txt) && /still missing/.test(txt));
+const planRep = await page.textContent("[data-report] .plan");
+check("Tool B report: numbered action plan (order records with where-to-look, registrar, start application) + print button", /What to do next/.test(planRep) && /Find or order these records/.test(planRep) && /registrar/.test(planRep) && /Start the application/.test(planRep) && (await page.$$("[data-report] .plan [data-print-plan]")).length === 1);
 check("Tool B report: gaps carry 'Where to look' lines", (await page.$$("[data-report] .gaps > li > .where")).length === (await page.$$("[data-report] .gaps > li")).length && /Where to look/.test(txt));
 phase("load"); await page.goto(`${BASE}/guides/same-name/`); phase("interact");
 txt = await page.textContent("[data-card-status]");
@@ -130,10 +142,27 @@ store = await ls();
 check("Tool B: saved under pi.toolB.v1 only", Object.keys(store).filter((k) => k.startsWith("pi.toolB")).join(",") === "pi.toolB.v1");
 phase("load"); await page.goto(`${BASE}/tools/lineage-matrix/`); phase("interact");
 await page.click('[data-tool="lineage-matrix"] [data-load-example]');
+const planB = await page.textContent('[data-tool="lineage-matrix"] [data-plan]');
+const orderItems = await page.$$eval('[data-tool="lineage-matrix"] [data-plan] .plan-steps > li', (lis) => { const li = lis.find((l) => l.querySelector(".plan-title").textContent === "Find or order these records"); return li ? [...li.querySelectorAll(".plan-items > li")].map((x) => !!x.querySelector(".where a")) : []; });
+check("Tool B: action plan lists each missing record with a Where-to-look link, then registrar and application steps", orderItems.length >= 3 && orderItems.every(Boolean) && /Contact a local chapter's registrar/.test(planB) && /Start the application/.test(planB), `${orderItems.length} items`);
 check("Tool B: 'Load an example' fills a made-up family and shows gaps with where to look", (await page.$$("section.gen")).length === 4 && (await page.$$("section.gen .cell")).length === 6 && (await page.$$("[data-gaps] .where a[href*='archives.gov']")).length > 0);
 await page.click("[data-clear=toolB]");
 store = await ls();
 check("Tool B clear: removes pi.toolB.* only, keeps unrelated key", !Object.keys(store).some((k) => k.startsWith("pi.toolB")) && store["other.app.key"] === "keep-me", Object.keys(store).join(","));
+
+// ---- Usefulness pass: home, guides, dead ends ----
+phase("load"); await page.goto(`${BASE}/`); phase("interact");
+const home = await page.textContent("main");
+check("Home: says in plain words what you can get done and where to start", /What you can get done here/.test(home) && /Where to start/.test(home) && (await page.$$('main a.button-link[href="/tools/lineage-matrix/"]')).length === 1);
+const guidePaths = ["/guides/lineage-proof-roadmap/", "/guides/substitute-evidence/", "/guides/read-pension-file/", "/guides/records-by-state/", "/guides/bounty-land-warrants/", "/guides/census-bridge/", "/guides/patriotic-service/", "/guides/same-name/", "/guides/patriot-or-loyalist/", "/guides/application-problems/"];
+const guideBad = [];
+for (const gp of guidePaths) { const h = readFileSync(join(DIST, gp, "index.html"), "utf8");
+  if (!/<h2 id="what-to-do-next">/.test(h) || !h.includes('href="/tools/lineage-matrix/"') || !h.includes('href="/tools/service-window-checker/"') || !h.includes("chapter-locator") || !/class="next-guide"/.test(h)) guideBad.push(gp); }
+check("Guides: all 10 end with 'What to do next' (both tools, chapter finder) and a next-guide link", guideBad.length === 0, guideBad.join(" "));
+const toolGuideLinks = ["/tools/service-window-checker/", "/tools/lineage-matrix/"].every((p) => /href="\/guides\/[a-z-]+\/"/.test(readFileSync(join(DIST, p, "index.html"), "utf8")));
+check("Tools: each tool page links to matching guides", toolGuideLinks);
+const deadEnds = ["/about/", "/privacy/", "/contact/", "/sources/"].filter((p) => !readFileSync(join(DIST, p, "index.html"), "utf8").includes('class="card start-here"'));
+check("No dead ends: About, Privacy, Contact, Sources and 404 offer a 'Ready to start?' box", deadEnds.length === 0 && readFileSync(join(DIST, "404.html"), "utf8").includes("start-here"), deadEnds.join(" "));
 
 // ---- Network silence ----
 const external = requests.filter((r) => !r.url.startsWith(BASE));
@@ -167,10 +196,11 @@ await page.goto(`${BASE}/guides/read-pension-file/`); await page.screenshot({ pa
 // ---- Cache-busting: every script/CSS reference and every module import carries ?v=<hash> that matches the file ----
 const { createHash } = await import("node:crypto");
 const htmlRefs = pagesToCheck.flatMap((p) => [...readFileSync(join(DIST, p, "index.html"), "utf8").matchAll(/(?:src|href)="(\/assets\/[^"]+\.(?:js|css)[^"]*)"/g)].map((m) => m[1]));
-const jsImports = ["tool-a-ui.js", "tool-b-ui.js"].flatMap((f) => [...readFileSync(join(DIST, "assets/js", f), "utf8").matchAll(/from\s+"\.\/([^"]+)"/g)].map((m) => `/assets/js/${m[1]}`));
+const { readdirSync } = await import("node:fs");
+const jsImports = readdirSync(join(DIST, "assets/js")).filter((f) => f.endsWith(".js")).flatMap((f) => [...readFileSync(join(DIST, "assets/js", f), "utf8").matchAll(/from\s+"\.\/([^"]+)"/g)].map((m) => `/assets/js/${m[1]}`));
 const badRefs = [...htmlRefs, ...jsImports].filter((u) => { const [path, q] = u.split("?v="); if (!q) return true;
   return createHash("sha256").update(readFileSync(join(DIST, path))).digest("hex").slice(0, 10) !== q; });
-check("Cache-busting: every page's script/CSS URL and every module import is versioned with the file's content hash", htmlRefs.length > 0 && jsImports.length === 4 && badRefs.length === 0, badRefs.slice(0, 3).join(" "));
+check("Cache-busting: every page's script/CSS URL and every module import is versioned with the file's content hash", htmlRefs.length > 0 && jsImports.length >= 7 && badRefs.length === 0, badRefs.slice(0, 3).join(" "));
 check("No JavaScript errors in the console on any page visited", consoleErrors.length === 0, consoleErrors.slice(0, 3).join(" | "));
 await browser.close(); server.close();
 const passed = results.filter((r) => r.ok).length;
