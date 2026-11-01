@@ -1,5 +1,5 @@
 // Sanity tests for Tool B (not part of the 25-scenario requirement).
-import { actionPlan, evaluateCell, gaps, groupGaps, countEntries, filledCells, LABELS, FACTS, genLabel, genTitle, isEmptyCell, WHERE_TO_LOOK, WHERE_SOURCES, GUIDES, whereToLook, MODE_HELP } from "../src/tools/tool-b.js";
+import { actionPlan, evaluateCell, gaps, groupGaps, countEntries, filledCells, LABELS, FACTS, genLabel, genTitle, isEmptyCell, WHERE_TO_LOOK, WHERE_SOURCES, GUIDES, whereToLook, MODE_HELP, relationName, ordinal, HAVE_ITEMS, DOC_TYPES } from "../src/tools/tool-b.js";
 import { readFileSync, readdirSync } from "node:fs";
 const manifest = JSON.parse(readFileSync(new URL("../manifest/claims.json", import.meta.url), "utf8"));
 const manifestUrls = new Set(manifest.claims.map((c) => c.source_url));
@@ -17,8 +17,8 @@ t("missing toggle => Entry Incomplete", evaluateCell({ ...full, mode: "" }).labe
 t("empty => No Evidence Entered", evaluateCell({}).label === LABELS.none);
 t("gaps: gen 2 without death/parentage listed", gaps([{ gen: 1, cells: [full] }, { gen: 2, cells: [full] }]).some((g) => /Generation 2 \(your parent\): no death/.test(g.text)));
 // ---- Plain-language rework (Oct 31, 2026) ----
-t("generation names: 1 You, 2 Your parent, 3 Your grandparent, 4 Your great-grandparent, 5 Your 2x great-grandparent",
-  [1, 2, 3, 4, 5].map(genLabel).join("|") === "You|Your parent|Your grandparent|Your great-grandparent|Your 2x great-grandparent" && genTitle(1) === "Generation 1: You");
+t("generation names: 1 You, 2 Your parent, 3 Your grandparent, 4 Your great-grandparent, 5 Your 2nd-great-grandparent, 6 Your 3rd-great-grandparent",
+  [1, 2, 3, 4, 5].map(genLabel).join("|") === "You|Your parent|Your grandparent|Your great-grandparent|Your 2nd-great-grandparent" && genLabel(6) === "Your 3rd-great-grandparent" && genLabel(14) === "Your 11th-great-grandparent" && genTitle(1) === "Generation 1: You");
 t("gap text names the generation in plain words", gaps([{ gen: 1, living: true, cells: [] }, { gen: 2, cells: [] }]).some((g) => g.text.startsWith("Generation 1 (you): no birth")));
 t('no jargon: "incomplete parentage entry" is gone; missing fields read "Still needed: ..."', (() => { const r = gaps([{ gen: 1, cells: [] }, { gen: 2, cells: [{ fact: "parentage", docType: "probate", mode: "", citation: "" }] }]);
   const all = JSON.stringify(r); return !/incomplete parentage entry/i.test(all) && evaluateCell({ fact: "birth", citation: "x" }).issues.every((i) => i.startsWith("Still needed:")); })());
@@ -122,5 +122,10 @@ t("Where to look: older parentage points to the National Archives census page; r
 }
 const every = JSON.stringify([evaluateCell(full), evaluateCell({}), gaps([{ gen: 1, cells: [full] }]), LABELS]);
 t('the word "Documented" never appears in output', !/documented/i.test(every));
+t("plain relationship names map to generations (2 father, 3 grandfather, 4 great-, 5 2nd-great, 6 3rd-great)", relationName(2) === "my father" && relationName(3) === "my grandfather" && relationName(4) === "my great-grandfather" && relationName(5) === "my 2nd-great-grandfather" && relationName(6) === "my 3rd-great-grandfather" && relationName(14) === "my 11th-great-grandfather");
+t("ordinals: 1st 2nd 3rd 4th 11th 12th 13th 21st 22nd", [1, 2, 3, 4, 11, 12, 13, 21, 22].map(ordinal).join(" ") === "1st 2nd 3rd 4th 11th 12th 13th 21st 22nd");
+t("'What do you have?' items use real record kinds and facts", HAVE_ITEMS.length >= 8 && HAVE_ITEMS.every((h) => h.label && (h.docType === "" || h.docType in DOC_TYPES) && (h.fact === "" || FACTS.includes(h.fact))));
+t("checklist covers birth record, will, census, Bible record and pension file", ["birth_cert", "will", "census", "bible", "pension"].every((id) => HAVE_ITEMS.some((h) => h.id === id)));
+t("plan items carry the generation and fact so the report can point to 'Where to look' once", (() => { const st = actionPlan([{ gen: 1, cells: [] }, { gen: 2, cells: [] }]).find((x) => x.items); return st && st.items.every((i) => i.sub.every((s) => /^Gen \d+$/.test(s.who) && "fact" in s)); })());
 let p = 0; for (const [n, ok] of T) { console.log(`${ok ? "PASS" : "FAIL"}  ${n}`); if (ok) p++; }
 console.log(`\nLineage Evidence Matrix: ${p}/${T.length} sanity checks passed.`); process.exit(p === T.length ? 0 : 1);

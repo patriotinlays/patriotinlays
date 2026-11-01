@@ -38,11 +38,21 @@ unknown or unverified claim, stale entry (> 120 days), quote that no longer appe
 | `manifest/` | Source Manifest (`claims.json`) and the Python that regenerates it (`npm run manifest`) |
 | `scripts/` | Static site generator, tests, manifest gate, link checker, gates doc generator |
 | `ops/gates.js`, `docs/gates.md` | Day 30/60/90 mixed-gate decision rules (code + generated doc) |
-| `qa/e2e.mjs` | Headless-browser end-to-end suite (60 checks) |
+| `qa/e2e.mjs` | Headless-browser end-to-end suite (103 checks, incl. 360px, fresh profile and the report page count) |
 | `.github/workflows/` | `build.yml` (build gates on every push/PR), `ci.yml` (E2E on releases and tool PRs) |
 | `dist/` | Build output (generated; this is what gets deployed) |
 
 There is no `src/components/` directory; tool code lives in `src/tools/`.
+
+
+### Beginner features (Oct 31, 2026)
+
+- Home page opens with "Just starting? Start here" and a sourced "How to join, in short" box (DAR How to Join, SAR How to Apply).
+- The Roadmap guide starts with a sourced "Step 0: find the soldier's name".
+- Every guide and tool page has a "New here?" definitions box (DAR, SAR, NSCDA, lineage society, patriot, bounty land, Stat.) linking to the glossary.
+- Widow checker: a one-line plain answer above the results table and a plain-terms note.
+- Worksheet: a "What do you have?" checklist per generation and plain relationship choices ("my 3rd-great-grandfather").
+- Worksheet report: a summary first, each "Where to look" block shown once and referenced from the gaps, and a "Save as PDF" button. The example summary prints on 2 Letter pages (full report: 4), measured by `npm run e2e` (`exampleReportPages` in `qa/e2e-results.json`).
 
 ## Requirements
 
@@ -60,7 +70,7 @@ There is no `src/components/` directory; tool code lives in `src/tools/`.
 ## Local verification
 
 ```bash
-npm test          # service-window (34 + 25 plain-language and next-step), lineage-matrix (62), gate examples (29) + exhaustive gate sweep (~30 s)
+npm test          # service-window (34 + 30 plain-language, answer-line and plain-terms), lineage-matrix (67), gate examples (29) + exhaustive gate sweep (~30 s)
 npm run check     # Source Manifest gate, offline: every factual sentence -> verified manifest claim
 npm run build     # prebuild: npm test + live manifest check (fetches all sources);
                   # build: writes dist/; postbuild: internal + external link check

@@ -8,6 +8,20 @@ cornerstone: 1
 
 A lineage application is a chain. Each link is one generation, and each link holds only if the documents behind it hold. This roadmap shows how to plan that chain before you start filling in forms, using the published rules of the two largest Revolutionary War lineage societies. It is a planning aid, not a ruling: only the society's genealogists decide whether a line is approved.
 
+::partial how-to-join
+
+## Step 0: find the soldier's name
+
+Everything else in this guide depends on knowing which ancestor was the patriot. If you don't know his name yet, start here.
+
+- **Start with what you know.** DAR's first research step is to ask what you already know about your family history and lineage. [[claim:dar-join-gather]]
+- **Search DAR's free Genealogical Research System.** DAR offers it free to help with research and with the membership process; it is linked from [DAR's How to Join page](https://www.dar.org/discover/become-member/how-join). [[claim:dar-join-grs]] [[claim:dar-grs-purpose]]
+- **Search the pension papers.** [DAR's index to Revolutionary War pension papers](https://services.dar.org/Public/DAR_Research/search_revwar/?Tab_ID=14&Tab_ID_Sub=0&action=list) lists the pensioner or widow and also other people named in the papers. [[claim:prp-pension-index]] The [National Archives says](https://www.archives.gov/research/military/american-revolution) the pension files are online free on FamilySearch (login needed). [[claim:nara-amrev-familysearch]]
+- **Treat a family story as a lead, not proof.** SAR does not accept family tradition about an ancestor's service as proof. [[claim:sar-tradition]]
+- **Stuck?** DAR's Membership Interest Form connects you to a chapter. [[claim:dar-join-interest]]
+
+Once you have a name, the free [Lineage Evidence Matrix](/tools/lineage-matrix/) starts with him: his state, his type of service and his rough dates.
+
 ## How the generations are numbered
 
 On a DAR application the lineage starts with you, the applicant, as generation 1. [[claim:dar-gen1-applicant]]

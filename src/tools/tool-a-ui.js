@@ -1,6 +1,6 @@
 // Tool A browser UI: the Widow Pension Law Checker (form, "fill in from my worksheet", plan) and its report page.
 // localStorage key prefix "pi.toolA."; it may read the worksheet's patriot ("pi.toolB.v1") on request. No network calls.
-import { checkWidowActs, FIELD_HELP, nextSteps, plural } from "./tool-a.js";
+import { checkWidowActs, FIELD_HELP, nextSteps, plural, widowSummary, TERMS } from "./tool-a.js";
 import { renderPlan } from "./plan-ui.js";
 import { ns, el } from "./storage.js";
 import { kindOf } from "./patriot.js";
@@ -23,7 +23,11 @@ function renderWidow(rows) {
       r.uiNote ? el("div", { class: "small note", text: r.uiNote }) : null,
       r.nextNote ? el("div", { class: "small next", text: r.nextNote }) : null,
       r.links?.length ? el("ul", { class: "where-links small" }, ...r.links.map((l) => el("li", {}, el("a", { href: l.url, rel: "noopener", text: l.label })))) : null)));
-  t.append(tb); return el("div", { class: "table-wrap" }, t);
+  t.append(tb);
+  const sum = widowSummary(rows);
+  return el("div", {}, sum ? el("p", { class: "answer", "data-answer": "", role: "status" }, el("strong", { text: "In short: " }), sum.text) : null,
+    el("div", { class: "table-wrap" }, t),
+    el("p", { class: "small terms", "data-terms": "" }, el("strong", { text: "Plain terms: " }), `${TERMS.stat.text} ${TERMS.bounty.text}`));
 }
 // The plan follows only a check run on this visit (button or example), never a result left over from an earlier visit.
 let ranThisVisit = null;

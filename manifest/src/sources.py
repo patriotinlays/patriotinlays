@@ -21,6 +21,7 @@ SOURCES = {
  "DAR_LOCATOR": ("https://www.dar.org/discover/become-member/chapter-locator", "DAR — Chapter Locator", "dar_locator.html"),
  "DAR_JOIN": ("https://www.dar.org/discover/become-member/how-join", "DAR — How to Join", "dar_join.html"),
  "SAR_APPLY": ("https://www.sar.org/how-to-apply/", "SAR — Apply in 4 Easy Steps", "sar_apply.html"),
+ "LOC_STAT": ("https://www.loc.gov/collections/united-states-statutes-at-large/about-this-collection/", "Library of Congress — United States Statutes at Large: About this Collection", "loc_stat.html"),
  "SAR_CONTACT": ("https://www.sar.org/find-your-contact/", "SAR — Find Your Local Society Contact", "sar_contact.html"),
  "DAR_WHAT": ("https://www.dar.org/discover/become-member/what-dar", "DAR — What is DAR?", "dar_what.html"),
  "SAR_ABOUT": ("https://www.sar.org/sar-missions-and-goals/", "SAR — About (Mission & Goals)", "sar_about.html"),

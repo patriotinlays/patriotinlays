@@ -1,5 +1,5 @@
 // Service Window Checker suite: original 25 scenarios + 9 punch-list scenarios (34). Exits non-zero unless all pass. Wired into `npm test` / `prebuild`.
-import { checkServiceWindow, checkWidowActs, MSG, WIDOW_MSG, FIELD_HELP, NEXT_STEP_LINKS, nextSteps, plural } from "../src/tools/tool-a.js";
+import { checkServiceWindow, checkWidowActs, MSG, WIDOW_MSG, FIELD_HELP, NEXT_STEP_LINKS, nextSteps, plural, widowSummary, TERMS, WIDOW_ACTS } from "../src/tools/tool-a.js";
 import { readFileSync } from "node:fs";
 const manifest = JSON.parse(readFileSync(new URL("../manifest/claims.json", import.meta.url), "utf8"));
 const manifestUrls = new Set(manifest.claims.map((c) => c.source_url));
@@ -113,6 +113,11 @@ const U = [
   ["Audit 2: 'too rough to tell' says which dates straddle the rule", /too rough to tell which came first/.test(checkWidowActs({ serviceEnd: "1779", marriage: "1779", serviceMonths: 20 }).find((x) => x.act === "act1836").message)],
   ["Audit 2: every 'doesn't fit' or 'too rough' result carries a reason", [{ serviceEnd: "1779", marriage: "1801", serviceMonths: 20, serviceDays: 2 }, { serviceEnd: "1779", marriage: "1779", serviceMonths: 2, serviceDays: 2 }].flatMap((i) => checkWidowActs(i)).filter((r) => ["inconsistent", "partial"].includes(r.status)).every((r) => r.reason && r.message.includes(r.reason))],
   ["Audit 2: plural() reads '1 month', '2 months', '1 evidence entry', '0 evidence entries'", plural(1, "month") === "1 month" && plural(2, "month") === "2 months" && plural(1, "evidence entry", "evidence entries") === "1 evidence entry" && plural(0, "evidence entry", "evidence entries") === "0 evidence entries"],
+  ["Answer line: counts and names the laws that fit (\"2 of 7 … fit\")", (() => { const r = widowSummary([{ act: "a", status: "consistent", short: "1836" }, { act: "b", status: "consistent", short: "1838" }, ...Array.from({ length: 5 }, (_, i) => ({ act: "x" + i, status: "inconsistent", short: "y" + i }))]); return r.fit === 2 && r.total === 7 && r.text.startsWith("2 of 7 widow-pension laws fit your dates: the 1836 and 1838 laws.") && /Next: look for the widow's pension file/.test(r.text); })()],
+  ["Answer line: one law uses 'fits'; none uses 'None of the …'", /^1 of 2 widow-pension laws fits your dates: the 1836 law\./.test(widowSummary([{ act: "a", status: "consistent", short: "1836" }, { act: "b", status: "inconsistent", short: "1838" }]).text) && /^None of the 2 widow-pension laws fit/.test(widowSummary([{ act: "a", status: "inconsistent", short: "1836" }, { act: "b", status: "inconsistent", short: "1838" }]).text)],
+  ["Answer line: empty form says to fill in the boxes; input errors give no answer line", /fill in the boxes/.test(widowSummary(checkWidowActs({})).text) && widowSummary([{ act: "input", status: "not_evaluated" }]) === null],
+  ["Every widow law has a short name for the answer line", WIDOW_ACTS.every((a) => a.short && a.short.length < 30)],
+  ["Plain terms for 'Stat.' and 'bounty land' cite verified claims", Object.values(TERMS).every((t) => t.text && t.claims.length && t.claims.every((c) => verified.has(c)))],
   ["End-before-start error is plain", /end date is before the start date/.test(sw("core", "1778", "1777").message)],
 ];
 let uPass = 0; for (const [n, ok] of U) { console.log(`${ok ? "PASS" : "FAIL"}  [plain] ${n}`); if (ok) uPass++; }

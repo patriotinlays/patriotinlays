@@ -48,7 +48,7 @@ export const SERVICE_RULES = [
 // "1 month", "20 months": plain plurals for user-facing text.
 export const plural = (n, word, many = `${word}s`) => `${n} ${Number(n) === 1 ? word : many}`;
 export const WIDOW_ACTS = [
-  { id: "act1836", label: "Act of July 4, 1836 (5 Stat. 128)", claim: "nara-act-1836", claim1832: "nara-act-1832", claimCategories: "nara-act-1832-categories",
+  { id: "act1836", label: "Act of July 4, 1836 (5 Stat. 128)", short: "1836", claim: "nara-act-1836", claim1832: "nara-act-1832", claimCategories: "nara-act-1832-categories",
     nextNote: "What to do: find out what kind of unit he served in. For state militia, the National Archives says to check the archives of the state where he served; for Continental troops, see its service-records guide.", nextLinks: ["serviceRecords"], nextClaim: "nara-svc-state", claimHolds: "nara-svc-holds",
     uiNote: "Not checked: whether his type of service counted. The 1836 law relied on the service rules of the 1832 law (Continental Line or State troops, volunteers or militia). This tool checks only the marriage date and the months of service.",
     test: (w) => {
@@ -62,19 +62,19 @@ export const WIDOW_ACTS = [
         reason: mOk === "no" ? `You typed a marriage date of ${w.marriage.raw} and the end of his last service as ${w.serviceEnd.raw}, so the marriage came after his service ended. This law's rule is that the marriage came before his last period of service ended.`
           : mOk === "maybe" ? `The marriage date (${w.marriage.raw}) and the end of his last service (${w.serviceEnd.raw}) are too rough to tell which came first. This law's rule is that the marriage came before his last period of service ended. A fuller date would settle it.` : null };
     } },
-  { id: "act1838", label: "Act of July 7, 1838 (5 Stat. 303) — 5-year pensions", claim: "nara-act-1838",
+  { id: "act1838", label: "Act of July 7, 1838 (5 Stat. 303) — 5-year pensions", short: "1838", claim: "nara-act-1838",
     test: (w) => w.marriage ? marriageBefore(w.marriage, "1794-01-01", "Marriage before January 1, 1794.") : needMarriage() },
-  { id: "act1848", label: "Act of July 29, 1848 (9 Stat. 265) — life pensions", claim: "nara-act-1848",
+  { id: "act1848", label: "Act of July 29, 1848 (9 Stat. 265) — life pensions", short: "1848", claim: "nara-act-1848",
     test: (w) => w.marriage ? marriageBefore(w.marriage, "1800-01-02", "Marriage before January 2, 1800.") : needMarriage() },
   // Punch-list 1: the source states only that marriage-date restrictions were removed; full statutory terms are
   // not given, so these acts are reported as not_evaluated rather than consistent.
-  { id: "act1853", label: "Act of February 3, 1853 (10 Stat. 154)", claim: "nara-act-1853-1855",
+  { id: "act1853", label: "Act of February 3, 1853 (10 Stat. 154)", short: "1853", claim: "nara-act-1853-1855",
     test: () => NOT_IN_SOURCE, nextClaim: "nara-act-1853-1855" },
-  { id: "act1855pension", label: "Act of February 28, 1855 (10 Stat. 616)", claim: "nara-act-1853-1855",
+  { id: "act1855pension", label: "Act of February 28, 1855 (10 Stat. 616)", short: "February 1855", claim: "nara-act-1853-1855",
     test: () => NOT_IN_SOURCE, nextClaim: "nara-act-1853-1855" },
-  { id: "act1855bounty", label: "Bounty-land act of March 3, 1855 (10 Stat. 701) — 160 acres", claim: "nara-bounty-1855",
+  { id: "act1855bounty", label: "Bounty-land act of March 3, 1855 (10 Stat. 701) — 160 acres", short: "March 1855 bounty-land", claim: "nara-bounty-1855",
     test: (w) => minService(w, "Veteran served at least 14 days or took part in any battle; widows and minor children also eligible.") },
-  { id: "act1878", label: "Act of March 9, 1878 (20 Stat. 29) — widows' life pensions", claim: "nara-act-1878",
+  { id: "act1878", label: "Act of March 9, 1878 (20 Stat. 29) — widows' life pensions", short: "1878", claim: "nara-act-1878",
     test: (w) => minService(w, "Veteran served at least 14 days or was in any engagement.") },
 ];
 
@@ -144,9 +144,30 @@ export function checkWidowActs(input) {
   return WIDOW_ACTS.map((a) => { const r = a.test(w);
     const message = WIDOW_MSG[r.status] || MSG[r.status];
     const links = [...(r.links || []), ...(a.nextLinks || [])].map((k) => NEXT_STEP_LINKS[k]);
-    return { act: a.id, label: a.label, status: r.status, message: !r.reason ? message : r.status === "partial" ? r.reason : `${message.replace(/ Double-check the dates\.$/, "")} ${r.reason}`, reason: r.reason || null, ruleText: r.text, uiNote: a.uiNote || null, claim: a.claim,
+    return { act: a.id, label: a.label, short: a.short, status: r.status, message: !r.reason ? message : r.status === "partial" ? r.reason : `${message.replace(/ Double-check the dates\.$/, "")} ${r.reason}`, reason: r.reason || null, ruleText: r.text, uiNote: a.uiNote || null, claim: a.claim,
       why: r.why || null, next: r.next || null, nextNote: a.nextNote || null, links }; });
 }
+
+// One plain line above the results table: how many laws fit, which, and what to do first.
+const andList = (xs) => (xs.length <= 1 ? xs.join("") : `${xs.slice(0, -1).join(", ")} and ${xs.at(-1)}`) + (xs.length === 1 ? " law" : " laws");
+export function widowSummary(rows) {
+  if (!rows?.length || rows[0].act === "input") return null;
+  const by = (st) => rows.filter((r) => r.status === st).map((r) => r.short || r.label);
+  const fit = by("consistent"), rough = by("partial"), no = by("inconsistent"), nc = by("not_evaluated");
+  const parts = [];
+  if (fit.length) parts.push(`${fit.length} of ${rows.length} widow-pension laws ${fit.length === 1 ? "fits" : "fit"} your dates: the ${andList(fit)}.`);
+  else parts.push(`None of the ${rows.length} widow-pension laws fit your dates as typed.`);
+  if (rough.length) parts.push(`Too rough to tell: the ${andList(rough)}.`);
+  if (no.length) parts.push(`Doesn't fit: the ${andList(no)}.`);
+  if (nc.length) parts.push(`Not checked: the ${andList(nc)}.`);
+  parts.push(fit.length || rough.length ? "Next: look for the widow's pension file (see \"What to do next\")." : nc.length ? (rows.some((r) => r.status === "not_evaluated" && r.why === "Missing information.") ? "Next: fill in the boxes the table asks for, then check again." : "Next: for the laws not checked, read the widow's own pension papers or ask your society's registrar.") : "Next: double-check the dates, or ask your society's registrar.");
+  return { text: parts.join(" "), fit: fit.length, total: rows.length };
+}
+// Plain terms used in the results table (each tied to a Source Manifest claim).
+export const TERMS = Object.freeze({
+  stat: { text: "\"Stat.\" means the Statutes at Large, the published federal laws: \"5 Stat. 128\" is volume 5, page 128.", claims: ["loc-stat-name", "loc-stat-volume", "loc-stat-page"] },
+  bounty: { text: "Bounty land was free public land: a bounty-land warrant was a right to it, granted to veterans and their heirs for their service.", claims: ["m804-bl-define", "m804-bl-who"] },
+});
 
 // "What to do next": a numbered plan that depends on the service-window result and on any "Not checked" widow laws.
 // window = result of checkServiceWindow() or null; widow = result of checkWidowActs() or null.

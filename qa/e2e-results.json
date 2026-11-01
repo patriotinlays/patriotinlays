@@ -1,8 +1,12 @@
 {
-  "ranAt": "Sat Oct 31 2026 20:10:46 GMT-0500 (Central Daylight Time)",
+  "ranAt": "Sat Oct 31 2026 20:22:13 GMT-0500 (Central Daylight Time)",
   "browser": "/usr/bin/google-chrome (headless) via playwright-core 1.59.1",
-  "passed": 84,
-  "total": 84,
+  "passed": 103,
+  "total": 103,
+  "exampleReportPages": {
+    "summaryPages": 2,
+    "fullPages": 4
+  },
   "results": [
     {
       "name": "Fresh profile: widow checker starts empty and unticked, with no results and nothing saved",
@@ -77,7 +81,7 @@
     {
       "name": "Widow checker: example plan -> look for the widow's pension file, registrar (DAR Chapter Locator), start application",
       "ok": true,
-      "detail": "Your plan, built from what you entered. Tip: in the print window you can choose "
+      "detail": "Your plan, built from what you entered. To save it, press the button below and c"
     },
     {
       "name": "Widow checker: plan names the 'Not checked' laws in their own step",
@@ -97,7 +101,17 @@
     {
       "name": "Widow checker: 'Load an example' shows results at once",
       "ok": true,
-      "detail": "Pension lawResultThe rule, and what to do nextAct of July 4,"
+      "detail": "In short: 5 of 7 widow-pension laws fit your dates: the 1836"
+    },
+    {
+      "name": "Widow checker: a one-line plain answer sits above the table ('5 of 7 widow-pension laws fit your dates…', with the next step)",
+      "ok": true,
+      "detail": "In short: 5 of 7 widow-pension laws fit your dates: the 1836, 1838, 1848, March 1855 bounty-land and 1878 laws. Not checked: the 1853 and February 1855 laws. Next: look for the widow's pension file (see \"What to do next\")."
+    },
+    {
+      "name": "Widow checker: results explain 'Stat.' (Statutes at Large: volume, page) and 'bounty land' in plain words",
+      "ok": true,
+      "detail": "Plain terms: \"Stat.\" means the Statutes at Large, the published federal laws: \"5 Stat. 128\" is volume 5, page 128. Bount"
     },
     {
       "name": "Widow checker page: no 'Qualif' anywhere in rendered text",
@@ -162,7 +176,7 @@
     {
       "name": "Patriot step drives the plan: prove his service (North Carolina troop returns, M881), then the widow-pension step",
       "ok": true,
-      "detail": "Your plan, built from what you entered. Tip: in the print window you can choose \"Save as PDF\".Prove the patriot's serviceWhere to look, based on his type of ser"
+      "detail": "Your plan, built from what you entered. To save it, press the button below and choose \"Save as PDF\" in the print window.Prove the patriot's serviceWhere to look"
     },
     {
       "name": "Widow checker auto-fills his service end from the worksheet patriot",
@@ -250,12 +264,12 @@
       "detail": ""
     },
     {
-      "name": "Tool B report: numbered action plan (order records with where-to-look, registrar, start application) + print button",
+      "name": "Tool B report: numbered action plan (records with where-to-look letters, registrar, start application) + Save as PDF",
       "ok": true,
       "detail": ""
     },
     {
-      "name": "Tool B report: gaps carry 'Where to look' lines",
+      "name": "Tool B report: every gap points to a 'Where to look' block",
       "ok": true,
       "detail": ""
     },
@@ -277,7 +291,7 @@
     {
       "name": "Tool B (regression): action plan groups each generation once, in order",
       "ok": true,
-      "detail": "Generation 2: Your parent | Generation 3: Your grandparent | Generation 4: Your great-grandparent | Generation 5: Your 2x great-grandparent (the patriot)"
+      "detail": "Generation 2: Your parent | Generation 3: Your grandparent | Generation 4: Your great-grandparent | Generation 5: Your 2nd-great-grandparent (the patriot)"
     },
     {
       "name": "Tool B: action plan lists each missing record with a Where-to-look link, then registrar and application steps",
@@ -305,9 +319,34 @@
       "detail": "https://membership.dar.org/NSDAR/AppFormz/FAQs.aspx https://www.pa.gov/agencies/health/programs/vital-records/genealogy https://www.pa.gov/services/phmc/request-a-birth-or-death-certificate /guides/substitute-evidence/ /guides/census-bridge/ https://lva-virginia.libguides.com/bmd https://membership.dar.org/NSDAR/AppFormz/App_Help_Step_By_Step_1.aspx https://www.archives.gov/research/military/american-revolution https://www.archives.gov/research/census/1790-1840.html /guides/read-pension-file/"
     },
     {
+      "name": "Report: opens with a one-page summary (patriot, where you are, what to do next) before 'Where to look' and the records",
+      "ok": true,
+      "detail": "Summary | Where to look | The patriot, in full | Your records, generation by generation"
+    },
+    {
+      "name": "Report: each 'Where to look' block appears once, and every to-do points to it by letter",
+      "ok": true,
+      "detail": "{\"blocks\":10,\"unique\":10,\"refs\":14}"
+    },
+    {
+      "name": "Report: a visible 'Save as PDF' button prints the summary only",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "Report: the example's 'Save as PDF' summary prints on 1–2 Letter pages (headless Chrome print-to-PDF)",
+      "ok": true,
+      "detail": "summary 2 page(s), full report 4 page(s)"
+    },
+    {
+      "name": "Report: links to the definitions",
+      "ok": true,
+      "detail": ""
+    },
+    {
       "name": "Generation picker (audit 2): Generation 1 is not offered; the default is the oldest generation",
       "ok": true,
-      "detail": "[[\"\",\"The oldest generation (now Generation 5: Your 2x great-grandparent)\"],[\"2\",\"Generation 2: Your parent\"]]"
+      "detail": "[[\"\",\"The oldest generation I've added (now my 2nd-great-grandfather, generation 5)\"],[\"2\",\"My father (generation 2)\"]]"
     },
     {
       "name": "Birth gap (audit 2): Virginia before 1853 says there was no statewide birth recording and links the substitute-evidence guide right there",
@@ -317,7 +356,7 @@
     {
       "name": "Generation picker (audit 2): an old saved 'Generation 1' shows a plain warning and the oldest generation stays the patriot",
       "ok": true,
-      "detail": "Generation 1: You | Generation 2: Your parent | Generation 3: Your grandparent | Generation 4: Your great-grandparent | Generation 5: Your 2x great-grandparent (the patriot)"
+      "detail": "Generation 1: You | Generation 2: Your parent | Generation 3: Your grandparent | Generation 4: Your great-grandparent | Generation 5: Your 2nd-great-grandparent (the patriot)"
     },
     {
       "name": "Where to look: a state with no verified source says so (no invented records)",
@@ -328,6 +367,21 @@
       "name": "Tool B clear: removes pi.toolB.* only, keeps unrelated key",
       "ok": true,
       "detail": "other.app.key"
+    },
+    {
+      "name": "Worksheet: ticking 'Will or probate record' under 'What do you have?' adds a record with what it shows and its kind already picked; unticking removes it",
+      "ok": true,
+      "detail": "{\"n\":1,\"fact\":\"parentage\",\"doc\":\"probate\"}"
+    },
+    {
+      "name": "Worksheet: the checklist offers birth certificate, will, census, Bible record and pension file",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "Worksheet: choosing 'My 4th-great-grandfather (generation 7)' adds the generations in between",
+      "ok": true,
+      "detail": "Generation 7: Your 4th-great-grandparent"
     },
     {
       "name": "Grammar (audit 2): the worksheet card says '1 evidence entry', never '1 evidence entries'",
@@ -345,19 +399,64 @@
       "detail": ""
     },
     {
-      "name": "Home: says in plain words where to start, then offers the worksheet and the Roadmap guide",
+      "name": "Home: offers the worksheet and the Roadmap guide as buttons",
       "ok": true,
       "detail": ""
     },
     {
-      "name": "Home: leads with the widow-pension check, explained plainly, with a button to it",
+      "name": "Home (beginner path): 'Just starting?' is the first section, then 'How to join, in short', then the widow-pension check",
       "ok": true,
-      "detail": "lead-widow|Start here: the Widow Pension Law Checker"
+      "detail": "just-starting,how-to-join-in-short,lead-widow"
     },
     {
-      "name": "Navigation: the widow-pension check comes first",
+      "name": "Home (beginner path): the first three links in the page go to how to join, Step 0 (find the soldier's name) and the worksheet",
       "ok": true,
-      "detail": "/tools/widow-pension-checker/ /tools/lineage-matrix/ /#guides /about/"
+      "detail": "#how-to-join-in-short /guides/lineage-proof-roadmap/#step-0-find-the-soldier-s-name /tools/lineage-matrix/"
+    },
+    {
+      "name": "Navigation: 'Start here' (the Roadmap) comes first, then the widow-pension check",
+      "ok": true,
+      "detail": "Start here | Widow pension check | Worksheet | Guides | About"
+    },
+    {
+      "name": "Home: 'How to join, in short' has 4 sourced steps, the DAR chapter locator and the SAR contact finder",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "Roadmap: opens with 'How to join, in short' and 'Step 0: find the soldier's name' before the rest",
+      "ok": true,
+      "detail": "how-to-join-in-short,step-0-find-the-soldier-s-name,how-the-generations-are-numbered"
+    },
+    {
+      "name": "Roadmap Step 0: every point is sourced",
+      "ok": true,
+      "detail": "[1,1,2,1,1]"
+    },
+    {
+      "name": "Home glossary also explains 'Bounty land' and 'Stat.', each sourced",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "Definitions box (DAR, SAR, NSCDA, lineage society, patriot, bounty land, Stat.) right under the title on all 10 guides and both tools, sourced",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "Both reports link to the definitions",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "Plain terms: the widow checker page and the bounty-land guide explain 'Stat.' and 'bounty land' in the text too",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "No doubled source markers like [1][1] on any page",
+      "ok": true,
+      "detail": ""
     },
     {
       "name": "Guides: all 10 end with 'What to do next' (both tools, chapter finder) and a next-guide link",
@@ -425,8 +524,8 @@
       "detail": ""
     }
   ],
-  "requestsTotal": 171,
+  "requestsTotal": 218,
   "externalRequests": 0,
   "interactionRequests": 0,
-  "faviconLate": 15
+  "faviconLate": 19
 }

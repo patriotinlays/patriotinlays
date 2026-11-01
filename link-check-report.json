@@ -1,21 +1,70 @@
 {
-  "checkedAt": "Sat Oct 31 2026 20:10:41 GMT-0500 (Central Daylight Time)",
+  "checkedAt": "Sat Oct 31 2026 20:24:55 GMT-0500 (Central Daylight Time)",
   "htmlFiles": 20,
-  "internalLinks": 775,
-  "externalUnique": 45,
+  "internalLinks": 955,
+  "externalUnique": 46,
   "external": [
     {
       "url": "https://www.dar.org/discover/become-member/chapter-locator",
       "status": 200,
       "err": null,
-      "pages": 11,
+      "pages": 12,
       "via": "curl"
     },
     {
       "url": "https://www.sar.org/find-your-contact/",
       "status": 200,
       "err": null,
-      "pages": 11,
+      "pages": 12,
+      "via": "fetch"
+    },
+    {
+      "url": "https://www.sar.org/sar-missions-and-goals/",
+      "status": 200,
+      "err": null,
+      "pages": 14,
+      "via": "fetch"
+    },
+    {
+      "url": "https://www.dar.org/discover/become-member/what-dar",
+      "status": 200,
+      "err": null,
+      "pages": 14,
+      "via": "curl"
+    },
+    {
+      "url": "https://www.dar.org/discover/become-member/how-join",
+      "status": 200,
+      "err": null,
+      "pages": 14,
+      "via": "curl"
+    },
+    {
+      "url": "https://nscda.org/about/membership/",
+      "status": 200,
+      "err": null,
+      "pages": 14,
+      "via": "fetch"
+    },
+    {
+      "url": "https://nscdama.org/membership/",
+      "status": 200,
+      "err": null,
+      "pages": 14,
+      "via": "fetch"
+    },
+    {
+      "url": "https://www.archives.gov/files/research/military/army/dc/m804.pdf",
+      "status": 200,
+      "err": null,
+      "pages": 14,
+      "via": "fetch"
+    },
+    {
+      "url": "https://www.loc.gov/collections/united-states-statutes-at-large/about-this-collection/",
+      "status": 200,
+      "err": null,
+      "pages": 14,
       "via": "fetch"
     },
     {
@@ -50,21 +99,7 @@
       "url": "https://www.sar.org/how-to-apply/",
       "status": 200,
       "err": null,
-      "pages": 11,
-      "via": "fetch"
-    },
-    {
-      "url": "https://www.dar.org/discover/become-member/how-join",
-      "status": 200,
-      "err": null,
       "pages": 12,
-      "via": "curl"
-    },
-    {
-      "url": "https://www.archives.gov/files/research/military/army/dc/m804.pdf",
-      "status": 200,
-      "err": null,
-      "pages": 9,
       "via": "fetch"
     },
     {
@@ -110,6 +145,20 @@
       "via": "fetch"
     },
     {
+      "url": "https://services.dar.org/Public/DAR_Research/search_revwar/?Tab_ID=14&Tab_ID_Sub=0&action=list",
+      "status": 200,
+      "err": null,
+      "pages": 3,
+      "via": "curl"
+    },
+    {
+      "url": "https://www.archives.gov/research/military/american-revolution",
+      "status": 200,
+      "err": null,
+      "pages": 7,
+      "via": "fetch"
+    },
+    {
       "url": "https://www.sar.org/step-1/",
       "status": 200,
       "err": null,
@@ -145,13 +194,6 @@
       "via": "fetch"
     },
     {
-      "url": "https://www.archives.gov/research/military/american-revolution",
-      "status": 200,
-      "err": null,
-      "pages": 6,
-      "via": "fetch"
-    },
-    {
       "url": "https://www.archives.gov/research/catalog/catalog-bulk-downloads/revwarpensionfiles",
       "status": 200,
       "err": null,
@@ -160,41 +202,6 @@
     },
     {
       "url": "https://libguides.nypl.org/military-genealogy/revolutionary-war",
-      "status": 200,
-      "err": null,
-      "pages": 2,
-      "via": "fetch"
-    },
-    {
-      "url": "https://services.dar.org/Public/DAR_Research/search_revwar/?Tab_ID=14&Tab_ID_Sub=0&action=list",
-      "status": 200,
-      "err": null,
-      "pages": 2,
-      "via": "curl"
-    },
-    {
-      "url": "https://www.sar.org/sar-missions-and-goals/",
-      "status": 200,
-      "err": null,
-      "pages": 2,
-      "via": "fetch"
-    },
-    {
-      "url": "https://www.dar.org/discover/become-member/what-dar",
-      "status": 200,
-      "err": null,
-      "pages": 2,
-      "via": "curl"
-    },
-    {
-      "url": "https://nscda.org/about/membership/",
-      "status": 200,
-      "err": null,
-      "pages": 2,
-      "via": "fetch"
-    },
-    {
-      "url": "https://nscdama.org/membership/",
       "status": 200,
       "err": null,
       "pages": 2,

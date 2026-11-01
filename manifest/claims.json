@@ -1356,6 +1356,7 @@
       "verification_status": "verified",
       "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
       "used_on": [
+        "lineage-proof-roadmap",
         "records-by-state"
       ],
       "notes": ""
@@ -2066,6 +2067,7 @@
       "verification_status": "verified",
       "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
       "used_on": [
+        "partial:home-lead",
         "read-pension-file",
         "tool:tool-a.js",
         "widow-pension-checker"
@@ -3003,6 +3005,7 @@
       "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
       "used_on": [
         "lineage-matrix",
+        "lineage-proof-roadmap",
         "partial:home-lead",
         "read-pension-file",
         "tool:tool-a.js"
@@ -4408,6 +4411,23 @@
       "notes": ""
     },
     {
+      "claim_id": "dar-join-locator",
+      "claim_text": "DAR's How to Join page points to the chapter locator to find a chapter near you.",
+      "source_url": "https://www.dar.org/discover/become-member/how-join",
+      "source_title": "DAR — How to Join",
+      "source_type": "official_secondary",
+      "archive_identifier": null,
+      "last_retrieved": "2026-10-31",
+      "quote_excerpt": "Utilize our chapter locator to find a chapter near you.",
+      "page_ref": null,
+      "verification_status": "verified",
+      "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
+      "used_on": [
+        "partial:how-to-join"
+      ],
+      "notes": ""
+    },
+    {
       "claim_id": "dar-member-guides",
       "claim_text": "A DAR member helps guide applicants through completing and submitting the application.",
       "source_url": "https://www.dar.org/discover/become-member/how-join",
@@ -4420,9 +4440,27 @@
       "verification_status": "verified",
       "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
       "used_on": [
+        "partial:how-to-join",
         "partial:next-steps-lineage",
         "partial:next-steps-widow",
         "tool:next-steps.js"
+      ],
+      "notes": ""
+    },
+    {
+      "claim_id": "dar-join-docs",
+      "claim_text": "DAR applicants document each birth, marriage and death, and the patriot's service.",
+      "source_url": "https://www.dar.org/discover/become-member/how-join",
+      "source_title": "DAR — How to Join",
+      "source_type": "official_secondary",
+      "archive_identifier": null,
+      "last_retrieved": "2026-10-31",
+      "quote_excerpt": "She must provide documentation for each statement of birth, marriage and death, as well as of the Revolutionary War service of her Patriot ancestor.",
+      "page_ref": null,
+      "verification_status": "verified",
+      "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
+      "used_on": [
+        "partial:how-to-join"
       ],
       "notes": ""
     },
@@ -4439,6 +4477,7 @@
       "verification_status": "verified",
       "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
       "used_on": [
+        "partial:how-to-join",
         "partial:next-steps-lineage",
         "partial:next-steps-widow",
         "tool:next-steps.js"
@@ -4499,6 +4538,206 @@
       "notes": ""
     },
     {
+      "claim_id": "dar-join-interest",
+      "claim_text": "DAR's Membership Interest Form connects you to a chapter.",
+      "source_url": "https://www.dar.org/discover/become-member/how-join",
+      "source_title": "DAR — How to Join",
+      "source_type": "official_secondary",
+      "archive_identifier": null,
+      "last_retrieved": "2026-10-31",
+      "quote_excerpt": "This will start your DAR journey by connecting you to a chapter.",
+      "page_ref": null,
+      "verification_status": "verified",
+      "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
+      "used_on": [
+        "lineage-proof-roadmap",
+        "partial:how-to-join"
+      ],
+      "notes": ""
+    },
+    {
+      "claim_id": "dar-join-gather",
+      "claim_text": "DAR's first research step is to gather what you already know about your family history.",
+      "source_url": "https://www.dar.org/discover/become-member/how-join",
+      "source_title": "DAR — How to Join",
+      "source_type": "official_secondary",
+      "archive_identifier": null,
+      "last_retrieved": "2026-10-31",
+      "quote_excerpt": "What do you know about your family history and lineage.",
+      "page_ref": null,
+      "verification_status": "verified",
+      "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
+      "used_on": [
+        "lineage-proof-roadmap"
+      ],
+      "notes": ""
+    },
+    {
+      "claim_id": "dar-join-grs",
+      "claim_text": "DAR's Genealogical Research System is a free research resource.",
+      "source_url": "https://www.dar.org/discover/become-member/how-join",
+      "source_title": "DAR — How to Join",
+      "source_type": "official_secondary",
+      "archive_identifier": null,
+      "last_retrieved": "2026-10-31",
+      "quote_excerpt": "DAR has free research resources through our Genealogical Research System",
+      "page_ref": null,
+      "verification_status": "verified",
+      "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
+      "used_on": [
+        "lineage-proof-roadmap"
+      ],
+      "notes": ""
+    },
+    {
+      "claim_id": "dar-grs-purpose",
+      "claim_text": "DAR's Genealogical Research System helps with genealogical research and the membership process.",
+      "source_url": "https://www.dar.org/discover/become-member/how-join",
+      "source_title": "DAR — How to Join",
+      "source_type": "official_secondary",
+      "archive_identifier": null,
+      "last_retrieved": "2026-10-31",
+      "quote_excerpt": "to aid general genealogical research and to assist with the DAR membership process",
+      "page_ref": null,
+      "verification_status": "verified",
+      "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
+      "used_on": [
+        "lineage-proof-roadmap"
+      ],
+      "notes": ""
+    },
+    {
+      "claim_id": "sar-apply-submit",
+      "claim_text": "SAR applications, with their documentation, go to the sponsoring chapter for approval.",
+      "source_url": "https://www.sar.org/how-to-apply/",
+      "source_title": "SAR — Apply in 4 Easy Steps",
+      "source_type": "official_secondary",
+      "archive_identifier": null,
+      "last_retrieved": "2026-10-31",
+      "quote_excerpt": "submit your SAR membership application (with all related documentation) to your sponsoring SAR chapter for approval",
+      "page_ref": null,
+      "verification_status": "verified",
+      "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
+      "used_on": [
+        "partial:how-to-join"
+      ],
+      "notes": ""
+    },
+    {
+      "claim_id": "m804-bl-define",
+      "claim_text": "Bounty-land warrants were rights to free public land.",
+      "source_url": "https://www.archives.gov/files/research/military/army/dc/m804.pdf",
+      "source_title": "NARA M804 descriptive pamphlet — Revolutionary War Pension and Bounty-Land-Warrant Application Files",
+      "source_type": "official_secondary",
+      "archive_identifier": null,
+      "last_retrieved": "2026-10-31",
+      "quote_excerpt": "rights to free land in the public domain",
+      "page_ref": null,
+      "verification_status": "verified",
+      "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
+      "used_on": [
+        "bounty-land-warrants",
+        "partial:glossary",
+        "tool:tool-a.js",
+        "widow-pension-checker"
+      ],
+      "notes": ""
+    },
+    {
+      "claim_id": "m804-bl-who",
+      "claim_text": "Bounty-land warrants went to veterans and their heirs for set periods of service.",
+      "source_url": "https://www.archives.gov/files/research/military/army/dc/m804.pdf",
+      "source_title": "NARA M804 descriptive pamphlet — Revolutionary War Pension and Bounty-Land-Warrant Application Files",
+      "source_type": "official_secondary",
+      "archive_identifier": null,
+      "last_retrieved": "2026-10-31",
+      "quote_excerpt": "to veterans and to heirs of veterans for Revolutionary War service of specified periods of time",
+      "page_ref": null,
+      "verification_status": "verified",
+      "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
+      "used_on": [
+        "bounty-land-warrants",
+        "partial:glossary",
+        "tool:tool-a.js",
+        "widow-pension-checker"
+      ],
+      "notes": ""
+    },
+    {
+      "claim_id": "m804-bl-reward",
+      "claim_text": "After the war, bounty-land grants became a reward for service.",
+      "source_url": "https://www.archives.gov/files/research/military/army/dc/m804.pdf",
+      "source_title": "NARA M804 descriptive pamphlet — Revolutionary War Pension and Bounty-Land-Warrant Application Files",
+      "source_type": "official_secondary",
+      "archive_identifier": null,
+      "last_retrieved": "2026-10-31",
+      "quote_excerpt": "after the war, bounty-land grants became a form of reward",
+      "page_ref": null,
+      "verification_status": "verified",
+      "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
+      "used_on": [
+        "bounty-land-warrants"
+      ],
+      "notes": ""
+    },
+    {
+      "claim_id": "loc-stat-name",
+      "claim_text": "A citation like '5 Stat. 128' refers to the Statutes at Large.",
+      "source_url": "https://www.loc.gov/collections/united-states-statutes-at-large/about-this-collection/",
+      "source_title": "Library of Congress — United States Statutes at Large: About this Collection",
+      "source_type": "official_secondary",
+      "archive_identifier": null,
+      "last_retrieved": "2026-10-31",
+      "quote_excerpt": "A citation to the Statutes at Large",
+      "page_ref": null,
+      "verification_status": "verified",
+      "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
+      "used_on": [
+        "partial:glossary",
+        "tool:tool-a.js",
+        "widow-pension-checker"
+      ],
+      "notes": ""
+    },
+    {
+      "claim_id": "loc-stat-volume",
+      "claim_text": "A Statutes at Large citation begins with the volume number.",
+      "source_url": "https://www.loc.gov/collections/united-states-statutes-at-large/about-this-collection/",
+      "source_title": "Library of Congress — United States Statutes at Large: About this Collection",
+      "source_type": "official_secondary",
+      "archive_identifier": null,
+      "last_retrieved": "2026-10-31",
+      "quote_excerpt": "begins with the Volume number",
+      "page_ref": null,
+      "verification_status": "verified",
+      "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
+      "used_on": [
+        "partial:glossary",
+        "tool:tool-a.js",
+        "widow-pension-checker"
+      ],
+      "notes": ""
+    },
+    {
+      "claim_id": "loc-stat-page",
+      "claim_text": "A Statutes at Large citation then gives the page number in that volume.",
+      "source_url": "https://www.loc.gov/collections/united-states-statutes-at-large/about-this-collection/",
+      "source_title": "Library of Congress — United States Statutes at Large: About this Collection",
+      "source_type": "official_secondary",
+      "archive_identifier": null,
+      "last_retrieved": "2026-10-31",
+      "quote_excerpt": "the page number of the Volume",
+      "page_ref": null,
+      "verification_status": "verified",
+      "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
+      "used_on": [
+        "partial:glossary",
+        "tool:tool-a.js",
+        "widow-pension-checker"
+      ],
+      "notes": ""
+    },
+    {
       "claim_id": "dar-name",
       "claim_text": "DAR stands for the Daughters of the American Revolution.",
       "source_url": "https://www.dar.org/discover/become-member/what-dar",
@@ -4528,7 +4767,8 @@
       "verification_status": "verified",
       "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
       "used_on": [
-        "partial:glossary"
+        "partial:glossary",
+        "partial:how-to-join"
       ],
       "notes": ""
     },
@@ -4562,7 +4802,8 @@
       "verification_status": "verified",
       "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
       "used_on": [
-        "partial:glossary"
+        "partial:glossary",
+        "partial:how-to-join"
       ],
       "notes": ""
     },
@@ -4579,7 +4820,8 @@
       "verification_status": "verified",
       "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
       "used_on": [
-        "partial:glossary"
+        "partial:glossary",
+        "partial:how-to-join"
       ],
       "notes": ""
     },

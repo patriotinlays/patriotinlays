@@ -20,6 +20,8 @@ It does not look anything up, and it never makes a decision about membership or 
 
 ## The laws the checker uses
 
+**Plain terms.** "Stat." is short for the Statutes at Large, the published federal laws; a citation such as "5 Stat. 128" gives the volume number, then the page in that volume. [[claim:loc-stat-name]] [[claim:loc-stat-volume]] [[claim:loc-stat-page]] Bounty land was free public land: a bounty-land warrant was a right to free land in the public domain, granted to veterans and their heirs for their service. [[claim:m804-bl-define]] [[claim:m804-bl-who]]
+
 The 1836 act required the widow to have married the veteran before his last period of service expired. [[claim:nara-act-1836]]
 It relied on the service rules of the 1832 act, which covered veterans with at least 6 months of service. [[claim:nara-act-1832]]
 The 1832 act covered service in the Continental Line or State troops, volunteers or militia. [[claim:nara-act-1832-categories]]

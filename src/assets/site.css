@@ -102,3 +102,48 @@ header.site nav a { white-space: nowrap; }
 nav.top{display:flex;flex-wrap:wrap;column-gap:1rem;row-gap:.2rem}
 nav.top a{margin:0}
 @media (max-width:600px){.table-wrap:has(table.records){overflow:visible;border:0}table.records,table.records tbody,table.records tr,table.records td{display:block;width:100%}table.records thead{display:none}table.records tr{border:1px solid var(--line);border-radius:6px;margin:.6rem 0;padding:.3rem .5rem;background:#fff}table.records tr:nth-child(even) td{background:none}table.records td{border:0;padding:.2rem 0}table.records td::before{content:attr(data-label);display:block;font-weight:700;color:var(--navy);font-size:12px;text-transform:uppercase;letter-spacing:.03em}.tool-actions button{width:100%;margin:.3rem 0}}
+/* Beginner path, definitions box, plain answers */
+.start-path{border:2px solid var(--navy);border-left:6px solid var(--red);border-radius:8px;padding:.4rem 1rem 1rem;margin:1rem 0;background:#fff}
+.start-path h2{margin-top:.6rem}
+.start-steps li{margin:.3rem 0}
+.box-how-to-join h2{margin-top:.3rem;font-size:1.2rem}
+.box-how-to-join ol{padding-left:1.3rem}
+details.defs{border:1px solid var(--line);border-radius:6px;padding:.4rem .7rem;margin:.6rem 0 1rem;background:var(--soft);font:14px/1.5 system-ui,sans-serif}
+details.defs summary{cursor:pointer;font-weight:600;color:var(--navy)}
+details.defs ul{margin:.4rem 0 .2rem;padding-left:1.1rem}
+p.answer{border-left:4px solid var(--navy);background:#fff;padding:.5rem .7rem;margin:.6rem 0;font-size:16px}
+.terms{margin-top:.4rem}
+.have{border:1px solid var(--line);border-radius:6px;padding:.4rem .6rem;margin:.6rem 0}
+.have legend{font-weight:700;color:var(--navy);padding:0 .3rem}
+.have label.check{display:inline-flex;align-items:center;gap:.3rem;margin:.15rem 1rem .15rem 0;min-height:32px}
+.report-actions{margin:.2rem 0 .8rem}
+.where-block{border-left:3px solid var(--navy);padding:.1rem .6rem;margin:.5rem 0;background:#fff}
+.where-block p{margin:.2rem 0}
+.where-ref{font-size:13px;color:var(--muted)}
+.used-for{margin:.1rem 0 .3rem}
+@media print{
+  @page{size:Letter;margin:.5in}
+  details.defs,.report-actions,.report-actions *{display:none!important}
+  [data-tool-report="lineage-matrix"]{font-size:9.5pt;line-height:1.3}
+  [data-tool-report="lineage-matrix"] h2{font-size:12pt;margin:.5rem 0 .2rem}
+  [data-tool-report="lineage-matrix"] h3{font-size:10.5pt;margin:.4rem 0 .15rem}
+  [data-tool-report="lineage-matrix"] p,[data-tool-report="lineage-matrix"] li{margin:.1rem 0}
+  [data-tool-report="lineage-matrix"] ul,[data-tool-report="lineage-matrix"] ol{margin:.1rem 0;padding-left:1.1rem}
+  [data-tool-report="lineage-matrix"] .plan{border:0;padding:0;margin:0}
+  [data-tool-report="lineage-matrix"] a[href^="http"]::after{content:" (" attr(href) ")";font-size:7.5pt;word-break:break-all}
+  .where-block{border-left:2px solid #999;padding:0 .4rem;margin:.25rem 0;break-inside:avoid}
+  body.print-summary .report-detail,body.print-summary main h1~p,body.print-summary main .wrap>p{display:none!important}
+  body.print-summary main h1{font-size:14pt;margin:0 0 .2rem}
+}
+@media print{
+  body.print-summary [data-tool-report="lineage-matrix"] a[href]::after{content:none!important}
+  body.print-summary .report-where .where-block{break-inside:avoid}
+  body.print-summary .report-where{columns:2;column-gap:.3in}
+  body.print-summary .report-where h2,body.print-summary .report-where>p{column-span:all}
+  [data-tool-report="lineage-matrix"] .where-links{margin:.05rem 0}
+}
+@media print{
+  [data-tool-report="lineage-matrix"] .plan,[data-tool-report="lineage-matrix"] .plan *,[data-tool-report="lineage-matrix"] .where-block,[data-tool-report="lineage-matrix"] .where-block *{font-size:9pt!important;line-height:1.28!important}
+  [data-tool-report="lineage-matrix"] .small,[data-tool-report="lineage-matrix"] .small *,[data-tool-report="lineage-matrix"] .where-ref{font-size:8pt!important}
+  [data-tool-report="lineage-matrix"] .plan-steps>li{margin:.15rem 0}
+}

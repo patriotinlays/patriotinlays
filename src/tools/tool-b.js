@@ -29,8 +29,32 @@ export function genLabel(gen) {
   if (gen === 2) return "Your parent";
   if (gen === 3) return "Your grandparent";
   if (gen === 4) return "Your great-grandparent";
-  return `Your ${gen - 3}x great-grandparent`;
+  return `Your ${ordinal(gen - 3)}-great-grandparent`;
 }
+// 1 -> "1st", 2 -> "2nd", 3 -> "3rd", 11 -> "11th" (plain relationship names instead of "2x great").
+export const ordinal = (n) => { const t = n % 100; return `${n}${t >= 11 && t <= 13 ? "th" : ["th", "st", "nd", "rd"][n % 10] || "th"}`; };
+// Plain relationship for the patriot picker: generation 2 = "my father", 5 = "my 2nd-great-grandfather".
+export function relationName(gen, who = "father") {
+  if (gen <= 1) return "me";
+  const base = who === "mother" ? "mother" : "father";
+  if (gen === 2) return `my ${base}`;
+  if (gen === 3) return `my grand${base}`;
+  if (gen === 4) return `my great-grand${base}`;
+  return `my ${ordinal(gen - 3)}-great-grand${base}`;
+}
+// "What do you have?" checklist: each item pre-creates a record with what it shows and its kind already picked.
+export const HAVE_ITEMS = Object.freeze([
+  { id: "birth_cert", label: "Birth certificate", fact: "birth", docType: "birth_cert_long" },
+  { id: "death_cert", label: "Death certificate", fact: "death", docType: "death_cert" },
+  { id: "marriage", label: "Marriage record", fact: "marriage", docType: "marriage_record" },
+  { id: "will", label: "Will or probate record", fact: "parentage", docType: "probate" },
+  { id: "census", label: "Census entry", fact: "parentage", docType: "" },
+  { id: "bible", label: "Family Bible record", fact: "birth", docType: "bible" },
+  { id: "church", label: "Church or baptism record", fact: "birth", docType: "church" },
+  { id: "pension", label: "Pension file", fact: "", docType: "pension" },
+  { id: "land", label: "Deed or land record", fact: "residence", docType: "land" },
+  { id: "genealogy", label: "Compiled family history", fact: "parentage", docType: "family_genealogy" },
+]);
 export const genTitle = (gen) => `Generation ${gen}: ${genLabel(gen)}`;
 
 // Plain explanation of the "states it directly / only hints at it" choice.
@@ -215,7 +239,7 @@ export function actionPlan(rows = [], patriot = null) {
   if (rows.length < 2) steps.push({ title: "Fill in the worksheet", text: "Start with yourself as generation 1, then add your parent, grandparent and so on back to the patriot.", claims: ["dar-gen1-applicant", "dar-gen-numbering"], links: linksFor("roadmap") });
   steps.push(...patriotSteps(patriot));
   if (real.length) steps.push({ title: "Records to find or fix, generation by generation", text: "Each item says where to look. Sort out any records you flagged as disagreeing before relying on them.", claims: ["dar-each-relationship"], links: [],
-    items: groupGaps(real, pg).map((grp) => ({ text: grp.title, sub: grp.items.map((x) => ({ text: x.short, where: x.where, conflict: x.priority === 0 })) })) });
+    items: groupGaps(real, pg).map((grp) => ({ text: grp.title, sub: grp.items.map((x) => ({ text: x.short, where: x.where, conflict: x.priority === 0, who: grp.gen ? `Gen ${grp.gen}` : "", fact: x.fact, anyOf: /birth or death/.test(x.short || "") })) })) });
   else if (rows.length >= 2) steps.push({ title: "Records", text: "Nothing is missing by this tool's rules. A society's genealogists still review every record.", claims: ["dar-review-staff"], links: [] });
   steps.push(CONTACT_STEP, APPLY_STEP);
   return steps;

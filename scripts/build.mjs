@@ -46,7 +46,8 @@ function inline(text, ctx) {
     let n = ctx.sources.indexOf(c.source_url) + 1; if (!n) { ctx.sources.push(c.source_url); n = ctx.sources.length; }
     ctx.claimCount++; return `<sup><a href="#src-${n}" title="${esc(c.source_title)}">[${n}]</a></sup>`;
   });
-  return s;
+  // Two claims from the same source side by side show one marker, not "[1][1]".
+  return s.replace(/(<sup><a href="#src-(\d+)"[^>]*>\[\d+\]<\/a><\/sup>)(?:<sup><a href="#src-\2"[^>]*>\[\d+\]<\/a><\/sup>)+/g, "$1");
 }
 const DATE_HINT = `<p class="small hint" id="date-hint">Numbers only, e.g. 1776 or 1776-07 (a full date like 1776-07-04 also works).</p>`;
 const WIDOW_FULL = `<section class="tool" data-tool="widow" aria-labelledby="ta-h">
@@ -108,6 +109,8 @@ function md(body, ctx) {
   while (i < lines.length) {
     const l = lines[i];
     if (!l.trim()) { i++; continue; }
+    // "::partial name" drops in a shared, sourced box (src/partials/name.md), e.g. "How to join, in short".
+    if (l.startsWith("::partial ")) { const k = l.slice(10).trim(); out.push(`<aside class="card box-${k}" id="${k}">${md(readFileSync(join(ROOT, "src/partials", `${k}.md`), "utf8"), ctx)}</aside>`); i++; continue; }
     if (l.startsWith("::tool ")) { const k = l.slice(7).trim(); if (!TOOLS[k]) throw new Error(`unknown tool ${k}`); out.push(TOOLS[k]); ctx.tools.add(k.replace("-full", "")); i++; continue; }
     const h = /^(#{1,3}) (.*)$/.exec(l);
     if (h) { const lvl = h[1].length; const txt = inline(h[2], ctx); const id = h[2].toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, ""); out.push(`<h${lvl}${lvl > 1 ? ` id="${id}"` : ""}>${txt}</h${lvl}>`); i++; continue; }
@@ -120,12 +123,12 @@ function md(body, ctx) {
     }
     if (/^- /.test(l)) { const items = []; while (i < lines.length && /^- /.test(lines[i])) items.push(lines[i++].slice(2)); out.push(`<ul>${items.map((t) => `<li>${inline(t, ctx)}</li>`).join("")}</ul>`); continue; }
     if (/^\d+\. /.test(l)) { const items = []; while (i < lines.length && /^\d+\. /.test(lines[i])) items.push(lines[i++].replace(/^\d+\. /, "")); out.push(`<ol>${items.map((t) => `<li>${inline(t, ctx)}</li>`).join("")}</ol>`); continue; }
-    const para = []; while (i < lines.length && lines[i].trim() && !/^(#|\||- |\d+\. |::tool )/.test(lines[i])) para.push(lines[i++]);
+    const para = []; while (i < lines.length && lines[i].trim() && !/^(#|\||- |\d+\. |::tool |::partial )/.test(lines[i])) para.push(lines[i++]);
     out.push(`<p>${inline(para.join(" "), ctx)}</p>`);
   }
   return out.join("\n");
 }
-const NAV = `<header class="site"><div class="wrap"><a class="brand" href="/">Patriot In Lay Terms</a><nav class="top" aria-label="Main"><a href="/tools/widow-pension-checker/">Widow pension check</a><a href="/tools/lineage-matrix/">Worksheet</a><a href="/#guides">Guides</a><a href="/about/">About</a></nav></div></header>`;
+const NAV = `<header class="site"><div class="wrap"><a class="brand" href="/">Patriot In Lay Terms</a><nav class="top" aria-label="Main"><a href="/guides/lineage-proof-roadmap/">Start here</a><a href="/tools/widow-pension-checker/">Widow pension check</a><a href="/tools/lineage-matrix/">Worksheet</a><a href="/#guides">Guides</a><a href="/about/">About</a></nav></div></header>`;
 const FOOT = `<footer class="site"><div class="wrap"><a href="/about/">About &amp; AI disclosure</a><a href="/sources/">Sources &amp; Methodology</a><a href="/privacy/">Privacy</a><a href="/contact/">Contact</a><p>Not affiliated with DAR, SAR, NSCDA or the National Archives. Not legal or professional genealogical advice.</p></div></footer>`;
 function page({ title, description, path, body, noindex = false }) {
   return `<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
@@ -137,10 +140,14 @@ function write(path, html) { const f = join(OUT, path, "index.html"); mkdirSync(
 const sitemap = []; const built = [];
 const GUIDE_ORDER = readdirSync(join(ROOT, "src/content")).filter((x) => x.endsWith(".md")).map((f) => parseFront(readFileSync(join(ROOT, "src/content", f), "utf8")).fm).filter((fm) => fm.cornerstone);
 const START_HERE = `<aside class="card start-here"><strong>Ready to start?</strong><p><a href="/tools/widow-pension-checker/">Widow Pension Law Checker</a>: see which widow pension laws a marriage fits, and where to find her file. · <a href="/tools/lineage-matrix/">Lineage Evidence Matrix</a>: record the patriot and your records, and get a to-do list fitted to each person's era and state. · <a href="/guides/lineage-proof-roadmap/">The Roadmap guide</a>: the whole process, step by step.</p></aside>`;
+// Every guide and tool page opens with a short, sourced definitions box (the home page's glossary, reused).
+const DEFS_MD = readFileSync(join(ROOT, "src/partials/glossary.md"), "utf8").replace(/^## .*\n/, "");
+const DEFS_SUMMARY = 'New here? What DAR, SAR, NSCDA, "lineage society", "patriot", "bounty land" and "Stat." mean';
 function renderFile(dir, f) {
   const raw = readFileSync(join(ROOT, dir, f), "utf8"); const { fm, body } = parseFront(raw);
   const ctx = { sources: [], tools: new Set(), claimCount: 0 };
-  let html = md(body, ctx);
+  const defs = dir === "src/content" ? `<details class="defs" data-defs><summary>${esc(DEFS_SUMMARY)}</summary>${md(DEFS_MD, ctx)}<p class="small"><a href="/#glossary">The same definitions on the home page</a></p></details>` : "";
+  let html = md(body, ctx).replace("</h1>", `</h1>${defs}`);
   // Guides end with a "What to do next" block (its own tool first) and a link to the next guide, so no guide is a dead end.
   if (fm.cornerstone) {
     const own = [...ctx.tools][0] === "widow" ? "widow" : "lineage";
@@ -162,18 +169,24 @@ for (const f of readdirSync(join(ROOT, "src/pages")).filter((x) => x.endsWith(".
 
 // Home-page glossary: rendered from src/partials/glossary.md so every definition carries a Source Manifest claim.
 const HOME_GLOSSARY = (() => { const ctx = { sources: [], tools: new Set(), claimCount: 0 };
+  const join_ = md(readFileSync(join(ROOT, "src/partials/how-to-join.md"), "utf8"), ctx);
   const lead = md(readFileSync(join(ROOT, "src/partials/home-lead.md"), "utf8"), ctx).replace(/<h2 id="[^"]+">/, '<h2 id="lead-widow">');
   const html = md(readFileSync(join(ROOT, "src/partials/glossary.md"), "utf8"), ctx).replace('<h2 id="words-you-ll-see-here">', '<h2 id="glossary">');
   const sources = `<h2 id="sources">Sources</h2><ol class="sources">${ctx.sources.map((u, i) => { const c = manifest.claims.find((x) => x.source_url === u);
     return `<li id="src-${i + 1}"><a href="${esc(u)}">${esc(c.source_title)}</a>. Retrieved ${c.last_retrieved}.</li>`; }).join("")}</ol>`;
-  return { lead, html: `<div class="glossary">${html}</div>`, sources }; })();
+  return { join: join_, lead, html: `<div class="glossary">${html}</div>`, sources }; })();
 const guides = built.filter((b) => b.cornerstone).sort((a, b) => a.cornerstone - b.cornerstone);
 write("", page({ title: "Revolutionary War lineage, explained step by step", description: "Plain-English procedures and free browser tools for proving descent from a Revolutionary War patriot.", path: "/",
   body: `<h1>Revolutionary War lineage, explained step by step</h1>
+<section class="start-path" aria-labelledby="just-starting"><h2 id="just-starting">Just starting? Start here</h2>
+<p>New to DAR or SAR applications? Three steps, in order:</p>
+<ol class="start-steps"><li><a href="#how-to-join-in-short">How to join, in short</a>: who can join, and who helps you apply.</li><li><a href="/guides/lineage-proof-roadmap/#step-0-find-the-soldier-s-name">Find the soldier's name</a>: Step 0 of the Roadmap guide.</li><li><a href="/tools/lineage-matrix/">Start the free worksheet</a>: it lists the records still missing and where to look.</li></ol>
+<p><a class="button-link" href="/guides/lineage-proof-roadmap/" data-start-button>Start with the Roadmap guide</a> <a class="button-link secondary-link" href="#glossary">What the words mean</a></p></section>
+<aside class="card box-how-to-join" id="how-to-join">${HOME_GLOSSARY.join}</aside>
 <section class="lead-tool" aria-labelledby="lead-widow">${HOME_GLOSSARY.lead}
 <p><a class="button-link" href="/tools/widow-pension-checker/">Check the widow pension laws</a></p></section>
-<p><strong>Proving your whole line?</strong> The free worksheet asks who the patriot was and how he served, then lists the records still missing for each generation and where to look, fitted to each person's era and state. New to all this? Read the Roadmap guide first.</p>
-<p><a class="button-link secondary-link" href="/tools/lineage-matrix/">Start my family-line worksheet</a> <a class="button-link secondary-link" href="/guides/lineage-proof-roadmap/">Read the Roadmap guide</a></p>
+<p><strong>Proving your whole line?</strong> The free worksheet asks who the patriot was and how he served, then lists the records still missing for each generation and where to look, fitted to each person's era and state.</p>
+<p><a class="button-link secondary-link" href="/tools/lineage-matrix/">Start my family-line worksheet</a></p>
 <p class="small">Both tools are free, need no account, and keep everything you type in your own browser. They don't search records for you. Every fact on this site links to its official source.</p>
 ${HOME_GLOSSARY.html}
 <h2 id="tools">Free tools</h2><ul class="guide-list"><li><a href="/tools/widow-pension-checker/">Widow Pension Law Checker</a><br><span class="small">Which federal widow pension and bounty-land laws a marriage and his service fit, what each result means, and where to look for her pension file.</span></li><li><a href="/tools/lineage-matrix/">Lineage Evidence Matrix</a><br><span class="small">Record the patriot's state, unit, type of service and dates, then the records you have for each generation. Get a to-do list fitted to each person's era and state, and a printable plan.</span></li></ul>
@@ -188,9 +201,9 @@ write("sources", page({ title: "Sources & Methodology", description: "How every 
 sitemap.push("/sources/");
 // Report pages (noindex; render from localStorage only)
 write("tools/widow-pension-checker/report", page({ title: "Widow Pension Law Checker — your report", description: "Printable report of your last widow-pension check, rendered from this browser only.", path: "/tools/widow-pension-checker/report/", noindex: true,
-  body: `<h1>Widow Pension Law Checker: your report</h1><p>The dates you checked and what the published pension laws say about them.</p><section class="tool" data-tool-report="widow"><div data-report><p>Loading your saved check…</p></div><button type="button" data-print>Print this report</button><button type="button" class="secondary" data-clear="toolA">Delete my saved checker data</button><div data-out="report" aria-live="polite"></div></section><p class="small">This report is built in your browser from what you typed on this device. Nothing is uploaded. It compares dates with published laws; it is not a decision about membership or a pension.</p><p><a href="/tools/widow-pension-checker/">Back to the checker</a></p><script type="module" src="/assets/js/tool-a-ui.js"></script>` }));
+  body: `<h1>Widow Pension Law Checker: your report</h1><p>The dates you checked and what the published pension laws say about them. <a class="small" href="/#glossary">New here? What DAR, SAR, "bounty land" and "Stat." mean</a></p><section class="tool" data-tool-report="widow"><div data-report><p>Loading your saved check…</p></div><button type="button" data-print>Print this report</button><button type="button" class="secondary" data-clear="toolA">Delete my saved checker data</button><div data-out="report" aria-live="polite"></div></section><p class="small">This report is built in your browser from what you typed on this device. Nothing is uploaded. It compares dates with published laws; it is not a decision about membership or a pension.</p><p><a href="/tools/widow-pension-checker/">Back to the checker</a></p><script type="module" src="/assets/js/tool-a-ui.js"></script>` }));
 write("tools/lineage-matrix/report", page({ title: "Lineage Evidence Matrix — your report", description: "Printable gap report rendered from this browser only.", path: "/tools/lineage-matrix/report/", noindex: true,
-  body: `<h1>Lineage Evidence Matrix: your report</h1><p>What's still missing in your line, where to look for it, and the records you've entered.</p><section class="tool" data-tool-report="lineage-matrix"><div data-report><p>Loading your saved matrix…</p></div><button type="button" data-print>Print this report</button><button type="button" class="secondary" data-clear="toolB">Delete all my worksheet data</button></section><p class="small">Built in your browser from what you typed on this device. Nothing is uploaded. Every label means "still needs review": only a society's genealogists decide what is proven.</p><p><a href="/tools/lineage-matrix/">Back to the matrix</a></p><script type="module" src="/assets/js/tool-b-ui.js"></script>` }));
+  body: `<h1>Lineage Evidence Matrix: your report</h1><p>What's still missing in your line, where to look for it, and the records you've entered. <a class="small" href="/#glossary">New here? What DAR, SAR, NSCDA, "lineage society" and "patriot" mean</a></p><section class="tool" data-tool-report="lineage-matrix"><p class="report-actions"><button type="button" class="big" data-save-pdf>Save as PDF</button> <span class="small">Saves the summary and "Where to look" (about 1–2 pages). In the print window, choose "Save as PDF".</span></p><div data-report><p>Loading your saved matrix…</p></div><button type="button" data-print>Print the full report (with every record)</button><button type="button" class="secondary" data-clear="toolB">Delete all my worksheet data</button></section><p class="small">Built in your browser from what you typed on this device. Nothing is uploaded. Every label means "still needs review": only a society's genealogists decide what is proven.</p><p><a href="/tools/lineage-matrix/">Back to the matrix</a></p><script type="module" src="/assets/js/tool-b-ui.js"></script>` }));
 writeFileSync(join(OUT, "404.html"), versionUrls(page({ title: "Page not found", path: "/404.html", noindex: true, body: `<h1>Page not found</h1><p>That page doesn't exist. <a href="/">Go to the home page</a>.</p>${START_HERE}` })));
 writeFileSync(join(OUT, "sitemap.xml"), `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${sitemap.filter((p) => !p.includes("/contact/") || true).map((p) => `  <url><loc>${SITE}${p}</loc><lastmod>${BUILD_DATE}</lastmod></url>`).join("\n")}\n</urlset>\n`);
 writeFileSync(join(OUT, "robots.txt"), `User-agent: *\nDisallow: /tools/widow-pension-checker/report/\nDisallow: /tools/lineage-matrix/report/\nSitemap: ${SITE}/sitemap.xml\n`);

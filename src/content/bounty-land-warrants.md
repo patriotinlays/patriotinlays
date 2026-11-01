@@ -10,6 +10,8 @@ Bounty land was a promise of land in exchange for service. For a researcher, the
 
 ## Federal bounty land in brief
 
+In plain terms, a bounty-land warrant was a right to free land in the public domain, granted to veterans and their heirs for their service. [[claim:m804-bl-define]] [[claim:m804-bl-who]] After the war, these grants became a form of reward. [[claim:m804-bl-reward]]
+
 A Continental Congress resolution of September 16, 1776 was the basic law for federal Revolutionary War bounty-land warrants until 1855. [[claim:m804-bl-1776]]
 It gave 100 acres to each noncommissioned officer and soldier. [[claim:m804-bl-100]]
 A 1780 resolution extended grants to generals: 850 acres for a brigadier general and 1,100 acres for a major general. [[claim:m804-bl-generals]]
