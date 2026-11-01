@@ -1,10 +1,10 @@
 // Tool B browser UI: Lineage Evidence Matrix editor, embed card, and report page.
 // State lives only in localStorage under "pi.toolB.v1"; no network requests are made.
-import { relationName, HAVE_ITEMS, actionPlan, evaluateCell, gaps, groupGaps, filledCells, countEntries, patriotGen, LABELS, FACTS, FACT_LABELS, DOC_TYPES, MODE_HELP, genLabel, genTitle, isEmptyCell } from "./tool-b.js";
+import { relationName, HAVE_ITEMS, byFactOrder, actionPlan, evaluateCell, gaps, groupGaps, filledCells, countEntries, patriotGen, LABELS, FACTS, FACT_LABELS, DOC_TYPES, MODE_HELP, genLabel, genTitle, isEmptyCell } from "./tool-b.js";
 import { SERVICE_KINDS, PATRIOT_HELP, patriotDates, hasPatriot, kindOf } from "./patriot.js";
-import { STATES, stateName } from "./places.js";
+import { STATES, stateName, noVitalText } from "./places.js";
 import { ns, el } from "./storage.js";
-import { renderPlan } from "./plan-ui.js";
+import { renderPlan, noteEl } from "./plan-ui.js";
 import { plural } from "./tool-a.js";
 const store = ns("pi.toolB.");
 const blank = () => ({ version: 1, generations: [newGen(1), newGen(2)], patriot: newPatriot(), updated: null });
@@ -46,20 +46,24 @@ const statusKids = (ev) => [el("span", { class: `badge ${labelClass(ev.label)}`,
   ...ev.issues.map((i) => el("div", { class: "small issue", text: i })), ...ev.cautions.map((k) => el("div", { class: "small caution", text: k.text }))];
 
 // "Where to look" block shared by the editor and the report. Notes carry the era- and state-specific facts.
-export function whereBlock(w) {
+export function whereBlock(w, seen = null) {
   if (!w) return null;
   const links = [...w.links.map((l) => el("li", {}, el("a", { href: l.url, rel: "noopener", text: l.label }))),
     ...w.guides.map((g) => el("li", {}, "Our guide: ", el("a", { href: g.url, text: g.label })))];
   return el("div", { class: "where" }, el("strong", { text: "Where to look: " }), w.text ? `${w.text} ` : "", w.registrar,
-    ...(w.notes || []).map((n) => el("p", { class: `where-note note-${n.kind || "info"}`, "data-note": n.kind || "info" }, n.text, n.guide ? " " : null, n.guide ? el("a", { href: n.guide.url, "data-substitute": "", text: n.guide.label }) : null)),
+    ...(w.notes || []).map((n) => noteEl(n, seen)),
     links.length ? el("ul", { class: "where-links" }, ...links) : null);
 }
-function renderGaps(state) {
+// A missing record gets a button that adds it to that generation with "what it shows" already picked.
+const ADD_TEXT = { birth: "+ Add a birth or death record", death: "+ Add a death record", parentage: "+ Add a record that links them", marriage: "+ Add a marriage record", residence: "+ Add a record" };
+function renderGaps(state, seen = null) {
   const list = gaps(state.generations, state.patriot);
   if (!list.length) return el("p", { class: "small", text: "Nothing missing by the tool's rules. That is not a proof: a society's genealogist still reviews every entry." });
   // Each generation is listed once, in order, with its items under it.
   return el("ol", { class: "gaps" }, ...groupGaps(list, patriotGen(state.generations, state.patriot)).map((grp) => el("li", { class: "gap-gen", "data-gap-gen": grp.gen ?? "" }, el("strong", { class: "gap-gen-h", text: grp.title }),
-    el("ul", { class: "gap-items" }, ...grp.items.map((g) => el("li", { class: g.priority === 0 ? "conflict" : "" }, el("div", { class: "gap-text", text: g.short }), whereBlock(g.where)))))));
+    el("ul", { class: "gap-items" }, ...grp.items.map((g) => el("li", { class: g.priority === 0 ? "conflict" : "" }, el("div", { class: "gap-text", text: g.short }),
+      g.add ? el("button", { type: "button", class: "secondary add-for", "data-add-for": `${g.gen}:${g.add}`, text: g.add === "birth" && /birth or death/.test(g.short) ? ADD_TEXT.birth : g.add === "birth" ? "+ Add a birth record" : ADD_TEXT[g.add] || "+ Add a record" }) : null,
+      whereBlock(g.where, seen)))))));
 }
 const stateOptions = () => STATES.map(([c, n]) => [c, n]);
 // The patriot's date check, in plain words (the old standalone service-date check, folded into this step).
@@ -164,8 +168,9 @@ function mountEditor(root) {
   const msg = root.querySelector("[data-cleared]"); alertMsg = (t) => { if (msg) msg.textContent = t; };
   // Light refresh (keeps typing smooth): gaps, plan, and the patriot date check.
   const refresh = () => {
-    gapBox.replaceChildren(renderGaps(state));
-    root.querySelector("[data-plan]")?.replaceChildren(renderPlan(actionPlan(state.generations, state.patriot), { heading: false }));
+    const seen = new Set(); // each "no verified source for this state" note is shown in full once on the page
+    gapBox.replaceChildren(renderGaps(state, seen));
+    root.querySelector("[data-plan]")?.replaceChildren(renderPlan(actionPlan(state.generations, state.patriot), { heading: false, seen }));
     root.querySelector("[data-patriot-check]")?.replaceChildren(patriotCheckEl(state.patriot));
     const pg = patriotGen(state.generations, state.patriot);
     box.querySelectorAll("[data-gen]").forEach((sec) => { const h = sec.querySelector("h3"); const g = +sec.dataset.gen; h.textContent = genTitle(g) + (g === pg ? " (the patriot)" : ""); });
@@ -174,7 +179,7 @@ function mountEditor(root) {
     const focusId = document.activeElement?.id;
     const last = state.generations.length;
     if (patBox) patBox.replaceChildren(patriotForm(state, refresh, rerender));
-    box.replaceChildren(...state.generations.map((g) => el("section", { class: "gen", "data-gen": g.gen },
+    box.replaceChildren(...state.generations.map((g) => el("section", { class: "gen", "data-gen": g.gen, id: `gen-${g.gen}` },
       el("h3", { text: genTitle(g.gen) }),
       el("p", { class: "small hint", text: g.gen === 1 ? "Generation 1 is always you, the person applying." :
         g.gen === last ? `Each generation is one step further back. Is this person the patriot? If not, press "Add an older generation" below.` :
@@ -197,6 +202,14 @@ function mountEditor(root) {
     if (msg) msg.textContent = "";
   };
   bindEditorEvents(box, state, rerender);
+  // "+ Add a … record" under a missing item: adds the record to that generation (what it shows already picked) and goes to it.
+  gapBox.addEventListener("click", (e) => {
+    const b = e.target.closest("[data-add-for]"); if (!b) return;
+    const [gn, fact] = b.dataset.addFor.split(":"); const g = state.generations.find((x) => x.gen === +gn); if (!g) return;
+    const c = newCell({ fact }); g.cells.push(c); save(state); rerender();
+    const f = document.getElementById(`g${g.gen}-${c.id}-docType`) || document.getElementById(`g${g.gen}-${c.id}-fact`); f?.scrollIntoView({ block: "center" }); f?.focus();
+    if (msg) msg.textContent = `Added a ${FACT_LABELS[fact]?.toLowerCase() || ""} record for ${genLabel(g.gen).toLowerCase()}. Answer the questions for it below.`;
+  });
   root.querySelector("[data-add-gen]").addEventListener("click", () => { state.generations.push(newGen(state.generations.length + 1)); save(state); rerender(); });
   root.querySelector("[data-remove-gen]").addEventListener("click", () => { if (state.generations.length > 2) { state.generations.pop(); save(state); rerender(); } });
   root.querySelector("[data-load-example]")?.addEventListener("click", () => {
@@ -211,6 +224,8 @@ function mountEditor(root) {
     msg.textContent = "All matrix data was deleted from this browser.";
   });
   rerender();
+  // The report's "Add it in the worksheet" links point to #gen-N; the sections are built by script, so scroll once they exist.
+  if (/^#gen-\d+$/.test(location.hash)) document.querySelector(location.hash)?.scrollIntoView();
 }
 function mountCard(root) {
   const s = store.get("v1", null); const out = root.querySelector("[data-card-status]");
@@ -237,7 +252,15 @@ export function whereIndex() {
     const out = [];
     if (w.text) out.push(add(`g|${w.text}|${w.links.map((l) => l.url).join(" ")}`, () => ({ text: w.text,
       links: [...w.links.filter((l) => !(w.notes || []).some((n) => n.links?.some((m) => m.url === l.url))), ...w.guides.map((g) => ({ label: `Our guide: ${g.label}`, url: g.url }))] }), used));
-    for (const n of w.notes || []) if (n.kind !== "hint") out.push(add(`n|${n.text}`, () => ({ text: n.text, guide: n.guide || null, links: n.links || [] }), used));
+    for (const n of w.notes || []) {
+      if (n.kind === "hint") continue;
+      // A state with no verified source gets one block naming every record type it applies to (audit 3: printed once).
+      if (n.kind === "nosource") { const L = add(n.key, () => ({ place: n.place, facts: [], text: "", guide: null, links: n.links || [] }), used);
+        const b = byKey.get(n.key); if (!b.facts.includes(n.fact)) b.facts.push(n.fact); out.push(L); continue; }
+      // Census notes: each census fact is its own block, so a fact shared by several people is printed once (audit 3).
+      if (n.kind === "census" && n.parts?.length) { for (const t of n.parts) out.push(add(`c|${t}`, () => ({ text: `Census: ${t}`, guide: null, links: [] }), used)); continue; }
+      out.push(add(`n|${n.text}`, () => ({ text: n.text, guide: n.guide || null, links: n.links || [] }), used));
+    }
     return [...new Set(out)];
   };
   return { refFor, blocks };
@@ -249,7 +272,7 @@ function mountReport(root) {
   const pg = patriotGen(s.generations, s.patriot);
   const { refFor, blocks } = whereIndex();
   // Rendering the plan first fills the "Where to look" index, so each piece of advice is printed once, below, by letter.
-  const plan = renderPlan(actionPlan(s.generations, s.patriot), { heading: false, printable: false, tip: false, whereRef: refFor });
+  const plan = renderPlan(actionPlan(s.generations, s.patriot), { heading: false, printable: false, tip: false, whereRef: refFor, addHref: (it) => `/tools/lineage-matrix/#gen-${it.gen}` });
   const n = countEntries(s.generations); const missing = gaps(s.generations, s.patriot).length;
   const pd = hasPatriot(s.patriot) ? patriotDates(s.patriot) : null; const k = kindOf(s.patriot?.kind);
   const patLine = hasPatriot(s.patriot) ? `${s.patriot.name || "Not named"}${s.patriot.state ? `, ${stateName(s.patriot.state)}` : ""}${k ? `, ${k.label.toLowerCase()}` : ""}${s.patriot.start ? `, ${s.patriot.start}${s.patriot.end && s.patriot.end !== s.patriot.start ? ` to ${s.patriot.end}` : ""}` : ""}${pg ? ` (generation ${pg})` : ""}.${pd ? ` Date check: ${PATRIOT_BADGE[pd.status] || pd.status}.` : ""}` : "Not filled in yet.";
@@ -263,19 +286,19 @@ function mountReport(root) {
     el("h2", { text: "Where to look" }),
     el("p", { class: "small", text: "Each piece of advice appears once. The letters in the to-do list above point here. Not sure where to order a record? Ask your society's registrar." }),
     ...blocks.map((b) => el("div", { class: "where-block", id: `where-${b.letter}`, "data-where-block": b.letter },
-      el("p", {}, el("strong", { class: "where-letter", text: `${b.letter}. ` }), b.text, b.guide ? " " : null, b.guide ? el("a", { href: b.guide.url, "data-substitute": "", text: b.guide.label }) : null),
+      el("p", {}, el("strong", { class: "where-letter", text: `${b.letter}. ` }), b.place ? noVitalText(b.place, b.facts) : b.text, b.guide ? " " : null, b.guide ? el("a", { href: b.guide.url, "data-substitute": "", text: b.guide.label }) : null),
       b.links.length ? el("ul", { class: "where-links small" }, ...b.links.map((l) => el("li", {}, el("a", { href: l.url, rel: l.url.startsWith("http") ? "noopener" : null, text: l.label })))) : null,
       el("p", { class: "small used-for", text: `For: ${[...new Set(b.used)].join("; ")}` }))));
   const kids = [summary, where, el("section", { class: "report-detail" }, el("h2", { text: "The patriot, in full" }), hasPatriot(s.patriot) ? patriotSummary(s.patriot) : el("p", { class: "small", text: "Not filled in yet." }), el("h2", { text: "Your records, generation by generation" }))];
   const detail = kids[2];
   for (const g of s.generations) {
-    const rows = filledCells(g.cells).map((c) => { const ev = evaluateCell(c);
+    const rows = byFactOrder(filledCells(g.cells)).map((c) => { const ev = evaluateCell(c);
       return el("tr", {}, el("td", { "data-label": "What it shows", text: FACT_LABELS[c.fact] || "—" }), el("td", { "data-label": "Kind of record", text: DOC_TYPES[c.docType] || "—" }), el("td", { "data-label": "Says it in words?", text: MODE_TEXT[c.mode] || "—" }),
         el("td", { "data-label": "Where you found it", text: c.citation || "—" }), el("td", { "data-label": "Status" }, el("span", { class: `badge ${labelClass(ev.label)}`, text: ev.label }), ...ev.cautions.map((k) => el("div", { class: "small caution", text: k.text })))); });
     const facts = [g.born && `born about ${g.born}`, !g.living && g.died && `died about ${g.died}`, g.state && stateName(g.state)].filter(Boolean).join(", ");
     detail.append(...[el("h3", { text: `${genTitle(g.gen)}${g.gen === pg ? " (the patriot)" : ""}${g.who ? ` — ${g.who}` : ""}${g.living ? " (living)" : ""}` }),
       facts ? el("p", { class: "small", text: facts }) : null,
-      rows.length ? el("div", { class: "table-wrap" }, el("table", { class: "records" }, el("thead", {}, el("tr", {}, ...["What it shows", "Kind of record", "Says it in words?", "Where you found it", "Status"].map((h) => el("th", { text: h })))), el("tbody", {}, ...rows)))
+      rows.length ? el("div", { class: "table-wrap" }, el("table", { class: `records${detail.querySelector("table.records") ? " records-more" : ""}` }, el("thead", {}, el("tr", {}, ...["What it shows", "Kind of record", "Says it in words?", "Where you found it", "Status"].map((h) => el("th", { text: h })))), el("tbody", {}, ...rows)))
         : el("p", { class: "small", text: "No records entered yet." })].filter(Boolean));
   }
   body.replaceChildren(...kids);

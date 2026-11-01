@@ -1,7 +1,7 @@
 {
-  "checkedAt": "Sat Oct 31 2026 20:24:55 GMT-0500 (Central Daylight Time)",
+  "checkedAt": "Sat Oct 31 2026 20:47:31 GMT-0500 (Central Daylight Time)",
   "htmlFiles": 20,
-  "internalLinks": 955,
+  "internalLinks": 1019,
   "externalUnique": 46,
   "external": [
     {
@@ -54,6 +54,13 @@
       "via": "fetch"
     },
     {
+      "url": "https://www.sar.org/how-to-apply/",
+      "status": 200,
+      "err": null,
+      "pages": 14,
+      "via": "fetch"
+    },
+    {
       "url": "https://www.archives.gov/files/research/military/army/dc/m804.pdf",
       "status": 200,
       "err": null,
@@ -94,13 +101,6 @@
       "err": null,
       "pages": 8,
       "via": "curl"
-    },
-    {
-      "url": "https://www.sar.org/how-to-apply/",
-      "status": 200,
-      "err": null,
-      "pages": 12,
-      "via": "fetch"
     },
     {
       "url": "https://www.archives.gov/research/military/genealogy",

@@ -14,5 +14,7 @@ export const el = (tag, attrs = {}, ...kids) => {
   const n = document.createElement(tag);
   for (const [k, v] of Object.entries(attrs)) { if (v == null || v === false) continue; if (k === "text") n.textContent = v; else if (k.startsWith("on")) n.addEventListener(k.slice(2), v); else n.setAttribute(k, v === true ? "" : v); }
   for (const c of kids.flat()) if (c != null) n.append(c.nodeType ? c : document.createTextNode(String(c)));
+  // Printing shows a compact source reference (the site's name, e.g. "archives.gov") instead of the full link address.
+  if (tag === "a" && /^https?:/.test(attrs.href || "")) { try { n.dataset.host = new URL(attrs.href).hostname.replace(/^www\./, ""); } catch { /* not a full URL */ } }
   return n;
 };

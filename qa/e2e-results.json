@@ -1,17 +1,21 @@
 {
-  "ranAt": "Sat Oct 31 2026 20:22:13 GMT-0500 (Central Daylight Time)",
+  "ranAt": "Sat Oct 31 2026 20:48:11 GMT-0500 (Central Daylight Time)",
   "browser": "/usr/bin/google-chrome (headless) via playwright-core 1.59.1",
-  "passed": 103,
-  "total": 103,
+  "passed": 115,
+  "total": 115,
   "exampleReportPages": {
     "summaryPages": 2,
-    "fullPages": 4
+    "fullPages": 3,
+    "personaB": {
+      "summaryPages": 2,
+      "fullPages": 3
+    }
   },
   "results": [
     {
       "name": "Fresh profile: widow checker starts empty and unticked, with no results and nothing saved",
       "ok": true,
-      "detail": "{\"vals\":[\"\",\"\",\"\",\"\",false],\"rows\":0,\"ls\":[],\"plan\":\"Fill in the form above\",\"saved\":false}"
+      "detail": "{\"vals\":[\"\",\"\",\"\",\"\",false],\"rows\":0,\"ls\":[],\"plan\":\"Your next steps appear here after you press \\\"Check the widow pension laws\\\". They follow from your results.\",\"saved\":false}"
     },
     {
       "name": "Widow checker: a visible 'Start over' button",
@@ -21,17 +25,17 @@
     {
       "name": "Returning visit: the form starts empty and unticked with no old results; a note points to the saved check and 'Start over'",
       "ok": true,
-      "detail": "{\"vals\":[\"\",\"\",\"\",\"\",false],\"rows\":0,\"ls\":[\"pi.toolA.widow\"],\"plan\":\"Fill in the form above\",\"saved\":true}"
+      "detail": "{\"vals\":[\"\",\"\",\"\",\"\",false],\"rows\":0,\"ls\":[\"pi.toolA.widow\"],\"plan\":\"Your next steps appear here after you press \\\"Check the widow pension laws\\\". They follow from your results.\",\"saved\":true}"
     },
     {
       "name": "Prefill from the worksheet fills his service end but does not run the check",
       "ok": true,
-      "detail": "{\"vals\":[\"\",\"1779-10\",\"\",\"\",false],\"rows\":0,\"ls\":[\"pi.toolB.v1\",\"pi.toolA.widow\"],\"plan\":\"Fill in the form above\",\"saved\":true}"
+      "detail": "{\"vals\":[\"\",\"1779-10\",\"\",\"\",false],\"rows\":0,\"ls\":[\"pi.toolB.v1\",\"pi.toolA.widow\"],\"plan\":\"Your next steps appear here after you press \\\"Check the widow pension laws\\\". They follow from your results.\",\"saved\":true}"
     },
     {
       "name": "Start over: empties the form, deletes this checker's saved data only, and says so",
       "ok": true,
-      "detail": "{\"vals\":[\"\",\"\",\"\",\"\",false],\"rows\":0,\"ls\":[\"pi.toolB.v1\"],\"plan\":\"Fill in the form above\",\"saved\":false}"
+      "detail": "{\"vals\":[\"\",\"\",\"\",\"\",false],\"rows\":0,\"ls\":[\"pi.toolB.v1\"],\"plan\":\"Your next steps appear here after you press \\\"Check the widow pension laws\\\". They follow from your results.\",\"saved\":false}"
     },
     {
       "name": "Widow checker page: explains what it tells you and why it matters for finding pension files",
@@ -49,7 +53,7 @@
       "detail": "How this works. This checker does not search any records or databases. You type the marriage date and what you know about his service. It tests them against the"
     },
     {
-      "name": "Widow checker: empty form -> plan says 'Fill in the form above'",
+      "name": "Widow checker: before any check, 'What to do next' shows only a labelled placeholder, not a generic plan (audit 3)",
       "ok": true,
       "detail": ""
     },
@@ -72,6 +76,11 @@
       "name": "Widow checker (audit 2): 1836 'Doesn't fit' says why: married 1790, service ended 1779-10, and the rule",
       "ok": true,
       "detail": "Doesn't fit as typedDoes not fit this law's date rule as you typed it. You typed a marriage date of 1790 and the end of his last service as 1779-10, so the marr"
+    },
+    {
+      "name": "Widow checker (audit 3 #1): married 1790, service ended 1779, no months typed -> 1836 'Doesn't fit as typed' with the plain reason, not 'Not checked'",
+      "ok": true,
+      "detail": "Doesn't fit as typedDoes not fit this law's date rule as you typed it. You typed a marriage date of 1790 and the end of "
     },
     {
       "name": "Widow checker: each field shows a 'Why it matters' line",
@@ -231,7 +240,7 @@
     {
       "name": "Tool B: gap list shows the flagged conflict and missing items",
       "ok": true,
-      "detail": "Generation 2: Your parentYou flagged a conflict on the parent–child link record. Sort it out before relying on it.Where "
+      "detail": "Generation 2: Your parentNo birth evidence entered yet.+ Add a birth recordWhere to look: Look for a long-form birth cer"
     },
     {
       "name": "Tool B (regression): gap list shows each generation once, in order",
@@ -326,7 +335,7 @@
     {
       "name": "Report: each 'Where to look' block appears once, and every to-do points to it by letter",
       "ok": true,
-      "detail": "{\"blocks\":10,\"unique\":10,\"refs\":14}"
+      "detail": "{\"blocks\":10,\"unique\":10,\"refs\":16}"
     },
     {
       "name": "Report: a visible 'Save as PDF' button prints the summary only",
@@ -334,14 +343,54 @@
       "detail": ""
     },
     {
-      "name": "Report: the example's 'Save as PDF' summary prints on 1–2 Letter pages (headless Chrome print-to-PDF)",
+      "name": "Report: the page-count claim matches headless Chrome's print-to-PDF of the example (Save as PDF and Ctrl+P)",
       "ok": true,
-      "detail": "summary 2 page(s), full report 4 page(s)"
+      "detail": "summary 2, full 3; claim 2/3"
+    },
+    {
+      "name": "Report: printing shows no link addresses, only short source references like (archives.gov)",
+      "ok": true,
+      "detail": "0/0 URL expansions, 17 short refs"
     },
     {
       "name": "Report: links to the definitions",
       "ok": true,
       "detail": ""
+    },
+    {
+      "name": "Audit 3 #5: the 'no verified source for Ohio' note appears in full once on the worksheet page; other mentions just point to it",
+      "ok": true,
+      "detail": "{\"full\":1,\"refs\":9}"
+    },
+    {
+      "name": "Audit 3 #4: the patriot's generation's 'add a birth or death record' item has a button that adds one there",
+      "ok": true,
+      "detail": "+ Add a birth or death record -> birth"
+    },
+    {
+      "name": "Audit 3 #3: a ticked 'Census entry' shows its kind and 'Entry Incomplete' in the report, and every counted entry is a row there",
+      "ok": true,
+      "detail": "{\"g3\":{\"doc\":\"census\",\"status\":\"Entry IncompleteStill needed: pick which census it is (the year range).Still needed: pick whether the record says it in words or only hints at it.Still needed: say where you found the record, in a few words (for example: county courthouse, will book 3, page 12).\"},\"census\":[\"Parent–child link (ties this person to the next generation)\",\"Census entry (year range not picked yet)\",\"—\",\"—\",\"Entry Incomplete\"],\"entries\":6,\"rows\":6}"
+    },
+    {
+      "name": "Audit 3 #4: within a generation, the person's own records (birth, death) come before the link record, in the plan and in the records table",
+      "ok": true,
+      "detail": "The birth record isn't finished. Still needed: words or hints, where you found it. | The death record isn't finished. Still needed: words or hints, where you found it. | The parent–child link record isn't finished. Still needed: words or hints, where you found it."
+    },
+    {
+      "name": "Audit 3 #4: in the report, the patriot's missing birth or death record links to his generation in the worksheet",
+      "ok": true,
+      "detail": "/tools/lineage-matrix/#gen-6"
+    },
+    {
+      "name": "Audit 3 #5: the report prints the Ohio no-source note once, and each census fact once",
+      "ok": true,
+      "detail": "[\"Census: NSCDA lists the 1880–1900 censuses as primary sources.\",\"Census: The 1850–1870 censuses do not state relationships.\",\"Census: The 1790–1840 censuses named only the head of household and counted everyone else by age group.\"]"
+    },
+    {
+      "name": "Audit 3 #2: the audit's longer persona-B report prints shorter than before (Save as PDF 3 -> at most 2, Ctrl+P 5 -> at most 3)",
+      "ok": true,
+      "detail": "summary 2, full 3"
     },
     {
       "name": "Generation picker (audit 2): Generation 1 is not offered; the default is the oldest generation",
@@ -361,7 +410,7 @@
     {
       "name": "Where to look: a state with no verified source says so (no invented records)",
       "ok": true,
-      "detail": "Generation 3: Your grandparentNo birth evidence entered yet.Where to look: Look for a long-form birth certificate (the k"
+      "detail": "Generation 3: Your grandparentNo birth evidence entered yet.+ Add a birth recordWhere to look: Look for a long-form birt"
     },
     {
       "name": "Tool B clear: removes pi.toolB.* only, keeps unrelated key",
@@ -440,6 +489,21 @@
     },
     {
       "name": "Definitions box (DAR, SAR, NSCDA, lineage society, patriot, bounty land, Stat.) right under the title on all 10 guides and both tools, sourced",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "Audit 3 #7: 'patriot' is glossed in plain words, with a source, at its first use on the home page's first screen",
+      "ok": true,
+      "detail": " older who can prove he descends from a patriot of the American Revolution. [2] (A patriot here means someone who supported the cause of American independence, for example by fighting in its battles or serving in the Continental Congress.) "
+    },
+    {
+      "name": "Audit 3 #7: both tools explain 'society' and 'registrar' in plain, sourced words just above the tool",
+      "ok": true,
+      "detail": "[true,true]"
+    },
+    {
+      "name": "Audit 3 #7: the glossary defines Society and Registrar, each sourced",
       "ok": true,
       "detail": ""
     },
@@ -524,8 +588,8 @@
       "detail": ""
     }
   ],
-  "requestsTotal": 218,
+  "requestsTotal": 262,
   "externalRequests": 0,
   "interactionRequests": 0,
-  "faviconLate": 19
+  "faviconLate": 21
 }

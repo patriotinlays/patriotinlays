@@ -15,6 +15,8 @@ The worksheet never grades a line. The best label any entry can earn is "Evidenc
 
 Everything you enter is saved only in this browser's local storage under keys beginning "pi.toolB". Nothing is sent anywhere. Use "Delete all my worksheet data" to remove it.
 
+::partial tool-terms
+
 ::tool lineage-matrix-full
 
 ## The patriot step

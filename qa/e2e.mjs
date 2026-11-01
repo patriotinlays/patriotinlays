@@ -40,15 +40,15 @@ const phase = (p) => { page.__phase = p; };
 { const fresh = await browser.newContext({ viewport: { width: 1280, height: 900 } }); const fp = await fresh.newPage();
   fp.on("pageerror", (e) => consoleErrors.push(`fresh: ${e.message}`));
   const formState = () => fp.evaluate(() => ({ vals: [...document.querySelectorAll("form[data-form=widow] input")].map((i) => i.type === "checkbox" ? i.checked : i.value),
-    rows: document.querySelectorAll("[data-out=widow] tbody tr").length, ls: Object.keys(localStorage), plan: document.querySelector('[data-tool="widow"] [data-plan] .plan-title')?.textContent || "",
+    rows: document.querySelectorAll("[data-out=widow] tbody tr").length, ls: Object.keys(localStorage), plan: (document.querySelector('[data-tool="widow"] [data-plan] [data-plan-wait]')?.textContent || "") + (document.querySelector('[data-tool="widow"] [data-plan] .plan-title') ? " PLAN-SHOWN" : ""),
     saved: !document.querySelector("[data-saved-msg]").hidden }));
   await fp.goto(`${BASE}/tools/widow-pension-checker/`);
   let f = await formState();
-  check("Fresh profile: widow checker starts empty and unticked, with no results and nothing saved", f.vals.every((v) => v === "" || v === false) && f.rows === 0 && (await fp.$$("[data-answer]")).length === 0 && f.ls.length === 0 && /Fill in the form above/.test(f.plan) && !f.saved, JSON.stringify(f));
+  check("Fresh profile: widow checker starts empty and unticked, with no results and nothing saved", f.vals.every((v) => v === "" || v === false) && f.rows === 0 && (await fp.$$("[data-answer]")).length === 0 && f.ls.length === 0 && /appear here after you press/.test(f.plan) && !/PLAN-SHOWN/.test(f.plan) && !f.saved, JSON.stringify(f));
   check("Widow checker: a visible 'Start over' button", await fp.isVisible('[data-tool="widow"] [data-start-over]') && (await fp.textContent("[data-start-over]")).trim() === "Start over");
   await fp.click("[data-load-example]"); const exRows = (await formState()).rows;
   await fp.reload(); f = await formState();
-  check("Returning visit: the form starts empty and unticked with no old results; a note points to the saved check and 'Start over'", exRows === 7 && f.vals.every((v) => v === "" || v === false) && f.rows === 0 && /Fill in the form above/.test(f.plan) && f.saved && /Start over/.test(await fp.textContent("[data-saved-msg]")), JSON.stringify(f));
+  check("Returning visit: the form starts empty and unticked with no old results; a note points to the saved check and 'Start over'", exRows === 7 && f.vals.every((v) => v === "" || v === false) && f.rows === 0 && /appear here after you press/.test(f.plan) && !/PLAN-SHOWN/.test(f.plan) && f.saved && /Start over/.test(await fp.textContent("[data-saved-msg]")), JSON.stringify(f));
   await fp.evaluate(() => localStorage.setItem("pi.toolB.v1", JSON.stringify({ generations: [{ gen: 1, living: true, cells: [] }, { gen: 2, cells: [] }], patriot: { name: "Prefill Test", state: "VA", kind: "militia", start: "1777", end: "1779-10", gen: "" } })));
   await fp.goto(`${BASE}/tools/widow-pension-checker/?from=worksheet`); f = await formState();
   check("Prefill from the worksheet fills his service end but does not run the check", f.vals[1] === "1779-10" && f.vals[0] === "" && f.vals[4] === false && f.rows === 0, JSON.stringify(f));
@@ -65,7 +65,7 @@ check("Widow checker page: explains what it tells you and why it matters for fin
 check("Widow checker page: the standalone service-date form is gone", (await page.$$("form[data-form=window], #ta-start")).length === 0);
 const howA = await page.textContent('[data-tool="widow"] .howto');
 check("Widow checker: 'How this works' says it doesn't search records and nothing leaves the device", /does not search any records/.test(howA) && /Nothing you type leaves your device/.test(howA), howA.slice(0, 160));
-check("Widow checker: empty form -> plan says 'Fill in the form above'", /Fill in the form above/.test(await page.textContent('[data-tool="widow"] [data-plan]')));
+check("Widow checker: before any check, 'What to do next' shows only a labelled placeholder, not a generic plan (audit 3)", /appear here after you press/.test(await page.textContent('[data-tool="widow"] [data-plan]')) && (await page.$$('[data-tool="widow"] [data-plan] .plan-steps')).length === 0);
 await page.fill("#tw-m", "1780-05-01"); await page.fill("#tw-e", "1781-10-19"); await page.fill("#tw-mo", "24"); await page.fill("#tw-d", "730"); await page.click('form[data-form=widow] button[type=submit]');
 let txt = await page.textContent('[data-out=widow]');
 check("Widow checker: table shows 1836 note about 1832 service categories", /1832/.test(txt) && /Continental Line/.test(txt), "");
@@ -77,6 +77,9 @@ check("Widow checker: 'Not checked' row says why and what to do (pension papers 
 await page.fill("#tw-m", "1790"); await page.fill("#tw-e", "1779-10"); await page.fill("#tw-mo", "20"); await page.fill("#tw-d", ""); await page.click('form[data-form=widow] button[type=submit]');
 const r1836 = await page.$$eval('[data-out=widow] tbody tr', (trs) => trs.find((tr) => tr.cells[0].textContent.includes("1836")).cells[1].textContent);
 check("Widow checker (audit 2): 1836 'Doesn't fit' says why: married 1790, service ended 1779-10, and the rule", /Doesn't fit/.test(r1836) && /1790/.test(r1836) && /1779-10/.test(r1836) && /marriage came after his service ended/.test(r1836), r1836.slice(0, 160));
+await page.fill("#tw-m", "1790"); await page.fill("#tw-e", "1779"); await page.fill("#tw-mo", ""); await page.fill("#tw-d", ""); await page.uncheck('form[data-form=widow] input[name=engagement]'); await page.click('form[data-form=widow] button[type=submit]');
+const a3 = await page.evaluate(() => ({ r: [...document.querySelectorAll("[data-out=widow] tbody tr")].find((tr) => tr.cells[0].textContent.includes("1836")).cells[1].textContent, ans: document.querySelector("[data-answer]")?.textContent || "" }));
+check("Widow checker (audit 3 #1): married 1790, service ended 1779, no months typed -> 1836 'Doesn't fit as typed' with the plain reason, not 'Not checked'", /Doesn't fit/.test(a3.r) && !/Not checked/.test(a3.r) && /marriage came after his service ended/.test(a3.r) && /Doesn't fit: the 1836 law/.test(a3.ans), a3.r.slice(0, 120));
 check("Widow checker: each field shows a 'Why it matters' line", (await page.$$eval("form[data-form=widow] [data-why]", (ps) => ps.filter((p) => p.textContent.startsWith("Why it matters")).length)) === 4);
 await page.click('[data-tool="widow"] [data-load-example]');
 const exD = await page.textContent('[data-out=widow]');
@@ -216,11 +219,66 @@ check("Report: each 'Where to look' block appears once, and every to-do points t
 check("Report: a visible 'Save as PDF' button prints the summary only", rep.save && await (async () => { await page.evaluate(() => { window.__sp = null; window.print = () => { window.__sp = document.body.classList.contains("print-summary"); }; }); await page.click("[data-save-pdf]"); return page.evaluate(() => window.__sp === true); })());
 await page.emulateMedia({ media: "print" }); await page.evaluate(() => document.body.classList.add("print-summary"));
 const pdfPages = (buf) => (buf.toString("latin1").match(/\/Type\s*\/Page[^s]/g) || []).length;
-const summaryPages = pdfPages(await page.pdf({ format: "Letter", path: join(SHOTS, "example-report-summary.pdf") }));
-await page.evaluate(() => document.body.classList.remove("print-summary")); const fullPages = pdfPages(await page.pdf({ format: "Letter", path: join(SHOTS, "example-report-full.pdf") }));
-await page.emulateMedia({ media: "screen" }); globalThis.__reportPages = { summaryPages, fullPages };
-check("Report: the example's 'Save as PDF' summary prints on 1–2 Letter pages (headless Chrome print-to-PDF)", summaryPages >= 1 && summaryPages <= 2, `summary ${summaryPages} page(s), full report ${fullPages} page(s)`);
+// Measured like Chrome's print window: Letter, the page's own margins, headers and footers on (audit 3 printed 3 and 5 pages).
+const PDF_OPTS = { format: "Letter", displayHeaderFooter: true, preferCSSPageSize: true };
+const summaryPages = pdfPages(await page.pdf({ ...PDF_OPTS, path: join(SHOTS, "example-report-summary.pdf") }));
+const printUrls = await page.evaluate(() => [...document.querySelectorAll("main a")].filter((a) => /http/.test(getComputedStyle(a, "::after").content)).length);
+await page.evaluate(() => document.body.classList.remove("print-summary")); const fullPages = pdfPages(await page.pdf({ ...PDF_OPTS, path: join(SHOTS, "example-report-full.pdf") }));
+const printUrlsFull = await page.evaluate(() => [...document.querySelectorAll("main a")].filter((a) => /http/.test(getComputedStyle(a, "::after").content)).length);
+const hostRefs = await page.evaluate(() => [...document.querySelectorAll("main a[data-host]")].map((a) => getComputedStyle(a, "::after").content).filter((c) => /^"\s\(/.test(c)).length);
+await page.emulateMedia({ media: "screen" }); globalThis.__reportPages = { ...(globalThis.__reportPages || {}), summaryPages, fullPages };
+const claim = await page.$eval("[data-page-claim]", (e) => ({ s: +e.dataset.summaryPages, f: +e.dataset.fullPages, t: e.textContent }));
+check("Report: the page-count claim matches headless Chrome's print-to-PDF of the example (Save as PDF and Ctrl+P)", claim.s === summaryPages && claim.f === fullPages && claim.t.includes(`${summaryPages} Letter pages`) && claim.t.includes(`on ${fullPages} with every record`) && summaryPages <= 2 && fullPages <= 3, `summary ${summaryPages}, full ${fullPages}; claim ${claim.s}/${claim.f}`);
+check("Report: printing shows no link addresses, only short source references like (archives.gov)", printUrls === 0 && printUrlsFull === 0 && hostRefs > 0, `${printUrls}/${printUrlsFull} URL expansions, ${hostRefs} short refs`);
 check("Report: links to the definitions", (await page.$$('main a[href="/#glossary"]')).length >= 1);
+// ---- Audit 3 regressions: persona B (Virginia militia, Ohio family, a ticked census entry) ----
+{
+  const cellB = (fact, docType) => ({ id: "b" + Math.random().toString(36).slice(2), fact, docType, mode: "", conflict: false, citation: "" });
+  const personaB = { version: 1, updated: new Date().toISOString(), patriot: { name: "", state: "VA", unit: "", kind: "militia", start: "1777", end: "1779", gen: "6" },
+    generations: [
+      { gen: 1, who: "", living: true, born: "1960", died: "", state: "OH", cells: [cellB("birth", "birth_cert_long")] },
+      { gen: 2, who: "", living: false, born: "1930", died: "1999", state: "OH", cells: [cellB("parentage", "probate"), cellB("birth", "birth_cert_long"), cellB("death", "death_cert")] },
+      { gen: 3, who: "", living: false, born: "1900", died: "1970", state: "OH", cells: [] },
+      { gen: 4, who: "", living: false, born: "1850", died: "1920", state: "VA", cells: [] },
+      { gen: 5, who: "", living: false, born: "1800", died: "1870", state: "VA", cells: [cellB("parentage", "probate")] },
+      { gen: 6, who: "", living: false, born: "1755", died: "1830", state: "VA", cells: [] } ] };
+  phase("load"); await page.goto(`${BASE}/tools/lineage-matrix/`); await page.evaluate((d) => localStorage.setItem("pi.toolB.v1", JSON.stringify(d)), personaB);
+  await page.goto(`${BASE}/tools/lineage-matrix/`); phase("interact");
+  await page.check('[data-have="3"] input[data-have-item="census"]');
+  const g3 = await page.$eval('section.gen[data-gen="3"] .cell', (c) => ({ doc: c.querySelector("select[name=docType]").value, status: c.querySelector(".status").textContent }));
+  // Repeated notes: Ohio's no-source note is printed in full once on the worksheet page; later mentions are one-line pointers.
+  const ohio = await page.evaluate(() => { const ps = [...document.querySelectorAll("main .where-note")].map((p) => p.textContent);
+    return { full: ps.filter((t) => /no verified source yet on when Ohio began/.test(t)).length, refs: ps.filter((t) => /see the Ohio note above/.test(t)).length }; });
+  check("Audit 3 #5: the 'no verified source for Ohio' note appears in full once on the worksheet page; other mentions just point to it", ohio.full === 1 && ohio.refs >= 1, JSON.stringify(ohio));
+  // Patriot generation: a missing birth or death record has a clear way to add it.
+  const addBtn = await page.$('[data-gaps] [data-add-for="6:birth"]');
+  const btnText = addBtn ? await addBtn.textContent() : "";
+  await addBtn?.click(); const g6 = await page.$$eval('section.gen[data-gen="6"] .cell select[name=fact]', (s) => s.map((x) => x.value));
+  check("Audit 3 #4: the patriot's generation's 'add a birth or death record' item has a button that adds one there", /Add a birth or death record/.test(btnText) && g6.includes("birth"), `${btnText} -> ${g6}`);
+  await page.click('section.gen[data-gen="6"] [data-remove-cell]').catch(() => {});
+  await page.evaluate(() => { const s = JSON.parse(localStorage.getItem("pi.toolB.v1")); s.generations[5].cells = []; localStorage.setItem("pi.toolB.v1", JSON.stringify(s)); });
+  phase("load"); await page.goto(`${BASE}/tools/lineage-matrix/report/`); phase("interact");
+  const rb = await page.evaluate(() => {
+    const rows = [...document.querySelectorAll("table.records tbody tr")].map((tr) => [...tr.children].map((td) => td.textContent));
+    const where = document.querySelector("[data-summary]").textContent.match(/(\d+) evidence entr/);
+    const gen2 = [...document.querySelectorAll(".plan-group")].find((g) => /^Generation 2/.test(g.textContent))?.parentElement.querySelectorAll(".plan-sub > li");
+    const blocks = [...document.querySelectorAll("[data-where-block] p:first-child")].map((p) => p.textContent);
+    const g6 = [...document.querySelectorAll(".plan-group")].find((g) => /the patriot/.test(g.textContent))?.parentElement;
+    const tables = [...document.querySelectorAll(".report-detail h3")].map((h) => h.textContent);
+    return { rows, entries: where ? +where[1] : -1, gen2: gen2 ? [...gen2].map((li) => li.firstChild.textContent) : [], ohio: blocks.filter((t) => /no verified source yet on when Ohio/.test(t)).length,
+      censusBlocks: blocks.filter((t) => /^[A-Z]+\. Census:/.test(t)).map((t) => t.replace(/^[A-Z]+\. /, "")), g6add: g6?.querySelector("[data-add-link]")?.getAttribute("href") || "" }; });
+  const census = rb.rows.find((r) => /Census/.test(r[1]));
+  check("Audit 3 #3: a ticked 'Census entry' shows its kind and 'Entry Incomplete' in the report, and every counted entry is a row there", g3.doc === "census" && /Entry Incomplete/.test(g3.status) && census && /Census entry/.test(census[1]) && /Entry Incomplete/.test(census[4]) && rb.entries === rb.rows.length && !rb.rows.some((r) => /No Evidence Entered/.test(r[4])), JSON.stringify({ g3, census, entries: rb.entries, rows: rb.rows.length }));
+  check("Audit 3 #4: within a generation, the person's own records (birth, death) come before the link record, in the plan and in the records table", /^The birth record/.test(rb.gen2[0] || "") && /^The death record/.test(rb.gen2[1] || "") && /link/.test(rb.gen2.at(-1) || "") && rb.rows.findIndex((r) => r[0] === "Birth") < rb.rows.findIndex((r) => /Parent/.test(r[0])), rb.gen2.join(" | "));
+  check("Audit 3 #4: in the report, the patriot's missing birth or death record links to his generation in the worksheet", rb.g6add === "/tools/lineage-matrix/#gen-6", rb.g6add);
+  check("Audit 3 #5: the report prints the Ohio no-source note once, and each census fact once", rb.ohio === 1 && rb.censusBlocks.length === new Set(rb.censusBlocks).size && rb.censusBlocks.length >= 2, JSON.stringify(rb.censusBlocks));
+  await page.emulateMedia({ media: "print" }); await page.evaluate(() => document.body.classList.add("print-summary"));
+  const bS = pdfPages(await page.pdf(PDF_OPTS)); await page.evaluate(() => document.body.classList.remove("print-summary")); const bF = pdfPages(await page.pdf(PDF_OPTS));
+  await page.emulateMedia({ media: "screen" }); globalThis.__reportPages = { ...(globalThis.__reportPages || {}), personaB: { summaryPages: bS, fullPages: bF } };
+  check("Audit 3 #2: the audit's longer persona-B report prints shorter than before (Save as PDF 3 -> at most 2, Ctrl+P 5 -> at most 3)", bS <= 2 && bF <= 3, `summary ${bS}, full ${bF}`);
+  await page.evaluate(() => localStorage.removeItem("pi.toolB.v1"));
+  phase("load"); await page.goto(`${BASE}/tools/lineage-matrix/`); await page.click("[data-load-example]"); phase("interact");
+}
 phase("load"); await page.goto(`${BASE}/tools/lineage-matrix/`); phase("interact");
 await page.selectOption("#state-3", "TX");
 const genOpts = await page.$$eval("#pat-gen option", (os) => os.map((o) => [o.value, o.textContent]));
@@ -282,6 +340,15 @@ for (const gp of ["/guides/lineage-proof-roadmap/", "/guides/substitute-evidence
   const h = readFileSync(join(DIST, gp, "index.html"), "utf8"); const d = (h.match(/<details class="defs"[\s\S]*?<\/details>/) || [""])[0];
   if (!d || h.indexOf(d) > h.indexOf("</h1>") + 6 || !glossTerms.every((k) => d.includes(`<strong>${k}</strong>`)) || !/<sup><a href="#src-/.test(d) || !d.includes('href="/#glossary"')) defsBad.push(gp); }
 check("Definitions box (DAR, SAR, NSCDA, lineage society, patriot, bounty land, Stat.) right under the title on all 10 guides and both tools, sourced", defsBad.length === 0, defsBad.join(" "));
+{ // Audit 3 #7: plain terms
+  const homeHtml = readFileSync(join(DIST, "index.html"), "utf8"); const mainTxt = homeHtml.slice(homeHtml.indexOf("<main")).replace(/<[^>]+>/g, " ").replace(/\s+/g, " ");
+  const firstP = mainTxt.search(/patriot/i);
+  check("Audit 3 #7: 'patriot' is glossed in plain words, with a source, at its first use on the home page's first screen", firstP > 0 && /A patriot here means someone who supported the cause of American independence/.test(mainTxt.slice(firstP, firstP + 260)) && /sar-about-patriots|#src-/.test(homeHtml.slice(homeHtml.indexOf("A <strong>patriot</strong> here"), homeHtml.indexOf("A <strong>patriot</strong> here") + 600)), mainTxt.slice(firstP - 40, firstP + 200));
+  const toolTerms = ["/tools/widow-pension-checker/", "/tools/lineage-matrix/"].map((tp) => { const h = readFileSync(join(DIST, tp, "index.html"), "utf8"); const i = h.indexOf('class="card box-tool-terms"'); const j = h.indexOf("data-tool="); const box = i > 0 ? h.slice(i, h.indexOf("</aside>", i)) : "";
+    return i > 0 && i < j && /<strong>society<\/strong>/.test(box) && /<strong>registrar<\/strong>/.test(box) && (box.match(/<sup>/g) || []).length >= 2 && box.includes('href="/#glossary"'); });
+  check("Audit 3 #7: both tools explain 'society' and 'registrar' in plain, sourced words just above the tool", toolTerms.every(Boolean), JSON.stringify(toolTerms));
+  check("Audit 3 #7: the glossary defines Society and Registrar, each sourced", ["Society:", "Registrar:"].every((k) => gloss.includes(k)) && /chapter registrar/.test(gloss));
+}
 check("Both reports link to the definitions", ["/tools/widow-pension-checker/report/", "/tools/lineage-matrix/report/"].every((p) => readFileSync(join(DIST, p, "index.html"), "utf8").includes('href="/#glossary"')));
 const plainTerms = ["/tools/widow-pension-checker/", "/guides/bounty-land-warrants/"].every((p) => { const h = readFileSync(join(DIST, p, "index.html"), "utf8").replace(/<details[\s\S]*?<\/details>/, ""); return /free land in the public domain/.test(h); })
   && /Statutes at Large/.test(readFileSync(join(DIST, "tools/widow-pension-checker/index.html"), "utf8").replace(/<details[\s\S]*?<\/details>/, ""));

@@ -38,7 +38,7 @@ unknown or unverified claim, stale entry (> 120 days), quote that no longer appe
 | `manifest/` | Source Manifest (`claims.json`) and the Python that regenerates it (`npm run manifest`) |
 | `scripts/` | Static site generator, tests, manifest gate, link checker, gates doc generator |
 | `ops/gates.js`, `docs/gates.md` | Day 30/60/90 mixed-gate decision rules (code + generated doc) |
-| `qa/e2e.mjs` | Headless-browser end-to-end suite (103 checks, incl. 360px, fresh profile and the report page count) |
+| `qa/e2e.mjs` | Headless-browser end-to-end suite (115 checks, incl. 360px, fresh profile and the report page count) |
 | `.github/workflows/` | `build.yml` (build gates on every push/PR), `ci.yml` (E2E on releases and tool PRs) |
 | `dist/` | Build output (generated; this is what gets deployed) |
 
@@ -52,7 +52,14 @@ There is no `src/components/` directory; tool code lives in `src/tools/`.
 - Every guide and tool page has a "New here?" definitions box (DAR, SAR, NSCDA, lineage society, patriot, bounty land, Stat.) linking to the glossary.
 - Widow checker: a one-line plain answer above the results table and a plain-terms note.
 - Worksheet: a "What do you have?" checklist per generation and plain relationship choices ("my 3rd-great-grandfather").
-- Worksheet report: a summary first, each "Where to look" block shown once and referenced from the gaps, and a "Save as PDF" button. The example summary prints on 2 Letter pages (full report: 4), measured by `npm run e2e` (`exampleReportPages` in `qa/e2e-results.json`).
+- Worksheet report: a summary first, each "Where to look" block shown once and referenced from the gaps, and a "Save as PDF" button. The example prints on 2 Letter pages with "Save as PDF" and 3 with Ctrl+P (headers and footers on, the way Chrome's print window prints), measured by `npm run e2e` (`exampleReportPages` in `qa/e2e-results.json`).
+
+### Audit 3 fixes (Oct 31, 2026)
+
+- Widow checker: a failed rule wins over a missing field (married after his service ended = "Doesn't fit as typed" for 1836, months or not). "What to do next" shows a labelled placeholder until a check runs.
+- Report: print shows short source names (e.g. "archives.gov") instead of link addresses; the page-count line matches the measured example; own records (birth, death) come before link records; missing records link to their generation in the worksheet.
+- Worksheet: a ticked "Census entry" has a real kind and an "Entry Incomplete" status; "no verified source for this state" notes and census facts print once; missing records get an "+ Add" button.
+- Plain terms: "patriot" glossed at its first use on the home page; "society" and "registrar" explained above both tools and in the glossary (SAR How to Apply).
 
 ## Requirements
 
@@ -70,7 +77,7 @@ There is no `src/components/` directory; tool code lives in `src/tools/`.
 ## Local verification
 
 ```bash
-npm test          # service-window (34 + 30 plain-language, answer-line and plain-terms), lineage-matrix (67), gate examples (29) + exhaustive gate sweep (~30 s)
+npm test          # service-window (34 + 33 plain-language, answer-line, plain-terms and widow-ordering), lineage-matrix (74), gate examples (29) + exhaustive gate sweep (~30 s)
 npm run check     # Source Manifest gate, offline: every factual sentence -> verified manifest claim
 npm run build     # prebuild: npm test + live manifest check (fetches all sources);
                   # build: writes dist/; postbuild: internal + external link check

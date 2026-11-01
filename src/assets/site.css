@@ -82,7 +82,7 @@ li.conflict>.gap-text,li.conflict>span{color:#8e1b24;font-weight:600}
 @media (max-width:600px){.table-wrap:has(table.widow){overflow:visible;border:0}table.widow,table.widow tbody,table.widow tr,table.widow td{display:block;width:100%}table.widow thead{display:none}table.widow tr{border:1px solid var(--line);border-radius:6px;margin:.6rem 0;padding:.3rem .5rem;background:#fff}table.widow tr:nth-child(even) td{background:none}table.widow td{border:0;padding:.25rem 0}table.widow td::before{content:attr(data-label);display:block;font-weight:700;color:var(--navy);font-size:12px;text-transform:uppercase;letter-spacing:.03em}table.widow td:first-child{font-weight:700}table.widow td{overflow-wrap:anywhere}}
 @media (min-width:640px){.tool .row{grid-template-columns:auto 1fr auto 1fr;align-items:center;gap:.5rem}.tool .row label{margin:0}}
 @media (max-width:480px){body{font-size:16px}h1{font-size:1.5rem}nav.top a{margin:0 .8rem 0 0}}
-@media print{body.print-plan main *{visibility:hidden}body.print-plan main .plan,body.print-plan main .plan *{visibility:visible}body.print-plan main .plan{position:absolute;left:0;top:0;width:100%;border:0}.plan a[href^="http"]::after{content:" (" attr(href) ")";font-size:9pt;word-break:break-all}.plan button{display:none!important}header.site,footer.site,nav,.no-print,.tool button,a.button-link,.howto,.card{display:none!important}body{font-size:11pt}.tool{border:0;padding:0}.table-wrap{overflow:visible;border:0}a{color:inherit}}
+@media print{body.print-plan main *{visibility:hidden}body.print-plan main .plan,body.print-plan main .plan *{visibility:visible}body.print-plan main .plan{position:absolute;left:0;top:0;width:100%;border:0}.plan button{display:none!important}header.site,footer.site,nav,.no-print,.tool button,a.button-link,.howto,.card{display:none!important}body{font-size:11pt}.tool{border:0;padding:0}.table-wrap{overflow:visible;border:0}a{color:inherit}}
 /* Round 5: widow checker leads the home page; patriot step; era/state notes */
 .lead-tool{border:2px solid var(--navy);border-left:6px solid var(--red);border-radius:8px;padding:.4rem 1rem 1rem;margin:1.2rem 0;background:var(--soft)}
 .lead-tool h2{margin-top:.6rem}
@@ -130,20 +130,58 @@ p.answer{border-left:4px solid var(--navy);background:#fff;padding:.5rem .7rem;m
   [data-tool-report="lineage-matrix"] p,[data-tool-report="lineage-matrix"] li{margin:.1rem 0}
   [data-tool-report="lineage-matrix"] ul,[data-tool-report="lineage-matrix"] ol{margin:.1rem 0;padding-left:1.1rem}
   [data-tool-report="lineage-matrix"] .plan{border:0;padding:0;margin:0}
-  [data-tool-report="lineage-matrix"] a[href^="http"]::after{content:" (" attr(href) ")";font-size:7.5pt;word-break:break-all}
   .where-block{border-left:2px solid #999;padding:0 .4rem;margin:.25rem 0;break-inside:avoid}
   body.print-summary .report-detail,body.print-summary main h1~p,body.print-summary main .wrap>p{display:none!important}
   body.print-summary main h1{font-size:14pt;margin:0 0 .2rem}
 }
 @media print{
-  body.print-summary [data-tool-report="lineage-matrix"] a[href]::after{content:none!important}
   body.print-summary .report-where .where-block{break-inside:avoid}
-  body.print-summary .report-where{columns:2;column-gap:.3in}
-  body.print-summary .report-where h2,body.print-summary .report-where>p{column-span:all}
   [data-tool-report="lineage-matrix"] .where-links{margin:.05rem 0}
 }
 @media print{
   [data-tool-report="lineage-matrix"] .plan,[data-tool-report="lineage-matrix"] .plan *,[data-tool-report="lineage-matrix"] .where-block,[data-tool-report="lineage-matrix"] .where-block *{font-size:9pt!important;line-height:1.28!important}
   [data-tool-report="lineage-matrix"] .small,[data-tool-report="lineage-matrix"] .small *,[data-tool-report="lineage-matrix"] .where-ref{font-size:8pt!important}
   [data-tool-report="lineage-matrix"] .plan-steps>li{margin:.15rem 0}
+}
+/* Audit 3: print shows a compact source reference (site name) instead of full link addresses; the report prints shorter. */
+@media print{
+  a[href]::after{content:none}
+  a[data-host]::after{content:" (" attr(data-host) ")";font-size:7.5pt;color:#444}
+  .add-for,.add-link{display:none!important}
+  [data-tool-report="lineage-matrix"] .report-where{display:grid;grid-template-columns:1fr 1fr;column-gap:.3in;align-items:start}
+  [data-tool-report="lineage-matrix"] .report-where>h2,[data-tool-report="lineage-matrix"] .report-where>p{grid-column:1/-1}
+  [data-tool-report="lineage-matrix"] .where-block{break-inside:avoid}
+  [data-tool-report="lineage-matrix"] .used-for{font-size:7.5pt!important}
+  [data-tool-report] main h1~p,[data-tool-report] > p.small{display:none}
+  table.records{font-size:8pt}
+  table.records th,table.records td{padding:.1rem .25rem}
+  [data-tool-report="lineage-matrix"] .report-detail h3{font-size:10pt;margin:.3rem 0 .1rem}
+  [data-tool-report="lineage-matrix"] .patriot-summary dl{font:8.5pt/1.3 system-ui,sans-serif}
+}
+.add-for{margin:.3rem 0;font-size:14px}
+.add-link{font-size:13px}
+@media print{
+  [data-tool-report] ul.plan-links,[data-tool-report] ul.where-links{list-style:none;padding-left:0!important;margin:.05rem 0}
+  [data-tool-report] ul.plan-links>li,[data-tool-report] ul.where-links>li{display:inline;margin:0!important}
+  [data-tool-report] ul.plan-links>li:not(:last-child)::after,[data-tool-report] ul.where-links>li:not(:last-child)::after{content:"; "}
+  [data-tool-report] ul.plan-links>li::before{content:none}
+}
+@media print{
+  main,main .wrap{padding-top:0!important;padding-bottom:0!important;margin-bottom:0!important}
+  [data-tool-report="lineage-matrix"] section.tool{border:0;padding:0;margin:0}
+  body.print-summary [data-tool-report="lineage-matrix"] .plan,body.print-summary [data-tool-report="lineage-matrix"] .plan *,body.print-summary [data-tool-report="lineage-matrix"] .where-block,body.print-summary [data-tool-report="lineage-matrix"] .where-block *{font-size:8.5pt!important;line-height:1.22!important}
+  [data-tool-report="lineage-matrix"] .where-block{margin:.15rem 0}
+  [data-tool-report="lineage-matrix"] .plan-sub>li,[data-tool-report="lineage-matrix"] .plan-items>li{margin:0}
+}
+@media print{
+  /* Full report: every generation's table uses the same columns, so the column headings print once. */
+  table.records{table-layout:fixed;width:100%}
+  table.records td:nth-child(1),table.records th:nth-child(1){width:19%}
+  table.records td:nth-child(2),table.records th:nth-child(2){width:16%}
+  table.records td:nth-child(3),table.records th:nth-child(3){width:12%}
+  table.records td:nth-child(4),table.records th:nth-child(4){width:29%}
+  table.records td:nth-child(5),table.records th:nth-child(5){width:24%}
+  table.records-more thead{display:none}
+  [data-tool-report="lineage-matrix"] .report-detail .table-wrap{margin:.1rem 0}
+  [data-tool-report="lineage-matrix"] .report-detail p.small{margin:0}
 }

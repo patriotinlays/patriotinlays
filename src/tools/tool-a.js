@@ -51,16 +51,19 @@ export const WIDOW_ACTS = [
   { id: "act1836", label: "Act of July 4, 1836 (5 Stat. 128)", short: "1836", claim: "nara-act-1836", claim1832: "nara-act-1832", claimCategories: "nara-act-1832-categories",
     nextNote: "What to do: find out what kind of unit he served in. For state militia, the National Archives says to check the archives of the state where he served; for Continental troops, see its service-records guide.", nextLinks: ["serviceRecords"], nextClaim: "nara-svc-state", claimHolds: "nara-svc-holds",
     uiNote: "Not checked: whether his type of service counted. The 1836 law relied on the service rules of the 1832 law (Continental Line or State troops, volunteers or militia). This tool checks only the marriage date and the months of service.",
+    // Decisive failures win over missing fields: a marriage after his service ended, or under 6 months typed,
+    // fails the rule whatever the other boxes say (audit 3).
     test: (w) => {
+      const mOk = w.marriage && w.serviceEnd ? (w.marriage.hi < w.serviceEnd.lo ? "yes" : (w.marriage.lo >= w.serviceEnd.hi ? "no" : "maybe")) : null;
+      const rule = "Marriage must precede expiration of veteran's last period of service; service as specified in act of June 7, 1832.";
+      const fails = [];
+      if (mOk === "no") fails.push(`You typed a marriage date of ${w.marriage.raw} and the end of his last service as ${w.serviceEnd.raw}, so the marriage came after his service ended. This law's rule is that the marriage came before his last period of service ended.`);
+      if (w.serviceMonths != null && w.serviceMonths < 6) fails.push(`You typed ${plural(w.serviceMonths, "month")} of service. The 1836 law relied on service under the 1832 law, which started at 6 months.`);
+      if (fails.length) return { status: "inconsistent", text: mOk === "no" ? rule : "1836 act relies on 1832-act service (at least 6 months); entered service is shorter.", reason: fails.join(" ") };
       if (!w.marriage || !w.serviceEnd) return { status: "not_evaluated", text: "Needs the marriage date and the date his last period of service ended.", why: "Missing information.", next: FILL(!w.marriage ? "Marriage date" : "When his last service ended") };
       if (w.serviceMonths == null) return { status: "not_evaluated", text: "Needs total months of service (1832-act service required).", why: "Missing information.", next: FILL("Total months of service") };
-      const mOk = w.marriage.hi < w.serviceEnd.lo ? "yes" : (w.marriage.lo >= w.serviceEnd.hi ? "no" : "maybe");
-      if (w.serviceMonths < 6) return { status: "inconsistent", text: "1836 act relies on 1832-act service (at least 6 months); entered service is shorter.",
-        reason: `You typed ${plural(w.serviceMonths, "month")} of service. The 1836 law relied on service under the 1832 law, which started at 6 months.` };
-      return { status: mOk === "yes" ? "consistent" : mOk === "no" ? "inconsistent" : "partial",
-        text: "Marriage must precede expiration of veteran's last period of service; service as specified in act of June 7, 1832.",
-        reason: mOk === "no" ? `You typed a marriage date of ${w.marriage.raw} and the end of his last service as ${w.serviceEnd.raw}, so the marriage came after his service ended. This law's rule is that the marriage came before his last period of service ended.`
-          : mOk === "maybe" ? `The marriage date (${w.marriage.raw}) and the end of his last service (${w.serviceEnd.raw}) are too rough to tell which came first. This law's rule is that the marriage came before his last period of service ended. A fuller date would settle it.` : null };
+      return { status: mOk === "yes" ? "consistent" : "partial", text: rule,
+        reason: mOk === "maybe" ? `The marriage date (${w.marriage.raw}) and the end of his last service (${w.serviceEnd.raw}) are too rough to tell which came first. This law's rule is that the marriage came before his last period of service ended. A fuller date would settle it.` : null };
     } },
   { id: "act1838", label: "Act of July 7, 1838 (5 Stat. 303) — 5-year pensions", short: "1838", claim: "nara-act-1838",
     test: (w) => w.marriage ? marriageBefore(w.marriage, "1794-01-01", "Marriage before January 1, 1794.") : needMarriage() },

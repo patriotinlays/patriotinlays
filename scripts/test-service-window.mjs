@@ -118,6 +118,16 @@ const U = [
   ["Answer line: empty form says to fill in the boxes; input errors give no answer line", /fill in the boxes/.test(widowSummary(checkWidowActs({})).text) && widowSummary([{ act: "input", status: "not_evaluated" }]) === null],
   ["Every widow law has a short name for the answer line", WIDOW_ACTS.every((a) => a.short && a.short.length < 30)],
   ["Plain terms for 'Stat.' and 'bounty land' cite verified claims", Object.values(TERMS).every((t) => t.text && t.claims.length && t.claims.every((c) => verified.has(c)))],
+  ["Audit 3: married 1790, service ended 1779, no months -> 1836 'doesn't fit' with the plain reason (a decisive failure wins over a missing field)", (() => { const r = checkWidowActs({ marriage: "1790", serviceEnd: "1779" }).find((x) => x.act === "act1836"); return r.status === "inconsistent" && /marriage came after his service ended/.test(r.message) && !r.why; })()],
+  ["Audit 3: under 6 months typed fails 1836 even with no dates; a missing date alone is still 'Not checked'", act(checkWidowActs({ serviceMonths: 3 }), "act1836") === "inconsistent" && act(checkWidowActs({ marriage: "1775", serviceEnd: "1779" }), "act1836") === "not_evaluated" && act(checkWidowActs({ serviceEnd: "1779", serviceMonths: 20 }), "act1836") === "not_evaluated"],
+  ["Audit 3: every law, every input mix: a law never says 'Not checked' when a field it tests already fails it", (() => { const ms = [null, "1775", "1790", "1810"], es = [null, "1779"], mo = [null, 3, 20], ds = [null, 5, 30], en = [null, true];
+    for (const marriage of ms) for (const serviceEnd of es) for (const serviceMonths of mo) for (const serviceDays of ds) for (const engagement of en) {
+      const r = checkWidowActs({ marriage, serviceEnd, serviceMonths, serviceDays, engagement }); const st = (id) => act(r, id);
+      if (marriage === "1810" && (st("act1838") !== "inconsistent" || st("act1848") !== "inconsistent")) return false;
+      if (marriage && serviceEnd && +marriage > +serviceEnd && st("act1836") !== "inconsistent") return false;
+      if (serviceMonths === 3 && st("act1836") !== "inconsistent") return false;
+      if (serviceDays === 5 && !engagement && (st("act1855bounty") !== "inconsistent" || st("act1878") !== "inconsistent")) return false; }
+    return true; })()],
   ["End-before-start error is plain", /end date is before the start date/.test(sw("core", "1778", "1777").message)],
 ];
 let uPass = 0; for (const [n, ok] of U) { console.log(`${ok ? "PASS" : "FAIL"}  [plain] ${n}`); if (ok) uPass++; }

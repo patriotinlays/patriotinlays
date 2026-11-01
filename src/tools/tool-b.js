@@ -48,7 +48,7 @@ export const HAVE_ITEMS = Object.freeze([
   { id: "death_cert", label: "Death certificate", fact: "death", docType: "death_cert" },
   { id: "marriage", label: "Marriage record", fact: "marriage", docType: "marriage_record" },
   { id: "will", label: "Will or probate record", fact: "parentage", docType: "probate" },
-  { id: "census", label: "Census entry", fact: "parentage", docType: "" },
+  { id: "census", label: "Census entry", fact: "parentage", docType: "census" },
   { id: "bible", label: "Family Bible record", fact: "birth", docType: "bible" },
   { id: "church", label: "Church or baptism record", fact: "birth", docType: "church" },
   { id: "pension", label: "Pension file", fact: "", docType: "pension" },
@@ -86,24 +86,29 @@ export const DOC_TYPES = {
   census_1850_1870: "Census 1850–1870", census_pre1850: "Census before 1850", bible: "Family Bible record",
   church: "Church record", probate: "Will / probate", land: "Deed / land record", pension: "Pension file",
   family_genealogy: "Compiled family genealogy", other: "Other (describe in citation)",
+  census: "Census entry (year range not picked yet)",
 };
 
 // cell = { docType, fact, mode: "direct"|"indirect"|"", conflict: bool, citation: string }
 export function evaluateCell(cell = {}) {
   const issues = [], cautions = [];
-  if (!cell.docType && !cell.citation) return { label: LABELS.none, issues, cautions };
-  if (!cell.docType) issues.push("Still needed: pick what kind of record this is.");
-  else if (!DOC_TYPES[cell.docType]) issues.push(`Still needed: pick a record type from the list ("${cell.docType}" isn't one).`);
-  if (!FACTS.includes(cell.fact)) issues.push("Still needed: pick what this record shows (birth, death, marriage, parent–child link or where they lived).");
-  if (!["direct", "indirect"].includes(cell.mode)) issues.push("Still needed: pick whether the record says it in words or only hints at it.");
-  if (!cell.citation || cell.citation.trim().length < 8) issues.push("Still needed: say where you found the record, in a few words (for example: county courthouse, will book 3, page 12).");
+  // Only a fully blank record is "No Evidence Entered" (and blank records are never counted). Anything typed or ticked is an
+  // entry, so its status is "Entry Incomplete" until A to D are answered (audit 3: a ticked census showed "No Evidence Entered").
+  if (isEmptyCell(cell)) return { label: LABELS.none, issues, cautions, needs: [] };
+  const needs = [];
+  if (!cell.docType) { issues.push("Still needed: pick what kind of record this is."); needs.push("its kind"); }
+  else if (cell.docType === "census") { issues.push("Still needed: pick which census it is (the year range)."); needs.push("which census"); }
+  else if (!DOC_TYPES[cell.docType]) { issues.push(`Still needed: pick a record type from the list ("${cell.docType}" isn't one).`); needs.push("its kind"); }
+  if (!FACTS.includes(cell.fact)) { issues.push("Still needed: pick what this record shows (birth, death, marriage, parent–child link or where they lived)."); needs.push("what it shows"); }
+  if (!["direct", "indirect"].includes(cell.mode)) { issues.push("Still needed: pick whether the record says it in words or only hints at it."); needs.push("words or hints"); }
+  if (!cell.citation || cell.citation.trim().length < 8) { issues.push("Still needed: say where you found the record, in a few words (for example: county courthouse, will book 3, page 12)."); needs.push("where you found it"); }
   for (const c of CAUTIONS) if (c.doc === cell.docType && c.facts.includes(cell.fact)) cautions.push({ text: c.text, claim: c.claim });
   if (cell.mode === "direct" && cautions.some((c) => c.claim === "nscda-census-1850-1870"))
     cautions.push({ text: "You picked \"says it in words\", but the published standard above says this record type does not state relationships.", claim: "nscda-census-1850-1870" });
   if (cell.mode === "indirect") cautions.push({ text: "Indirect evidence usually needs other records that agree with it.", claim: null });
   let label = issues.length ? LABELS.incomplete : LABELS.entered;
   if (cell.conflict) label = LABELS.conflict;
-  return { label, issues, cautions };
+  return { label, issues, cautions, needs };
 }
 
 // Requirements per generation (DAR application help, Step-by-Step).
@@ -171,7 +176,7 @@ export function whereToLook(fact, gen, ctx = {}) {
     const v = vitalNote(ctx.state, fact, { year: fact === "birth" ? born : fact === "death" ? died : null, lower: fact === "birth" ? null : born });
     if (v) { if (v.era === "state") era = "recent"; else if (v.era === "none") era = "older";
       // Where the state kept no birth records then, point straight to the guide on proving a birth without one.
-      notes.push({ text: v.text, claims: v.claims, links: v.links, kind: "state", guide: fact === "birth" && v.noRecord ? SUBSTITUTE_GUIDE : null }); }
+      notes.push({ text: v.text, claims: v.claims, links: v.links, kind: v.noSource ? "nosource" : "state", ...(v.noSource ? { place: v.place, fact, key: `ns|${v.place}` } : {}), guide: fact === "birth" && v.noRecord ? SUBSTITUTE_GUIDE : null }); }
     else notes.push({ text: "Add the state where this person lived to see what that state's own records office says.", claims: [], links: [], kind: "hint" });
   }
   if (["birth", "parentage", "residence"].includes(fact)) {
@@ -197,20 +202,22 @@ export function gaps(rows = [], patriot = null) {
     const ctx = { born: r.born, died: r.died, state: r.state || (r.gen === pg ? patriot?.state : "") || "", patriot: r.gen === pg };
     const whereToLook = (f, gen) => whereFor(f, gen, ctx);
     const has = (f) => filledCells(r.cells).some((c) => c.fact === f && evaluateCell(c).label !== LABELS.none);
-    for (const f of req.need) if (!has(f)) out.push({ gen: r.gen, fact: f, priority: 1, text: `${who}: no ${f} evidence entered yet.`, claim: req.claim, where: whereToLook(f, r.gen) });
-    if (req.anyOf && !req.anyOf.some(has)) out.push({ gen: r.gen, fact: "birth", priority: 1, text: `${who}: add at least one birth or death record.`, claim: req.claim, where: whereToLook("birth", r.gen) });
-    if (req.link && !has("parentage")) out.push({ gen: r.gen, fact: "parentage", priority: 1, text: `${who}: no record yet that links this person to the next generation in your line.`, claim: "dar-each-relationship", where: whereToLook("parentage", r.gen) });
+    for (const f of req.need) if (!has(f)) out.push({ gen: r.gen, fact: f, priority: 1, add: f, text: `${who}: no ${f} evidence entered yet.`, claim: req.claim, where: whereToLook(f, r.gen) });
+    if (req.anyOf && !req.anyOf.some(has)) out.push({ gen: r.gen, fact: "birth", priority: 1, add: "birth", text: `${who}: add at least one birth or death record.`, claim: req.claim, where: whereToLook("birth", r.gen) });
+    if (req.link && !has("parentage")) out.push({ gen: r.gen, fact: "parentage", priority: 1, add: "parentage", text: `${who}: no record yet that links this person to the next generation in your line.`, claim: "dar-each-relationship", where: whereToLook("parentage", r.gen) });
     for (const c of filledCells(r.cells)) { const ev = evaluateCell(c); const fl = c.fact ? factName(c.fact) : "record";
       const where = c.fact ? whereToLook(c.fact, r.gen) : { text: "", notes: [], claims: [], links: [], guides: [], registrar: REGISTRAR };
       if (ev.label === LABELS.conflict) out.push({ gen: r.gen, fact: c.fact, priority: 0, text: `${who}: you flagged a conflict on the ${fl} record. Sort it out before relying on it.`, where });
-      else if (ev.label === LABELS.incomplete) out.push({ gen: r.gen, fact: c.fact, priority: 2, text: `${who}: the ${fl} record isn't finished. ${ev.issues.join(" ")}`, where });
+      else if (ev.label === LABELS.incomplete) out.push({ gen: r.gen, fact: c.fact, priority: 2, text: `${who}: the ${fl} record isn't finished. ${ev.issues.join(" ")}`,
+        brief: `The ${fl} record isn't finished. Still needed: ${ev.needs.join(", ")}.`, where });
       else if (ev.cautions.length) out.push({ gen: r.gen, fact: c.fact, priority: 2, text: `${who}: ${fl} record. ${ev.cautions[0].text}`, claim: ev.cautions[0].claim, where }); }
   }
   // Each item also gets a "short" text without the "Generation N (...)" prefix, for grouped display.
   for (const g of out) g.short = g.gen == null ? g.text : g.text.replace(/^Generation \d+ \([^)]*\): /, "").replace(/^./, (c) => c.toUpperCase());
-  // One pass per generation, oldest-last, in order; within a generation: conflicts, then missing, then fixes.
+  // One pass per generation, oldest-last, in order. Within a generation the person's own records come first (birth, death,
+  // marriage, where they lived), then the link to the next generation (audit 3); for the same record: conflicts, then missing, then fixes.
   const key = (g) => (g.gen == null ? 0 : g.gen);
-  return out.map((g, i) => [g, i]).sort((a, b) => key(a[0]) - key(b[0]) || a[0].priority - b[0].priority || a[1] - b[1]).map(([g]) => g);
+  return out.map((g, i) => [g, i]).sort((a, b) => key(a[0]) - key(b[0]) || factRank(a[0].fact) - factRank(b[0].fact) || a[0].priority - b[0].priority || a[1] - b[1]).map(([g]) => g);
 }
 
 // Group a gap list so each generation appears once, in order. pg = the patriot's generation (labelled), if known.
@@ -230,6 +237,10 @@ export function patriotGen(rows = [], patriot = null) {
 
 // Records that actually have something in them (blank rows are never labelled or counted).
 export const filledCells = (cells = []) => cells.filter((c) => !isEmptyCell(c));
+// Report order inside a generation: the person's own records (birth, death, marriage, where they lived), then link records.
+export const FACT_ORDER = ["birth", "death", "marriage", "residence", "parentage"];
+export function factRank(f) { const i = FACT_ORDER.indexOf(f); return i < 0 ? FACT_ORDER.length : i; }
+export const byFactOrder = (cells = []) => cells.map((c, i) => [c, i]).sort((a, b) => factRank(a[0].fact) - factRank(b[0].fact) || a[1] - b[1]).map(([c]) => c);
 export const countEntries = (generations = []) => generations.reduce((a, g) => a + filledCells(g.cells).length, 0);
 
 // "What to do next": a numbered action plan built from the visitor's own gaps.
@@ -239,7 +250,7 @@ export function actionPlan(rows = [], patriot = null) {
   if (rows.length < 2) steps.push({ title: "Fill in the worksheet", text: "Start with yourself as generation 1, then add your parent, grandparent and so on back to the patriot.", claims: ["dar-gen1-applicant", "dar-gen-numbering"], links: linksFor("roadmap") });
   steps.push(...patriotSteps(patriot));
   if (real.length) steps.push({ title: "Records to find or fix, generation by generation", text: "Each item says where to look. Sort out any records you flagged as disagreeing before relying on them.", claims: ["dar-each-relationship"], links: [],
-    items: groupGaps(real, pg).map((grp) => ({ text: grp.title, sub: grp.items.map((x) => ({ text: x.short, where: x.where, conflict: x.priority === 0, who: grp.gen ? `Gen ${grp.gen}` : "", fact: x.fact, anyOf: /birth or death/.test(x.short || "") })) })) });
+    items: groupGaps(real, pg).map((grp) => ({ text: grp.title, sub: grp.items.map((x) => ({ text: x.short, brief: x.brief || null, add: x.add || null, gen: x.gen, where: x.where, conflict: x.priority === 0, who: grp.gen ? `Gen ${grp.gen}` : "", fact: x.fact, anyOf: /birth or death/.test(x.short || "") })) })) });
   else if (rows.length >= 2) steps.push({ title: "Records", text: "Nothing is missing by this tool's rules. A society's genealogists still review every record.", claims: ["dar-review-staff"], links: [] });
   steps.push(CONTACT_STEP, APPLY_STEP);
   return steps;

@@ -33,6 +33,8 @@ function renderWidow(rows) {
 let ranThisVisit = null;
 function updatePlan(root) {
   const box = root.querySelector("[data-plan]"); if (!box) return;
+  // Before a check runs, show a plain placeholder instead of a generic plan that could be mistaken for a result (audit 3).
+  if (!ranThisVisit) { box.replaceChildren(el("p", { class: "small hint", "data-plan-wait": "", text: "Your next steps appear here after you press \"Check the widow pension laws\". They follow from your results." })); return; }
   box.replaceChildren(renderPlan(nextSteps(null, ranThisVisit), { heading: false }));
 }
 function savedNotice(root) {

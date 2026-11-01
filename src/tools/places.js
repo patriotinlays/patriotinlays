@@ -103,7 +103,10 @@ export const STATE_VITAL = Object.freeze({
   MD: { links: S("msaBirth"),
     birth: [P(null, null, null, "The Maryland State Archives lists birth records for the counties from 1898 and for Baltimore City from 1875.", { claims: ["msa-birth-counties", "msa-birth-baltimore"] })] },
 });
-const NO_VITAL = (name, fact) => ({ era: null, text: `This site has no verified source yet on when ${name} began keeping ${fact} records, so it can't say whether one exists for this person. A census entry that gives the state and approximate year of birth tells you which local office to ask, and the National Archives points to the CDC's National Center for Health Statistics for how to get records from each state's office.`,
+// facts: one fact ("birth") or several (["birth", "death"]) when the report merges a state's notes into one block.
+export const noVitalText = (name, facts) => { const f = [].concat(facts); const list = f.length > 1 ? `${f.slice(0, -1).join(", ")} or ${f.at(-1)}` : f[0];
+  return `This site has no verified source yet on when ${name} began keeping ${list} records, so it can't say whether one exists for this person. A census entry that gives the state and approximate year of birth tells you which local office to ask, and the National Archives points to the CDC's National Center for Health Statistics for how to get records from each state's office.`; };
+const NO_VITAL = (name, fact) => ({ era: null, noSource: true, place: name, fact, text: `This site has no verified source yet on when ${name} began keeping ${fact} records, so it can't say whether one exists for this person. A census entry that gives the state and approximate year of birth tells you which local office to ask, and the National Archives points to the CDC's National Center for Health Statistics for how to get records from each state's office.`,
   claims: ["nara-vital-census", "nara-vital-states"], links: S("naraVital") });
 
 const inP = (p, y) => (p.from == null || y >= p.from) && (p.to == null || y <= p.to);
@@ -134,5 +137,5 @@ export function censusNote(born, died, { patriot = false } = {}) {
   const parts = eras.map((e) => ({ text: e.text, claims: e.claims }));
   if (patriot && born <= 1840 && hi >= 1840) parts.push(PENSIONER_1840);
   if (!parts.length) return null;
-  return { text: `Censuses in their lifetime (by the years you typed): ${parts.map((p) => p.text).join(" ")}`, claims: [...new Set(parts.flatMap((p) => p.claims))], links: [] };
+  return { text: `Censuses in their lifetime (by the years you typed): ${parts.map((p) => p.text).join(" ")}`, claims: [...new Set(parts.flatMap((p) => p.claims))], links: [], parts: parts.map((p) => p.text) };
 }

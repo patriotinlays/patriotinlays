@@ -4477,10 +4477,47 @@
       "verification_status": "verified",
       "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
       "used_on": [
+        "partial:glossary",
         "partial:how-to-join",
         "partial:next-steps-lineage",
         "partial:next-steps-widow",
+        "partial:tool-terms",
         "tool:next-steps.js"
+      ],
+      "notes": ""
+    },
+    {
+      "claim_id": "sar-registrar-guide",
+      "claim_text": "SAR's local sponsor, often the chapter registrar, guides you through the application and can review what you've gathered.",
+      "source_url": "https://www.sar.org/how-to-apply/",
+      "source_title": "SAR — Apply in 4 Easy Steps",
+      "source_type": "official_secondary",
+      "archive_identifier": null,
+      "last_retrieved": "2026-10-31",
+      "quote_excerpt": "This person will help guide you through the SAR membership application process and can help review information assembled to enter into SAR membership application forms",
+      "page_ref": null,
+      "verification_status": "verified",
+      "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
+      "used_on": [
+        "partial:glossary",
+        "partial:tool-terms"
+      ],
+      "notes": ""
+    },
+    {
+      "claim_id": "sar-registrar-process",
+      "claim_text": "SAR asks applicants to give the printed application to the chapter registrar to begin processing.",
+      "source_url": "https://www.sar.org/how-to-apply/",
+      "source_title": "SAR — Apply in 4 Easy Steps",
+      "source_type": "official_secondary",
+      "archive_identifier": null,
+      "last_retrieved": "2026-10-31",
+      "quote_excerpt": "give it to your Chapter Registrar to begin processing",
+      "page_ref": null,
+      "verification_status": "verified",
+      "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
+      "used_on": [
+        "partial:glossary"
       ],
       "notes": ""
     },
@@ -4768,7 +4805,8 @@
       "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
       "used_on": [
         "partial:glossary",
-        "partial:how-to-join"
+        "partial:how-to-join",
+        "partial:tool-terms"
       ],
       "notes": ""
     },
@@ -4821,7 +4859,8 @@
       "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
       "used_on": [
         "partial:glossary",
-        "partial:how-to-join"
+        "partial:how-to-join",
+        "partial:tool-terms"
       ],
       "notes": ""
     },
@@ -4838,7 +4877,8 @@
       "verification_status": "verified",
       "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
       "used_on": [
-        "partial:glossary"
+        "partial:glossary",
+        "partial:how-to-join"
       ],
       "notes": ""
     },
@@ -4889,7 +4929,8 @@
       "verification_status": "verified",
       "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
       "used_on": [
-        "partial:glossary"
+        "partial:glossary",
+        "partial:tool-terms"
       ],
       "notes": ""
     },

@@ -16,6 +16,8 @@ Knowing which laws her dates fit helps you judge whether she could have applied,
 
 It does not look anything up, and it never makes a decision about membership or a pension; your society does that. Everything you type stays in this browser.
 
+::partial tool-terms
+
 ::tool widow-full
 
 ## The laws the checker uses
