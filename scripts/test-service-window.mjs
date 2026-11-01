@@ -1,5 +1,5 @@
 // Service Window Checker suite: original 25 scenarios + 9 punch-list scenarios (34). Exits non-zero unless all pass. Wired into `npm test` / `prebuild`.
-import { checkServiceWindow, checkWidowActs, MSG, WIDOW_MSG, FIELD_HELP, NEXT_STEP_LINKS, nextSteps } from "../src/tools/tool-a.js";
+import { checkServiceWindow, checkWidowActs, MSG, WIDOW_MSG, FIELD_HELP, NEXT_STEP_LINKS, nextSteps, plural } from "../src/tools/tool-a.js";
 import { readFileSync } from "node:fs";
 const manifest = JSON.parse(readFileSync(new URL("../manifest/claims.json", import.meta.url), "utf8"));
 const manifestUrls = new Set(manifest.claims.map((c) => c.source_url));
@@ -104,6 +104,15 @@ const U = [
   ["Widow check: no law fits -> no pension-file step", !nextSteps(null, checkWidowActs({ serviceEnd: "1779", marriage: "1820", husbandDeath: "1830" })).some((x) => x.title.startsWith("Look for the widow"))],
   ["Widow check: empty form -> 'Fill in the form above' first", nextSteps(null, null)[0].title.startsWith("Fill in the form above")],
   ["Site link points at the widow checker, not the retired service-date page", NEXT_STEP_LINKS === undefined || !JSON.stringify(NEXT_STEP_LINKS).includes("service-window-checker")],
+  ["Audit 2: 1836 'doesn't fit' says why in plain words (her marriage date vs. the end of his service, and the rule)", (() => { const r = checkWidowActs({ serviceEnd: "1779-10", marriage: "1790", serviceMonths: 20 }).find((x) => x.act === "act1836");
+    return r.status === "inconsistent" && /1790/.test(r.message) && /1779-10/.test(r.message) && /marriage came after his service ended/.test(r.message) && /came before his last period of service ended/.test(r.message); })()],
+  ["Audit 2: 1836 with under 6 months says how many months were typed, singular when 1", (() => { const r = checkWidowActs({ serviceEnd: "1779", marriage: "1775", serviceMonths: 1 }).find((x) => x.act === "act1836");
+    return r.status === "inconsistent" && /You typed 1 month of service/.test(r.message) && /6 months/.test(r.message); })()],
+  ["Audit 2: 1838 'doesn't fit' names the typed marriage date and the cutoff", /You typed a marriage date of 1795\. This law's rule is a marriage before January 1, 1794/.test(checkWidowActs({ marriage: "1795" }).find((x) => x.act === "act1838").message)],
+  ["Audit 2: 1855/1878 'doesn't fit' says the days typed and the 14-day rule", /You typed 3 days of service and did not tick the battle box\. This law's rule is at least 14 days/.test(checkWidowActs({ serviceDays: 3 }).find((x) => x.act === "act1878").message)],
+  ["Audit 2: 'too rough to tell' says which dates straddle the rule", /too rough to tell which came first/.test(checkWidowActs({ serviceEnd: "1779", marriage: "1779", serviceMonths: 20 }).find((x) => x.act === "act1836").message)],
+  ["Audit 2: every 'doesn't fit' or 'too rough' result carries a reason", [{ serviceEnd: "1779", marriage: "1801", serviceMonths: 20, serviceDays: 2 }, { serviceEnd: "1779", marriage: "1779", serviceMonths: 2, serviceDays: 2 }].flatMap((i) => checkWidowActs(i)).filter((r) => ["inconsistent", "partial"].includes(r.status)).every((r) => r.reason && r.message.includes(r.reason))],
+  ["Audit 2: plural() reads '1 month', '2 months', '1 evidence entry', '0 evidence entries'", plural(1, "month") === "1 month" && plural(2, "month") === "2 months" && plural(1, "evidence entry", "evidence entries") === "1 evidence entry" && plural(0, "evidence entry", "evidence entries") === "0 evidence entries"],
   ["End-before-start error is plain", /end date is before the start date/.test(sw("core", "1778", "1777").message)],
 ];
 let uPass = 0; for (const [n, ok] of U) { console.log(`${ok ? "PASS" : "FAIL"}  [plain] ${n}`); if (ok) uPass++; }

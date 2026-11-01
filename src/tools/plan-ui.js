@@ -2,7 +2,7 @@
 import { el } from "./storage.js";
 const linkList = (links) => links?.length ? el("ul", { class: "plan-links" }, ...links.map((l) => el("li", {}, el("a", { href: l.url, rel: l.url.startsWith("http") ? "noopener" : null, text: l.label })))) : null;
 const whereDiv = (w) => w ? el("div", { class: "where" }, el("strong", { text: "Where to look: " }), w.text ? `${w.text} ` : "", w.registrar,
-  ...(w.notes || []).map((n) => el("p", { class: `where-note note-${n.kind || "info"}`, text: n.text })),
+  ...(w.notes || []).map((n) => el("p", { class: `where-note note-${n.kind || "info"}` }, n.text, n.guide ? " " : null, n.guide ? el("a", { href: n.guide.url, "data-substitute": "", text: n.guide.label }) : null)),
   linkList([...w.links, ...w.guides.map((g) => ({ label: `Our guide: ${g.label}`, url: g.url }))])) : null;
 // Items may carry sub-items (one group per generation).
 const itemList = (items, cls = "plan-items") => el("ul", { class: cls }, ...items.map((it) => el("li", { class: it.conflict ? "conflict" : null },

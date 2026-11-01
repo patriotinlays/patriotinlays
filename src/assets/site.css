@@ -96,3 +96,9 @@ li.conflict>.gap-text,li.conflict>span{color:#8e1b24;font-weight:600}
 @media (max-width:600px){.patriot-summary dl{grid-template-columns:1fr}.patriot-summary dd{margin-bottom:.4rem}}
 
 header.site nav a { white-space: nowrap; }
+
+.warn { border-left: 4px solid #b26b00; background: #fff7e6; padding: .4rem .6rem; }
+/* Narrow screens: the nav wraps between links (never off-screen); the worksheet report's records table stacks into cards like the widow table. */
+nav.top{display:flex;flex-wrap:wrap;column-gap:1rem;row-gap:.2rem}
+nav.top a{margin:0}
+@media (max-width:600px){.table-wrap:has(table.records){overflow:visible;border:0}table.records,table.records tbody,table.records tr,table.records td{display:block;width:100%}table.records thead{display:none}table.records tr{border:1px solid var(--line);border-radius:6px;margin:.6rem 0;padding:.3rem .5rem;background:#fff}table.records tr:nth-child(even) td{background:none}table.records td{border:0;padding:.2rem 0}table.records td::before{content:attr(data-label);display:block;font-weight:700;color:var(--navy);font-size:12px;text-transform:uppercase;letter-spacing:.03em}.tool-actions button{width:100%;margin:.3rem 0}}

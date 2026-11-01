@@ -60,7 +60,7 @@ There is no `src/components/` directory; tool code lives in `src/tools/`.
 ## Local verification
 
 ```bash
-npm test          # service-window (34 + 18 plain-language and next-step), lineage-matrix (56), gate examples (29) + exhaustive gate sweep (~30 s)
+npm test          # service-window (34 + 25 plain-language and next-step), lineage-matrix (62), gate examples (29) + exhaustive gate sweep (~30 s)
 npm run check     # Source Manifest gate, offline: every factual sentence -> verified manifest claim
 npm run build     # prebuild: npm test + live manifest check (fetches all sources);
                   # build: writes dist/; postbuild: internal + external link check

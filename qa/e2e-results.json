@@ -1,9 +1,34 @@
 {
-  "ranAt": "Sat Oct 31 2026 19:56:00 GMT-0500 (Central Daylight Time)",
+  "ranAt": "Sat Oct 31 2026 20:10:46 GMT-0500 (Central Daylight Time)",
   "browser": "/usr/bin/google-chrome (headless) via playwright-core 1.59.1",
-  "passed": 72,
-  "total": 72,
+  "passed": 84,
+  "total": 84,
   "results": [
+    {
+      "name": "Fresh profile: widow checker starts empty and unticked, with no results and nothing saved",
+      "ok": true,
+      "detail": "{\"vals\":[\"\",\"\",\"\",\"\",false],\"rows\":0,\"ls\":[],\"plan\":\"Fill in the form above\",\"saved\":false}"
+    },
+    {
+      "name": "Widow checker: a visible 'Start over' button",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "Returning visit: the form starts empty and unticked with no old results; a note points to the saved check and 'Start over'",
+      "ok": true,
+      "detail": "{\"vals\":[\"\",\"\",\"\",\"\",false],\"rows\":0,\"ls\":[\"pi.toolA.widow\"],\"plan\":\"Fill in the form above\",\"saved\":true}"
+    },
+    {
+      "name": "Prefill from the worksheet fills his service end but does not run the check",
+      "ok": true,
+      "detail": "{\"vals\":[\"\",\"1779-10\",\"\",\"\",false],\"rows\":0,\"ls\":[\"pi.toolB.v1\",\"pi.toolA.widow\"],\"plan\":\"Fill in the form above\",\"saved\":true}"
+    },
+    {
+      "name": "Start over: empties the form, deletes this checker's saved data only, and says so",
+      "ok": true,
+      "detail": "{\"vals\":[\"\",\"\",\"\",\"\",false],\"rows\":0,\"ls\":[\"pi.toolB.v1\"],\"plan\":\"Fill in the form above\",\"saved\":false}"
+    },
     {
       "name": "Widow checker page: explains what it tells you and why it matters for finding pension files",
       "ok": true,
@@ -38,6 +63,11 @@
       "name": "Widow checker: 'Not checked' row says why and what to do (pension papers / registrar)",
       "ok": true,
       "detail": "Rule: Source states only that marriage-date restrictions were removed; the act's"
+    },
+    {
+      "name": "Widow checker (audit 2): 1836 'Doesn't fit' says why: married 1790, service ended 1779-10, and the rule",
+      "ok": true,
+      "detail": "Doesn't fit as typedDoes not fit this law's date rule as you typed it. You typed a marriage date of 1790 and the end of his last service as 1779-10, so the marr"
     },
     {
       "name": "Widow checker: each field shows a 'Why it matters' line",
@@ -275,6 +305,21 @@
       "detail": "https://membership.dar.org/NSDAR/AppFormz/FAQs.aspx https://www.pa.gov/agencies/health/programs/vital-records/genealogy https://www.pa.gov/services/phmc/request-a-birth-or-death-certificate /guides/substitute-evidence/ /guides/census-bridge/ https://lva-virginia.libguides.com/bmd https://membership.dar.org/NSDAR/AppFormz/App_Help_Step_By_Step_1.aspx https://www.archives.gov/research/military/american-revolution https://www.archives.gov/research/census/1790-1840.html /guides/read-pension-file/"
     },
     {
+      "name": "Generation picker (audit 2): Generation 1 is not offered; the default is the oldest generation",
+      "ok": true,
+      "detail": "[[\"\",\"The oldest generation (now Generation 5: Your 2x great-grandparent)\"],[\"2\",\"Generation 2: Your parent\"]]"
+    },
+    {
+      "name": "Birth gap (audit 2): Virginia before 1853 says there was no statewide birth recording and links the substitute-evidence guide right there",
+      "ok": true,
+      "detail": "[[\"/guides/substitute-evidence/\",\"Virginia had no statewide recording of births before 1853, so there is no state birth record to find for this person. Birth re"
+    },
+    {
+      "name": "Generation picker (audit 2): an old saved 'Generation 1' shows a plain warning and the oldest generation stays the patriot",
+      "ok": true,
+      "detail": "Generation 1: You | Generation 2: Your parent | Generation 3: Your grandparent | Generation 4: Your great-grandparent | Generation 5: Your 2x great-grandparent (the patriot)"
+    },
+    {
       "name": "Where to look: a state with no verified source says so (no invented records)",
       "ok": true,
       "detail": "Generation 3: Your grandparentNo birth evidence entered yet.Where to look: Look for a long-form birth certificate (the k"
@@ -283,6 +328,16 @@
       "name": "Tool B clear: removes pi.toolB.* only, keeps unrelated key",
       "ok": true,
       "detail": "other.app.key"
+    },
+    {
+      "name": "Grammar (audit 2): the worksheet card says '1 evidence entry', never '1 evidence entries'",
+      "ok": true,
+      "detail": "Saved in this browser: 2 generations, 1 evidence entry, 3 things still missing or flagged."
+    },
+    {
+      "name": "Grammar (audit 2): the Sources page says '(1 claim)', never '(1 claims)'",
+      "ok": true,
+      "detail": ""
     },
     {
       "name": "Home: short glossary defines Patriot, DAR, SAR, NSCDA and lineage society, each with a source note",
@@ -337,17 +392,22 @@
     {
       "name": "Mobile 360px (regression): widow-act table shows stacked cards, no horizontal overflow",
       "ok": true,
-      "detail": "{\"sw\":386,\"iw\":386,\"tw\":292,\"td\":\"block\",\"thead\":\"none\",\"label\":\"\\\"Pension law\\\"\"}"
+      "detail": "{\"sw\":360,\"iw\":360,\"tw\":292,\"td\":\"block\",\"thead\":\"none\",\"label\":\"\\\"Pension law\\\"\"}"
     },
     {
       "name": "Mobile 360px (regression): checker report's widow table also stacks, no overflow",
       "ok": true,
-      "detail": "{\"sw\":386,\"iw\":386,\"td\":\"block\"}"
+      "detail": "{\"sw\":360,\"iw\":360,\"td\":\"block\"}"
     },
     {
-      "name": "Mobile 360px: home, worksheet (with the example and patriot step), widow checker and report have no horizontal overflow",
+      "name": "True 360px (audit 2): home, worksheet (example loaded), its report, widow checker (example loaded) and its report fit 360px with nothing off-screen",
       "ok": true,
       "detail": ""
+    },
+    {
+      "name": "True 360px (audit 2): the worksheet report's records table stacks into cards",
+      "ok": true,
+      "detail": "block|none"
     },
     {
       "name": "Mobile: tool buttons are at least 44px tall",
@@ -365,8 +425,8 @@
       "detail": ""
     }
   ],
-  "requestsTotal": 149,
+  "requestsTotal": 171,
   "externalRequests": 0,
   "interactionRequests": 0,
-  "faviconLate": 13
+  "faviconLate": 15
 }

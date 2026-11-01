@@ -1,6 +1,6 @@
 // Tool A browser UI: the Widow Pension Law Checker (form, "fill in from my worksheet", plan) and its report page.
 // localStorage key prefix "pi.toolA."; it may read the worksheet's patriot ("pi.toolB.v1") on request. No network calls.
-import { checkWidowActs, FIELD_HELP, nextSteps } from "./tool-a.js";
+import { checkWidowActs, FIELD_HELP, nextSteps, plural } from "./tool-a.js";
 import { renderPlan } from "./plan-ui.js";
 import { ns, el } from "./storage.js";
 import { kindOf } from "./patriot.js";
@@ -25,10 +25,19 @@ function renderWidow(rows) {
       r.links?.length ? el("ul", { class: "where-links small" }, ...r.links.map((l) => el("li", {}, el("a", { href: l.url, rel: "noopener", text: l.label })))) : null)));
   t.append(tb); return el("div", { class: "table-wrap" }, t);
 }
+// The plan follows only a check run on this visit (button or example), never a result left over from an earlier visit.
+let ranThisVisit = null;
 function updatePlan(root) {
   const box = root.querySelector("[data-plan]"); if (!box) return;
+  box.replaceChildren(renderPlan(nextSteps(null, ranThisVisit), { heading: false }));
+}
+function savedNotice(root) {
+  const n = root.querySelector("[data-saved-msg]"); if (!n) return;
   const d = store.get("widow", null);
-  box.replaceChildren(renderPlan(nextSteps(null, d?.result || null), { heading: false }));
+  if (!d || ranThisVisit) { n.replaceChildren(); n.hidden = true; return; }
+  n.hidden = false;
+  n.replaceChildren(`A check you ran earlier (${new Date(d.at).toLocaleDateString()}) is saved in this browser. The form starts empty; `,
+    el("a", { href: "/tools/widow-pension-checker/report/", text: "see the saved check in your report" }), ", or press \"Start over\" to delete it.");
 }
 function runWidow(form, out) {
   const f = Object.fromEntries(new FormData(form));
@@ -36,16 +45,16 @@ function runWidow(form, out) {
   const input = { marriage: f.marriage || null, serviceEnd: f.serviceEnd || null, serviceMonths: num(f.serviceMonths), serviceDays: num(f.serviceDays), engagement: f.engagement === "on" ? true : null };
   const rows = checkWidowActs(input);
   store.set("widow", { input: { ...f, engagement: f.engagement === "on" }, result: rows, at: new Date().toISOString() });
-  out.replaceChildren(renderWidow(rows)); updatePlan(form.closest("[data-tool]"));
+  ranThisVisit = rows; out.replaceChildren(renderWidow(rows)); const root = form.closest("[data-tool]"); updatePlan(root); savedNotice(root);
 }
 function bindWidow(root) {
   const form = root.querySelector("form[data-form=widow]"); if (!form) return;
   const out = root.querySelector("[data-out=widow]");
   // "Why it matters" lines come from FIELD_HELP (each tied to Source Manifest claims).
   for (const [k, h] of Object.entries(FIELD_HELP)) { const p = form.querySelector(`[data-why="${k}"]`); if (p) p.textContent = h.text; }
-  const saved = store.get("widow", null);
-  if (saved?.input) for (const [k, v] of Object.entries(saved.input)) if (form.elements[k] && form.elements[k].type !== "checkbox") form.elements[k].value = v; else if (form.elements[k]) form.elements[k].checked = !!v;
-  if (saved?.result) out.replaceChildren(renderWidow(saved.result));
+  // Every visit starts with an empty, unticked form and no results: results appear only after the button is pressed.
+  // (Earlier visits restored the last entries, including the example's ticked battle box, and showed old results.)
+  form.reset(); out.replaceChildren(); savedNotice(root);
   form.addEventListener("submit", (ev) => { ev.preventDefault(); runWidow(form, out); out.focus(); });
 }
 // "Fill in from my worksheet": copies the patriot's service end date from the Lineage Evidence Matrix (same browser).
@@ -70,9 +79,12 @@ function bindExample(root) {
 }
 function bindClear(root) {
   root.querySelectorAll("[data-clear=toolA]").forEach((b) => b.addEventListener("click", () => {
-    const n = store.clear(); root.querySelectorAll("form").forEach((f) => f.reset());
-    root.querySelectorAll("[data-out]").forEach((o) => o.replaceChildren(el("p", { class: "small", text: `Cleared ${n} saved item(s) from this browser.` })));
-    updatePlan(root); if (root.matches("[data-tool-report]")) renderReport(root);
+    const n = store.clear(); ranThisVisit = null; root.querySelectorAll("form").forEach((f) => f.reset());
+    root.querySelectorAll("[data-example-msg], [data-worksheet-msg]").forEach((m) => { m.textContent = ""; });
+    const msg = n ? `Started over: deleted ${plural(n, "saved item")} from this browser.` : "Started over. Nothing was saved in this browser.";
+    if (root.matches("[data-tool-report]")) { renderReport(root); root.querySelector("[data-report]").prepend(el("p", { class: "small", role: "status", text: msg })); }
+    else root.querySelectorAll("[data-out]").forEach((o) => o.replaceChildren(el("p", { class: "small", role: "status", text: msg })));
+    updatePlan(root); savedNotice(root);
   }));
 }
 function renderReport(root) {

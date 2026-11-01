@@ -45,6 +45,8 @@ export const SERVICE_RULES = [
 
 // Widow pension / bounty-land acts (NARA M804 descriptive pamphlet, pp. 3-4 of text).
 // Only requirements the pamphlet states are encoded; anything else is reported as not checked (status not_evaluated).
+// "1 month", "20 months": plain plurals for user-facing text.
+export const plural = (n, word, many = `${word}s`) => `${n} ${Number(n) === 1 ? word : many}`;
 export const WIDOW_ACTS = [
   { id: "act1836", label: "Act of July 4, 1836 (5 Stat. 128)", claim: "nara-act-1836", claim1832: "nara-act-1832", claimCategories: "nara-act-1832-categories",
     nextNote: "What to do: find out what kind of unit he served in. For state militia, the National Archives says to check the archives of the state where he served; for Continental troops, see its service-records guide.", nextLinks: ["serviceRecords"], nextClaim: "nara-svc-state", claimHolds: "nara-svc-holds",
@@ -53,9 +55,12 @@ export const WIDOW_ACTS = [
       if (!w.marriage || !w.serviceEnd) return { status: "not_evaluated", text: "Needs the marriage date and the date his last period of service ended.", why: "Missing information.", next: FILL(!w.marriage ? "Marriage date" : "When his last service ended") };
       if (w.serviceMonths == null) return { status: "not_evaluated", text: "Needs total months of service (1832-act service required).", why: "Missing information.", next: FILL("Total months of service") };
       const mOk = w.marriage.hi < w.serviceEnd.lo ? "yes" : (w.marriage.lo >= w.serviceEnd.hi ? "no" : "maybe");
-      if (w.serviceMonths < 6) return { status: "inconsistent", text: "1836 act relies on 1832-act service (at least 6 months); entered service is shorter." };
+      if (w.serviceMonths < 6) return { status: "inconsistent", text: "1836 act relies on 1832-act service (at least 6 months); entered service is shorter.",
+        reason: `You typed ${plural(w.serviceMonths, "month")} of service. The 1836 law relied on service under the 1832 law, which started at 6 months.` };
       return { status: mOk === "yes" ? "consistent" : mOk === "no" ? "inconsistent" : "partial",
-        text: "Marriage must precede expiration of veteran's last period of service; service as specified in act of June 7, 1832." };
+        text: "Marriage must precede expiration of veteran's last period of service; service as specified in act of June 7, 1832.",
+        reason: mOk === "no" ? `You typed a marriage date of ${w.marriage.raw} and the end of his last service as ${w.serviceEnd.raw}, so the marriage came after his service ended. This law's rule is that the marriage came before his last period of service ended.`
+          : mOk === "maybe" ? `The marriage date (${w.marriage.raw}) and the end of his last service (${w.serviceEnd.raw}) are too rough to tell which came first. This law's rule is that the marriage came before his last period of service ended. A fuller date would settle it.` : null };
     } },
   { id: "act1838", label: "Act of July 7, 1838 (5 Stat. 303) — 5-year pensions", claim: "nara-act-1838",
     test: (w) => w.marriage ? marriageBefore(w.marriage, "1794-01-01", "Marriage before January 1, 1794.") : needMarriage() },
@@ -81,15 +86,16 @@ const NOT_IN_SOURCE = Object.freeze({ status: "not_evaluated",
   links: ["pensionFiles", "m804"] });
 function needMarriage() { return { status: "not_evaluated", text: "Needs marriage date.", why: "Missing information.", next: FILL("Marriage date") }; }
 function marriageBefore(m, cutoffIso, rule) {
-  const c = Date.parse(cutoffIso + "T00:00:00Z");
+  const c = Date.parse(cutoffIso + "T00:00:00Z"); const cut = rule.replace(/^Marriage before /, "").replace(/\.$/, "");
   if (m.hi < c) return { status: "consistent", text: rule };
-  if (m.lo >= c) return { status: "inconsistent", text: rule };
-  return { status: "partial", text: rule + " Entered marriage date is imprecise and straddles the cutoff." };
+  if (m.lo >= c) return { status: "inconsistent", text: rule, reason: `You typed a marriage date of ${m.raw}. This law's rule is a marriage before ${cut}, so the date you typed is too late.` };
+  return { status: "partial", text: rule + " Entered marriage date is imprecise and straddles the cutoff.", reason: `The marriage date you typed (${m.raw}) could fall on either side of ${cut}. A fuller date would settle it.` };
 }
 function minService(w, rule) {
   if (w.engagement === true) return { status: "consistent", text: rule };
   if (w.serviceDays == null) return { status: "not_evaluated", text: "Needs days of service or an engagement/battle flag.", why: "Missing information.", next: FILL("Total days of service") + " Or tick the battle box if he was in a battle." };
-  return { status: w.serviceDays >= 14 ? "consistent" : "inconsistent", text: rule };
+  return { status: w.serviceDays >= 14 ? "consistent" : "inconsistent", text: rule,
+    reason: w.serviceDays >= 14 ? null : `You typed ${plural(w.serviceDays, "day")} of service and did not tick the battle box. This law's rule is at least 14 days of service or a battle.` };
 }
 
 // Date parsing: accepts YYYY, YYYY-MM, YYYY-MM-DD. Returns {lo, hi, precision} in UTC ms (hi = last ms of period).
@@ -103,10 +109,10 @@ export function parseDate(s) {
   if (d !== null) {
     const dim = new Date(Date.UTC(y, mo, 0)).getUTCDate();
     if (d < 1 || d > dim) throw new Error(`${s} isn't a real calendar date. Check the day.`);
-    const lo = Date.UTC(y, mo - 1, d); return { lo, hi: lo + 86399999, precision: "day" };
+    const lo = Date.UTC(y, mo - 1, d); return { lo, hi: lo + 86399999, precision: "day", raw: m[0] };
   }
-  if (mo !== null) return { lo: Date.UTC(y, mo - 1, 1), hi: Date.UTC(y, mo, 1) - 1, precision: "month" };
-  return { lo: Date.UTC(y, 0, 1), hi: Date.UTC(y + 1, 0, 1) - 1, precision: "year" };
+  if (mo !== null) return { lo: Date.UTC(y, mo - 1, 1), hi: Date.UTC(y, mo, 1) - 1, precision: "month", raw: m[0] };
+  return { lo: Date.UTC(y, 0, 1), hi: Date.UTC(y + 1, 0, 1) - 1, precision: "year", raw: m[0] };
 }
 
 const day = (iso, end) => { const t = Date.parse(iso + "T00:00:00Z"); return end ? t + 86399999 : t; };
@@ -138,7 +144,7 @@ export function checkWidowActs(input) {
   return WIDOW_ACTS.map((a) => { const r = a.test(w);
     const message = WIDOW_MSG[r.status] || MSG[r.status];
     const links = [...(r.links || []), ...(a.nextLinks || [])].map((k) => NEXT_STEP_LINKS[k]);
-    return { act: a.id, label: a.label, status: r.status, message, ruleText: r.text, uiNote: a.uiNote || null, claim: a.claim,
+    return { act: a.id, label: a.label, status: r.status, message: !r.reason ? message : r.status === "partial" ? r.reason : `${message.replace(/ Double-check the dates\.$/, "")} ${r.reason}`, reason: r.reason || null, ruleText: r.text, uiNote: a.uiNote || null, claim: a.claim,
       why: r.why || null, next: r.next || null, nextNote: a.nextNote || null, links }; });
 }
 

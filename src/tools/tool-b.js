@@ -137,6 +137,7 @@ export const yr = (v) => { const m = /^\s*(\d{4})\s*$/.exec(v == null ? "" : Str
 // Resolve a fact + generation (+ the person's rough years and state) to a ready-to-render "Where to look" entry.
 // Era: DAR's split (generations 1-3 "recent", 4+ "older") unless the state's own source says whether that state
 // recorded this event in that year. Notes carry the state and census facts; each lists its claims.
+export const SUBSTITUTE_GUIDE = Object.freeze({ label: "How to prove a birth without a birth certificate (our guide)", url: "/guides/substitute-evidence/" });
 export function whereToLook(fact, gen, ctx = {}) {
   const byEra = WHERE_TO_LOOK[fact]; if (!byEra) return null;
   const born = yr(ctx.born), died = yr(ctx.died);
@@ -144,7 +145,9 @@ export function whereToLook(fact, gen, ctx = {}) {
   const notes = [];
   if (["birth", "death", "marriage"].includes(fact)) {
     const v = vitalNote(ctx.state, fact, { year: fact === "birth" ? born : fact === "death" ? died : null, lower: fact === "birth" ? null : born });
-    if (v) { if (v.era === "state") era = "recent"; else if (v.era === "none") era = "older"; notes.push({ text: v.text, claims: v.claims, links: v.links, kind: "state" }); }
+    if (v) { if (v.era === "state") era = "recent"; else if (v.era === "none") era = "older";
+      // Where the state kept no birth records then, point straight to the guide on proving a birth without one.
+      notes.push({ text: v.text, claims: v.claims, links: v.links, kind: "state", guide: fact === "birth" && v.noRecord ? SUBSTITUTE_GUIDE : null }); }
     else notes.push({ text: "Add the state where this person lived to see what that state's own records office says.", claims: [], links: [], kind: "hint" });
   }
   if (["birth", "parentage", "residence"].includes(fact)) {
@@ -195,7 +198,10 @@ export function groupGaps(list, pg = null) {
 // Which generation is the patriot: the one picked in the patriot step, else the oldest generation. Null if no patriot entered.
 export function patriotGen(rows = [], patriot = null) {
   if (!hasPatriot(patriot)) return null;
-  const g = +patriot.gen; return rows.some((r) => r.gen === g) ? g : rows.at(-1)?.gen ?? null;
+  // Generation 1 is the applicant, never the patriot: an unset, missing or "1" choice means the oldest generation.
+  const g = +patriot.gen; const oldest = rows.at(-1)?.gen ?? null;
+  if (g > 1 && rows.some((r) => r.gen === g)) return g;
+  return oldest > 1 ? oldest : null;
 }
 
 // Records that actually have something in them (blank rows are never labelled or counted).

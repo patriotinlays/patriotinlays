@@ -106,6 +106,20 @@ t("Where to look: older parentage points to the National Archives census page; r
   t("sources: every vital period is in year order with no overlaps", Object.values(STATE_VITAL).every((v) => ["birth", "death", "marriage"].every((f) => !v[f] || v[f].every((x, i, a) => i === 0 || (a[i - 1].to != null && x.from === a[i - 1].to + 1)))));
   t("gaps: a patriot row with no state of its own uses the patriot's state", gaps([{ gen: 1, living: true, cells: [] }, { gen: 2, born: "1760", cells: [] }], { ...p, state: "NJ" }).filter((g) => g.gen === 2 && g.fact === "birth").every((g) => /New Jersey/.test(g.where.notes[0].text)));
 }
+// ---- Audit 2 regressions ----
+{ const { patriotGen, SUBSTITUTE_GUIDE } = await import("../src/tools/tool-b.js"); const { STATE_VITAL } = await import("../src/tools/places.js");
+  const p = { name: "John", state: "VA", kind: "militia", start: "1777", end: "1779" }; const rows = [{ gen: 1, cells: [] }, { gen: 2, cells: [] }, { gen: 3, cells: [] }];
+  t("audit 2: Generation 1 can never be the patriot; a saved '1' falls back to the oldest generation", patriotGen(rows, { ...p, gen: "1" }) === 3 && patriotGen(rows, { ...p, gen: "" }) === 3 && patriotGen([{ gen: 1, cells: [] }], p) === null);
+  t("audit 2: gaps never label Generation 1 as the patriot", !groupGaps(gaps(rows, { ...p, gen: "1" }), patriotGen(rows, { ...p, gen: "1" })).some((g) => g.gen === 1 && /the patriot/.test(g.title)));
+  const vaOld = whereToLook("birth", 4, { born: "1810", state: "VA" }).notes[0];
+  t("audit 2: a Virginia birth before 1853 says plainly there was no statewide birth recording, and links the substitute-evidence guide at that gap",
+    /no statewide recording of births before 1853/.test(vaOld.text) && vaOld.guide?.url === "/guides/substitute-evidence/" && vaOld.claims.includes("lva-bmd-pre1853") && slugs.has(SUBSTITUTE_GUIDE.url));
+  t("audit 2: the same link appears for New Jersey before 1848, South Carolina before 1915 and Virginia 1897-1911 (sourced 'no record' periods)",
+    ["NJ:1840", "SC:1900", "VA:1900"].every((x) => { const [st, y] = x.split(":"); return whereToLook("birth", 3, { born: y, state: st }).notes[0].guide?.url === "/guides/substitute-evidence/"; }));
+  t("audit 2: no 'no record' claim where the source points to county records or the state has records (NC 1900, PA 1890, VA 1880, MD, Texas), and never on deaths",
+    ["NC:1900", "PA:1890", "VA:1880", "MD:1880", "TX:1880"].every((x) => { const [st, y] = x.split(":"); return !whereToLook("birth", 3, { born: y, state: st }).notes[0].guide; }) && !whereToLook("death", 4, { died: "1840", state: "VA" }).notes[0].guide);
+  t("audit 2: every 'no record' period cites verified claims", Object.values(STATE_VITAL).flatMap((v) => v.birth || []).filter((x) => x.noRecord).every((x) => x.claims.length && x.claims.every((c) => verified.has(c))));
+}
 const every = JSON.stringify([evaluateCell(full), evaluateCell({}), gaps([{ gen: 1, cells: [full] }]), LABELS]);
 t('the word "Documented" never appears in output', !/documented/i.test(every));
 let p = 0; for (const [n, ok] of T) { console.log(`${ok ? "PASS" : "FAIL"}  ${n}`); if (ok) p++; }

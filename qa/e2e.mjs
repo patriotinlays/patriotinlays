@@ -36,6 +36,27 @@ page.on("dialog", (d) => d.accept());
 const ls = () => page.evaluate(() => Object.fromEntries(Object.keys(localStorage).map((k) => [k, localStorage.getItem(k)])));
 const phase = (p) => { page.__phase = p; };
 
+// ---- Audit 2 #1: a fresh first visit starts empty; results only after the button; prefill never auto-runs; Start over ----
+{ const fresh = await browser.newContext({ viewport: { width: 1280, height: 900 } }); const fp = await fresh.newPage();
+  fp.on("pageerror", (e) => consoleErrors.push(`fresh: ${e.message}`));
+  const formState = () => fp.evaluate(() => ({ vals: [...document.querySelectorAll("form[data-form=widow] input")].map((i) => i.type === "checkbox" ? i.checked : i.value),
+    rows: document.querySelectorAll("[data-out=widow] tbody tr").length, ls: Object.keys(localStorage), plan: document.querySelector('[data-tool="widow"] [data-plan] .plan-title')?.textContent || "",
+    saved: !document.querySelector("[data-saved-msg]").hidden }));
+  await fp.goto(`${BASE}/tools/widow-pension-checker/`);
+  let f = await formState();
+  check("Fresh profile: widow checker starts empty and unticked, with no results and nothing saved", f.vals.every((v) => v === "" || v === false) && f.rows === 0 && f.ls.length === 0 && /Fill in the form above/.test(f.plan) && !f.saved, JSON.stringify(f));
+  check("Widow checker: a visible 'Start over' button", await fp.isVisible('[data-tool="widow"] [data-start-over]') && (await fp.textContent("[data-start-over]")).trim() === "Start over");
+  await fp.click("[data-load-example]"); const exRows = (await formState()).rows;
+  await fp.reload(); f = await formState();
+  check("Returning visit: the form starts empty and unticked with no old results; a note points to the saved check and 'Start over'", exRows === 7 && f.vals.every((v) => v === "" || v === false) && f.rows === 0 && /Fill in the form above/.test(f.plan) && f.saved && /Start over/.test(await fp.textContent("[data-saved-msg]")), JSON.stringify(f));
+  await fp.evaluate(() => localStorage.setItem("pi.toolB.v1", JSON.stringify({ generations: [{ gen: 1, living: true, cells: [] }, { gen: 2, cells: [] }], patriot: { name: "Prefill Test", state: "VA", kind: "militia", start: "1777", end: "1779-10", gen: "" } })));
+  await fp.goto(`${BASE}/tools/widow-pension-checker/?from=worksheet`); f = await formState();
+  check("Prefill from the worksheet fills his service end but does not run the check", f.vals[1] === "1779-10" && f.vals[0] === "" && f.vals[4] === false && f.rows === 0, JSON.stringify(f));
+  await fp.click('form[data-form=widow] button[type=submit]'); const afterPress = (await formState()).rows;
+  await fp.click("[data-start-over]"); f = await formState();
+  check("Start over: empties the form, deletes this checker's saved data only, and says so", afterPress === 7 && f.vals.every((v) => v === "" || v === false) && !f.ls.some((k) => k.startsWith("pi.toolA.")) && f.ls.includes("pi.toolB.v1") && /Started over: deleted 1 saved item from this browser/.test(await fp.textContent("[data-out=widow]")) && !f.saved, JSON.stringify(f));
+  await fresh.close(); }
+
 // ---- Widow Pension Law Checker (leads the site) ----
 phase("load"); await page.goto(`${BASE}/tools/widow-pension-checker/`); await page.evaluate(() => localStorage.setItem("other.app.key", "keep-me"));
 phase("interact");
@@ -53,6 +74,9 @@ const r1853 = rows.find((r) => r[0].includes("1853")); const r1855 = rows.find((
 check("Widow checker: 1853 and Feb-1855 acts display 'Not checked'", r1853?.[1].includes("Not checked") && r1855?.[1].includes("Not checked"), `${r1853?.[1].slice(0, 30)} | ${r1855?.[1].slice(0, 30)}`);
 const next1853 = await page.$$eval('[data-out=widow] tbody tr', (trs) => trs.find((tr) => tr.cells[0].textContent.includes("1853")).cells[2].textContent);
 check("Widow checker: 'Not checked' row says why and what to do (pension papers / registrar)", /Why:/.test(next1853) && /What to do/.test(next1853) && /registrar/.test(next1853), next1853.slice(0, 80));
+await page.fill("#tw-m", "1790"); await page.fill("#tw-e", "1779-10"); await page.fill("#tw-mo", "20"); await page.fill("#tw-d", ""); await page.click('form[data-form=widow] button[type=submit]');
+const r1836 = await page.$$eval('[data-out=widow] tbody tr', (trs) => trs.find((tr) => tr.cells[0].textContent.includes("1836")).cells[1].textContent);
+check("Widow checker (audit 2): 1836 'Doesn't fit' says why: married 1790, service ended 1779-10, and the rule", /Doesn't fit/.test(r1836) && /1790/.test(r1836) && /1779-10/.test(r1836) && /marriage came after his service ended/.test(r1836), r1836.slice(0, 160));
 check("Widow checker: each field shows a 'Why it matters' line", (await page.$$eval("form[data-form=widow] [data-why]", (ps) => ps.filter((p) => p.textContent.startsWith("Why it matters")).length)) === 4);
 await page.click('[data-tool="widow"] [data-load-example]');
 const exD = await page.textContent('[data-out=widow]');
@@ -176,11 +200,25 @@ check("Where to look: the patriot's generation is labelled", /\(the patriot\)/.t
 const noteHrefs = await page.$$eval("[data-gaps] .where a", (as) => [...new Set(as.map((a) => a.getAttribute("href")))]);
 check("Where to look: state/era links (Library of Virginia, Pennsylvania) are Source Manifest sources", noteHrefs.includes("https://lva-virginia.libguides.com/bmd") && noteHrefs.some((h) => h.startsWith("https://www.pa.gov/")) && noteHrefs.every((h) => mUrls.has(h) || /^\/guides\/[a-z-]+\/$/.test(h)), noteHrefs.join(" "));
 await page.selectOption("#state-3", "TX");
+const genOpts = await page.$$eval("#pat-gen option", (os) => os.map((o) => [o.value, o.textContent]));
+check("Generation picker (audit 2): Generation 1 is not offered; the default is the oldest generation", !genOpts.some(([v]) => v === "1") && genOpts[0][0] === "" && /oldest generation \(now Generation 5/.test(genOpts[0][1]), JSON.stringify(genOpts.slice(0, 2)));
+const subst = await page.$$eval("[data-gaps] .where-note a[data-substitute]", (as) => as.map((a) => [a.getAttribute("href"), a.closest(".where-note").textContent]));
+check("Birth gap (audit 2): Virginia before 1853 says there was no statewide birth recording and links the substitute-evidence guide right there", subst.some(([h, t]) => h === "/guides/substitute-evidence/" && /no statewide recording of births before 1853/.test(t)), JSON.stringify(subst).slice(0, 160));
+await page.evaluate(() => { const s = JSON.parse(localStorage.getItem("pi.toolB.v1")); s.patriot.gen = "1"; localStorage.setItem("pi.toolB.v1", JSON.stringify(s)); });
+phase("load"); await page.reload(); phase("interact");
+const heads = await page.$$eval("section.gen h3", (hs) => hs.map((h) => h.textContent));
+check("Generation picker (audit 2): an old saved 'Generation 1' shows a plain warning and the oldest generation stays the patriot", await page.isVisible("[data-gen-warn]") && /Generation 1 is you/.test(await page.textContent("[data-gen-warn]")) && !/patriot/.test(heads[0]) && /\(the patriot\)/.test(heads.at(-1)), heads.join(" | "));
 const txNote = await page.textContent('[data-gaps] li[data-gap-gen="3"]');
 check("Where to look: a state with no verified source says so (no invented records)", /no verified source yet on when Texas/.test(txNote), txNote.slice(0, 120));
 await page.click("[data-clear=toolB]");
 store = await ls();
 check("Tool B clear: removes pi.toolB.* only, keeps unrelated key", !Object.keys(store).some((k) => k.startsWith("pi.toolB")) && store["other.app.key"] === "keep-me", Object.keys(store).join(","));
+await page.evaluate(() => localStorage.setItem("pi.toolB.v1", JSON.stringify({ generations: [{ gen: 1, living: true, cells: [{ id: "a", fact: "birth", docType: "birth_cert_long", mode: "direct", conflict: false, citation: "Certificate 1" }] }, { gen: 2, cells: [] }], patriot: {} })));
+phase("load"); await page.goto(`${BASE}/guides/same-name/`); phase("interact"); const card1 = await page.textContent("[data-card-status]");
+check("Grammar (audit 2): the worksheet card says '1 evidence entry', never '1 evidence entries'", /2 generations, 1 evidence entry,/.test(card1) && !/\b1 evidence entries|\b1 things|\b1 generations/.test(card1), card1);
+await page.evaluate(() => localStorage.removeItem("pi.toolB.v1"));
+const srcHtml = readFileSync(join(DIST, "sources/index.html"), "utf8");
+check("Grammar (audit 2): the Sources page says '(1 claim)', never '(1 claims)'", !/\(1 claims\)/.test(srcHtml) && /\(1 claim\)/.test(srcHtml));
 
 // ---- Usefulness pass: home, guides, dead ends ----
 phase("load"); await page.goto(`${BASE}/`); phase("interact");
@@ -235,10 +273,14 @@ await np.screenshot({ path: join(SHOTS, "m360-widow-cards.png"), fullPage: false
 await np.goto(`${BASE}/tools/widow-pension-checker/report/`);
 const rInfo = await np.evaluate(() => ({ sw: document.documentElement.scrollWidth, iw: window.innerWidth, td: getComputedStyle(document.querySelector("table.widow td")).display }));
 check("Mobile 360px (regression): checker report's widow table also stacks, no overflow", rInfo.sw <= rInfo.iw + 1 && rInfo.td === "block", JSON.stringify(rInfo));
-const npages = ["/", "/tools/lineage-matrix/", "/tools/widow-pension-checker/", "/tools/lineage-matrix/report/"]; const nOver = [];
-for (const p of npages) { await np.goto(BASE + p); if (p === "/tools/lineage-matrix/") await np.click("[data-load-example]");
-  const o = await np.evaluate(() => ({ sw: document.documentElement.scrollWidth, iw: window.innerWidth })); if (o.sw > o.iw + 1) nOver.push(`${p} ${o.sw}`); }
-check("Mobile 360px: home, worksheet (with the example and patriot step), widow checker and report have no horizontal overflow", nOver.length === 0, nOver.join(", "));
+// A phone browser widens its layout viewport when anything is wider than the screen, so also require innerWidth === 360.
+const npages = ["/", "/tools/lineage-matrix/", "/tools/lineage-matrix/report/", "/tools/widow-pension-checker/", "/tools/widow-pension-checker/report/"]; const nOver = [];
+for (const p of npages) { await np.goto(BASE + p); if (p === "/tools/lineage-matrix/" || p === "/tools/widow-pension-checker/") await np.click("[data-load-example]");
+  const o = await np.evaluate(() => ({ sw: document.documentElement.scrollWidth, iw: window.innerWidth, out: [...document.querySelectorAll("body *")].filter((e) => !e.closest(".table-wrap:not(:has(table.widow)):not(:has(table.records))") && e.getBoundingClientRect().right > 361).length }));
+  if (o.sw > 360 || o.iw !== 360 || o.out) nOver.push(`${p} sw=${o.sw} iw=${o.iw} out=${o.out}`); }
+check("True 360px (audit 2): home, worksheet (example loaded), its report, widow checker (example loaded) and its report fit 360px with nothing off-screen", nOver.length === 0, nOver.join(", "));
+const recCards = await (async () => { await np.goto(`${BASE}/tools/lineage-matrix/report/`); return np.evaluate(() => { const t = document.querySelector("table.records"); return t ? getComputedStyle(t.querySelector("td")).display + "|" + getComputedStyle(t.querySelector("thead")).display : "none"; }); })();
+check("True 360px (audit 2): the worksheet report's records table stacks into cards", recCards === "block|none", recCards);
 await np.goto(`${BASE}/tools/lineage-matrix/`); await np.evaluate(() => document.querySelector("#tb-patriot").scrollIntoView()); await np.screenshot({ path: join(SHOTS, "m360-patriot.png") });
 await narrow.close();
 check("Mobile: tool buttons are at least 44px tall", tapTargets === 0, `${tapTargets} small`);

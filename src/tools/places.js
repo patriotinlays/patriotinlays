@@ -60,12 +60,13 @@ export const NO_STATE_SERVICE = (name) => ({ text: `This site has no verified gu
 // When each state's own offices say birth, death and marriage records begin. Periods are [from, to] years (inclusive);
 // era "state" = the source says the state recorded it then; "none" = the source says it was not recorded statewide
 // (look for church, probate and other older records); null = information only.
-const P = (from, to, era, text, { claims }) => ({ from, to, era, text, claims });
+// noRecord: the source says the state kept no (or almost no) birth records then, so the gap links the substitute-evidence guide.
+const P = (from, to, era, text, { claims, noRecord = false }) => ({ from, to, era, text, claims, noRecord });
 export const STATE_VITAL = Object.freeze({
   VA: { links: S("lvaBmd"),
-    birth: [P(null, 1852, "none", "Virginia did not record births statewide before 1853, and birth records from before then are rare.", { claims: ["lva-bmd-pre1853", "lva-bmd-rare"] }),
+    birth: [P(null, 1852, "none", "Virginia had no statewide recording of births before 1853, so there is no state birth record to find for this person. Birth records from before then are rare.", { claims: ["lva-bmd-pre1853", "lva-bmd-rare"], noRecord: true }),
       P(1853, 1896, "state", "Virginia counties and cities kept birth registers from 1853 to 1896.", { claims: ["lva-bmd-1853"] }),
-      P(1897, 1911, "none", "Most Virginia counties and cities did not record births from 1897 to 1911.", { claims: ["lva-bmd-gap"] }),
+      P(1897, 1911, "none", "Most Virginia counties and cities did not record births from 1897 to 1911.", { claims: ["lva-bmd-gap"], noRecord: true }),
       P(1912, null, "state", "Virginia resumed recording births in 1912.", { claims: ["lva-bmd-1912"] })],
     death: [P(null, 1852, "none", "Virginia did not record deaths statewide before 1853, and death records from before then are rare.", { claims: ["lva-bmd-pre1853", "lva-bmd-rare"] }),
       P(1853, 1896, "state", "Virginia counties and cities kept death registers from 1853 to 1896.", { claims: ["lva-bmd-1853"] }),
@@ -86,14 +87,14 @@ export const STATE_VITAL = Object.freeze({
     death: [P(null, 1905, "none", "For Pennsylvania deaths before 1906, the state Department of Health says to contact the county courthouse.", { claims: ["pa-doh-pre1906"] }),
       P(1906, null, "state", "The Pennsylvania State Archives holds state death certificates for 1906 to 1975, and all certified copies of death records come from the Department of Health's Division of Vital Records.", { claims: ["pa-arch-1906", "pa-doh-certified"] })] },
   NJ: { links: S("njGen"),
-    birth: [P(null, 1847, "none", "New Jersey births before 1848 were not filed by any level of government, except records of births of enslaved children.", { claims: ["nj-pre1848-birth"] }),
+    birth: [P(null, 1847, "none", "New Jersey births before 1848 were not filed by any level of government, except records of births of enslaved children.", { claims: ["nj-pre1848-birth"], noRecord: true }),
       P(1848, null, "state", "The New Jersey State Archives holds state birth records from May 1, 1848.", { claims: ["nj-vital-1848"] })],
     death: [P(null, 1847, "none", "New Jersey deaths before 1848 were not filed by any government.", { claims: ["nj-pre1848-death"] }),
       P(1848, null, "state", "The New Jersey State Archives holds state death records from May 1, 1848.", { claims: ["nj-vital-1848"] })],
     marriage: [P(null, 1847, null, "New Jersey marriages before 1848 had to be filed with the County Clerk starting in 1795.", { claims: ["nj-pre1848-marriage"] }),
       P(1848, null, "state", "The New Jersey State Archives holds state marriage records from May 1, 1848.", { claims: ["nj-vital-1848"] })] },
   SC: { links: S("scBirth", "scSl"),
-    birth: [P(null, 1914, "none", "South Carolina did not require registration of all births until a 1914 law; the state's birth records begin in 1915.", { claims: ["sc-birth-law", "sc-birth-1915"] }),
+    birth: [P(null, 1914, "none", "South Carolina did not require registration of all births until a 1914 law; the state's birth records begin in 1915.", { claims: ["sc-birth-law", "sc-birth-1915"], noRecord: true }),
       P(1915, null, "state", "South Carolina's state birth records begin in 1915.", { claims: ["sc-birth-1915"] })],
     death: [P(null, 1914, "none", "South Carolina required death certificates from January 1, 1915.", { claims: ["sc-death-1915"] }),
       P(1915, null, "state", "South Carolina required death certificates from January 1, 1915.", { claims: ["sc-death-1915"] })],
@@ -115,7 +116,8 @@ export function vitalNote(state, fact, { year = null, lower = null } = {}) {
   const ps = v[fact];
   let hit = year != null ? ps.filter((p) => inP(p, year)) : lower != null ? ps.filter((p) => p.to == null || p.to >= lower) : ps;
   if (!hit.length) hit = ps;
-  return { era: hit.length === 1 ? hit[0].era : null, text: hit.map((p) => p.text).join(" "), claims: [...new Set(hit.flatMap((p) => p.claims))], links: v.links };
+  return { era: hit.length === 1 ? hit[0].era : null, text: hit.map((p) => p.text).join(" "), claims: [...new Set(hit.flatMap((p) => p.claims))], links: v.links,
+    noRecord: hit.length === 1 && hit[0].noRecord };
 }
 
 // Which censuses fall in this person's lifetime (by the years typed), and what the sources say about each.

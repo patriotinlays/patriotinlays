@@ -5,6 +5,7 @@ import { SERVICE_KINDS, PATRIOT_HELP, patriotDates, hasPatriot, kindOf } from ".
 import { STATES, stateName } from "./places.js";
 import { ns, el } from "./storage.js";
 import { renderPlan } from "./plan-ui.js";
+import { plural } from "./tool-a.js";
 const store = ns("pi.toolB.");
 const blank = () => ({ version: 1, generations: [newGen(1), newGen(2)], patriot: newPatriot(), updated: null });
 function newGen(gen) { return { gen, who: "", living: gen === 1, born: "", died: "", state: "", cells: [] }; }
@@ -49,7 +50,7 @@ export function whereBlock(w) {
   const links = [...w.links.map((l) => el("li", {}, el("a", { href: l.url, rel: "noopener", text: l.label }))),
     ...w.guides.map((g) => el("li", {}, "Our guide: ", el("a", { href: g.url, text: g.label })))];
   return el("div", { class: "where" }, el("strong", { text: "Where to look: " }), w.text ? `${w.text} ` : "", w.registrar,
-    ...(w.notes || []).map((n) => el("p", { class: `where-note note-${n.kind || "info"}`, "data-note": n.kind || "info", text: n.text })),
+    ...(w.notes || []).map((n) => el("p", { class: `where-note note-${n.kind || "info"}`, "data-note": n.kind || "info" }, n.text, n.guide ? " " : null, n.guide ? el("a", { href: n.guide.url, "data-substitute": "", text: n.guide.label }) : null)),
     links.length ? el("ul", { class: "where-links" }, ...links) : null);
 }
 function renderGaps(state) {
@@ -75,7 +76,14 @@ function patriotForm(state, refresh) {
     el("input", { id: `pat-${k}`, name: k, type: "text", value: p[k] || "", autocomplete: "off", oninput: (e) => set(k, e.target.value.trim()), ...attrs })];
   const sel = (k, label, opts, hint) => [el("label", { for: `pat-${k}`, text: label }), hint ? el("p", { class: "small hint", text: hint }) : null,
     (() => { const x = select(k, opts, p[k], "pick one", `pat-${k}`); x.addEventListener("change", (e) => set(k, e.target.value)); return x; })()];
-  const gens = state.generations.map((g) => [String(g.gen), genTitle(g.gen)]);
+  // Generation 1 is the person applying, so it is never offered; the default is the oldest generation entered.
+  const oldest = state.generations.at(-1)?.gen ?? 1;
+  const gens = state.generations.filter((g) => g.gen > 1).map((g) => [String(g.gen), genTitle(g.gen)]);
+  const genSel = (() => { const x = select("gen", gens, p.gen === "1" ? "" : p.gen, "", "pat-gen");
+    x.options[0].textContent = oldest > 1 ? `The oldest generation (now ${genTitle(oldest)})` : "The oldest generation (add generations below)";
+    x.addEventListener("change", (e) => { x.closest("[data-patriot-form]")?.querySelector("[data-gen-warn]")?.remove(); set("gen", e.target.value); }); return x; })();
+  const genWarn = p.gen === "1" ? "Generation 1 is you, the person applying, so it can't be the patriot. The worksheet is using your oldest generation instead."
+    : oldest === 1 ? "Generation 1 is you, so it can't be the patriot. Add generations below, back to him; he'll be the oldest one unless you pick another." : null;
   return el("div", { class: "patriot-form", "data-patriot-form": "" },
     ...inp("name", "His name (optional, stays in this browser)"),
     ...sel("state", "State or colony he served for", stateOptions(), PATRIOT_HELP.state.text),
@@ -83,7 +91,8 @@ function patriotForm(state, refresh) {
     ...sel("kind", "Type of service", SERVICE_KINDS.map((k) => [k.id, k.label]), PATRIOT_HELP.kind.text),
     ...inp("start", "Service started (rough date)", "Numbers only, e.g. 1777 or 1777-05.", { inputmode: "numeric", placeholder: "e.g. 1777 or 1777-05" }),
     ...inp("end", "Service ended (rough date; blank if you only have one date)", null, { inputmode: "numeric", placeholder: "e.g. 1779 or 1779-10" }),
-    ...sel("gen", "Which generation is he?", gens, "Leave this on \"pick one\" if he is your oldest generation."),
+    el("label", { for: "pat-gen", text: "Which generation is he?" }), el("p", { class: "small hint", text: "Usually your oldest generation, which is the default. Generation 1 is you, so it isn't offered." }), genSel,
+    genWarn ? el("p", { class: "small warn", role: "status", "data-gen-warn": "", text: genWarn }) : null,
     el("div", { "data-patriot-check": "", "aria-live": "polite" }, patriotCheckEl(p)));
 }
 const genFields = (state, g, refresh) => {
@@ -186,7 +195,7 @@ function mountCard(root) {
   const s = store.get("v1", null); const out = root.querySelector("[data-card-status]");
   if (!s) { out.textContent = "Nothing saved in this browser yet."; return; }
   const n = countEntries(s.generations);
-  out.textContent = `Saved in this browser: ${s.generations.length} generations, ${n} evidence entries, ${gaps(s.generations, s.patriot).length} things still missing or flagged.`;
+  out.textContent = `Saved in this browser: ${plural(s.generations.length, "generation")}, ${plural(n, "evidence entry", "evidence entries")}, ${plural(gaps(s.generations, s.patriot).length, "thing")} still missing or flagged.`;
 }
 function patriotSummary(p) {
   const k = kindOf(p.kind);
@@ -204,12 +213,12 @@ function mountReport(root) {
     el("h2", { text: "What's still missing, and where to look" }), renderGaps(s), el("h2", { text: "Your records, generation by generation" })];
   for (const g of s.generations) {
     const rows = filledCells(g.cells).map((c) => { const ev = evaluateCell(c);
-      return el("tr", {}, el("td", { text: FACT_LABELS[c.fact] || "—" }), el("td", { text: DOC_TYPES[c.docType] || "—" }), el("td", { text: MODE_TEXT[c.mode] || "—" }),
-        el("td", { text: c.citation || "—" }), el("td", {}, el("span", { class: `badge ${labelClass(ev.label)}`, text: ev.label }), ...ev.cautions.map((k) => el("div", { class: "small caution", text: k.text })))); });
+      return el("tr", {}, el("td", { "data-label": "What it shows", text: FACT_LABELS[c.fact] || "—" }), el("td", { "data-label": "Kind of record", text: DOC_TYPES[c.docType] || "—" }), el("td", { "data-label": "Says it in words?", text: MODE_TEXT[c.mode] || "—" }),
+        el("td", { "data-label": "Where you found it", text: c.citation || "—" }), el("td", { "data-label": "Status" }, el("span", { class: `badge ${labelClass(ev.label)}`, text: ev.label }), ...ev.cautions.map((k) => el("div", { class: "small caution", text: k.text })))); });
     const facts = [g.born && `born about ${g.born}`, !g.living && g.died && `died about ${g.died}`, g.state && stateName(g.state)].filter(Boolean).join(", ");
     kids.push(el("h3", { text: `${genTitle(g.gen)}${g.gen === pg ? " (the patriot)" : ""}${g.who ? ` — ${g.who}` : ""}${g.living ? " (living)" : ""}` }),
       facts ? el("p", { class: "small", text: facts }) : null,
-      rows.length ? el("div", { class: "table-wrap" }, el("table", {}, el("thead", {}, el("tr", {}, ...["What it shows", "Kind of record", "Says it in words?", "Where you found it", "Status"].map((h) => el("th", { text: h })))), el("tbody", {}, ...rows)))
+      rows.length ? el("div", { class: "table-wrap" }, el("table", { class: "records" }, el("thead", {}, el("tr", {}, ...["What it shows", "Kind of record", "Says it in words?", "Where you found it", "Status"].map((h) => el("th", { text: h })))), el("tbody", {}, ...rows)))
         : el("p", { class: "small", text: "No records entered yet." }));
   }
   body.replaceChildren(...kids.filter(Boolean));
