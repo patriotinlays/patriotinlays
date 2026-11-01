@@ -1,1 +1,1 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><rect width="32" height="32" rx="6" fill="#1f3a5f"/><text x="16" y="22" font-family="Georgia,serif" font-size="16" fill="#fff" text-anchor="middle">PI</text></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><rect width="32" height="32" rx="5" fill="#0f2444"/><g fill="none" stroke="#fff" stroke-linejoin="round"><path stroke-width="2.4" d="M16 10.5C13.5 8.3 9.5 7 5 7V23C9.5 23 13.5 24 16 26C18.5 24 22.5 23 27 23V7C22.5 7 18.5 8.3 16 10.5"/><path stroke-width="3.6" d="M16 10V25.5"/></g></svg>

@@ -2550,6 +2550,7 @@
         "substitute-evidence",
         "tool:patriot.js",
         "tool:tool-a.js",
+        "tool:tool-b.js",
         "widow-pension-checker"
       ],
       "notes": ""
@@ -2568,7 +2569,8 @@
       "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
       "used_on": [
         "read-pension-file",
-        "substitute-evidence"
+        "substitute-evidence",
+        "tool:tool-b.js"
       ],
       "notes": ""
     },
@@ -4064,7 +4066,8 @@
       "verification_status": "verified",
       "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
       "used_on": [
-        "substitute-evidence"
+        "substitute-evidence",
+        "tool:tool-b.js"
       ],
       "notes": ""
     },
@@ -4098,7 +4101,8 @@
       "verification_status": "verified",
       "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
       "used_on": [
-        "substitute-evidence"
+        "substitute-evidence",
+        "tool:tool-b.js"
       ],
       "notes": ""
     },
@@ -4115,7 +4119,8 @@
       "verification_status": "verified",
       "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
       "used_on": [
-        "substitute-evidence"
+        "substitute-evidence",
+        "tool:tool-b.js"
       ],
       "notes": ""
     },
@@ -4217,8 +4222,7 @@
       "verification_status": "verified",
       "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
       "used_on": [
-        "substitute-evidence",
-        "tool:tool-b.js"
+        "substitute-evidence"
       ],
       "notes": ""
     },
@@ -4623,7 +4627,8 @@
       "verification_status": "verified",
       "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
       "used_on": [
-        "lineage-proof-roadmap"
+        "lineage-proof-roadmap",
+        "tool:tool-b.js"
       ],
       "notes": ""
     },
@@ -4914,8 +4919,7 @@
       "verification_status": "verified",
       "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
       "used_on": [
-        "partial:glossary",
-        "tool:tool-b.js"
+        "partial:glossary"
       ],
       "notes": ""
     },

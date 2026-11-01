@@ -29,8 +29,11 @@ function versionModule(f, seen = new Set()) {
 }
 for (const f of toolSrc.keys()) versionModule(f);
 const css = readFileSync(join(ROOT, "src/assets/site.css"), "utf8"); writeFileSync(join(OUT, "assets/site.css"), css); ASSET_V.set("/assets/site.css", hash8(css));
-const versionUrls = (html) => html.replace(/(src|href)="(\/assets\/[^"?#]+\.(?:js|css))"/g, (m, a, u) => ASSET_V.has(u) ? `${a}="${u}?v=${ASSET_V.get(u)}"` : m);
-copyFileSync(join(ROOT, "src/assets/favicon.svg"), join(OUT, "favicon.svg"));
+const versionUrls = (html) => html.replace(/(src|href|content)="((?:https:\/\/patriotinlays\.com)?)(\/(?:assets\/[^"?#]+|favicon[^"?#\/]*|apple-touch-icon\.png)\.?(?:js|css|svg|png)?)"/g, (m, a, host, u) => ASSET_V.has(u) ? `${a}="${host}${u}?v=${ASSET_V.get(u)}"` : m);
+// Logo and icons (sources and rebuild scripts in tools/logo/). Images get the same ?v=<hash> cache-busting as CSS/JS.
+for (const f of ["logo-horizontal-white.svg", "logo-horizontal.svg", "icon.svg", "og-image.png"]) { const b = readFileSync(join(ROOT, "src/assets", f)); writeFileSync(join(OUT, "assets", f), b); ASSET_V.set(`/assets/${f}`, hash8(b)); }
+for (const [src, dst] of [["favicon.svg", "favicon.svg"], ["favicon-32.png", "favicon-32.png"], ["favicon-16.png", "favicon-16.png"], ["apple-touch-icon-180.png", "apple-touch-icon.png"]]) {
+  const b = readFileSync(join(ROOT, "src/assets", src)); writeFileSync(join(OUT, dst), b); ASSET_V.set(`/${dst}`, hash8(b)); }
 
 function parseFront(raw) {
   const m = /^---\n([\s\S]*?)\n---\n?/.exec(raw); const fm = {};
@@ -80,8 +83,11 @@ const PATRIOT_CARD = `<aside class="card" data-tool-card="patriot"><strong>Recor
 <p>The free worksheet's patriot step asks for his state, unit, type of service and rough dates. It checks the dates against the period DAR accepts for that type of service and points you to the records for his state.</p>
 <p><a href="/tools/lineage-matrix/#tb-patriot">Open the patriot step</a> · <a href="/tools/widow-pension-checker/">Widow Pension Law Checker</a></p></aside>`;
 const TOOL_B_FULL = `<section class="tool" data-tool="lineage-matrix" aria-labelledby="tb-h"><h2 id="tb-h">Use the worksheet</h2>
+<p class="purpose" data-purpose><strong>What it's for:</strong> a to-do list of the records you still need for each generation, from you back to your patriot, and where to look for each one.</p>
 <div class="howto"><p><strong>How this works.</strong> This worksheet does not search any records or databases. You type in the records you already have for each person in your line. It shows what is still missing for each generation and where to look for it. Nothing you type leaves your device; it is saved only in this browser.</p>
 <p><button type="button" class="secondary" data-load-example>Load an example</button> <span class="small">Fills in a made-up family so you can see how it works.</span></p></div>
+<div class="ws-start" data-ws-start hidden><p><button type="button" class="big" data-ws-begin>Start my worksheet</button></p><p class="small">The steps open below: the patriot first, then you and each generation back to him.</p><div data-name-checklist></div></div>
+<div data-ws-body>
 <h3 class="step" id="tb-patriot"><span class="num">1</span> The patriot: who he was and how he served</h3>
 <p class="small">His state, type of service and rough dates shape the advice below. The worksheet checks his dates against the period DAR accepts for that type of service.</p>
 <div data-patriot></div>
@@ -97,6 +103,7 @@ const TOOL_B_FULL = `<section class="tool" data-tool="lineage-matrix" aria-label
 <h3 class="step"><span class="num">6</span> Print or save</h3>
 <p><a class="button-link" href="/tools/lineage-matrix/report/">Open my printable report</a></p>
 <button type="button" class="secondary" data-clear="toolB">Delete all my worksheet data</button>
+</div>
 <noscript><p>The worksheet needs JavaScript. The rules it applies are listed below.</p></noscript>
 </section><script type="module" src="/assets/js/tool-b-ui.js"></script>`;
 const TOOL_B_CARD = `<aside class="card" data-tool-card="lineage-matrix"><strong>Lineage Evidence Matrix</strong>
@@ -129,13 +136,15 @@ function md(body, ctx) {
   }
   return out.join("\n");
 }
-const NAV = `<header class="site"><div class="wrap"><a class="brand" href="/">Patriot In Lay Terms</a><nav class="top" aria-label="Main"><a href="/guides/lineage-proof-roadmap/">Start here</a><a href="/tools/widow-pension-checker/">Widow pension check</a><a href="/tools/lineage-matrix/">Worksheet</a><a href="/#guides">Guides</a><a href="/about/">About</a></nav></div></header>`;
+const NAV = `<header class="site"><div class="wrap"><a class="brand" href="/" aria-label="Patriot, In Lay Terms: home"><img class="logo" src="/assets/logo-horizontal-white.svg" alt="Patriot, In Lay Terms" width="161" height="44"></a><nav class="top" aria-label="Main"><a href="/guides/lineage-proof-roadmap/">Start here</a><a href="/tools/widow-pension-checker/">Widow pension check</a><a href="/tools/lineage-matrix/">Worksheet</a><a href="/#guides">Guides</a><a href="/about/">About</a></nav></div></header>`;
 const FOOT = `<footer class="site"><div class="wrap"><a href="/about/">About &amp; AI disclosure</a><a href="/sources/">Sources &amp; Methodology</a><a href="/privacy/">Privacy</a><a href="/contact/">Contact</a><p>Not affiliated with DAR, SAR, NSCDA or the National Archives. Not legal or professional genealogical advice.</p></div></footer>`;
 function page({ title, description, path, body, noindex = false }) {
   return `<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>${esc(title)} | Patriot In Lay Terms</title><meta name="description" content="${esc(description || "")}">
 <link rel="canonical" href="${SITE}${path}">${noindex ? '<meta name="robots" content="noindex">' : ""}
-<link rel="icon" href="/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="/assets/site.css"></head><body>${NAV}<main><div class="wrap">${body}</div></main>${FOOT}</body></html>`;
+<link rel="icon" href="/favicon.svg" type="image/svg+xml"><link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32"><link rel="icon" href="/favicon-16.png" type="image/png" sizes="16x16"><link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180"><meta name="theme-color" content="#13294b">
+<meta property="og:type" content="website"><meta property="og:site_name" content="Patriot, In Lay Terms"><meta property="og:title" content="${esc(title)}"><meta property="og:description" content="${esc(description || "")}"><meta property="og:url" content="${SITE}${path}"><meta property="og:image" content="${SITE}/assets/og-image.png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:alt" content="Patriot, In Lay Terms logo: an open book"><meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="/assets/site.css"></head><body>${NAV}<main><div class="wrap">${body}</div></main>${FOOT}</body></html>`;
 }
 function write(path, html) { const f = join(OUT, path, "index.html"); mkdirSync(dirname(f), { recursive: true }); writeFileSync(f, versionUrls(html)); }
 const sitemap = []; const built = [];
@@ -179,6 +188,7 @@ const HOME_GLOSSARY = (() => { const ctx = { sources: [], tools: new Set(), clai
 const guides = built.filter((b) => b.cornerstone).sort((a, b) => a.cornerstone - b.cornerstone);
 write("", page({ title: "Revolutionary War lineage, explained step by step", description: "Plain-English procedures and free browser tools for proving descent from a Revolutionary War patriot.", path: "/",
   body: `<h1>Revolutionary War lineage, explained step by step</h1>
+<p class="independent" data-independent>An independent guide: not affiliated with DAR, SAR or any lineage society, and it doesn't search records for you.</p>
 <section class="start-path" aria-labelledby="just-starting"><h2 id="just-starting">Just starting? Start here</h2>
 <p>New to DAR or SAR applications? Three steps, in order:</p>
 <ol class="start-steps"><li><a href="#how-to-join-in-short">How to join, in short</a>: who can join, and who helps you apply.</li><li><a href="/guides/lineage-proof-roadmap/#step-0-find-the-soldier-s-name">Find the soldier's name</a>: Step 0 of the Roadmap guide.</li><li><a href="/tools/lineage-matrix/">Start the free worksheet</a>: it lists the records still missing and where to look.</li></ol>

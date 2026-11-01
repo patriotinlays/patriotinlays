@@ -34,11 +34,12 @@ unknown or unverified claim, stale entry (> 120 days), quote that no longer appe
 | `src/content/*.md` | 10 cornerstone guides + 2 tool pages |
 | `src/pages/*.md` | About (AI disclosure), Privacy, Contact |
 | `src/tools/` | Tool logic (`tool-a.js`, `tool-b.js`), UI modules (`tool-a-ui.js`, `tool-b-ui.js`), `storage.js` |
-| `src/assets/` | CSS (responsive + print) and favicon |
+| `src/assets/` | CSS (responsive + print), header logo, favicons, apple-touch icon and social share image |
+| `tools/logo/` | Logo sources and rebuild scripts (`build.py`, `preview.py`, `og_image.py`; fonts under the SIL OFL, see `FONT-LICENSE.txt`) |
 | `manifest/` | Source Manifest (`claims.json`) and the Python that regenerates it (`npm run manifest`) |
 | `scripts/` | Static site generator, tests, manifest gate, link checker, gates doc generator |
 | `ops/gates.js`, `docs/gates.md` | Day 30/60/90 mixed-gate decision rules (code + generated doc) |
-| `qa/e2e.mjs` | Headless-browser end-to-end suite (127 checks, incl. 360px, fresh profile and the report page count) |
+| `qa/e2e.mjs` | Headless-browser end-to-end suite (135 checks, incl. 360px, fresh profile and the report page count) |
 | `.github/workflows/` | `build.yml` and `ci.yml`. **Both workflows are disabled on GitHub** (they don't run); every check they define is run locally before each deploy instead (see below) |
 | `dist/` | Build output (generated; this is what gets deployed) |
 
@@ -53,6 +54,14 @@ There is no `src/components/` directory; tool code lives in `src/tools/`.
 - Widow checker: a one-line plain answer above the results table and a plain-terms note.
 - Worksheet: a "What do you have?" checklist per generation and plain relationship choices ("my 3rd-great-grandfather").
 - Worksheet report: a summary first, each "Where to look" block shown once and referenced from the gaps, and a "Save as PDF" button. The example prints on 2 Letter pages with "Save as PDF" and 3 with Ctrl+P (headers and footers on, the way Chrome's print window prints), measured by `npm run e2e` (`exampleReportPages` in `qa/e2e-results.json`).
+
+### Logo and audit 4 proposals (Oct 31, 2026)
+
+- Header logo (white on navy, 44px tall, 38px on narrow phones), SVG + PNG favicons, apple-touch icon and a 1200x630 og:image; all cache-busted. Sources and rebuild scripts in `tools/logo/`.
+- Worksheet: a purpose line; a first visit shows "Start my worksheet" and an inline "Don't know his name yet?" checklist (ticks saved as `pi.toolB.nameChecklist`), and the steps stay hidden until you start (saved data, the example, or a link to a step opens them).
+- Worksheet: each generation with no birth record gets a closed "No birth certificate? Try these substitutes, in order" panel (baptism, Bible, pension file for generation 4+, census or death age, affidavit; use two or more), all from manifest claims.
+- Home page: a first-screen note that the site is independent (not affiliated with DAR, SAR or any lineage society) and doesn't search records.
+- The unfinished-record label is now "Needs details" (was "Entry Incomplete").
 
 ### Round 4 changes (Oct 31, 2026)
 

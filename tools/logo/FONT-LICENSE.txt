@@ -1,0 +1,17 @@
+Fonts used in logo-horizontal.svg / logo-horizontal-white.svg
+(text converted to vector outlines; no font files are shipped or required)
+
+- "PATRIOT,"            Merriweather (variable, instanced at wght 800, wdth 100, opsz 36)
+                        Copyright 2024 The Merriweather Project Authors
+                        (https://github.com/EbenSorkin/Merriweather4), Reserved Font Name "Merriweather".
+- "IN LAY TERMS",
+  "patriotinlays.com"   Montserrat (variable, instanced at wght 500)
+                        Copyright 2011 The Montserrat Project Authors
+                        (https://github.com/JulietaUla/Montserrat)
+
+Both are licensed under the SIL Open Font License, Version 1.1
+(https://openfontlicense.org). The OFL permits using the fonts to create
+artwork such as logos; outlined glyphs in an image/SVG are not a "Font
+Software" redistribution. The icon/favicon artwork contains no text.
+
+Source: build/build.py regenerates the two horizontal SVGs from the fonts.

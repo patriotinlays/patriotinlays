@@ -16,7 +16,7 @@ if (!existsSync(new URL("../dist/index.html", import.meta.url))) { console.error
 const CHROME = process.env.E2E_USE_BUNDLED === "1" ? undefined : (process.env.CHROME_PATH || (existsSync("/usr/bin/google-chrome") ? "/usr/bin/google-chrome" : undefined));
 const ROOT = new URL("..", import.meta.url).pathname; const DIST = join(ROOT, "dist"); const SHOTS = join(ROOT, "qa/screens");
 mkdirSync(SHOTS, { recursive: true });
-const TYPES = { ".html": "text/html", ".js": "text/javascript", ".css": "text/css", ".xml": "application/xml", ".txt": "text/plain" };
+const TYPES = { ".html": "text/html", ".js": "text/javascript", ".css": "text/css", ".xml": "application/xml", ".txt": "text/plain", ".svg": "image/svg+xml", ".png": "image/png" };
 const server = createServer((req, res) => { let p = decodeURIComponent(req.url.split("?")[0]); let f = join(DIST, p);
   if (existsSync(f) && statSync(f).isDirectory()) f = join(f, "index.html");
   if (!existsSync(f)) { res.writeHead(404, { "content-type": "text/html" }); res.end(readFileSync(join(DIST, "404.html"))); return; }
@@ -145,6 +145,19 @@ check("Sitemap lists the widow checker and not the retired URL; no page links to
 
 // ---- Worksheet patriot step ----
 phase("load"); await page.goto(`${BASE}/tools/lineage-matrix/`); phase("interact");
+// Audit 4 proposal #2: a first visit shows the purpose line, a Start button and the "Don't know his name yet?" checklist;
+// the steps (and the generation cards) stay hidden until the visitor starts.
+{ const st = await page.evaluate(() => ({ purpose: document.querySelector("[data-purpose]")?.textContent || "", start: !!document.querySelector("[data-ws-start]") && !document.querySelector("[data-ws-start]").hidden,
+    bodyHidden: document.querySelector("[data-ws-body]")?.hidden, genVisible: [...document.querySelectorAll("section.gen")].some((g) => g.offsetParent !== null),
+    list: [...document.querySelectorAll("[data-ws-start] [data-name-check]")].length, step0: !!document.querySelector('[data-ws-start] a[href="/guides/lineage-proof-roadmap/#step-0-find-the-soldier-s-name"]'), ls: Object.keys(localStorage).filter((k) => k.startsWith("pi.toolB")) }));
+  check("Worksheet (audit 4 proposal): a first visit opens with the purpose line and a Start button; the generation cards stay hidden; nothing is saved yet", /What it's for/.test(st.purpose) && st.start && st.bodyHidden === true && !st.genVisible && st.ls.length === 0, JSON.stringify(st));
+  check("Worksheet (audit 4 proposal): the start screen has the inline 'Don't know his name yet?' checklist (4 items) plus the Step 0 link", st.list === 4 && st.step0 && /Don't know his name yet\?/.test(await page.textContent("[data-ws-start]")), JSON.stringify(st));
+  await page.check('[data-ws-start] [data-name-check="known"]');
+  await page.click("[data-ws-begin]");
+  const after = await page.evaluate(() => ({ startHidden: document.querySelector("[data-ws-start]").hidden, bodyHidden: document.querySelector("[data-ws-body]").hidden, focus: document.activeElement?.id, saved: !!localStorage.getItem("pi.toolB.v1"), tick: JSON.parse(localStorage.getItem("pi.toolB.nameChecklist") || "{}").known, patBox: document.querySelector('[data-patriot-form] details[data-name-box] [data-name-check="known"]')?.checked }));
+  check("Worksheet (audit 4 proposal): 'Start my worksheet' opens the steps at the patriot step, saves a blank worksheet, and keeps the checklist tick (also shown in the patriot step)", after.startHidden && !after.bodyHidden && after.focus === "tb-patriot" && after.saved && after.tick === true && after.patBox === true, JSON.stringify(after));
+  phase("load"); await page.reload(); phase("interact");
+  check("Worksheet (audit 4 proposal): once started, a reload goes straight to the steps", !(await page.isVisible("[data-ws-begin]")) && await page.isVisible("#pat-name")); }
 check("Worksheet: step 1 is the patriot step", /The patriot/.test(await page.textContent("#tb-patriot")) && (await page.$$("[data-patriot-form] #pat-kind option")).length >= 9);
 await page.fill("#pat-name", "Test Patriot"); await page.selectOption("#pat-state", "NC"); await page.selectOption("#pat-kind", "continental"); await page.fill("#pat-start", "1776-02"); await page.fill("#pat-end", "1779-06");
 txt = await page.textContent("[data-patriot-check]");
@@ -169,6 +182,7 @@ phase("load"); await page.reload(); phase("interact");
   check("Report (audit 4 #1): the summary says his birth year and service don't add up, and never 'dates fit'", /don't add up/.test(rs) && !/dates fit/i.test(rs) && /Check these dates first/.test(rs), rs.slice(0, 200));
   phase("load"); await page.goto(`${BASE}/tools/lineage-matrix/`); phase("interact"); }
 await page.evaluate(() => localStorage.removeItem("pi.toolB.v1")); phase("load"); await page.reload(); phase("interact");
+await page.click("[data-ws-begin]");
 
 // ---- Tool B ----
 check("Tool B: starts with 2 generations", (await page.$$("section.gen")).length === 2);
@@ -228,7 +242,7 @@ phase("load"); await page.reload(); phase("interact"); const cardBlank = await p
 phase("load"); await page.goto(`${BASE}/tools/lineage-matrix/report/`); phase("interact"); const repRows = await page.$$eval("[data-report] table tbody tr", (x) => x.length); const repTxt = await page.textContent("[data-report]");
 check("Tool B (regression): blank record not counted on the card or shown on the report", /2 evidence entries/.test(cardBlank) && repRows === 2 && !/No Evidence Entered/.test(repTxt), `${cardBlank} | rows=${repRows}`);
 phase("load"); await page.goto(`${BASE}/guides/same-name/`); phase("interact");
-check("Tool B: saved under pi.toolB.v1 only", Object.keys(store).filter((k) => k.startsWith("pi.toolB")).join(",") === "pi.toolB.v1");
+check("Tool B: saved under pi.toolB.* only (the worksheet in pi.toolB.v1, plus pi.toolB.nameChecklist once a name-checklist box is ticked)", Object.keys(store).filter((k) => k.startsWith("pi.toolB")).sort().join(",") === "pi.toolB.nameChecklist,pi.toolB.v1" && Object.keys(store).filter((k) => k.startsWith("pi.") && !k.startsWith("pi.toolA") && !k.startsWith("pi.toolB")).length === 0, Object.keys(store).join(","));
 phase("load"); await page.goto(`${BASE}/tools/lineage-matrix/`); phase("interact");
 await page.click('[data-tool="lineage-matrix"] [data-load-example]');
 const planB = await page.textContent('[data-tool="lineage-matrix"] [data-plan]');
@@ -308,7 +322,7 @@ check("Report: links to the definitions", (await page.$$('main a[href="/#glossar
     return { rows, entries: where ? +where[1] : -1, gen2: gen2 ? [...gen2].map((li) => li.firstChild.textContent) : [], ohio: blocks.filter((t) => /no verified source yet on when Ohio/.test(t)).length,
       censusBlocks: blocks.filter((t) => /^[A-Z]+\. Census:/.test(t)).map((t) => t.replace(/^[A-Z]+\. /, "")), g6add: g6?.querySelector("[data-add-link]")?.getAttribute("href") || "" }; });
   const census = rb.rows.find((r) => /Census/.test(r[1]));
-  check("Audit 3 #3: a ticked 'Census entry' shows its kind and 'Entry Incomplete' in the report, and every counted entry is a row there", g3.doc === "census" && /Entry Incomplete/.test(g3.status) && census && /Census entry/.test(census[1]) && /Entry Incomplete/.test(census[4]) && rb.entries === rb.rows.length && !rb.rows.some((r) => /No Evidence Entered/.test(r[4])), JSON.stringify({ g3, census, entries: rb.entries, rows: rb.rows.length }));
+  check("Audit 3 #3: a ticked 'Census entry' shows its kind and 'Needs details' in the report, and every counted entry is a row there", g3.doc === "census" && /Needs details/.test(g3.status) && census && /Census entry/.test(census[1]) && /Needs details/.test(census[4]) && rb.entries === rb.rows.length && !rb.rows.some((r) => /No Evidence Entered/.test(r[4])), JSON.stringify({ g3, census, entries: rb.entries, rows: rb.rows.length }));
   check("Audit 3 #4: within a generation, the person's own records (birth, death) come before the link record, in the plan and in the records table", /^The birth record/.test(rb.gen2[0] || "") && /^The death record/.test(rb.gen2[1] || "") && /link/.test(rb.gen2.at(-1) || "") && rb.rows.findIndex((r) => r[0] === "Birth") < rb.rows.findIndex((r) => /Parent/.test(r[0])), rb.gen2.join(" | "));
   check("Audit 3 #4: in the report, the patriot's missing birth or death record links to his generation in the worksheet", rb.g6add === "/tools/lineage-matrix/#gen-6", rb.g6add);
   check("Audit 3 #5: the report prints the Ohio no-source note once, and each census fact once", rb.ohio === 1 && rb.censusBlocks.length === new Set(rb.censusBlocks).size && rb.censusBlocks.length >= 2, JSON.stringify(rb.censusBlocks));
@@ -336,6 +350,7 @@ store = await ls();
 check("Tool B clear: removes pi.toolB.* only, keeps unrelated key", !Object.keys(store).some((k) => k.startsWith("pi.toolB")) && store["other.app.key"] === "keep-me", Object.keys(store).join(","));
 // ---- Simpler worksheet: "What do you have?" checklist and plain relationship choices ----
 phase("load"); await page.goto(`${BASE}/tools/lineage-matrix/`); phase("interact");
+await page.click("[data-ws-begin]");
 await page.check('[data-have="2"] input[data-have-item="will"]');
 const willCell = await page.evaluate(() => { const c = document.querySelectorAll('section.gen[data-gen="2"] .cell'); return { n: c.length, fact: c[0]?.querySelector("select[name=fact]").value, doc: c[0]?.querySelector("select[name=docType]").value }; });
 await page.uncheck('[data-have="2"] input[data-have-item="will"]'); const afterUntick = (await page.$$('section.gen[data-gen="2"] .cell')).length;
@@ -398,6 +413,12 @@ const plainTerms = ["/tools/widow-pension-checker/", "/guides/bounty-land-warran
   && /Statutes at Large/.test(readFileSync(join(DIST, "tools/widow-pension-checker/index.html"), "utf8").replace(/<details[\s\S]*?<\/details>/, ""));
 check("Plain terms: the widow checker page and the bounty-land guide explain 'Stat.' and 'bounty land' in the text too", plainTerms);
 check("No doubled source markers like [1][1] on any page", htmlFiles.every((f) => !/(<sup><a href="#src-(\d+)"[^>]*>\[\d+\]<\/a><\/sup>)<sup><a href="#src-\2"/.test(readFileSync(f, "utf8"))));
+{ // Logo (A0): every page links the new icons and a share image, all cache-busted; the old "PI" icon is gone.
+  const bad = htmlFiles.filter((f) => { const h = readFileSync(f, "utf8");
+    return !/<link rel="icon" href="\/favicon\.svg\?v=[0-9a-f]{10}" type="image\/svg\+xml">/.test(h) || !/<link rel="icon" href="\/favicon-32\.png\?v=[0-9a-f]{10}" type="image\/png" sizes="32x32">/.test(h) || !/<link rel="apple-touch-icon" href="\/apple-touch-icon\.png\?v=[0-9a-f]{10}" sizes="180x180">/.test(h)
+      || !/<meta property="og:image" content="https:\/\/patriotinlays\.com\/assets\/og-image\.png\?v=[0-9a-f]{10}">/.test(h) || !/<img class="logo" src="\/assets\/logo-horizontal-white\.svg\?v=[0-9a-f]{10}" alt="Patriot, In Lay Terms"/.test(h); });
+  const fav = readFileSync(join(DIST, "favicon.svg"), "utf8");
+  check(`Logo: all ${htmlFiles.length} pages link the new favicon (SVG + 32/16 PNG), apple-touch-icon and og:image, with the header logo, all cache-busted; the old 'PI' icon is replaced`, bad.length === 0 && !/>PI</.test(fav) && /#0f2444/.test(fav) && ["favicon-32.png", "favicon-16.png", "apple-touch-icon.png", "assets/og-image.png", "assets/logo-horizontal-white.svg"].every((f) => existsSync(join(DIST, f))), bad.map((f) => f.replace(DIST, "")).join(" ")); }
 const guidePaths = ["/guides/lineage-proof-roadmap/", "/guides/substitute-evidence/", "/guides/read-pension-file/", "/guides/records-by-state/", "/guides/bounty-land-warrants/", "/guides/census-bridge/", "/guides/patriotic-service/", "/guides/same-name/", "/guides/patriot-or-loyalist/", "/guides/application-problems/"];
 const guideBad = [];
 for (const gp of guidePaths) { const h = readFileSync(join(DIST, gp, "index.html"), "utf8");
@@ -410,9 +431,10 @@ check("No dead ends: About, Privacy, Contact, Sources and 404 offer a 'Ready to 
 
 // ---- Network silence ----
 const external = requests.filter((r) => !r.url.startsWith(BASE));
-// The browser itself fetches /favicon.svg lazily after load; that is not tool traffic and is excluded (and reported).
-const faviconLate = requests.filter((r) => r.phase === "interact" && r.url.endsWith("/favicon.svg")).length;
-const duringInteraction = requests.filter((r) => r.phase === "interact" && !r.url.endsWith("/favicon.svg"));
+// The browser itself fetches the favicon lazily after load; that is not tool traffic and is excluded (and reported).
+const isIcon = (u) => /\/(favicon[^/?]*|apple-touch-icon\.png)(\?|$)/.test(new URL(u).pathname + (new URL(u).search ? "?" : ""));
+const faviconLate = requests.filter((r) => r.phase === "interact" && isIcon(r.url)).length;
+const duringInteraction = requests.filter((r) => r.phase === "interact" && !isIcon(r.url));
 check("Network: zero requests to any host other than the local site", external.length === 0, external.map((r) => r.url).slice(0, 3).join(" "));
 check("Network: zero requests while using the tools (after page load)", duringInteraction.length === 0, duringInteraction.map((r) => r.url).slice(0, 3).join(" "));
 
@@ -429,7 +451,7 @@ for (const p of pagesToCheck) {
   if (o.sw > o.iw + 1) overflow.push(`${p} (${o.sw}px)`);
 }
 check(`Mobile 375px: no horizontal page overflow on ${pagesToCheck.length} pages`, overflow.length === 0, overflow.join(", "));
-const tapTargets = await (async () => { await mp.goto(`${BASE}/tools/lineage-matrix/`); return mp.$$eval(".tool button:not(.link)", (bs) => bs.filter((b) => b.getBoundingClientRect().height < 44).length); })();
+const tapTargets = await (async () => { await mp.goto(`${BASE}/tools/lineage-matrix/`); if (await mp.isVisible("[data-ws-begin]")) await mp.click("[data-ws-begin]"); return mp.$$eval(".tool button:not(.link)", (bs) => bs.filter((b) => b.offsetParent !== null && b.getBoundingClientRect().height < 44).length); })();
 // Regression: widow-act table reflows into stacked cards at 360px with no horizontal page overflow.
 const narrow = await browser.newContext({ viewport: { width: 360, height: 780 }, deviceScaleFactor: 2, isMobile: true, hasTouch: true });
 const np = await narrow.newPage(); np.on("pageerror", (e) => consoleErrors.push(`360px: ${e.message}`));
@@ -446,6 +468,19 @@ const npages = ["/", "/tools/lineage-matrix/", "/tools/lineage-matrix/report/", 
 for (const p of npages) { await np.goto(BASE + p); if (p === "/tools/lineage-matrix/" || p === "/tools/widow-pension-checker/") await np.click("[data-load-example]");
   const o = await np.evaluate(() => ({ sw: document.documentElement.scrollWidth, iw: window.innerWidth, out: [...document.querySelectorAll("body *")].filter((e) => !e.closest(".table-wrap:not(:has(table.widow)):not(:has(table.records))") && e.getBoundingClientRect().right > 361).length }));
   if (o.sw > 360 || o.iw !== 360 || o.out) nOver.push(`${p} sw=${o.sw} iw=${o.iw} out=${o.out}`); }
+// Logo (A0): the header logo loads, is modest (at most 44px tall) and fits a true 360px screen; the home page's independence note is on the first screen.
+await np.goto(`${BASE}/`);
+{ const lg = await np.evaluate(() => { const i = document.querySelector("header.site img.logo"); const r = i.getBoundingClientRect(); const n = document.querySelector("[data-independent]"); const hr = document.querySelector("header.site").getBoundingClientRect();
+    return { ok: i.complete && i.naturalWidth > 0, h: Math.round(r.height), right: Math.round(r.right), alt: i.alt, header: Math.round(hr.height), note: n?.textContent || "", noteTop: n ? Math.round(n.getBoundingClientRect().top) : 9999 }; });
+  check("Logo (360px): the header logo loads, is at most 44px tall, fits the screen, has alt text, and the header stays compact (no hero image)", lg.ok && lg.h <= 44 && lg.right <= 360 && /Patriot, In Lay Terms/.test(lg.alt) && lg.header <= 140, JSON.stringify(lg));
+  check("Home (audit 4 proposal, 360px): the first screen says the site is independent (not DAR, SAR or any society) and doesn't search records", /independent/.test(lg.note) && /not affiliated with DAR, SAR or any lineage society/.test(lg.note) && /doesn't search records/.test(lg.note) && lg.noteTop < 780, JSON.stringify(lg)); }
+// Birth substitutes (audit 4 proposal #1), on a phone: the example's generations without a birth record get the panel, in order; the patriot's includes the pension file.
+await np.goto(`${BASE}/tools/lineage-matrix/`); await np.click("[data-load-example]");
+{ const bs = await np.evaluate(() => ({ gens: [...document.querySelectorAll("[data-birth-subs]")].map((d) => d.dataset.birthSubs).join(","), open: [...document.querySelectorAll("[data-birth-subs]")].some((d) => d.open),
+    title: document.querySelector("[data-birth-subs] summary")?.textContent, g5: [...document.querySelectorAll('[data-birth-subs="5"] [data-sub]')].map((li) => li.dataset.sub).join(","), g3: [...document.querySelectorAll('[data-birth-subs="3"] [data-sub]')].map((li) => li.dataset.sub).join(","),
+    guide: !!document.querySelector('[data-birth-subs="5"] a[href="/guides/substitute-evidence/"]') }));
+  await np.click('[data-birth-subs="5"] summary'); const wide = await np.evaluate(() => ({ sw: document.documentElement.scrollWidth, r: Math.round(document.querySelector('[data-birth-subs="5"]').getBoundingClientRect().right) }));
+  check("Worksheet (audit 4 proposal): 'No birth certificate? Try these substitutes, in order' appears, closed, at each generation with no birth record (example: 3, 4, 5), in order, with the pension-file step only for older generations, and fits 360px open", bs.gens === "3,4,5" && !bs.open && bs.title === "No birth certificate? Try these substitutes, in order" && bs.g5 === "baptism,bible,pension,age,affidavit" && bs.g3 === "baptism,bible,age,affidavit" && bs.guide && wide.sw <= 360 && wide.r <= 360, JSON.stringify({ ...bs, ...wide })); }
 check("True 360px (audit 2): home, worksheet (example loaded), its report, widow checker (example loaded) and its report fit 360px with nothing off-screen", nOver.length === 0, nOver.join(", "));
 const recCards = await (async () => { await np.goto(`${BASE}/tools/lineage-matrix/report/`); return np.evaluate(() => { const t = document.querySelector("table.records"); return t ? getComputedStyle(t.querySelector("td")).display + "|" + getComputedStyle(t.querySelector("thead")).display : "none"; }); })();
 check("True 360px (audit 2): the worksheet report's records table stacks into cards", recCards === "block|none", recCards);

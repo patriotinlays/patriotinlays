@@ -1,6 +1,6 @@
 // Tool B browser UI: Lineage Evidence Matrix editor, embed card, and report page.
 // State lives only in localStorage under "pi.toolB.v1"; no network requests are made.
-import { relationName, HAVE_ITEMS, byFactOrder, actionPlan, evaluateCell, gaps, groupGaps, filledCells, countEntries, patriotGen, LABELS, FACTS, FACT_LABELS, DOC_TYPES, MODE_HELP, genLabel, genTitle, isEmptyCell, dateWarnings, NSCDA_TERM } from "./tool-b.js";
+import { relationName, HAVE_ITEMS, byFactOrder, actionPlan, evaluateCell, gaps, groupGaps, filledCells, countEntries, patriotGen, LABELS, FACTS, FACT_LABELS, DOC_TYPES, MODE_HELP, genLabel, genTitle, isEmptyCell, dateWarnings, NSCDA_TERM, birthSubstitutes, NAME_CHECKLIST } from "./tool-b.js";
 import { SERVICE_KINDS, PATRIOT_HELP, patriotDates, hasPatriot, kindOf } from "./patriot.js";
 import { STATES, stateName, noVitalText } from "./places.js";
 import { ns, el } from "./storage.js";
@@ -103,6 +103,7 @@ function patriotForm(state, refresh, rerender = refresh) {
     el("p", { class: "no-name", "data-no-name": "" }, el("strong", { text: "Don't know his name yet? " }), "That's where most people start. ",
       el("a", { href: "/guides/lineage-proof-roadmap/#step-0-find-the-soldier-s-name", text: "Step 0 of our Roadmap guide: how to find the soldier's name" }),
       ". Meanwhile, fill in the people you do know below, starting with yourself; you can add him here later."),
+    nameChecklistEl(false),
     ...inp("name", "His name (optional, stays in this browser)"),
     ...sel("state", "State or colony he served for", stateOptions(), PATRIOT_HELP.state.text),
     ...inp("unit", "Unit or company (optional)", "For example a county militia company or a numbered regiment, if you know it."),
@@ -138,6 +139,26 @@ function haveBox(state, g, rerender) {
       save(state); rerender(); } }), " ", it.label)));
 }
 let alertMsg = () => {};
+// "No birth certificate? Try these substitutes, in order": a closed panel at each generation without a birth record.
+function birthSubsEl(g) {
+  const b = birthSubstitutes(g); if (!b) return null;
+  return el("details", { class: "birth-subs", "data-birth-subs": g.gen }, el("summary", { text: b.title }),
+    el("p", { class: "small", text: b.intro }),
+    el("ol", { class: "birth-subs-steps" }, ...b.steps.map((x) => el("li", { "data-sub": x.id, text: x.text }))),
+    el("p", { class: "small", text: b.combine.text }),
+    el("ul", { class: "where-links small" }, ...b.links.map((l) => el("li", {}, el("a", { href: l.url, rel: "noopener", text: l.label }))),
+      el("li", {}, "Our guide: ", el("a", { href: b.guide.url, text: b.guide.label }))));
+}
+// "Don't know his name yet?": a short checklist; ticks are saved in this browser only (pi.toolB.nameChecklist).
+function nameChecklistEl(open = true) {
+  const ticks = store.get("nameChecklist", {}) || {};
+  const body = [el("ul", { class: "name-checklist" }, ...NAME_CHECKLIST.map((it) => el("li", {}, el("label", { class: "check" },
+      el("input", { type: "checkbox", "data-name-check": it.id, checked: !!ticks[it.id], onchange: (e) => { const t = store.get("nameChecklist", {}) || {}; t[it.id] = e.target.checked; store.set("nameChecklist", t);
+        document.querySelectorAll(`[data-name-check="${it.id}"]`).forEach((x) => { x.checked = e.target.checked; }); } }), " ", it.text)))),
+    el("p", { class: "small" }, "More detail: ", el("a", { href: "/guides/lineage-proof-roadmap/#step-0-find-the-soldier-s-name", text: "Step 0 of our Roadmap guide: how to find the soldier's name" }), ".")];
+  return open ? el("div", { class: "name-check", "data-name-box": "" }, el("p", {}, el("strong", { text: "Don't know his name yet? " }), "That's where most people start. A short checklist:"), ...body)
+    : el("details", { class: "name-check", "data-name-box": "" }, el("summary", { text: "Don't know his name yet? A short checklist" }), ...body);
+}
 function cellEditor(state, g, c, rerender, n) {
   const ev = evaluateCell(c);
   const base = `g${g.gen}-${c.id}`;
@@ -171,6 +192,13 @@ function bindEditorEvents(container, state, rerender) {
   });
 }
 function mountEditor(root) {
+  // A first visit opens with the purpose line and a Start button; the steps stay hidden until the visitor starts
+  // (audit 4 proposal). Saved data, an example, or a link to a step (#tb-patriot, #gen-N) opens them straight away.
+  const fresh = store.get("v1", null) == null && !/^#(tb-patriot|gen-\d+)$/.test(location.hash);
+  const startBox = root.querySelector("[data-ws-start]"), wsBody = root.querySelector("[data-ws-body]");
+  const open = (focus = false) => { if (startBox) startBox.hidden = true; if (wsBody) wsBody.hidden = false; if (focus) { const h = root.querySelector("#tb-patriot"); h?.setAttribute("tabindex", "-1"); h?.scrollIntoView({ block: "start" }); h?.focus(); } };
+  if (fresh && startBox && wsBody) { startBox.hidden = false; wsBody.hidden = true; root.querySelector("[data-name-checklist]")?.replaceChildren(nameChecklistEl(true)); }
+  root.querySelector("[data-ws-begin]")?.addEventListener("click", () => { save(state); open(true); });
   const state = load(); const box = root.querySelector("[data-matrix]"); const gapBox = root.querySelector("[data-gaps]");
   const patBox = root.querySelector("[data-patriot]");
   const msg = root.querySelector("[data-cleared]"); alertMsg = (t) => { if (msg) msg.textContent = t; };
@@ -199,7 +227,7 @@ function mountEditor(root) {
       el("label", { for: `who-${g.gen}`, text: "Name (optional, stays in this browser)" }),
       el("input", { id: `who-${g.gen}`, type: "text", value: g.who, autocomplete: "off", oninput: (e) => { g.who = e.target.value; save(state); } }),
       el("label", { class: "check" }, el("input", { type: "checkbox", id: `living-${g.gen}`, checked: g.living, onchange: (e) => { g.living = e.target.checked; save(state); rerender(); } }), " Still living (then no death record is needed)"),
-      genFields(state, g, refresh), haveBox(state, g, rerender),
+      genFields(state, g, refresh), haveBox(state, g, rerender), birthSubsEl(g),
       ...g.cells.map((c, i) => cellEditor(state, g, c, rerender, i + 1)),
       el("button", { type: "button", "data-add-evidence": g.gen, onclick: () => addRecord(g), text: `+ Add a record for ${genLabel(g.gen).toLowerCase()}` }))));
     refresh();
@@ -227,7 +255,7 @@ function mountEditor(root) {
   root.querySelector("[data-load-example]")?.addEventListener("click", () => {
     const hasData = state.generations.some((g) => g.cells.length || g.who) || hasPatriot(state.patriot);
     if (hasData && !confirm("Replace what you've entered with the made-up example?")) return;
-    const ex = EXAMPLE(); state.generations = ex.generations; state.patriot = ex.patriot; save(state); rerender();
+    const ex = EXAMPLE(); state.generations = ex.generations; state.patriot = ex.patriot; save(state); open(); rerender();
     if (msg) msg.textContent = "Example loaded: a made-up Virginia militiaman and four generations after him. Scroll down to see what's missing and where to look.";
   });
   root.querySelector("[data-clear=toolB]").addEventListener("click", () => {

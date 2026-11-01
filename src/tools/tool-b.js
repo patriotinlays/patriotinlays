@@ -13,7 +13,7 @@ export const LABELS = Object.freeze({
   none: "No Evidence Entered",
   entered: "Evidence Entered — Review Required",
   conflict: "Conflict Flagged — Review Required",
-  incomplete: "Entry Incomplete",
+  incomplete: "Needs details",
 });
 
 export const FACTS = ["birth", "death", "marriage", "parentage", "residence"];
@@ -93,7 +93,7 @@ export const DOC_TYPES = {
 export function evaluateCell(cell = {}) {
   const issues = [], cautions = [];
   // Only a fully blank record is "No Evidence Entered" (and blank records are never counted). Anything typed or ticked is an
-  // entry, so its status is "Entry Incomplete" until A to D are answered (audit 3: a ticked census showed "No Evidence Entered").
+  // entry, so its status is "Needs details" until A to D are answered (audit 3: a ticked census showed "No Evidence Entered").
   if (isEmptyCell(cell)) return { label: LABELS.none, issues, cautions, needs: [] };
   const needs = [];
   if (!cell.docType) { issues.push("Still needed: pick what kind of record this is."); needs.push("its kind"); }
@@ -190,6 +190,40 @@ export function whereToLook(fact, gen, ctx = {}) {
   const links = [...w.links.map((k) => WHERE_SOURCES[k]), ...notes.flatMap((n) => n.links)].filter((l, i, a) => a.findIndex((m) => m.url === l.url) === i);
   return { text: w.text, era, notes, claims: [...new Set([...w.claims, ...notes.flatMap((n) => n.claims)])], links, guides: w.guides.map((k) => GUIDES[k]), registrar: REGISTRAR };
 }
+// "No birth certificate? Try these substitutes, in order" (audit 4 proposal, approved): shown at each generation that has no
+// birth record yet. The order is this site's suggestion (records that give a date first, then estimates, then supporting
+// papers); every step's facts come from the Source Manifest. The pension-file step is offered only to older generations.
+export const BIRTH_SUBSTITUTES = Object.freeze({
+  title: "No birth certificate? Try these substitutes, in order",
+  intro: "Our suggested order: records that give a date first, then records you can work out a year from, then papers that back them up.",
+  steps: Object.freeze([
+    { id: "baptism", text: "A church baptism or christening record. DAR lets you use an infant baptism or christening date when you can't document the birth date.", claims: ["dar-baptism", "nscda-church"] },
+    { id: "bible", text: "A family Bible page with the births written in. Copy the Bible's title page with its publication date too: NSCDA asks for it with Bible entries.", claims: ["m804-bible-pages", "nscda-bible-title"] },
+    { id: "pension", older: true, text: "If this person was a Revolutionary War veteran, his wife or widow, or their child: his pension or bounty-land file. Some files hold family Bible pages with birth dates, and a widow's application may give her age.", claims: ["m804-bible-pages", "m804-widow-info"] },
+    { id: "age", text: "An age on a census or at death, to work out the birth year. DAR marks a birth year estimated this way as \"circa\" (about).", claims: ["dar-circa"] },
+    { id: "affidavit", text: "A sworn statement (affidavit) from someone with personal knowledge of the birth. NSCDA lists these among substitute sources.", claims: ["nscda-affidavits"] },
+  ]),
+  combine: { text: "Use two or more together: NSCDA advises that a proof shouldn't rest on one substitute document.", claims: ["nscda-combine"] },
+  links: ["darSteps"], guide: "substitute",
+});
+export const hasBirthRecord = (row = {}) => filledCells(row.cells || []).some((c) => c.fact === "birth");
+// The panel for one generation, or null when it already has a birth record. Older = generation 4+ (DAR's split, as in rowRequirements).
+export function birthSubstitutes(row = {}) {
+  if (hasBirthRecord(row)) return null;
+  const older = (row.gen ?? 1) >= 4;
+  const steps = BIRTH_SUBSTITUTES.steps.filter((x) => !x.older || older);
+  return { title: BIRTH_SUBSTITUTES.title, intro: BIRTH_SUBSTITUTES.intro, steps, combine: BIRTH_SUBSTITUTES.combine,
+    claims: [...new Set([...steps.flatMap((x) => x.claims), ...BIRTH_SUBSTITUTES.combine.claims])],
+    links: BIRTH_SUBSTITUTES.links.map((k) => WHERE_SOURCES[k]), guide: GUIDES[BIRTH_SUBSTITUTES.guide] };
+}
+// Inline "Don't know his name yet?" checklist on the worksheet's start screen (audit 4 proposal). Plain to-dos, no facts claimed;
+// the Roadmap's Step 0 has the sourced detail.
+export const NAME_CHECKLIST = Object.freeze([
+  { id: "known", text: "Write down the people you do know: your parents, grandparents and great-grandparents, with rough birth years and states. The worksheet starts with them; you don't need his name." },
+  { id: "ask", text: "Ask older relatives for family Bibles, obituaries, old letters, and the papers of anyone in the family who joined DAR, SAR or another lineage society." },
+  { id: "search", text: "Search DAR's free ancestor database (the Genealogical Research System) with your family surnames and states. Step 0 of our Roadmap guide shows how.", claims: ["dar-join-grs"] },
+  { id: "add", text: "Found a likely name? Add him in the patriot step. Not yet? Start anyway and add him later." },
+]);
 const whereFor = (...a) => whereToLook(...a);
 const startHere = () => ({ text: START_HERE.text, claims: START_HERE.claims, links: [], guides: START_HERE.guides.map((k) => GUIDES[k]), registrar: REGISTRAR });
 

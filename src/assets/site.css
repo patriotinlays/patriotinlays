@@ -7,7 +7,9 @@ a{color:#1a4f9c}
 header.site{border-bottom:3px solid var(--red);background:var(--navy)}
 header.site .wrap{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:.5rem;padding:.6rem 1rem}
 header.site a{color:#fff;text-decoration:none}
-.brand{font-weight:700;font-size:1.1rem}
+.brand{display:inline-flex;align-items:center;line-height:0}
+.brand .logo{height:44px;width:auto;display:block}
+@media (max-width:420px){.brand .logo{height:38px}}
 nav.top a{margin-left:1rem;font:15px/1.4 system-ui,sans-serif}
 main{padding:1rem 0 2rem}
 h1{font-size:1.8rem;line-height:1.25;color:var(--navy);margin:.8rem 0}
@@ -190,3 +192,20 @@ p.answer{border-left:4px solid var(--navy);background:#fff;padding:.5rem .7rem;m
 .guide-list.compact li{margin:.25rem 0}
 
 .plan-warn{border-left:4px solid #a40000;padding-left:.6rem;background:#fff1f0}
+
+/* Audit 4 proposals: worksheet purpose line and start screen, name checklist, birth-substitute panel, home independence note */
+.tool .purpose{font-size:1.05rem;margin:.2rem 0 .6rem}
+.ws-start{border:1px solid #c5d3ea;border-radius:6px;padding:.6rem .9rem;margin:.4rem 0 1rem;background:#fff}
+.ws-start p{margin:.3rem 0}
+.name-check{border-left:4px solid var(--navy);background:var(--soft);padding:.4rem .7rem;margin:.6rem 0;font:15px/1.5 system-ui,sans-serif}
+details.name-check summary{cursor:pointer;font-weight:600;color:var(--navy)}
+.name-checklist{list-style:none;margin:.3rem 0;padding:0}
+.name-checklist li{margin:.35rem 0}
+.name-checklist label.check{display:flex;gap:.45rem;align-items:flex-start}
+.name-checklist input{margin-top:.3rem;flex:none}
+details.birth-subs{border:1px solid #e3c98a;border-radius:6px;padding:.4rem .7rem;margin:.6rem 0;background:#fffaf0;font:15px/1.5 system-ui,sans-serif}
+details.birth-subs summary{cursor:pointer;font-weight:600;color:#6b4500}
+.birth-subs-steps{margin:.3rem 0;padding-left:1.3rem}
+.birth-subs-steps li{margin:.25rem 0}
+.independent{margin:-.2rem 0 .8rem;font:15px/1.45 system-ui,sans-serif;color:var(--muted)}
+@media print{details.birth-subs,.ws-start,.name-check{display:none!important}}
