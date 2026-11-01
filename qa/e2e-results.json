@@ -1,8 +1,8 @@
 {
-  "ranAt": "Sat Oct 31 2026 20:48:11 GMT-0500 (Central Daylight Time)",
+  "ranAt": "Sat Oct 31 2026 21:04:10 GMT-0500 (Central Daylight Time)",
   "browser": "/usr/bin/google-chrome (headless) via playwright-core 1.59.1",
-  "passed": 115,
-  "total": 115,
+  "passed": 121,
+  "total": 121,
   "exampleReportPages": {
     "summaryPages": 2,
     "fullPages": 3,
@@ -11,11 +11,22 @@
       "fullPages": 3
     }
   },
+  "home": {
+    "guides": [
+      "/guides/lineage-proof-roadmap/",
+      "/guides/substitute-evidence/",
+      "/guides/read-pension-file/"
+    ],
+    "words": 955,
+    "height": 3304,
+    "dupTools": 0,
+    "guideDescs": 0
+  },
   "results": [
     {
       "name": "Fresh profile: widow checker starts empty and unticked, with no results and nothing saved",
       "ok": true,
-      "detail": "{\"vals\":[\"\",\"\",\"\",\"\",false],\"rows\":0,\"ls\":[],\"plan\":\"Your next steps appear here after you press \\\"Check the widow pension laws\\\". They follow from your results.\",\"saved\":false}"
+      "detail": "{\"vals\":[\"\",\"\",\"\",\"\",\"\",\"\"],\"rows\":0,\"ls\":[],\"plan\":\"Your next steps appear here after you press \\\"Check the widow pension laws\\\". They follow from your results.\",\"saved\":false}"
     },
     {
       "name": "Widow checker: a visible 'Start over' button",
@@ -25,17 +36,17 @@
     {
       "name": "Returning visit: the form starts empty and unticked with no old results; a note points to the saved check and 'Start over'",
       "ok": true,
-      "detail": "{\"vals\":[\"\",\"\",\"\",\"\",false],\"rows\":0,\"ls\":[\"pi.toolA.widow\"],\"plan\":\"Your next steps appear here after you press \\\"Check the widow pension laws\\\". They follow from your results.\",\"saved\":true}"
+      "detail": "{\"vals\":[\"\",\"\",\"\",\"\",\"\",\"\"],\"rows\":0,\"ls\":[\"pi.toolA.widow\"],\"plan\":\"Your next steps appear here after you press \\\"Check the widow pension laws\\\". They follow from your results.\",\"saved\":true}"
     },
     {
       "name": "Prefill from the worksheet fills his service end but does not run the check",
       "ok": true,
-      "detail": "{\"vals\":[\"\",\"1779-10\",\"\",\"\",false],\"rows\":0,\"ls\":[\"pi.toolB.v1\",\"pi.toolA.widow\"],\"plan\":\"Your next steps appear here after you press \\\"Check the widow pension laws\\\". They follow from your results.\",\"saved\":true}"
+      "detail": "{\"vals\":[\"\",\"1779-10\",\"\",\"\",\"\",\"militia\"],\"rows\":0,\"ls\":[\"pi.toolB.v1\",\"pi.toolA.widow\"],\"plan\":\"Your next steps appear here after you press \\\"Check the widow pension laws\\\". They follow from your results.\",\"saved\":true}"
     },
     {
       "name": "Start over: empties the form, deletes this checker's saved data only, and says so",
       "ok": true,
-      "detail": "{\"vals\":[\"\",\"\",\"\",\"\",false],\"rows\":0,\"ls\":[\"pi.toolB.v1\"],\"plan\":\"Your next steps appear here after you press \\\"Check the widow pension laws\\\". They follow from your results.\",\"saved\":false}"
+      "detail": "{\"vals\":[\"\",\"\",\"\",\"\",\"\",\"\"],\"rows\":0,\"ls\":[\"pi.toolB.v1\"],\"plan\":\"Your next steps appear here after you press \\\"Check the widow pension laws\\\". They follow from your results.\",\"saved\":false}"
     },
     {
       "name": "Widow checker page: explains what it tells you and why it matters for finding pension files",
@@ -63,9 +74,9 @@
       "detail": ""
     },
     {
-      "name": "Widow checker: 1853 and Feb-1855 acts display 'Not checked'",
+      "name": "Widow checker: 1853 and Feb-1855 acts display 'Can't check here'",
       "ok": true,
-      "detail": "Not checkedNot checked. See \"W | Not checkedNot checked. See \"W"
+      "detail": "Can't check hereCan't check he | Can't check hereCan't check he"
     },
     {
       "name": "Widow checker: 'Not checked' row says why and what to do (pension papers / registrar)",
@@ -73,14 +84,29 @@
       "detail": "Rule: Source states only that marriage-date restrictions were removed; the act's"
     },
     {
-      "name": "Widow checker (audit 2): 1836 'Doesn't fit' says why: married 1790, service ended 1779-10, and the rule",
+      "name": "Widow checker (audit 2): 1836 'Ruled out by the dates' says why: married 1790, service ended 1779-10, and the rule",
       "ok": true,
-      "detail": "Doesn't fit as typedDoes not fit this law's date rule as you typed it. You typed a marriage date of 1790 and the end of his last service as 1779-10, so the marr"
+      "detail": "Ruled out by the datesRuled out as you typed it. You typed a marriage date of 1790 and the end of his last service as 1779-10, so the marriage came after his se"
     },
     {
-      "name": "Widow checker (audit 3 #1): married 1790, service ended 1779, no months typed -> 1836 'Doesn't fit as typed' with the plain reason, not 'Not checked'",
+      "name": "Widow checker (audit 3 #1): married 1790, service ended 1779, no months typed -> 1836 'Ruled out by the dates' with the plain reason",
       "ok": true,
-      "detail": "Doesn't fit as typedDoes not fit this law's date rule as you typed it. You typed a marriage date of 1790 and the end of "
+      "detail": "Ruled out by the datesRuled out as you typed it. You typed a marriage date of 1790 and the end of his last service as 17"
+    },
+    {
+      "name": "Widow checker, dates only: labels read 'Ruled out by the dates' (1836), 'Fits' only where the marriage date settles the law's one rule (1838, 1848), 'Still possible: need …' (1855 bounty-land, 1878) and 'Can't check here' (1853)",
+      "ok": true,
+      "detail": "[\"Ruled out by the dates\",\"Fits (settled by what you typed; not a ruling)\",\"Fits (settled by what you typed; not a ruling)\",\"Can't check here\",\"Can't check here\",\"Still possible: need whether he served 14 days or more, or was in a battle\",\"Still possible: need whether he served 14 days or more, or was in a battle\"]"
+    },
+    {
+      "name": "Widow checker, dates only: asks the one question that settles the most (14 days or a battle) and its link goes to that box",
+      "ok": true,
+      "detail": "One more answer would settle the most: whether he served 14 days or more, or was in a battle. Answer it in the form"
+    },
+    {
+      "name": "Widow checker, dates only: answering it (30 days) settles the 1855 bounty-land and 1878 laws as 'Fits'",
+      "ok": true,
+      "detail": "[\"Ruled out by the dates\",\"Fits (settled by what you typed; not a ruling)\",\"Fits (settled by what you typed; not a ruling)\",\"Can't check here\",\"Can't check here\",\"Fits (settled by what you typed; not a ruling)\",\"Fits (settled by what you typed; not a ruling)\"]"
     },
     {
       "name": "Widow checker: each field shows a 'Why it matters' line",
@@ -93,7 +119,7 @@
       "detail": "Your plan, built from what you entered. To save it, press the button below and c"
     },
     {
-      "name": "Widow checker: plan names the 'Not checked' laws in their own step",
+      "name": "Widow checker: plan names the 'Can't check here' laws in their own step",
       "ok": true,
       "detail": ""
     },
@@ -110,12 +136,12 @@
     {
       "name": "Widow checker: 'Load an example' shows results at once",
       "ok": true,
-      "detail": "In short: 5 of 7 widow-pension laws fit your dates: the 1836"
+      "detail": "In short: Fits, settled by what you typed: the 1838, 1848, M"
     },
     {
-      "name": "Widow checker: a one-line plain answer sits above the table ('5 of 7 widow-pension laws fit your dates…', with the next step)",
+      "name": "Widow checker: a one-line plain answer sits above the table (what fits, what is still possible and what it needs, with the next step)",
       "ok": true,
-      "detail": "In short: 5 of 7 widow-pension laws fit your dates: the 1836, 1838, 1848, March 1855 bounty-land and 1878 laws. Not checked: the 1853 and February 1855 laws. Next: look for the widow's pension file (see \"What to do next\")."
+      "detail": "In short: Fits, settled by what you typed: the 1838, 1848, March 1855 bounty-land and 1878 laws. Still possible: the 1836 law (need his kind of service). Can't check here: the 1853 and February 1855 laws (the source doesn't give their terms). To settle the most, tell us his kind of service (Continental Line, or State troops, volunteers or militia): it bears on the 1836 law. Next: look for the widow's pension file (see \"What to do next\")."
     },
     {
       "name": "Widow checker: results explain 'Stat.' (Statutes at Large: volume, page) and 'bounty land' in plain words",
@@ -185,7 +211,7 @@
     {
       "name": "Patriot step drives the plan: prove his service (North Carolina troop returns, M881), then the widow-pension step",
       "ok": true,
-      "detail": "Your plan, built from what you entered. To save it, press the button below and choose \"Save as PDF\" in the print window.Prove the patriot's serviceWhere to look"
+      "detail": "Prove the patriot's serviceWhere to look, based on his type of service and the state he served for:The National Archives holds records of Continental troops, in"
     },
     {
       "name": "Widow checker auto-fills his service end from the worksheet patriot",
@@ -240,7 +266,7 @@
     {
       "name": "Tool B: gap list shows the flagged conflict and missing items",
       "ok": true,
-      "detail": "Generation 2: Your parentNo birth evidence entered yet.+ Add a birth recordWhere to look: Look for a long-form birth cer"
+      "detail": "Generation 2: Your parentNo birth evidence entered yet.+ Add a birth recordWhere to look: ANo death evidence entered yet"
     },
     {
       "name": "Tool B (regression): gap list shows each generation once, in order",
@@ -248,9 +274,14 @@
       "detail": "2,3"
     },
     {
-      "name": "Tool B: every listed gap shows a 'Where to look' line",
+      "name": "Tool B: every listed gap points to lettered 'Where to look' advice on the page (and the index says to ask the registrar)",
       "ok": true,
       "detail": "6 gaps"
+    },
+    {
+      "name": "Worksheet page (lettered 'Where to look'): each block appears once in full, the list and the plan point to it by letter, and the general advice is no longer repeated",
+      "ok": true,
+      "detail": "{\"blocks\":3,\"planRefs\":6,\"longForm\":1}"
     },
     {
       "name": "Tool B: 'Where to look' links are only Source Manifest sources or this site's guides",
@@ -313,9 +344,14 @@
       "detail": ""
     },
     {
+      "name": "Worksheet patriot step: 'Don't know his name yet?' links in plain words to Roadmap Step 0",
+      "ok": true,
+      "detail": "{\"text\":\"Don't know his name yet? That's where most people start. Step 0 of our Roadmap guide: how to find the soldier's name. Meanwhile, fill in the people you do know below, starting with yourself; you can add him here later.\",\"href\":\"/guides/lineage-proof-roadmap/#step-0-find-the-soldier-s-name\"}"
+    },
+    {
       "name": "Where to look is tailored: Virginia's 1853-1896 birth registers and the censuses in each lifetime appear",
       "ok": true,
-      "detail": "The Pennsylvania State Archives holds state death certificates for 1906 to 1975, and all certified copies of death records come from the Department of Health's "
+      "detail": "A. Look for a death certificate. | B. The Pennsylvania State Archives holds state death certificates for 1906 to 1975, and all certified copies of death records"
     },
     {
       "name": "Where to look: the patriot's generation is labelled",
@@ -325,7 +361,7 @@
     {
       "name": "Where to look: state/era links (Library of Virginia, Pennsylvania) are Source Manifest sources",
       "ok": true,
-      "detail": "https://membership.dar.org/NSDAR/AppFormz/FAQs.aspx https://www.pa.gov/agencies/health/programs/vital-records/genealogy https://www.pa.gov/services/phmc/request-a-birth-or-death-certificate /guides/substitute-evidence/ /guides/census-bridge/ https://lva-virginia.libguides.com/bmd https://membership.dar.org/NSDAR/AppFormz/App_Help_Step_By_Step_1.aspx https://www.archives.gov/research/military/american-revolution https://www.archives.gov/research/census/1790-1840.html /guides/read-pension-file/"
+      "detail": "https://membership.dar.org/NSDAR/AppFormz/FAQs.aspx /guides/substitute-evidence/ https://www.pa.gov/agencies/health/programs/vital-records/genealogy https://www.pa.gov/services/phmc/request-a-birth-or-death-certificate /guides/census-bridge/ https://lva-virginia.libguides.com/bmd https://membership.dar.org/NSDAR/AppFormz/App_Help_Step_By_Step_1.aspx https://www.archives.gov/research/military/american-revolution https://www.archives.gov/research/census/1790-1840.html /guides/read-pension-file/"
     },
     {
       "name": "Report: opens with a one-page summary (patriot, where you are, what to do next) before 'Where to look' and the records",
@@ -358,9 +394,9 @@
       "detail": ""
     },
     {
-      "name": "Audit 3 #5: the 'no verified source for Ohio' note appears in full once on the worksheet page; other mentions just point to it",
+      "name": "Audit 3 #5: the 'no verified source for Ohio' note appears in full once on the worksheet page; the gaps point to it by letter",
       "ok": true,
-      "detail": "{\"full\":1,\"refs\":9}"
+      "detail": "{\"full\":1,\"refs\":13}"
     },
     {
       "name": "Audit 3 #4: the patriot's generation's 'add a birth or death record' item has a button that adds one there",
@@ -400,7 +436,7 @@
     {
       "name": "Birth gap (audit 2): Virginia before 1853 says there was no statewide birth recording and links the substitute-evidence guide right there",
       "ok": true,
-      "detail": "[[\"/guides/substitute-evidence/\",\"Virginia had no statewide recording of births before 1853, so there is no state birth record to find for this person. Birth re"
+      "detail": "[[\"/guides/substitute-evidence/\",\"H. Virginia had no statewide recording of births before 1853, so there is no state birth record to find for this person. Birth"
     },
     {
       "name": "Generation picker (audit 2): an old saved 'Generation 1' shows a plain warning and the oldest generation stays the patriot",
@@ -410,7 +446,7 @@
     {
       "name": "Where to look: a state with no verified source says so (no invented records)",
       "ok": true,
-      "detail": "Generation 3: Your grandparentNo birth evidence entered yet.+ Add a birth recordWhere to look: Look for a long-form birt"
+      "detail": "Where to lookEach piece of advice appears once. The letters above and in \"What to do next\" point here. Not sure where to"
     },
     {
       "name": "Tool B clear: removes pi.toolB.* only, keeps unrelated key",
@@ -448,14 +484,19 @@
       "detail": ""
     },
     {
-      "name": "Home: offers the worksheet and the Roadmap guide as buttons",
+      "name": "Home: offers the Roadmap guide as a button and the worksheet in the tools section",
       "ok": true,
       "detail": ""
     },
     {
-      "name": "Home (beginner path): 'Just starting?' is the first section, then 'How to join, in short', then the widow-pension check",
+      "name": "Home (beginner path): 'Just starting?', then 'How to join, in short', then the beginner guides, all ahead of the widow-pension checker",
       "ok": true,
-      "detail": "just-starting,how-to-join-in-short,lead-widow"
+      "detail": "just-starting,how-to-join-in-short,beginner-guides,lead-widow"
+    },
+    {
+      "name": "Home (shorter): three beginner guides (the Roadmap first) come before the tools; the other guides are a compact list; no second tools list",
+      "ok": true,
+      "detail": "{\"guides\":[\"/guides/lineage-proof-roadmap/\",\"/guides/substitute-evidence/\",\"/guides/read-pension-file/\"],\"words\":955,\"height\":3304,\"dupTools\":0,\"guideDescs\":0}"
     },
     {
       "name": "Home (beginner path): the first three links in the page go to how to join, Step 0 (find the soldier's name) and the worksheet",
@@ -503,7 +544,7 @@
       "detail": "[true,true]"
     },
     {
-      "name": "Audit 3 #7: the glossary defines Society and Registrar, each sourced",
+      "name": "Audit 3 #7: the glossary explains 'society' (under Lineage society) and Registrar, each sourced",
       "ok": true,
       "detail": ""
     },

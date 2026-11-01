@@ -1,9 +1,9 @@
 {
-  "ranAt": "Sat Oct 31 2026 20:46:34 GMT-0500 (Central Daylight Time)",
+  "ranAt": "Sat Oct 31 2026 21:02:32 GMT-0500 (Central Daylight Time)",
   "node": "v24.22.1",
   "pass": 34,
   "total": 34,
-  "plainChecks": "33/33",
+  "plainChecks": "39/39",
   "wordingGuard": "PASS",
   "rows": [
     {
@@ -169,7 +169,7 @@
     {
       "id": 21,
       "group": "Widow claim",
-      "desc": "1836 act: married 1780-05-01, last service ended 1781-10-19, 24 months service",
+      "desc": "1836 act: married 1780-05-01, last service ended 1781-10-19, 24 months of State militia service",
       "expected": "consistent",
       "actual": "consistent",
       "result": "PASS"
@@ -272,8 +272,8 @@
     },
     {
       "id": 34,
-      "group": "Widow claim: UI note",
-      "desc": "1836 act result carries the plain note that 1832 service-category rules are not checked, with a What to do line",
+      "group": "Widow claim: kind of service",
+      "desc": "1836 act with no kind of service given stays 'Still possible: need his kind of service' (1832 categories), with a What to do line",
       "expected": "true",
       "actual": "true",
       "result": "PASS"

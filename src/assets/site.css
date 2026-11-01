@@ -39,7 +39,7 @@ tr:nth-child(even) td{background:var(--soft)}
 .tool .cell{border:1px solid var(--line);border-left:4px solid var(--navy);border-radius:5px;padding:.6rem;margin:.6rem 0;background:#fff}
 .badge{display:inline-block;padding:.1rem .5rem;border-radius:10px;font:700 12px/1.6 system-ui,sans-serif}
 .b-consistent,.b-entered{background:#e3eaf5;color:#13294b}
-.b-partial,.b-incomplete,.b-not_evaluated{background:#fbeccb;color:#6b4500}
+.b-partial,.b-possible,.b-incomplete,.b-not_evaluated{background:#fbeccb;color:#6b4500}
 .b-inconsistent,.b-invalid,.b-conflict{background:#f7d4d6;color:#8e1b24}
 .b-none{background:#e6e9ef;color:#3b4250}
 .result{border-left:4px solid var(--navy);padding:.4rem .7rem;margin:.6rem 0;background:#fff}
@@ -185,3 +185,6 @@ p.answer{border-left:4px solid var(--navy);background:#fff;padding:.5rem .7rem;m
   [data-tool-report="lineage-matrix"] .report-detail .table-wrap{margin:.1rem 0}
   [data-tool-report="lineage-matrix"] .report-detail p.small{margin:0}
 }
+.ask{margin:.3rem 0 .6rem;padding:.4rem .7rem;border-left:4px solid #b26b00;background:#fff7e6}
+.no-name{border-left:4px solid var(--navy);background:#fff;padding:.4rem .7rem;margin:.3rem 0 .8rem}
+.guide-list.compact li{margin:.25rem 0}

@@ -1,4 +1,4 @@
-## Start here: the Widow Pension Law Checker
+## Free tools: the Widow Pension Law Checker and the worksheet
 
 **What it tells you:** type a widow's marriage date and what you know about her husband's Revolutionary War service, and see, law by law, which federal widow pension and bounty-land laws from 1836 to 1878 her dates fit. [[claim:nara-act-1836]]
 

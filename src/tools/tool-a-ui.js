@@ -1,6 +1,6 @@
 // Tool A browser UI: the Widow Pension Law Checker (form, "fill in from my worksheet", plan) and its report page.
 // localStorage key prefix "pi.toolA."; it may read the worksheet's patriot ("pi.toolB.v1") on request. No network calls.
-import { checkWidowActs, FIELD_HELP, nextSteps, plural, widowSummary, TERMS } from "./tool-a.js";
+import { checkWidowActs, FIELD_HELP, nextSteps, plural, widowSummary, TERMS, verdictFor } from "./tool-a.js";
 import { renderPlan } from "./plan-ui.js";
 import { ns, el } from "./storage.js";
 import { kindOf } from "./patriot.js";
@@ -8,24 +8,27 @@ import { stateName } from "./places.js";
 const store = ns("pi.toolA.");
 const worksheet = ns("pi.toolB.");
 // Badges are deliberately not green: a matching date is a starting point, never an approval.
-const WIDOW_LABEL = { consistent: "Fits this law's date rule (not a ruling)", partial: "Too rough to tell", inconsistent: "Doesn't fit as typed", invalid: "Couldn't read the dates", not_evaluated: "Not checked" };
-const badge = (s) => el("span", { class: `badge b-${s}`, text: WIDOW_LABEL[s] || s });
+// Labels: "Fits" only when every rule is settled; "Ruled out by the dates"; "Still possible: need …"; "Can't check here".
+const badge = (s, text) => el("span", { class: `badge b-${s}`, text: text || (s === "invalid" ? "Couldn't read the dates" : verdictFor({ status: s })) });
 
 function renderWidow(rows) {
   if (rows.length === 1 && rows[0].act === "input") return el("div", { class: "result r-invalid" }, badge("invalid"), el("p", { text: rows[0].message }));
   const t = el("table", { class: "widow" }, el("thead", {}, el("tr", {}, el("th", { text: "Pension law" }), el("th", { text: "Result" }), el("th", { text: "The rule, and what to do next" }))));
   const tb = el("tbody");
   // data-label lets narrow screens show each row as a stacked card (see site.css).
-  for (const r of rows) tb.append(el("tr", {}, el("td", { "data-label": "Pension law", text: r.label || r.act }), el("td", { "data-label": "Result" }, badge(r.status), el("div", { class: "small", text: r.message })),
+  for (const r of rows) tb.append(el("tr", {}, el("td", { "data-label": "Pension law", text: r.label || r.act }), el("td", { "data-label": "Result" }, badge(r.status, r.verdict), el("div", { class: "small", text: r.message })),
     el("td", { "data-label": "The rule, and what to do next" }, el("div", { class: "small", text: `Rule: ${r.ruleText || ""}` }),
-      r.why && r.why !== "Missing information." ? el("div", { class: "small", text: r.why }) : null,
+      r.why ? el("div", { class: "small", text: r.why }) : null,
       r.next ? el("div", { class: "small next", text: r.next }) : null,
       r.uiNote ? el("div", { class: "small note", text: r.uiNote }) : null,
       r.nextNote ? el("div", { class: "small next", text: r.nextNote }) : null,
       r.links?.length ? el("ul", { class: "where-links small" }, ...r.links.map((l) => el("li", {}, el("a", { href: l.url, rel: "noopener", text: l.label })))) : null)));
   t.append(tb);
   const sum = widowSummary(rows);
-  return el("div", {}, sum ? el("p", { class: "answer", "data-answer": "", role: "status" }, el("strong", { text: "In short: " }), sum.text) : null,
+  // The one question that would settle the most open laws gets a link straight to its box.
+  const ask = sum?.ask ? el("p", { class: "ask", "data-ask": sum.ask.key }, el("strong", { text: "One more answer would settle the most: " }), `${sum.ask.text}. `,
+    el("a", { href: `#${sum.ask.field}`, "data-ask-link": "", onclick: (e) => { e.preventDefault(); const f = document.getElementById(sum.ask.field); f?.scrollIntoView({ block: "center" }); f?.focus(); }, text: "Answer it in the form" })) : null;
+  return el("div", {}, sum ? el("p", { class: "answer", "data-answer": "", role: "status" }, el("strong", { text: "In short: " }), sum.text) : null, ask,
     el("div", { class: "table-wrap" }, t),
     el("p", { class: "small terms", "data-terms": "" }, el("strong", { text: "Plain terms: " }), `${TERMS.stat.text} ${TERMS.bounty.text}`));
 }
@@ -48,9 +51,11 @@ function savedNotice(root) {
 function runWidow(form, out) {
   const f = Object.fromEntries(new FormData(form));
   const num = (v) => (v === "" || v == null ? null : Number(String(v).trim()));
-  const input = { marriage: f.marriage || null, serviceEnd: f.serviceEnd || null, serviceMonths: num(f.serviceMonths), serviceDays: num(f.serviceDays), engagement: f.engagement === "on" ? true : null };
+  // The battle question has three answers: yes, no, or not answered (don't know). Only "No" can rule a law out.
+  const input = { marriage: f.marriage || null, serviceEnd: f.serviceEnd || null, serviceMonths: num(f.serviceMonths), serviceDays: num(f.serviceDays),
+    engagement: f.engagement === "yes" ? true : f.engagement === "no" ? false : null, kind: f.kind || null };
   const rows = checkWidowActs(input);
-  store.set("widow", { input: { ...f, engagement: f.engagement === "on" }, result: rows, at: new Date().toISOString() });
+  store.set("widow", { input: { ...f }, norm: input, result: rows, at: new Date().toISOString() });
   ranThisVisit = rows; out.replaceChildren(renderWidow(rows)); const root = form.closest("[data-tool]"); updatePlan(root); savedNotice(root);
 }
 function bindWidow(root) {
@@ -70,6 +75,8 @@ function fromWorksheet(root, auto = false) {
   if (!p || !p.end && !p.start) { if (msg) msg.replaceChildren("No patriot service dates are saved in the worksheet in this browser yet. ", el("a", { href: "/tools/lineage-matrix/#tb-patriot", text: "Add them in the worksheet's patriot step" }), "."); return false; }
   form.elements.serviceEnd.value = p.end || p.start;
   const k = kindOf(p.kind);
+  // His kind of service, when the worksheet's choice maps onto the 1832 law's categories (or is clearly something else).
+  if (form.elements.kind && p.kind) form.elements.kind.value = ["continental", "militia"].includes(p.kind) ? p.kind : p.kind === "military" ? "" : "other";
   if (msg) msg.textContent = `Filled in from your worksheet: ${p.name || "the patriot"}${p.state ? `, ${stateName(p.state)}` : ""}${k ? `, ${k.label.toLowerCase()}` : ""}, service ended ${p.end || p.start}. Add the marriage date and, if you know them, his months or days of service.`;
   if (!auto) form.elements.marriage.focus();
   return true;
@@ -77,7 +84,7 @@ function fromWorksheet(root, auto = false) {
 function bindExample(root) {
   root.querySelector("[data-load-example]")?.addEventListener("click", () => {
     const d = root.querySelector("form[data-form=widow]");
-    d.elements.marriage.value = "1777-05"; d.elements.serviceEnd.value = "1778-03"; d.elements.serviceMonths.value = "20"; d.elements.serviceDays.value = ""; d.elements.engagement.checked = true;
+    d.elements.marriage.value = "1777-05"; d.elements.serviceEnd.value = "1778-03"; d.elements.serviceMonths.value = "20"; d.elements.serviceDays.value = ""; d.elements.engagement.value = "yes"; d.elements.kind.value = "";
     runWidow(d, root.querySelector("[data-out=widow]"));
     const m = root.querySelector("[data-example-msg]"); if (m) m.textContent = "Example loaded: a made-up couple who married in May 1777; his service ended in March 1778. The results are in the table below.";
     root.querySelector("[data-out=widow]").focus();
@@ -93,14 +100,17 @@ function bindClear(root) {
     updatePlan(root); savedNotice(root);
   }));
 }
+const KIND_TEXT = { continental: "Continental Line", militia: "State troops, volunteers or militia", other: "something else" };
 function renderReport(root) {
   const d = store.get("widow", null);
+  // Results are worked out again from what was typed, so a check saved by an older version shows today's labels.
+  const rows = d ? (d.norm ? checkWidowActs(d.norm) : checkWidowActs({ marriage: d.input.marriage || null, serviceEnd: d.input.serviceEnd || null, serviceMonths: d.input.serviceMonths ? Number(d.input.serviceMonths) : null, serviceDays: d.input.serviceDays ? Number(d.input.serviceDays) : null, engagement: d.input.engagement === true || d.input.engagement === "on" ? true : null, kind: null })) : null;
   const body = root.querySelector("[data-report]");
   if (!d) { body.replaceChildren(el("p", { text: "Nothing saved in this browser yet. Open the checker, type the dates (or press \"Load an example\"), then come back." }),
     el("p", {}, el("a", { class: "button-link", href: "/tools/widow-pension-checker/", text: "Go to the Widow Pension Law Checker" }))); return; }
   body.replaceChildren(el("p", { class: "small", text: "These results compare your dates with the published pension laws. They are not a ruling: only your lineage society decides." }),
-    el("h2", { text: "Widow pension and bounty-land laws" }), el("p", { class: "small", text: `Saved ${new Date(d.at).toLocaleString()}. Marriage: ${d.input.marriage || "—"}. His last service ended: ${d.input.serviceEnd || "—"}. Months of service: ${d.input.serviceMonths || "—"}. Days of service: ${d.input.serviceDays || "—"}. In a battle: ${d.input.engagement ? "yes" : "—"}.` }),
-    renderWidow(d.result), renderPlan(nextSteps(null, d.result)));
+    el("h2", { text: "Widow pension and bounty-land laws" }), el("p", { class: "small", text: `Saved ${new Date(d.at).toLocaleString()}. Marriage: ${d.input.marriage || "—"}. His last service ended: ${d.input.serviceEnd || "—"}. Months of service: ${d.input.serviceMonths || "—"}. Days of service: ${d.input.serviceDays || "—"}. In a battle: ${d.input.engagement === "yes" || d.input.engagement === true ? "yes" : d.input.engagement === "no" ? "no" : "don't know"}. Kind of service: ${KIND_TEXT[d.input.kind] || "don't know"}.` }),
+    renderWidow(rows), renderPlan(nextSteps(null, rows)));
 }
 document.querySelectorAll('[data-tool="widow"]').forEach((root) => { bindWidow(root); bindExample(root); bindClear(root); updatePlan(root);
   root.querySelector("[data-from-worksheet]")?.addEventListener("click", () => fromWorksheet(root));

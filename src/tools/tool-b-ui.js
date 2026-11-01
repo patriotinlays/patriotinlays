@@ -56,14 +56,14 @@ export function whereBlock(w, seen = null) {
 }
 // A missing record gets a button that adds it to that generation with "what it shows" already picked.
 const ADD_TEXT = { birth: "+ Add a birth or death record", death: "+ Add a death record", parentage: "+ Add a record that links them", marriage: "+ Add a marriage record", residence: "+ Add a record" };
-function renderGaps(state, seen = null) {
+function renderGaps(state, seen = null, refFor = null) {
   const list = gaps(state.generations, state.patriot);
   if (!list.length) return el("p", { class: "small", text: "Nothing missing by the tool's rules. That is not a proof: a society's genealogist still reviews every entry." });
   // Each generation is listed once, in order, with its items under it.
   return el("ol", { class: "gaps" }, ...groupGaps(list, patriotGen(state.generations, state.patriot)).map((grp) => el("li", { class: "gap-gen", "data-gap-gen": grp.gen ?? "" }, el("strong", { class: "gap-gen-h", text: grp.title }),
     el("ul", { class: "gap-items" }, ...grp.items.map((g) => el("li", { class: g.priority === 0 ? "conflict" : "" }, el("div", { class: "gap-text", text: g.short }),
       g.add ? el("button", { type: "button", class: "secondary add-for", "data-add-for": `${g.gen}:${g.add}`, text: g.add === "birth" && /birth or death/.test(g.short) ? ADD_TEXT.birth : g.add === "birth" ? "+ Add a birth record" : ADD_TEXT[g.add] || "+ Add a record" }) : null,
-      whereBlock(g.where, seen)))))));
+      refFor ? whereRefEl(refFor(g.where, { who: g.gen ? `Gen ${g.gen}` : "", fact: g.fact, anyOf: /birth or death/.test(g.short || ""), text: g.short })) : whereBlock(g.where, seen)))))));
 }
 const stateOptions = () => STATES.map(([c, n]) => [c, n]);
 // The patriot's date check, in plain words (the old standalone service-date check, folded into this step).
@@ -95,6 +95,10 @@ function patriotForm(state, refresh, rerender = refresh) {
   const genWarn = p.gen === "1" ? "Generation 1 is you, the person applying, so it can't be the patriot. The worksheet is using your oldest generation instead."
     : oldest === 1 ? "Generation 1 is you, so it can't be the patriot. Add generations below, back to him; he'll be the oldest one unless you pick another." : null;
   return el("div", { class: "patriot-form", "data-patriot-form": "" },
+    // Most beginners start without the soldier's name: point them to Roadmap Step 0 instead of leaving the step blank.
+    el("p", { class: "no-name", "data-no-name": "" }, el("strong", { text: "Don't know his name yet? " }), "That's where most people start. ",
+      el("a", { href: "/guides/lineage-proof-roadmap/#step-0-find-the-soldier-s-name", text: "Step 0 of our Roadmap guide: how to find the soldier's name" }),
+      ". Meanwhile, fill in the people you do know below, starting with yourself; you can add him here later."),
     ...inp("name", "His name (optional, stays in this browser)"),
     ...sel("state", "State or colony he served for", stateOptions(), PATRIOT_HELP.state.text),
     ...inp("unit", "Unit or company (optional)", "For example a county militia company or a numbered regiment, if you know it."),
@@ -168,9 +172,13 @@ function mountEditor(root) {
   const msg = root.querySelector("[data-cleared]"); alertMsg = (t) => { if (msg) msg.textContent = t; };
   // Light refresh (keeps typing smooth): gaps, plan, and the patriot date check.
   const refresh = () => {
-    const seen = new Set(); // each "no verified source for this state" note is shown in full once on the page
-    gapBox.replaceChildren(renderGaps(state, seen));
-    root.querySelector("[data-plan]")?.replaceChildren(renderPlan(actionPlan(state.generations, state.patriot), { heading: false, seen }));
+    // "Where to look" works like the report: each block is shown in full once, lettered, and the list and the plan
+    // point to it by letter (audit 3 counted about 13 repeats of the same advice on this page).
+    const { refFor, blocks } = whereIndex();
+    const list = renderGaps(state, null, refFor);
+    const plan = renderPlan(actionPlan(state.generations, state.patriot), { heading: false, whereRef: refFor, printable: false, tip: false });
+    gapBox.replaceChildren(list, blocks.length ? whereIndexEl(blocks, "Each piece of advice appears once. The letters above and in \"What to do next\" point here.", "h4") : null);
+    root.querySelector("[data-plan]")?.replaceChildren(plan);
     root.querySelector("[data-patriot-check]")?.replaceChildren(patriotCheckEl(state.patriot));
     const pg = patriotGen(state.generations, state.patriot);
     box.querySelectorAll("[data-gen]").forEach((sec) => { const h = sec.querySelector("h3"); const g = +sec.dataset.gen; h.textContent = genTitle(g) + (g === pg ? " (the patriot)" : ""); });
@@ -265,6 +273,18 @@ export function whereIndex() {
   };
   return { refFor, blocks };
 }
+const whereRefEl = (letters) => letters?.length ? el("div", { class: "where-ref", "data-where-ref": letters.join(",") }, "Where to look: ",
+  ...letters.flatMap((L, i) => [i ? ", " : null, el("a", { href: `#where-${L}`, text: L })])) : null;
+// The lettered "Where to look" index, shared by the worksheet page and the report.
+export function whereIndexEl(blocks, intro, level = "h2") {
+  return el("section", { class: "report-where", "data-where-index": "" },
+    el(level, { text: "Where to look" }),
+    el("p", { class: "small", text: `${intro} Not sure where to order a record? Ask your society's registrar.` }),
+    ...blocks.map((b) => el("div", { class: "where-block", id: `where-${b.letter}`, "data-where-block": b.letter },
+      el("p", {}, el("strong", { class: "where-letter", text: `${b.letter}. ` }), b.place ? noVitalText(b.place, b.facts) : b.text, b.guide ? " " : null, b.guide ? el("a", { href: b.guide.url, "data-substitute": "", text: b.guide.label }) : null),
+      b.links.length ? el("ul", { class: "where-links small" }, ...b.links.map((l) => el("li", {}, el("a", { href: l.url, rel: l.url.startsWith("http") ? "noopener" : null, text: l.label })))) : null,
+      el("p", { class: "small used-for", text: `For: ${[...new Set(b.used)].join("; ")}` }))));
+}
 function mountReport(root) {
   const s = store.get("v1", null); const body = root.querySelector("[data-report]");
   if (!s) { body.replaceChildren(el("p", { text: "Nothing saved in this browser yet. Open the Lineage Evidence Matrix, enter what you have (or press \"Load an example\"), then come back." }),
@@ -282,13 +302,7 @@ function mountReport(root) {
     el("p", {}, el("strong", { text: "The patriot: " }), patLine),
     el("p", {}, el("strong", { text: "Where you are: " }), `${plural(s.generations.length, "generation")}, ${plural(n, "evidence entry", "evidence entries")}, ${plural(missing, "thing")} still missing or flagged.`),
     el("h3", { text: "What to do next" }), plan);
-  const where = el("section", { class: "report-where", "data-where-index": "" },
-    el("h2", { text: "Where to look" }),
-    el("p", { class: "small", text: "Each piece of advice appears once. The letters in the to-do list above point here. Not sure where to order a record? Ask your society's registrar." }),
-    ...blocks.map((b) => el("div", { class: "where-block", id: `where-${b.letter}`, "data-where-block": b.letter },
-      el("p", {}, el("strong", { class: "where-letter", text: `${b.letter}. ` }), b.place ? noVitalText(b.place, b.facts) : b.text, b.guide ? " " : null, b.guide ? el("a", { href: b.guide.url, "data-substitute": "", text: b.guide.label }) : null),
-      b.links.length ? el("ul", { class: "where-links small" }, ...b.links.map((l) => el("li", {}, el("a", { href: l.url, rel: l.url.startsWith("http") ? "noopener" : null, text: l.label })))) : null,
-      el("p", { class: "small used-for", text: `For: ${[...new Set(b.used)].join("; ")}` }))));
+  const where = whereIndexEl(blocks, "Each piece of advice appears once. The letters in the to-do list above point here.");
   const kids = [summary, where, el("section", { class: "report-detail" }, el("h2", { text: "The patriot, in full" }), hasPatriot(s.patriot) ? patriotSummary(s.patriot) : el("p", { class: "small", text: "Not filled in yet." }), el("h2", { text: "Your records, generation by generation" }))];
   const detail = kids[2];
   for (const g of s.generations) {

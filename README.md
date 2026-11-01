@@ -38,7 +38,7 @@ unknown or unverified claim, stale entry (> 120 days), quote that no longer appe
 | `manifest/` | Source Manifest (`claims.json`) and the Python that regenerates it (`npm run manifest`) |
 | `scripts/` | Static site generator, tests, manifest gate, link checker, gates doc generator |
 | `ops/gates.js`, `docs/gates.md` | Day 30/60/90 mixed-gate decision rules (code + generated doc) |
-| `qa/e2e.mjs` | Headless-browser end-to-end suite (115 checks, incl. 360px, fresh profile and the report page count) |
+| `qa/e2e.mjs` | Headless-browser end-to-end suite (121 checks, incl. 360px, fresh profile and the report page count) |
 | `.github/workflows/` | `build.yml` (build gates on every push/PR), `ci.yml` (E2E on releases and tool PRs) |
 | `dist/` | Build output (generated; this is what gets deployed) |
 
@@ -53,6 +53,13 @@ There is no `src/components/` directory; tool code lives in `src/tools/`.
 - Widow checker: a one-line plain answer above the results table and a plain-terms note.
 - Worksheet: a "What do you have?" checklist per generation and plain relationship choices ("my 3rd-great-grandfather").
 - Worksheet report: a summary first, each "Where to look" block shown once and referenced from the gaps, and a "Save as PDF" button. The example prints on 2 Letter pages with "Save as PDF" and 3 with Ctrl+P (headers and footers on, the way Chrome's print window prints), measured by `npm run e2e` (`exampleReportPages` in `qa/e2e-results.json`).
+
+### Round 4 changes (Oct 31, 2026)
+
+- Widow checker with only dates: each law is labelled "Fits" (only when what you typed settles every rule), "Ruled out by the dates", "Ruled out by the service you typed", "Still possible: need X" or "Can't check here", and the answer asks for the one field that settles the most. Battle is Don't know / Yes / No and the 1836 law now asks for his kind of service. Tests prove dates-only input only gives "Fits" when the dates decide every rule, and that a settled answer never flips when more fields are filled in.
+- Worksheet page: "Where to look" uses the report's lettered A-L index; gaps and "What to do next" point to letters, each block appears once.
+- Worksheet patriot step: "Don't know his name yet?" links to Roadmap Step 0.
+- Home page: shorter (about 1190 to 955 words); start-here path, "How to join, in short" and beginner guides come before the widow checker.
 
 ### Audit 3 fixes (Oct 31, 2026)
 
@@ -77,7 +84,7 @@ There is no `src/components/` directory; tool code lives in `src/tools/`.
 ## Local verification
 
 ```bash
-npm test          # service-window (34 + 33 plain-language, answer-line, plain-terms and widow-ordering), lineage-matrix (74), gate examples (29) + exhaustive gate sweep (~30 s)
+npm test          # service-window (34 + 39 plain-language, answer-line, plain-terms and widow-ordering), lineage-matrix (74), gate examples (29) + exhaustive gate sweep (~30 s)
 npm run check     # Source Manifest gate, offline: every factual sentence -> verified manifest claim
 npm run build     # prebuild: npm test + live manifest check (fetches all sources);
                   # build: writes dist/; postbuild: internal + external link check

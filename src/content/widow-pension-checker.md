@@ -27,20 +27,22 @@ It does not look anything up, and it never makes a decision about membership or 
 The 1836 act required the widow to have married the veteran before his last period of service expired. [[claim:nara-act-1836]]
 It relied on the service rules of the 1832 act, which covered veterans with at least 6 months of service. [[claim:nara-act-1832]]
 The 1832 act covered service in the Continental Line or State troops, volunteers or militia. [[claim:nara-act-1832-categories]]
-The checker tests the 1836 marriage date and months of service only; it does not check the 1832 service-category rules the 1836 act inherits. [[claim:nara-act-1832-categories]]
+The checker tests the 1836 marriage date, the 6 months and his kind of service against those categories; if you don't give his kind of service, the 1836 law stays "Still possible". [[claim:nara-act-1832-categories]]
 The 1838 act granted 5-year pensions to widows married before January 1, 1794. [[claim:nara-act-1838]]
 The July 1848 act granted life pensions to widows married before January 2, 1800. [[claim:nara-act-1848]]
 Acts in 1853 and 1855 removed the marriage-date restrictions. [[claim:nara-act-1853-1855]]
-The source used here gives no other terms for those two acts, so the checker marks them "Not checked".
+The source used here gives no other terms for those two acts, so the checker marks them "Can't check here".
 The 1878 act covered widows of soldiers who served as few as 14 days or were in any engagement. [[claim:nara-act-1878]]
 The March 1855 bounty-land act covered veterans with as few as 14 days of service, and their widows and minor children. [[claim:nara-bounty-1855]]
 
 ## What a result means
 
-- "Fits this law's date rule (not a ruling)": her dates line up with that law's rule as you typed them. Look for her pension file.
-- "Too rough to tell": your dates are too rough to settle it. A more exact date would.
-- "Doesn't fit as typed": double-check the dates.
-- "Not checked": the official source this site uses does not give enough detail to test that rule, or a box is empty. The result says why and what to do next, such as reading the widow's own pension papers or asking your society's registrar.
+The checker draws every conclusion your dates support and labels what stays open. It never says "Fits" until every rule it has for that law is settled by what you typed.
+
+- "Fits (settled by what you typed; not a ruling)": every rule the checker has for that law is settled, and her dates and his service line up with it. Look for her pension file.
+- "Ruled out by the dates" or "Ruled out by the service you typed": something you typed already breaks one of the law's rules, so the other boxes can't change it. Double-check what you typed.
+- "Still possible: need …": nothing you typed rules it out, but at least one rule is still open. The result names what would settle it, and the answer line names the one question that settles the most laws.
+- "Can't check here": the official source this site uses does not give that law's terms. The result says what to do next, such as reading the widow's own pension papers or asking your society's registrar.
 
 ## Where did the service-date check go?
 

@@ -30,8 +30,8 @@ const S = [
   [18, "Special window", "Gálvez cattle supply, 1779-03 to 1780-05", "consistent", () => sw("galvez_cattle", "1779-03", "1780-05").status],
   [19, "Invalid/conflicting", "End date (1777-05-01) before start (1778-02-01)", "invalid", () => sw("core", "1778-02-01", "1777-05-01").status],
   [20, "Invalid/conflicting", "Impossible calendar date 1777-02-30", "invalid", () => sw("core", "1777-02-30").status],
-  [21, "Widow claim", "1836 act: married 1780-05-01, last service ended 1781-10-19, 24 months service", "consistent",
-    () => act(checkWidowActs({ marriage: "1780-05-01", serviceEnd: "1781-10-19", serviceMonths: 24 }), "act1836")],
+  [21, "Widow claim", "1836 act: married 1780-05-01, last service ended 1781-10-19, 24 months of State militia service", "consistent",
+    () => act(checkWidowActs({ marriage: "1780-05-01", serviceEnd: "1781-10-19", serviceMonths: 24, kind: "militia" }), "act1836")],
   [22, "Widow claim", "1836 act: married 1785-06-01, after last service ended 1781-10-19", "inconsistent",
     () => act(checkWidowActs({ marriage: "1785-06-01", serviceEnd: "1781-10-19", serviceMonths: 24 }), "act1836")],
   [23, "Widow claim", "1838 act: married 1793-12-31 vs 1794-01-01 (cutoff: before 1 Jan 1794)", "consistent|inconsistent",
@@ -52,9 +52,9 @@ const S = [
   [32, "Boundary: Gálvez end (assumed)", "Gálvez cattle supply 26 Nov 1783 vs 27 Nov 1783", "consistent|inconsistent", () => sw("galvez_cattle", "1783-11-26").status + "|" + sw("galvez_cattle", "1783-11-27").status],
   [33, "Boundary: Gálvez end (assumed)", "Assumed Gálvez end is disclosed: ruleNote present for troops and cattle results", "true|true",
     () => [sw("galvez_troops", "1780").ruleNote, sw("galvez_cattle", "1780").ruleNote].map((n) => String(!!n && /end date applied is the general period end/.test(n))).join("|")],
-  [34, "Widow claim: UI note", "1836 act result carries the plain note that 1832 service-category rules are not checked, with a What to do line", "true",
+  [34, "Widow claim: kind of service", "1836 act with no kind of service given stays 'Still possible: need his kind of service' (1832 categories), with a What to do line", "true",
     () => { const r = checkWidowActs({ marriage: "1780-05-01", serviceEnd: "1781-10-19", serviceMonths: 24 }).find((x) => x.act === "act1836");
-      return String(!!r.uiNote && /1832/.test(r.uiNote) && /^Not checked/.test(r.uiNote) && /Continental Line/.test(r.uiNote) && /^What to do/.test(r.nextNote) && r.links.length > 0); }],
+      return String(r.status === "possible" && r.needs.map((n) => n.key).join() === "kind" && /Continental Line/.test(r.ruleText) && /^Still possible: need his kind of service/.test(r.verdict) && /^What to do/.test(r.nextNote) && r.links.length > 0); }],
 ];
 const EXPECTED_TOTAL = 34; // 25 original + 9 added for punch-list items 1-2
 
@@ -94,14 +94,14 @@ const U = [
   ["Next steps: dates don't fit -> 'Double-check the dates and the type of service' first, no 'find records' step", (() => { const p = nextSteps(sw("core", "1790"), null).map((x) => x.title);
     return p[0].startsWith("Double-check") && !p.some((x) => x.startsWith("Find the original")); })()],
   ["Next steps: partly inside -> 'Pin down the exact dates' then find records", (() => { const p = nextSteps(sw("core", "1775"), null).map((x) => x.title); return p[0].startsWith("Pin down") && p[1].startsWith("Find the original"); })()],
-  ["Next steps: 'Not checked' laws get their own step naming them, with the pension-files link", (() => { const st = nextSteps(sw("core", "1778"), checkWidowActs({ marriage: "1780" })).find((x) => x.title.includes("Not checked"));
+  ["Next steps: 'Can't check here' laws get their own step naming them, with the pension-files link", (() => { const st = nextSteps(sw("core", "1778"), checkWidowActs({ marriage: "1780" })).find((x) => x.title.includes("Can't check here"));
     return st && /1853/.test(st.text) && /registrar/.test(st.text) && st.links.some((l) => l.url.includes("archives.gov")); })()],
   ["Next steps: unreadable dates -> 'Fix the dates' first", nextSteps(sw("core", "July 1776"), null)[0].title.startsWith("Fix the dates")],
   ["Next steps: every link is a manifest source or a site page; every claim verified; no fees or timelines", (() => { const all = [sw("core", "1778"), sw("core", "1790"), sw("core", "1775"), sw("core", "x"), null].flatMap((w) => nextSteps(w, checkWidowActs({ marriage: "1780" })));
     return all.every((x) => x.links.every((l) => manifestUrls.has(l.url) || l.url.startsWith("/")) && x.claims.every((c) => verified.has(c))) && !/\$|\bfee|\bweeks?\b/i.test(JSON.stringify(all.map((x) => [x.title, x.text]))); })()],
   ["Widow check: a law that fits -> 'Look for the widow's pension file' step citing the W-file and widow-info sources", (() => { const st = nextSteps(null, checkWidowActs({ serviceEnd: "1779", marriage: "1780", husbandDeath: "1830" })).find((x) => x.title.startsWith("Look for the widow"));
     return !!st && st.claims.includes("m804-w") && st.links.length > 0; })()],
-  ["Widow check: no law fits -> no pension-file step", !nextSteps(null, checkWidowActs({ serviceEnd: "1779", marriage: "1820", husbandDeath: "1830" })).some((x) => x.title.startsWith("Look for the widow"))],
+  ["Widow check: every law ruled out or uncheckable -> no pension-file step", !nextSteps(null, checkWidowActs({ serviceEnd: "1779", marriage: "1820", serviceDays: 5, engagement: false })).some((x) => x.title.startsWith("Look for the widow"))],
   ["Widow check: empty form -> 'Fill in the form above' first", nextSteps(null, null)[0].title.startsWith("Fill in the form above")],
   ["Site link points at the widow checker, not the retired service-date page", NEXT_STEP_LINKS === undefined || !JSON.stringify(NEXT_STEP_LINKS).includes("service-window-checker")],
   ["Audit 2: 1836 'doesn't fit' says why in plain words (her marriage date vs. the end of his service, and the rule)", (() => { const r = checkWidowActs({ serviceEnd: "1779-10", marriage: "1790", serviceMonths: 20 }).find((x) => x.act === "act1836");
@@ -109,25 +109,54 @@ const U = [
   ["Audit 2: 1836 with under 6 months says how many months were typed, singular when 1", (() => { const r = checkWidowActs({ serviceEnd: "1779", marriage: "1775", serviceMonths: 1 }).find((x) => x.act === "act1836");
     return r.status === "inconsistent" && /You typed 1 month of service/.test(r.message) && /6 months/.test(r.message); })()],
   ["Audit 2: 1838 'doesn't fit' names the typed marriage date and the cutoff", /You typed a marriage date of 1795\. This law's rule is a marriage before January 1, 1794/.test(checkWidowActs({ marriage: "1795" }).find((x) => x.act === "act1838").message)],
-  ["Audit 2: 1855/1878 'doesn't fit' says the days typed and the 14-day rule", /You typed 3 days of service and did not tick the battle box\. This law's rule is at least 14 days/.test(checkWidowActs({ serviceDays: 3 }).find((x) => x.act === "act1878").message)],
+  ["Audit 2: 1855/1878 'ruled out' says the days typed, the battle answer and the 14-day rule", /You typed 3 days of service and that he was not in a battle\. This law's rule is at least 14 days/.test(checkWidowActs({ serviceDays: 3, engagement: false }).find((x) => x.act === "act1878").message)],
   ["Audit 2: 'too rough to tell' says which dates straddle the rule", /too rough to tell which came first/.test(checkWidowActs({ serviceEnd: "1779", marriage: "1779", serviceMonths: 20 }).find((x) => x.act === "act1836").message)],
   ["Audit 2: every 'doesn't fit' or 'too rough' result carries a reason", [{ serviceEnd: "1779", marriage: "1801", serviceMonths: 20, serviceDays: 2 }, { serviceEnd: "1779", marriage: "1779", serviceMonths: 2, serviceDays: 2 }].flatMap((i) => checkWidowActs(i)).filter((r) => ["inconsistent", "partial"].includes(r.status)).every((r) => r.reason && r.message.includes(r.reason))],
   ["Audit 2: plural() reads '1 month', '2 months', '1 evidence entry', '0 evidence entries'", plural(1, "month") === "1 month" && plural(2, "month") === "2 months" && plural(1, "evidence entry", "evidence entries") === "1 evidence entry" && plural(0, "evidence entry", "evidence entries") === "0 evidence entries"],
-  ["Answer line: counts and names the laws that fit (\"2 of 7 … fit\")", (() => { const r = widowSummary([{ act: "a", status: "consistent", short: "1836" }, { act: "b", status: "consistent", short: "1838" }, ...Array.from({ length: 5 }, (_, i) => ({ act: "x" + i, status: "inconsistent", short: "y" + i }))]); return r.fit === 2 && r.total === 7 && r.text.startsWith("2 of 7 widow-pension laws fit your dates: the 1836 and 1838 laws.") && /Next: look for the widow's pension file/.test(r.text); })()],
-  ["Answer line: one law uses 'fits'; none uses 'None of the …'", /^1 of 2 widow-pension laws fits your dates: the 1836 law\./.test(widowSummary([{ act: "a", status: "consistent", short: "1836" }, { act: "b", status: "inconsistent", short: "1838" }]).text) && /^None of the 2 widow-pension laws fit/.test(widowSummary([{ act: "a", status: "inconsistent", short: "1836" }, { act: "b", status: "inconsistent", short: "1838" }]).text)],
-  ["Answer line: empty form says to fill in the boxes; input errors give no answer line", /fill in the boxes/.test(widowSummary(checkWidowActs({})).text) && widowSummary([{ act: "input", status: "not_evaluated" }]) === null],
+  ["Answer line: names what fits, what the dates rule out, what is still possible and what it needs", (() => { const t = widowSummary(checkWidowActs({ marriage: "1790", serviceEnd: "1779" })).text;
+    return t.startsWith("Fits, settled by what you typed: the 1838 and 1848 laws.") && /Ruled out by the dates: the 1836 law\./.test(t) && /Still possible: the March 1855 bounty-land and 1878 laws \(need whether he served 14 days or more, or was in a battle\)/.test(t) && /Can't check here: the 1853 and February 1855 laws/.test(t); })()],
+  ["Answer line: asks for the one field that settles the most open laws, with the box to answer it", (() => { const s1 = widowSummary(checkWidowActs({ marriage: "1790", serviceEnd: "1779" })); const s2 = widowSummary(checkWidowActs({ serviceDays: 5 }));
+    return s1.ask.key === "days" && s1.ask.field === "tw-d" && s1.ask.settles.length === 2 && /To settle the most, tell us whether he served 14 days or more/.test(s1.text) && s2.ask.key === "marriage" && s2.ask.field === "tw-m"; })()],
+  ["Answer line: nothing settled says so plainly; everything decided asks nothing more; input errors give no answer line", /^None of the 7 laws is settled as fitting yet\./.test(widowSummary(checkWidowActs({})).text) && widowSummary(checkWidowActs({ marriage: "1777-05", serviceEnd: "1778-03", serviceMonths: 20, engagement: true, kind: "militia" })).ask === null && widowSummary([{ act: "input", status: "invalid" }]) === null],
   ["Every widow law has a short name for the answer line", WIDOW_ACTS.every((a) => a.short && a.short.length < 30)],
   ["Plain terms for 'Stat.' and 'bounty land' cite verified claims", Object.values(TERMS).every((t) => t.text && t.claims.length && t.claims.every((c) => verified.has(c)))],
   ["Audit 3: married 1790, service ended 1779, no months -> 1836 'doesn't fit' with the plain reason (a decisive failure wins over a missing field)", (() => { const r = checkWidowActs({ marriage: "1790", serviceEnd: "1779" }).find((x) => x.act === "act1836"); return r.status === "inconsistent" && /marriage came after his service ended/.test(r.message) && !r.why; })()],
-  ["Audit 3: under 6 months typed fails 1836 even with no dates; a missing date alone is still 'Not checked'", act(checkWidowActs({ serviceMonths: 3 }), "act1836") === "inconsistent" && act(checkWidowActs({ marriage: "1775", serviceEnd: "1779" }), "act1836") === "not_evaluated" && act(checkWidowActs({ serviceEnd: "1779", serviceMonths: 20 }), "act1836") === "not_evaluated"],
-  ["Audit 3: every law, every input mix: a law never says 'Not checked' when a field it tests already fails it", (() => { const ms = [null, "1775", "1790", "1810"], es = [null, "1779"], mo = [null, 3, 20], ds = [null, 5, 30], en = [null, true];
+  ["Audit 3: under 6 months typed fails 1836 even with no dates; a missing field alone is 'Still possible', never 'Fits'", act(checkWidowActs({ serviceMonths: 3 }), "act1836") === "inconsistent" && act(checkWidowActs({ marriage: "1775", serviceEnd: "1779" }), "act1836") === "possible" && act(checkWidowActs({ serviceEnd: "1779", serviceMonths: 20, kind: "militia" }), "act1836") === "possible"],
+  ["Audit 3: every law, every input mix: a law is never left open when a field it tests already fails it", (() => { const ms = [null, "1775", "1790", "1810"], es = [null, "1779"], mo = [null, 3, 20], ds = [null, 5, 30], en = [null, true, false];
     for (const marriage of ms) for (const serviceEnd of es) for (const serviceMonths of mo) for (const serviceDays of ds) for (const engagement of en) {
-      const r = checkWidowActs({ marriage, serviceEnd, serviceMonths, serviceDays, engagement }); const st = (id) => act(r, id);
+      const r = checkWidowActs({ marriage, serviceEnd, serviceMonths, serviceDays, engagement }); if (r[0].act === "input") continue; const st = (id) => act(r, id);
       if (marriage === "1810" && (st("act1838") !== "inconsistent" || st("act1848") !== "inconsistent")) return false;
       if (marriage && serviceEnd && +marriage > +serviceEnd && st("act1836") !== "inconsistent") return false;
       if (serviceMonths === 3 && st("act1836") !== "inconsistent") return false;
-      if (serviceDays === 5 && !engagement && (st("act1855bounty") !== "inconsistent" || st("act1878") !== "inconsistent")) return false; }
+      if (serviceDays === 5 && engagement === false && serviceMonths == null && (st("act1855bounty") !== "inconsistent" || st("act1878") !== "inconsistent")) return false; }
     return true; })()],
+  // ---- Dates only (Tim, Oct 31, 2026): never "Fits" unless the dates alone settle every rule ----
+  ["Dates only: across every marriage and end-of-service date mix, only the marriage-date-only laws (1838, 1848) can say 'Fits', and only when the date is clearly before the cutoff", (() => {
+    const ms = [null, "1776", "1777-05", "1779", "1779-06-01", "1790", "1793", "1793-12-31", "1794", "1799", "1799-12-31", "1800", "1810"], es = [null, "1777", "1778-03", "1779", "1781-10-19"];
+    for (const marriage of ms) for (const serviceEnd of es) for (const r of checkWidowActs({ marriage, serviceEnd })) {
+      if (r.status !== "consistent") continue;
+      if (!["act1838", "act1848"].includes(r.act)) return false;
+      const cut = r.act === "act1838" ? Date.UTC(1794, 0, 1) : Date.UTC(1800, 0, 2); const y = +marriage.slice(0, 4);
+      if (!(y < 1794 && r.act === "act1838" || y < 1800 && r.act === "act1848") || Date.UTC(y + 1, 0, 1) - 1 >= cut && marriage.length === 4) return false; }
+    return true; })()],
+  ["Months and days that disagree are an input error, not a guess", checkWidowActs({ serviceMonths: 20, serviceDays: 5 })[0].act === "input" && checkWidowActs({ serviceMonths: 1, serviceDays: 30 })[0].act === "act1836"],
+  ["Dates only: married 1790, service ended 1779 -> 1836 'Ruled out by the dates'; 1855 bounty-land and 1878 'Still possible: need 14 days or a battle'; nothing else fits", (() => { const r = checkWidowActs({ marriage: "1790", serviceEnd: "1779" });
+    return act(r, "act1836") === "inconsistent" && r.find((x) => x.act === "act1836").verdict === "Ruled out by the dates" && ["act1855bounty", "act1878"].every((id) => r.find((x) => x.act === id).verdict === "Still possible: need whether he served 14 days or more, or was in a battle"); })()],
+  ["Dates only: a 1777 marriage and service ending 1778 leave the 1836 law 'Still possible' (needs 6+ months and his kind of service), never 'Fits'", (() => { const r = checkWidowActs({ marriage: "1777-05", serviceEnd: "1778-03" }).find((x) => x.act === "act1836"); return r.status === "possible" && r.needs.map((n) => n.key).join() === "months,kind"; })()],
+  ["Settled answers stay settled: whatever is filled in later, a 'Fits' never turns into anything else and a 'Ruled out' never reopens", (() => {
+    const V = { marriage: [null, "1777", "1777-05", "1790", "1799"], serviceEnd: [null, "1778-03", "1779"], serviceMonths: [null, 3, 20], serviceDays: [null, 5, 182, 200], engagement: [null, true, false], kind: [null, "militia", "military", "other"] };
+    const fill = { marriage: ["1776-03-01", "1779-01-01", "1795-05-05"], serviceEnd: ["1777-06-30", "1781-10-19"], serviceMonths: [0, 5, 6, 30], serviceDays: [10, 14, 183, 400], engagement: [true, false], kind: ["continental", "militia", "military", "other"] };
+    const keys = Object.keys(V); let checked = 0;
+    const each = (i, o, f) => { if (i === keys.length) return f(o); for (const v of V[keys[i]]) each(i + 1, { ...o, [keys[i]]: v }, f); };
+    const completions = (o) => { let out = [o]; for (const k of keys) if (o[k] == null) out = out.flatMap((x) => fill[k].map((v) => ({ ...x, [k]: v }))); return out; };
+    let ok = true;
+    each(0, {}, (o) => { if (!ok) return; const base = checkWidowActs(o); if (base[0].act === "input") return; const comps = completions(o);
+      for (const c of comps) { const r = checkWidowActs(c); if (r[0].act === "input") continue; for (const b of base) { const x = r.find((y) => y.act === b.act); checked++;
+        if (b.status === "consistent" && x.status !== "consistent") ok = false;
+        if (b.status === "inconsistent" && x.status !== "inconsistent") ok = false; } } });
+    return ok && checked > 10000; })()],
+  ["'Fits' wording only ever appears on a fully settled law; open laws always name what they need", (() => { const all = [{}, { marriage: "1790" }, { marriage: "1777", serviceEnd: "1777" }, { serviceDays: 5 }, { marriage: "1780-05-01", serviceEnd: "1781-10-19", serviceMonths: 24 }].flatMap((i) => checkWidowActs(i));
+    return all.every((r) => (/^Fits/.test(r.verdict) === (r.status === "consistent")) && (!["possible", "partial"].includes(r.status) || (r.needs.length > 0 && /^Still possible: need /.test(r.verdict)))); })()],
   ["End-before-start error is plain", /end date is before the start date/.test(sw("core", "1778", "1777").message)],
 ];
 let uPass = 0; for (const [n, ok] of U) { console.log(`${ok ? "PASS" : "FAIL"}  [plain] ${n}`); if (ok) uPass++; }

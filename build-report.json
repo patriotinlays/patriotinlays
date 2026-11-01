@@ -1,5 +1,5 @@
 {
-  "builtAt": "Sat Oct 31 2026 20:47:18 GMT-0500 (Central Daylight Time)",
+  "builtAt": "Sat Oct 31 2026 21:03:17 GMT-0500 (Central Daylight Time)",
   "pages": [
     {
       "title": "Application Returned? Fixing Common DAR and SAR Proof Problems (Including Supplementals)",
@@ -8,7 +8,7 @@
       "cornerstone": "10",
       "path": "/guides/application-problems/",
       "words": 658,
-      "claims": 60,
+      "claims": 57,
       "sources": 13,
       "tools": [
         "lineage-matrix"
@@ -21,7 +21,7 @@
       "cornerstone": "5",
       "path": "/guides/bounty-land-warrants/",
       "words": 657,
-      "claims": 56,
+      "claims": 53,
       "sources": 12,
       "tools": [
         "lineage-matrix"
@@ -34,7 +34,7 @@
       "cornerstone": "6",
       "path": "/guides/census-bridge/",
       "words": 804,
-      "claims": 47,
+      "claims": 44,
       "sources": 14,
       "tools": [
         "lineage-matrix"
@@ -47,7 +47,7 @@
       "tool": "lineage-matrix",
       "path": "/tools/lineage-matrix/",
       "words": 941,
-      "claims": 58,
+      "claims": 55,
       "sources": 19,
       "tools": [
         "lineage-matrix"
@@ -60,7 +60,7 @@
       "cornerstone": "1",
       "path": "/guides/lineage-proof-roadmap/",
       "words": 967,
-      "claims": 73,
+      "claims": 70,
       "sources": 15,
       "tools": [
         "lineage-matrix"
@@ -73,7 +73,7 @@
       "cornerstone": "9",
       "path": "/guides/patriot-or-loyalist/",
       "words": 663,
-      "claims": 42,
+      "claims": 39,
       "sources": 13,
       "tools": [
         "patriot"
@@ -86,7 +86,7 @@
       "cornerstone": "7",
       "path": "/guides/patriotic-service/",
       "words": 826,
-      "claims": 65,
+      "claims": 62,
       "sources": 15,
       "tools": [
         "patriot"
@@ -99,7 +99,7 @@
       "cornerstone": "3",
       "path": "/guides/read-pension-file/",
       "words": 929,
-      "claims": 67,
+      "claims": 64,
       "sources": 13,
       "tools": [
         "widow"
@@ -112,7 +112,7 @@
       "cornerstone": "4",
       "path": "/guides/records-by-state/",
       "words": 734,
-      "claims": 65,
+      "claims": 62,
       "sources": 18,
       "tools": [
         "patriot"
@@ -125,7 +125,7 @@
       "cornerstone": "8",
       "path": "/guides/same-name/",
       "words": 699,
-      "claims": 43,
+      "claims": 40,
       "sources": 14,
       "tools": [
         "lineage-matrix"
@@ -138,7 +138,7 @@
       "cornerstone": "2",
       "path": "/guides/substitute-evidence/",
       "words": 824,
-      "claims": 58,
+      "claims": 55,
       "sources": 13,
       "tools": [
         "lineage-matrix"
@@ -150,8 +150,8 @@
       "description": "See which federal Revolutionary War widow pension and bounty-land laws (1836 to 1878) a widow's marriage date and her husband's service fit, and where to find her pension file.",
       "tool": "widow",
       "path": "/tools/widow-pension-checker/",
-      "words": 596,
-      "claims": 47,
+      "words": 684,
+      "claims": 44,
       "sources": 11,
       "tools": [
         "widow"
