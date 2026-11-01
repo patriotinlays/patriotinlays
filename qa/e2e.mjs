@@ -164,6 +164,13 @@ for (const [p, name] of [["/", "m-home"], ["/guides/substitute-evidence/", "m-gu
   await mp.screenshot({ path: join(SHOTS, `${name}.png`) });
 }
 await page.goto(`${BASE}/guides/read-pension-file/`); await page.screenshot({ path: join(SHOTS, "desktop-guide.png") });
+// ---- Cache-busting: every script/CSS reference and every module import carries ?v=<hash> that matches the file ----
+const { createHash } = await import("node:crypto");
+const htmlRefs = pagesToCheck.flatMap((p) => [...readFileSync(join(DIST, p, "index.html"), "utf8").matchAll(/(?:src|href)="(\/assets\/[^"]+\.(?:js|css)[^"]*)"/g)].map((m) => m[1]));
+const jsImports = ["tool-a-ui.js", "tool-b-ui.js"].flatMap((f) => [...readFileSync(join(DIST, "assets/js", f), "utf8").matchAll(/from\s+"\.\/([^"]+)"/g)].map((m) => `/assets/js/${m[1]}`));
+const badRefs = [...htmlRefs, ...jsImports].filter((u) => { const [path, q] = u.split("?v="); if (!q) return true;
+  return createHash("sha256").update(readFileSync(join(DIST, path))).digest("hex").slice(0, 10) !== q; });
+check("Cache-busting: every page's script/CSS URL and every module import is versioned with the file's content hash", htmlRefs.length > 0 && jsImports.length === 4 && badRefs.length === 0, badRefs.slice(0, 3).join(" "));
 check("No JavaScript errors in the console on any page visited", consoleErrors.length === 0, consoleErrors.slice(0, 3).join(" | "));
 await browser.close(); server.close();
 const passed = results.filter((r) => r.ok).length;

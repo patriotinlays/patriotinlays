@@ -3,6 +3,7 @@
 // sources page, tool report pages, sitemap.xml, robots.txt and 404.html.
 import { readFileSync, writeFileSync, mkdirSync, readdirSync, copyFileSync, rmSync } from "node:fs";
 import { join, dirname } from "node:path";
+import { createHash } from "node:crypto";
 const ROOT = new URL("..", import.meta.url).pathname;
 const OUT = join(ROOT, "dist");
 const SITE = "https://patriotinlays.com";
@@ -12,8 +13,23 @@ mkdirSync(join(OUT, "assets/js"), { recursive: true });
 const manifest = JSON.parse(readFileSync(join(ROOT, "manifest/claims.json"), "utf8"));
 const claims = new Map(manifest.claims.map((c) => [c.claim_id, c]));
 const esc = (s) => String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
-for (const f of readdirSync(join(ROOT, "src/tools"))) copyFileSync(join(ROOT, "src/tools", f), join(OUT, "assets/js", f));
-copyFileSync(join(ROOT, "src/assets/site.css"), join(OUT, "assets/site.css"));
+// Cache-busting: every script/CSS URL carries ?v=<content hash>. Relative ES-module imports between the tool
+// files are rewritten the same way, and a module's hash covers its rewritten imports, so any change to a
+// dependency also changes the URL of every module that imports it.
+const hash8 = (s) => createHash("sha256").update(s).digest("hex").slice(0, 10);
+const ASSET_V = new Map(); // "/assets/js/x.js" -> hash
+const toolSrc = new Map(readdirSync(join(ROOT, "src/tools")).filter((f) => f.endsWith(".js")).map((f) => [f, readFileSync(join(ROOT, "src/tools", f), "utf8")]));
+const IMPORT_RE = /(\bfrom\s+|\bimport\s*\(?\s*)"\.\/([\w.-]+\.js)"/g;
+function versionModule(f, seen = new Set()) {
+  const key = `/assets/js/${f}`; if (ASSET_V.has(key)) return ASSET_V.get(key);
+  if (seen.has(f)) throw new Error(`build: import cycle at ${f}`); seen.add(f);
+  if (!toolSrc.has(f)) throw new Error(`build: ${f} imports a file not in src/tools`);
+  const out = toolSrc.get(f).replace(IMPORT_RE, (_, pre, dep) => `${pre}"./${dep}?v=${versionModule(dep, seen)}"`);
+  const v = hash8(out); writeFileSync(join(OUT, "assets/js", f), out); ASSET_V.set(key, v); return v;
+}
+for (const f of toolSrc.keys()) versionModule(f);
+const css = readFileSync(join(ROOT, "src/assets/site.css"), "utf8"); writeFileSync(join(OUT, "assets/site.css"), css); ASSET_V.set("/assets/site.css", hash8(css));
+const versionUrls = (html) => html.replace(/(src|href)="(\/assets\/[^"?#]+\.(?:js|css))"/g, (m, a, u) => ASSET_V.has(u) ? `${a}="${u}?v=${ASSET_V.get(u)}"` : m);
 copyFileSync(join(ROOT, "src/assets/favicon.svg"), join(OUT, "favicon.svg"));
 
 function parseFront(raw) {
@@ -113,7 +129,7 @@ function page({ title, description, path, body, noindex = false }) {
 <link rel="canonical" href="${SITE}${path}">${noindex ? '<meta name="robots" content="noindex">' : ""}
 <link rel="icon" href="/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="/assets/site.css"></head><body>${NAV}<main><div class="wrap">${body}</div></main>${FOOT}</body></html>`;
 }
-function write(path, html) { const f = join(OUT, path, "index.html"); mkdirSync(dirname(f), { recursive: true }); writeFileSync(f, html); }
+function write(path, html) { const f = join(OUT, path, "index.html"); mkdirSync(dirname(f), { recursive: true }); writeFileSync(f, versionUrls(html)); }
 const sitemap = []; const built = [];
 function renderFile(dir, f) {
   const raw = readFileSync(join(ROOT, dir, f), "utf8"); const { fm, body } = parseFront(raw);
@@ -148,7 +164,7 @@ write("tools/service-window-checker/report", page({ title: "Service Window Check
   body: `<h1>Service Window Checker: your report</h1><p>The dates you checked and what the published rules say about them.</p><section class="tool" data-tool-report="service-window"><div data-report><p>Loading your saved checks…</p></div><button type="button" data-print>Print this report</button><button type="button" class="secondary" data-clear="toolA">Delete my saved checker data</button><div data-out="report" aria-live="polite"></div></section><p class="small">This report is built in your browser from what you typed on this device. Nothing is uploaded. It compares dates with published rules; it is not a decision about membership or a pension.</p><p><a href="/tools/service-window-checker/">Back to the checker</a></p><script type="module" src="/assets/js/tool-a-ui.js"></script>` }));
 write("tools/lineage-matrix/report", page({ title: "Lineage Evidence Matrix — your report", description: "Printable gap report rendered from this browser only.", path: "/tools/lineage-matrix/report/", noindex: true,
   body: `<h1>Lineage Evidence Matrix: your report</h1><p>What's still missing in your line, where to look for it, and the records you've entered.</p><section class="tool" data-tool-report="lineage-matrix"><div data-report><p>Loading your saved matrix…</p></div><button type="button" data-print>Print this report</button><button type="button" class="secondary" data-clear="toolB">Delete all my worksheet data</button></section><p class="small">Built in your browser from what you typed on this device. Nothing is uploaded. Every label means "still needs review": only a society's genealogists decide what is proven.</p><p><a href="/tools/lineage-matrix/">Back to the matrix</a></p><script type="module" src="/assets/js/tool-b-ui.js"></script>` }));
-writeFileSync(join(OUT, "404.html"), page({ title: "Page not found", path: "/404.html", noindex: true, body: `<h1>Page not found</h1><p><a href="/">Go to the home page</a>.</p>` }));
+writeFileSync(join(OUT, "404.html"), versionUrls(page({ title: "Page not found", path: "/404.html", noindex: true, body: `<h1>Page not found</h1><p><a href="/">Go to the home page</a>.</p>` })));
 writeFileSync(join(OUT, "sitemap.xml"), `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${sitemap.filter((p) => !p.includes("/contact/") || true).map((p) => `  <url><loc>${SITE}${p}</loc><lastmod>${BUILD_DATE}</lastmod></url>`).join("\n")}\n</urlset>\n`);
 writeFileSync(join(OUT, "robots.txt"), `User-agent: *\nDisallow: /tools/service-window-checker/report/\nDisallow: /tools/lineage-matrix/report/\nSitemap: ${SITE}/sitemap.xml\n`);
 writeFileSync(join(ROOT, "build-report.json"), JSON.stringify({ builtAt: new Date().toString(), pages: built, sitemapUrls: sitemap.length }, null, 2));

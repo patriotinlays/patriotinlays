@@ -9,6 +9,8 @@ A static website of plain-English, source-backed procedure guides for proving de
   direct/indirect and conflict flags; every label means "review required". Every gap shows a "Where to look" note
   that links only to Source Manifest URLs or the site's own guides, and otherwise says to ask the society's registrar.
 
+Script and CSS URLs carry `?v=<content hash>` (module imports too), so returning visitors never get stale JS after a deploy.
+
 Neither tool searches records. Both open with a plain "How this works" box and a "Load an example" button.
 
 Both tools run entirely in the visitor's browser, make no network requests, and save only to `localStorage`
@@ -29,7 +31,7 @@ unknown or unverified claim, stale entry (> 120 days), quote that no longer appe
 | `manifest/` | Source Manifest (`claims.json`) and the Python that regenerates it (`npm run manifest`) |
 | `scripts/` | Static site generator, tests, manifest gate, link checker, gates doc generator |
 | `ops/gates.js`, `docs/gates.md` | Day 30/60/90 mixed-gate decision rules (code + generated doc) |
-| `qa/e2e.mjs` | Headless-browser end-to-end suite (40 checks) |
+| `qa/e2e.mjs` | Headless-browser end-to-end suite (41 checks) |
 | `.github/workflows/` | `build.yml` (build gates on every push/PR), `ci.yml` (E2E on releases and tool PRs) |
 | `dist/` | Build output (generated; this is what gets deployed) |
 

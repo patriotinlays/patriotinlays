@@ -1,8 +1,8 @@
 {
-  "ranAt": "Sat Oct 31 2026 19:05:20 GMT-0500 (Central Daylight Time)",
+  "ranAt": "Sat Oct 31 2026 19:10:48 GMT-0500 (Central Daylight Time)",
   "browser": "/usr/bin/google-chrome (headless) via playwright-core 1.64.1",
-  "passed": 40,
-  "total": 40,
+  "passed": 41,
+  "total": 41,
   "results": [
     {
       "name": "Tool A: core window 1775-04-19..1776-01-01 shows the mandated 'fits, not a ruling' sentence",
@@ -198,6 +198,11 @@
       "name": "Mobile: tool buttons are at least 44px tall",
       "ok": true,
       "detail": "0 small"
+    },
+    {
+      "name": "Cache-busting: every page's script/CSS URL and every module import is versioned with the file's content hash",
+      "ok": true,
+      "detail": ""
     },
     {
       "name": "No JavaScript errors in the console on any page visited",
