@@ -160,6 +160,12 @@ function renderFile(dir, f) {
 for (const f of readdirSync(join(ROOT, "src/content")).filter((x) => x.endsWith(".md"))) renderFile("src/content", f);
 for (const f of readdirSync(join(ROOT, "src/pages")).filter((x) => x.endsWith(".md"))) renderFile("src/pages", f);
 
+// Home-page glossary: rendered from src/partials/glossary.md so every definition carries a Source Manifest claim.
+const HOME_GLOSSARY = (() => { const ctx = { sources: [], tools: new Set(), claimCount: 0 };
+  const html = md(readFileSync(join(ROOT, "src/partials/glossary.md"), "utf8"), ctx).replace('<h2 id="words-you-ll-see-here">', '<h2 id="glossary">');
+  const sources = `<h2 id="sources">Sources for the definitions</h2><ol class="sources">${ctx.sources.map((u, i) => { const c = manifest.claims.find((x) => x.source_url === u);
+    return `<li id="src-${i + 1}"><a href="${esc(u)}">${esc(c.source_title)}</a>. Retrieved ${c.last_retrieved}.</li>`; }).join("")}</ol>`;
+  return { html: `<div class="glossary">${html}</div>`, sources }; })();
 const guides = built.filter((b) => b.cornerstone).sort((a, b) => a.cornerstone - b.cornerstone);
 write("", page({ title: "Revolutionary War lineage, explained step by step", description: "Plain-English procedures and free browser tools for proving descent from a Revolutionary War patriot.", path: "/",
   body: `<h1>Revolutionary War lineage, explained step by step</h1>
@@ -167,9 +173,10 @@ write("", page({ title: "Revolutionary War lineage, explained step by step", des
 <p><strong>Where to start:</strong> open the free family-line worksheet and type in what you already know. New to all this? Read the Roadmap guide first.</p>
 <p><a class="button-link" href="/tools/lineage-matrix/">Start my family-line worksheet</a> <a class="button-link secondary-link" href="/guides/lineage-proof-roadmap/">Read the Roadmap guide</a></p>
 <p class="small">Both tools are free, need no account, and keep everything you type in your own browser. They don't search records for you. Every fact on this site links to its official source.</p>
+${HOME_GLOSSARY.html}
 <h2 id="guides">The 10 guides</h2><ol class="guide-list">${guides.map((g) => `<li><a href="${g.path}">${esc(g.title)}</a><br><span class="small">${esc(g.description)}</span></li>`).join("")}</ol>
 <h2 id="tools">Free tools</h2><ul class="guide-list"><li><a href="/tools/lineage-matrix/">Lineage Evidence Matrix</a><br><span class="small">Type in the records you have for each generation. Get a to-do list of what's missing, where to look, and a printable plan.</span></li><li><a href="/tools/service-window-checker/">Service Window &amp; Widow-Act Date Checker</a><br><span class="small">Type in a patriot's service dates. See whether they fit the official period and what to do next.</span></li></ul>
-<p class="small">Written with AI and checked against quoted official sources at build time. <a href="/about/">About this site</a>.</p>` }));
+${HOME_GLOSSARY.sources}<p class="small">Written with AI and checked against quoted official sources at build time. <a href="/about/">About this site</a>.</p>` }));
 sitemap.unshift("/");
 // Sources & methodology page
 const bySource = new Map(); for (const c of manifest.claims) { if (!bySource.has(c.source_url)) bySource.set(c.source_url, { t: c.source_title, n: 0 }); bySource.get(c.source_url).n++; }

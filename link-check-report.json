@@ -1,8 +1,8 @@
 {
-  "checkedAt": "Sat Oct 31 2026 19:17:49 GMT-0500 (Central Daylight Time)",
+  "checkedAt": "Sat Oct 31 2026 19:30:37 GMT-0500 (Central Daylight Time)",
   "htmlFiles": 20,
-  "internalLinks": 722,
-  "externalUnique": 24,
+  "internalLinks": 733,
+  "externalUnique": 28,
   "external": [
     {
       "url": "https://www.dar.org/discover/become-member/chapter-locator",
@@ -50,7 +50,7 @@
       "url": "https://www.dar.org/discover/become-member/how-join",
       "status": 200,
       "err": null,
-      "pages": 11
+      "pages": 12
     },
     {
       "url": "https://www.archives.gov/files/research/military/army/dc/m804.pdf",
@@ -144,6 +144,30 @@
     },
     {
       "url": "https://services.dar.org/Public/DAR_Research/search_revwar/?Tab_ID=14&Tab_ID_Sub=0&action=list",
+      "status": 200,
+      "err": null,
+      "pages": 2
+    },
+    {
+      "url": "https://www.sar.org/sar-missions-and-goals/",
+      "status": 200,
+      "err": null,
+      "pages": 2
+    },
+    {
+      "url": "https://www.dar.org/discover/become-member/what-dar",
+      "status": 200,
+      "err": null,
+      "pages": 2
+    },
+    {
+      "url": "https://nscda.org/about/membership/",
+      "status": 200,
+      "err": null,
+      "pages": 2
+    },
+    {
+      "url": "https://nscdama.org/membership/",
       "status": 200,
       "err": null,
       "pages": 2

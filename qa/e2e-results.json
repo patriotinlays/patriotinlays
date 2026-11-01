@@ -1,8 +1,8 @@
 {
-  "ranAt": "Sat Oct 31 2026 19:18:03 GMT-0500 (Central Daylight Time)",
+  "ranAt": "Sat Oct 31 2026 19:30:41 GMT-0500 (Central Daylight Time)",
   "browser": "/usr/bin/google-chrome (headless) via playwright-core 1.64.1",
-  "passed": 53,
-  "total": 53,
+  "passed": 60,
+  "total": 60,
   "results": [
     {
       "name": "Tool A: core window 1775-04-19..1776-01-01 shows the mandated 'fits, not a ruling' sentence",
@@ -135,6 +135,11 @@
       "detail": ""
     },
     {
+      "name": "Tool B (regression): a blank record shows no label at all (no 'Evidence Entered')",
+      "ok": true,
+      "detail": "Empty record: answer A to D, or remove it."
+    },
+    {
       "name": "Tool B: complete direct entry shows 'Evidence Entered — Review Required'",
       "ok": true,
       "detail": "Evidence Entered — Review Required"
@@ -155,9 +160,14 @@
       "detail": ""
     },
     {
-      "name": "Tool B: gap list shows conflict first and missing items",
+      "name": "Tool B: gap list shows the flagged conflict and missing items",
       "ok": true,
-      "detail": "Generation 2 (your parent): you flagged a conflict on the parent–child link record. Sort it out before relying on it.Whe"
+      "detail": "Generation 2: Your parentYou flagged a conflict on the parent–child link record. Sort it out before relying on it.Where "
+    },
+    {
+      "name": "Tool B (regression): gap list shows each generation once, in order",
+      "ok": true,
+      "detail": "2,3"
     },
     {
       "name": "Tool B: every listed gap shows a 'Where to look' line",
@@ -200,14 +210,24 @@
       "detail": "Saved in this browser: 3 generations, 2 evidence entries, 6 things still missing or flagged."
     },
     {
+      "name": "Tool B (regression): blank record not counted on the card or shown on the report",
+      "ok": true,
+      "detail": "Saved in this browser: 3 generations, 2 evidence entries, 6 things still missing or flagged. | rows=2"
+    },
+    {
       "name": "Tool B: saved under pi.toolB.v1 only",
       "ok": true,
       "detail": ""
     },
     {
+      "name": "Tool B (regression): action plan groups each generation once, in order",
+      "ok": true,
+      "detail": "Generation 2: Your parent | Generation 3: Your grandparent | Generation 4: Your great-grandparent"
+    },
+    {
       "name": "Tool B: action plan lists each missing record with a Where-to-look link, then registrar and application steps",
       "ok": true,
-      "detail": "4 items"
+      "detail": "5 items"
     },
     {
       "name": "Tool B: 'Load an example' fills a made-up family and shows gaps with where to look",
@@ -218,6 +238,11 @@
       "name": "Tool B clear: removes pi.toolB.* only, keeps unrelated key",
       "ok": true,
       "detail": "other.app.key,pi.toolA.window"
+    },
+    {
+      "name": "Home: short glossary defines Patriot, DAR, SAR, NSCDA and lineage society, each with a source note",
+      "ok": true,
+      "detail": ""
     },
     {
       "name": "Home: says in plain words what you can get done and where to start",
@@ -255,6 +280,16 @@
       "detail": ""
     },
     {
+      "name": "Mobile 360px (regression): widow-act table shows stacked cards, no horizontal overflow",
+      "ok": true,
+      "detail": "{\"sw\":360,\"iw\":360,\"tw\":292,\"td\":\"block\",\"thead\":\"none\",\"label\":\"\\\"Pension law\\\"\"}"
+    },
+    {
+      "name": "Mobile 360px (regression): checker report's widow table also stacks, no overflow",
+      "ok": true,
+      "detail": "{\"sw\":360,\"iw\":360,\"td\":\"block\"}"
+    },
+    {
       "name": "Mobile: tool buttons are at least 44px tall",
       "ok": true,
       "detail": "0 small"
@@ -270,8 +305,8 @@
       "detail": ""
     }
   ],
-  "requestsTotal": 75,
+  "requestsTotal": 99,
   "externalRequests": 0,
   "interactionRequests": 0,
-  "faviconLate": 8
+  "faviconLate": 10
 }

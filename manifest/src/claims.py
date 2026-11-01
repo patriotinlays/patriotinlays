@@ -290,4 +290,14 @@ C = [
 ("sar-sponsor-guides","SAR_APPLY","This person will help guide you through the SAR membership application process","The SAR sponsor helps guide you through the application.",None),
 ("sar-state-residence","SAR_APPLY","Visit the link below and click on your state of residence.","SAR's apply page sends you to pick your state of residence to find a contact.",None),
 ("sar-find-contact","SAR_CONTACT","Find Your Local Society Contact","SAR's contact finder lists a contact for each state society.",None),
+# ---- Home-page glossary (added 2026-10-31, fetched and quote-matched that day) ----
+("dar-name","DAR_WHAT","about the Daughters of the American Revolution","DAR stands for the Daughters of the American Revolution.",None),
+("dar-join-eligible","DAR_JOIN","Any woman 18 years or older who can prove lineal, bloodline descent from an ancestor who aided in achieving American independence is eligible to join the DAR.","DAR is open to women 18 or older who prove descent from an ancestor who aided in achieving American independence.",None),
+("sar-name","SAR_ABOUT","the National Society of the Sons of the American Revolution","SAR is the National Society of the Sons of the American Revolution.",None),
+("sar-about-age","SAR_ABOUT","Any male 18 years or older","SAR membership is open to males 18 or older.",None),
+("sar-about-eligible","SAR_ABOUT","who can prove blood lineal descent from a patriot of the American Revolution, is eligible for membership","SAR is open to those who prove descent from a patriot of the American Revolution.",None),
+("sar-about-patriots","SAR_ABOUT","lineal descendants of the patriots who wintered at Valley Forge, signed the Declaration of Independence, fought in the battles of the American Revolution, served in the Continental Congress, or otherwise supported the cause of American Independence","SAR describes patriots as those who fought, served in the Continental Congress, signed the Declaration or otherwise supported American independence.",None),
+("nscda-name-national","NSCDA_MEM","The National Society of the Colonial Dames of America is a national organization","NSCDA is The National Society of the Colonial Dames of America, a national organization.",None),
+("nscda-members-colonial","NSCDA_MEM","Members are descended from more than 10,000 men and women who served the American colonies prior to July 5, 1776.","NSCDA members descend from men and women who served the American colonies before July 5, 1776.",None),
+("nscdama-lineage","NSCDA_MA","It is based on lineage and dedication to the Society","NSCDA's Massachusetts society says membership is based on lineage.",None),
 ]

@@ -4435,6 +4435,159 @@
         "tool:next-steps.js"
       ],
       "notes": ""
+    },
+    {
+      "claim_id": "dar-name",
+      "claim_text": "DAR stands for the Daughters of the American Revolution.",
+      "source_url": "https://www.dar.org/discover/become-member/what-dar",
+      "source_title": "DAR — What is DAR?",
+      "source_type": "official_secondary",
+      "archive_identifier": null,
+      "last_retrieved": "2026-10-31",
+      "quote_excerpt": "about the Daughters of the American Revolution",
+      "page_ref": null,
+      "verification_status": "verified",
+      "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
+      "used_on": [
+        "partial:glossary"
+      ],
+      "notes": ""
+    },
+    {
+      "claim_id": "dar-join-eligible",
+      "claim_text": "DAR is open to women 18 or older who prove descent from an ancestor who aided in achieving American independence.",
+      "source_url": "https://www.dar.org/discover/become-member/how-join",
+      "source_title": "DAR — How to Join",
+      "source_type": "official_secondary",
+      "archive_identifier": null,
+      "last_retrieved": "2026-10-31",
+      "quote_excerpt": "Any woman 18 years or older who can prove lineal, bloodline descent from an ancestor who aided in achieving American independence is eligible to join the DAR.",
+      "page_ref": null,
+      "verification_status": "verified",
+      "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
+      "used_on": [
+        "partial:glossary"
+      ],
+      "notes": ""
+    },
+    {
+      "claim_id": "sar-name",
+      "claim_text": "SAR is the National Society of the Sons of the American Revolution.",
+      "source_url": "https://www.sar.org/sar-missions-and-goals/",
+      "source_title": "SAR — About (Mission & Goals)",
+      "source_type": "official_secondary",
+      "archive_identifier": null,
+      "last_retrieved": "2026-10-31",
+      "quote_excerpt": "the National Society of the Sons of the American Revolution",
+      "page_ref": null,
+      "verification_status": "verified",
+      "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
+      "used_on": [
+        "partial:glossary"
+      ],
+      "notes": ""
+    },
+    {
+      "claim_id": "sar-about-age",
+      "claim_text": "SAR membership is open to males 18 or older.",
+      "source_url": "https://www.sar.org/sar-missions-and-goals/",
+      "source_title": "SAR — About (Mission & Goals)",
+      "source_type": "official_secondary",
+      "archive_identifier": null,
+      "last_retrieved": "2026-10-31",
+      "quote_excerpt": "Any male 18 years or older",
+      "page_ref": null,
+      "verification_status": "verified",
+      "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
+      "used_on": [
+        "partial:glossary"
+      ],
+      "notes": ""
+    },
+    {
+      "claim_id": "sar-about-eligible",
+      "claim_text": "SAR is open to those who prove descent from a patriot of the American Revolution.",
+      "source_url": "https://www.sar.org/sar-missions-and-goals/",
+      "source_title": "SAR — About (Mission & Goals)",
+      "source_type": "official_secondary",
+      "archive_identifier": null,
+      "last_retrieved": "2026-10-31",
+      "quote_excerpt": "who can prove blood lineal descent from a patriot of the American Revolution, is eligible for membership",
+      "page_ref": null,
+      "verification_status": "verified",
+      "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
+      "used_on": [
+        "partial:glossary"
+      ],
+      "notes": ""
+    },
+    {
+      "claim_id": "sar-about-patriots",
+      "claim_text": "SAR describes patriots as those who fought, served in the Continental Congress, signed the Declaration or otherwise supported American independence.",
+      "source_url": "https://www.sar.org/sar-missions-and-goals/",
+      "source_title": "SAR — About (Mission & Goals)",
+      "source_type": "official_secondary",
+      "archive_identifier": null,
+      "last_retrieved": "2026-10-31",
+      "quote_excerpt": "lineal descendants of the patriots who wintered at Valley Forge, signed the Declaration of Independence, fought in the battles of the American Revolution, served in the Continental Congress, or otherwise supported the cause of American Independence",
+      "page_ref": null,
+      "verification_status": "verified",
+      "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
+      "used_on": [
+        "partial:glossary"
+      ],
+      "notes": ""
+    },
+    {
+      "claim_id": "nscda-name-national",
+      "claim_text": "NSCDA is The National Society of the Colonial Dames of America, a national organization.",
+      "source_url": "https://nscda.org/about/membership/",
+      "source_title": "The National Society of the Colonial Dames of America — Membership",
+      "source_type": "official_secondary",
+      "archive_identifier": null,
+      "last_retrieved": "2026-10-31",
+      "quote_excerpt": "The National Society of the Colonial Dames of America is a national organization",
+      "page_ref": null,
+      "verification_status": "verified",
+      "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
+      "used_on": [
+        "partial:glossary"
+      ],
+      "notes": ""
+    },
+    {
+      "claim_id": "nscda-members-colonial",
+      "claim_text": "NSCDA members descend from men and women who served the American colonies before July 5, 1776.",
+      "source_url": "https://nscda.org/about/membership/",
+      "source_title": "The National Society of the Colonial Dames of America — Membership",
+      "source_type": "official_secondary",
+      "archive_identifier": null,
+      "last_retrieved": "2026-10-31",
+      "quote_excerpt": "Members are descended from more than 10,000 men and women who served the American colonies prior to July 5, 1776.",
+      "page_ref": null,
+      "verification_status": "verified",
+      "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
+      "used_on": [
+        "partial:glossary"
+      ],
+      "notes": ""
+    },
+    {
+      "claim_id": "nscdama-lineage",
+      "claim_text": "NSCDA's Massachusetts society says membership is based on lineage.",
+      "source_url": "https://nscdama.org/membership/",
+      "source_title": "NSCDA in the Commonwealth of Massachusetts — Membership",
+      "source_type": "official_secondary",
+      "archive_identifier": null,
+      "last_retrieved": "2026-10-31",
+      "quote_excerpt": "It is based on lineage and dedication to the Society",
+      "page_ref": null,
+      "verification_status": "verified",
+      "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
+      "used_on": [
+        "partial:glossary"
+      ],
+      "notes": ""
     }
   ]
 }

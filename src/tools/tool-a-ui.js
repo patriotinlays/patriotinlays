@@ -17,8 +17,9 @@ function renderWidow(rows) {
   if (rows.length === 1 && rows[0].act === "input") return el("div", { class: "result r-invalid" }, badge("invalid"), el("p", { text: rows[0].message }));
   const t = el("table", { class: "widow" }, el("thead", {}, el("tr", {}, el("th", { text: "Pension law" }), el("th", { text: "Result" }), el("th", { text: "The rule, and what to do next" }))));
   const tb = el("tbody");
-  for (const r of rows) tb.append(el("tr", {}, el("td", { text: r.label || r.act }), el("td", {}, badge(r.status, WIDOW_LABEL), el("div", { class: "small", text: r.message })),
-    el("td", {}, el("div", { class: "small", text: `Rule: ${r.ruleText || ""}` }),
+  // data-label lets narrow screens show each row as a stacked card (see site.css).
+  for (const r of rows) tb.append(el("tr", {}, el("td", { "data-label": "Pension law", text: r.label || r.act }), el("td", { "data-label": "Result" }, badge(r.status, WIDOW_LABEL), el("div", { class: "small", text: r.message })),
+    el("td", { "data-label": "The rule, and what to do next" }, el("div", { class: "small", text: `Rule: ${r.ruleText || ""}` }),
       r.why && r.why !== "Missing information." ? el("div", { class: "small", text: r.why }) : null,
       r.next ? el("div", { class: "small next", text: r.next }) : null,
       r.uiNote ? el("div", { class: "small note", text: r.uiNote }) : null,

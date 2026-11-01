@@ -1,6 +1,6 @@
 // Tool B browser UI: Lineage Evidence Matrix editor, embed card, and report page.
 // State lives only in localStorage under "pi.toolB.v1"; no network requests are made.
-import { actionPlan, evaluateCell, gaps, LABELS, FACTS, FACT_LABELS, DOC_TYPES, MODE_HELP, genLabel, genTitle, isEmptyCell } from "./tool-b.js";
+import { actionPlan, evaluateCell, gaps, groupGaps, filledCells, countEntries, LABELS, FACTS, FACT_LABELS, DOC_TYPES, MODE_HELP, genLabel, genTitle, isEmptyCell } from "./tool-b.js";
 import { ns, el } from "./storage.js";
 import { renderPlan } from "./plan-ui.js";
 const store = ns("pi.toolB.");
@@ -31,6 +31,8 @@ function select(name, options, value, label, id) {
   for (const [v, t] of options) s.append(el("option", { value: v, text: t, selected: v === value }));
   return s;
 }
+// Blank records get a plain prompt instead of a label; they are never labelled or counted.
+const statusFor = (c) => isEmptyCell(c) ? [el("div", { class: "small hint", "data-blank": "", text: "Empty record: answer A to D, or remove it." })] : statusKids(evaluateCell(c));
 const statusKids = (ev) => [el("span", { class: `badge ${labelClass(ev.label)}`, text: ev.label }),
   ...ev.issues.map((i) => el("div", { class: "small issue", text: i })), ...ev.cautions.map((k) => el("div", { class: "small caution", text: k.text }))];
 
@@ -45,7 +47,9 @@ export function whereBlock(w) {
 function renderGaps(state) {
   const list = gaps(state.generations);
   if (!list.length) return el("p", { class: "small", text: "Nothing missing by the tool's rules. That is not a proof: a society's genealogist still reviews every entry." });
-  return el("ol", { class: "gaps" }, ...list.map((g) => el("li", { class: g.priority === 0 ? "conflict" : "" }, el("div", { class: "gap-text", text: g.text }), whereBlock(g.where))));
+  // Each generation is listed once, in order, with its items under it.
+  return el("ol", { class: "gaps" }, ...groupGaps(list).map((grp) => el("li", { class: "gap-gen", "data-gap-gen": grp.gen ?? "" }, el("strong", { class: "gap-gen-h", text: grp.title }),
+    el("ul", { class: "gap-items" }, ...grp.items.map((g) => el("li", { class: g.priority === 0 ? "conflict" : "" }, el("div", { class: "gap-text", text: g.short }), whereBlock(g.where)))))));
 }
 
 function cellEditor(state, g, c, rerender, n) {
@@ -65,7 +69,7 @@ function cellEditor(state, g, c, rerender, n) {
     el("p", { class: "small hint", text: "A few words so you can find it again, e.g. \"county courthouse, will book 3, page 12\"." }),
     el("input", { id: `${base}-cite`, name: "citation", type: "text", value: c.citation, autocomplete: "off" }),
     el("label", { class: "check" }, el("input", { type: "checkbox", name: "conflict", checked: c.conflict, onchange: (e) => upd("conflict", e.target.checked) }), " This record disagrees with another record (for example, a different date)"),
-    el("div", { class: "status", "aria-live": "polite" }, ...statusKids(ev)),
+    el("div", { class: "status", "aria-live": "polite" }, ...statusFor(c)),
     el("button", { type: "button", class: "link danger", onclick: () => { g.cells = g.cells.filter((x) => x !== c); save(state); rerender(); }, text: "Remove this record" }));
 }
 function bindEditorEvents(container, state, rerender) {
@@ -77,7 +81,7 @@ function bindEditorEvents(container, state, rerender) {
   container.addEventListener("input", (e) => {
     if (e.target.name !== "citation") return; const cellEl = e.target.closest("[data-cell]");
     for (const g of state.generations) for (const c of g.cells) if (c.id === cellEl.dataset.cell) { c.citation = e.target.value; save(state);
-      cellEl.querySelector(".status").replaceChildren(...statusKids(evaluateCell(c))); }
+      cellEl.querySelector(".status").replaceChildren(...statusFor(c)); }
   });
 }
 function mountEditor(root) {
@@ -127,7 +131,7 @@ function mountEditor(root) {
 function mountCard(root) {
   const s = store.get("v1", null); const out = root.querySelector("[data-card-status]");
   if (!s) { out.textContent = "Nothing saved in this browser yet."; return; }
-  const n = s.generations.reduce((a, g) => a + g.cells.length, 0);
+  const n = countEntries(s.generations);
   out.textContent = `Saved in this browser: ${s.generations.length} generations, ${n} evidence entries, ${gaps(s.generations).length} things still missing or flagged.`;
 }
 function mountReport(root) {
@@ -138,7 +142,7 @@ function mountReport(root) {
     renderPlan(actionPlan(s.generations)),
     el("h2", { text: "What's still missing, and where to look" }), renderGaps(s), el("h2", { text: "Your records, generation by generation" })];
   for (const g of s.generations) {
-    const rows = g.cells.map((c) => { const ev = evaluateCell(c);
+    const rows = filledCells(g.cells).map((c) => { const ev = evaluateCell(c);
       return el("tr", {}, el("td", { text: FACT_LABELS[c.fact] || "—" }), el("td", { text: DOC_TYPES[c.docType] || "—" }), el("td", { text: MODE_TEXT[c.mode] || "—" }),
         el("td", { text: c.citation || "—" }), el("td", {}, el("span", { class: `badge ${labelClass(ev.label)}`, text: ev.label }), ...ev.cautions.map((k) => el("div", { class: "small caution", text: k.text })))); });
     kids.push(el("h3", { text: `${genTitle(g.gen)}${g.who ? ` — ${g.who}` : ""}${g.living ? " (living)" : ""}` }),

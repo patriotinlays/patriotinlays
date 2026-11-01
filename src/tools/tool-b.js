@@ -146,28 +146,42 @@ export function gaps(rows = []) {
   for (const r of rows) {
     const who = `Generation ${r.gen} (${genLabel(r.gen).toLowerCase()})`;
     const req = rowRequirements(r.gen, r);
-    const has = (f) => (r.cells || []).some((c) => c.fact === f && evaluateCell(c).label !== LABELS.none);
+    const has = (f) => filledCells(r.cells).some((c) => c.fact === f && evaluateCell(c).label !== LABELS.none);
     for (const f of req.need) if (!has(f)) out.push({ gen: r.gen, fact: f, priority: 1, text: `${who}: no ${f} evidence entered yet.`, claim: req.claim, where: whereToLook(f, r.gen) });
     if (req.anyOf && !req.anyOf.some(has)) out.push({ gen: r.gen, fact: "birth", priority: 1, text: `${who}: add at least one birth or death record.`, claim: req.claim, where: whereToLook("birth", r.gen) });
     if (req.link && !has("parentage")) out.push({ gen: r.gen, fact: "parentage", priority: 1, text: `${who}: no record yet that links this person to the next generation in your line.`, claim: "dar-each-relationship", where: whereToLook("parentage", r.gen) });
-    for (const c of r.cells || []) { const ev = evaluateCell(c); const fl = c.fact ? factName(c.fact) : "record";
+    for (const c of filledCells(r.cells)) { const ev = evaluateCell(c); const fl = c.fact ? factName(c.fact) : "record";
       const where = c.fact ? whereToLook(c.fact, r.gen) : { text: "", claims: [], links: [], guides: [], registrar: REGISTRAR };
       if (ev.label === LABELS.conflict) out.push({ gen: r.gen, fact: c.fact, priority: 0, text: `${who}: you flagged a conflict on the ${fl} record. Sort it out before relying on it.`, where });
       else if (ev.label === LABELS.incomplete) out.push({ gen: r.gen, fact: c.fact, priority: 2, text: `${who}: the ${fl} record isn't finished. ${ev.issues.join(" ")}`, where });
       else if (ev.cautions.length) out.push({ gen: r.gen, fact: c.fact, priority: 2, text: `${who}: ${fl} record. ${ev.cautions[0].text}`, claim: ev.cautions[0].claim, where }); }
   }
-  return out.sort((a, b) => a.priority - b.priority);
+  // Each item also gets a "short" text without the "Generation N (...)" prefix, for grouped display.
+  for (const g of out) g.short = g.gen == null ? g.text : g.text.replace(/^Generation \d+ \([^)]*\): /, "").replace(/^./, (c) => c.toUpperCase());
+  // One pass per generation, oldest-last, in order; within a generation: conflicts, then missing, then fixes.
+  const key = (g) => (g.gen == null ? 0 : g.gen);
+  return out.map((g, i) => [g, i]).sort((a, b) => key(a[0]) - key(b[0]) || a[0].priority - b[0].priority || a[1] - b[1]).map(([g]) => g);
 }
+
+// Group a gap list so each generation appears once, in order.
+export function groupGaps(list) {
+  const groups = [];
+  for (const g of list) { let grp = groups.at(-1); if (!grp || grp.gen !== g.gen) { grp = { gen: g.gen, title: g.gen == null ? "Getting started" : genTitle(g.gen), items: [] }; groups.push(grp); } grp.items.push(g); }
+  return groups;
+}
+
+// Records that actually have something in them (blank rows are never labelled or counted).
+export const filledCells = (cells = []) => cells.filter((c) => !isEmptyCell(c));
+export const countEntries = (generations = []) => generations.reduce((a, g) => a + filledCells(g.cells).length, 0);
 
 // "What to do next": a numbered action plan built from the visitor's own gaps.
 export function actionPlan(rows = []) {
   const g = gaps(rows); const steps = [];
-  const conflicts = g.filter((x) => x.priority === 0), missing = g.filter((x) => x.priority === 1 && x.gen != null), fixes = g.filter((x) => x.priority === 2);
+  const real = g.filter((x) => x.gen != null);
   if (rows.length < 2) steps.push({ title: "Fill in the worksheet", text: "Start with yourself as generation 1, then add your parent, grandparent and so on back to the patriot.", claims: ["dar-gen1-applicant", "dar-gen-numbering"], links: linksFor("roadmap") });
-  if (conflicts.length) steps.push({ title: "Sort out the records that disagree", text: "You flagged these as conflicting. Find another record that settles each one before relying on it.", claims: [], links: [], items: conflicts.map((x) => ({ text: x.text, where: x.where })) });
-  if (missing.length) steps.push({ title: "Find or order these records", text: "Each item says where to look.", claims: ["dar-each-relationship"], links: [], items: missing.map((x) => ({ text: x.text.replace(/: no (\w+) evidence entered yet\./, ": find a $1 record.").replace(/: no record yet that links this person to the next generation in your line\./, ": find a record that links this person to the next generation."), where: x.where })) });
+  if (real.length) steps.push({ title: "Records to find or fix, generation by generation", text: "Each item says where to look. Sort out any records you flagged as disagreeing before relying on them.", claims: ["dar-each-relationship"], links: [],
+    items: groupGaps(real).map((grp) => ({ text: grp.title, sub: grp.items.map((x) => ({ text: x.short, where: x.where, conflict: x.priority === 0 })) })) });
   else if (rows.length >= 2) steps.push({ title: "Records", text: "Nothing is missing by this tool's rules. A society's genealogists still review every record.", claims: ["dar-review-staff"], links: [] });
-  if (fixes.length) steps.push({ title: "Finish or double-check these entries", text: "", claims: [], links: [], items: fixes.map((x) => ({ text: x.text, where: null })) });
   steps.push({ title: "Check the patriot's service dates", text: "Use the free checker to see whether the service dates fit the official period.", claims: ["dar-window-core"], links: linksFor("checker") });
   steps.push(CONTACT_STEP, APPLY_STEP);
   return steps;

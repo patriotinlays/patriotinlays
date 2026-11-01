@@ -1,12 +1,15 @@
 // Renders a "What to do next" plan (from nextSteps() / actionPlan()) as a numbered list with a print button.
 import { el } from "./storage.js";
 const linkList = (links) => links?.length ? el("ul", { class: "plan-links" }, ...links.map((l) => el("li", {}, el("a", { href: l.url, rel: l.url.startsWith("http") ? "noopener" : null, text: l.label })))) : null;
+const whereDiv = (w) => w ? el("div", { class: "where" }, el("strong", { text: "Where to look: " }), w.text ? `${w.text} ` : "", w.registrar,
+  linkList([...w.links, ...w.guides.map((g) => ({ label: `Our guide: ${g.label}`, url: g.url }))])) : null;
+// Items may carry sub-items (one group per generation).
+const itemList = (items, cls = "plan-items") => el("ul", { class: cls }, ...items.map((it) => el("li", { class: it.conflict ? "conflict" : null },
+  it.sub ? el("strong", { class: "plan-group", text: it.text }) : el("span", { text: it.text }), whereDiv(it.where), it.sub?.length ? itemList(it.sub, "plan-sub") : null)));
 export function renderPlan(steps, { printable = true, heading = true } = {}) {
   const ol = el("ol", { class: "plan-steps" }, ...steps.map((s) => el("li", {},
     el("strong", { class: "plan-title", text: s.title }), s.text ? el("p", { text: s.text }) : null,
-    s.items?.length ? el("ul", { class: "plan-items" }, ...s.items.map((it) => el("li", {}, el("span", { text: it.text }),
-      it.where ? el("div", { class: "where" }, el("strong", { text: "Where to look: " }), it.where.text ? `${it.where.text} ` : "", it.where.registrar,
-        linkList([...it.where.links, ...it.where.guides.map((g) => ({ label: `Our guide: ${g.label}`, url: g.url }))])) : null))) : null,
+    s.items?.length ? itemList(s.items) : null,
     linkList(s.links))));
   const btn = printable ? el("button", { type: "button", class: "big", "data-print-plan": "", onclick: () => {
     document.body.classList.add("print-plan"); const done = () => { document.body.classList.remove("print-plan"); window.removeEventListener("afterprint", done); };

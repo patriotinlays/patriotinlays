@@ -100,6 +100,8 @@ check("Tool B: 'How this works' says it doesn't search records and nothing leave
 check("Tool B: generations are labelled 'Generation 1: You' and 'Generation 2: Your parent'", (await page.$$eval("section.gen h3", (hs) => hs.map((h) => h.textContent).join("|"))) === "Generation 1: You|Generation 2: Your parent");
 await page.click('[data-add-evidence="1"]'); await page.click('[data-add-evidence="1"]');
 check("Tool B: clicking 'Add a record' twice does not stack a second blank record", (await page.$$('section.gen[data-gen="1"] .cell')).length === 1);
+const blankStatus = await page.textContent('section.gen[data-gen="1"] .cell .status');
+check("Tool B (regression): a blank record shows no label at all (no 'Evidence Entered')", !/Evidence Entered/.test(blankStatus) && (await page.$$('section.gen[data-gen="1"] .cell .status .badge')).length === 0 && /Empty record/.test(blankStatus), blankStatus);
 await page.selectOption('section.gen[data-gen="1"] select[name=fact]', "birth");
 await page.selectOption('section.gen[data-gen="1"] select[name=docType]', "birth_cert_long");
 await page.check('section.gen[data-gen="1"] input[type=radio][value=direct]');
@@ -119,8 +121,10 @@ check("Tool B: conflict flag changes label to 'Conflict Flagged — Review Requi
 await page.click("[data-add-gen]");
 check("Tool B: add generation works", (await page.$$("section.gen")).length === 3);
 const gapsTxt = await page.textContent("[data-gaps]");
-check("Tool B: gap list shows conflict first and missing items", /flagged a conflict/.test(gapsTxt) && /no death evidence/.test(gapsTxt), gapsTxt.slice(0, 120));
-const gapItems = await page.$$eval("[data-gaps] .gaps > li", (lis) => lis.map((li) => ({ where: !!li.querySelector(".where"), text: li.textContent })));
+check("Tool B: gap list shows the flagged conflict and missing items", /flagged a conflict/i.test(gapsTxt) && /no death evidence/i.test(gapsTxt), gapsTxt.slice(0, 120));
+const genOrder = await page.$$eval("[data-gaps] .gaps > li[data-gap-gen]", (lis) => lis.map((l) => l.dataset.gapGen));
+check("Tool B (regression): gap list shows each generation once, in order", genOrder.length >= 2 && genOrder.every((g, i) => i === 0 || +g > +genOrder[i - 1]), genOrder.join(","));
+const gapItems = await page.$$eval("[data-gaps] .gap-items > li", (lis) => lis.map((li) => ({ where: !!li.querySelector(".where"), text: li.textContent })));
 check("Tool B: every listed gap shows a 'Where to look' line", gapItems.length > 0 && gapItems.every((g) => g.where && /Where to look/.test(g.text) && /registrar/.test(g.text)), `${gapItems.length} gaps`);
 const whereHrefs = await page.$$eval("[data-gaps] .where a", (as) => [...new Set(as.map((a) => a.getAttribute("href")))]);
 const mUrls = new Set(JSON.parse(readFileSync(join(ROOT, "manifest/claims.json"), "utf8")).claims.map((c) => c.source_url));
@@ -133,17 +137,25 @@ phase("load"); await page.goto(`${BASE}/tools/lineage-matrix/report/`); phase("i
 txt = await page.textContent("[data-report]");
 check("Tool B report page renders generations, labels and gaps", /Generation 1: You/.test(txt) && /Conflict Flagged/.test(txt) && /still missing/.test(txt));
 const planRep = await page.textContent("[data-report] .plan");
-check("Tool B report: numbered action plan (order records with where-to-look, registrar, start application) + print button", /What to do next/.test(planRep) && /Find or order these records/.test(planRep) && /registrar/.test(planRep) && /Start the application/.test(planRep) && (await page.$$("[data-report] .plan [data-print-plan]")).length === 1);
-check("Tool B report: gaps carry 'Where to look' lines", (await page.$$("[data-report] .gaps > li > .where")).length === (await page.$$("[data-report] .gaps > li")).length && /Where to look/.test(txt));
+check("Tool B report: numbered action plan (order records with where-to-look, registrar, start application) + print button", /What to do next/.test(planRep) && /Records to find or fix, generation by generation/.test(planRep) && /registrar/.test(planRep) && /Start the application/.test(planRep) && (await page.$$("[data-report] .plan [data-print-plan]")).length === 1);
+check("Tool B report: gaps carry 'Where to look' lines", (await page.$$("[data-report] .gap-items > li > .where")).length === (await page.$$("[data-report] .gap-items > li")).length && (await page.$$("[data-report] .gap-items > li")).length > 0 && /Where to look/.test(txt));
 phase("load"); await page.goto(`${BASE}/guides/same-name/`); phase("interact");
 txt = await page.textContent("[data-card-status]");
 check("Tool B embed card on guide #8 reads saved state", /3 generations, 2 evidence entries/.test(txt), txt);
 store = await ls();
+// Regression: a blank record is neither counted on the card nor listed on the report.
+await page.evaluate(() => { const s = JSON.parse(localStorage.getItem("pi.toolB.v1")); s.generations[0].cells.push({ id: "blank1", fact: "", docType: "", mode: "", conflict: false, citation: "" }); localStorage.setItem("pi.toolB.v1", JSON.stringify(s)); });
+phase("load"); await page.reload(); phase("interact"); const cardBlank = await page.textContent("[data-card-status]");
+phase("load"); await page.goto(`${BASE}/tools/lineage-matrix/report/`); phase("interact"); const repRows = await page.$$eval("[data-report] table tbody tr", (x) => x.length); const repTxt = await page.textContent("[data-report]");
+check("Tool B (regression): blank record not counted on the card or shown on the report", /2 evidence entries/.test(cardBlank) && repRows === 2 && !/No Evidence Entered/.test(repTxt), `${cardBlank} | rows=${repRows}`);
+phase("load"); await page.goto(`${BASE}/guides/same-name/`); phase("interact");
 check("Tool B: saved under pi.toolB.v1 only", Object.keys(store).filter((k) => k.startsWith("pi.toolB")).join(",") === "pi.toolB.v1");
 phase("load"); await page.goto(`${BASE}/tools/lineage-matrix/`); phase("interact");
 await page.click('[data-tool="lineage-matrix"] [data-load-example]');
 const planB = await page.textContent('[data-tool="lineage-matrix"] [data-plan]');
-const orderItems = await page.$$eval('[data-tool="lineage-matrix"] [data-plan] .plan-steps > li', (lis) => { const li = lis.find((l) => l.querySelector(".plan-title").textContent === "Find or order these records"); return li ? [...li.querySelectorAll(".plan-items > li")].map((x) => !!x.querySelector(".where a")) : []; });
+const orderItems = await page.$$eval('[data-tool="lineage-matrix"] [data-plan] .plan-steps > li', (lis) => { const li = lis.find((l) => l.querySelector(".plan-title").textContent === "Records to find or fix, generation by generation"); return li ? [...li.querySelectorAll(".plan-sub > li")].map((x) => !!x.querySelector(".where a")) : []; });
+const planGens = await page.$$eval('[data-tool="lineage-matrix"] [data-plan] .plan-group', (x) => x.map((e) => e.textContent));
+check("Tool B (regression): action plan groups each generation once, in order", planGens.length >= 2 && new Set(planGens).size === planGens.length && planGens.every((g, i) => i === 0 || +g.match(/\d+/)[0] > +planGens[i - 1].match(/\d+/)[0]), planGens.join(" | "));
 check("Tool B: action plan lists each missing record with a Where-to-look link, then registrar and application steps", orderItems.length >= 3 && orderItems.every(Boolean) && /Contact a local chapter's registrar/.test(planB) && /Start the application/.test(planB), `${orderItems.length} items`);
 check("Tool B: 'Load an example' fills a made-up family and shows gaps with where to look", (await page.$$("section.gen")).length === 4 && (await page.$$("section.gen .cell")).length === 6 && (await page.$$("[data-gaps] .where a[href*='archives.gov']")).length > 0);
 await page.click("[data-clear=toolB]");
@@ -153,6 +165,8 @@ check("Tool B clear: removes pi.toolB.* only, keeps unrelated key", !Object.keys
 // ---- Usefulness pass: home, guides, dead ends ----
 phase("load"); await page.goto(`${BASE}/`); phase("interact");
 const home = await page.textContent("main");
+const gloss = await page.textContent(".glossary");
+check("Home: short glossary defines Patriot, DAR, SAR, NSCDA and lineage society, each with a source note", ["Patriot:", "DAR:", "SAR:", "NSCDA:", "Lineage society:"].every((k) => gloss.includes(k)) && (await page.$$eval(".glossary li", (lis) => lis.every((li) => li.querySelector("sup a[href^='#src-']")))) && (await page.$$("#sources + ol.sources li")).length >= 3);
 check("Home: says in plain words what you can get done and where to start", /What you can get done here/.test(home) && /Where to start/.test(home) && (await page.$$('main a.button-link[href="/tools/lineage-matrix/"]')).length === 1);
 const guidePaths = ["/guides/lineage-proof-roadmap/", "/guides/substitute-evidence/", "/guides/read-pension-file/", "/guides/records-by-state/", "/guides/bounty-land-warrants/", "/guides/census-bridge/", "/guides/patriotic-service/", "/guides/same-name/", "/guides/patriot-or-loyalist/", "/guides/application-problems/"];
 const guideBad = [];
@@ -186,6 +200,18 @@ for (const p of pagesToCheck) {
 }
 check(`Mobile 375px: no horizontal page overflow on ${pagesToCheck.length} pages`, overflow.length === 0, overflow.join(", "));
 const tapTargets = await (async () => { await mp.goto(`${BASE}/tools/lineage-matrix/`); return mp.$$eval(".tool button:not(.link)", (bs) => bs.filter((b) => b.getBoundingClientRect().height < 44).length); })();
+// Regression: widow-act table reflows into stacked cards at 360px with no horizontal page overflow.
+const narrow = await browser.newContext({ viewport: { width: 360, height: 780 }, deviceScaleFactor: 2, isMobile: true, hasTouch: true });
+const np = await narrow.newPage(); np.on("pageerror", (e) => consoleErrors.push(`360px: ${e.message}`));
+await np.goto(`${BASE}/tools/service-window-checker/`); await np.click("[data-load-example]");
+const wInfo = await np.evaluate(() => { const t = document.querySelector("table.widow"); const tr = t.querySelector("tbody tr"); const td = tr.querySelector("td");
+  return { sw: document.documentElement.scrollWidth, iw: window.innerWidth, tw: t.getBoundingClientRect().width, td: getComputedStyle(td).display, thead: getComputedStyle(t.querySelector("thead")).display, label: getComputedStyle(td, "::before").content }; });
+check("Mobile 360px (regression): widow-act table shows stacked cards, no horizontal overflow", wInfo.sw <= wInfo.iw + 1 && wInfo.tw <= wInfo.iw && wInfo.td === "block" && wInfo.thead === "none" && /Pension law/.test(wInfo.label), JSON.stringify(wInfo));
+await np.screenshot({ path: join(SHOTS, "m360-widow-cards.png"), fullPage: false }); await np.evaluate(() => document.querySelector("table.widow").scrollIntoView()); await np.screenshot({ path: join(SHOTS, "m360-widow-cards.png") });
+await np.goto(`${BASE}/tools/service-window-checker/report/`);
+const rInfo = await np.evaluate(() => ({ sw: document.documentElement.scrollWidth, iw: window.innerWidth, td: getComputedStyle(document.querySelector("table.widow td")).display }));
+check("Mobile 360px (regression): checker report's widow table also stacks, no overflow", rInfo.sw <= rInfo.iw + 1 && rInfo.td === "block", JSON.stringify(rInfo));
+await narrow.close();
 check("Mobile: tool buttons are at least 44px tall", tapTargets === 0, `${tapTargets} small`);
 for (const [p, name] of [["/", "m-home"], ["/guides/substitute-evidence/", "m-guide-table"], ["/tools/service-window-checker/", "m-tool-a"], ["/tools/lineage-matrix/", "m-tool-b"]]) {
   await mp.goto(BASE + p); if (name === "m-guide-table") await mp.evaluate(() => document.querySelector(".table-wrap").scrollIntoView());

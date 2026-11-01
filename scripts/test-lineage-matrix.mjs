@@ -1,5 +1,5 @@
 // Sanity tests for Tool B (not part of the 25-scenario requirement).
-import { actionPlan, evaluateCell, gaps, LABELS, FACTS, genLabel, genTitle, isEmptyCell, WHERE_TO_LOOK, WHERE_SOURCES, GUIDES, whereToLook, MODE_HELP } from "../src/tools/tool-b.js";
+import { actionPlan, evaluateCell, gaps, groupGaps, countEntries, filledCells, LABELS, FACTS, genLabel, genTitle, isEmptyCell, WHERE_TO_LOOK, WHERE_SOURCES, GUIDES, whereToLook, MODE_HELP } from "../src/tools/tool-b.js";
 import { readFileSync, readdirSync } from "node:fs";
 const manifest = JSON.parse(readFileSync(new URL("../manifest/claims.json", import.meta.url), "utf8"));
 const manifestUrls = new Set(manifest.claims.map((c) => c.source_url));
@@ -37,9 +37,10 @@ t("Where to look: older parentage points to the National Archives census page; r
 { const { CHAPTER_LINKS, SITE_LINKS, CONTACT_STEP, APPLY_STEP } = await import("../src/tools/next-steps.js");
   const rows = [{ gen: 1, living: true, cells: [] }, { gen: 2, cells: [{ fact: "birth", docType: "birth_cert_long", mode: "direct", citation: "long form certificate", conflict: true }] }, { gen: 4, cells: [] }];
   const plan = actionPlan(rows); const g = gaps(rows);
-  const order = plan.find((s) => s.title === "Find or order these records");
-  t("plan: 'Find or order these records' lists every missing item from the user's own gaps, each with Where to look", order && order.items.length === g.filter((x) => x.priority === 1 && x.gen != null).length && order.items.every((i) => i.where && i.where.text));
-  t("plan: flagged conflicts come first", plan[0].title.startsWith("Sort out"));
+  const order = plan.find((s) => s.title === "Records to find or fix, generation by generation");
+  const subs = order ? order.items.flatMap((i) => i.sub) : [];
+  t("plan: the records step lists every item from the user's own gaps, each missing one with Where to look", order && subs.length === g.filter((x) => x.gen != null).length && subs.filter((x) => !x.conflict).every((i) => i.where && i.where.text));
+  t("plan: within a generation, flagged conflicts come first", order.items.find((i) => i.text.startsWith("Generation 2")).sub[0].conflict === true);
   t("plan: ends with 'Contact a local chapter's registrar' then 'Start the application'", plan.at(-2) === CONTACT_STEP && plan.at(-1) === APPLY_STEP && /registrar/.test(CONTACT_STEP.title) && /application/.test(APPLY_STEP.title));
   t("plan: chapter-finder and record links are all Source Manifest source URLs", Object.values(CHAPTER_LINKS).every((l) => manifestUrls.has(l.url)) && CONTACT_STEP.links.some((l) => l.url.includes("chapter-locator")));
   t("plan: site links point to real pages", Object.values(SITE_LINKS).every((l) => slugs.has(l.url)));
@@ -48,6 +49,20 @@ t("Where to look: older parentage points to the National Archives census page; r
   t("plan: an empty worksheet gets 'Fill in the worksheet' first", actionPlan([])[0].title === "Fill in the worksheet");
   t("plan: nothing missing says so plainly (no false 'proven')", (() => { const full = (f) => ({ fact: f, docType: "other", mode: "direct", citation: "a record citation" });
     const p = actionPlan([{ gen: 1, living: true, cells: [full("birth")] }, { gen: 2, cells: [full("birth"), full("death"), full("parentage")] }]); return p.some((s) => /Nothing is missing/.test(s.text)) && !/proven\b(?! by)/i.test(JSON.stringify(p).replace(/what is proven/g, "")); })());
+}
+// ---- Regression: audit defects (Oct 31, 2026) ----
+{ const blank = { fact: "", docType: "", mode: "", conflict: false, citation: "" };
+  const full = { fact: "birth", docType: "birth_cert_long", mode: "direct", citation: "long-form certificate, state office" };
+  t("blank row: never labelled 'Evidence Entered — Review Required'", evaluateCell(blank).label !== LABELS.entered && evaluateCell({ ...blank, id: "c1" }).label === LABELS.none);
+  t("blank row: not counted (countEntries / filledCells skip it)", countEntries([{ gen: 1, cells: [blank, full, blank] }, { gen: 2, cells: [blank] }]) === 1 && filledCells([blank, full]).length === 1);
+  t("blank row: adds no gap items and no labels to the gap list", JSON.stringify(gaps([{ gen: 1, living: true, cells: [full, blank] }, { gen: 2, cells: [blank, blank] }])) === JSON.stringify(gaps([{ gen: 1, living: true, cells: [full] }, { gen: 2, cells: [] }])));
+  // Audit case: conflict on gen 2, missing items on gens 2, 3, 4 -> old code listed gen 2 after gen 4 and repeated it.
+  const rows = [{ gen: 1, living: true, cells: [full] }, { gen: 2, cells: [{ ...full, fact: "parentage", docType: "census_1850_1870", mode: "indirect", conflict: true }, { ...full, docType: "", citation: "half" }] }, { gen: 3, cells: [] }, { gen: 4, cells: [] }];
+  const list = gaps(rows), groups = groupGaps(list);
+  t("order: gap list is in generation order (never gen 2 after gen 4)", list.every((x, i) => i === 0 || (x.gen ?? 0) >= (list[i - 1].gen ?? 0)));
+  t("order: each generation appears exactly once when grouped, in order", groups.map((x) => x.gen).join(",") === "2,3,4" && new Set(groups.map((x) => x.gen)).size === groups.length);
+  t("order: grouped items drop the repeated 'Generation N' prefix", groups.every((grp) => grp.items.every((x) => !/^Generation \d/.test(x.short))));
+  t("order: action plan lists each generation once, in order", (() => { const st = actionPlan(rows).find((x) => x.items); return st.items.map((i) => i.text).join("|") === "Generation 2: Your parent|Generation 3: Your grandparent|Generation 4: Your great-grandparent"; })());
 }
 const every = JSON.stringify([evaluateCell(full), evaluateCell({}), gaps([{ gen: 1, cells: [full] }]), LABELS]);
 t('the word "Documented" never appears in output', !/documented/i.test(every));
