@@ -1,8 +1,9 @@
 {
-  "ranAt": "Sat Oct 31 2026 18:16:17 GMT-0500 (Central Daylight Time)",
+  "ranAt": "Sat Oct 31 2026 19:04:33 GMT-0500 (Central Daylight Time)",
   "node": "v20.19.2",
   "pass": 34,
   "total": 34,
+  "plainChecks": "7/7",
   "wordingGuard": "PASS",
   "rows": [
     {
@@ -81,8 +82,8 @@
       "id": 10,
       "group": "Core",
       "desc": "Core: 1778-06 to 1780-12 (inside window); message is the mandated sentence",
-      "expected": "Date range appears consistent with published rule; verify service category and primary evidence.",
-      "actual": "Date range appears consistent with published rule; verify service category and primary evidence.",
+      "expected": "Your dates fit the official service period for this type of service. This is not a ruling: your society decides. Next, find the original records that show the service.",
+      "actual": "Your dates fit the official service period for this type of service. This is not a ruling: your society decides. Next, find the original records that show the service.",
       "result": "PASS"
     },
     {

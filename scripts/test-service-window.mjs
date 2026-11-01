@@ -1,5 +1,9 @@
 // Service Window Checker suite: original 25 scenarios + 9 punch-list scenarios (34). Exits non-zero unless all pass. Wired into `npm test` / `prebuild`.
-import { checkServiceWindow, checkWidowActs, MSG } from "../src/tools/tool-a.js";
+import { checkServiceWindow, checkWidowActs, MSG, FIELD_HELP, NEXT_STEP_LINKS } from "../src/tools/tool-a.js";
+import { readFileSync } from "node:fs";
+const manifest = JSON.parse(readFileSync(new URL("../manifest/claims.json", import.meta.url), "utf8"));
+const manifestUrls = new Set(manifest.claims.map((c) => c.source_url));
+const verified = new Set(manifest.claims.filter((c) => c.verification_status === "verified").map((c) => c.claim_id));
 import { writeFileSync } from "node:fs";
 
 const sw = (serviceType, start, end) => checkServiceWindow({ serviceType, start, end });
@@ -70,9 +74,22 @@ const sweep = [
   checkWidowActs({ marriage: "1780", serviceEnd: "1781", serviceMonths: 3, serviceDays: 90, engagement: true }),
   checkWidowActs({}),
 ];
+// Plain-language checks (Oct 31, 2026 rework). Separate from the 34 date scenarios above.
+const U = [
+  ["Fitting dates say plainly that this is not a ruling", /not a ruling/.test(MSG.consistent) && /society decides/.test(MSG.consistent)],
+  ["Every 'Not checked' widow result explains why and gives a next step", checkWidowActs({}).filter((r) => r.status === "not_evaluated").every((r) => r.why && r.next)],
+  ["1853 / Feb-1855 acts: next step names the pension files and the society's registrar, with links", ["act1853", "act1855pension"].every((id) => { const r = checkWidowActs({ marriage: "1780" }).find((x) => x.act === id);
+    return /pension/.test(r.next) && /registrar/.test(r.next) && r.links.length >= 1; })],
+  ["Next-step links are all Source Manifest source URLs with verified claims", Object.values(NEXT_STEP_LINKS).every((l) => manifestUrls.has(l.url) && verified.has(l.claim))],
+  ["Each widow field has a one-line 'why it matters' tied to verified claims", ["marriage", "serviceEnd", "serviceMonths", "serviceDays"].every((k) => FIELD_HELP[k]?.text.startsWith("Why it matters") && FIELD_HELP[k].claims.every((c) => verified.has(c)))],
+  ["Unreadable date gets a plain hint with the 1776-07 format", /1776-07/.test(sw("core", "July 1776").message) && /couldn't read/i.test(sw("core", "July 1776").message)],
+  ["End-before-start error is plain", /end date is before the start date/.test(sw("core", "1778", "1777").message)],
+];
+let uPass = 0; for (const [n, ok] of U) { console.log(`${ok ? "PASS" : "FAIL"}  [plain] ${n}`); if (ok) uPass++; }
+console.log(`Plain-language checks: ${uPass}/${U.length} passed.`);
 const qual = /qualif/i.test(allText(sweep)) || /qualif/i.test(allText(Object.values(MSG)));
 console.log(`Wording guard ("Qualif*" never appears in any output): ${qual ? "FAIL" : "PASS"}`);
 if (S.length !== EXPECTED_TOTAL) { console.error(`Expected exactly ${EXPECTED_TOTAL} scenarios, found ${S.length}`); process.exit(1); }
 console.log(`\nService Window Checker: ${pass}/${S.length} scenarios passed.`);
-writeFileSync(new URL("../test-results-service-window.json", import.meta.url), JSON.stringify({ ranAt: new Date().toString(), node: process.version, pass, total: S.length, wordingGuard: qual ? "FAIL" : "PASS", rows }, null, 2));
-process.exit(pass === S.length && S.length === EXPECTED_TOTAL && !qual ? 0 : 1);
+writeFileSync(new URL("../test-results-service-window.json", import.meta.url), JSON.stringify({ ranAt: new Date().toString(), node: process.version, pass, total: S.length, plainChecks: `${uPass}/${U.length}`, wordingGuard: qual ? "FAIL" : "PASS", rows }, null, 2));
+process.exit(pass === S.length && S.length === EXPECTED_TOTAL && !qual && uPass === U.length ? 0 : 1);

@@ -1,8 +1,129 @@
 {
-  "checkedAt": "Sat Oct 31 2026 18:16:54 GMT-0500 (Central Daylight Time)",
+  "checkedAt": "Sat Oct 31 2026 19:05:17 GMT-0500 (Central Daylight Time)",
   "htmlFiles": 20,
-  "internalLinks": 622,
+  "internalLinks": 626,
   "externalUnique": 20,
-  "external": [],
+  "external": [
+    {
+      "url": "https://cincinnatisar.org/wp-content/uploads/2023/05/Presentation-How-to-Produce-Approval-Ready-Applications-and-Reduce-Turnaround-Time.pdf",
+      "status": 200,
+      "err": null,
+      "pages": 3
+    },
+    {
+      "url": "https://blog.dar.org/2021/02/26/why-was-his-service-removed",
+      "status": 200,
+      "err": null,
+      "pages": 5
+    },
+    {
+      "url": "https://membership.dar.org/NSDAR/AppFormz/App_Help_Step_By_Step_1.aspx",
+      "status": 200,
+      "err": null,
+      "pages": 8
+    },
+    {
+      "url": "https://membership.dar.org/NSDAR/AppFormz/FAQs.aspx",
+      "status": 200,
+      "err": null,
+      "pages": 8
+    },
+    {
+      "url": "https://www.archives.gov/files/research/military/army/dc/m804.pdf",
+      "status": 200,
+      "err": null,
+      "pages": 7
+    },
+    {
+      "url": "https://www.archives.gov/research/military/genealogy",
+      "status": 200,
+      "err": null,
+      "pages": 3
+    },
+    {
+      "url": "https://lva-virginia.libguides.com/bounty-claims/home",
+      "status": 200,
+      "err": null,
+      "pages": 3
+    },
+    {
+      "url": "https://www.archives.gov/files/research/military/american-revolution/service-records.pdf",
+      "status": 200,
+      "err": null,
+      "pages": 3
+    },
+    {
+      "url": "https://www.archives.gov/research/census/1790-1840.html",
+      "status": 200,
+      "err": null,
+      "pages": 4
+    },
+    {
+      "url": "https://nscdasnc.memberclicks.net/assets/membership/Standards%20of%20Proof%202025.pdf",
+      "status": 200,
+      "err": null,
+      "pages": 5
+    },
+    {
+      "url": "https://www.archives.gov/publications/prologue/2015/summer/rev-war-pensions.html",
+      "status": 200,
+      "err": null,
+      "pages": 4
+    },
+    {
+      "url": "https://www.sar.org/step-1/",
+      "status": 200,
+      "err": null,
+      "pages": 5
+    },
+    {
+      "url": "https://www.dar.org/national-society/accepted-revolutionary-war-service",
+      "status": 200,
+      "err": null,
+      "pages": 4
+    },
+    {
+      "url": "https://www.nps.gov/articles/000/what-might-you-find-in-the-revolutionary-war-pension-files.htm",
+      "status": 200,
+      "err": null,
+      "pages": 4
+    },
+    {
+      "url": "https://uelac.ca/loyalist-directory/help/",
+      "status": 200,
+      "err": null,
+      "pages": 2
+    },
+    {
+      "url": "https://www.sar.org/wp-content/uploads/2019/10/Revolutionary-Taxes-as-Evidence-of-Patriotic-Service.pdf",
+      "status": 200,
+      "err": null,
+      "pages": 2
+    },
+    {
+      "url": "https://www.archives.gov/research/military/american-revolution",
+      "status": 200,
+      "err": null,
+      "pages": 4
+    },
+    {
+      "url": "https://www.archives.gov/research/catalog/catalog-bulk-downloads/revwarpensionfiles",
+      "status": 200,
+      "err": null,
+      "pages": 2
+    },
+    {
+      "url": "https://libguides.nypl.org/military-genealogy/revolutionary-war",
+      "status": 200,
+      "err": null,
+      "pages": 2
+    },
+    {
+      "url": "https://services.dar.org/Public/DAR_Research/search_revwar/?Tab_ID=14&Tab_ID_Sub=0&action=list",
+      "status": 200,
+      "err": null,
+      "pages": 2
+    }
+  ],
   "broken": []
 }

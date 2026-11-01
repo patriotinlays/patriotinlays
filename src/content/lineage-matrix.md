@@ -6,15 +6,27 @@ tool: lineage-matrix
 ---
 # Lineage Evidence Matrix
 
-Lay out every generation from you back to the patriot, attach the records you have to each fact, and see what is still missing. The matrix records your reasoning; it never grades a line. The best label any entry can earn is "Evidence Entered — Review Required", because only a society's genealogists decide what is proven. [[claim:dar-review-staff]]
+This is a worksheet for proving your line back to a Revolutionary War patriot. It does not search any records. You type in the records you already have, and it shows what is still missing for each person and where to look for it.
 
-Everything you enter is saved only in this browser's local storage under keys beginning "pi.toolB". Nothing is sent anywhere. Use "Clear all matrix data" to remove it.
+Generation 1 is you, the applicant. [[claim:dar-gen1-applicant]]
+Your parents are generation 2, your grandparents generation 3, and so on back to the patriot. [[claim:dar-gen-numbering]]
+
+The worksheet never grades a line. The best label any entry can earn is "Evidence Entered — Review Required", because only a society's genealogists decide what is proven. [[claim:dar-review-staff]]
+
+Everything you enter is saved only in this browser's local storage under keys beginning "pi.toolB". Nothing is sent anywhere. Use "Delete all my worksheet data" to remove it.
 
 ::tool lineage-matrix-full
 
 ## How the matrix evaluates an entry
 
-Each piece of evidence is judged on four things together: the document type, the fact it is claimed to support, whether the document states that fact directly or only implies it, and whether you have flagged a conflict. A document type alone never changes the label.
+Each record you add is judged on four things together: what kind of record it is, what it shows (birth, death, marriage, the parent–child link, or where the person lived), whether it says that in words or only hints at it, and whether you have flagged that it disagrees with another record. The kind of record alone never changes the label.
+
+"Says it in words" means the record states the fact outright, like a birth certificate that names the parents. "Only hints at it" means you are working it out from clues, like a child listed in a household on a census that does not state relationships. [[claim:nscda-census-1850-1870]]
+
+## Where to look
+
+Every missing item in the list comes with a "Where to look" note. It names the usual kinds of records for that fact and links only to sources this site already cites, such as the National Archives page that lists the Revolutionary War pension files (free on FamilySearch with login). [[claim:nara-amrev-familysearch]]
+When no listed source fits, it says to ask your society's registrar.
 
 ## Published cautions the matrix shows
 

@@ -1,18 +1,33 @@
 {
-  "ranAt": "Sat Oct 31 2026 15:45:34 GMT-0500 (Central Daylight Time)",
+  "ranAt": "Sat Oct 31 2026 19:05:20 GMT-0500 (Central Daylight Time)",
   "browser": "/usr/bin/google-chrome (headless) via playwright-core 1.64.1",
-  "passed": 27,
-  "total": 27,
+  "passed": 40,
+  "total": 40,
   "results": [
     {
-      "name": "Tool A: core window 1775-04-19..1776-01-01 shows mandated consistent sentence",
+      "name": "Tool A: core window 1775-04-19..1776-01-01 shows the mandated 'fits, not a ruling' sentence",
       "ok": true,
-      "detail": "Consistent with published ruleDate range appears consistent with published rule; verify service category and primary evi"
+      "detail": "Dates fit the official period (not a ruling)Your dates fit the official service period for this type of service. This is"
+    },
+    {
+      "name": "Tool A: 'fits' badge uses a neutral (not green) color",
+      "ok": true,
+      "detail": "rgb(227, 234, 245)"
+    },
+    {
+      "name": "Tool A: 'How this works' says it doesn't search records and nothing leaves the device",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "Tool A: date hint reads 'e.g. 1776 or 1776-07'",
+      "ok": true,
+      "detail": ""
     },
     {
       "name": "Tool A: Gálvez cattle 24 Dec 1776 is outside the rule",
       "ok": true,
-      "detail": "Outside the rule as enteredDate range does not fall inside the published rule as entered; re-check d"
+      "detail": "Outside the period as typedYour dates fall outside the official period as you typed them. Check the "
     },
     {
       "name": "Tool A: widow table shows 1836 note about 1832 service categories",
@@ -20,9 +35,24 @@
       "detail": ""
     },
     {
-      "name": "Tool A: 1853 and Feb-1855 acts display 'Not evaluated'",
+      "name": "Tool A: 1853 and Feb-1855 acts display 'Not checked'",
       "ok": true,
-      "detail": "Not evaluatedThis published ru | Not evaluatedThis published ru"
+      "detail": "Not checkedNot checked. See \"W | Not checkedNot checked. See \"W"
+    },
+    {
+      "name": "Tool A: 'Not checked' row says why and what to do (pension papers / registrar)",
+      "ok": true,
+      "detail": "Rule: Source states only that marriage-date restrictions were removed; the act's"
+    },
+    {
+      "name": "Tool A: each widow field shows a 'Why it matters' line",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "Tool A: 'Load an example' fills both steps and shows results at once",
+      "ok": true,
+      "detail": "Dates fit the official period (not a ruling)Your dates fit t"
     },
     {
       "name": "Tool A page: no 'Qualif' anywhere in rendered text",
@@ -60,6 +90,21 @@
       "detail": ""
     },
     {
+      "name": "Tool B: 'How this works' says it doesn't search records and nothing leaves the device",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "Tool B: generations are labelled 'Generation 1: You' and 'Generation 2: Your parent'",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "Tool B: clicking 'Add a record' twice does not stack a second blank record",
+      "ok": true,
+      "detail": ""
+    },
+    {
       "name": "Tool B: complete direct entry shows 'Evidence Entered — Review Required'",
       "ok": true,
       "detail": "Evidence Entered — Review Required"
@@ -82,7 +127,17 @@
     {
       "name": "Tool B: gap list shows conflict first and missing items",
       "ok": true,
-      "detail": "Generation 2: conflict flagged on parentage — resolve before relying on it.Generation 1: no death evidence entered.Gener"
+      "detail": "Generation 2 (your parent): you flagged a conflict on the parent–child link record. Sort it out before relying on it.Whe"
+    },
+    {
+      "name": "Tool B: every listed gap shows a 'Where to look' line",
+      "ok": true,
+      "detail": "6 gaps"
+    },
+    {
+      "name": "Tool B: 'Where to look' links are only Source Manifest sources or this site's guides",
+      "ok": true,
+      "detail": "https://membership.dar.org/NSDAR/AppFormz/FAQs.aspx /guides/substitute-evidence/ /guides/census-bridge/"
     },
     {
       "name": "Tool B: state persists after reload (localStorage)",
@@ -100,12 +155,22 @@
       "detail": ""
     },
     {
+      "name": "Tool B report: gaps carry 'Where to look' lines",
+      "ok": true,
+      "detail": ""
+    },
+    {
       "name": "Tool B embed card on guide #8 reads saved state",
       "ok": true,
-      "detail": "Saved in this browser: 3 generations, 2 evidence entries, 7 open gaps or flags."
+      "detail": "Saved in this browser: 3 generations, 2 evidence entries, 6 things still missing or flagged."
     },
     {
       "name": "Tool B: saved under pi.toolB.v1 only",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "Tool B: 'Load an example' fills a made-up family and shows gaps with where to look",
       "ok": true,
       "detail": ""
     },

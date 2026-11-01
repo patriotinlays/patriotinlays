@@ -6,7 +6,10 @@ A static website of plain-English, source-backed procedure guides for proving de
 - **Service Window Checker** (`/tools/service-window-checker/`): compares entered service dates and widow-pension dates
   with the published windows; it describes date ranges, it never decides eligibility.
 - **Lineage Evidence Matrix** (`/tools/lineage-matrix/`): a generation-by-generation evidence worksheet with
-  direct/indirect and conflict flags; every label means "review required".
+  direct/indirect and conflict flags; every label means "review required". Every gap shows a "Where to look" note
+  that links only to Source Manifest URLs or the site's own guides, and otherwise says to ask the society's registrar.
+
+Neither tool searches records. Both open with a plain "How this works" box and a "Load an example" button.
 
 Both tools run entirely in the visitor's browser, make no network requests, and save only to `localStorage`
 under the `pi.toolA.*` and `pi.toolB.*` keys.
@@ -26,7 +29,7 @@ unknown or unverified claim, stale entry (> 120 days), quote that no longer appe
 | `manifest/` | Source Manifest (`claims.json`) and the Python that regenerates it (`npm run manifest`) |
 | `scripts/` | Static site generator, tests, manifest gate, link checker, gates doc generator |
 | `ops/gates.js`, `docs/gates.md` | Day 30/60/90 mixed-gate decision rules (code + generated doc) |
-| `qa/e2e.mjs` | Headless-browser end-to-end suite (27 checks) |
+| `qa/e2e.mjs` | Headless-browser end-to-end suite (40 checks) |
 | `.github/workflows/` | `build.yml` (build gates on every push/PR), `ci.yml` (E2E on releases and tool PRs) |
 | `dist/` | Build output (generated; this is what gets deployed) |
 
@@ -47,7 +50,7 @@ There is no `src/components/` directory; tool code lives in `src/tools/`.
 ## Local verification
 
 ```bash
-npm test          # service-window (34), lineage-matrix (9), gate examples (29) + exhaustive gate sweep (~30 s)
+npm test          # service-window (34 + 7 plain-language), lineage-matrix (20), gate examples (29) + exhaustive gate sweep (~30 s)
 npm run check     # Source Manifest gate, offline: every factual sentence -> verified manifest claim
 npm run build     # prebuild: npm test + live manifest check (fetches all sources);
                   # build: writes dist/; postbuild: internal + external link check

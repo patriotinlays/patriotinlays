@@ -1,16 +1,36 @@
 // Tool A — Revolutionary War Service Window & Widow-Act Date Checker
 // Pure client-side logic. No network calls, no storage of personal data beyond optional localStorage in the UI layer.
 // Every rule carries a claim_id that must exist (verified) in manifest/claims.json; check-manifest.mjs enforces this.
-// Output wording rule: never state "Qualifies". Consistent results use MSG.consistent verbatim.
+// Output wording rule: never state "Qualifies". Consistent results use MSG.consistent verbatim; a result is never a ruling.
 
 export const MSG = Object.freeze({
-  consistent: "Date range appears consistent with published rule; verify service category and primary evidence.",
-  partial: "Date range only partly falls inside the published rule; confirm exact dates and primary evidence.",
-  inconsistent: "Date range does not fall inside the published rule as entered; re-check dates, service category and primary evidence.",
-  invalid: "Dates could not be evaluated: ",
-  notEvaluated: "This published rule has a requirement the source does not state precisely enough to test; not evaluated.",
+  consistent: "Your dates fit the official service period for this type of service. This is not a ruling: your society decides. Next, find the original records that show the service.",
+  partial: "Only part of your dates falls inside the official period. Check the exact dates in your records.",
+  inconsistent: "Your dates fall outside the official period as you typed them. Check the dates and the type of service you picked.",
+  invalid: "We couldn't read the dates: ",
+  notEvaluated: "Not checked: the official source this site uses doesn't give enough detail to test this rule.",
 });
-
+// Plain result wording for the widow-pension laws (same statuses, different subject).
+export const WIDOW_MSG = Object.freeze({
+  consistent: "Fits this law's date rule as you typed it. This is not a ruling: your society decides.",
+  partial: "Your dates are too rough to tell. A more exact date would settle it.",
+  inconsistent: "Does not fit this law's date rule as you typed it. Double-check the dates.",
+  not_evaluated: "Not checked. See \"What to do\" in the next column.",
+});
+// "Why this matters" help for each widow-act field. Every sentence restates a manifest claim (claims[] is checked by check-manifest).
+export const FIELD_HELP = Object.freeze({
+  marriage: { text: "Why it matters: the 1836 law needed the marriage to come before his last period of service ended, the 1838 law covered widows married before January 1, 1794, and the 1848 law covered widows married before January 2, 1800.", claims: ["nara-act-1836", "nara-act-1838", "nara-act-1848"] },
+  serviceEnd: { text: "Why it matters: under the 1836 law the widow had to have married him before his last period of service expired.", claims: ["nara-act-1836"] },
+  serviceMonths: { text: "Why it matters: the 1836 law relied on service under the 1832 law, which started at 6 months of service.", claims: ["nara-act-1832", "nara-act-1836"] },
+  serviceDays: { text: "Why it matters: the 1878 law and the March 1855 bounty-land law covered service as short as 14 days, or any battle.", claims: ["nara-act-1878", "nara-bounty-1855"] },
+});
+// Where "the official source" lives, for next-step links. URLs must be Source Manifest source_url values (tested).
+export const NEXT_STEP_LINKS = Object.freeze({
+  pensionFiles: { label: "National Archives: where to see the Revolutionary War pension files (free on FamilySearch with login)", url: "https://www.archives.gov/research/military/american-revolution", claim: "nara-amrev-familysearch" },
+  m804: { label: "National Archives guide to the pension laws (PDF)", url: "https://www.archives.gov/files/research/military/army/dc/m804.pdf", claim: "nara-act-1853-1855" },
+  serviceRecords: { label: "National Archives: Revolutionary War service records (PDF)", url: "https://www.archives.gov/files/research/military/american-revolution/service-records.pdf", claim: "nara-svc-state" },
+});
+const FILL = (field) => `Fill in the "${field}" box above, then press the check button again.`;
 // Service-window rules (DAR "Accepted Revolutionary War Service" page; SAR Step 1 page).
 // "after 24 December 1776" is read as exclusive: earliest consistent day is 25 Dec 1776.
 export const SERVICE_RULES = [
@@ -25,10 +45,11 @@ export const SERVICE_RULES = [
 // Only requirements the pamphlet states are encoded; anything else is reported as not evaluated.
 export const WIDOW_ACTS = [
   { id: "act1836", label: "Act of July 4, 1836 (5 Stat. 128)", claim: "nara-act-1836", claim1832: "nara-act-1832", claimCategories: "nara-act-1832-categories",
+    nextNote: "To check the type of service yourself: look at what kind of unit he served in. For state militia, the National Archives says to check the archives of the state he served.", nextLinks: ["serviceRecords"], nextClaim: "nara-svc-state",
     uiNote: "Not evaluated: the service-category rules the 1836 act inherits from the act of June 7, 1832 (Continental Line or State troops, volunteers or militia; naval and marine service). Only total months of service and the marriage date are checked.",
     test: (w) => {
-      if (!w.marriage || !w.serviceEnd) return { status: "not_evaluated", text: "Needs marriage date and end of last period of service." };
-      if (w.serviceMonths == null) return { status: "not_evaluated", text: "Needs total months of service (1832-act service required)." };
+      if (!w.marriage || !w.serviceEnd) return { status: "not_evaluated", text: "Needs the marriage date and the date his last period of service ended.", why: "Missing information.", next: FILL(!w.marriage ? "Marriage date" : "When his last service ended") };
+      if (w.serviceMonths == null) return { status: "not_evaluated", text: "Needs total months of service (1832-act service required).", why: "Missing information.", next: FILL("Total months of service") };
       const mOk = w.marriage.hi < w.serviceEnd.lo ? "yes" : (w.marriage.lo >= w.serviceEnd.hi ? "no" : "maybe");
       if (w.serviceMonths < 6) return { status: "inconsistent", text: "1836 act relies on 1832-act service (at least 6 months); entered service is shorter." };
       return { status: mOk === "yes" ? "consistent" : mOk === "no" ? "inconsistent" : "partial",
@@ -41,16 +62,22 @@ export const WIDOW_ACTS = [
   // Punch-list 1: the source states only that marriage-date restrictions were removed; full statutory terms are
   // not given, so these acts are reported as not_evaluated rather than consistent.
   { id: "act1853", label: "Act of February 3, 1853 (10 Stat. 154)", claim: "nara-act-1853-1855",
-    test: () => ({ status: "not_evaluated", text: "Source states only that marriage-date restrictions were removed; the act's full eligibility terms are not stated in the source used, so this act is not evaluated." }) },
+    test: () => NOT_IN_SOURCE, nextClaim: "nara-act-1853-1855" },
   { id: "act1855pension", label: "Act of February 28, 1855 (10 Stat. 616)", claim: "nara-act-1853-1855",
-    test: () => ({ status: "not_evaluated", text: "Source states only that marriage-date restrictions were removed; the act's full eligibility terms are not stated in the source used, so this act is not evaluated." }) },
+    test: () => NOT_IN_SOURCE, nextClaim: "nara-act-1853-1855" },
   { id: "act1855bounty", label: "Bounty-land act of March 3, 1855 (10 Stat. 701) — 160 acres", claim: "nara-bounty-1855",
     test: (w) => minService(w, "Veteran served at least 14 days or took part in any battle; widows and minor children also eligible.") },
   { id: "act1878", label: "Act of March 9, 1878 (20 Stat. 29) — widows' life pensions", claim: "nara-act-1878",
     test: (w) => minService(w, "Veteran served at least 14 days or was in any engagement.") },
 ];
 
-function needMarriage() { return { status: "not_evaluated", text: "Needs marriage date." }; }
+// 1853 / Feb 1855 acts: the source gives only that marriage-date limits were removed.
+const NOT_IN_SOURCE = Object.freeze({ status: "not_evaluated",
+  text: "Source states only that marriage-date restrictions were removed; the act's full eligibility terms are not stated in the source used, so this act is not evaluated.",
+  why: "Why: the National Archives guide this site uses says only that this law removed the marriage-date limits. It does not list the law's other terms, so the tool can't test them.",
+  next: "What to do: read the widow's own pension papers (the National Archives lists the pension files online, free on FamilySearch with login), or ask your society's registrar.",
+  links: ["pensionFiles", "m804"] });
+function needMarriage() { return { status: "not_evaluated", text: "Needs marriage date.", why: "Missing information.", next: FILL("Marriage date") }; }
 function marriageBefore(m, cutoffIso, rule) {
   const c = Date.parse(cutoffIso + "T00:00:00Z");
   if (m.hi < c) return { status: "consistent", text: rule };
@@ -59,7 +86,7 @@ function marriageBefore(m, cutoffIso, rule) {
 }
 function minService(w, rule) {
   if (w.engagement === true) return { status: "consistent", text: rule };
-  if (w.serviceDays == null) return { status: "not_evaluated", text: "Needs days of service or an engagement/battle flag." };
+  if (w.serviceDays == null) return { status: "not_evaluated", text: "Needs days of service or an engagement/battle flag.", why: "Missing information.", next: FILL("Total days of service") + " Or tick the battle box if he was in a battle." };
   return { status: w.serviceDays >= 14 ? "consistent" : "inconsistent", text: rule };
 }
 
@@ -67,13 +94,13 @@ function minService(w, rule) {
 export function parseDate(s) {
   if (s == null || s === "") return null;
   const m = /^(\d{4})(?:-(\d{2})(?:-(\d{2}))?)?$/.exec(String(s).trim());
-  if (!m) throw new Error(`"${s}" is not YYYY, YYYY-MM or YYYY-MM-DD`);
+  if (!m) throw new Error(`"${s}" isn't a date this tool can read. Type numbers only: a year (1776), a year and month (1776-07), or a full date (1776-07-04).`);
   const y = +m[1], mo = m[2] ? +m[2] : null, d = m[3] ? +m[3] : null;
-  if (y < 1600 || y > 1900) throw new Error(`year ${y} outside 1600–1900`);
-  if (mo !== null && (mo < 1 || mo > 12)) throw new Error(`month ${mo} invalid`);
+  if (y < 1600 || y > 1900) throw new Error(`the year ${y} looks like a typo. Use a year between 1600 and 1900.`);
+  if (mo !== null && (mo < 1 || mo > 12)) throw new Error(`the month "${m[2]}" isn't real. Months go from 01 (January) to 12 (December).`);
   if (d !== null) {
     const dim = new Date(Date.UTC(y, mo, 0)).getUTCDate();
-    if (d < 1 || d > dim) throw new Error(`${s} is not a real calendar date`);
+    if (d < 1 || d > dim) throw new Error(`${s} isn't a real calendar date. Check the day.`);
     const lo = Date.UTC(y, mo - 1, d); return { lo, hi: lo + 86399999, precision: "day" };
   }
   if (mo !== null) return { lo: Date.UTC(y, mo - 1, 1), hi: Date.UTC(y, mo, 1) - 1, precision: "month" };
@@ -85,11 +112,11 @@ const day = (iso, end) => { const t = Date.parse(iso + "T00:00:00Z"); return end
 // Main entry: checkServiceWindow({serviceType, start, end})
 export function checkServiceWindow({ serviceType = "core", start, end }) {
   const rule = SERVICE_RULES.find((r) => r.id === serviceType);
-  if (!rule) return { status: "invalid", message: MSG.invalid + `unknown service type "${serviceType}".` };
+  if (!rule) return { status: "invalid", message: MSG.invalid + `pick a type of service from the list.` };
   let s, e;
   try { s = parseDate(start); e = parseDate(end ?? start); } catch (err) { return { status: "invalid", message: MSG.invalid + err.message, claim: rule.claim }; }
-  if (!s) return { status: "invalid", message: MSG.invalid + "a start date is required.", claim: rule.claim };
-  if (e.hi < s.lo) return { status: "invalid", message: MSG.invalid + "conflicting dates: end is before start.", claim: rule.claim };
+  if (!s) return { status: "invalid", message: MSG.invalid + "type a start date first (for example 1776 or 1776-07).", claim: rule.claim };
+  if (e.hi < s.lo) return { status: "invalid", message: MSG.invalid + "the end date is before the start date. Swap them or fix the typo.", claim: rule.claim };
   const lo = s.lo, hi = e.hi, rlo = day(rule.start), rhi = day(rule.end, true);
   let status;
   if (lo >= rlo && hi <= rhi) status = "consistent";
@@ -105,8 +132,10 @@ export function checkWidowActs(input) {
     w = { marriage: parseDate(input.marriage), serviceEnd: parseDate(input.serviceEnd),
       serviceMonths: input.serviceMonths ?? null, serviceDays: input.serviceDays ?? null, engagement: input.engagement ?? null };
   } catch (err) { return [{ act: "input", status: "invalid", message: MSG.invalid + err.message }]; }
-  for (const k of ["serviceMonths", "serviceDays"]) if (w[k] != null && (!Number.isFinite(w[k]) || w[k] < 0)) return [{ act: "input", status: "invalid", message: MSG.invalid + `${k} must be a non-negative number.` }];
+  for (const k of ["serviceMonths", "serviceDays"]) if (w[k] != null && (!Number.isFinite(w[k]) || w[k] < 0)) return [{ act: "input", status: "invalid", message: MSG.invalid + `"${k === "serviceMonths" ? "Total months of service" : "Total days of service"}" needs a plain number, like 24.` }];
   return WIDOW_ACTS.map((a) => { const r = a.test(w);
-    const message = r.status === "consistent" ? MSG.consistent : r.status === "not_evaluated" ? MSG.notEvaluated : MSG[r.status];
-    return { act: a.id, label: a.label, status: r.status, message, ruleText: r.text, uiNote: a.uiNote || null, claim: a.claim }; });
+    const message = WIDOW_MSG[r.status] || MSG[r.status];
+    const links = [...(r.links || []), ...(a.nextLinks || [])].map((k) => NEXT_STEP_LINKS[k]);
+    return { act: a.id, label: a.label, status: r.status, message, ruleText: r.text, uiNote: a.uiNote || null, claim: a.claim,
+      why: r.why || null, next: r.next || null, nextNote: a.nextNote || null, links }; });
 }

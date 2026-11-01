@@ -1,5 +1,5 @@
 {
-  "checkedAt": "Sat Oct 31 2026 18:16:53 GMT-0500 (Central Daylight Time)",
+  "checkedAt": "Sat Oct 31 2026 19:05:13 GMT-0500 (Central Daylight Time)",
   "dirs": [
     "src/content",
     "src/pages"
@@ -22,8 +22,8 @@
       "unmarked": 0
     },
     "src/content/lineage-matrix.md": {
-      "units": 15,
-      "marked": 7,
+      "units": 24,
+      "marked": 11,
       "unmarked": 0
     },
     "src/content/lineage-proof-roadmap.md": {
@@ -57,7 +57,7 @@
       "unmarked": 0
     },
     "src/content/service-window-checker.md": {
-      "units": 23,
+      "units": 31,
       "marked": 15,
       "unmarked": 0
     },
@@ -82,11 +82,132 @@
       "unmarked": 0
     }
   },
-  "sentences": 529,
-  "markedSentences": 292,
+  "sentences": 546,
+  "markedSentences": 296,
   "manifestClaims": 247,
   "referencedClaims": 247,
-  "links": "not run (use --links)",
+  "links": [
+    {
+      "url": "https://www.dar.org/national-society/accepted-revolutionary-war-service",
+      "status": 200,
+      "quotesFound": 17,
+      "quotesMissing": 0
+    },
+    {
+      "url": "https://membership.dar.org/NSDAR/AppFormz/App_Help_Step_By_Step_1.aspx",
+      "status": 200,
+      "quotesFound": 28,
+      "quotesMissing": 0
+    },
+    {
+      "url": "https://membership.dar.org/NSDAR/AppFormz/FAQs.aspx",
+      "status": 200,
+      "quotesFound": 13,
+      "quotesMissing": 0
+    },
+    {
+      "url": "https://blog.dar.org/2021/02/26/why-was-his-service-removed",
+      "status": 200,
+      "quotesFound": 14,
+      "quotesMissing": 0
+    },
+    {
+      "url": "https://services.dar.org/Public/DAR_Research/search_revwar/?Tab_ID=14&Tab_ID_Sub=0&action=list",
+      "status": 200,
+      "quotesFound": 4,
+      "quotesMissing": 0
+    },
+    {
+      "url": "https://www.sar.org/step-1/",
+      "status": 200,
+      "quotesFound": 13,
+      "quotesMissing": 0
+    },
+    {
+      "url": "https://www.sar.org/wp-content/uploads/2019/10/Revolutionary-Taxes-as-Evidence-of-Patriotic-Service.pdf",
+      "status": 200,
+      "quotesFound": 8,
+      "quotesMissing": 0
+    },
+    {
+      "url": "https://cincinnatisar.org/wp-content/uploads/2023/05/Presentation-How-to-Produce-Approval-Ready-Applications-and-Reduce-Turnaround-Time.pdf",
+      "status": 200,
+      "quotesFound": 17,
+      "quotesMissing": 0
+    },
+    {
+      "url": "https://www.archives.gov/files/research/military/army/dc/m804.pdf",
+      "status": 200,
+      "quotesFound": 35,
+      "quotesMissing": 0
+    },
+    {
+      "url": "https://www.archives.gov/files/research/military/american-revolution/service-records.pdf",
+      "status": 200,
+      "quotesFound": 14,
+      "quotesMissing": 0
+    },
+    {
+      "url": "https://www.archives.gov/research/military/genealogy",
+      "status": 200,
+      "quotesFound": 5,
+      "quotesMissing": 0
+    },
+    {
+      "url": "https://www.archives.gov/research/military/american-revolution",
+      "status": 200,
+      "quotesFound": 5,
+      "quotesMissing": 0
+    },
+    {
+      "url": "https://www.archives.gov/research/census/1790-1840.html",
+      "status": 200,
+      "quotesFound": 8,
+      "quotesMissing": 0
+    },
+    {
+      "url": "https://www.archives.gov/research/catalog/catalog-bulk-downloads/revwarpensionfiles",
+      "status": 200,
+      "quotesFound": 1,
+      "quotesMissing": 0
+    },
+    {
+      "url": "https://www.archives.gov/publications/prologue/2015/summer/rev-war-pensions.html",
+      "status": 200,
+      "quotesFound": 4,
+      "quotesMissing": 0
+    },
+    {
+      "url": "https://www.nps.gov/articles/000/what-might-you-find-in-the-revolutionary-war-pension-files.htm",
+      "status": 200,
+      "quotesFound": 15,
+      "quotesMissing": 0
+    },
+    {
+      "url": "https://lva-virginia.libguides.com/bounty-claims/home",
+      "status": 200,
+      "quotesFound": 12,
+      "quotesMissing": 0
+    },
+    {
+      "url": "https://libguides.nypl.org/military-genealogy/revolutionary-war",
+      "status": 200,
+      "quotesFound": 6,
+      "quotesMissing": 0
+    },
+    {
+      "url": "https://nscdasnc.memberclicks.net/assets/membership/Standards%20of%20Proof%202025.pdf",
+      "status": 200,
+      "quotesFound": 21,
+      "quotesMissing": 0
+    },
+    {
+      "url": "https://uelac.ca/loyalist-directory/help/",
+      "status": 200,
+      "quotesFound": 7,
+      "quotesMissing": 0
+    }
+  ],
   "errors": [],
   "warnings": []
 }

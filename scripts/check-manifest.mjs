@@ -67,6 +67,7 @@ for (const [d, f] of files) {
 for (const t of readdirSync(join(ROOT, "src/tools")).filter((f) => f.endsWith(".js"))) {
   const src = readFileSync(join(ROOT, "src/tools", t), "utf8");
   for (const m of src.matchAll(/claim\w*:\s*"([a-z0-9-]+)"/g)) requireClaim(m[1], `src/tools/${t}`);
+  for (const m of src.matchAll(/claims:\s*\[([^\]]*)\]/g)) for (const q of m[1].matchAll(/"([a-z0-9-]+)"/g)) requireClaim(q[1], `src/tools/${t}`);
 }
 for (const id of byId.keys()) if (!referenced.has(id)) warnings.push(`manifest ${id}: not referenced by any page or tool`);
 

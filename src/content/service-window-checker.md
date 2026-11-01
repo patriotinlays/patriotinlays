@@ -6,7 +6,9 @@ tool: service-window
 ---
 # Revolutionary War Service Window & Widow-Act Date Checker
 
-Use this checker to see whether the dates you have for an ancestor fall inside the windows that lineage societies and federal pension laws published. It organizes dates; it does not decide eligibility. Everything you type stays in this browser.
+Have dates for an ancestor's service? This checker tells you, in plain words, whether they fit the date windows that lineage societies and the old federal pension laws published.
+
+It does not look anything up. You type in what you know, and it compares your dates with the published rules. It never makes a decision about membership or a pension; your society does that. Everything you type stays in this browser.
 
 ::tool service-window-full
 
@@ -35,6 +37,9 @@ The March 1855 bounty-land act covered veterans with as few as 14 days of servic
 
 ## What a result means
 
-A green result reads: "Date range appears consistent with published rule; verify service category and primary evidence." It is a starting point for research, not a ruling. "Not evaluated" means the published source does not give enough detail to test that rule.
+- "Dates fit the official period (not a ruling)": your dates line up with the rule. Next, gather the original records that show the service.
+- "Partly inside the period": some of your dates fall outside. Check the exact dates in your records.
+- "Outside the period as typed": double-check the dates and the type of service you picked.
+- "Not checked": the official source this site uses does not give enough detail to test that rule. The result tells you why and what to do next, such as reading the widow's own pension papers or asking your society's registrar.
 
 Related guides: [How to Read a Pension File](/guides/read-pension-file/), [Patriotic Service Without a Musket](/guides/patriotic-service/).
