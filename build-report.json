@@ -1,5 +1,5 @@
 {
-  "builtAt": "Sat Oct 31 2026 19:30:29 GMT-0500 (Central Daylight Time)",
+  "builtAt": "Sat Oct 31 2026 19:55:43 GMT-0500 (Central Daylight Time)",
   "pages": [
     {
       "title": "Application Returned? Fixing Common DAR and SAR Proof Problems (Including Supplementals)",
@@ -46,9 +46,9 @@
       "description": "Organize the evidence for each generation of a DAR or SAR line in your browser, flag conflicts, and print a gap report.",
       "tool": "lineage-matrix",
       "path": "/tools/lineage-matrix/",
-      "words": 437,
-      "claims": 11,
-      "sources": 4,
+      "words": 939,
+      "claims": 31,
+      "sources": 12,
       "tools": [
         "lineage-matrix"
       ]
@@ -76,7 +76,7 @@
       "claims": 20,
       "sources": 7,
       "tools": [
-        "service-window"
+        "patriot"
       ]
     },
     {
@@ -85,11 +85,11 @@
       "description": "How non-military service counts for DAR and SAR, the special date windows, and what evidence to look for.",
       "cornerstone": "7",
       "path": "/guides/patriotic-service/",
-      "words": 819,
+      "words": 826,
       "claims": 43,
       "sources": 9,
       "tools": [
-        "service-window"
+        "patriot"
       ]
     },
     {
@@ -98,11 +98,11 @@
       "description": "Find a Revolutionary War pension file, decode its envelope, and read declarations, affidavits and widow's papers in the right order.",
       "cornerstone": "3",
       "path": "/guides/read-pension-file/",
-      "words": 927,
+      "words": 929,
       "claims": 45,
       "sources": 8,
       "tools": [
-        "service-window"
+        "widow"
       ]
     },
     {
@@ -115,7 +115,7 @@
       "claims": 43,
       "sources": 13,
       "tools": [
-        "service-window"
+        "patriot"
       ]
     },
     {
@@ -132,19 +132,6 @@
       ]
     },
     {
-      "title": "Revolutionary War Service Window & Widow-Act Date Checker",
-      "slug": "tools/service-window-checker",
-      "description": "Check whether an ancestor's service dates fall inside the published DAR/SAR windows, and test a widow's marriage date against the federal widow pension acts.",
-      "tool": "service-window",
-      "path": "/tools/service-window-checker/",
-      "words": 490,
-      "claims": 15,
-      "sources": 3,
-      "tools": [
-        "service-window"
-      ]
-    },
-    {
       "title": "No Birth Certificate? Substitute Evidence That Can Prove Each Generation",
       "slug": "guides/substitute-evidence",
       "description": "What to use when a generation has no birth record, era by era, and how lineage societies weigh substitutes.",
@@ -155,6 +142,19 @@
       "sources": 8,
       "tools": [
         "lineage-matrix"
+      ]
+    },
+    {
+      "title": "Widow Pension Law Checker",
+      "slug": "tools/widow-pension-checker",
+      "description": "See which federal Revolutionary War widow pension and bounty-land laws (1836 to 1878) a widow's marriage date and her husband's service fit, and where to find her pension file.",
+      "tool": "widow",
+      "path": "/tools/widow-pension-checker/",
+      "words": 535,
+      "claims": 15,
+      "sources": 4,
+      "tools": [
+        "widow"
       ]
     },
     {
@@ -183,7 +183,7 @@
       "slug": "privacy",
       "description": "What data patriotinlays.com collects, what the tools store in your browser, and how to delete it.",
       "path": "/privacy/",
-      "words": 320,
+      "words": 322,
       "claims": 0,
       "sources": 0,
       "tools": []

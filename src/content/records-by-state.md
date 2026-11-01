@@ -67,4 +67,4 @@ The Library of Virginia has put images of those state bounty-land application fi
 
 Related guides: [Bounty Land Warrants](/guides/bounty-land-warrants/), [How to Read a Pension File](/guides/read-pension-file/), [Patriotic Service Without a Musket](/guides/patriotic-service/).
 
-::tool service-window
+::tool patriot

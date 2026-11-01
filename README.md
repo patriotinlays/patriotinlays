@@ -3,11 +3,18 @@
 A static website of plain-English, source-backed procedure guides for proving descent from a Revolutionary War patriot
 (DAR / SAR style lineage applications), plus two client-side tools:
 
-- **Service Window Checker** (`/tools/service-window-checker/`): compares entered service dates and widow-pension dates
-  with the published windows; it describes date ranges, it never decides eligibility.
-- **Lineage Evidence Matrix** (`/tools/lineage-matrix/`): a generation-by-generation evidence worksheet with
-  direct/indirect and conflict flags; every label means "review required". Every gap shows a "Where to look" note
-  that links only to Source Manifest URLs or the site's own guides, and otherwise says to ask the society's registrar.
+- **Widow Pension Law Checker** (`/tools/widow-pension-checker/`, leads the home page and nav): tests a widow's
+  marriage date and her husband's service against the date rules of each federal widow pension and bounty-land law
+  (1836 to 1878) and points to the widow's pension file. It describes date rules, it never decides eligibility.
+  The old standalone service-date checker was folded into the worksheet's patriot step; `/tools/service-window-checker/`
+  (and `/report/`) 301-redirect here via `dist/_redirects`.
+- **Lineage Evidence Matrix** (`/tools/lineage-matrix/`): step 1 records the patriot (state, unit, type of service,
+  rough dates), checks the dates against DAR's period for that type of service, and feeds the widow checker
+  (`?from=worksheet`). Then a generation-by-generation evidence worksheet with direct/indirect and conflict flags;
+  every label means "review required". Every gap shows a "Where to look" note fitted to the person's era and state
+  (`src/tools/places.js`: state archive guides for VA, MD, NC, NJ, PA, CT, SC, MA, and the censuses in their lifetime),
+  linking only Source Manifest URLs or the site's guides. A state with no verified source says so and falls back to
+  general advice plus the society's registrar.
 
 Script and CSS URLs carry `?v=<content hash>` (module imports too), so returning visitors never get stale JS after a deploy.
 
@@ -47,12 +54,13 @@ There is no `src/components/` directory; tool code lives in `src/tools/`.
   `npm install --no-save --no-package-lock playwright-core@1.64.1`, then either set `CHROME_PATH` to an
   installed Chrome/Chromium, rely on `/usr/bin/google-chrome`, or install Playwright's Chromium with
   `npx playwright-core install --with-deps chromium` and set `E2E_USE_BUNDLED=1`.
-- Internet access for `npm run build` (it re-fetches every source and every external link).
+- Internet access for `npm run build` (it re-fetches every source and every external link; if a site's bot filter
+  answers Node with 403/429, the checkers re-read that page with `curl`, so `curl` must be installed).
 
 ## Local verification
 
 ```bash
-npm test          # service-window (34 + 14 plain-language and next-step), lineage-matrix (36), gate examples (29) + exhaustive gate sweep (~30 s)
+npm test          # service-window (34 + 18 plain-language and next-step), lineage-matrix (56), gate examples (29) + exhaustive gate sweep (~30 s)
 npm run check     # Source Manifest gate, offline: every factual sentence -> verified manifest claim
 npm run build     # prebuild: npm test + live manifest check (fetches all sources);
                   # build: writes dist/; postbuild: internal + external link check

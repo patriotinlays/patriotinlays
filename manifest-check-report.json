@@ -1,11 +1,11 @@
 {
-  "checkedAt": "Sat Oct 31 2026 19:30:28 GMT-0500 (Central Daylight Time)",
+  "checkedAt": "Sat Oct 31 2026 19:55:43 GMT-0500 (Central Daylight Time)",
   "dirs": [
     "src/content",
     "src/pages",
     "src/partials"
   ],
-  "files": 18,
+  "files": 19,
   "perFile": {
     "src/content/application-problems.md": {
       "units": 39,
@@ -23,8 +23,8 @@
       "unmarked": 0
     },
     "src/content/lineage-matrix.md": {
-      "units": 24,
-      "marked": 11,
+      "units": 49,
+      "marked": 25,
       "unmarked": 0
     },
     "src/content/lineage-proof-roadmap.md": {
@@ -57,14 +57,14 @@
       "marked": 17,
       "unmarked": 0
     },
-    "src/content/service-window-checker.md": {
-      "units": 31,
-      "marked": 15,
-      "unmarked": 0
-    },
     "src/content/substitute-evidence.md": {
       "units": 47,
       "marked": 26,
+      "unmarked": 0
+    },
+    "src/content/widow-pension-checker.md": {
+      "units": 29,
+      "marked": 15,
       "unmarked": 0
     },
     "src/pages/about.md": {
@@ -87,21 +87,26 @@
       "marked": 11,
       "unmarked": 0
     },
+    "src/partials/home-lead.md": {
+      "units": 4,
+      "marked": 4,
+      "unmarked": 0
+    },
     "src/partials/next-steps-lineage.md": {
       "units": 8,
       "marked": 4,
       "unmarked": 0
     },
-    "src/partials/next-steps-service.md": {
+    "src/partials/next-steps-widow.md": {
       "units": 9,
       "marked": 4,
       "unmarked": 0
     }
   },
-  "sentences": 574,
-  "markedSentences": 315,
-  "manifestClaims": 263,
-  "referencedClaims": 263,
+  "sentences": 601,
+  "markedSentences": 333,
+  "manifestClaims": 310,
+  "referencedClaims": 310,
   "links": [
     {
       "url": "https://www.dar.org/national-society/accepted-revolutionary-war-service",
@@ -172,7 +177,7 @@
     {
       "url": "https://www.archives.gov/research/military/american-revolution",
       "status": 200,
-      "quotesFound": 5,
+      "quotesFound": 6,
       "quotesMissing": 0
     },
     {
@@ -270,8 +275,119 @@
       "status": 200,
       "quotesFound": 1,
       "quotesMissing": 0
+    },
+    {
+      "url": "https://lva-virginia.libguides.com/revolutionary-war/home",
+      "status": 200,
+      "quotesFound": 5,
+      "quotesMissing": 0
+    },
+    {
+      "url": "https://lva-virginia.libguides.com/bmd",
+      "status": 200,
+      "quotesFound": 5,
+      "quotesMissing": 0
+    },
+    {
+      "url": "https://guide.msa.maryland.gov/pages/viewer.aspx?page=military",
+      "status": 200,
+      "quotesFound": 3,
+      "quotesMissing": 0
+    },
+    {
+      "url": "https://guide.msa.maryland.gov/pages/viewer.aspx?page=birth",
+      "status": 200,
+      "quotesFound": 2,
+      "quotesMissing": 0
+    },
+    {
+      "url": "https://appx.archives.ncdcr.gov/findingaids/TRPR_Troop_Returns_Collection.html",
+      "status": 200,
+      "quotesFound": 3,
+      "quotesMissing": 0
+    },
+    {
+      "url": "https://vitalrecords.nc.gov/research.htm",
+      "status": 200,
+      "quotesFound": 6,
+      "quotesMissing": 0
+    },
+    {
+      "url": "https://nj.gov/state/archives/guides/sdea0003.pdf",
+      "status": 200,
+      "quotesFound": 2,
+      "quotesMissing": 0
+    },
+    {
+      "url": "https://www.nj.gov/state/archives/search-genealogical-collections.shtml",
+      "status": 200,
+      "quotesFound": 4,
+      "quotesMissing": 0
+    },
+    {
+      "url": "https://www.pa.gov/agencies/phmc/pa-state-archives/research-online/research-guides/revolutionary-war-overview",
+      "status": 200,
+      "quotesFound": 1,
+      "quotesMissing": 0
+    },
+    {
+      "url": "https://www.pa.gov/agencies/health/programs/vital-records/genealogy",
+      "status": 200,
+      "quotesFound": 2,
+      "quotesMissing": 0
+    },
+    {
+      "url": "https://www.pa.gov/services/phmc/request-a-birth-or-death-certificate",
+      "status": 200,
+      "quotesFound": 1,
+      "quotesMissing": 0
+    },
+    {
+      "url": "https://libguides.ctstatelibrary.org/hg/militaryrecords/revwar",
+      "status": 200,
+      "quotesFound": 2,
+      "quotesMissing": 0
+    },
+    {
+      "url": "https://scdah.sc.gov/sites/scdah/files/Documents/Research%20and%20Genealogy/Resources/Military%20Records/rvwr.pdf",
+      "status": 200,
+      "quotesFound": 2,
+      "quotesMissing": 0
+    },
+    {
+      "url": "https://scdah.sc.gov/news/2020-03/sc-birth-certificates-archives",
+      "status": 200,
+      "quotesFound": 2,
+      "quotesMissing": 0
+    },
+    {
+      "url": "https://guides.statelibrary.sc.gov/genealogy/vitalrecords",
+      "status": 200,
+      "quotesFound": 2,
+      "quotesMissing": 0
+    },
+    {
+      "url": "https://www.mass.gov/info-details/researching-massachusetts-soldiers-and-sailors",
+      "status": 200,
+      "quotesFound": 2,
+      "quotesMissing": 0
+    },
+    {
+      "url": "https://www.archives.gov/research/vital-records",
+      "status": 200,
+      "quotesFound": 2,
+      "quotesMissing": 0
     }
   ],
   "errors": [],
-  "warnings": []
+  "warnings": [
+    "https://www.dar.org/national-society/accepted-revolutionary-war-service: Node fetch got 403/429; verified with curl instead",
+    "https://membership.dar.org/NSDAR/AppFormz/App_Help_Step_By_Step_1.aspx: Node fetch got 403/429; verified with curl instead",
+    "https://membership.dar.org/NSDAR/AppFormz/FAQs.aspx: Node fetch got 403/429; verified with curl instead",
+    "https://blog.dar.org/2021/02/26/why-was-his-service-removed: Node fetch got 403/429; verified with curl instead",
+    "https://services.dar.org/Public/DAR_Research/search_revwar/?Tab_ID=14&Tab_ID_Sub=0&action=list: Node fetch got 403/429; verified with curl instead",
+    "https://www.dar.org/discover/become-member/chapter-locator: Node fetch got 403/429; verified with curl instead",
+    "https://www.dar.org/discover/become-member/how-join: Node fetch got 403/429; verified with curl instead",
+    "https://www.dar.org/discover/become-member/what-dar: Node fetch got 403/429; verified with curl instead"
+  ]
 }

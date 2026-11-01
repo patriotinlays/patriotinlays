@@ -7,7 +7,7 @@ description: "What data patriotinlays.com collects, what the tools store in your
 
 ## The tools keep your data in your browser
 
-The Service Window Checker and the Lineage Evidence Matrix store what you type only in your own browser's local storage. Their keys begin with "pi.toolA" and "pi.toolB". The tools do not send that data to this site or to anyone else.
+The Widow Pension Law Checker and the Lineage Evidence Matrix store what you type only in your own browser's local storage. Their keys begin with "pi.toolA" and "pi.toolB". The tools do not send that data to this site or to anyone else.
 
 ## Local storage is not encrypted or private from others on your device
 
@@ -17,7 +17,7 @@ Please do not enter sensitive personal information in the tools: no Social Secur
 
 ## How to delete what the tools saved
 
-1. Open the tool page and use its clear button. "Clear saved checker data" removes everything the Service Window Checker saved, and "Clear all matrix data" removes everything the Lineage Evidence Matrix saved. Each button deletes only its own tool's data.
+1. Open the tool page and use its clear button. "Clear saved checker data" removes everything the Widow Pension Law Checker saved, and "Clear all matrix data" removes everything the Lineage Evidence Matrix saved. Each button deletes only its own tool's data.
 2. Or delete this site's data in your browser settings (look for site data, cookies and site data, or website data, and remove patriotinlays.com).
 3. Clearing your browser's history and site data for all sites also removes it.
 

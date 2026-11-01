@@ -6,6 +6,8 @@
 //  * State lives only in localStorage on the user's device; this file makes no network calls.
 
 import { CONTACT_STEP, APPLY_STEP, linksFor } from "./next-steps.js";
+import { vitalNote, censusNote } from "./places.js";
+import { hasPatriot, patriotSteps } from "./patriot.js";
 
 export const LABELS = Object.freeze({
   none: "No Evidence Entered",
@@ -130,28 +132,49 @@ export const WHERE_TO_LOOK = Object.freeze({
   },
 });
 export const START_HERE = Object.freeze({ text: "Start with yourself as generation 1, then add your parent, grandparent and so on back to the patriot.", claims: ["dar-gen1-applicant", "dar-gen-numbering"], links: [], guides: ["roadmap"] });
-// Resolve a fact + generation to a ready-to-render "Where to look" entry.
-export function whereToLook(fact, gen) {
+// A rough year typed by the visitor ("1820", " 1820 ") -> 1820, else null.
+export const yr = (v) => { const m = /^\s*(\d{4})\s*$/.exec(v == null ? "" : String(v)); return m ? +m[1] : null; };
+// Resolve a fact + generation (+ the person's rough years and state) to a ready-to-render "Where to look" entry.
+// Era: DAR's split (generations 1-3 "recent", 4+ "older") unless the state's own source says whether that state
+// recorded this event in that year. Notes carry the state and census facts; each lists its claims.
+export function whereToLook(fact, gen, ctx = {}) {
   const byEra = WHERE_TO_LOOK[fact]; if (!byEra) return null;
-  const w = byEra[gen != null && gen <= 3 ? "recent" : "older"];
-  return { text: w.text, claims: w.claims, links: w.links.map((k) => WHERE_SOURCES[k]), guides: w.guides.map((k) => GUIDES[k]), registrar: REGISTRAR };
+  const born = yr(ctx.born), died = yr(ctx.died);
+  let era = gen != null && gen <= 3 ? "recent" : "older";
+  const notes = [];
+  if (["birth", "death", "marriage"].includes(fact)) {
+    const v = vitalNote(ctx.state, fact, { year: fact === "birth" ? born : fact === "death" ? died : null, lower: fact === "birth" ? null : born });
+    if (v) { if (v.era === "state") era = "recent"; else if (v.era === "none") era = "older"; notes.push({ text: v.text, claims: v.claims, links: v.links, kind: "state" }); }
+    else notes.push({ text: "Add the state where this person lived to see what that state's own records office says.", claims: [], links: [], kind: "hint" });
+  }
+  if (["birth", "parentage", "residence"].includes(fact)) {
+    const c = censusNote(born, died, { patriot: !!ctx.patriot });
+    if (c) notes.push({ ...c, kind: "census" });
+    else if (born == null) notes.push({ text: "Add a rough birth year to see which censuses fit this person's lifetime.", claims: [], links: [], kind: "hint" });
+  }
+  const w = byEra[era];
+  const links = [...w.links.map((k) => WHERE_SOURCES[k]), ...notes.flatMap((n) => n.links)].filter((l, i, a) => a.findIndex((m) => m.url === l.url) === i);
+  return { text: w.text, era, notes, claims: [...new Set([...w.claims, ...notes.flatMap((n) => n.claims)])], links, guides: w.guides.map((k) => GUIDES[k]), registrar: REGISTRAR };
 }
+const whereFor = (...a) => whereToLook(...a);
 const startHere = () => ({ text: START_HERE.text, claims: START_HERE.claims, links: [], guides: START_HERE.guides.map((k) => GUIDES[k]), registrar: REGISTRAR });
 
 // row = { gen, living, cells: [cell,...] }  — returns prioritized gap list. Never declares a generation proven.
 // Every gap carries a "where" entry (Where to look).
-export function gaps(rows = []) {
-  const out = [];
+export function gaps(rows = [], patriot = null) {
+  const out = []; const pg = patriotGen(rows, patriot);
   if (rows.length < 2) out.push({ gen: null, priority: 1, text: "Add at least two generations (you and your parent) to see what's missing.", where: startHere() });
   for (const r of rows) {
     const who = `Generation ${r.gen} (${genLabel(r.gen).toLowerCase()})`;
     const req = rowRequirements(r.gen, r);
+    const ctx = { born: r.born, died: r.died, state: r.state || (r.gen === pg ? patriot?.state : "") || "", patriot: r.gen === pg };
+    const whereToLook = (f, gen) => whereFor(f, gen, ctx);
     const has = (f) => filledCells(r.cells).some((c) => c.fact === f && evaluateCell(c).label !== LABELS.none);
     for (const f of req.need) if (!has(f)) out.push({ gen: r.gen, fact: f, priority: 1, text: `${who}: no ${f} evidence entered yet.`, claim: req.claim, where: whereToLook(f, r.gen) });
     if (req.anyOf && !req.anyOf.some(has)) out.push({ gen: r.gen, fact: "birth", priority: 1, text: `${who}: add at least one birth or death record.`, claim: req.claim, where: whereToLook("birth", r.gen) });
     if (req.link && !has("parentage")) out.push({ gen: r.gen, fact: "parentage", priority: 1, text: `${who}: no record yet that links this person to the next generation in your line.`, claim: "dar-each-relationship", where: whereToLook("parentage", r.gen) });
     for (const c of filledCells(r.cells)) { const ev = evaluateCell(c); const fl = c.fact ? factName(c.fact) : "record";
-      const where = c.fact ? whereToLook(c.fact, r.gen) : { text: "", claims: [], links: [], guides: [], registrar: REGISTRAR };
+      const where = c.fact ? whereToLook(c.fact, r.gen) : { text: "", notes: [], claims: [], links: [], guides: [], registrar: REGISTRAR };
       if (ev.label === LABELS.conflict) out.push({ gen: r.gen, fact: c.fact, priority: 0, text: `${who}: you flagged a conflict on the ${fl} record. Sort it out before relying on it.`, where });
       else if (ev.label === LABELS.incomplete) out.push({ gen: r.gen, fact: c.fact, priority: 2, text: `${who}: the ${fl} record isn't finished. ${ev.issues.join(" ")}`, where });
       else if (ev.cautions.length) out.push({ gen: r.gen, fact: c.fact, priority: 2, text: `${who}: ${fl} record. ${ev.cautions[0].text}`, claim: ev.cautions[0].claim, where }); }
@@ -163,11 +186,16 @@ export function gaps(rows = []) {
   return out.map((g, i) => [g, i]).sort((a, b) => key(a[0]) - key(b[0]) || a[0].priority - b[0].priority || a[1] - b[1]).map(([g]) => g);
 }
 
-// Group a gap list so each generation appears once, in order.
-export function groupGaps(list) {
+// Group a gap list so each generation appears once, in order. pg = the patriot's generation (labelled), if known.
+export function groupGaps(list, pg = null) {
   const groups = [];
-  for (const g of list) { let grp = groups.at(-1); if (!grp || grp.gen !== g.gen) { grp = { gen: g.gen, title: g.gen == null ? "Getting started" : genTitle(g.gen), items: [] }; groups.push(grp); } grp.items.push(g); }
+  for (const g of list) { let grp = groups.at(-1); if (!grp || grp.gen !== g.gen) { grp = { gen: g.gen, title: g.gen == null ? "Getting started" : genTitle(g.gen) + (g.gen === pg ? " (the patriot)" : ""), items: [] }; groups.push(grp); } grp.items.push(g); }
   return groups;
+}
+// Which generation is the patriot: the one picked in the patriot step, else the oldest generation. Null if no patriot entered.
+export function patriotGen(rows = [], patriot = null) {
+  if (!hasPatriot(patriot)) return null;
+  const g = +patriot.gen; return rows.some((r) => r.gen === g) ? g : rows.at(-1)?.gen ?? null;
 }
 
 // Records that actually have something in them (blank rows are never labelled or counted).
@@ -175,14 +203,14 @@ export const filledCells = (cells = []) => cells.filter((c) => !isEmptyCell(c));
 export const countEntries = (generations = []) => generations.reduce((a, g) => a + filledCells(g.cells).length, 0);
 
 // "What to do next": a numbered action plan built from the visitor's own gaps.
-export function actionPlan(rows = []) {
-  const g = gaps(rows); const steps = [];
+export function actionPlan(rows = [], patriot = null) {
+  const g = gaps(rows, patriot); const steps = []; const pg = patriotGen(rows, patriot);
   const real = g.filter((x) => x.gen != null);
   if (rows.length < 2) steps.push({ title: "Fill in the worksheet", text: "Start with yourself as generation 1, then add your parent, grandparent and so on back to the patriot.", claims: ["dar-gen1-applicant", "dar-gen-numbering"], links: linksFor("roadmap") });
+  steps.push(...patriotSteps(patriot));
   if (real.length) steps.push({ title: "Records to find or fix, generation by generation", text: "Each item says where to look. Sort out any records you flagged as disagreeing before relying on them.", claims: ["dar-each-relationship"], links: [],
-    items: groupGaps(real).map((grp) => ({ text: grp.title, sub: grp.items.map((x) => ({ text: x.short, where: x.where, conflict: x.priority === 0 })) })) });
+    items: groupGaps(real, pg).map((grp) => ({ text: grp.title, sub: grp.items.map((x) => ({ text: x.short, where: x.where, conflict: x.priority === 0 })) })) });
   else if (rows.length >= 2) steps.push({ title: "Records", text: "Nothing is missing by this tool's rules. A society's genealogists still review every record.", claims: ["dar-review-staff"], links: [] });
-  steps.push({ title: "Check the patriot's service dates", text: "Use the free checker to see whether the service dates fit the official period.", claims: ["dar-window-core"], links: linksFor("checker") });
   steps.push(CONTACT_STEP, APPLY_STEP);
   return steps;
 }

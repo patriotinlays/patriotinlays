@@ -49,59 +49,59 @@ function inline(text, ctx) {
   return s;
 }
 const DATE_HINT = `<p class="small hint" id="date-hint">Numbers only, e.g. 1776 or 1776-07 (a full date like 1776-07-04 also works).</p>`;
-const TOOL_A_FORM = (full) => `<section class="tool" data-tool="service-window" aria-labelledby="ta-h">
-<h2 id="ta-h">${full ? "Use the checker" : "Try it: Service Window Checker"}</h2>
-<div class="howto"><p><strong>How this works.</strong> This checker does not search any records or databases. You type the dates you already know about your ancestor. It compares them with the published date rules and tells you whether they fit. Nothing you type leaves your device; it is saved only in this browser.</p>
-<p><button type="button" class="secondary" data-load-example>Load an example</button> <span class="small" data-example-msg aria-live="polite">Fills in a made-up soldier so you can see a result right away.</span></p></div>
-<h3 class="step"><span class="num">1</span> ${full ? "Check the service dates" : "Check service dates"}</h3>
-<form data-form="window"><label for="ta-type">What kind of service was it?</label>
-<p class="small hint">Not sure? Pick the first choice. The others have their own start dates.</p><select id="ta-type" name="serviceType">
-<option value="core">General military, civil or patriotic service</option><option value="committee">Committee that furthered the cause (from April 1774)</option>
-<option value="va_oath">Virginia Oath of Fidelity</option><option value="galvez_troops">Spanish troops under Gálvez / Louisiana Militia</option>
-<option value="galvez_cattle">Supplying cattle for Gálvez's forces</option></select>
-<label for="ta-start">When did the service start?</label>${DATE_HINT}<input id="ta-start" name="start" type="text" inputmode="numeric" autocomplete="off" placeholder="e.g. 1776 or 1776-07" aria-describedby="date-hint" required>
-<label for="ta-end">When did it end? (leave blank if you only have one date)</label><input id="ta-end" name="end" type="text" inputmode="numeric" autocomplete="off" placeholder="e.g. 1778 or 1778-03">
-<button type="submit" class="big">Check these dates</button></form>
-<div data-out="window" tabindex="-1" aria-live="polite"></div>
-${full ? `<h3 class="step"><span class="num">2</span> Optional: widow pension and bounty-land laws</h3>
-<p class="small">Only needed if you are looking for a widow's pension or bounty-land papers. Fill in what you know and leave the rest blank.</p>
-<form data-form="widow"><label for="tw-m">When did the couple marry?</label><p class="small hint" data-why="marriage"></p><input id="tw-m" name="marriage" type="text" autocomplete="off" placeholder="e.g. 1776 or 1776-07">
-<label for="tw-e">When did his last period of service end?</label><p class="small hint" data-why="serviceEnd"></p><input id="tw-e" name="serviceEnd" type="text" autocomplete="off" placeholder="e.g. 1776 or 1776-07">
+const WIDOW_FULL = `<section class="tool" data-tool="widow" aria-labelledby="ta-h">
+<h2 id="ta-h">Use the checker</h2>
+<div class="howto"><p><strong>How this works.</strong> This checker does not search any records or databases. You type the marriage date and what you know about his service. It tests them against the date rules in each federal widow pension and bounty-land law, as the National Archives describes them, and shows the result law by law. Nothing you type leaves your device; it is saved only in this browser.</p>
+<p><button type="button" class="secondary" data-load-example>Load an example</button> <button type="button" class="secondary" data-from-worksheet>Fill in from my worksheet's patriot</button></p>
+<p class="small" data-example-msg aria-live="polite">"Load an example" fills in a made-up couple so you can see a result right away.</p><p class="small" data-worksheet-msg aria-live="polite"></p></div>
+<h3 class="step"><span class="num">1</span> Type what you know about the widow and her husband</h3>
+<p class="small">Fill in what you know and leave the rest blank. ${DATE_HINT.replace(/<\/?p[^>]*>/g, "")}</p>
+<form data-form="widow"><label for="tw-m">When did the couple marry?</label><p class="small hint" data-why="marriage"></p><input id="tw-m" name="marriage" type="text" inputmode="numeric" autocomplete="off" placeholder="e.g. 1776 or 1776-07">
+<label for="tw-e">When did his last period of service end?</label><p class="small hint" data-why="serviceEnd"></p><input id="tw-e" name="serviceEnd" type="text" inputmode="numeric" autocomplete="off" placeholder="e.g. 1776 or 1776-07">
 <label for="tw-mo">Total months of service (a number)</label><p class="small hint" data-why="serviceMonths"></p><input id="tw-mo" name="serviceMonths" type="text" inputmode="numeric" autocomplete="off" placeholder="e.g. 24">
 <label for="tw-d">Total days of service (a number, if you know it)</label><p class="small hint" data-why="serviceDays"></p><input id="tw-d" name="serviceDays" type="text" inputmode="numeric" autocomplete="off" placeholder="e.g. 730">
 <label class="check"><input type="checkbox" name="engagement"> He was in at least one battle</label>
 <button type="submit" class="big">Check the widow pension laws</button></form>
 <div data-out="widow" tabindex="-1" aria-live="polite"></div>
-<h3 class="step"><span class="num">3</span> What to do next</h3>
+<h3 class="step"><span class="num">2</span> What to do next</h3>
 <div data-plan aria-live="polite"></div>
-<h3 class="step"><span class="num">4</span> Print or save your results</h3>
-<p><a class="button-link no-print" href="/tools/service-window-checker/report/">Open my printable report</a></p>
-<button type="button" class="secondary" data-clear="toolA">Delete my saved checker data</button>` : `<p class="small">Widow-pension checks, a "What to do next" plan and a printable report are on the <a href="/tools/service-window-checker/">full checker page</a>.</p>`}
+<h3 class="step"><span class="num">3</span> Print or save your results</h3>
+<p><a class="button-link no-print" href="/tools/widow-pension-checker/report/">Open my printable report</a></p>
+<button type="button" class="secondary" data-clear="toolA">Delete my saved checker data</button>
 <p class="small">Saved only in this browser (keys starting "pi.toolA"). Nothing is sent anywhere.</p>
-<noscript><p>This checker needs JavaScript. The published date windows are listed on the <a href="/tools/service-window-checker/">checker page</a>.</p></noscript>
+<noscript><p>This checker needs JavaScript. The laws it uses are listed below.</p></noscript>
 </section><script type="module" src="/assets/js/tool-a-ui.js"></script>`;
+const WIDOW_CARD = `<aside class="card" data-tool-card="widow"><strong>Widow Pension Law Checker</strong>
+<p>Type a widow's marriage date and what you know about her husband's service. See which federal widow pension and bounty-land laws (1836 to 1878) fit, and where to look for her pension file. Free; nothing leaves your browser.</p>
+<p><a href="/tools/widow-pension-checker/">Open the checker</a></p></aside>`;
+const PATRIOT_CARD = `<aside class="card" data-tool-card="patriot"><strong>Record your patriot's service</strong>
+<p>The free worksheet's patriot step asks for his state, unit, type of service and rough dates. It checks the dates against the period DAR accepts for that type of service and points you to the records for his state.</p>
+<p><a href="/tools/lineage-matrix/#tb-patriot">Open the patriot step</a> · <a href="/tools/widow-pension-checker/">Widow Pension Law Checker</a></p></aside>`;
 const TOOL_B_FULL = `<section class="tool" data-tool="lineage-matrix" aria-labelledby="tb-h"><h2 id="tb-h">Use the worksheet</h2>
 <div class="howto"><p><strong>How this works.</strong> This worksheet does not search any records or databases. You type in the records you already have for each person in your line. It shows what is still missing for each generation and where to look for it. Nothing you type leaves your device; it is saved only in this browser.</p>
 <p><button type="button" class="secondary" data-load-example>Load an example</button> <span class="small">Fills in a made-up family so you can see how it works.</span></p></div>
-<h3 class="step"><span class="num">1</span> Start with yourself, then go back one generation at a time</h3>
-<p class="small">Generation 1 is you. Generation 2 is your parent, 3 your grandparent, and so on back to the patriot. For each person, press "Add a record" and answer A to D.</p>
+<h3 class="step" id="tb-patriot"><span class="num">1</span> The patriot: who he was and how he served</h3>
+<p class="small">His state, type of service and rough dates shape the advice below. The worksheet checks his dates against the period DAR accepts for that type of service.</p>
+<div data-patriot></div>
+<h3 class="step"><span class="num">2</span> Start with yourself, then go back one generation at a time</h3>
+<p class="small">Generation 1 is you. Generation 2 is your parent, 3 your grandparent, and so on back to the patriot. For each person, add a rough birth year and the state, then press "Add a record" and answer A to D.</p>
 <div data-matrix></div>
-<h3 class="step"><span class="num">2</span> Add or remove generations</h3>
+<h3 class="step"><span class="num">3</span> Add or remove generations</h3>
 <button type="button" class="secondary" data-add-gen>+ Add an older generation</button><button type="button" class="secondary" data-remove-gen>Remove the oldest generation</button>
 <p class="small" data-cleared aria-live="polite"></p>
-<h3 class="step"><span class="num">3</span> See what's missing, and where to look</h3><div data-gaps aria-live="polite"></div>
-<h3 class="step"><span class="num">4</span> What to do next</h3>
+<h3 class="step"><span class="num">4</span> See what's missing, and where to look</h3><div data-gaps aria-live="polite"></div>
+<h3 class="step"><span class="num">5</span> What to do next</h3>
 <div data-plan aria-live="polite"></div>
-<h3 class="step"><span class="num">5</span> Print or save</h3>
+<h3 class="step"><span class="num">6</span> Print or save</h3>
 <p><a class="button-link" href="/tools/lineage-matrix/report/">Open my printable report</a></p>
 <button type="button" class="secondary" data-clear="toolB">Delete all my worksheet data</button>
 <noscript><p>The worksheet needs JavaScript. The rules it applies are listed below.</p></noscript>
 </section><script type="module" src="/assets/js/tool-b-ui.js"></script>`;
 const TOOL_B_CARD = `<aside class="card" data-tool-card="lineage-matrix"><strong>Lineage Evidence Matrix</strong>
-<p>A free worksheet: type in the records you have for each generation, and it gives you a to-do list of the records still missing, where to look for each, and what to do next. Everything stays in your browser.</p>
+<p>A free worksheet: tell it about the patriot and his service, type in the records you have for each generation, and it gives you a to-do list of the records still missing and where to look for each, fitted to each person's era and state. Everything stays in your browser.</p>
 <p class="small" data-card-status aria-live="polite"></p>
 <p><a href="/tools/lineage-matrix/">Open the worksheet</a> · <a href="/tools/lineage-matrix/report/">View your report</a></p></aside><script type="module" src="/assets/js/tool-b-ui.js"></script>`;
-const TOOLS = { "service-window": TOOL_A_FORM(false), "service-window-full": TOOL_A_FORM(true), "lineage-matrix": TOOL_B_CARD, "lineage-matrix-full": TOOL_B_FULL };
+const TOOLS = { widow: WIDOW_CARD, "widow-full": WIDOW_FULL, patriot: PATRIOT_CARD, "lineage-matrix": TOOL_B_CARD, "lineage-matrix-full": TOOL_B_FULL };
 
 function md(body, ctx) {
   const lines = body.split("\n"); const out = []; let i = 0;
@@ -125,7 +125,7 @@ function md(body, ctx) {
   }
   return out.join("\n");
 }
-const NAV = `<header class="site"><div class="wrap"><a class="brand" href="/">Patriot In Lay Terms</a><nav class="top" aria-label="Main"><a href="/#guides">Guides</a><a href="/#tools">Tools</a><a href="/about/">About</a></nav></div></header>`;
+const NAV = `<header class="site"><div class="wrap"><a class="brand" href="/">Patriot In Lay Terms</a><nav class="top" aria-label="Main"><a href="/tools/widow-pension-checker/">Widow pension check</a><a href="/tools/lineage-matrix/">Worksheet</a><a href="/#guides">Guides</a><a href="/about/">About</a></nav></div></header>`;
 const FOOT = `<footer class="site"><div class="wrap"><a href="/about/">About &amp; AI disclosure</a><a href="/sources/">Sources &amp; Methodology</a><a href="/privacy/">Privacy</a><a href="/contact/">Contact</a><p>Not affiliated with DAR, SAR, NSCDA or the National Archives. Not legal or professional genealogical advice.</p></div></footer>`;
 function page({ title, description, path, body, noindex = false }) {
   return `<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
@@ -136,14 +136,14 @@ function page({ title, description, path, body, noindex = false }) {
 function write(path, html) { const f = join(OUT, path, "index.html"); mkdirSync(dirname(f), { recursive: true }); writeFileSync(f, versionUrls(html)); }
 const sitemap = []; const built = [];
 const GUIDE_ORDER = readdirSync(join(ROOT, "src/content")).filter((x) => x.endsWith(".md")).map((f) => parseFront(readFileSync(join(ROOT, "src/content", f), "utf8")).fm).filter((fm) => fm.cornerstone);
-const START_HERE = `<aside class="card start-here"><strong>Ready to start?</strong><p><a href="/tools/lineage-matrix/">Lineage Evidence Matrix</a>: list the records you have and get a to-do list of what's missing. · <a href="/tools/service-window-checker/">Service Window Checker</a>: check a patriot's service dates. · <a href="/guides/lineage-proof-roadmap/">The Roadmap guide</a>: the whole process, step by step.</p></aside>`;
+const START_HERE = `<aside class="card start-here"><strong>Ready to start?</strong><p><a href="/tools/widow-pension-checker/">Widow Pension Law Checker</a>: see which widow pension laws a marriage fits, and where to find her file. · <a href="/tools/lineage-matrix/">Lineage Evidence Matrix</a>: record the patriot and your records, and get a to-do list fitted to each person's era and state. · <a href="/guides/lineage-proof-roadmap/">The Roadmap guide</a>: the whole process, step by step.</p></aside>`;
 function renderFile(dir, f) {
   const raw = readFileSync(join(ROOT, dir, f), "utf8"); const { fm, body } = parseFront(raw);
   const ctx = { sources: [], tools: new Set(), claimCount: 0 };
   let html = md(body, ctx);
   // Guides end with a "What to do next" block (its own tool first) and a link to the next guide, so no guide is a dead end.
   if (fm.cornerstone) {
-    const own = [...ctx.tools][0] === "service-window" ? "service" : "lineage";
+    const own = [...ctx.tools][0] === "widow" ? "widow" : "lineage";
     html += "\n" + md(readFileSync(join(ROOT, "src/partials", `next-steps-${own}.md`), "utf8"), ctx);
     const next = GUIDE_ORDER.find((g) => +g.cornerstone === +fm.cornerstone + 1);
     html += `<p class="next-guide">${next ? `Next guide: <a href="/${next.slug}/">${esc(next.title)}</a> · ` : ""}<a href="/#guides">All 10 guides</a></p>`;
@@ -162,20 +162,22 @@ for (const f of readdirSync(join(ROOT, "src/pages")).filter((x) => x.endsWith(".
 
 // Home-page glossary: rendered from src/partials/glossary.md so every definition carries a Source Manifest claim.
 const HOME_GLOSSARY = (() => { const ctx = { sources: [], tools: new Set(), claimCount: 0 };
+  const lead = md(readFileSync(join(ROOT, "src/partials/home-lead.md"), "utf8"), ctx).replace(/<h2 id="[^"]+">/, '<h2 id="lead-widow">');
   const html = md(readFileSync(join(ROOT, "src/partials/glossary.md"), "utf8"), ctx).replace('<h2 id="words-you-ll-see-here">', '<h2 id="glossary">');
-  const sources = `<h2 id="sources">Sources for the definitions</h2><ol class="sources">${ctx.sources.map((u, i) => { const c = manifest.claims.find((x) => x.source_url === u);
+  const sources = `<h2 id="sources">Sources</h2><ol class="sources">${ctx.sources.map((u, i) => { const c = manifest.claims.find((x) => x.source_url === u);
     return `<li id="src-${i + 1}"><a href="${esc(u)}">${esc(c.source_title)}</a>. Retrieved ${c.last_retrieved}.</li>`; }).join("")}</ol>`;
-  return { html: `<div class="glossary">${html}</div>`, sources }; })();
+  return { lead, html: `<div class="glossary">${html}</div>`, sources }; })();
 const guides = built.filter((b) => b.cornerstone).sort((a, b) => a.cornerstone - b.cornerstone);
 write("", page({ title: "Revolutionary War lineage, explained step by step", description: "Plain-English procedures and free browser tools for proving descent from a Revolutionary War patriot.", path: "/",
   body: `<h1>Revolutionary War lineage, explained step by step</h1>
-<p class="lead"><strong>What you can get done here:</strong> work out which records you still need to prove your family line back to a Revolutionary War patriot for a DAR or SAR application, check whether the patriot's service dates fit the official period, and leave with a printed to-do list of records to find and who to contact.</p>
-<p><strong>Where to start:</strong> open the free family-line worksheet and type in what you already know. New to all this? Read the Roadmap guide first.</p>
-<p><a class="button-link" href="/tools/lineage-matrix/">Start my family-line worksheet</a> <a class="button-link secondary-link" href="/guides/lineage-proof-roadmap/">Read the Roadmap guide</a></p>
+<section class="lead-tool" aria-labelledby="lead-widow">${HOME_GLOSSARY.lead}
+<p><a class="button-link" href="/tools/widow-pension-checker/">Check the widow pension laws</a></p></section>
+<p><strong>Proving your whole line?</strong> The free worksheet asks who the patriot was and how he served, then lists the records still missing for each generation and where to look, fitted to each person's era and state. New to all this? Read the Roadmap guide first.</p>
+<p><a class="button-link secondary-link" href="/tools/lineage-matrix/">Start my family-line worksheet</a> <a class="button-link secondary-link" href="/guides/lineage-proof-roadmap/">Read the Roadmap guide</a></p>
 <p class="small">Both tools are free, need no account, and keep everything you type in your own browser. They don't search records for you. Every fact on this site links to its official source.</p>
 ${HOME_GLOSSARY.html}
+<h2 id="tools">Free tools</h2><ul class="guide-list"><li><a href="/tools/widow-pension-checker/">Widow Pension Law Checker</a><br><span class="small">Which federal widow pension and bounty-land laws a marriage and his service fit, what each result means, and where to look for her pension file.</span></li><li><a href="/tools/lineage-matrix/">Lineage Evidence Matrix</a><br><span class="small">Record the patriot's state, unit, type of service and dates, then the records you have for each generation. Get a to-do list fitted to each person's era and state, and a printable plan.</span></li></ul>
 <h2 id="guides">The 10 guides</h2><ol class="guide-list">${guides.map((g) => `<li><a href="${g.path}">${esc(g.title)}</a><br><span class="small">${esc(g.description)}</span></li>`).join("")}</ol>
-<h2 id="tools">Free tools</h2><ul class="guide-list"><li><a href="/tools/lineage-matrix/">Lineage Evidence Matrix</a><br><span class="small">Type in the records you have for each generation. Get a to-do list of what's missing, where to look, and a printable plan.</span></li><li><a href="/tools/service-window-checker/">Service Window &amp; Widow-Act Date Checker</a><br><span class="small">Type in a patriot's service dates. See whether they fit the official period and what to do next.</span></li></ul>
 ${HOME_GLOSSARY.sources}<p class="small">Written with AI and checked against quoted official sources at build time. <a href="/about/">About this site</a>.</p>` }));
 sitemap.unshift("/");
 // Sources & methodology page
@@ -185,13 +187,16 @@ write("sources", page({ title: "Sources & Methodology", description: "How every 
 <p>The guides and tools are written by AI software. See <a href="/about/">About</a>.</p><h2>Sources in the manifest</h2><ol class="sources">${[...bySource].map(([u, v]) => `<li><a href="${esc(u)}">${esc(v.t)}</a> (${v.n} claims). <span class="url">${esc(u)}</span></li>`).join("")}</ol><p class="small">Manifest: ${manifest.claims.length} verified claims, last retrieved ${BUILD_DATE}.</p>${START_HERE}` }));
 sitemap.push("/sources/");
 // Report pages (noindex; render from localStorage only)
-write("tools/service-window-checker/report", page({ title: "Service Window Checker — your report", description: "Printable report of your last checks, rendered from this browser only.", path: "/tools/service-window-checker/report/", noindex: true,
-  body: `<h1>Service Window Checker: your report</h1><p>The dates you checked and what the published rules say about them.</p><section class="tool" data-tool-report="service-window"><div data-report><p>Loading your saved checks…</p></div><button type="button" data-print>Print this report</button><button type="button" class="secondary" data-clear="toolA">Delete my saved checker data</button><div data-out="report" aria-live="polite"></div></section><p class="small">This report is built in your browser from what you typed on this device. Nothing is uploaded. It compares dates with published rules; it is not a decision about membership or a pension.</p><p><a href="/tools/service-window-checker/">Back to the checker</a></p><script type="module" src="/assets/js/tool-a-ui.js"></script>` }));
+write("tools/widow-pension-checker/report", page({ title: "Widow Pension Law Checker — your report", description: "Printable report of your last widow-pension check, rendered from this browser only.", path: "/tools/widow-pension-checker/report/", noindex: true,
+  body: `<h1>Widow Pension Law Checker: your report</h1><p>The dates you checked and what the published pension laws say about them.</p><section class="tool" data-tool-report="widow"><div data-report><p>Loading your saved check…</p></div><button type="button" data-print>Print this report</button><button type="button" class="secondary" data-clear="toolA">Delete my saved checker data</button><div data-out="report" aria-live="polite"></div></section><p class="small">This report is built in your browser from what you typed on this device. Nothing is uploaded. It compares dates with published laws; it is not a decision about membership or a pension.</p><p><a href="/tools/widow-pension-checker/">Back to the checker</a></p><script type="module" src="/assets/js/tool-a-ui.js"></script>` }));
 write("tools/lineage-matrix/report", page({ title: "Lineage Evidence Matrix — your report", description: "Printable gap report rendered from this browser only.", path: "/tools/lineage-matrix/report/", noindex: true,
   body: `<h1>Lineage Evidence Matrix: your report</h1><p>What's still missing in your line, where to look for it, and the records you've entered.</p><section class="tool" data-tool-report="lineage-matrix"><div data-report><p>Loading your saved matrix…</p></div><button type="button" data-print>Print this report</button><button type="button" class="secondary" data-clear="toolB">Delete all my worksheet data</button></section><p class="small">Built in your browser from what you typed on this device. Nothing is uploaded. Every label means "still needs review": only a society's genealogists decide what is proven.</p><p><a href="/tools/lineage-matrix/">Back to the matrix</a></p><script type="module" src="/assets/js/tool-b-ui.js"></script>` }));
 writeFileSync(join(OUT, "404.html"), versionUrls(page({ title: "Page not found", path: "/404.html", noindex: true, body: `<h1>Page not found</h1><p>That page doesn't exist. <a href="/">Go to the home page</a>.</p>${START_HERE}` })));
 writeFileSync(join(OUT, "sitemap.xml"), `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${sitemap.filter((p) => !p.includes("/contact/") || true).map((p) => `  <url><loc>${SITE}${p}</loc><lastmod>${BUILD_DATE}</lastmod></url>`).join("\n")}\n</urlset>\n`);
-writeFileSync(join(OUT, "robots.txt"), `User-agent: *\nDisallow: /tools/service-window-checker/report/\nDisallow: /tools/lineage-matrix/report/\nSitemap: ${SITE}/sitemap.xml\n`);
+writeFileSync(join(OUT, "robots.txt"), `User-agent: *\nDisallow: /tools/widow-pension-checker/report/\nDisallow: /tools/lineage-matrix/report/\nSitemap: ${SITE}/sitemap.xml\n`);
+// The standalone service-date checker was folded into the worksheet's patriot step; old URLs redirect (Cloudflare Pages _redirects).
+writeFileSync(join(OUT, "_redirects"), ["/tools/service-window-checker /tools/widow-pension-checker/ 301", "/tools/service-window-checker/ /tools/widow-pension-checker/ 301",
+  "/tools/service-window-checker/report /tools/widow-pension-checker/report/ 301", "/tools/service-window-checker/report/ /tools/widow-pension-checker/report/ 301"].join("\n") + "\n");
 writeFileSync(join(ROOT, "build-report.json"), JSON.stringify({ builtAt: new Date().toString(), pages: built, sitemapUrls: sitemap.length }, null, 2));
 for (const b of built) console.log(`built ${b.path.padEnd(42)} ${String(b.words).padStart(5)} words  ${String(b.claims).padStart(3)} claim refs  ${String(b.sources).padStart(2)} sources  tools: ${b.tools.join(",") || "-"}`);
 console.log(`sitemap.xml: ${sitemap.length} URLs; robots.txt, 404.html, 2 report pages written.`);

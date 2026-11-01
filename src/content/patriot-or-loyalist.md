@@ -24,7 +24,7 @@ An approved pension is strong evidence, but it is not a guarantee about the whol
 
 ## Search both sides
 
-1. Build the patriot timeline. List every dated act of service with its source and place, using the Service Window Checker to confirm each date sits in a published window.
+1. Build the patriot timeline. List every dated act of service with its source and place, using the worksheet's patriot step to confirm his dates sit in a published window.
 2. Find the last known act. Sort the timeline by date and note the latest act, because DAR looks at whether pro-American service was the last known act. [[claim:darblog-last-act]]
 3. Check the residence. If he lived in a known Loyalist center or a neutral area during the war, expect closer review.
 4. Search Loyalist records under every spelling. The United Empire Loyalists' Association of Canada (UELAC) keeps a Loyalist Directory whose entries record first enlistment into the Loyalist military [[claim:uelac-enlistment]] and the place the Loyalist lived before being expelled. [[claim:uelac-settled-before]]
@@ -50,4 +50,4 @@ Enter each pro- and anti-independence record in the Lineage Evidence Matrix agai
 
 Related guides: [Patriotic Service Without a Musket](/guides/patriotic-service/), [Revolutionary War Records by State](/guides/records-by-state/).
 
-::tool service-window
+::tool patriot

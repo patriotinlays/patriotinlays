@@ -22,7 +22,7 @@ A few DAR categories have their own windows:
 | Supplying cattle for Gálvez's forces in Spanish America | After 24 December 1776 [[claim:dar-galvez-cattle]] | DAR |
 | Battle of Point Pleasant | 10 October 1774, that location and date only [[claim:sar-point-pleasant]] | SAR |
 
-The Service Window Checker below tests a date range against these windows. DAR does not state an end date for the Gálvez categories, so the checker applies the general end of 26 November 1783 and says so in its result. [[claim:dar-window-core]]
+The patriot step in the free [Lineage Evidence Matrix](/tools/lineage-matrix/) tests his service dates against these windows for the type of service you pick. DAR does not state an end date for the Gálvez categories, so the worksheet applies the general end of 26 November 1783. [[claim:dar-window-core]]
 
 ## Service types and the evidence that fits them
 
@@ -57,7 +57,7 @@ SAR adopted its tax policy in fall 2012. [[claim:sartax-policy-2012]]
 
 ## Assemble the proof
 
-1. Name the service type and check its window with the checker.
+1. Name the service type and check its window in the worksheet's patriot step.
 2. Find the record that names the ancestor and states the act: the oath, the minute, the receipt, the tax list.
 3. Match residence to service. DAR re-examines service when the residence and the service location do not match. [[claim:darblog-residence]]
 4. Keep family stories out of it. SAR states that family tradition about an ancestor's service is not proof. [[claim:sar-tradition]] DAR does not take family genealogies as a source of service either. [[claim:dar-no-genealogy-service]]
@@ -67,4 +67,4 @@ DAR reserves the right to decide what service and proof are acceptable. [[claim:
 
 Related guides: [Revolutionary War Records by State](/guides/records-by-state/), [Application Returned?](/guides/application-problems/), [Patriot or Loyalist?](/guides/patriot-or-loyalist/).
 
-::tool service-window
+::tool patriot

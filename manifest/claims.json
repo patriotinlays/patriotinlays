@@ -15,11 +15,11 @@
       "verification_status": "verified",
       "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
       "used_on": [
+        "lineage-matrix",
         "lineage-proof-roadmap",
         "patriotic-service",
-        "service-window-checker",
         "tool:tool-a.js",
-        "tool:tool-b.js"
+        "widow-pension-checker"
       ],
       "notes": ""
     },
@@ -36,8 +36,9 @@
       "verification_status": "verified",
       "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
       "used_on": [
+        "lineage-matrix",
         "patriotic-service",
-        "service-window-checker",
+        "tool:patriot.js",
         "tool:tool-a.js"
       ],
       "notes": ""
@@ -55,8 +56,9 @@
       "verification_status": "verified",
       "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
       "used_on": [
+        "lineage-matrix",
         "patriotic-service",
-        "service-window-checker",
+        "tool:patriot.js",
         "tool:tool-a.js"
       ],
       "notes": ""
@@ -74,8 +76,9 @@
       "verification_status": "verified",
       "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
       "used_on": [
+        "lineage-matrix",
         "patriotic-service",
-        "service-window-checker",
+        "tool:patriot.js",
         "tool:tool-a.js"
       ],
       "notes": ""
@@ -93,8 +96,9 @@
       "verification_status": "verified",
       "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
       "used_on": [
+        "lineage-matrix",
         "patriotic-service",
-        "service-window-checker",
+        "tool:patriot.js",
         "tool:tool-a.js"
       ],
       "notes": ""
@@ -112,7 +116,9 @@
       "verification_status": "verified",
       "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
       "used_on": [
-        "patriotic-service"
+        "lineage-matrix",
+        "patriotic-service",
+        "tool:patriot.js"
       ],
       "notes": ""
     },
@@ -129,7 +135,8 @@
       "verification_status": "verified",
       "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
       "used_on": [
-        "patriotic-service"
+        "patriotic-service",
+        "tool:patriot.js"
       ],
       "notes": ""
     },
@@ -146,7 +153,9 @@
       "verification_status": "verified",
       "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
       "used_on": [
-        "patriotic-service"
+        "lineage-matrix",
+        "patriotic-service",
+        "tool:patriot.js"
       ],
       "notes": ""
     },
@@ -214,7 +223,9 @@
       "verification_status": "verified",
       "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
       "used_on": [
-        "patriotic-service"
+        "lineage-matrix",
+        "patriotic-service",
+        "tool:patriot.js"
       ],
       "notes": ""
     },
@@ -642,7 +653,9 @@
       "verification_status": "verified",
       "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
       "used_on": [
-        "records-by-state"
+        "lineage-matrix",
+        "records-by-state",
+        "tool:patriot.js"
       ],
       "notes": ""
     },
@@ -908,6 +921,7 @@
         "lineage-proof-roadmap",
         "patriotic-service",
         "records-by-state",
+        "tool:patriot.js",
         "tool:tool-a.js"
       ],
       "notes": ""
@@ -1324,7 +1338,8 @@
       "verification_status": "verified",
       "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
       "used_on": [
-        "records-by-state"
+        "records-by-state",
+        "tool:patriot.js"
       ],
       "notes": ""
     },
@@ -1358,9 +1373,9 @@
       "verification_status": "verified",
       "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
       "used_on": [
+        "lineage-matrix",
         "lineage-proof-roadmap",
-        "patriotic-service",
-        "service-window-checker"
+        "patriotic-service"
       ],
       "notes": ""
     },
@@ -1431,6 +1446,7 @@
         "lineage-proof-roadmap",
         "patriot-or-loyalist",
         "patriotic-service",
+        "tool:patriot.js",
         "tool:tool-a.js"
       ],
       "notes": ""
@@ -2012,8 +2028,8 @@
       "verification_status": "verified",
       "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
       "used_on": [
-        "service-window-checker",
-        "tool:tool-a.js"
+        "tool:tool-a.js",
+        "widow-pension-checker"
       ],
       "notes": ""
     },
@@ -2030,8 +2046,10 @@
       "verification_status": "verified",
       "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
       "used_on": [
-        "service-window-checker",
-        "tool:tool-a.js"
+        "lineage-matrix",
+        "tool:patriot.js",
+        "tool:tool-a.js",
+        "widow-pension-checker"
       ],
       "notes": ""
     },
@@ -2049,8 +2067,8 @@
       "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
       "used_on": [
         "read-pension-file",
-        "service-window-checker",
-        "tool:tool-a.js"
+        "tool:tool-a.js",
+        "widow-pension-checker"
       ],
       "notes": ""
     },
@@ -2068,8 +2086,8 @@
       "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
       "used_on": [
         "read-pension-file",
-        "service-window-checker",
-        "tool:tool-a.js"
+        "tool:tool-a.js",
+        "widow-pension-checker"
       ],
       "notes": ""
     },
@@ -2087,8 +2105,8 @@
       "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
       "used_on": [
         "read-pension-file",
-        "service-window-checker",
-        "tool:tool-a.js"
+        "tool:tool-a.js",
+        "widow-pension-checker"
       ],
       "notes": ""
     },
@@ -2106,8 +2124,8 @@
       "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
       "used_on": [
         "read-pension-file",
-        "service-window-checker",
-        "tool:tool-a.js"
+        "tool:tool-a.js",
+        "widow-pension-checker"
       ],
       "notes": ""
     },
@@ -2125,8 +2143,8 @@
       "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
       "used_on": [
         "read-pension-file",
-        "service-window-checker",
-        "tool:tool-a.js"
+        "tool:tool-a.js",
+        "widow-pension-checker"
       ],
       "notes": ""
     },
@@ -2144,8 +2162,8 @@
       "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
       "used_on": [
         "bounty-land-warrants",
-        "service-window-checker",
-        "tool:tool-a.js"
+        "tool:tool-a.js",
+        "widow-pension-checker"
       ],
       "notes": ""
     },
@@ -2299,7 +2317,9 @@
       "verification_status": "verified",
       "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
       "used_on": [
-        "read-pension-file"
+        "read-pension-file",
+        "tool:tool-a.js",
+        "widow-pension-checker"
       ],
       "notes": ""
     },
@@ -2523,8 +2543,12 @@
       "verification_status": "verified",
       "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
       "used_on": [
+        "partial:home-lead",
         "read-pension-file",
-        "substitute-evidence"
+        "substitute-evidence",
+        "tool:patriot.js",
+        "tool:tool-a.js",
+        "widow-pension-checker"
       ],
       "notes": ""
     },
@@ -2627,7 +2651,9 @@
       "verification_status": "verified",
       "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
       "used_on": [
+        "lineage-matrix",
         "records-by-state",
+        "tool:patriot.js",
         "tool:tool-a.js"
       ],
       "notes": ""
@@ -2645,7 +2671,9 @@
       "verification_status": "verified",
       "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
       "used_on": [
-        "records-by-state"
+        "lineage-matrix",
+        "records-by-state",
+        "tool:patriot.js"
       ],
       "notes": ""
     },
@@ -2662,7 +2690,9 @@
       "verification_status": "verified",
       "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
       "used_on": [
+        "lineage-matrix",
         "records-by-state",
+        "tool:patriot.js",
         "tool:tool-a.js"
       ],
       "notes": ""
@@ -2973,6 +3003,7 @@
       "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
       "used_on": [
         "lineage-matrix",
+        "partial:home-lead",
         "read-pension-file",
         "tool:tool-a.js"
       ],
@@ -2991,7 +3022,8 @@
       "verification_status": "verified",
       "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
       "used_on": [
-        "records-by-state"
+        "records-by-state",
+        "tool:patriot.js"
       ],
       "notes": ""
     },
@@ -3008,7 +3040,8 @@
       "verification_status": "verified",
       "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
       "used_on": [
-        "records-by-state"
+        "records-by-state",
+        "tool:patriot.js"
       ],
       "notes": ""
     },
@@ -3030,6 +3063,25 @@
       "notes": ""
     },
     {
+      "claim_id": "nara-amrev-1836",
+      "claim_text": "Widows could apply for pensions beginning in 1836.",
+      "source_url": "https://www.archives.gov/research/military/american-revolution",
+      "source_title": "NARA — The American Revolution (research page)",
+      "source_type": "official_secondary",
+      "archive_identifier": null,
+      "last_retrieved": "2026-10-31",
+      "quote_excerpt": "Widows of men who provided service received the right to apply for pensions beginning in 1836.",
+      "page_ref": null,
+      "verification_status": "verified",
+      "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
+      "used_on": [
+        "partial:home-lead",
+        "tool:patriot.js",
+        "widow-pension-checker"
+      ],
+      "notes": ""
+    },
+    {
       "claim_id": "nara-census-head",
       "claim_text": "The 1790–1840 censuses named only the head of household and counted others by age category.",
       "source_url": "https://www.archives.gov/research/census/1790-1840.html",
@@ -3043,7 +3095,9 @@
       "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
       "used_on": [
         "census-bridge",
+        "lineage-matrix",
         "substitute-evidence",
+        "tool:places.js",
         "tool:tool-b.js"
       ],
       "notes": ""
@@ -3114,7 +3168,9 @@
       "verification_status": "verified",
       "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
       "used_on": [
-        "census-bridge"
+        "census-bridge",
+        "lineage-matrix",
+        "tool:places.js"
       ],
       "notes": ""
     },
@@ -3131,7 +3187,8 @@
       "verification_status": "verified",
       "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
       "used_on": [
-        "census-bridge"
+        "census-bridge",
+        "tool:places.js"
       ],
       "notes": ""
     },
@@ -3321,7 +3378,8 @@
       "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
       "used_on": [
         "read-pension-file",
-        "records-by-state"
+        "records-by-state",
+        "tool:patriot.js"
       ],
       "notes": ""
     },
@@ -3442,7 +3500,8 @@
       "used_on": [
         "read-pension-file",
         "tool:tool-a.js",
-        "tool:tool-b.js"
+        "tool:tool-b.js",
+        "widow-pension-checker"
       ],
       "notes": ""
     },
@@ -3751,7 +3810,8 @@
       "verification_status": "verified",
       "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
       "used_on": [
-        "records-by-state"
+        "records-by-state",
+        "tool:places.js"
       ],
       "notes": ""
     },
@@ -3858,6 +3918,7 @@
         "census-bridge",
         "lineage-matrix",
         "substitute-evidence",
+        "tool:places.js",
         "tool:tool-b.js"
       ],
       "notes": ""
@@ -3893,6 +3954,7 @@
       "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
       "used_on": [
         "substitute-evidence",
+        "tool:places.js",
         "tool:tool-b.js"
       ],
       "notes": ""
@@ -4323,7 +4385,7 @@
       "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
       "used_on": [
         "partial:next-steps-lineage",
-        "partial:next-steps-service",
+        "partial:next-steps-widow",
         "tool:next-steps.js"
       ],
       "notes": ""
@@ -4359,7 +4421,7 @@
       "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
       "used_on": [
         "partial:next-steps-lineage",
-        "partial:next-steps-service",
+        "partial:next-steps-widow",
         "tool:next-steps.js"
       ],
       "notes": ""
@@ -4378,7 +4440,7 @@
       "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
       "used_on": [
         "partial:next-steps-lineage",
-        "partial:next-steps-service",
+        "partial:next-steps-widow",
         "tool:next-steps.js"
       ],
       "notes": ""
@@ -4397,7 +4459,7 @@
       "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
       "used_on": [
         "partial:next-steps-lineage",
-        "partial:next-steps-service",
+        "partial:next-steps-widow",
         "tool:next-steps.js"
       ],
       "notes": ""
@@ -4586,6 +4648,791 @@
       "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
       "used_on": [
         "partial:glossary"
+      ],
+      "notes": ""
+    },
+    {
+      "claim_id": "lva-rev-militia",
+      "claim_text": "Most Virginians who served did so in the county militia.",
+      "source_url": "https://lva-virginia.libguides.com/revolutionary-war/home",
+      "source_title": "Library of Virginia — Virginia Revolutionary War Service Records (research guide)",
+      "source_type": "official_secondary",
+      "archive_identifier": null,
+      "last_retrieved": "2026-10-31",
+      "quote_excerpt": "Most Virginians serving in the war did so as part of the county militia.",
+      "page_ref": null,
+      "verification_status": "verified",
+      "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
+      "used_on": [
+        "tool:places.js"
+      ],
+      "notes": ""
+    },
+    {
+      "claim_id": "lva-rev-few",
+      "claim_text": "Few records of Virginia militia service exist.",
+      "source_url": "https://lva-virginia.libguides.com/revolutionary-war/home",
+      "source_title": "Library of Virginia — Virginia Revolutionary War Service Records (research guide)",
+      "source_type": "official_secondary",
+      "archive_identifier": null,
+      "last_retrieved": "2026-10-31",
+      "quote_excerpt": "Unfortunately, few records of militia service exist.",
+      "page_ref": null,
+      "verification_status": "verified",
+      "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
+      "used_on": [
+        "tool:places.js"
+      ],
+      "notes": ""
+    },
+    {
+      "claim_id": "lva-rev-orderbooks",
+      "claim_text": "Virginia militia officer appointments are often in county court order books.",
+      "source_url": "https://lva-virginia.libguides.com/revolutionary-war/home",
+      "source_title": "Library of Virginia — Virginia Revolutionary War Service Records (research guide)",
+      "source_type": "official_secondary",
+      "archive_identifier": null,
+      "last_retrieved": "2026-10-31",
+      "quote_excerpt": "Militia officer appointments are often recorded in the order books for the county courts.",
+      "page_ref": null,
+      "verification_status": "verified",
+      "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
+      "used_on": [
+        "tool:places.js"
+      ],
+      "notes": ""
+    },
+    {
+      "claim_id": "lva-rev-pensions",
+      "claim_text": "Many post-1832 federal pensions mention Virginia militia service.",
+      "source_url": "https://lva-virginia.libguides.com/revolutionary-war/home",
+      "source_title": "Library of Virginia — Virginia Revolutionary War Service Records (research guide)",
+      "source_type": "official_secondary",
+      "archive_identifier": null,
+      "last_retrieved": "2026-10-31",
+      "quote_excerpt": "Many post-1832 federal pensions also mention militia service.",
+      "page_ref": null,
+      "verification_status": "verified",
+      "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
+      "used_on": [
+        "tool:places.js"
+      ],
+      "notes": ""
+    },
+    {
+      "claim_id": "lva-rev-continental",
+      "claim_text": "Payrolls and muster rolls exist for most Virginia Continental Line soldiers.",
+      "source_url": "https://lva-virginia.libguides.com/revolutionary-war/home",
+      "source_title": "Library of Virginia — Virginia Revolutionary War Service Records (research guide)",
+      "source_type": "official_secondary",
+      "archive_identifier": null,
+      "last_retrieved": "2026-10-31",
+      "quote_excerpt": "Service records exist for most Continental Line soldiers in the form of payrolls and muster rolls of their units.",
+      "page_ref": null,
+      "verification_status": "verified",
+      "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
+      "used_on": [
+        "tool:places.js"
+      ],
+      "notes": ""
+    },
+    {
+      "claim_id": "lva-bmd-pre1853",
+      "claim_text": "Virginia did not record births, marriages and deaths statewide before 1853.",
+      "source_url": "https://lva-virginia.libguides.com/bmd",
+      "source_title": "Library of Virginia — Birth, Marriage, and Death Records (1853–Present)",
+      "source_type": "official_secondary",
+      "archive_identifier": null,
+      "last_retrieved": "2026-10-31",
+      "quote_excerpt": "Before 1853, systematic statewide recording of births, marriages, and deaths did not occur in Virginia.",
+      "page_ref": null,
+      "verification_status": "verified",
+      "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
+      "used_on": [
+        "lineage-matrix",
+        "tool:places.js"
+      ],
+      "notes": ""
+    },
+    {
+      "claim_id": "lva-bmd-rare",
+      "claim_text": "Many pre-1853 Virginia marriage records survive; birth and death records are rare.",
+      "source_url": "https://lva-virginia.libguides.com/bmd",
+      "source_title": "Library of Virginia — Birth, Marriage, and Death Records (1853–Present)",
+      "source_type": "official_secondary",
+      "archive_identifier": null,
+      "last_retrieved": "2026-10-31",
+      "quote_excerpt": "Many pre-1853 marriage records survive, but birth and death records are rare.",
+      "page_ref": null,
+      "verification_status": "verified",
+      "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
+      "used_on": [
+        "tool:places.js"
+      ],
+      "notes": ""
+    },
+    {
+      "claim_id": "lva-bmd-1853",
+      "claim_text": "Virginia counties and cities kept birth, marriage and death registers from 1853 to 1896.",
+      "source_url": "https://lva-virginia.libguides.com/bmd",
+      "source_title": "Library of Virginia — Birth, Marriage, and Death Records (1853–Present)",
+      "source_type": "official_secondary",
+      "archive_identifier": null,
+      "last_retrieved": "2026-10-31",
+      "quote_excerpt": "Between 1853 and 1896, counties and cities maintained birth, marriage, and death registers.",
+      "page_ref": null,
+      "verification_status": "verified",
+      "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
+      "used_on": [
+        "tool:places.js"
+      ],
+      "notes": ""
+    },
+    {
+      "claim_id": "lva-bmd-gap",
+      "claim_text": "Most Virginia counties and cities did not record births and deaths from 1897 to 1911.",
+      "source_url": "https://lva-virginia.libguides.com/bmd",
+      "source_title": "Library of Virginia — Birth, Marriage, and Death Records (1853–Present)",
+      "source_type": "official_secondary",
+      "archive_identifier": null,
+      "last_retrieved": "2026-10-31",
+      "quote_excerpt": "the majority of counties and cities did not record births and deaths between 1897 and 1911",
+      "page_ref": null,
+      "verification_status": "verified",
+      "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
+      "used_on": [
+        "tool:places.js"
+      ],
+      "notes": ""
+    },
+    {
+      "claim_id": "lva-bmd-1912",
+      "claim_text": "Virginia resumed recording births and deaths in 1912.",
+      "source_url": "https://lva-virginia.libguides.com/bmd",
+      "source_title": "Library of Virginia — Birth, Marriage, and Death Records (1853–Present)",
+      "source_type": "official_secondary",
+      "archive_identifier": null,
+      "last_retrieved": "2026-10-31",
+      "quote_excerpt": "Virginia reinstituted the recording of births and deaths in 1912.",
+      "page_ref": null,
+      "verification_status": "verified",
+      "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
+      "used_on": [
+        "tool:places.js"
+      ],
+      "notes": ""
+    },
+    {
+      "claim_id": "msa-militia",
+      "claim_text": "Maryland militia was organized by county for local defense.",
+      "source_url": "https://guide.msa.maryland.gov/pages/viewer.aspx?page=military",
+      "source_title": "Maryland State Archives — Military Records (Guide to Government Records)",
+      "source_type": "official_secondary",
+      "archive_identifier": null,
+      "last_retrieved": "2026-10-31",
+      "quote_excerpt": "Militia, organized by each County, consisting of individuals prepared for local defense",
+      "page_ref": null,
+      "verification_status": "verified",
+      "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
+      "used_on": [
+        "tool:places.js"
+      ],
+      "notes": ""
+    },
+    {
+      "claim_id": "msa-index",
+      "claim_text": "The Maryland State Archives has a Revolutionary War Papers Index (MSA S1422).",
+      "source_url": "https://guide.msa.maryland.gov/pages/viewer.aspx?page=military",
+      "source_title": "Maryland State Archives — Military Records (Guide to Government Records)",
+      "source_type": "official_secondary",
+      "archive_identifier": null,
+      "last_retrieved": "2026-10-31",
+      "quote_excerpt": "Revolutionary War Papers Index, MSA S1422",
+      "page_ref": null,
+      "verification_status": "verified",
+      "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
+      "used_on": [
+        "tool:places.js"
+      ],
+      "notes": ""
+    },
+    {
+      "claim_id": "msa-nara",
+      "claim_text": "The Maryland State Archives notes many Maryland service records are at the National Archives.",
+      "source_url": "https://guide.msa.maryland.gov/pages/viewer.aspx?page=military",
+      "source_title": "Maryland State Archives — Military Records (Guide to Government Records)",
+      "source_type": "official_secondary",
+      "archive_identifier": null,
+      "last_retrieved": "2026-10-31",
+      "quote_excerpt": "Many service records are held by the National Archives",
+      "page_ref": null,
+      "verification_status": "verified",
+      "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
+      "used_on": [
+        "tool:places.js"
+      ],
+      "notes": ""
+    },
+    {
+      "claim_id": "msa-birth-counties",
+      "claim_text": "The Maryland State Archives lists county birth records from 1898 to 1925.",
+      "source_url": "https://guide.msa.maryland.gov/pages/viewer.aspx?page=birth",
+      "source_title": "Maryland State Archives — Birth Records (Guide to Government Records)",
+      "source_type": "official_secondary",
+      "archive_identifier": null,
+      "last_retrieved": "2026-10-31",
+      "quote_excerpt": "Maryland Counties (1898 to 1925)",
+      "page_ref": null,
+      "verification_status": "verified",
+      "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
+      "used_on": [
+        "tool:places.js"
+      ],
+      "notes": ""
+    },
+    {
+      "claim_id": "msa-birth-baltimore",
+      "claim_text": "The Maryland State Archives lists Baltimore City birth records from 1875 to 1925.",
+      "source_url": "https://guide.msa.maryland.gov/pages/viewer.aspx?page=birth",
+      "source_title": "Maryland State Archives — Birth Records (Guide to Government Records)",
+      "source_type": "official_secondary",
+      "archive_identifier": null,
+      "last_retrieved": "2026-10-31",
+      "quote_excerpt": "Baltimore City (1875 to 1925)",
+      "page_ref": null,
+      "verification_status": "verified",
+      "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
+      "used_on": [
+        "tool:places.js"
+      ],
+      "notes": ""
+    },
+    {
+      "claim_id": "nc-trpr-rosters",
+      "claim_text": "The State Archives of North Carolina holds 221 Revolutionary-era rosters, troop returns and muster rolls for militia, volunteers and draftees.",
+      "source_url": "https://appx.archives.ncdcr.gov/findingaids/TRPR_Troop_Returns_Collection.html",
+      "source_title": "State Archives of North Carolina — Troop Returns Collection, 1747-1893 (finding aid)",
+      "source_type": "official_secondary",
+      "archive_identifier": null,
+      "last_retrieved": "2026-10-31",
+      "quote_excerpt": "221 individual rosters, troop returns, and muster rolls for state and local militia, volunteers, and draftees",
+      "page_ref": null,
+      "verification_status": "verified",
+      "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
+      "used_on": [
+        "tool:places.js"
+      ],
+      "notes": ""
+    },
+    {
+      "claim_id": "nc-trpr-county",
+      "claim_text": "North Carolina militia records name officers and soldiers and are usually organized by district or county.",
+      "source_url": "https://appx.archives.ncdcr.gov/findingaids/TRPR_Troop_Returns_Collection.html",
+      "source_title": "State Archives of North Carolina — Troop Returns Collection, 1747-1893 (finding aid)",
+      "source_type": "official_secondary",
+      "archive_identifier": null,
+      "last_retrieved": "2026-10-31",
+      "quote_excerpt": "Militia records generally include the names of the officers and soldiers, and are typically organized by district or county.",
+      "page_ref": null,
+      "verification_status": "verified",
+      "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
+      "used_on": [
+        "tool:places.js"
+      ],
+      "notes": ""
+    },
+    {
+      "claim_id": "nc-trpr-arranged",
+      "claim_text": "The North Carolina troop returns are arranged by year, then by county, commanding officer or unit number.",
+      "source_url": "https://appx.archives.ncdcr.gov/findingaids/TRPR_Troop_Returns_Collection.html",
+      "source_title": "State Archives of North Carolina — Troop Returns Collection, 1747-1893 (finding aid)",
+      "source_type": "official_secondary",
+      "archive_identifier": null,
+      "last_retrieved": "2026-10-31",
+      "quote_excerpt": "generally organized chronologically by year, then in order in collection by county name, name of the commanding officer organizing or commanding the unit, or by federal service unit number",
+      "page_ref": null,
+      "verification_status": "verified",
+      "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
+      "used_on": [
+        "tool:places.js"
+      ],
+      "notes": ""
+    },
+    {
+      "claim_id": "nc-vr-have-birth",
+      "claim_text": "North Carolina Vital Records has birth certificates from 1913.",
+      "source_url": "https://vitalrecords.nc.gov/research.htm",
+      "source_title": "North Carolina Vital Records (NCDHHS) — Research",
+      "source_type": "official_secondary",
+      "archive_identifier": null,
+      "last_retrieved": "2026-10-31",
+      "quote_excerpt": "Birth Certificates : 1913-Present",
+      "page_ref": null,
+      "verification_status": "verified",
+      "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
+      "used_on": [
+        "tool:places.js"
+      ],
+      "notes": ""
+    },
+    {
+      "claim_id": "nc-vr-have-death",
+      "claim_text": "North Carolina Vital Records has death certificates from 1930.",
+      "source_url": "https://vitalrecords.nc.gov/research.htm",
+      "source_title": "North Carolina Vital Records (NCDHHS) — Research",
+      "source_type": "official_secondary",
+      "archive_identifier": null,
+      "last_retrieved": "2026-10-31",
+      "quote_excerpt": "Death Certificates : 1930-Present",
+      "page_ref": null,
+      "verification_status": "verified",
+      "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
+      "used_on": [
+        "tool:places.js"
+      ],
+      "notes": ""
+    },
+    {
+      "claim_id": "nc-vr-have-marriage",
+      "claim_text": "North Carolina Vital Records has marriage certificates from 1962.",
+      "source_url": "https://vitalrecords.nc.gov/research.htm",
+      "source_title": "North Carolina Vital Records (NCDHHS) — Research",
+      "source_type": "official_secondary",
+      "archive_identifier": null,
+      "last_retrieved": "2026-10-31",
+      "quote_excerpt": "Marriage Certificates : 1962-Present",
+      "page_ref": null,
+      "verification_status": "verified",
+      "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
+      "used_on": [
+        "tool:places.js"
+      ],
+      "notes": ""
+    },
+    {
+      "claim_id": "nc-vr-birth",
+      "claim_text": "For North Carolina births before 1913, contact the county Register of Deeds.",
+      "source_url": "https://vitalrecords.nc.gov/research.htm",
+      "source_title": "North Carolina Vital Records (NCDHHS) — Research",
+      "source_type": "official_secondary",
+      "archive_identifier": null,
+      "last_retrieved": "2026-10-31",
+      "quote_excerpt": "For births before 1913, contact the Register of Deeds office in the county where the birth occurred.",
+      "page_ref": null,
+      "verification_status": "verified",
+      "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
+      "used_on": [
+        "tool:places.js"
+      ],
+      "notes": ""
+    },
+    {
+      "claim_id": "nc-vr-death",
+      "claim_text": "For North Carolina death certificates before 1930, contact the State Archives.",
+      "source_url": "https://vitalrecords.nc.gov/research.htm",
+      "source_title": "North Carolina Vital Records (NCDHHS) — Research",
+      "source_type": "official_secondary",
+      "archive_identifier": null,
+      "last_retrieved": "2026-10-31",
+      "quote_excerpt": "For death certificates prior to 1930, contact the North Carolina State Archives",
+      "page_ref": null,
+      "verification_status": "verified",
+      "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
+      "used_on": [
+        "tool:places.js"
+      ],
+      "notes": ""
+    },
+    {
+      "claim_id": "nc-vr-marriage",
+      "claim_text": "For North Carolina marriages before 1962, contact the county Register of Deeds.",
+      "source_url": "https://vitalrecords.nc.gov/research.htm",
+      "source_title": "North Carolina Vital Records (NCDHHS) — Research",
+      "source_type": "official_secondary",
+      "archive_identifier": null,
+      "last_retrieved": "2026-10-31",
+      "quote_excerpt": "For records prior to 1962, contact the county Register of Deeds where the marriage license was issued.",
+      "page_ref": null,
+      "verification_status": "verified",
+      "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
+      "used_on": [
+        "tool:places.js"
+      ],
+      "notes": ""
+    },
+    {
+      "claim_id": "nj-mil-rosters",
+      "claim_text": "The New Jersey State Archives holds compiled rosters of New Jersey militia and Continental Line.",
+      "source_url": "https://nj.gov/state/archives/guides/sdea0003.pdf",
+      "source_title": "New Jersey State Archives — Collection Guide: Compiled Rosters, New Jersey Militia and Continental Line (SDEA0003)",
+      "source_type": "official_secondary",
+      "archive_identifier": null,
+      "last_retrieved": "2026-10-31",
+      "quote_excerpt": "Compiled Rosters, New Jersey Militia and Continental Line, ca. 1776-1814",
+      "page_ref": null,
+      "verification_status": "verified",
+      "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
+      "used_on": [
+        "tool:places.js"
+      ],
+      "notes": ""
+    },
+    {
+      "claim_id": "nj-mil-indents",
+      "claim_text": "The New Jersey rosters include a county-by-county list of militiamen issued indents.",
+      "source_url": "https://nj.gov/state/archives/guides/sdea0003.pdf",
+      "source_title": "New Jersey State Archives — Collection Guide: Compiled Rosters, New Jersey Militia and Continental Line (SDEA0003)",
+      "source_type": "official_secondary",
+      "archive_identifier": null,
+      "last_retrieved": "2026-10-31",
+      "quote_excerpt": "is a county-by-county listing of New Jersey militiamen who were issued indents",
+      "page_ref": null,
+      "verification_status": "verified",
+      "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
+      "used_on": [
+        "tool:places.js"
+      ],
+      "notes": ""
+    },
+    {
+      "claim_id": "nj-pre1848-birth",
+      "claim_text": "New Jersey births before 1848 were not filed by any level of government, except records of births of enslaved children.",
+      "source_url": "https://www.nj.gov/state/archives/search-genealogical-collections.shtml",
+      "source_title": "New Jersey State Archives — Search Genealogical Collections",
+      "source_type": "official_secondary",
+      "archive_identifier": null,
+      "last_retrieved": "2026-10-31",
+      "quote_excerpt": "Pre-1848 Birth Records Not filed at any level of New Jersey government except Records of Births of Slave Children",
+      "page_ref": null,
+      "verification_status": "verified",
+      "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
+      "used_on": [
+        "lineage-matrix",
+        "tool:places.js"
+      ],
+      "notes": ""
+    },
+    {
+      "claim_id": "nj-vital-1848",
+      "claim_text": "The New Jersey State Archives holds state birth, marriage and death records from May 1, 1848.",
+      "source_url": "https://www.nj.gov/state/archives/search-genealogical-collections.shtml",
+      "source_title": "New Jersey State Archives — Search Genealogical Collections",
+      "source_type": "official_secondary",
+      "archive_identifier": null,
+      "last_retrieved": "2026-10-31",
+      "quote_excerpt": "New Jersey Vital Records (Births, May 1, 1848-December 31, 1925; Marriage and Death May 1, 1848",
+      "page_ref": null,
+      "verification_status": "verified",
+      "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
+      "used_on": [
+        "tool:places.js"
+      ],
+      "notes": ""
+    },
+    {
+      "claim_id": "nj-pre1848-death",
+      "claim_text": "New Jersey deaths before 1848 were not filed by any government.",
+      "source_url": "https://www.nj.gov/state/archives/search-genealogical-collections.shtml",
+      "source_title": "New Jersey State Archives — Search Genealogical Collections",
+      "source_type": "official_secondary",
+      "archive_identifier": null,
+      "last_retrieved": "2026-10-31",
+      "quote_excerpt": "Pre-1848 Death Records Not filed at any governmental level.",
+      "page_ref": null,
+      "verification_status": "verified",
+      "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
+      "used_on": [
+        "tool:places.js"
+      ],
+      "notes": ""
+    },
+    {
+      "claim_id": "nj-pre1848-marriage",
+      "claim_text": "New Jersey marriages before 1848 had to be filed with the County Clerk starting in 1795.",
+      "source_url": "https://www.nj.gov/state/archives/search-genealogical-collections.shtml",
+      "source_title": "New Jersey State Archives — Search Genealogical Collections",
+      "source_type": "official_secondary",
+      "archive_identifier": null,
+      "last_retrieved": "2026-10-31",
+      "quote_excerpt": "Required to be filed with the County Clerk starting in 1795",
+      "page_ref": null,
+      "verification_status": "verified",
+      "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
+      "used_on": [
+        "tool:places.js"
+      ],
+      "notes": ""
+    },
+    {
+      "claim_id": "pa-rev-slip",
+      "claim_text": "Many Pennsylvania militiamen came home unpaid with only a slip signed by a commanding officer.",
+      "source_url": "https://www.pa.gov/agencies/phmc/pa-state-archives/research-online/research-guides/revolutionary-war-overview",
+      "source_title": "Pennsylvania State Archives (PHMC) — Revolutionary War Overview",
+      "source_type": "official_secondary",
+      "archive_identifier": null,
+      "last_retrieved": "2026-10-31",
+      "quote_excerpt": "Thousands of militiamen returned from tours of active duty unpaid, bearing only a slip signed by a commanding officer.",
+      "page_ref": null,
+      "verification_status": "verified",
+      "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
+      "used_on": [
+        "tool:places.js"
+      ],
+      "notes": ""
+    },
+    {
+      "claim_id": "pa-doh-pre1906",
+      "claim_text": "For Pennsylvania births and deaths before 1906, contact the county courthouse.",
+      "source_url": "https://www.pa.gov/agencies/health/programs/vital-records/genealogy",
+      "source_title": "Pennsylvania Department of Health — Vital Records: Genealogy",
+      "source_type": "official_secondary",
+      "archive_identifier": null,
+      "last_retrieved": "2026-10-31",
+      "quote_excerpt": "Information on birth or death records that occurred prior to 1906 can be obtained by contacting the appropriate Pennsylvania County Courthouse.",
+      "page_ref": null,
+      "verification_status": "verified",
+      "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
+      "used_on": [
+        "tool:places.js"
+      ],
+      "notes": ""
+    },
+    {
+      "claim_id": "pa-doh-certified",
+      "claim_text": "All certified copies of Pennsylvania birth and death records come from the Department of Health's Division of Vital Records.",
+      "source_url": "https://www.pa.gov/agencies/health/programs/vital-records/genealogy",
+      "source_title": "Pennsylvania Department of Health — Vital Records: Genealogy",
+      "source_type": "official_secondary",
+      "archive_identifier": null,
+      "last_retrieved": "2026-10-31",
+      "quote_excerpt": "All certified copies of birth and death records are issued by the Division of Vital Records, regardless if they are public records or not.",
+      "page_ref": null,
+      "verification_status": "verified",
+      "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
+      "used_on": [
+        "tool:places.js"
+      ],
+      "notes": ""
+    },
+    {
+      "claim_id": "pa-arch-1906",
+      "claim_text": "The Pennsylvania State Archives holds birth certificates for 1906-1920 and death certificates for 1906-1975.",
+      "source_url": "https://www.pa.gov/services/phmc/request-a-birth-or-death-certificate",
+      "source_title": "Pennsylvania State Archives — Request Copies of Archival Birth or Death Certificates",
+      "source_type": "official_secondary",
+      "archive_identifier": null,
+      "last_retrieved": "2026-10-31",
+      "quote_excerpt": "hold original Pennsylvania birth certificates for 1906-1920 and death certificates for 1906-1975",
+      "page_ref": null,
+      "verification_status": "verified",
+      "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
+      "used_on": [
+        "tool:places.js"
+      ],
+      "notes": ""
+    },
+    {
+      "claim_id": "ct-pension-index",
+      "claim_text": "The Connecticut State Library has an index to pensions in the CT State Archives.",
+      "source_url": "https://libguides.ctstatelibrary.org/hg/militaryrecords/revwar",
+      "source_title": "Connecticut State Library — Military Records: Revolutionary War",
+      "source_type": "official_secondary",
+      "archive_identifier": null,
+      "last_retrieved": "2026-10-31",
+      "quote_excerpt": "An index to pensions held in the CT State Archives has also been created.",
+      "page_ref": null,
+      "verification_status": "verified",
+      "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
+      "used_on": [
+        "tool:places.js"
+      ],
+      "notes": ""
+    },
+    {
+      "claim_id": "ct-archives-indexes",
+      "claim_text": "The Connecticut State Library points to Connecticut Archives indexes for Militia and Revolutionary War.",
+      "source_url": "https://libguides.ctstatelibrary.org/hg/militaryrecords/revwar",
+      "source_title": "Connecticut State Library — Military Records: Revolutionary War",
+      "source_type": "official_secondary",
+      "archive_identifier": null,
+      "last_retrieved": "2026-10-31",
+      "quote_excerpt": "Also check the indexes which are linked below to the \"Connecticut Archives\" under the topics Militia and Revolutionary War.",
+      "page_ref": null,
+      "verification_status": "verified",
+      "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
+      "used_on": [
+        "tool:places.js"
+      ],
+      "notes": ""
+    },
+    {
+      "claim_id": "sc-rev-audited",
+      "claim_text": "The South Carolina archives holds the Accounts Audited of Claims Growing Out of the Revolution.",
+      "source_url": "https://scdah.sc.gov/sites/scdah/files/Documents/Research%20and%20Genealogy/Resources/Military%20Records/rvwr.pdf",
+      "source_title": "South Carolina Department of Archives and History — Sources for the American Revolution",
+      "source_type": "official_secondary",
+      "archive_identifier": null,
+      "last_retrieved": "2026-10-31",
+      "quote_excerpt": "Accounts Audited of Claims Growing Out of the Revolution in South",
+      "page_ref": null,
+      "verification_status": "verified",
+      "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
+      "used_on": [
+        "tool:places.js"
+      ],
+      "notes": ""
+    },
+    {
+      "claim_id": "sc-rev-cardindex",
+      "claim_text": "The South Carolina archives has a card index to Revolutionary service.",
+      "source_url": "https://scdah.sc.gov/sites/scdah/files/Documents/Research%20and%20Genealogy/Resources/Military%20Records/rvwr.pdf",
+      "source_title": "South Carolina Department of Archives and History — Sources for the American Revolution",
+      "source_type": "official_secondary",
+      "archive_identifier": null,
+      "last_retrieved": "2026-10-31",
+      "quote_excerpt": "A card file index to Revolutionary service in the Research Room",
+      "page_ref": null,
+      "verification_status": "verified",
+      "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
+      "used_on": [
+        "tool:places.js"
+      ],
+      "notes": ""
+    },
+    {
+      "claim_id": "sc-birth-1915",
+      "claim_text": "South Carolina state birth records begin in 1915.",
+      "source_url": "https://scdah.sc.gov/news/2020-03/sc-birth-certificates-archives",
+      "source_title": "South Carolina Department of Archives and History — SC Birth Certificates at the Archives",
+      "source_type": "official_secondary",
+      "archive_identifier": null,
+      "last_retrieved": "2026-10-31",
+      "quote_excerpt": "These records begin in 1915",
+      "page_ref": null,
+      "verification_status": "verified",
+      "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
+      "used_on": [
+        "tool:places.js"
+      ],
+      "notes": ""
+    },
+    {
+      "claim_id": "sc-birth-law",
+      "claim_text": "South Carolina did not require registration of all births until a 1914 law.",
+      "source_url": "https://scdah.sc.gov/news/2020-03/sc-birth-certificates-archives",
+      "source_title": "South Carolina Department of Archives and History — SC Birth Certificates at the Archives",
+      "source_type": "official_secondary",
+      "archive_identifier": null,
+      "last_retrieved": "2026-10-31",
+      "quote_excerpt": "the state did not require registration of all births until the passage of a law mandating it in 1914",
+      "page_ref": null,
+      "verification_status": "verified",
+      "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
+      "used_on": [
+        "tool:places.js"
+      ],
+      "notes": ""
+    },
+    {
+      "claim_id": "sc-death-1915",
+      "claim_text": "South Carolina required death certificates from January 1, 1915.",
+      "source_url": "https://guides.statelibrary.sc.gov/genealogy/vitalrecords",
+      "source_title": "South Carolina State Library — Genealogy Resources: Vital Records",
+      "source_type": "official_secondary",
+      "archive_identifier": null,
+      "last_retrieved": "2026-10-31",
+      "quote_excerpt": "Death certificates were required in SC beginning January 1, 1915.",
+      "page_ref": null,
+      "verification_status": "verified",
+      "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
+      "used_on": [
+        "tool:places.js"
+      ],
+      "notes": ""
+    },
+    {
+      "claim_id": "sc-marriage-1911",
+      "claim_text": "South Carolina required marriage licenses from July 1, 1911.",
+      "source_url": "https://guides.statelibrary.sc.gov/genealogy/vitalrecords",
+      "source_title": "South Carolina State Library — Genealogy Resources: Vital Records",
+      "source_type": "official_secondary",
+      "archive_identifier": null,
+      "last_retrieved": "2026-10-31",
+      "quote_excerpt": "Marriage licenses were required in SC beginning July 1, 1911.",
+      "page_ref": null,
+      "verification_status": "verified",
+      "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
+      "used_on": [
+        "tool:places.js"
+      ],
+      "notes": ""
+    },
+    {
+      "claim_id": "ma-adjutant",
+      "claim_text": "The Massachusetts Archives holds the Adjutant General's historical military records.",
+      "source_url": "https://www.mass.gov/info-details/researching-massachusetts-soldiers-and-sailors",
+      "source_title": "Mass.gov (State Library of Massachusetts) — Researching Massachusetts Soldiers and Sailors",
+      "source_type": "official_secondary",
+      "archive_identifier": null,
+      "last_retrieved": "2026-10-31",
+      "quote_excerpt": "Houses the historical military records of the Massachusetts Adjutant General.",
+      "page_ref": null,
+      "verification_status": "verified",
+      "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
+      "used_on": [
+        "tool:places.js"
+      ],
+      "notes": ""
+    },
+    {
+      "claim_id": "ma-complete",
+      "claim_text": "That collection is one of the most complete state records of Massachusetts service from 1775 to 1940.",
+      "source_url": "https://www.mass.gov/info-details/researching-massachusetts-soldiers-and-sailors",
+      "source_title": "Mass.gov (State Library of Massachusetts) — Researching Massachusetts Soldiers and Sailors",
+      "source_type": "official_secondary",
+      "archive_identifier": null,
+      "last_retrieved": "2026-10-31",
+      "quote_excerpt": "This collection is one of the most complete state records of MA servicemen and women from 1775-1940.",
+      "page_ref": null,
+      "verification_status": "verified",
+      "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
+      "used_on": [
+        "tool:places.js"
+      ],
+      "notes": ""
+    },
+    {
+      "claim_id": "nara-vital-states",
+      "claim_text": "The National Archives points to the CDC's National Center for Health Statistics for getting birth, death and marriage records from state agencies.",
+      "source_url": "https://www.archives.gov/research/vital-records",
+      "source_title": "National Archives — Vital Records",
+      "source_type": "official_secondary",
+      "archive_identifier": null,
+      "last_retrieved": "2026-10-31",
+      "quote_excerpt": "The CDC's National Center for Health Statistics website tells how to obtain birth, death, marriage, and divorce records from state and territorial agencies.",
+      "page_ref": null,
+      "verification_status": "verified",
+      "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
+      "used_on": [
+        "tool:places.js"
+      ],
+      "notes": ""
+    },
+    {
+      "claim_id": "nara-vital-census",
+      "claim_text": "A census entry giving state and approximate year of birth tells you which local office to ask for a birth record.",
+      "source_url": "https://www.archives.gov/research/vital-records",
+      "source_title": "National Archives — Vital Records",
+      "source_type": "official_secondary",
+      "archive_identifier": null,
+      "last_retrieved": "2026-10-31",
+      "quote_excerpt": "if you find your ancestor's state of birth and approximate year of birth are reported in the census, you can then contact that local jurisdiction regarding their birth records",
+      "page_ref": null,
+      "verification_status": "verified",
+      "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
+      "used_on": [
+        "lineage-matrix",
+        "tool:places.js"
       ],
       "notes": ""
     }

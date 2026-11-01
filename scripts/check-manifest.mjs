@@ -87,6 +87,12 @@ if (LINKS) {
         catch { body = null; warnings.push(`${u}: PDF fetched but pdftotext unavailable — quote check skipped`); }
       } else body = await r.text();
     } catch (e) { errors.push(`${u}: fetch failed (${e.message})`); linkReport.push({ url: u, status: "error" }); continue; }
+    // Some sites' bot filters (e.g. dar.org's Cloudflare) reject Node's HTTP client but serve the same public page to curl.
+    // Re-read the page with curl and still quote-check it; a non-200 from curl still fails the build.
+    if ((status === 403 || status === 429) && !type.includes("pdf")) {
+      try { const out = execFileSync("curl", ["-sL", "--max-time", "45", "-A", "Mozilla/5.0 (patriotinlays manifest checker)", "-H", "Accept: text/html", "-w", "\n%{http_code}", u], { encoding: "utf8", maxBuffer: 64e6 });
+        const i = out.lastIndexOf("\n"); status = Number(out.slice(i + 1)); body = out.slice(0, i); if (status === 200) warnings.push(`${u}: Node fetch got 403/429; verified with curl instead`); } catch { /* keep original status */ }
+    }
     if (status !== 200) { errors.push(`${u}: HTTP ${status}`); linkReport.push({ url: u, status }); continue; }
     const hay = body == null ? null : norm(type.includes("pdf") ? body : stripHtml(body));
     let found = 0, missing = 0;

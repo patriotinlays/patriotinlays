@@ -66,7 +66,7 @@ The act behind an application decides what the applicant had to say, so it tells
 | 1878 | Widows of soldiers with as few as 14 days of service [[claim:nara-act-1878]] | Very late claims |
 
 Two summaries of the 1836 act do not match word for word. [[claim:nara-act-1836]] NARA's pamphlet says the widow married the veteran before his last period of service expired; the National Park Service summarizes it as marriage before the war ended in 1783. [[claim:nps-1836]]
-The Service Window Checker uses NARA's wording.
+The Widow Pension Law Checker uses NARA's wording.
 
 ## Step 5: Pull out the genealogy
 
@@ -79,8 +79,8 @@ Veterans themselves acknowledged that they might mix up a date or the order of e
 
 ## Step 6: Record what you found
 
-Enter each fact in the Lineage Evidence Matrix with the file number and image page as the citation. Then use the Service Window Checker to test the dates the file gives against the published windows and widow acts.
+Enter each fact in the Lineage Evidence Matrix with the file number and image page as the citation. Then use the Widow Pension Law Checker to test the marriage and service dates the file gives against the widow acts.
 
 Related guides: [Bounty Land Warrants](/guides/bounty-land-warrants/), [Revolutionary War Records by State](/guides/records-by-state/), [Same Name, Different Man](/guides/same-name/).
 
-::tool service-window
+::tool widow

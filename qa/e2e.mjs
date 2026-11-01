@@ -36,65 +36,77 @@ page.on("dialog", (d) => d.accept());
 const ls = () => page.evaluate(() => Object.fromEntries(Object.keys(localStorage).map((k) => [k, localStorage.getItem(k)])));
 const phase = (p) => { page.__phase = p; };
 
-// ---- Tool A full page ----
-phase("load"); await page.goto(`${BASE}/tools/service-window-checker/`); await page.evaluate(() => localStorage.setItem("other.app.key", "keep-me"));
+// ---- Widow Pension Law Checker (leads the site) ----
+phase("load"); await page.goto(`${BASE}/tools/widow-pension-checker/`); await page.evaluate(() => localStorage.setItem("other.app.key", "keep-me"));
 phase("interact");
-await page.selectOption("#ta-type", "core"); await page.fill("#ta-start", "1775-04-19"); await page.fill("#ta-end", "1776-01-01"); await page.click('form[data-form=window] button[type=submit]');
-let txt = await page.textContent('[data-out=window]');
-check("Tool A: core window 1775-04-19..1776-01-01 shows the mandated 'fits, not a ruling' sentence", txt.includes("Your dates fit the official service period for this type of service. This is not a ruling: your society decides."), txt.slice(0, 120));
-const badgeBg = await page.$eval('[data-out=window] .badge', (b) => getComputedStyle(b).backgroundColor);
-check("Tool A: 'fits' badge uses a neutral (not green) color", (() => { const [r, g, b] = badgeBg.match(/\d+/g).map(Number); return !(g > r + 20 && g > b + 20); })(), badgeBg);
-const howA = await page.textContent('[data-tool="service-window"] .howto');
-check("Tool A: 'How this works' says it doesn't search records and nothing leaves the device", /does not search any records/.test(howA) && /Nothing you type leaves your device/.test(howA));
-check("Tool A: date hint reads 'e.g. 1776 or 1776-07'", (await page.textContent("#date-hint")).includes("e.g. 1776 or 1776-07"));
-await page.selectOption("#ta-type", "galvez_cattle"); await page.fill("#ta-start", "1776-12-24"); await page.fill("#ta-end", ""); await page.click('form[data-form=window] button[type=submit]');
-txt = await page.textContent('[data-out=window]');
-check("Tool A: Gálvez cattle 24 Dec 1776 is outside the rule", /Outside the period/.test(txt), txt.slice(0, 100));
-check("Tool A: plan for dates that don't fit starts with 'Double-check the dates'", (await page.textContent('[data-tool="service-window"] [data-plan] .plan-steps > li')).startsWith("Double-check the dates"));
+const intro = await page.textContent("main");
+check("Widow checker page: explains what it tells you and why it matters for finding pension files", /What it tells you/.test(intro) && /Why it matters/.test(intro) && /pension file/i.test(intro));
+check("Widow checker page: the standalone service-date form is gone", (await page.$$("form[data-form=window], #ta-start")).length === 0);
+const howA = await page.textContent('[data-tool="widow"] .howto');
+check("Widow checker: 'How this works' says it doesn't search records and nothing leaves the device", /does not search any records/.test(howA) && /Nothing you type leaves your device/.test(howA), howA.slice(0, 160));
+check("Widow checker: empty form -> plan says 'Fill in the form above'", /Fill in the form above/.test(await page.textContent('[data-tool="widow"] [data-plan]')));
 await page.fill("#tw-m", "1780-05-01"); await page.fill("#tw-e", "1781-10-19"); await page.fill("#tw-mo", "24"); await page.fill("#tw-d", "730"); await page.click('form[data-form=widow] button[type=submit]');
-txt = await page.textContent('[data-out=widow]');
-check("Tool A: widow table shows 1836 note about 1832 service categories", /1832/.test(txt) && /Continental Line/.test(txt), "");
+let txt = await page.textContent('[data-out=widow]');
+check("Widow checker: table shows 1836 note about 1832 service categories", /1832/.test(txt) && /Continental Line/.test(txt), "");
 const rows = await page.$$eval('[data-out=widow] tbody tr', (trs) => trs.map((tr) => [tr.cells[0].textContent, tr.cells[1].textContent]));
 const r1853 = rows.find((r) => r[0].includes("1853")); const r1855 = rows.find((r) => r[0].includes("February 28, 1855"));
-check("Tool A: 1853 and Feb-1855 acts display 'Not checked'", r1853?.[1].includes("Not checked") && r1855?.[1].includes("Not checked"), `${r1853?.[1].slice(0, 30)} | ${r1855?.[1].slice(0, 30)}`);
+check("Widow checker: 1853 and Feb-1855 acts display 'Not checked'", r1853?.[1].includes("Not checked") && r1855?.[1].includes("Not checked"), `${r1853?.[1].slice(0, 30)} | ${r1855?.[1].slice(0, 30)}`);
 const next1853 = await page.$$eval('[data-out=widow] tbody tr', (trs) => trs.find((tr) => tr.cells[0].textContent.includes("1853")).cells[2].textContent);
-check("Tool A: 'Not checked' row says why and what to do (pension papers / registrar)", /Why:/.test(next1853) && /What to do/.test(next1853) && /registrar/.test(next1853), next1853.slice(0, 80));
-check("Tool A: each widow field shows a 'Why it matters' line", (await page.$$eval("form[data-form=widow] [data-why]", (ps) => ps.filter((p) => p.textContent.startsWith("Why it matters")).length)) === 4);
-await page.click('[data-tool="service-window"] [data-load-example]');
-const exW = await page.textContent('[data-out=window]'), exD = await page.textContent('[data-out=widow]');
-const planA = await page.textContent('[data-tool="service-window"] [data-plan]');
-check("Tool A: 'What to do next' plan for fitting dates: find records, registrar (with DAR Chapter Locator link), start application", /Find the original records/.test(planA) && /Contact a local chapter's registrar/.test(planA) && /Start the application/.test(planA)
-  && (await page.$$('[data-tool="service-window"] [data-plan] a[href="https://www.dar.org/discover/become-member/chapter-locator"]')).length === 1, planA.slice(0, 80));
-check("Tool A: plan names the 'Not checked' laws in their own step", /For the laws marked "Not checked"/.test(planA) && /1853/.test(planA));
+check("Widow checker: 'Not checked' row says why and what to do (pension papers / registrar)", /Why:/.test(next1853) && /What to do/.test(next1853) && /registrar/.test(next1853), next1853.slice(0, 80));
+check("Widow checker: each field shows a 'Why it matters' line", (await page.$$eval("form[data-form=widow] [data-why]", (ps) => ps.filter((p) => p.textContent.startsWith("Why it matters")).length)) === 4);
+await page.click('[data-tool="widow"] [data-load-example]');
+const exD = await page.textContent('[data-out=widow]');
+const planA = await page.textContent('[data-tool="widow"] [data-plan]');
+check("Widow checker: example plan -> look for the widow's pension file, registrar (DAR Chapter Locator), start application", /Look for the widow's pension file/.test(planA) && /Contact a local chapter's registrar/.test(planA) && /Start the application/.test(planA)
+  && (await page.$$('[data-tool="widow"] [data-plan] a[href="https://www.dar.org/discover/become-member/chapter-locator"]')).length === 1, planA.slice(0, 80));
+check("Widow checker: plan names the 'Not checked' laws in their own step", /For the laws marked "Not checked"/.test(planA) && /1853/.test(planA));
 await page.evaluate(() => { window.__printed = 0; window.__planOnly = null; window.print = () => { window.__printed++; window.__planOnly = document.body.classList.contains("print-plan"); }; });
-await page.click('[data-tool="service-window"] [data-print-plan]');
-check("Tool A: 'Print or save this plan' prints in plan-only mode", (await page.evaluate(() => window.__printed === 1 && window.__planOnly === true)));
-check("Tool A: no 'Not evaluated' wording anywhere on the page", !/not evaluated/i.test(await page.textContent("main")));
-check("Tool A: 'Load an example' fills both steps and shows results at once", /not a ruling/.test(exW) && /Fits this law's date rule/.test(exD), exW.slice(0, 60));
-const bodyA = await page.textContent("body"); check("Tool A page: no 'Qualif' anywhere in rendered text", !/qualif/i.test(bodyA));
+await page.click('[data-tool="widow"] [data-print-plan]');
+check("Widow checker: 'Print or save this plan' prints in plan-only mode", (await page.evaluate(() => window.__printed === 1 && window.__planOnly === true)));
+check("Widow checker: no 'Not evaluated' wording anywhere on the page", !/not evaluated/i.test(await page.textContent("main")));
+check("Widow checker: 'Load an example' shows results at once", /Fits this law's date rule/.test(exD), exD.slice(0, 60));
+check("Widow checker page: no 'Qualif' anywhere in rendered text", !/qualif/i.test(await page.textContent("body")));
 let store = await ls();
-check("Tool A: saved under namespaced keys only", Object.keys(store).filter((k) => k.startsWith("pi.toolA.")).sort().join(",") === "pi.toolA.widow,pi.toolA.window", Object.keys(store).join(","));
-await page.screenshot({ path: join(SHOTS, "desktop-tool-a.png"), fullPage: false });
-// Report page
-phase("load"); await page.goto(`${BASE}/tools/service-window-checker/report/`); phase("interact");
+check("Widow checker: saved under namespaced keys only", Object.keys(store).filter((k) => k.startsWith("pi.toolA.")).sort().join(",") === "pi.toolA.widow", Object.keys(store).join(","));
+await page.screenshot({ path: join(SHOTS, "desktop-widow.png"), fullPage: false });
+phase("load"); await page.goto(`${BASE}/tools/widow-pension-checker/report/`); phase("interact");
 txt = await page.textContent("[data-report]");
-check("Tool A report renders saved checks from localStorage", txt.includes("Service dates check") && txt.includes("Widow pension"), "");
-check("Tool A report: has 'What to do next' plan with a 'Print or save this plan' button", /What to do next/.test(txt) && /Contact a local chapter's registrar/.test(txt) && (await page.$$("[data-report] [data-print-plan]")).length === 1);
+check("Widow report renders saved results from localStorage", /Widow pension/.test(txt) && /1836/.test(txt), txt.slice(0, 80));
+check("Widow report: 'What to do next' plan with a 'Print or save this plan' button", /What to do next/.test(txt) && /Contact a local chapter's registrar/.test(txt) && (await page.$$("[data-report] [data-print-plan]")).length === 1);
 await page.emulateMedia({ media: "print" });
 const printHidden = await page.$$eval("header.site, footer.site, .tool button", (els) => els.every((e) => getComputedStyle(e).display === "none"));
-check("Tool A report: print CSS hides nav, footer and buttons", printHidden); await page.emulateMedia({ media: "screen" });
-await page.click('[data-tool-report="service-window"] [data-clear=toolA]');
+check("Widow report: print CSS hides nav, footer and buttons", printHidden); await page.emulateMedia({ media: "screen" });
+await page.click('[data-tool-report="widow"] [data-clear=toolA]');
 store = await ls();
-check("Tool A clear: removes pi.toolA.* only, keeps unrelated key", !Object.keys(store).some((k) => k.startsWith("pi.toolA.")) && store["other.app.key"] === "keep-me", Object.keys(store).join(","));
-
-// ---- Tool A embed on a guide ----
+check("Widow clear: removes pi.toolA.* only, keeps unrelated key", !Object.keys(store).some((k) => k.startsWith("pi.toolA.")) && store["other.app.key"] === "keep-me", Object.keys(store).join(","));
 phase("load"); await page.goto(`${BASE}/guides/read-pension-file/`); phase("interact");
-await page.fill("#ta-start", "1783-11-27"); await page.click('form[data-form=window] button[type=submit]');
-txt = await page.textContent('[data-out=window]');
-check("Tool A embed on guide #3 works (27 Nov 1783 outside)", /Outside the period/.test(txt));
+check("Guide #3 shows the widow checker card linking the checker", (await page.$$('[data-tool-card="widow"] a[href="/tools/widow-pension-checker/"]')).length === 1);
+// Retired service-date check: redirects, sitemap, no internal links left
+const redirects = readFileSync(join(DIST, "_redirects"), "utf8");
+check("Retired /tools/service-window-checker/ (and its report) 301-redirect to the widow checker", /^\/tools\/service-window-checker\/ \/tools\/widow-pension-checker\/ 301$/m.test(redirects) && /^\/tools\/service-window-checker\/report\/ \/tools\/widow-pension-checker\/report\/ 301$/m.test(redirects));
+const sm = readFileSync(join(DIST, "sitemap.xml"), "utf8");
+const { readdirSync: rd0 } = await import("node:fs");
+const htmlFiles = (function walk(d) { return rd0(d, { withFileTypes: true }).flatMap((e) => e.isDirectory() ? walk(join(d, e.name)) : e.name.endsWith(".html") ? [join(d, e.name)] : []); })(DIST);
+check("Sitemap lists the widow checker and not the retired URL; no page links to the retired URL", sm.includes("/tools/widow-pension-checker/") && !sm.includes("service-window-checker") && htmlFiles.every((f) => !readFileSync(f, "utf8").includes('href="/tools/service-window-checker')), "");
+
+// ---- Worksheet patriot step ----
+phase("load"); await page.goto(`${BASE}/tools/lineage-matrix/`); phase("interact");
+check("Worksheet: step 1 is the patriot step", /The patriot/.test(await page.textContent("#tb-patriot")) && (await page.$$("[data-patriot-form] #pat-kind option")).length >= 9);
+await page.fill("#pat-name", "Test Patriot"); await page.selectOption("#pat-state", "NC"); await page.selectOption("#pat-kind", "continental"); await page.fill("#pat-start", "1776-02"); await page.fill("#pat-end", "1779-06");
+txt = await page.textContent("[data-patriot-check]");
+check("Patriot step: dates checked against DAR's period for that type of service (not a ruling), linking the widow checker", /Dates fit DAR's period/.test(txt) && /not a ruling/.test(txt) && (await page.$$('[data-patriot-check] a[href="/tools/widow-pension-checker/?from=worksheet"]')).length === 1, txt.slice(0, 120));
+await page.fill("#pat-start", "1785"); await page.fill("#pat-end", "");
+check("Patriot step: dates outside the period are flagged", /outside|does not fit|not inside/i.test(await page.textContent("[data-patriot-check]")), (await page.textContent("[data-patriot-check]")).slice(0, 100));
+await page.fill("#pat-start", "1776-02"); await page.fill("#pat-end", "1779-06");
+const planP = await page.textContent('[data-tool="lineage-matrix"] [data-plan]');
+check("Patriot step drives the plan: prove his service (North Carolina troop returns, M881), then the widow-pension step", /Prove the patriot's service/.test(planP) && /North Carolina/.test(planP) && /M881/.test(planP) && /widow-pension laws/.test(planP), planP.slice(0, 160));
+phase("load"); await page.goto(`${BASE}/tools/widow-pension-checker/?from=worksheet`); phase("interact");
+check("Widow checker auto-fills his service end from the worksheet patriot", (await page.inputValue("#tw-e")) === "1779-06" && /Test Patriot/.test(await page.textContent("[data-worksheet-msg]")), await page.textContent("[data-worksheet-msg]"));
+await page.click("[data-clear=toolA]");
+phase("load"); await page.goto(`${BASE}/tools/lineage-matrix/`); phase("interact");
+await page.evaluate(() => localStorage.removeItem("pi.toolB.v1")); phase("load"); await page.reload(); phase("interact");
 
 // ---- Tool B ----
-phase("load"); await page.goto(`${BASE}/tools/lineage-matrix/`); phase("interact");
 check("Tool B: starts with 2 generations", (await page.$$("section.gen")).length === 2);
 check("Tool B: 'How this works' says it doesn't search records and nothing leaves the device", /does not search any records/.test(await page.textContent('[data-tool="lineage-matrix"] .howto')));
 check("Tool B: generations are labelled 'Generation 1: You' and 'Generation 2: Your parent'", (await page.$$eval("section.gen h3", (hs) => hs.map((h) => h.textContent).join("|"))) === "Generation 1: You|Generation 2: Your parent");
@@ -157,7 +169,15 @@ const orderItems = await page.$$eval('[data-tool="lineage-matrix"] [data-plan] .
 const planGens = await page.$$eval('[data-tool="lineage-matrix"] [data-plan] .plan-group', (x) => x.map((e) => e.textContent));
 check("Tool B (regression): action plan groups each generation once, in order", planGens.length >= 2 && new Set(planGens).size === planGens.length && planGens.every((g, i) => i === 0 || +g.match(/\d+/)[0] > +planGens[i - 1].match(/\d+/)[0]), planGens.join(" | "));
 check("Tool B: action plan lists each missing record with a Where-to-look link, then registrar and application steps", orderItems.length >= 3 && orderItems.every(Boolean) && /Contact a local chapter's registrar/.test(planB) && /Start the application/.test(planB), `${orderItems.length} items`);
-check("Tool B: 'Load an example' fills a made-up family and shows gaps with where to look", (await page.$$("section.gen")).length === 4 && (await page.$$("section.gen .cell")).length === 6 && (await page.$$("[data-gaps] .where a[href*='archives.gov']")).length > 0);
+check("Tool B: 'Load an example' fills a made-up patriot and family and shows gaps with where to look", (await page.$$("section.gen")).length === 5 && (await page.inputValue("#pat-name")).length > 0 && (await page.$$("[data-gaps] .where a[href*='archives.gov']")).length > 0);
+const notes = await page.$$eval("[data-gaps] .where-note", (ns) => ns.map((n) => n.textContent));
+check("Where to look is tailored: Virginia's 1853-1896 birth registers and the censuses in each lifetime appear", notes.some((n) => /1853 to 1896/.test(n)) && notes.some((n) => /Censuses in their lifetime/.test(n)), notes.slice(0, 2).join(" | ").slice(0, 160));
+check("Where to look: the patriot's generation is labelled", /\(the patriot\)/.test(await page.textContent("[data-gaps]")));
+const noteHrefs = await page.$$eval("[data-gaps] .where a", (as) => [...new Set(as.map((a) => a.getAttribute("href")))]);
+check("Where to look: state/era links (Library of Virginia, Pennsylvania) are Source Manifest sources", noteHrefs.includes("https://lva-virginia.libguides.com/bmd") && noteHrefs.some((h) => h.startsWith("https://www.pa.gov/")) && noteHrefs.every((h) => mUrls.has(h) || /^\/guides\/[a-z-]+\/$/.test(h)), noteHrefs.join(" "));
+await page.selectOption("#state-3", "TX");
+const txNote = await page.textContent('[data-gaps] li[data-gap-gen="3"]');
+check("Where to look: a state with no verified source says so (no invented records)", /no verified source yet on when Texas/.test(txNote), txNote.slice(0, 120));
 await page.click("[data-clear=toolB]");
 store = await ls();
 check("Tool B clear: removes pi.toolB.* only, keeps unrelated key", !Object.keys(store).some((k) => k.startsWith("pi.toolB")) && store["other.app.key"] === "keep-me", Object.keys(store).join(","));
@@ -167,13 +187,17 @@ phase("load"); await page.goto(`${BASE}/`); phase("interact");
 const home = await page.textContent("main");
 const gloss = await page.textContent(".glossary");
 check("Home: short glossary defines Patriot, DAR, SAR, NSCDA and lineage society, each with a source note", ["Patriot:", "DAR:", "SAR:", "NSCDA:", "Lineage society:"].every((k) => gloss.includes(k)) && (await page.$$eval(".glossary li", (lis) => lis.every((li) => li.querySelector("sup a[href^='#src-']")))) && (await page.$$("#sources + ol.sources li")).length >= 3);
-check("Home: says in plain words what you can get done and where to start", /What you can get done here/.test(home) && /Where to start/.test(home) && (await page.$$('main a.button-link[href="/tools/lineage-matrix/"]')).length === 1);
+check("Home: says in plain words where to start, then offers the worksheet and the Roadmap guide", /Start here/.test(home) && /Proving your whole line\?/.test(home) && (await page.$$('main a.button-link[href="/tools/lineage-matrix/"]')).length === 1 && (await page.$$('main a.button-link[href="/guides/lineage-proof-roadmap/"]')).length === 1);
+const firstH2 = await page.$eval("main h2", (h) => h.id + "|" + h.textContent);
+check("Home: leads with the widow-pension check, explained plainly, with a button to it", firstH2.startsWith("lead-widow") && (await page.$$('main section.lead-tool a[href="/tools/widow-pension-checker/"]')).length >= 1 && /pension file/i.test(await page.textContent("main section.lead-tool")), firstH2);
+const navLinks = await page.$$eval("header.site nav a", (as) => as.map((a) => a.getAttribute("href")));
+check("Navigation: the widow-pension check comes first", navLinks[0] === "/tools/widow-pension-checker/", navLinks.join(" "));
 const guidePaths = ["/guides/lineage-proof-roadmap/", "/guides/substitute-evidence/", "/guides/read-pension-file/", "/guides/records-by-state/", "/guides/bounty-land-warrants/", "/guides/census-bridge/", "/guides/patriotic-service/", "/guides/same-name/", "/guides/patriot-or-loyalist/", "/guides/application-problems/"];
 const guideBad = [];
 for (const gp of guidePaths) { const h = readFileSync(join(DIST, gp, "index.html"), "utf8");
-  if (!/<h2 id="what-to-do-next">/.test(h) || !h.includes('href="/tools/lineage-matrix/"') || !h.includes('href="/tools/service-window-checker/"') || !h.includes("chapter-locator") || !/class="next-guide"/.test(h)) guideBad.push(gp); }
+  if (!/<h2 id="what-to-do-next">/.test(h) || !h.includes('href="/tools/lineage-matrix/"') || !h.includes('href="/tools/widow-pension-checker/"') || !h.includes("chapter-locator") || !/class="next-guide"/.test(h)) guideBad.push(gp); }
 check("Guides: all 10 end with 'What to do next' (both tools, chapter finder) and a next-guide link", guideBad.length === 0, guideBad.join(" "));
-const toolGuideLinks = ["/tools/service-window-checker/", "/tools/lineage-matrix/"].every((p) => /href="\/guides\/[a-z-]+\/"/.test(readFileSync(join(DIST, p, "index.html"), "utf8")));
+const toolGuideLinks = ["/tools/widow-pension-checker/", "/tools/lineage-matrix/"].every((p) => /href="\/guides\/[a-z-]+\/"/.test(readFileSync(join(DIST, p, "index.html"), "utf8")));
 check("Tools: each tool page links to matching guides", toolGuideLinks);
 const deadEnds = ["/about/", "/privacy/", "/contact/", "/sources/"].filter((p) => !readFileSync(join(DIST, p, "index.html"), "utf8").includes('class="card start-here"'));
 check("No dead ends: About, Privacy, Contact, Sources and 404 offer a 'Ready to start?' box", deadEnds.length === 0 && readFileSync(join(DIST, "404.html"), "utf8").includes("start-here"), deadEnds.join(" "));
@@ -189,7 +213,7 @@ check("Network: zero requests while using the tools (after page load)", duringIn
 // ---- Mobile and desktop rendering ----
 const pagesToCheck = ["/", "/guides/lineage-proof-roadmap/", "/guides/substitute-evidence/", "/guides/read-pension-file/", "/guides/records-by-state/", "/guides/bounty-land-warrants/",
   "/guides/census-bridge/", "/guides/patriotic-service/", "/guides/same-name/", "/guides/patriot-or-loyalist/", "/guides/application-problems/",
-  "/tools/service-window-checker/", "/tools/lineage-matrix/", "/tools/service-window-checker/report/", "/tools/lineage-matrix/report/", "/about/", "/privacy/", "/contact/", "/sources/"];
+  "/tools/widow-pension-checker/", "/tools/lineage-matrix/", "/tools/widow-pension-checker/report/", "/tools/lineage-matrix/report/", "/about/", "/privacy/", "/contact/", "/sources/"];
 const mobile = await browser.newContext({ viewport: { width: 375, height: 812 }, deviceScaleFactor: 2, isMobile: true, hasTouch: true });
 const mp = await mobile.newPage(); const overflow = [];
 mp.on("pageerror", (e) => consoleErrors.push(`mobile ${mp.url()}: ${e.message}`));
@@ -203,17 +227,22 @@ const tapTargets = await (async () => { await mp.goto(`${BASE}/tools/lineage-mat
 // Regression: widow-act table reflows into stacked cards at 360px with no horizontal page overflow.
 const narrow = await browser.newContext({ viewport: { width: 360, height: 780 }, deviceScaleFactor: 2, isMobile: true, hasTouch: true });
 const np = await narrow.newPage(); np.on("pageerror", (e) => consoleErrors.push(`360px: ${e.message}`));
-await np.goto(`${BASE}/tools/service-window-checker/`); await np.click("[data-load-example]");
+await np.goto(`${BASE}/tools/widow-pension-checker/`); await np.click("[data-load-example]");
 const wInfo = await np.evaluate(() => { const t = document.querySelector("table.widow"); const tr = t.querySelector("tbody tr"); const td = tr.querySelector("td");
   return { sw: document.documentElement.scrollWidth, iw: window.innerWidth, tw: t.getBoundingClientRect().width, td: getComputedStyle(td).display, thead: getComputedStyle(t.querySelector("thead")).display, label: getComputedStyle(td, "::before").content }; });
 check("Mobile 360px (regression): widow-act table shows stacked cards, no horizontal overflow", wInfo.sw <= wInfo.iw + 1 && wInfo.tw <= wInfo.iw && wInfo.td === "block" && wInfo.thead === "none" && /Pension law/.test(wInfo.label), JSON.stringify(wInfo));
 await np.screenshot({ path: join(SHOTS, "m360-widow-cards.png"), fullPage: false }); await np.evaluate(() => document.querySelector("table.widow").scrollIntoView()); await np.screenshot({ path: join(SHOTS, "m360-widow-cards.png") });
-await np.goto(`${BASE}/tools/service-window-checker/report/`);
+await np.goto(`${BASE}/tools/widow-pension-checker/report/`);
 const rInfo = await np.evaluate(() => ({ sw: document.documentElement.scrollWidth, iw: window.innerWidth, td: getComputedStyle(document.querySelector("table.widow td")).display }));
 check("Mobile 360px (regression): checker report's widow table also stacks, no overflow", rInfo.sw <= rInfo.iw + 1 && rInfo.td === "block", JSON.stringify(rInfo));
+const npages = ["/", "/tools/lineage-matrix/", "/tools/widow-pension-checker/", "/tools/lineage-matrix/report/"]; const nOver = [];
+for (const p of npages) { await np.goto(BASE + p); if (p === "/tools/lineage-matrix/") await np.click("[data-load-example]");
+  const o = await np.evaluate(() => ({ sw: document.documentElement.scrollWidth, iw: window.innerWidth })); if (o.sw > o.iw + 1) nOver.push(`${p} ${o.sw}`); }
+check("Mobile 360px: home, worksheet (with the example and patriot step), widow checker and report have no horizontal overflow", nOver.length === 0, nOver.join(", "));
+await np.goto(`${BASE}/tools/lineage-matrix/`); await np.evaluate(() => document.querySelector("#tb-patriot").scrollIntoView()); await np.screenshot({ path: join(SHOTS, "m360-patriot.png") });
 await narrow.close();
 check("Mobile: tool buttons are at least 44px tall", tapTargets === 0, `${tapTargets} small`);
-for (const [p, name] of [["/", "m-home"], ["/guides/substitute-evidence/", "m-guide-table"], ["/tools/service-window-checker/", "m-tool-a"], ["/tools/lineage-matrix/", "m-tool-b"]]) {
+for (const [p, name] of [["/", "m-home"], ["/guides/substitute-evidence/", "m-guide-table"], ["/tools/widow-pension-checker/", "m-widow"], ["/tools/lineage-matrix/", "m-tool-b"]]) {
   await mp.goto(BASE + p); if (name === "m-guide-table") await mp.evaluate(() => document.querySelector(".table-wrap").scrollIntoView());
   if (name === "m-tool-b") { await mp.click('[data-add-evidence="1"]'); await mp.evaluate(() => document.querySelector("section.gen").scrollIntoView()); }
   await mp.screenshot({ path: join(SHOTS, `${name}.png`) });

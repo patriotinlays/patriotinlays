@@ -99,6 +99,11 @@ const U = [
   ["Next steps: unreadable dates -> 'Fix the dates' first", nextSteps(sw("core", "July 1776"), null)[0].title.startsWith("Fix the dates")],
   ["Next steps: every link is a manifest source or a site page; every claim verified; no fees or timelines", (() => { const all = [sw("core", "1778"), sw("core", "1790"), sw("core", "1775"), sw("core", "x"), null].flatMap((w) => nextSteps(w, checkWidowActs({ marriage: "1780" })));
     return all.every((x) => x.links.every((l) => manifestUrls.has(l.url) || l.url.startsWith("/")) && x.claims.every((c) => verified.has(c))) && !/\$|\bfee|\bweeks?\b/i.test(JSON.stringify(all.map((x) => [x.title, x.text]))); })()],
+  ["Widow check: a law that fits -> 'Look for the widow's pension file' step citing the W-file and widow-info sources", (() => { const st = nextSteps(null, checkWidowActs({ serviceEnd: "1779", marriage: "1780", husbandDeath: "1830" })).find((x) => x.title.startsWith("Look for the widow"));
+    return !!st && st.claims.includes("m804-w") && st.links.length > 0; })()],
+  ["Widow check: no law fits -> no pension-file step", !nextSteps(null, checkWidowActs({ serviceEnd: "1779", marriage: "1820", husbandDeath: "1830" })).some((x) => x.title.startsWith("Look for the widow"))],
+  ["Widow check: empty form -> 'Fill in the form above' first", nextSteps(null, null)[0].title.startsWith("Fill in the form above")],
+  ["Site link points at the widow checker, not the retired service-date page", NEXT_STEP_LINKS === undefined || !JSON.stringify(NEXT_STEP_LINKS).includes("service-window-checker")],
   ["End-before-start error is plain", /end date is before the start date/.test(sw("core", "1778", "1777").message)],
 ];
 let uPass = 0; for (const [n, ok] of U) { console.log(`${ok ? "PASS" : "FAIL"}  [plain] ${n}`); if (ok) uPass++; }

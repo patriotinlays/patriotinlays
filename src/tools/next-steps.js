@@ -11,7 +11,7 @@ export const CHAPTER_LINKS = Object.freeze({
 });
 export const SITE_LINKS = Object.freeze({
   matrix: { label: "Lineage Evidence Matrix (free worksheet on this site)", url: "/tools/lineage-matrix/" },
-  checker: { label: "Service Window Checker (free tool on this site)", url: "/tools/service-window-checker/" },
+  checker: { label: "Widow Pension Law Checker (free tool on this site)", url: "/tools/widow-pension-checker/" },
   roadmap: { label: "Guide: The Patriot Lineage Proof Roadmap", url: "/guides/lineage-proof-roadmap/" },
   pension: { label: "Guide: How to Read a Revolutionary War Pension File", url: "/guides/read-pension-file/" },
   service: { label: "Guide: Patriotic Service Without a Musket", url: "/guides/patriotic-service/" },

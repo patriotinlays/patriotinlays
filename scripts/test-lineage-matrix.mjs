@@ -64,6 +64,48 @@ t("Where to look: older parentage points to the National Archives census page; r
   t("order: grouped items drop the repeated 'Generation N' prefix", groups.every((grp) => grp.items.every((x) => !/^Generation \d/.test(x.short))));
   t("order: action plan lists each generation once, in order", (() => { const st = actionPlan(rows).find((x) => x.items); return st.items.map((i) => i.text).join("|") === "Generation 2: Your parent|Generation 3: Your grandparent|Generation 4: Your great-grandparent"; })());
 }
+
+// ---- Round 5: patriot step, era- and state-tailored "Where to look" ----
+{ const { SERVICE_KINDS, patriotDates, serviceWhere, patriotSteps, kindOf, WIDOW_TOOL } = await import("../src/tools/patriot.js");
+  const { SERVICE_RULES } = await import("../src/tools/tool-a.js");
+  const { STATES, STATE_VITAL, STATE_SERVICE, PLACE_SOURCES, vitalNote, censusNote } = await import("../src/tools/places.js");
+  const { patriotGen } = await import("../src/tools/tool-b.js");
+  const claimsOk = (cs) => cs.length > 0 && cs.every((c) => verified.has(c));
+  const linkOk = (l) => manifestUrls.has(l.url) || slugs.has(l.url) || /^\/tools\/lineage-matrix\//.test(l.url);
+  const p = { name: "John", state: "VA", unit: "Culpeper County militia", kind: "militia", start: "1777-05", end: "1779-10" };
+  t("patriot: every service type maps to a DAR date window and cites verified claims (or none)", SERVICE_KINDS.every((k) => SERVICE_RULES.some((r) => r.id === k.rule) && k.claims.every((c) => verified.has(c))));
+  t("patriot: Virginia militia 1777-05 to 1779-10 fits the period (not a ruling); Virginia Oath in 1778 does not; committee in May 1774 does",
+    patriotDates(p).status === "consistent" && /not a ruling/.test(patriotDates(p).plain) && patriotDates({ ...p, kind: "va_oath", start: "1778", end: "" }).status === "inconsistent" && patriotDates({ ...p, kind: "committee", start: "1774-05", end: "" }).status === "consistent");
+  t("patriot: militia advice says the National Archives has no militia records and links the Library of Virginia guide", (() => { const w = serviceWhere(p); return /does not hold state militia/.test(w.text) && /Virginia:/.test(w.text) && w.links.some((l) => l.url.includes("lva-virginia.libguides.com/revolutionary-war")) && claimsOk(w.claims); })());
+  t("patriot: Continental advice names the National Archives service records (M881)", /M881/.test(serviceWhere({ ...p, kind: "continental" }).text));
+  t("patriot: a state with no verified source says so honestly and falls back to the NYPL advice (no invented records)", (() => { const w = serviceWhere({ ...p, state: "TX" }); return /no verified guide yet for Texas/.test(w.text) && w.links.some((l) => l.url.includes("libguides.nypl.org")) && !/Library of Virginia/.test(w.text); })());
+  t("patriot: no patriot entered -> first plan step asks for him; date problems get their own step", patriotSteps(null)[0].title === "Tell the worksheet about the patriot" && patriotSteps({ ...p, start: "1775", end: "" }).some((s) => s.title.startsWith("Pin down")) && patriotSteps({ ...p, start: "1790", end: "" }).some((s) => s.title.startsWith("Double-check")));
+  t("patriot: military service gets the widow-pension step (linking the checker); civil service does not", patriotSteps(p).some((s) => s.links.some((l) => l.url === WIDOW_TOOL.url)) && !patriotSteps({ ...p, kind: "civil" }).some((s) => /widow/i.test(s.title)));
+  t("patriot: the plan leads with his service and drops the old standalone date-check step", (() => { const plan = actionPlan([{ gen: 1, living: true, cells: [] }, { gen: 2, cells: [] }], p); return plan[0].title === "Prove the patriot's service" && !plan.some((s) => /service dates/.test(s.title) && s.links?.some((l) => /service-window/.test(l.url))); })());
+  t("patriot: every plan link is a manifest source or a site page, every claim verified", [p, { ...p, kind: "continental", state: "NC" }, { ...p, kind: "civil", state: "TX" }, { ...p, kind: "galvez_troops", state: "" }].every((x) => patriotSteps(x).every((s) => s.links.every(linkOk) && s.claims.every((c) => verified.has(c)))));
+  t("patriot: the oldest generation is the patriot unless another is picked; groups label it", (() => { const rows = [{ gen: 1, cells: [] }, { gen: 2, cells: [] }, { gen: 3, cells: [] }];
+    return patriotGen(rows, p) === 3 && patriotGen(rows, { ...p, gen: "2" }) === 2 && patriotGen(rows, null) === null && groupGaps(gaps(rows, p), 3).at(-1).title.endsWith("(the patriot)"); })());
+  // Era and state
+  const w = (fact, gen, ctx) => whereToLook(fact, gen, ctx);
+  t("era: an ancestor born 1820 in Virginia gets no birth-certificate advice (Virginia did not record births before 1853)", (() => { const x = w("birth", 2, { born: "1820", state: "VA" }); return x.era === "older" && !/birth certificate/i.test(x.text) && x.notes.some((n) => /before 1853/.test(n.text)) && claimsOk(x.claims); })());
+  t("era: Virginia 1880 birth -> county registers 1853-1896; 1900 -> the 1897-1911 gap; 1920 -> recording resumed 1912",
+    /1853 to 1896/.test(w("birth", 5, { born: "1880", state: "VA" }).notes[0].text) && w("birth", 5, { born: "1880", state: "VA" }).era === "recent"
+    && /1897 to 1911/.test(w("birth", 2, { born: "1900", state: "VA" }).notes[0].text) && w("birth", 2, { born: "1900", state: "VA" }).era === "older" && /1912/.test(w("birth", 2, { born: "1920", state: "VA" }).notes[0].text));
+  t("era: New Jersey before 1848 not filed; North Carolina before 1913 -> county Register of Deeds; Pennsylvania before 1906 -> county courthouse",
+    /not filed/.test(w("birth", 4, { born: "1840", state: "NJ" }).notes[0].text) && /Register of Deeds/.test(w("birth", 3, { born: "1900", state: "NC" }).notes[0].text) && /county courthouse/.test(w("death", 3, { died: "1890", state: "PA" }).notes[0].text));
+  t("era: death with only a birth year lists just the periods it could fall in", (() => { const n = w("death", 3, { born: "1890", state: "VA" }).notes[0].text; return !/before 1853/.test(n) && /1897 to 1911/.test(n) && /1912/.test(n); })());
+  t("state: no verified source -> says so, gives the census/National Archives fallback, never claims a record exists", (() => { const x = w("birth", 3, { born: "1900", state: "TX" }); return /no verified source yet on when Texas/.test(x.notes[0].text) && x.links.some((l) => l.url.includes("archives.gov/research/vital-records")) && claimsOk(x.notes[0].claims); })());
+  t("state: no state picked -> a plain hint, not a guess", /Add the state/.test(w("birth", 3, { born: "1900" }).notes[0].text));
+  t("census: only censuses in the lifetime are listed; the patriot alive in 1840 gets the pensioner note",
+    (() => { const a = censusNote(1820, 1845).text, b = censusNote(1860, null).text, c = censusNote(1755, 1845, { patriot: true }).text, d = censusNote(1755, 1838, { patriot: true }).text;
+      return /1790–1840/.test(a) && !/1850/.test(a) && !/1790/.test(b) && /1850–1870/.test(b) && /1880–1900/.test(b) && /pensioners/.test(c) && !/pensioners/.test(d); })());
+  t("sources: every state entry cites verified claims; every link is a Source Manifest URL; every state code is real",
+    Object.entries(STATE_VITAL).every(([st, v]) => STATES.some(([c]) => c === st) && v.links.every((l) => manifestUrls.has(l.url)) && ["birth", "death", "marriage"].every((f) => !v[f] || v[f].every((x) => claimsOk(x.claims))))
+    && Object.entries(STATE_SERVICE).every(([st, v]) => STATES.some(([c]) => c === st) && claimsOk(v.claims) && v.links.every((l) => manifestUrls.has(l.url)))
+    && Object.values(PLACE_SOURCES).every((l) => manifestUrls.has(l.url)));
+  t("sources: every vital period is in year order with no overlaps", Object.values(STATE_VITAL).every((v) => ["birth", "death", "marriage"].every((f) => !v[f] || v[f].every((x, i, a) => i === 0 || (a[i - 1].to != null && x.from === a[i - 1].to + 1)))));
+  t("gaps: a patriot row with no state of its own uses the patriot's state", gaps([{ gen: 1, living: true, cells: [] }, { gen: 2, born: "1760", cells: [] }], { ...p, state: "NJ" }).filter((g) => g.gen === 2 && g.fact === "birth").every((g) => /New Jersey/.test(g.where.notes[0].text)));
+}
 const every = JSON.stringify([evaluateCell(full), evaluateCell({}), gaps([{ gen: 1, cells: [full] }]), LABELS]);
 t('the word "Documented" never appears in output', !/documented/i.test(every));
 let p = 0; for (const [n, ok] of T) { console.log(`${ok ? "PASS" : "FAIL"}  ${n}`); if (ok) p++; }

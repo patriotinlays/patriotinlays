@@ -6,7 +6,7 @@ tool: lineage-matrix
 ---
 # Lineage Evidence Matrix
 
-This is a worksheet for proving your line back to a Revolutionary War patriot. It does not search any records. You type in the records you already have, and it shows what is still missing for each person and where to look for it.
+This is a worksheet for proving your line back to a Revolutionary War patriot. It does not search any records. You tell it who the patriot was and how he served, then type in the records you already have for each generation. It shows what is still missing for each person and where to look for it, fitted to that person's era and state.
 
 Generation 1 is you, the applicant. [[claim:dar-gen1-applicant]]
 Your parents are generation 2, your grandparents generation 3, and so on back to the patriot. [[claim:dar-gen-numbering]]
@@ -17,15 +17,39 @@ Everything you enter is saved only in this browser's local storage under keys be
 
 ::tool lineage-matrix-full
 
+## The patriot step
+
+Tell the worksheet who the patriot was: his name, the state or colony he served for, his unit if you know it, his type of service and rough service dates. For military service, DAR records only the state that controlled his unit, not every state he passed through. [[claim:dar-unit-state]]
+The types of service come from the sources this site uses: the Continental Line or State troops, volunteers or militia [[claim:nara-act-1832-categories]], civil service under the new state governments [[claim:dar-civil-service]], patriotic service such as furnishing supplies or signing an oath of allegiance [[claim:dar-material-aid]] [[claim:dar-oaths]], and the categories with their own dates below.
+
+The worksheet compares his dates with the periods below. Each one has its own source:
+
+- DAR accepts service performed between 19 April 1775 and 26 November 1783. [[claim:dar-window-core]] SAR accepts patriotic service, with some exceptions, for the same period. [[claim:sar-window]]
+- Committee service that furthered the cause of the Colonies counts from April 1774. [[claim:dar-committee-1774]]
+- The Virginia Oath of Fidelity counts from October 1779 to 26 November 1783. [[claim:dar-va-oath]]
+- Service in the Spanish troops under Gálvez or the Louisiana Militia counts after 24 December 1776. [[claim:dar-galvez-troops]]
+- Supplying cattle for Gálvez's forces in Spanish America counts after 24 December 1776. [[claim:dar-galvez-cattle]]
+
+DAR gives no end date for the two Gálvez categories or for committee service, so the worksheet applies the general end date.
+His type of service decides where his records are: the National Archives holds records of Continental troops [[claim:nara-svc-holds]] but not state militia records [[claim:nara-svc-custody]], so for militia it points you to the archives of the state he served. [[claim:nara-svc-state]]
+His service end date can also be passed to the free [Widow Pension Law Checker](/tools/widow-pension-checker/).
+
 ## How the matrix evaluates an entry
 
 Each record you add is judged on four things together: what kind of record it is, what it shows (birth, death, marriage, the parent–child link, or where the person lived), whether it says that in words or only hints at it, and whether you have flagged that it disagrees with another record. The kind of record alone never changes the label.
 
 "Says it in words" means the record states the fact outright, like a birth certificate that names the parents. "Only hints at it" means you are working it out from clues, like a child listed in a household on a census that does not state relationships. [[claim:nscda-census-1850-1870]]
 
-## Where to look
+## Where to look, by era and state
 
-Every missing item in the list comes with a "Where to look" note. It names the usual kinds of records for that fact and links only to sources this site already cites, such as the National Archives page that lists the Revolutionary War pension files (free on FamilySearch with login). [[claim:nara-amrev-familysearch]]
+Every missing item comes with a "Where to look" note. Type a rough birth year (and death year) and the state for each person, and the note fits that era and state.
+
+- It lists only the censuses taken in that person's lifetime. The 1790–1840 censuses named only the head of household [[claim:nara-census-head]], the 1850–1870 censuses do not state relationships [[claim:nscda-census-1850-1870]], and the 1840 census named Revolutionary War pensioners with their exact ages. [[claim:nara-census-1840]]
+- For birth, death and marriage it uses what the state's own archives or vital-records office says about when that state kept those records. For example, Virginia did not record births, marriages and deaths statewide before 1853 [[claim:lva-bmd-pre1853]], and New Jersey births before 1848 were not filed by any level of government, except records of births of enslaved children. [[claim:nj-pre1848-birth]] When the state did not keep the record then, the note points to church, probate and other older records instead.
+- So far the worksheet has verified birth, death or marriage sources for Maryland, New Jersey, North Carolina, Pennsylvania, South Carolina and Virginia, and Revolutionary War service sources for Connecticut, Maryland, Massachusetts, New Jersey, North Carolina, Pennsylvania, South Carolina and Virginia.
+- For any other state it says so plainly and falls back to general advice: a census entry that gives the state and approximate year of birth tells you which local office to ask. [[claim:nara-vital-census]]
+
+Links go only to sources this site already cites, such as the National Archives page that lists the Revolutionary War pension files (free on FamilySearch with login). [[claim:nara-amrev-familysearch]]
 When no listed source fits, it says to ask your society's registrar.
 
 ## Published cautions the matrix shows

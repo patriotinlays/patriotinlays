@@ -1,3 +1,4 @@
+import { execFileSync } from "node:child_process";
 // Post-build link check: every internal href/src in dist/ must resolve to a built file (and #anchor to an id);
 // every external link is fetched and must return HTTP 200 after redirects. Exits 1 on any broken link.
 import { readFileSync, readdirSync, statSync, existsSync, writeFileSync } from "node:fs";
@@ -30,7 +31,10 @@ if (!offline) for (const [u, froms] of external) {
     try { const r = await fetch(u, { redirect: "follow", headers: { "user-agent": "Mozilla/5.0 (patriotinlays link checker)" }, signal: AbortSignal.timeout(45000) }); status = r.status; await r.arrayBuffer(); }
     catch (e) { err = e.message; }
   }
-  extResults.push({ url: u, status, err, pages: froms.size });
+  // Bot filters (e.g. dar.org's Cloudflare) can reject Node's HTTP client while serving the page to curl; re-check with curl.
+  let via = "fetch";
+  if (status === 403 || status === 429) { try { const c = Number(execFileSync("curl", ["-sL", "-o", "/dev/null", "--max-time", "45", "-A", "Mozilla/5.0 (patriotinlays link checker)", "-H", "Accept: text/html", "-w", "%{http_code}", u], { encoding: "utf8" })); if (c === 200) { status = 200; via = "curl"; } } catch { /* keep status */ } }
+  extResults.push({ url: u, status, err, pages: froms.size, via });
   if (status !== 200) broken.push({ from: [...froms][0], link: u, why: `HTTP ${status || err}` });
 }
 const report = { checkedAt: new Date().toString(), htmlFiles: htmlFiles.length, internalLinks: internal, externalUnique: external.size, external: extResults, broken };
