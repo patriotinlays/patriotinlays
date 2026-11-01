@@ -1,6 +1,6 @@
 // Tool B browser UI: Lineage Evidence Matrix editor, embed card, and report page.
 // State lives only in localStorage under "pi.toolB.v1"; no network requests are made.
-import { relationName, HAVE_ITEMS, byFactOrder, actionPlan, evaluateCell, gaps, groupGaps, filledCells, countEntries, patriotGen, LABELS, FACTS, FACT_LABELS, DOC_TYPES, MODE_HELP, genLabel, genTitle, isEmptyCell } from "./tool-b.js";
+import { relationName, HAVE_ITEMS, byFactOrder, actionPlan, evaluateCell, gaps, groupGaps, filledCells, countEntries, patriotGen, LABELS, FACTS, FACT_LABELS, DOC_TYPES, MODE_HELP, genLabel, genTitle, isEmptyCell, dateWarnings, NSCDA_TERM } from "./tool-b.js";
 import { SERVICE_KINDS, PATRIOT_HELP, patriotDates, hasPatriot, kindOf } from "./patriot.js";
 import { STATES, stateName, noVitalText } from "./places.js";
 import { ns, el } from "./storage.js";
@@ -67,9 +67,13 @@ function renderGaps(state, seen = null, refFor = null) {
 }
 const stateOptions = () => STATES.map(([c, n]) => [c, n]);
 // The patriot's date check, in plain words (the old standalone service-date check, folded into this step).
-function patriotCheckEl(p) {
+function patriotCheckEl(p, rows = null) {
   const d = patriotDates(p);
   if (!d) return el("p", { class: "small hint", text: "Type his rough service dates to check them against the period DAR accepts for his type of service." });
+  // His birth year and service must add up before the period check can say anything fits (audit 4).
+  const warn = rows ? dateWarnings(rows, p).filter((w) => w.patriot) : [];
+  if (warn.length && d.status !== "invalid") return el("div", { class: "result r-inconsistent", "data-date-warn": "" }, el("span", { class: "badge b-inconsistent", text: "His dates don't add up" }),
+    ...warn.map((w) => el("p", { text: w.text })), el("p", { class: "small", text: "The period check waits until his birth year and service dates make sense together." }));
   const label = { consistent: "Dates fit DAR's period for this service (not a ruling)", partial: "Partly inside the period", inconsistent: "Outside the period as typed", invalid: "Couldn't read the dates" }[d.status];
   return el("div", { class: `result r-${d.status}` }, el("span", { class: `badge b-${d.status}`, text: label }), el("p", { text: d.plain }),
     el("p", { class: "small", text: `Period checked: ${d.rule || ""}` }),
@@ -103,11 +107,11 @@ function patriotForm(state, refresh, rerender = refresh) {
     ...sel("state", "State or colony he served for", stateOptions(), PATRIOT_HELP.state.text),
     ...inp("unit", "Unit or company (optional)", "For example a county militia company or a numbered regiment, if you know it."),
     ...sel("kind", "Type of service", SERVICE_KINDS.map((k) => [k.id, k.label]), PATRIOT_HELP.kind.text),
-    ...inp("start", "Service started (rough date)", "Numbers only, e.g. 1777 or 1777-05.", { inputmode: "numeric", placeholder: "e.g. 1777 or 1777-05" }),
-    ...inp("end", "Service ended (rough date; blank if you only have one date)", null, { inputmode: "numeric", placeholder: "e.g. 1779 or 1779-10" }),
+    ...inp("start", "Service started (rough date)", "A year, or a year and month, e.g. 1777 or 1777-05.", { placeholder: "e.g. 1777 or 1777-05" }),
+    ...inp("end", "Service ended (rough date; blank if you only have one date)", null, { placeholder: "e.g. 1779 or 1779-10" }),
     el("label", { for: "pat-gen", text: "How is he related to you?" }), el("p", { class: "small hint", text: "Pick the relationship, for example \"my 3rd-great-grandfather\"; the worksheet adds the generations in between. Generation 1 is you, so it isn't offered." }), genSel,
     genWarn ? el("p", { class: "small warn", role: "status", "data-gen-warn": "", text: genWarn }) : null,
-    el("div", { "data-patriot-check": "", "aria-live": "polite" }, patriotCheckEl(p)));
+    el("div", { "data-patriot-check": "", "aria-live": "polite" }, patriotCheckEl(p, state.generations)));
 }
 const genFields = (state, g, refresh) => {
   const upd = (k) => (e) => { g[k] = e.target.value.trim ? e.target.value.trim() : e.target.value; save(state); refresh(); };
@@ -179,7 +183,7 @@ function mountEditor(root) {
     const plan = renderPlan(actionPlan(state.generations, state.patriot), { heading: false, whereRef: refFor, printable: false, tip: false });
     gapBox.replaceChildren(list, blocks.length ? whereIndexEl(blocks, "Each piece of advice appears once. The letters above and in \"What to do next\" point here.", "h4") : null);
     root.querySelector("[data-plan]")?.replaceChildren(plan);
-    root.querySelector("[data-patriot-check]")?.replaceChildren(patriotCheckEl(state.patriot));
+    root.querySelector("[data-patriot-check]")?.replaceChildren(patriotCheckEl(state.patriot, state.generations));
     const pg = patriotGen(state.generations, state.patriot);
     box.querySelectorAll("[data-gen]").forEach((sec) => { const h = sec.querySelector("h3"); const g = +sec.dataset.gen; h.textContent = genTitle(g) + (g === pg ? " (the patriot)" : ""); });
   };
@@ -241,10 +245,10 @@ function mountCard(root) {
   const n = countEntries(s.generations);
   out.textContent = `Saved in this browser: ${plural(s.generations.length, "generation")}, ${plural(n, "evidence entry", "evidence entries")}, ${plural(gaps(s.generations, s.patriot).length, "thing")} still missing or flagged.`;
 }
-function patriotSummary(p) {
+function patriotSummary(p, gens = null) {
   const k = kindOf(p.kind);
   const rows = [["Name", p.name], ["State or colony he served for", stateName(p.state)], ["Unit or company", p.unit], ["Type of service", k?.label], ["Service dates", p.start ? `${p.start}${p.end && p.end !== p.start ? ` to ${p.end}` : ""}` : ""]];
-  return el("div", { class: "patriot-summary" }, el("dl", {}, ...rows.flatMap(([a, b]) => [el("dt", { text: a }), el("dd", { text: b || "—" })])), patriotCheckEl(p));
+  return el("div", { class: "patriot-summary" }, el("dl", {}, ...rows.flatMap(([a, b]) => [el("dt", { text: a }), el("dd", { text: b || "—" })])), patriotCheckEl(p, gens));
 }
 // "Where to look" index for the report: the general advice and each state/census note become separate lettered
 // blocks, so a note shared by several gaps is printed once and the gaps point to it.
@@ -280,6 +284,7 @@ export function whereIndexEl(blocks, intro, level = "h2") {
   return el("section", { class: "report-where", "data-where-index": "" },
     el(level, { text: "Where to look" }),
     el("p", { class: "small", text: `${intro} Not sure where to order a record? Ask your society's registrar.` }),
+    blocks.some((b) => /NSCDA/.test(b.text || "")) ? el("p", { class: "small term", "data-nscda-term": "" }, el("strong", { text: "NSCDA: " }), NSCDA_TERM.text.replace(/^NSCDA is /, "")) : null,
     ...blocks.map((b) => el("div", { class: "where-block", id: `where-${b.letter}`, "data-where-block": b.letter },
       el("p", {}, el("strong", { class: "where-letter", text: `${b.letter}. ` }), b.place ? noVitalText(b.place, b.facts) : b.text, b.guide ? " " : null, b.guide ? el("a", { href: b.guide.url, "data-substitute": "", text: b.guide.label }) : null),
       b.links.length ? el("ul", { class: "where-links small" }, ...b.links.map((l) => el("li", {}, el("a", { href: l.url, rel: l.url.startsWith("http") ? "noopener" : null, text: l.label })))) : null,
@@ -295,7 +300,7 @@ function mountReport(root) {
   const plan = renderPlan(actionPlan(s.generations, s.patriot), { heading: false, printable: false, tip: false, whereRef: refFor, addHref: (it) => `/tools/lineage-matrix/#gen-${it.gen}` });
   const n = countEntries(s.generations); const missing = gaps(s.generations, s.patriot).length;
   const pd = hasPatriot(s.patriot) ? patriotDates(s.patriot) : null; const k = kindOf(s.patriot?.kind);
-  const patLine = hasPatriot(s.patriot) ? `${s.patriot.name || "Not named"}${s.patriot.state ? `, ${stateName(s.patriot.state)}` : ""}${k ? `, ${k.label.toLowerCase()}` : ""}${s.patriot.start ? `, ${s.patriot.start}${s.patriot.end && s.patriot.end !== s.patriot.start ? ` to ${s.patriot.end}` : ""}` : ""}${pg ? ` (generation ${pg})` : ""}.${pd ? ` Date check: ${PATRIOT_BADGE[pd.status] || pd.status}.` : ""}` : "Not filled in yet.";
+  const patLine = hasPatriot(s.patriot) ? `${s.patriot.name || "Not named"}${s.patriot.state ? `, ${stateName(s.patriot.state)}` : ""}${k ? `, ${k.label.toLowerCase()}` : ""}${s.patriot.start ? `, ${s.patriot.start}${s.patriot.end && s.patriot.end !== s.patriot.start ? ` to ${s.patriot.end}` : ""}` : ""}${pg ? ` (generation ${pg})` : ""}.${pd ? ` Date check: ${dateWarnings(s.generations, s.patriot).some((w) => w.patriot) && pd.status !== "invalid" ? "his birth year and service dates don't add up (see \"Check these dates first\")" : PATRIOT_BADGE[pd.status] || pd.status}.` : ""}` : "Not filled in yet.";
   const summary = el("section", { class: "report-summary", "data-summary": "" },
     el("h2", { text: "Summary" }),
     el("p", { class: "small", text: `Saved ${s.updated ? new Date(s.updated).toLocaleString() : ""}. Your own worksheet, not a decision: a society's genealogists review every entry.` }),
@@ -303,7 +308,7 @@ function mountReport(root) {
     el("p", {}, el("strong", { text: "Where you are: " }), `${plural(s.generations.length, "generation")}, ${plural(n, "evidence entry", "evidence entries")}, ${plural(missing, "thing")} still missing or flagged.`),
     el("h3", { text: "What to do next" }), plan);
   const where = whereIndexEl(blocks, "Each piece of advice appears once. The letters in the to-do list above point here.");
-  const kids = [summary, where, el("section", { class: "report-detail" }, el("h2", { text: "The patriot, in full" }), hasPatriot(s.patriot) ? patriotSummary(s.patriot) : el("p", { class: "small", text: "Not filled in yet." }), el("h2", { text: "Your records, generation by generation" }))];
+  const kids = [summary, where, el("section", { class: "report-detail" }, el("h2", { text: "The patriot, in full" }), hasPatriot(s.patriot) ? patriotSummary(s.patriot, s.generations) : el("p", { class: "small", text: "Not filled in yet." }), el("h2", { text: "Your records, generation by generation" }))];
   const detail = kids[2];
   for (const g of s.generations) {
     const rows = byFactOrder(filledCells(g.cells)).map((c) => { const ev = evaluateCell(c);
@@ -316,6 +321,8 @@ function mountReport(root) {
         : el("p", { class: "small", text: "No records entered yet." })].filter(Boolean));
   }
   body.replaceChildren(...kids);
+  // NSCDA cited only in a record's caution (not in "Where to look"): explain it once, under the records.
+  if (/NSCDA/.test(body.textContent) && !body.querySelector("[data-nscda-term]")) detail.append(el("p", { class: "small term", "data-nscda-term": "" }, el("strong", { text: "NSCDA: " }), NSCDA_TERM.text.replace(/^NSCDA is /, "")));
 }
 document.querySelectorAll('[data-tool="lineage-matrix"]').forEach(mountEditor);
 document.querySelectorAll('[data-tool-card="lineage-matrix"]').forEach(mountCard);

@@ -24,7 +24,7 @@ const itemList = (items, cls = "plan-items", opts = {}) => el("ul", { class: cls
   it.sub ? el("strong", { class: "plan-group", text: it.text }) : el("span", { text: opts.whereRef && it.brief ? it.brief : it.text }), it.sub ? null : addLink(it, opts) ? " " : null, it.sub ? null : addLink(it, opts),
   opts.whereRef ? refSpan(it.where ? opts.whereRef(it.where, it) : null) : whereDiv(it.where, opts.seen), linkList(it.links), it.sub?.length ? itemList(it.sub, "plan-sub", opts) : null)));
 export function renderPlan(steps, { printable = true, heading = true, whereRef = null, tip = true, addHref = null, seen = null } = {}) {
-  const ol = el("ol", { class: "plan-steps" }, ...steps.map((s) => el("li", {},
+  const ol = el("ol", { class: "plan-steps" }, ...steps.map((s) => el("li", s.warn ? { class: "plan-warn", "data-date-warnings": "" } : {},
     el("strong", { class: "plan-title", text: s.title }), s.text ? el("p", { text: s.text }) : null,
     s.items?.length ? itemList(s.items, "plan-items", { whereRef, addHref, seen }) : null,
     linkList(s.links))));

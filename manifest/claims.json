@@ -4217,7 +4217,8 @@
       "verification_status": "verified",
       "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
       "used_on": [
-        "substitute-evidence"
+        "substitute-evidence",
+        "tool:tool-b.js"
       ],
       "notes": ""
     },
@@ -4895,7 +4896,8 @@
       "verification_status": "verified",
       "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
       "used_on": [
-        "partial:glossary"
+        "partial:glossary",
+        "tool:tool-b.js"
       ],
       "notes": ""
     },
@@ -4912,7 +4914,8 @@
       "verification_status": "verified",
       "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
       "used_on": [
-        "partial:glossary"
+        "partial:glossary",
+        "tool:tool-b.js"
       ],
       "notes": ""
     },
@@ -4930,7 +4933,8 @@
       "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
       "used_on": [
         "partial:glossary",
-        "partial:tool-terms"
+        "partial:tool-terms",
+        "tool:tool-b.js"
       ],
       "notes": ""
     },
@@ -5716,6 +5720,313 @@
       "used_on": [
         "lineage-matrix",
         "tool:places.js"
+      ],
+      "notes": ""
+    },
+    {
+      "claim_id": "stat-1836-unmarried",
+      "claim_text": "1836 act: the widow was paid only while she stayed unmarried.",
+      "source_url": "https://tile.loc.gov/storage-services/service/ll/llsl/llsl-c24/llsl-c24.pdf",
+      "source_title": "Library of Congress — U.S. Statutes at Large, 24th Congress (scanned; Act of July 4, 1836 at 5 Stat. 128)",
+      "source_type": "primary",
+      "archive_identifier": null,
+      "last_retrieved": "2026-10-31",
+      "quote_excerpt": "widow shall be entitled to receive, during the time she may remain unmarried",
+      "page_ref": "5 Stat. 128, sec. 3",
+      "verification_status": "verified",
+      "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
+      "used_on": [
+        "tool:tool-a.js",
+        "widow-pension-checker"
+      ],
+      "notes": ""
+    },
+    {
+      "claim_id": "stat-1838-1832-service",
+      "claim_text": "1838 act: the husband's service had to be the kind described in the act of June 7, 1832.",
+      "source_url": "https://tile.loc.gov/storage-services/service/ll/llsl/llsl-c25/llsl-c25.pdf",
+      "source_title": "Library of Congress — U.S. Statutes at Large, 25th Congress (scanned; Act of July 7, 1838 at 5 Stat. 303)",
+      "source_type": "primary",
+      "archive_identifier": null,
+      "last_retrieved": "2026-10-31",
+      "quote_excerpt": "who served in the war of the Revolution, in the manner specified in the act passed the seventh day of June, eighteen hundred and thirty-two",
+      "page_ref": "5 Stat. 303",
+      "verification_status": "verified",
+      "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
+      "used_on": [
+        "read-pension-file",
+        "tool:tool-a.js",
+        "widow-pension-checker"
+      ],
+      "notes": ""
+    },
+    {
+      "claim_id": "stat-1838-after-service",
+      "claim_text": "1838 act: the marriage had to come after his last period of service ended and before January 1, 1794.",
+      "source_url": "https://tile.loc.gov/storage-services/service/ll/llsl/llsl-c25/llsl-c25.pdf",
+      "source_title": "Library of Congress — U.S. Statutes at Large, 25th Congress (scanned; Act of July 7, 1838 at 5 Stat. 303)",
+      "source_type": "primary",
+      "archive_identifier": null,
+      "last_retrieved": "2026-10-31",
+      "quote_excerpt": "whose marriage took place after the expiration of the last period of his service, and before the first day of January, seventeen hundred and ninety-four",
+      "page_ref": "5 Stat. 303",
+      "verification_status": "verified",
+      "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
+      "used_on": [
+        "read-pension-file",
+        "tool:tool-a.js",
+        "widow-pension-checker"
+      ],
+      "notes": ""
+    },
+    {
+      "claim_id": "stat-1838-remarriage",
+      "claim_text": "1838 act: the pension stopped if the widow married again.",
+      "source_url": "https://tile.loc.gov/storage-services/service/ll/llsl/llsl-c25/llsl-c25.pdf",
+      "source_title": "Library of Congress — U.S. Statutes at Large, 25th Congress (scanned; Act of July 7, 1838 at 5 Stat. 303)",
+      "source_type": "primary",
+      "archive_identifier": null,
+      "last_retrieved": "2026-10-31",
+      "quote_excerpt": "in the event of the marriage of such widow, said annuity or pension shall be discontinued",
+      "page_ref": "5 Stat. 303",
+      "verification_status": "verified",
+      "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
+      "used_on": [
+        "tool:tool-a.js",
+        "widow-pension-checker"
+      ],
+      "notes": ""
+    },
+    {
+      "claim_id": "stat-1848-service",
+      "claim_text": "1848 act: the husband had served in the Continental line, State troops, volunteers, militia or the naval service.",
+      "source_url": "https://tile.loc.gov/storage-services/service/ll/llsl/llsl-c30/llsl-c30.pdf",
+      "source_title": "Library of Congress — U.S. Statutes at Large, 30th Congress (scanned; Act of July 29, 1848 at 9 Stat. 265)",
+      "source_type": "primary",
+      "archive_identifier": null,
+      "last_retrieved": "2026-10-31",
+      "quote_excerpt": "who shall have served in the Continental line, State troops, volunteers, militia, or in the naval service, in the revolutionary war with Great Britain",
+      "page_ref": "9 Stat. 265",
+      "verification_status": "verified",
+      "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
+      "used_on": [
+        "tool:tool-a.js",
+        "widow-pension-checker"
+      ],
+      "notes": ""
+    },
+    {
+      "claim_id": "stat-1848-widowhood",
+      "claim_text": "1848 act: the pension was paid during her widowhood.",
+      "source_url": "https://tile.loc.gov/storage-services/service/ll/llsl/llsl-c30/llsl-c30.pdf",
+      "source_title": "Library of Congress — U.S. Statutes at Large, 30th Congress (scanned; Act of July 29, 1848 at 9 Stat. 265)",
+      "source_type": "primary",
+      "archive_identifier": null,
+      "last_retrieved": "2026-10-31",
+      "quote_excerpt": "during such widowhood",
+      "page_ref": "9 Stat. 266",
+      "verification_status": "verified",
+      "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
+      "used_on": [
+        "tool:tool-a.js",
+        "widow-pension-checker"
+      ],
+      "notes": ""
+    },
+    {
+      "claim_id": "stat-1848-no-second",
+      "claim_text": "1848 act: a widow already receiving a pension could not get a further one under it.",
+      "source_url": "https://tile.loc.gov/storage-services/service/ll/llsl/llsl-c30/llsl-c30.pdf",
+      "source_title": "Library of Congress — U.S. Statutes at Large, 30th Congress (scanned; Act of July 29, 1848 at 9 Stat. 265)",
+      "source_type": "primary",
+      "archive_identifier": null,
+      "last_retrieved": "2026-10-31",
+      "quote_excerpt": "no widow now receiving a pension shall be entitled to",
+      "page_ref": "9 Stat. 266",
+      "verification_status": "verified",
+      "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
+      "used_on": [
+        "tool:tool-a.js",
+        "widow-pension-checker"
+      ],
+      "notes": ""
+    },
+    {
+      "claim_id": "stat-1848-cutoff",
+      "claim_text": "1848 act: no widow married after January 1, 1800 was covered.",
+      "source_url": "https://tile.loc.gov/storage-services/service/ll/llsl/llsl-c30/llsl-c30.pdf",
+      "source_title": "Library of Congress — U.S. Statutes at Large, 30th Congress (scanned; Act of July 29, 1848 at 9 Stat. 265)",
+      "source_type": "primary",
+      "archive_identifier": null,
+      "last_retrieved": "2026-10-31",
+      "quote_excerpt": "no widow married after the first day of January, one thousand eight hundred, shall be entitled to receive",
+      "page_ref": "9 Stat. 266",
+      "verification_status": "verified",
+      "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
+      "used_on": [
+        "tool:tool-a.js"
+      ],
+      "notes": ""
+    },
+    {
+      "claim_id": "stat-1855-revwar",
+      "claim_text": "1855 bounty-land act: it extended to Revolutionary War officers and soldiers, their widows and minor children.",
+      "source_url": "https://tile.loc.gov/storage-services/service/ll/llsl/llsl-c33/llsl-c33.pdf",
+      "source_title": "Library of Congress — U.S. Statutes at Large, 33rd Congress (scanned; Act of March 3, 1855 at 10 Stat. 701)",
+      "source_type": "primary",
+      "archive_identifier": null,
+      "last_retrieved": "2026-10-31",
+      "quote_excerpt": "the officers and soldiers of the revolutionary war, or their widows or minor children, shall be entitled to the",
+      "page_ref": "10 Stat. 702, sec. 8",
+      "verification_status": "verified",
+      "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
+      "used_on": [
+        "tool:tool-a.js",
+        "widow-pension-checker"
+      ],
+      "notes": ""
+    },
+    {
+      "claim_id": "stat-1855-14-days",
+      "claim_text": "1855 bounty-land act: no warrant for under 14 days of service unless he was actually in a battle.",
+      "source_url": "https://tile.loc.gov/storage-services/service/ll/llsl/llsl-c33/llsl-c33.pdf",
+      "source_title": "Library of Congress — U.S. Statutes at Large, 33rd Congress (scanned; Act of March 3, 1855 at 10 Stat. 701)",
+      "source_type": "primary",
+      "archive_identifier": null,
+      "last_retrieved": "2026-10-31",
+      "quote_excerpt": "in no case shall any such certificate or warrant be issued for any service less than fourteen days, except where the person shall actually have been engaged in battle",
+      "page_ref": "10 Stat. 702, sec. 3",
+      "verification_status": "verified",
+      "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
+      "used_on": [
+        "tool:tool-a.js",
+        "widow-pension-checker"
+      ],
+      "notes": ""
+    },
+    {
+      "claim_id": "stat-1855-mustered",
+      "claim_text": "1855 bounty-land act: militia, volunteers or State troops had to be regularly mustered, with service paid by the United States.",
+      "source_url": "https://tile.loc.gov/storage-services/service/ll/llsl/llsl-c33/llsl-c33.pdf",
+      "source_title": "Library of Congress — U.S. Statutes at Large, 33rd Congress (scanned; Act of March 3, 1855 at 10 Stat. 701)",
+      "source_type": "primary",
+      "archive_identifier": null,
+      "last_retrieved": "2026-10-31",
+      "quote_excerpt": "called into military service, and regularly mustered therein, and whose services have been paid by the United States",
+      "page_ref": "10 Stat. 701, sec. 1",
+      "verification_status": "verified",
+      "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
+      "used_on": [
+        "tool:tool-a.js",
+        "widow-pension-checker"
+      ],
+      "notes": ""
+    },
+    {
+      "claim_id": "stat-1855-deserted",
+      "claim_text": "1855 bounty-land act: no warrant if the muster rolls show he deserted or was dishonorably discharged.",
+      "source_url": "https://tile.loc.gov/storage-services/service/ll/llsl/llsl-c33/llsl-c33.pdf",
+      "source_title": "Library of Congress — U.S. Statutes at Large, 33rd Congress (scanned; Act of March 3, 1855 at 10 Stat. 701)",
+      "source_type": "primary",
+      "archive_identifier": null,
+      "last_retrieved": "2026-10-31",
+      "quote_excerpt": "if it shall appear by the muster-rolls of his regiment or corps that he deserted, or was dishonorably discharged from service",
+      "page_ref": "10 Stat. 702, sec. 1",
+      "verification_status": "verified",
+      "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
+      "used_on": [
+        "tool:tool-a.js",
+        "widow-pension-checker"
+      ],
+      "notes": ""
+    },
+    {
+      "claim_id": "stat-1855-widow-at-application",
+      "claim_text": "1855 bounty-land act: remarriage didn't bar a widow if she was a widow when she applied.",
+      "source_url": "https://tile.loc.gov/storage-services/service/ll/llsl/llsl-c33/llsl-c33.pdf",
+      "source_title": "Library of Congress — U.S. Statutes at Large, 33rd Congress (scanned; Act of March 3, 1855 at 10 Stat. 701)",
+      "source_type": "primary",
+      "archive_identifier": null,
+      "last_retrieved": "2026-10-31",
+      "quote_excerpt": "a subsequent marriage shall not impair the right of any such widow to such warrant if she be a widow at the time of making her application",
+      "page_ref": "10 Stat. 702, sec. 2",
+      "verification_status": "verified",
+      "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
+      "used_on": [
+        "tool:tool-a.js",
+        "widow-pension-checker"
+      ],
+      "notes": ""
+    },
+    {
+      "claim_id": "stat-1878-14-days-a",
+      "claim_text": "1878 act: a widow of a Revolutionary soldier who served 14 days or was in any engagement was to be pensioned.",
+      "source_url": "https://tile.loc.gov/storage-services/service/ll/llsl/llsl-c45/llsl-c45.pdf",
+      "source_title": "Library of Congress — U.S. Statutes at Large, 45th Congress (scanned; Act of March 9, 1878 at 20 Stat. 27)",
+      "source_type": "primary",
+      "archive_identifier": null,
+      "last_retrieved": "2026-10-31",
+      "quote_excerpt": "any widow of a Revolutionary soldier who served fourteen",
+      "page_ref": "20 Stat. 29, sec. 6",
+      "verification_status": "verified",
+      "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
+      "used_on": [
+        "tool:tool-a.js",
+        "widow-pension-checker"
+      ],
+      "notes": ""
+    },
+    {
+      "claim_id": "stat-1878-14-days-b",
+      "claim_text": "1878 act: the 14-day rule also accepted a soldier who was in any engagement.",
+      "source_url": "https://tile.loc.gov/storage-services/service/ll/llsl/llsl-c45/llsl-c45.pdf",
+      "source_title": "Library of Congress — U.S. Statutes at Large, 45th Congress (scanned; Act of March 9, 1878 at 20 Stat. 27)",
+      "source_type": "primary",
+      "archive_identifier": null,
+      "last_retrieved": "2026-10-31",
+      "quote_excerpt": "days or was in any engagement shall be placed upon the pension-rolls",
+      "page_ref": "20 Stat. 29, sec. 6",
+      "verification_status": "verified",
+      "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
+      "used_on": [
+        "tool:tool-a.js",
+        "widow-pension-checker"
+      ],
+      "notes": ""
+    },
+    {
+      "claim_id": "stat-1878-remarriage",
+      "claim_text": "1878 act: widows' pensions ended if they married again.",
+      "source_url": "https://tile.loc.gov/storage-services/service/ll/llsl/llsl-c45/llsl-c45.pdf",
+      "source_title": "Library of Congress — U.S. Statutes at Large, 45th Congress (scanned; Act of March 9, 1878 at 20 Stat. 27)",
+      "source_type": "primary",
+      "archive_identifier": null,
+      "last_retrieved": "2026-10-31",
+      "quote_excerpt": "the pensions to widows provided for in this act shall cease when they shall marry again",
+      "page_ref": "20 Stat. 28, sec. 2",
+      "verification_status": "verified",
+      "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
+      "used_on": [
+        "tool:tool-a.js",
+        "widow-pension-checker"
+      ],
+      "notes": ""
+    },
+    {
+      "claim_id": "stat-1878-eight-dollars",
+      "claim_text": "1878 act: it did not apply to anyone already receiving a pension of $8 a month or more.",
+      "source_url": "https://tile.loc.gov/storage-services/service/ll/llsl/llsl-c45/llsl-c45.pdf",
+      "source_title": "Library of Congress — U.S. Statutes at Large, 45th Congress (scanned; Act of March 9, 1878 at 20 Stat. 27)",
+      "source_type": "primary",
+      "archive_identifier": null,
+      "last_retrieved": "2026-10-31",
+      "quote_excerpt": "this act shall not apply to any person who is receiving a pension at the rate of eight dollars per month or more",
+      "page_ref": "20 Stat. 28, sec. 2",
+      "verification_status": "verified",
+      "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
+      "used_on": [
+        "tool:tool-a.js",
+        "widow-pension-checker"
       ],
       "notes": ""
     }

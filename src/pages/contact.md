@@ -2,7 +2,6 @@
 title: "Contact"
 slug: contact
 description: "How to contact patriotinlays.com with corrections and questions."
-launch_setup: "contact@patriotinlays.com forwards through Cloudflare Email Routing (free). Tim sets the routing rule and destination inbox at launch; until then mail to this address is not delivered. See README.md, section "Email Routing for contact@patriotinlays.com"."
 ---
 # Contact
 

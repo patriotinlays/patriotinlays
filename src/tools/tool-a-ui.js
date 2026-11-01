@@ -8,7 +8,8 @@ import { stateName } from "./places.js";
 const store = ns("pi.toolA.");
 const worksheet = ns("pi.toolB.");
 // Badges are deliberately not green: a matching date is a starting point, never an approval.
-// Labels: "Fits" only when every rule is settled; "Ruled out by the dates"; "Still possible: need …"; "Can't check here".
+// Labels: "Fits the rules checked here; other terms not checked" only when every rule the tool has is settled;
+// "Ruled out by the dates"; "Still possible: need …"; "Can't check here".
 const badge = (s, text) => el("span", { class: `badge b-${s}`, text: text || (s === "invalid" ? "Couldn't read the dates" : verdictFor({ status: s })) });
 
 function renderWidow(rows) {
@@ -21,13 +22,16 @@ function renderWidow(rows) {
       r.why ? el("div", { class: "small", text: r.why }) : null,
       r.next ? el("div", { class: "small next", text: r.next }) : null,
       r.uiNote ? el("div", { class: "small note", text: r.uiNote }) : null,
+      r.uncheckedText ? el("div", { class: "small note", "data-unchecked": "", text: r.uncheckedText }) : null,
       r.nextNote ? el("div", { class: "small next", text: r.nextNote }) : null,
       r.links?.length ? el("ul", { class: "where-links small" }, ...r.links.map((l) => el("li", {}, el("a", { href: l.url, rel: "noopener", text: l.label })))) : null)));
   t.append(tb);
   const sum = widowSummary(rows);
   // The one question that would settle the most open laws gets a link straight to its box.
-  const ask = sum?.ask ? el("p", { class: "ask", "data-ask": sum.ask.key }, el("strong", { text: "One more answer would settle the most: " }), `${sum.ask.text}. `,
-    el("a", { href: `#${sum.ask.field}`, "data-ask-link": "", onclick: (e) => { e.preventDefault(); const f = document.getElementById(sum.ask.field); f?.scrollIntoView({ block: "center" }); f?.focus(); }, text: "Answer it in the form" })) : null;
+  // Each box that answers it is named and linked (audit 4): two separate questions when either one settles it.
+  const go = (f) => el("a", { href: `#${f.field}`, "data-ask-link": f.field, onclick: (e) => { e.preventDefault(); const x = document.getElementById(f.field); x?.scrollIntoView({ block: "center" }); x?.focus(); }, text: `Go to "${f.label}"` });
+  const ask = sum?.ask ? el("div", { class: "ask", "data-ask": sum.ask.key }, el("p", {}, el("strong", { text: "One more answer would settle the most: " }), `${sum.ask.text}. It bears on the ${sum.ask.settles.length > 2 ? `${sum.ask.settles.slice(0, -1).join(", ")} and ${sum.ask.settles.at(-1)}` : sum.ask.settles.join(" and ")} law${sum.ask.settles.length > 1 ? "s" : ""}.`),
+    sum.ask.fields.length > 1 ? el("ul", { class: "small" }, ...sum.ask.fields.map((f) => el("li", {}, `${f.label} ${f.hint ? `(${f.hint})` : ""} `, go(f)))) : el("p", { class: "small" }, go(sum.ask.fields[0]))) : null;
   return el("div", {}, sum ? el("p", { class: "answer", "data-answer": "", role: "status" }, el("strong", { text: "In short: " }), sum.text) : null, ask,
     el("div", { class: "table-wrap" }, t),
     el("p", { class: "small terms", "data-terms": "" }, el("strong", { text: "Plain terms: " }), `${TERMS.stat.text} ${TERMS.bounty.text}`));

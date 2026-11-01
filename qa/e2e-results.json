@@ -1,8 +1,8 @@
 {
-  "ranAt": "Sat Oct 31 2026 21:04:10 GMT-0500 (Central Daylight Time)",
-  "browser": "/usr/bin/google-chrome (headless) via playwright-core 1.59.1",
-  "passed": 121,
-  "total": 121,
+  "ranAt": "Sat Oct 31 2026 21:36:45 GMT-0500 (Central Daylight Time)",
+  "browser": "/usr/bin/google-chrome (headless) via playwright-core 1.64.1",
+  "passed": 127,
+  "total": 127,
   "exampleReportPages": {
     "summaryPages": 2,
     "fullPages": 3,
@@ -94,19 +94,34 @@
       "detail": "Ruled out by the datesRuled out as you typed it. You typed a marriage date of 1790 and the end of his last service as 17"
     },
     {
-      "name": "Widow checker, dates only: labels read 'Ruled out by the dates' (1836), 'Fits' only where the marriage date settles the law's one rule (1838, 1848), 'Still possible: need …' (1855 bounty-land, 1878) and 'Can't check here' (1853)",
+      "name": "Widow checker, dates only (audit 4): 'Ruled out by the dates' (1836); 1838 and 1848 'Still possible' because their own text also needs his service; 1855 bounty-land and 1878 'Still possible: need …'; 1853 'Can't check here'; nothing 'Fits'",
       "ok": true,
-      "detail": "[\"Ruled out by the dates\",\"Fits (settled by what you typed; not a ruling)\",\"Fits (settled by what you typed; not a ruling)\",\"Can't check here\",\"Can't check here\",\"Still possible: need whether he served 14 days or more, or was in a battle\",\"Still possible: need whether he served 14 days or more, or was in a battle\"]"
+      "detail": "[\"Ruled out by the dates\",\"Still possible: need whether he served 6 months or more, and his kind of service\",\"Still possible: need his kind of service\",\"Can't check here\",\"Can't check here\",\"Still possible: need how many days he served, or whether he was in a battle\",\"Still possible: need how many days he served, or whether he was in a battle\"]"
     },
     {
-      "name": "Widow checker, dates only: asks the one question that settles the most (14 days or a battle) and its link goes to that box",
+      "name": "Widow checker (audit 4 #3): the ruled-out 1836 row says no action is needed and no longer says 'find out what kind of unit'",
       "ok": true,
-      "detail": "One more answer would settle the most: whether he served 14 days or more, or was in a battle. Answer it in the form"
+      "detail": "Rule: Marriage must precede expiration of veteran's last period of service; service as specified in act of June 7, 1832 (at least 6 months, in the Continental L"
     },
     {
-      "name": "Widow checker, dates only: answering it (30 days) settles the 1855 bounty-land and 1878 laws as 'Fits'",
+      "name": "Widow checker, dates only: asks the one question that settles the most (his kind of service) and its link, named for the box, goes to that box",
       "ok": true,
-      "detail": "[\"Ruled out by the dates\",\"Fits (settled by what you typed; not a ruling)\",\"Fits (settled by what you typed; not a ruling)\",\"Can't check here\",\"Can't check here\",\"Fits (settled by what you typed; not a ruling)\",\"Fits (settled by what you typed; not a ruling)\"]"
+      "detail": "One more answer would settle the most: his kind of service (Continental Line, or State troops, volunteers or militia). It bears on the 1838 and 1848 laws.Go to \"What kind of service was it?\""
+    },
+    {
+      "name": "Widow checker (audit 4 #4): '14 days or a battle' is two separate questions, each linked by the box's own name",
+      "ok": true,
+      "detail": "{\"key\":\"days\",\"links\":[[\"#tw-d\",\"Go to \\\"Total days of service\\\"\"],[\"#tw-b\",\"Go to \\\"Was he in at least one battle?\\\"\"]]}"
+    },
+    {
+      "name": "Widow checker: the battle link focuses the battle box",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "Widow checker: answering (militia, 30 days) settles 1848, 1855 bounty-land and 1878 as 'Fits the rules checked here; other terms not checked', each listing what isn't checked; never a plain 'Fits'",
+      "ok": true,
+      "detail": "[[\"Ruled out by the dates\",false],[\"Ruled out by the service you typed\",false],[\"Fits the rules checked here; other terms not checked\",true],[\"Can't check here\",false],[\"Can't check here\",false],[\"Fits the rules checked here; other terms not checked\",true],[\"Fits the rules checked here; other terms not checked\",true]]"
     },
     {
       "name": "Widow checker: each field shows a 'Why it matters' line",
@@ -136,12 +151,12 @@
     {
       "name": "Widow checker: 'Load an example' shows results at once",
       "ok": true,
-      "detail": "In short: Fits, settled by what you typed: the 1838, 1848, M"
+      "detail": "In short: Fits every rule checked here (other terms in the l"
     },
     {
       "name": "Widow checker: a one-line plain answer sits above the table (what fits, what is still possible and what it needs, with the next step)",
       "ok": true,
-      "detail": "In short: Fits, settled by what you typed: the 1838, 1848, March 1855 bounty-land and 1878 laws. Still possible: the 1836 law (need his kind of service). Can't check here: the 1853 and February 1855 laws (the source doesn't give their terms). To settle the most, tell us his kind of service (Continental Line, or State troops, volunteers or militia): it bears on the 1836 law. Next: look for the widow's pension file (see \"What to do next\")."
+      "detail": "In short: Fits every rule checked here (other terms in the law not checked): the March 1855 bounty-land and 1878 laws. Ruled out by the dates: the 1838 law. Still possible: the 1836 and 1848 laws (need his kind of service). Can't check here: the 1853 and February 1855 laws (the source doesn't give their terms). To settle the most, tell us his kind of service (Continental Line, or State troops, volunteers or militia): it bears on the 1836 and 1848 laws. Next: look for the widow's pension file (see \"What to do next\")."
     },
     {
       "name": "Widow checker: results explain 'Stat.' (Statutes at Large: volume, page) and 'bounty land' in plain words",
@@ -217,6 +232,16 @@
       "name": "Widow checker auto-fills his service end from the worksheet patriot",
       "ok": true,
       "detail": "Filled in from your worksheet: Test Patriot, North Carolina, continental army (the continental line), service ended 1779-06. Add the marriage date and, if you know them, his months or days of service."
+    },
+    {
+      "name": "Worksheet (audit 4 #1): a patriot born 1850 with 1777–79 service gets 'His dates don't add up', not 'Dates fit', and the plan opens with 'Check these dates first'",
+      "ok": true,
+      "detail": "{\"check\":\"His dates don't add upThe patriot (generation 4) is listed as born about 1850, after his service (1777 to 1779): he wasn't born yet. Check his birth year, his service dates, and that the right generation is marked as the patriot.T"
+    },
+    {
+      "name": "Report (audit 4 #1): the summary says his birth year and service don't add up, and never 'dates fit'",
+      "ok": true,
+      "detail": "SummarySaved . Your own worksheet, not a decision: a society's genealogists review every entry.The patriot: Test, Virginia, state troops, volunteers or militia, 1777 to 1779 (generation 4). Date check"
     },
     {
       "name": "Tool B: starts with 2 generations",
@@ -369,6 +394,11 @@
       "detail": "Summary | Where to look | The patriot, in full | Your records, generation by generation"
     },
     {
+      "name": "Report (audit 4 #5): where advice cites NSCDA, the report explains it once (The National Society of the Colonial Dames of America)",
+      "ok": true,
+      "detail": "{\"uses\":true,\"terms\":1,\"text\":\"NSCDA: The National Society of the Colonial Dames of America, a lineage society; notes marked NSCDA cite its Standards of Proof.\"}"
+    },
+    {
       "name": "Report: each 'Where to look' block appears once, and every to-do points to it by letter",
       "ok": true,
       "detail": "{\"blocks\":10,\"unique\":10,\"refs\":16}"
@@ -379,7 +409,7 @@
       "detail": ""
     },
     {
-      "name": "Report: the page-count claim matches headless Chrome's print-to-PDF of the example (Save as PDF and Ctrl+P)",
+      "name": "Report: the page-count claim names both print paths (Save as PDF and Ctrl+P) and matches headless Chrome's print-to-PDF of the example for each",
       "ok": true,
       "detail": "summary 2, full 3; claim 2/3"
     },
@@ -629,8 +659,8 @@
       "detail": ""
     }
   ],
-  "requestsTotal": 262,
+  "requestsTotal": 295,
   "externalRequests": 0,
   "interactionRequests": 0,
-  "faviconLate": 21
+  "faviconLate": 24
 }

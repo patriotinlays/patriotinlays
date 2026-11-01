@@ -1,9 +1,9 @@
 {
-  "ranAt": "Sat Oct 31 2026 21:02:32 GMT-0500 (Central Daylight Time)",
+  "ranAt": "Sat Oct 31 2026 21:33:49 GMT-0500 (Central Daylight Time)",
   "node": "v24.22.1",
   "pass": 34,
   "total": 34,
-  "plainChecks": "39/39",
+  "plainChecks": "47/47",
   "wordingGuard": "PASS",
   "rows": [
     {
@@ -185,7 +185,7 @@
     {
       "id": 23,
       "group": "Widow claim",
-      "desc": "1838 act: married 1793-12-31 vs 1794-01-01 (cutoff: before 1 Jan 1794)",
+      "desc": "1838 act: married 1793-12-31 vs 1794-01-01 (cutoff: before 1 Jan 1794), service ended 1781 after 24 months of militia service",
       "expected": "consistent|inconsistent",
       "actual": "consistent|inconsistent",
       "result": "PASS"

@@ -13,3 +13,7 @@ export function norm(s) {
     .replace(/[\u2018\u2019\u02bc]/g, "'").replace(/[\u201c\u201d]/g, '"').replace(/[\u2013\u2014\u2212]/g, "-")
     .replace(/\u00a0/g, " ").replace(/-\s*\n\s*/g, "-").replace(/\s+/g, " ").trim().toLowerCase();
 }
+// Scanned statute volumes break words across lines ("an-\nnuity"); this variant rejoins them. A quote may match either form.
+export function normJoin(s) {
+  return norm(decodeEntities(s).replace(/(\w)-[ \t]*\r?\n\s*(?=[a-z])/g, "$1"));
+}

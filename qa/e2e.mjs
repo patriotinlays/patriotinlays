@@ -84,17 +84,25 @@ check("Widow checker (audit 3 #1): married 1790, service ended 1779, no months t
 { const d = await page.evaluate(() => { const rows = [...document.querySelectorAll("[data-out=widow] tbody tr")].map((tr) => [tr.cells[0].textContent, tr.cells[1].querySelector(".badge").textContent]);
     const ask = document.querySelector("[data-out=widow] [data-ask]"); return { rows, ask: ask?.textContent || "", key: ask?.dataset.ask, href: ask?.querySelector("a")?.getAttribute("href") }; });
   const v = (y) => d.rows.find((r) => r[0].includes(y))?.[1] || "";
-  check("Widow checker, dates only: labels read 'Ruled out by the dates' (1836), 'Fits' only where the marriage date settles the law's one rule (1838, 1848), 'Still possible: need …' (1855 bounty-land, 1878) and 'Can't check here' (1853)",
-    v("1836") === "Ruled out by the dates" && /^Fits/.test(v("1838")) && /^Fits/.test(v("1848")) && v("Bounty-land act").startsWith("Still possible: need whether he served 14 days or more, or was in a battle") && v("1878").startsWith("Still possible") && v("February 3, 1853") === "Can't check here"
-    && d.rows.filter((r) => /^Fits/.test(r[1])).length === 2, JSON.stringify(d.rows.map((r) => r[1])));
+  check("Widow checker, dates only (audit 4): 'Ruled out by the dates' (1836); 1838 and 1848 'Still possible' because their own text also needs his service; 1855 bounty-land and 1878 'Still possible: need …'; 1853 'Can't check here'; nothing 'Fits'",
+    v("1836") === "Ruled out by the dates" && v("1838") === "Still possible: need whether he served 6 months or more, and his kind of service" && v("1848") === "Still possible: need his kind of service" && v("Bounty-land act").startsWith("Still possible: need how many days he served, or whether he was in a battle") && v("1878").startsWith("Still possible") && v("February 3, 1853") === "Can't check here"
+    && d.rows.filter((r) => /^Fits/.test(r[1])).length === 0, JSON.stringify(d.rows.map((r) => r[1])));
+  const out1836 = await page.$$eval("[data-out=widow] tbody tr", (trs) => trs.find((tr) => tr.cells[0].textContent.includes("1836")).cells[2].textContent);
+  check("Widow checker (audit 4 #3): the ruled-out 1836 row says no action is needed and no longer says 'find out what kind of unit'", /No action needed for this law/.test(out1836) && !/find out/i.test(out1836), out1836.slice(0, 160));
   await page.click("[data-out=widow] [data-ask-link]");
-  check("Widow checker, dates only: asks the one question that settles the most (14 days or a battle) and its link goes to that box", d.key === "days" && d.href === "#tw-d" && /14 days or more/.test(d.ask) && (await page.evaluate(() => document.activeElement?.id)) === "tw-d", d.ask);
+  check("Widow checker, dates only: asks the one question that settles the most (his kind of service) and its link, named for the box, goes to that box", d.key === "kind" && d.href === "#tw-k" && /What kind of service was it\?/.test(d.ask) && (await page.evaluate(() => document.activeElement?.id)) === "tw-k", d.ask);
+  await page.selectOption("#tw-k", "militia"); await page.click('form[data-form=widow] button[type=submit]');
+  const sp = await page.evaluate(() => { const a = document.querySelector("[data-out=widow] [data-ask]"); return { key: a?.dataset.ask, links: [...(a?.querySelectorAll("[data-ask-link]") || [])].map((x) => [x.getAttribute("href"), x.textContent]) }; });
+  check("Widow checker (audit 4 #4): '14 days or a battle' is two separate questions, each linked by the box's own name", sp.key === "days" && JSON.stringify(sp.links) === JSON.stringify([["#tw-d", 'Go to "Total days of service"'], ["#tw-b", 'Go to "Was he in at least one battle?"']]), JSON.stringify(sp));
+  await page.click('[data-out=widow] [data-ask-link="tw-b"]'); check("Widow checker: the battle link focuses the battle box", (await page.evaluate(() => document.activeElement?.id)) === "tw-b");
   await page.fill("#tw-d", "30"); await page.click('form[data-form=widow] button[type=submit]');
-  const after = await page.$$eval("[data-out=widow] tbody tr", (trs) => trs.map((tr) => tr.cells[1].querySelector(".badge").textContent));
-  check("Widow checker, dates only: answering it (30 days) settles the 1855 bounty-land and 1878 laws as 'Fits'", after.filter((t) => /^Fits/.test(t)).length === 4, JSON.stringify(after));
+  const after = await page.$$eval("[data-out=widow] tbody tr", (trs) => trs.map((tr) => [tr.cells[1].querySelector(".badge").textContent, !!tr.querySelector("[data-unchecked]")]));
+  check("Widow checker: answering (militia, 30 days) settles 1848, 1855 bounty-land and 1878 as 'Fits the rules checked here; other terms not checked', each listing what isn't checked; never a plain 'Fits'",
+    after.filter(([t]) => t === "Fits the rules checked here; other terms not checked").length === 3 && after.every(([t, u]) => !/^Fits/.test(t) || (t === "Fits the rules checked here; other terms not checked" && u)), JSON.stringify(after));
+  await page.selectOption("#tw-k", "");
   await page.fill("#tw-d", "");
 }
-check("Widow checker: each field shows a 'Why it matters' line", (await page.$$eval("form[data-form=widow] [data-why]", (ps) => ps.filter((p) => p.textContent.startsWith("Why it matters")).length)) === 5);
+check("Widow checker: each field shows a 'Why it matters' line", (await page.$$eval("form[data-form=widow] [data-why]", (ps) => ps.filter((p) => p.textContent.startsWith("Why it matters")).length)) === 6);
 await page.click('[data-tool="widow"] [data-load-example]');
 const exD = await page.textContent('[data-out=widow]');
 const planA = await page.textContent('[data-tool="widow"] [data-plan]');
@@ -105,10 +113,10 @@ await page.evaluate(() => { window.__printed = 0; window.__planOnly = null; wind
 await page.click('[data-tool="widow"] [data-print-plan]');
 check("Widow checker: 'Print or save this plan' prints in plan-only mode", (await page.evaluate(() => window.__printed === 1 && window.__planOnly === true)));
 check("Widow checker: no 'Not evaluated' wording anywhere on the page", !/not evaluated/i.test(await page.textContent("main")));
-check("Widow checker: 'Load an example' shows results at once", /Fits \(settled by what you typed/.test(exD), exD.slice(0, 60));
+check("Widow checker: 'Load an example' shows results at once", /Fits the rules checked here; other terms not checked/.test(exD) && /Not checked here \(from the law's own text\)/.test(exD), exD.slice(0, 60));
 const ans = await page.evaluate(() => { const a = document.querySelector("[data-out=widow] [data-answer]"); const t = document.querySelector("[data-out=widow] table.widow");
   return a && t ? { text: a.textContent, above: !!(a.compareDocumentPosition(t) & Node.DOCUMENT_POSITION_FOLLOWING) } : null; });
-check("Widow checker: a one-line plain answer sits above the table (what fits, what is still possible and what it needs, with the next step)", ans?.above && /^In short: Fits, settled by what you typed: the 1838, 1848, March 1855 bounty-land and 1878 laws\. Still possible: the 1836 law \(need his kind of service\)/.test(ans.text) && /Next: look for the widow's pension file/.test(ans.text), ans?.text);
+check("Widow checker: a one-line plain answer sits above the table (what fits, what is still possible and what it needs, with the next step)", ans?.above && /^In short: Fits every rule checked here \(other terms in the law not checked\): the March 1855 bounty-land and 1878 laws\. Ruled out by the dates: the 1838 law\. Still possible: the 1836 and 1848 laws \(need his kind of service\)/.test(ans.text) && /Next: look for the widow's pension file/.test(ans.text), ans?.text);
 const terms = await page.textContent("[data-out=widow] [data-terms]");
 check("Widow checker: results explain 'Stat.' (Statutes at Large: volume, page) and 'bounty land' in plain words", /Statutes at Large/.test(terms) && /volume 5, page 128/.test(terms) && /Bounty land was free public land/.test(terms), terms.slice(0, 120));
 check("Widow checker page: no 'Qualif' anywhere in rendered text", !/qualif/i.test(await page.textContent("body")));
@@ -150,6 +158,16 @@ phase("load"); await page.goto(`${BASE}/tools/widow-pension-checker/?from=worksh
 check("Widow checker auto-fills his service end from the worksheet patriot", (await page.inputValue("#tw-e")) === "1779-06" && /Test Patriot/.test(await page.textContent("[data-worksheet-msg]")), await page.textContent("[data-worksheet-msg]"));
 await page.click("[data-clear=toolA]");
 phase("load"); await page.goto(`${BASE}/tools/lineage-matrix/`); phase("interact");
+// ---- Audit 4 #1: date sanity (patriot born 1850 with 1777–79 service) ----
+await page.evaluate(() => localStorage.setItem("pi.toolB.v1", JSON.stringify({ generations: [{ gen: 1, who: "", living: true, born: "1950", died: "", state: "VA", cells: [] }, { gen: 2, who: "", living: false, born: "1920", died: "", state: "VA", cells: [] }, { gen: 3, who: "", living: false, born: "1890", died: "", state: "VA", cells: [] }, { gen: 4, who: "", living: false, born: "1850", died: "", state: "VA", cells: [] }],
+  patriot: { name: "Test", state: "VA", kind: "militia", start: "1777", end: "1779", gen: "4" } })));
+phase("load"); await page.reload(); phase("interact");
+{ const ds = await page.evaluate(() => ({ check: document.querySelector("[data-patriot-check]")?.textContent || "", plan: document.querySelector('[data-tool="lineage-matrix"] [data-plan] [data-date-warnings]')?.textContent || "", first: document.querySelector('[data-tool="lineage-matrix"] [data-plan] .plan-steps > li .plan-title')?.textContent }));
+  check("Worksheet (audit 4 #1): a patriot born 1850 with 1777–79 service gets 'His dates don't add up', not 'Dates fit', and the plan opens with 'Check these dates first'", /His dates don't add up/.test(ds.check) && /wasn't born yet/.test(ds.check) && !/Dates fit/.test(ds.check) && ds.first === "Check these dates first" && /wasn't born yet/.test(ds.plan), JSON.stringify(ds).slice(0, 240));
+  phase("load"); await page.goto(`${BASE}/tools/lineage-matrix/report/`); phase("interact");
+  const rs = await page.textContent("[data-report]");
+  check("Report (audit 4 #1): the summary says his birth year and service don't add up, and never 'dates fit'", /don't add up/.test(rs) && !/dates fit/i.test(rs) && /Check these dates first/.test(rs), rs.slice(0, 200));
+  phase("load"); await page.goto(`${BASE}/tools/lineage-matrix/`); phase("interact"); }
 await page.evaluate(() => localStorage.removeItem("pi.toolB.v1")); phase("load"); await page.reload(); phase("interact");
 
 // ---- Tool B ----
@@ -235,6 +253,8 @@ const rep = await page.evaluate(() => { const r = document.querySelector("[data-
   return { first: r.firstElementChild?.dataset.summary !== undefined, h2: [...r.querySelectorAll("h2")].map((h) => h.textContent), blocks: texts.length, unique: new Set(texts).size, refs, letters: blocks.map((b) => b.dataset.whereBlock),
     fullWhere: r.querySelectorAll(".where").length, censusDup: texts.filter((t) => /^Censuses in their lifetime/.test(t)).length, save: !!document.querySelector("[data-save-pdf]") && document.querySelector("[data-save-pdf]").offsetParent !== null }; });
 check("Report: opens with a one-page summary (patriot, where you are, what to do next) before 'Where to look' and the records", rep.first && rep.h2[0] === "Summary" && rep.h2[1] === "Where to look" && /The patriot: John \(made up\)/.test(await page.textContent("[data-summary]")), rep.h2.join(" | "));
+{ const ns = await page.evaluate(() => { const r = document.querySelector("[data-report]"); return { uses: /NSCDA/.test(r.textContent), terms: r.querySelectorAll("[data-nscda-term]").length, text: r.querySelector("[data-nscda-term]")?.textContent || "" }; });
+  check("Report (audit 4 #5): where advice cites NSCDA, the report explains it once (The National Society of the Colonial Dames of America)", ns.uses && ns.terms === 1 && /Colonial Dames of America/.test(ns.text), JSON.stringify(ns).slice(0, 200)); }
 check("Report: each 'Where to look' block appears once, and every to-do points to it by letter", rep.blocks > 0 && rep.unique === rep.blocks && rep.fullWhere === 0 && rep.refs.length > 0 && rep.refs.every((L) => rep.letters.includes(L)) && rep.letters.every((L) => rep.refs.includes(L)), JSON.stringify({ blocks: rep.blocks, unique: rep.unique, refs: rep.refs.length }));
 check("Report: a visible 'Save as PDF' button prints the summary only", rep.save && await (async () => { await page.evaluate(() => { window.__sp = null; window.print = () => { window.__sp = document.body.classList.contains("print-summary"); }; }); await page.click("[data-save-pdf]"); return page.evaluate(() => window.__sp === true); })());
 await page.emulateMedia({ media: "print" }); await page.evaluate(() => document.body.classList.add("print-summary"));
@@ -248,7 +268,7 @@ const printUrlsFull = await page.evaluate(() => [...document.querySelectorAll("m
 const hostRefs = await page.evaluate(() => [...document.querySelectorAll("main a[data-host]")].map((a) => getComputedStyle(a, "::after").content).filter((c) => /^"\s\(/.test(c)).length);
 await page.emulateMedia({ media: "screen" }); globalThis.__reportPages = { ...(globalThis.__reportPages || {}), summaryPages, fullPages };
 const claim = await page.$eval("[data-page-claim]", (e) => ({ s: +e.dataset.summaryPages, f: +e.dataset.fullPages, t: e.textContent }));
-check("Report: the page-count claim matches headless Chrome's print-to-PDF of the example (Save as PDF and Ctrl+P)", claim.s === summaryPages && claim.f === fullPages && claim.t.includes(`${summaryPages} Letter pages`) && claim.t.includes(`on ${fullPages} with every record`) && summaryPages <= 2 && fullPages <= 3, `summary ${summaryPages}, full ${fullPages}; claim ${claim.s}/${claim.f}`);
+check("Report: the page-count claim names both print paths (Save as PDF and Ctrl+P) and matches headless Chrome's print-to-PDF of the example for each", claim.s === summaryPages && claim.f === fullPages && claim.t.includes(`takes ${summaryPages} Letter pages this way`) && claim.t.includes(`Ctrl+P`) && claim.t.includes(`every record as well: ${fullPages} pages for the example`) && summaryPages <= 2 && fullPages <= 3, `summary ${summaryPages}, full ${fullPages}; claim ${claim.s}/${claim.f}`);
 check("Report: printing shows no link addresses, only short source references like (archives.gov)", printUrls === 0 && printUrlsFull === 0 && hostRefs > 0, `${printUrls}/${printUrlsFull} URL expansions, ${hostRefs} short refs`);
 check("Report: links to the definitions", (await page.$$('main a[href="/#glossary"]')).length >= 1);
 // ---- Audit 3 regressions: persona B (Virginia militia, Ohio family, a ticked census entry) ----

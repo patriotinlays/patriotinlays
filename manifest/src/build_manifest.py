@@ -17,7 +17,7 @@ for cid, sk, quote, text, page in C:
     if cid not in used: unused.append(cid); continue
     url, title, _ = SOURCES[sk]
     out.append(dict(claim_id=cid, claim_text=text, source_url=url, source_title=title,
-        source_type="primary" if sk in () else "official_secondary", archive_identifier=None,
+        source_type="primary" if sk.startswith("LOC_C") else "official_secondary", archive_identifier=None,
         last_retrieved="2026-10-31", quote_excerpt=quote, page_ref=page, verification_status="verified",
         verified_by="bot:R3-verify — quote matched in source text fetched 2026-10-31 CT", used_on=sorted(used.get(cid, [])), notes=""))
 json.dump({"schema_version": 1, "policy": "Any claim not verifiable against an official primary/secondary source in this manifest is omitted from the site. Build fails on unmanifested claims.", "claims": out},

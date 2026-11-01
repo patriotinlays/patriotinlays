@@ -38,8 +38,8 @@ unknown or unverified claim, stale entry (> 120 days), quote that no longer appe
 | `manifest/` | Source Manifest (`claims.json`) and the Python that regenerates it (`npm run manifest`) |
 | `scripts/` | Static site generator, tests, manifest gate, link checker, gates doc generator |
 | `ops/gates.js`, `docs/gates.md` | Day 30/60/90 mixed-gate decision rules (code + generated doc) |
-| `qa/e2e.mjs` | Headless-browser end-to-end suite (121 checks, incl. 360px, fresh profile and the report page count) |
-| `.github/workflows/` | `build.yml` (build gates on every push/PR), `ci.yml` (E2E on releases and tool PRs) |
+| `qa/e2e.mjs` | Headless-browser end-to-end suite (127 checks, incl. 360px, fresh profile and the report page count) |
+| `.github/workflows/` | `build.yml` and `ci.yml`. **Both workflows are disabled on GitHub** (they don't run); every check they define is run locally before each deploy instead (see below) |
 | `dist/` | Build output (generated; this is what gets deployed) |
 
 There is no `src/components/` directory; tool code lives in `src/tools/`.
@@ -140,8 +140,10 @@ build image: https://developers.cloudflare.com/pages/configuration/build-image/
 
 Why `build:pages` and not `build`: Cloudflare's build image does not list poppler-utils, so the live PDF quote check
 cannot run there. `build:pages` runs all tests, the offline manifest gate, the build and the internal link check.
-The live source re-verification and external link check run in GitHub Actions (`build.yml`) on every push and PR,
-and `ci.yml` runs the E2E suite on releases and tool PRs; protect `main` so those checks must pass before merge.
+The live source re-verification and external link check are defined in GitHub Actions (`build.yml`), and `ci.yml`
+defines the E2E suite, but **both workflows are currently disabled on GitHub, so no checks run there**. Every release
+is checked locally instead before it is deployed: `npm run build` (unit tests, live source and quote check, build,
+link check) and `npm run e2e` (browser suite). If the workflows are ever re-enabled, protect `main` so they must pass.
 
 ### Custom domain + GoDaddy nameservers
 
@@ -171,7 +173,7 @@ An apex domain (`patriotinlays.com`) must be a zone on the same Cloudflare accou
 Docs: https://developers.cloudflare.com/email-routing/get-started/enable-email-routing/ ·
 pricing: https://developers.cloudflare.com/email-service/platform/pricing/ (inbound routing is available on the Free plan).
 
-The Contact and Privacy pages already publish `contact@patriotinlays.com`; mail to it is **not delivered until this is done**.
+The Contact and Privacy pages publish `contact@patriotinlays.com`. **Done:** forwarding is set up and working, so the build no longer prints a launch-setup warning for the Contact page. The steps below are kept for reference.
 Requires the domain to be on Cloudflare DNS (previous section).
 
 1. Cloudflare dashboard → **Compute** → **Email Service** → **Email Routing** → **Onboard Domain** → choose

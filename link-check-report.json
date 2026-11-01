@@ -1,8 +1,8 @@
 {
-  "checkedAt": "Sat Oct 31 2026 21:03:31 GMT-0500 (Central Daylight Time)",
+  "checkedAt": "Sat Oct 31 2026 21:36:09 GMT-0500 (Central Daylight Time)",
   "htmlFiles": 20,
-  "internalLinks": 978,
-  "externalUnique": 46,
+  "internalLinks": 993,
+  "externalUnique": 51,
   "external": [
     {
       "url": "https://www.dar.org/discover/become-member/chapter-locator",
@@ -201,6 +201,13 @@
       "via": "fetch"
     },
     {
+      "url": "https://tile.loc.gov/storage-services/service/ll/llsl/llsl-c25/llsl-c25.pdf",
+      "status": 200,
+      "err": null,
+      "pages": 3,
+      "via": "fetch"
+    },
+    {
       "url": "https://libguides.nypl.org/military-genealogy/revolutionary-war",
       "status": 200,
       "err": null,
@@ -321,6 +328,34 @@
     },
     {
       "url": "https://www.archives.gov/research/vital-records",
+      "status": 200,
+      "err": null,
+      "pages": 2,
+      "via": "fetch"
+    },
+    {
+      "url": "https://tile.loc.gov/storage-services/service/ll/llsl/llsl-c24/llsl-c24.pdf",
+      "status": 200,
+      "err": null,
+      "pages": 2,
+      "via": "fetch"
+    },
+    {
+      "url": "https://tile.loc.gov/storage-services/service/ll/llsl/llsl-c30/llsl-c30.pdf",
+      "status": 200,
+      "err": null,
+      "pages": 2,
+      "via": "fetch"
+    },
+    {
+      "url": "https://tile.loc.gov/storage-services/service/ll/llsl/llsl-c33/llsl-c33.pdf",
+      "status": 200,
+      "err": null,
+      "pages": 2,
+      "via": "fetch"
+    },
+    {
+      "url": "https://tile.loc.gov/storage-services/service/ll/llsl/llsl-c45/llsl-c45.pdf",
       "status": 200,
       "err": null,
       "pages": 2,

@@ -60,7 +60,7 @@ The act behind an application decides what the applicant had to say, so it tells
 | 1820 | Added proof of financial need [[claim:nps-1820]] | Property schedules, which often name the wife and children with ages [[claim:m804-property]] |
 | 1832 | Six months of service, including militia [[claim:nps-1832]] | Testimony before a Court of Record [[claim:nps-1832-court]], backed by at least one credible witness [[claim:nps-witness]] |
 | 1836 | Widows who married the veteran before his last period of service ended (NARA's wording) [[claim:nara-act-1836]] | Proof of marriage, widow's own testimony |
-| 1838 | Five-year pensions for widows married before January 1, 1794 [[claim:nara-act-1838]] | Marriage date is central |
+| 1838 | Five-year pensions for widows married after his last service ended and before January 1, 1794, if his service met the 1832 act [[claim:nara-act-1838]] [[claim:stat-1838-after-service]] [[claim:stat-1838-1832-service]] | Marriage date and his service |
 | July 1848 | Life pensions for widows married before January 2, 1800 [[claim:nara-act-1848]] | Marriage date is central |
 | 1853 and 1855 | Marriage-date restrictions removed [[claim:nara-act-1853-1855]] | Later widows' claims |
 | 1878 | Widows of soldiers with as few as 14 days of service [[claim:nara-act-1878]] | Very late claims |

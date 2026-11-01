@@ -1,5 +1,5 @@
 {
-  "builtAt": "Sat Oct 31 2026 21:03:17 GMT-0500 (Central Daylight Time)",
+  "builtAt": "Sat Oct 31 2026 21:35:53 GMT-0500 (Central Daylight Time)",
   "pages": [
     {
       "title": "Application Returned? Fixing Common DAR and SAR Proof Problems (Including Supplementals)",
@@ -98,9 +98,9 @@
       "description": "Find a Revolutionary War pension file, decode its envelope, and read declarations, affidavits and widow's papers in the right order.",
       "cornerstone": "3",
       "path": "/guides/read-pension-file/",
-      "words": 929,
-      "claims": 64,
-      "sources": 13,
+      "words": 943,
+      "claims": 66,
+      "sources": 14,
       "tools": [
         "widow"
       ]
@@ -150,9 +150,9 @@
       "description": "See which federal Revolutionary War widow pension and bounty-land laws (1836 to 1878) a widow's marriage date and her husband's service fit, and where to find her pension file.",
       "tool": "widow",
       "path": "/tools/widow-pension-checker/",
-      "words": 684,
-      "claims": 44,
-      "sources": 11,
+      "words": 1026,
+      "claims": 64,
+      "sources": 16,
       "tools": [
         "widow"
       ]
@@ -171,7 +171,6 @@
       "title": "Contact",
       "slug": "contact",
       "description": "How to contact patriotinlays.com with corrections and questions.",
-      "launch_setup": "contact@patriotinlays.com forwards through Cloudflare Email Routing (free). Tim sets the routing rule and destination inbox at launch; until then mail to this address is not delivered. See README.md, section \"Email Routing for contact@patriotinlays.com\".",
       "path": "/contact/",
       "words": 86,
       "claims": 0,

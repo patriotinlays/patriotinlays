@@ -9,7 +9,7 @@ import { readFileSync, readdirSync, existsSync, writeFileSync, mkdtempSync } fro
 import { join, resolve } from "node:path";
 import { execFileSync } from "node:child_process";
 import { tmpdir } from "node:os";
-import { norm, stripHtml } from "./lib/normalize.mjs";
+import { norm, normJoin, stripHtml } from "./lib/normalize.mjs";
 
 const args = process.argv.slice(2);
 const LINKS = args.includes("--links");
@@ -77,13 +77,15 @@ if (LINKS) {
   const urls = [...new Set(manifest.claims.map((c) => c.source_url))];
   const tmp = mkdtempSync(join(tmpdir(), "manifest-"));
   for (const u of urls) {
-    let status = 0, body = "", type = "";
+    let status = 0, body = "", type = "", altHays = [];
     try {
-      const r = await fetch(u, { headers: { "user-agent": "Mozilla/5.0 (patriotinlays manifest checker)" }, redirect: "follow", signal: AbortSignal.timeout(45000) });
+      const r = await fetch(u, { headers: { "user-agent": "Mozilla/5.0 (patriotinlays manifest checker)" }, redirect: "follow", signal: AbortSignal.timeout(180000) });
       status = r.status; type = r.headers.get("content-type") || "";
       if (type.includes("pdf")) {
         const p = join(tmp, "s.pdf"); writeFileSync(p, Buffer.from(await r.arrayBuffer()));
-        try { body = execFileSync("pdftotext", ["-layout", p, "-"], { encoding: "utf8", maxBuffer: 64e6 }); }
+        try { body = execFileSync("pdftotext", ["-layout", p, "-"], { encoding: "utf8", maxBuffer: 256e6 });
+          // Scanned statute volumes read cleanly only in reading order (-raw); keep both, plus the rejoined-hyphen form.
+          if (/tile\.loc\.gov/.test(u)) { const raw = execFileSync("pdftotext", ["-raw", p, "-"], { encoding: "utf8", maxBuffer: 256e6 }); altHays = [normJoin(raw), norm(raw), normJoin(body)]; } }
         catch { body = null; warnings.push(`${u}: PDF fetched but pdftotext unavailable — quote check skipped`); }
       } else body = await r.text();
     } catch (e) { errors.push(`${u}: fetch failed (${e.message})`); linkReport.push({ url: u, status: "error" }); continue; }
@@ -98,7 +100,7 @@ if (LINKS) {
     let found = 0, missing = 0;
     for (const c of manifest.claims.filter((c) => c.source_url === u)) {
       if (hay == null) continue;
-      if (hay.includes(norm(c.quote_excerpt))) found++; else { missing++; errors.push(`${c.claim_id}: quote_excerpt not found in live source ${u}`); }
+      if (hay.includes(norm(c.quote_excerpt)) || altHays.some((h) => h.includes(norm(c.quote_excerpt)))) found++; else { missing++; errors.push(`${c.claim_id}: quote_excerpt not found in live source ${u}`); }
     }
     linkReport.push({ url: u, status, quotesFound: found, quotesMissing: missing });
   }

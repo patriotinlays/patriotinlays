@@ -1,5 +1,5 @@
 // Sanity tests for Tool B (not part of the 25-scenario requirement).
-import { actionPlan, evaluateCell, gaps, groupGaps, countEntries, filledCells, LABELS, FACTS, genLabel, genTitle, isEmptyCell, WHERE_TO_LOOK, WHERE_SOURCES, GUIDES, whereToLook, MODE_HELP, relationName, ordinal, HAVE_ITEMS, DOC_TYPES, byFactOrder } from "../src/tools/tool-b.js";
+import { actionPlan, evaluateCell, gaps, groupGaps, countEntries, filledCells, LABELS, FACTS, genLabel, genTitle, isEmptyCell, WHERE_TO_LOOK, WHERE_SOURCES, GUIDES, whereToLook, MODE_HELP, relationName, ordinal, HAVE_ITEMS, DOC_TYPES, byFactOrder, dateWarnings, NSCDA_TERM } from "../src/tools/tool-b.js";
 import { vitalNote, noVitalText, censusNote } from "../src/tools/places.js";
 import { readFileSync, readdirSync } from "node:fs";
 const manifest = JSON.parse(readFileSync(new URL("../manifest/claims.json", import.meta.url), "utf8"));
@@ -135,5 +135,23 @@ t("audit 3: report records sort birth, death, marriage, residence, then link", b
 t("audit 3: missing records carry an add path; the patriot's generation (4+) asks for birth or death, as DAR's rule says", (() => { const g = gaps([{ gen: 1, living: true, cells: [full] }, { gen: 2, cells: [] }, { gen: 3, cells: [] }, { gen: 4, cells: [] }], { name: "x", state: "VA", kind: "militia", start: "1777", gen: "4" }).filter((x) => x.gen === 4); return g.some((x) => x.add === "birth" && /birth or death/.test(x.short)) && g.find((x) => x.add === "birth").claim === "dar-gen-1-3"; })());
 t("audit 3: a state with no verified source gets a 'nosource' note tagged with the state, and the report merges its facts into one sentence", (() => { const n = vitalNote("OH", "birth"); return n.noSource && n.place === "Ohio" && noVitalText("Ohio", ["birth", "death"]).includes("began keeping birth or death records") && whereToLook("death", 2, { state: "OH" }).notes.some((x) => x.kind === "nosource" && x.key === "ns|Ohio"); })());
 t("audit 3: census notes carry their separate facts so the report prints each once", censusNote(1800, 1870).parts.length === 2);
+// ---- Audit 4: date sanity ----
+{ const line = (pb, ...born) => born.map((b, i) => ({ gen: i + 1, living: i === 0, born: String(b), died: "", cells: [] })).concat([{ gen: born.length + 1, born: String(pb), died: "", cells: [] }]);
+  const pat = { name: "x", state: "VA", kind: "militia", start: "1777", end: "1779" };
+  const W = (rows, p = pat) => dateWarnings(rows, p);
+  t("audit 4: a patriot born in 1850 with 1777-79 service gets an 'impossible' warning (he wasn't born yet)", W(line(1850, 1950, 1920, 1890)).some((w) => w.patriot && w.kind === "impossible" && /wasn't born yet/.test(w.text)));
+  t("audit 4: the plan opens with 'Check these dates first' when years don't add up, and has no such step when they do", actionPlan(line(1850, 1950, 1920, 1890), pat)[0].title === "Check these dates first" && !actionPlan(line(1745, 1950, 1915, 1878, 1810, 1775), pat).some((x) => x.title === "Check these dates first"));
+  t("audit 4: a patriot aged about 5 at his service start is flagged as unlikely; aged 22 is not", W(line(1772, 1950, 1920, 1880, 1840, 1800)).some((w) => w.patriot && w.kind === "unlikely" && /about 5/.test(w.text)) && !W(line(1755, 1950, 1920, 1880, 1840, 1800)).some((w) => w.patriot));
+  t("audit 4: a patriot who died before his service began is flagged", W([{ gen: 1, living: true, born: "1950", cells: [] }, { gen: 2, born: "1740", died: "1770", cells: [] }]).some((w) => w.patriot && /dying about 1770, before his service began/.test(w.text)));
+  t("audit 4: a child born before or the same year as the parent is 'impossible'; 8 years after is 'unlikely'; 75 years after is 'unusually old'", (() => {
+    const a = W([{ gen: 1, living: true, born: "1950", cells: [] }, { gen: 2, born: "1960", cells: [] }], null), b = W([{ gen: 1, living: true, born: "1950", cells: [] }, { gen: 2, born: "1950", cells: [] }], null);
+    const c = W([{ gen: 1, living: true, born: "1950", cells: [] }, { gen: 2, born: "1942", cells: [] }], null), d = W([{ gen: 1, living: true, born: "1950", cells: [] }, { gen: 2, born: "1875", cells: [] }], null);
+    return a.some((w) => w.kind === "impossible" && /before their parent/.test(w.text)) && b.some((w) => w.kind === "impossible" && /same year as/.test(w.text)) && c.some((w) => w.kind === "unlikely" && /only about 8/.test(w.text)) && d.some((w) => w.kind === "unlikely" && /unusually old/.test(w.text)); })());
+  t("audit 4: a death year before the birth year, or a parent dying more than a year before the child's birth, is flagged", W([{ gen: 1, living: true, born: "1950", cells: [] }, { gen: 2, born: "1920", died: "1910", cells: [] }], null).some((w) => /death year \(about 1910\) is before the birth year/.test(w.text))
+    && W([{ gen: 1, living: false, born: "1950", died: "2000", cells: [] }, { gen: 2, born: "1920", died: "1945", cells: [] }], null).some((w) => /dying about 1945, more than a year before this birth/.test(w.text)));
+  t("audit 4: sensible years (the worksheet's own example line) raise no warnings; blank years never warn", W(line(1755, 1948, 1915, 1878, 1810), { ...pat, start: "1777", end: "1781" }).length === 0 && W([{ gen: 1, living: true, born: "", cells: [] }, { gen: 2, born: "", cells: [] }], pat).length === 0);
+  t("audit 4: warnings never say 'fits' or 'proven'", !/fits|proven/i.test(JSON.stringify(W(line(1850, 1950, 1960, 1890)))));
+}
+t("audit 4: the NSCDA plain term names the society and rests on verified claims", /National Society of the Colonial Dames of America/.test(NSCDA_TERM.text) && NSCDA_TERM.claims.length >= 2 && NSCDA_TERM.claims.every((c) => verified.has(c)));
 let p = 0; for (const [n, ok] of T) { console.log(`${ok ? "PASS" : "FAIL"}  ${n}`); if (ok) p++; }
 console.log(`\nLineage Evidence Matrix: ${p}/${T.length} sanity checks passed.`); process.exit(p === T.length ? 0 : 1);

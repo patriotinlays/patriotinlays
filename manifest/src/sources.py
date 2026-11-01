@@ -46,4 +46,10 @@ SOURCES = {
  "SC_SL_VR": ("https://guides.statelibrary.sc.gov/genealogy/vitalrecords", "South Carolina State Library — Genealogy Resources: Vital Records", "sc_sl_vr.html"),
  "MA_MIL": ("https://www.mass.gov/info-details/researching-massachusetts-soldiers-and-sailors", "Mass.gov (State Library of Massachusetts) — Researching Massachusetts Soldiers and Sailors", "ma_mil.html"),
  "NARA_VITAL": ("https://www.archives.gov/research/vital-records", "National Archives — Vital Records", "nara_vital.html"),
+ # ---- Round 9: the pension acts themselves (Library of Congress scans of the Statutes at Large; primary sources) ----
+ "LOC_C24": ("https://tile.loc.gov/storage-services/service/ll/llsl/llsl-c24/llsl-c24.pdf", "Library of Congress — U.S. Statutes at Large, 24th Congress (scanned; Act of July 4, 1836 at 5 Stat. 128)", "llsl-c24.pdf"),
+ "LOC_C25": ("https://tile.loc.gov/storage-services/service/ll/llsl/llsl-c25/llsl-c25.pdf", "Library of Congress — U.S. Statutes at Large, 25th Congress (scanned; Act of July 7, 1838 at 5 Stat. 303)", "llsl-c25.pdf"),
+ "LOC_C30": ("https://tile.loc.gov/storage-services/service/ll/llsl/llsl-c30/llsl-c30.pdf", "Library of Congress — U.S. Statutes at Large, 30th Congress (scanned; Act of July 29, 1848 at 9 Stat. 265)", "llsl-c30.pdf"),
+ "LOC_C33": ("https://tile.loc.gov/storage-services/service/ll/llsl/llsl-c33/llsl-c33.pdf", "Library of Congress — U.S. Statutes at Large, 33rd Congress (scanned; Act of March 3, 1855 at 10 Stat. 701)", "llsl-c33.pdf"),
+ "LOC_C45": ("https://tile.loc.gov/storage-services/service/ll/llsl/llsl-c45/llsl-c45.pdf", "Library of Congress — U.S. Statutes at Large, 45th Congress (scanned; Act of March 9, 1878 at 20 Stat. 27)", "llsl-c45.pdf"),
 }
