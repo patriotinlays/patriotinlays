@@ -9,6 +9,7 @@ import { STATE_SERVICE, NO_STATE_SERVICE, PLACE_SOURCES, stateName } from "./pla
 export const SERVICE_KINDS = Object.freeze([
   { id: "continental", label: "Continental Army (the Continental Line)", rule: "core", military: true, claims: ["nara-act-1832-categories"] },
   { id: "militia", label: "State troops, volunteers or militia", rule: "core", military: true, claims: ["nara-act-1832-categories"] },
+  { id: "navy", label: "Navy (an officer, marine or mariner)", rule: "core", military: true, claims: ["stat-1848-service", "stat-1855feb-navy"] },
   { id: "military", label: "Military, not sure which kind", rule: "core", military: true, claims: [] },
   { id: "civil", label: "Civil service (for example town clerk, juror, constable, justice of the peace)", rule: "core", claims: ["dar-civil-service", "dar-civil-examples"] },
   { id: "patriotic", label: "Patriotic service (for example furnishing supplies, lending money, signing an oath of allegiance)", rule: "core", claims: ["dar-material-aid", "dar-oaths"] },
@@ -47,6 +48,7 @@ export function serviceWhere(p) {
   if (!k || k.id === "military") parts.push({ text: "First find out whether he served in the Continental Line or in the state troops or militia: the National Archives holds Continental records, but not state militia records, which are at the archives of the state he served.", claims: ["nara-svc-holds", "nara-svc-custody", "nara-svc-state"], links: [NARA.svc] });
   else if (k.id === "continental") parts.push({ text: "The National Archives holds records of Continental troops, including compiled service records (M881) and the Revolutionary War rolls (M246).", claims: ["nara-svc-holds", "nara-amrev-m881", "nara-amrev-m246"], links: [NARA.amrev, NARA.svc] });
   else if (k.id === "militia") parts.push({ text: "The National Archives does not hold state militia records; check the archives of the state he served. The 1832 pension law opened pensions to militia service of at least six months, so look for his pension file too.", claims: ["nara-svc-custody", "nara-svc-state", "nps-1832"], links: [NARA.svc, NARA.amrev] });
+  else if (k.id === "navy") parts.push({ text: "Look for his pension file too: the 1848 widows' law named the naval service, and a February 1855 law covered widows of navy officers, marines and mariners of the Revolutionary War.", claims: ["stat-1848-service", "stat-1855feb-navy"], links: [NARA.amrev] });
   else if (k.id === "galvez_troops" || k.id === "galvez_cattle") parts.push({ text: "DAR's Patriot Records Project includes some French and Spanish records.", claims: ["prp-french-spanish"], links: [PLACE_SOURCES.darPrp] });
   else parts.push({ text: "DAR proves this kind of service with original records such as oaths of allegiance, town meeting minutes and county court orders.", claims: ["dar-service-sources"], links: [GUIDE.service] });
   if (k?.military) parts.push({ text: "DAR also asks for original records such as pensions, muster rolls and pay vouchers.", claims: ["dar-service-sources"], links: [] });

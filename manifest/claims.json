@@ -6033,6 +6033,186 @@
         "widow-pension-checker"
       ],
       "notes": ""
+    },
+    {
+      "claim_id": "stat-1853-army",
+      "claim_text": "1853 act: it covered widows of officers, non-commissioned officers, musicians and privates of the Revolutionary army.",
+      "source_url": "https://tile.loc.gov/storage-services/service/ll/llsl/llsl-c32/llsl-c32.pdf",
+      "source_title": "Library of Congress — U.S. Statutes at Large, 32nd Congress (scanned; Act of February 3, 1853 at 10 Stat. 154)",
+      "source_type": "primary",
+      "archive_identifier": null,
+      "last_retrieved": "2026-11-05",
+      "quote_excerpt": "non-commissioned officers, musicians, and privates of the Revolutionary",
+      "page_ref": "10 Stat. 154, sec. 2",
+      "verification_status": "verified",
+      "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-11-05 CT",
+      "used_on": [
+        "tool:tool-a.js",
+        "widow-pension-checker"
+      ],
+      "notes": ""
+    },
+    {
+      "claim_id": "stat-1853-after-1800",
+      "claim_text": "1853 act: it covered those widows who were married after January 1800.",
+      "source_url": "https://tile.loc.gov/storage-services/service/ll/llsl/llsl-c32/llsl-c32.pdf",
+      "source_title": "Library of Congress — U.S. Statutes at Large, 32nd Congress (scanned; Act of February 3, 1853 at 10 Stat. 154)",
+      "source_type": "primary",
+      "archive_identifier": null,
+      "last_retrieved": "2026-11-05",
+      "quote_excerpt": "who were married subsequent to January, anno Domini eighteen",
+      "page_ref": "10 Stat. 154, sec. 2",
+      "verification_status": "verified",
+      "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-11-05 CT",
+      "used_on": [
+        "read-pension-file",
+        "tool:tool-a.js",
+        "widow-pension-checker"
+      ],
+      "notes": ""
+    },
+    {
+      "claim_id": "stat-1853-same-manner",
+      "claim_text": "1853 act: they were pensioned in the same manner as widows married before that date.",
+      "source_url": "https://tile.loc.gov/storage-services/service/ll/llsl/llsl-c32/llsl-c32.pdf",
+      "source_title": "Library of Congress — U.S. Statutes at Large, 32nd Congress (scanned; Act of February 3, 1853 at 10 Stat. 154)",
+      "source_type": "primary",
+      "archive_identifier": null,
+      "last_retrieved": "2026-11-05",
+      "quote_excerpt": "in the same manner as those who",
+      "page_ref": "10 Stat. 154, sec. 2",
+      "verification_status": "verified",
+      "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-11-05 CT",
+      "used_on": [
+        "tool:tool-a.js",
+        "widow-pension-checker"
+      ],
+      "notes": ""
+    },
+    {
+      "claim_id": "stat-1855feb-navy",
+      "claim_text": "February 1855 act: it covered widows of navy officers, non-commissioned officers, marines or mariners of the Revolutionary War.",
+      "source_url": "https://tile.loc.gov/storage-services/service/ll/llsl/llsl-c33/llsl-c33.pdf",
+      "source_title": "Library of Congress — U.S. Statutes at Large, 33rd Congress (scanned; Act of March 3, 1855 at 10 Stat. 701)",
+      "source_type": "primary",
+      "archive_identifier": null,
+      "last_retrieved": "2026-11-05",
+      "quote_excerpt": "non-commissioned officers, marines or mariners who served in the navy",
+      "page_ref": "10 Stat. 616, sec. 3",
+      "verification_status": "verified",
+      "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-11-05 CT",
+      "used_on": [
+        "tool:tool-a.js",
+        "widow-pension-checker"
+      ],
+      "notes": ""
+    },
+    {
+      "claim_id": "stat-1855feb-1800",
+      "claim_text": "February 1855 act: it covered those widows married since January 1, 1800.",
+      "source_url": "https://tile.loc.gov/storage-services/service/ll/llsl/llsl-c33/llsl-c33.pdf",
+      "source_title": "Library of Congress — U.S. Statutes at Large, 33rd Congress (scanned; Act of March 3, 1855 at 10 Stat. 701)",
+      "source_type": "primary",
+      "archive_identifier": null,
+      "last_retrieved": "2026-11-05",
+      "quote_excerpt": "since the first day of January, eighteen hundred, shall be entitled to",
+      "page_ref": "10 Stat. 616, sec. 3",
+      "verification_status": "verified",
+      "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-11-05 CT",
+      "used_on": [
+        "read-pension-file",
+        "tool:tool-a.js",
+        "widow-pension-checker"
+      ],
+      "notes": ""
+    },
+    {
+      "claim_id": "stat-1855feb-same",
+      "claim_text": "February 1855 act: their pensions were in the same manner as army widows under section 2 of the 1853 act.",
+      "source_url": "https://tile.loc.gov/storage-services/service/ll/llsl/llsl-c33/llsl-c33.pdf",
+      "source_title": "Library of Congress — U.S. Statutes at Large, 33rd Congress (scanned; Act of March 3, 1855 at 10 Stat. 701)",
+      "source_type": "primary",
+      "archive_identifier": null,
+      "last_retrieved": "2026-11-05",
+      "quote_excerpt": "section of the act of February third, eighteen hundred and fifty-three",
+      "page_ref": "10 Stat. 616, sec. 3",
+      "verification_status": "verified",
+      "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-11-05 CT",
+      "used_on": [
+        "tool:tool-a.js",
+        "widow-pension-checker"
+      ],
+      "notes": ""
+    },
+    {
+      "claim_id": "nara-natf85-order",
+      "claim_text": "The National Archives' NATF Form 85 orders copies of federal military pension files for service from 1775.",
+      "source_url": "https://www.archives.gov/veterans/military-service-records/pre-ww-1-records",
+      "source_title": "National Archives — Requesting Copies of Older Military Service Records",
+      "source_type": "official_secondary",
+      "archive_identifier": null,
+      "last_retrieved": "2026-11-05",
+      "quote_excerpt": "to order copies of military pension application files based on Federal (not State or Confederate) service between 1775 and",
+      "page_ref": null,
+      "verification_status": "verified",
+      "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-11-05 CT",
+      "used_on": [
+        "read-pension-file",
+        "tool:tool-a.js"
+      ],
+      "notes": ""
+    },
+    {
+      "claim_id": "nara-natf85-revwar",
+      "claim_text": "A NATF Form 85 order can be for a pre-Civil War pension file, such as a Revolutionary War file.",
+      "source_url": "https://www.archives.gov/veterans/military-service-records/pre-ww-1-records",
+      "source_title": "National Archives — Requesting Copies of Older Military Service Records",
+      "source_type": "official_secondary",
+      "archive_identifier": null,
+      "last_retrieved": "2026-11-05",
+      "quote_excerpt": "A Federal pre-Civil War military pension application based on Federal military service before the Civil War (for example, the Revolutionary War and War of 1812)",
+      "page_ref": null,
+      "verification_status": "verified",
+      "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-11-05 CT",
+      "used_on": [
+        "read-pension-file",
+        "tool:tool-a.js"
+      ],
+      "notes": ""
+    },
+    {
+      "claim_id": "m805-selected",
+      "claim_text": "The selected records from the pension files were also filmed as a separate publication, Selected Records From Revolutionary War Pension and Bounty-Land-Warrant Application Files.",
+      "source_url": "https://www.archives.gov/files/research/military/army/dc/m804.pdf",
+      "source_title": "NARA M804 descriptive pamphlet — Revolutionary War Pension and Bounty-Land-Warrant Application Files",
+      "source_type": "official_secondary",
+      "archive_identifier": null,
+      "last_retrieved": "2026-11-05",
+      "quote_excerpt": "microfilm publication, Selected Records From Revolutionary War Pension and",
+      "page_ref": "PDF p. 5",
+      "verification_status": "verified",
+      "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-11-05 CT",
+      "used_on": [
+        "read-pension-file"
+      ],
+      "notes": ""
+    },
+    {
+      "claim_id": "m805-number",
+      "claim_text": "That separate publication is Microcopy 805 (M805).",
+      "source_url": "https://www.archives.gov/files/research/military/army/dc/m804.pdf",
+      "source_title": "NARA M804 descriptive pamphlet — Revolutionary War Pension and Bounty-Land-Warrant Application Files",
+      "source_type": "official_secondary",
+      "archive_identifier": null,
+      "last_retrieved": "2026-11-05",
+      "quote_excerpt": "Bounty-Land-Warrant Application Files (Microcopy 805)",
+      "page_ref": "PDF p. 5",
+      "verification_status": "verified",
+      "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-11-05 CT",
+      "used_on": [
+        "read-pension-file"
+      ],
+      "notes": ""
     }
   ]
 }

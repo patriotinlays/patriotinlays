@@ -283,14 +283,16 @@ export const countEntries = (generations = []) => generations.reduce((a, g) => a
 // date check never says his dates fit while his birth year and service don't add up. Rough years only ("about 1820").
 // kind: "impossible" (can't be right as typed) or "unlikely" (possible but worth a second look). No sourced rule is
 // claimed: these are arithmetic checks on what was typed, worded as "check this", never as a ruling.
-const svcYears = (p) => { const s = /^(\d{4})/.exec(p?.start || ""), e = /^(\d{4})/.exec(p?.end || p?.start || ""); return { s: s ? +s[1] : null, e: e ? +e[1] : null }; };
-export const AGE = Object.freeze({ youngService: 10, youngParent: 13, oldParent: 70 });
+const svcYears = (p) => { const s = /^[~<>]?(\d{4})/.exec(p?.start || ""), e = /^[~<>]?(\d{4})/.exec(p?.end || p?.start || ""); return { s: s ? +s[1] : null, e: e ? +e[1] : null }; };
+export const AGE = Object.freeze({ youngService: 10, youngParent: 13, oldParent: 70, oldAge: 110 });
 export function dateWarnings(rows = [], patriot = null) {
   const out = []; const pg = patriotGen(rows, patriot); const by = new Map(rows.map((r) => [r.gen, r]));
   const who = (g) => `Generation ${g} (${genLabel(g).toLowerCase()})`;
   for (const r of rows) {
     const b = yr(r.born), d = r.living ? null : yr(r.died);
     if (b != null && d != null && d < b) out.push({ gen: r.gen, kind: "impossible", text: `${who(r.gen)}: the death year (about ${d}) is before the birth year (about ${b}). Check both years.` });
+    else if (b != null && d != null && d - b > AGE.oldAge) out.push({ gen: r.gen, kind: "unlikely", text: `${who(r.gen)}: born about ${b} and died about ${d} would make them about ${d - b} at death. That's very unlikely. Check both years.` });
+    if (b != null && r.living && new Date().getFullYear() - b > AGE.oldAge) out.push({ gen: r.gen, kind: "unlikely", text: `${who(r.gen)} is marked as still living but born about ${b}, which would make them over ${AGE.oldAge}. Check the birth year, or untick "Still living".` });
     const parent = by.get(r.gen + 1); const pb = parent ? yr(parent.born) : null, pd = parent && !parent.living ? yr(parent.died) : null;
     if (b != null && pb != null) {
       const gap = b - pb;
@@ -307,6 +309,7 @@ export function dateWarnings(rows = [], patriot = null) {
     else if (b != null && b > s) out.push({ gen: pg, kind: "impossible", patriot: true, text: `The patriot (generation ${pg}) is listed as born about ${b}, after his service began (${s}). Check his birth year and service dates.` });
     else if (b != null && s - b < AGE.youngService) out.push({ gen: pg, kind: "unlikely", patriot: true, text: `The patriot (generation ${pg}, born about ${b}) would have been only about ${s - b} when his service began in ${s}. That's very unlikely. Check his birth year and service dates.` });
     if (d != null && d < s) out.push({ gen: pg, kind: "impossible", patriot: true, text: `The patriot (generation ${pg}) is listed as dying about ${d}, before his service began (${s}). Check his death year and service dates.` });
+    else if (d != null && e != null && d < e) out.push({ gen: pg, kind: "unlikely", patriot: true, text: `The patriot (generation ${pg}) is listed as dying about ${d}, before his service ended (${e}). That can happen if he died in service; otherwise check his death year and service dates.` });
   }
   return out;
 }
@@ -316,7 +319,7 @@ export function actionPlan(rows = [], patriot = null) {
   const g = gaps(rows, patriot); const steps = []; const pg = patriotGen(rows, patriot);
   const real = g.filter((x) => x.gen != null);
   const warn = dateWarnings(rows, patriot);
-  if (warn.length) steps.push({ title: "Check these dates first", text: "Some of the years you typed don't add up. Fix them before relying on the rest of this plan.", claims: [], links: [], warn: true, items: warn.map((w) => ({ text: w.text })) });
+  if (warn.length) steps.push({ title: "Check these dates first", text: warn.some((w) => w.kind === "impossible") ? "Some of the years you typed don't add up. Fix them before relying on the rest of this plan." : "Some of the years you typed are unusual. They may be right, but give them a second look.", claims: [], links: [], warn: true, items: warn.map((w) => ({ text: w.text })) });
   if (rows.length < 2) steps.push({ title: "Fill in the worksheet", text: "Start with yourself as generation 1, then add your parent, grandparent and so on back to the patriot.", claims: ["dar-gen1-applicant", "dar-gen-numbering"], links: linksFor("roadmap") });
   steps.push(...patriotSteps(patriot));
   if (real.length) steps.push({ title: "Records to find or fix, generation by generation", text: "Each item says where to look. Sort out any records you flagged as disagreeing before relying on them.", claims: ["dar-each-relationship"], links: [],

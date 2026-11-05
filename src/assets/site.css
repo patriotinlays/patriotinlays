@@ -113,7 +113,7 @@ nav.top a{margin:0}
 details.defs{border:1px solid var(--line);border-radius:6px;padding:.4rem .7rem;margin:.6rem 0 1rem;background:var(--soft);font:14px/1.5 system-ui,sans-serif}
 details.defs summary{cursor:pointer;font-weight:600;color:var(--navy)}
 details.defs ul{margin:.4rem 0 .2rem;padding-left:1.1rem}
-p.answer{border-left:4px solid var(--navy);background:#fff;padding:.5rem .7rem;margin:.6rem 0;font-size:16px}
+.answer{border-left:4px solid var(--navy);background:#fff;padding:.5rem .7rem;margin:.6rem 0;font-size:16px}
 .terms{margin-top:.4rem}
 .have{border:1px solid var(--line);border-radius:6px;padding:.4rem .6rem;margin:.6rem 0}
 .have legend{font-weight:700;color:var(--navy);padding:0 .3rem}
@@ -209,3 +209,21 @@ details.birth-subs summary{cursor:pointer;font-weight:600;color:#6b4500}
 .birth-subs-steps li{margin:.25rem 0}
 .independent{margin:-.2rem 0 .8rem;font:15px/1.45 system-ui,sans-serif;color:var(--muted)}
 @media print{details.birth-subs,.ws-start,.name-check{display:none!important}}
+/* Nov 5: In-short lines, memorable-date fields, feedback line */
+.answer ul.answer-lines{list-style:none;margin:.3rem 0 0;padding:0}.answer ul.answer-lines li{margin:.15rem 0}
+fieldset.date-field{border:1px solid #c9cfd8;border-radius:6px;padding:.4rem .7rem .6rem;margin:.8rem 0}
+fieldset.date-field legend{font-weight:700;padding:0 .3rem}
+.date-parts{display:flex;flex-wrap:wrap;gap:.5rem .8rem;align-items:flex-end}
+.date-part{display:flex;flex-direction:column}.date-part label{margin:0 0 .2rem;font-weight:400}
+.date-part input.date-day{width:3.2em}.date-part input.date-year{width:4.6em}
+.date-part select,.date-part input{font-size:16px;margin:0}
+fieldset.date-field.has-error{border-color:#a33}
+.date-error{color:#8a1f1f}
+.tool-intro{margin:.6rem 0 1rem}.tool-intro p{margin:.45rem 0}
+.feedback-line{margin:1rem 0}
+.tool fieldset.date-field .date-part label{display:block;margin:0 0 .2rem;font-weight:400}
+.tool .date-part select{width:auto;min-width:7.5em}.tool .date-part input.date-day{width:3.4em}.tool .date-part input.date-year{width:4.8em}
+.subtitle{font-size:1.15rem;margin:-.3rem 0 .6rem;color:var(--navy)}
+.home-mission p{font-size:1.05rem;line-height:1.65}
+.home-mission .ai-line{font-size:.95rem;color:var(--muted);border-left:3px solid var(--line);padding-left:.6rem}
+.home-start .button-link{margin:.2rem .4rem .2rem 0}

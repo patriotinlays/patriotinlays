@@ -1,5 +1,5 @@
 {
-  "builtAt": "Sat Oct 31 2026 21:48:56 GMT-0500 (Central Daylight Time)",
+  "builtAt": "Thu Nov 05 2026 08:57:05 GMT-0600 (Central Standard Time)",
   "pages": [
     {
       "title": "Application Returned? Fixing Common DAR and SAR Proof Problems (Including Supplementals)",
@@ -46,9 +46,9 @@
       "description": "Organize the evidence for each generation of a DAR or SAR line in your browser, flag conflicts, and print a gap report.",
       "tool": "lineage-matrix",
       "path": "/tools/lineage-matrix/",
-      "words": 941,
-      "claims": 55,
-      "sources": 19,
+      "words": 1223,
+      "claims": 58,
+      "sources": 20,
       "tools": [
         "lineage-matrix"
       ]
@@ -98,9 +98,9 @@
       "description": "Find a Revolutionary War pension file, decode its envelope, and read declarations, affidavits and widow's papers in the right order.",
       "cornerstone": "3",
       "path": "/guides/read-pension-file/",
-      "words": 943,
-      "claims": 66,
-      "sources": 14,
+      "words": 1036,
+      "claims": 72,
+      "sources": 17,
       "tools": [
         "widow"
       ]
@@ -150,9 +150,9 @@
       "description": "See which federal Revolutionary War widow pension and bounty-land laws (1836 to 1878) a widow's marriage date and her husband's service fit, and where to find her pension file.",
       "tool": "widow",
       "path": "/tools/widow-pension-checker/",
-      "words": 1026,
-      "claims": 64,
-      "sources": 16,
+      "words": 1444,
+      "claims": 73,
+      "sources": 17,
       "tools": [
         "widow"
       ]
@@ -160,9 +160,9 @@
     {
       "title": "About Patriot In Lay Terms",
       "slug": "about",
-      "description": "Who runs patriotinlays.com, how the guides are made, and how AI is used.",
+      "description": "What patriotinlays.com does, who it helps, what it doesn't do, how its facts are checked, and how AI is used.",
       "path": "/about/",
-      "words": 230,
+      "words": 422,
       "claims": 0,
       "sources": 0,
       "tools": []
@@ -180,9 +180,9 @@
     {
       "title": "Privacy",
       "slug": "privacy",
-      "description": "What data patriotinlays.com collects, what the tools store in your browser, and how to delete it.",
+      "description": "What happens to what you type into patriotinlays.com's tools, how to delete it, and what the site collects.",
       "path": "/privacy/",
-      "words": 322,
+      "words": 338,
       "claims": 0,
       "sources": 0,
       "tools": []

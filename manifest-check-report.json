@@ -1,5 +1,5 @@
 {
-  "checkedAt": "Sat Oct 31 2026 21:48:56 GMT-0500 (Central Daylight Time)",
+  "checkedAt": "Thu Nov 05 2026 08:57:05 GMT-0600 (Central Standard Time)",
   "dirs": [
     "src/content",
     "src/pages",
@@ -23,8 +23,8 @@
       "unmarked": 0
     },
     "src/content/lineage-matrix.md": {
-      "units": 50,
-      "marked": 25,
+      "units": 62,
+      "marked": 27,
       "unmarked": 0
     },
     "src/content/lineage-proof-roadmap.md": {
@@ -43,8 +43,8 @@
       "unmarked": 0
     },
     "src/content/read-pension-file.md": {
-      "units": 56,
-      "marked": 38,
+      "units": 60,
+      "marked": 42,
       "unmarked": 0
     },
     "src/content/records-by-state.md": {
@@ -63,12 +63,12 @@
       "unmarked": 0
     },
     "src/content/widow-pension-checker.md": {
-      "units": 60,
-      "marked": 40,
+      "units": 84,
+      "marked": 49,
       "unmarked": 0
     },
     "src/pages/about.md": {
-      "units": 12,
+      "units": 19,
       "marked": 0,
       "unmarked": 0
     },
@@ -78,7 +78,7 @@
       "unmarked": 0
     },
     "src/pages/privacy.md": {
-      "units": 18,
+      "units": 20,
       "marked": 0,
       "unmarked": 0
     },
@@ -87,9 +87,9 @@
       "marked": 19,
       "unmarked": 0
     },
-    "src/partials/home-lead.md": {
-      "units": 4,
-      "marked": 4,
+    "src/partials/home.md": {
+      "units": 26,
+      "marked": 10,
       "unmarked": 0
     },
     "src/partials/how-to-join.md": {
@@ -113,10 +113,10 @@
       "unmarked": 0
     }
   },
-  "sentences": 676,
-  "markedSentences": 391,
-  "manifestClaims": 342,
-  "referencedClaims": 342,
+  "sentences": 747,
+  "markedSentences": 412,
+  "manifestClaims": 352,
+  "referencedClaims": 352,
   "links": [
     {
       "url": "https://www.dar.org/national-society/accepted-revolutionary-war-service",
@@ -169,7 +169,7 @@
     {
       "url": "https://www.archives.gov/files/research/military/army/dc/m804.pdf",
       "status": 200,
-      "quotesFound": 38,
+      "quotesFound": 40,
       "quotesMissing": 0
     },
     {
@@ -415,13 +415,25 @@
     {
       "url": "https://tile.loc.gov/storage-services/service/ll/llsl/llsl-c33/llsl-c33.pdf",
       "status": 200,
-      "quotesFound": 5,
+      "quotesFound": 8,
       "quotesMissing": 0
     },
     {
       "url": "https://tile.loc.gov/storage-services/service/ll/llsl/llsl-c45/llsl-c45.pdf",
       "status": 200,
       "quotesFound": 4,
+      "quotesMissing": 0
+    },
+    {
+      "url": "https://tile.loc.gov/storage-services/service/ll/llsl/llsl-c32/llsl-c32.pdf",
+      "status": 200,
+      "quotesFound": 3,
+      "quotesMissing": 0
+    },
+    {
+      "url": "https://www.archives.gov/veterans/military-service-records/pre-ww-1-records",
+      "status": 200,
+      "quotesFound": 2,
       "quotesMissing": 0
     }
   ],

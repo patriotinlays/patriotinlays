@@ -1,8 +1,8 @@
 {
-  "ranAt": "Sat Oct 31 2026 21:50:00 GMT-0500 (Central Daylight Time)",
-  "browser": "/usr/bin/google-chrome (headless) via playwright-core 1.59.1",
-  "passed": 135,
-  "total": 135,
+  "ranAt": "Thu Nov 05 2026 08:54:23 GMT-0600 (Central Standard Time)",
+  "browser": "/usr/bin/google-chrome (headless) via playwright-core 1.64.1",
+  "passed": 138,
+  "total": 138,
   "exampleReportPages": {
     "summaryPages": 2,
     "fullPages": 3,
@@ -12,21 +12,19 @@
     }
   },
   "home": {
-    "guides": [
-      "/guides/lineage-proof-roadmap/",
-      "/guides/substitute-evidence/",
-      "/guides/read-pension-file/"
-    ],
-    "words": 974,
-    "height": 3373,
-    "dupTools": 0,
-    "guideDescs": 0
+    "ps": 7,
+    "lists": 0,
+    "text": "This site helps you organize the records that connect you to a Revolutionary War patriot, see where your documented family line still has gaps, and find where to look for the missing proof. (A patriot here means someone who supported the cause of American independence, for example by fighting in its battles or serving in the Continental Congress.)[1]\nSomewhere in your family's past, there may be someone who stood up for American independence. Maybe they carried a musket as a soldier, or maybe they helped in another way, such as furnishing supplies or lending money.[2] If you'd like to honor that person by joining the Daughters or Sons of the American Revolution, you'll be asked to show, with records, how you are connected to them, one generation at a time.[3][4]\nThat can be harder than it sounds. The records are often in more than one place: for militia service, for example, the National Archives sends you to the archives of the state where the soldier served.[5] Even a single pension file can arrive with its papers in no particular order.[6] And nobody hands you a map of which papers count as proof, or of what to try when the one record you need seems to have vanished.\nPatriot, In Lay Terms is here to make that road easier. It explains the process in everyday language, the way a patient friend who has done this before might explain it at the kitchen table. The guides walk you through the kinds of records you're likely to find, what each one can show, and where to turn when something is missing. Two free tools help you lay out what you already have. The Widow Pension Law Checker shows which federal widow pension laws a couple's marriage fits and where her pension file may be. The Lineage Evidence Matrix lists, generation by generation, what is still missing in your line and where to look for it. Every fact on the site links to an official source, so you never have to take our word for it.\nThis site can't do the searching for you, and it won't pretend to. You'll still visit archives, courthouses and websites to find and copy the records themselves. A DAR member helps guide you through completing and submitting the application.[4] SAR's local sponsor, often the chapter registrar, can guide you through the application.[7] The society, not this site, reviews what you send: at DAR, all documentation is subject to review by its genealogy staff.[3] What this site can do is help you walk into each of those steps knowing what you're looking for and why it matters.\nIt's free, there's nothing to sign up for, and what you type into the tools stays in your own browser.\nWritten with AI assistance and reviewed by the site's owner. Each fact is tied to a quoted official source, and software checks that the quote is still there.",
+    "sub": "Plain-English help with DAR and SAR applications, for the Daughters and the Sons of the American Revolution",
+    "ai": "Written with AI assistance and reviewed by the site's owner. Each fact is tied to a quoted official source, and software checks that the quote is still there.",
+    "beforeStart": true,
+    "words": 1273
   },
   "results": [
     {
       "name": "Fresh profile: widow checker starts empty and unticked, with no results and nothing saved",
       "ok": true,
-      "detail": "{\"vals\":[\"\",\"\",\"\",\"\",\"\",\"\"],\"rows\":0,\"ls\":[],\"plan\":\"Your next steps appear here after you press \\\"Check the widow pension laws\\\". They follow from your results.\",\"saved\":false}"
+      "detail": "{\"vals\":[\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\"],\"rows\":0,\"ls\":[],\"named\":{\"marriage\":\"\",\"serviceEnd\":\"\",\"serviceMonths\":\"\",\"serviceDays\":\"\",\"engagement\":\"\",\"kind\":\"\"},\"plan\":\"Your next steps appear here after you press \\\"Check the widow pension laws\\\". They follow from your results.\",\"saved\":false}"
     },
     {
       "name": "Widow checker: a visible 'Start over' button",
@@ -36,20 +34,20 @@
     {
       "name": "Returning visit: the form starts empty and unticked with no old results; a note points to the saved check and 'Start over'",
       "ok": true,
-      "detail": "{\"vals\":[\"\",\"\",\"\",\"\",\"\",\"\"],\"rows\":0,\"ls\":[\"pi.toolA.widow\"],\"plan\":\"Your next steps appear here after you press \\\"Check the widow pension laws\\\". They follow from your results.\",\"saved\":true}"
+      "detail": "{\"vals\":[\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\"],\"rows\":0,\"ls\":[\"pi.toolA.widow\"],\"named\":{\"marriage\":\"\",\"serviceEnd\":\"\",\"serviceMonths\":\"\",\"serviceDays\":\"\",\"engagement\":\"\",\"kind\":\"\"},\"plan\":\"Your next steps appear here after you press \\\"Check the widow pension laws\\\". They follow from your results.\",\"saved\":true}"
     },
     {
       "name": "Prefill from the worksheet fills his service end but does not run the check",
       "ok": true,
-      "detail": "{\"vals\":[\"\",\"1779-10\",\"\",\"\",\"\",\"militia\"],\"rows\":0,\"ls\":[\"pi.toolB.v1\",\"pi.toolA.widow\"],\"plan\":\"Your next steps appear here after you press \\\"Check the widow pension laws\\\". They follow from your results.\",\"saved\":true}"
+      "detail": "{\"vals\":[\"\",\"\",\"\",\"\",\"10\",\"\",\"1779\",\"1779-10\",\"\",\"\",\"\",\"militia\"],\"rows\":0,\"ls\":[\"pi.toolB.v1\",\"pi.toolA.widow\"],\"named\":{\"marriage\":\"\",\"serviceEnd\":\"1779-10\",\"serviceMonths\":\"\",\"serviceDays\":\"\",\"engagement\":\"\",\"kind\":\"militia\"},\"plan\":\"Your next steps appear here after you press \\\"Check the widow pension laws\\\". They follow from your results.\",\"saved\":true}"
     },
     {
       "name": "Start over: empties the form, deletes this checker's saved data only, and says so",
       "ok": true,
-      "detail": "{\"vals\":[\"\",\"\",\"\",\"\",\"\",\"\"],\"rows\":0,\"ls\":[\"pi.toolB.v1\"],\"plan\":\"Your next steps appear here after you press \\\"Check the widow pension laws\\\". They follow from your results.\",\"saved\":false}"
+      "detail": "{\"vals\":[\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\"],\"rows\":0,\"ls\":[\"pi.toolB.v1\"],\"named\":{\"marriage\":\"\",\"serviceEnd\":\"\",\"serviceMonths\":\"\",\"serviceDays\":\"\",\"engagement\":\"\",\"kind\":\"\"},\"plan\":\"Your next steps appear here after you press \\\"Check the widow pension laws\\\". They follow from your results.\",\"saved\":false}"
     },
     {
-      "name": "Widow checker page: explains what it tells you and why it matters for finding pension files",
+      "name": "Widow checker page: the intro answers the 7 questions (what, who, problem, how, what you get, limits, next) and mentions pension files",
       "ok": true,
       "detail": ""
     },
@@ -74,14 +72,14 @@
       "detail": ""
     },
     {
-      "name": "Widow checker: 1853 and Feb-1855 acts display 'Can't check here'",
+      "name": "Widow checker (Nov 5, statute text): a 1780 marriage rules out the 1853 and Feb-1855 acts by the dates (they covered marriages after January 1800)",
       "ok": true,
-      "detail": "Can't check hereCan't check he | Can't check hereCan't check he"
+      "detail": "Ruled out by the datesRuled ou | Ruled out by the datesRuled ou"
     },
     {
-      "name": "Widow checker: 'Not checked' row says why and what to do (pension papers / registrar)",
+      "name": "Widow checker: the ruled-out 1853 row gives the rule from the law's text and says no action is needed",
       "ok": true,
-      "detail": "Rule: Source states only that marriage-date restrictions were removed; the act's"
+      "detail": "Rule: Widow of an officer or soldier of the Revolutionary army, married after Ja"
     },
     {
       "name": "Widow checker (audit 2): 1836 'Ruled out by the dates' says why: married 1790, service ended 1779-10, and the rule",
@@ -94,9 +92,9 @@
       "detail": "Ruled out by the datesRuled out as you typed it. You typed a marriage date of 1790 and the end of his last service as 17"
     },
     {
-      "name": "Widow checker, dates only (audit 4): 'Ruled out by the dates' (1836); 1838 and 1848 'Still possible' because their own text also needs his service; 1855 bounty-land and 1878 'Still possible: need …'; 1853 'Can't check here'; nothing 'Fits'",
+      "name": "Widow checker, dates only (audit 4): 'Ruled out by the dates' (1836); 1838 and 1848 'Still possible' because their own text also needs his service; 1855 bounty-land and 1878 'Still possible: need …'; 1853 and Feb 1855 ruled out by a 1790 marriage; nothing 'Fits'",
       "ok": true,
-      "detail": "[\"Ruled out by the dates\",\"Still possible: need whether he served 6 months or more, and his kind of service\",\"Still possible: need his kind of service\",\"Can't check here\",\"Can't check here\",\"Still possible: need how many days he served, or whether he was in a battle\",\"Still possible: need how many days he served, or whether he was in a battle\"]"
+      "detail": "[\"Ruled out by the dates\",\"Still possible: need whether he served 6 months or more, and his kind of service\",\"Still possible: need his kind of service\",\"Ruled out by the dates\",\"Ruled out by the dates\",\"Still possible: need how many days he served, or whether he was in a battle\",\"Still possible: need how many days he served, or whether he was in a battle\"]"
     },
     {
       "name": "Widow checker (audit 4 #3): the ruled-out 1836 row says no action is needed and no longer says 'find out what kind of unit'",
@@ -121,7 +119,7 @@
     {
       "name": "Widow checker: answering (militia, 30 days) settles 1848, 1855 bounty-land and 1878 as 'Fits the rules checked here; other terms not checked', each listing what isn't checked; never a plain 'Fits'",
       "ok": true,
-      "detail": "[[\"Ruled out by the dates\",false],[\"Ruled out by the service you typed\",false],[\"Fits the rules checked here; other terms not checked\",true],[\"Can't check here\",false],[\"Can't check here\",false],[\"Fits the rules checked here; other terms not checked\",true],[\"Fits the rules checked here; other terms not checked\",true]]"
+      "detail": "[[\"Ruled out by the dates\",false],[\"Ruled out by the service you typed\",false],[\"Fits the rules checked here; other terms not checked\",true],[\"Ruled out by the dates\",false],[\"Ruled out by the dates\",false],[\"Fits the rules checked here; other terms not checked\",true],[\"Fits the rules checked here; other terms not checked\",true]]"
     },
     {
       "name": "Widow checker: each field shows a 'Why it matters' line",
@@ -134,7 +132,7 @@
       "detail": "Your plan, built from what you entered. To save it, press the button below and c"
     },
     {
-      "name": "Widow checker: plan names the 'Can't check here' laws in their own step",
+      "name": "Widow checker (Nov 5): every law is now read from its own text, so the example plan has no 'Can't check here' step",
       "ok": true,
       "detail": ""
     },
@@ -151,12 +149,12 @@
     {
       "name": "Widow checker: 'Load an example' shows results at once",
       "ok": true,
-      "detail": "In short: Fits every rule checked here (other terms in the l"
+      "detail": "In shortFits: the March 1855 bounty-land and 1878 laws (ever"
     },
     {
-      "name": "Widow checker: a one-line plain answer sits above the table (what fits, what is still possible and what it needs, with the next step)",
+      "name": "Widow checker (iPhone fix): 'In short' sits above the table as short lines: Fits / Ruled out / Still possible / Next",
       "ok": true,
-      "detail": "In short: Fits every rule checked here (other terms in the law not checked): the March 1855 bounty-land and 1878 laws. Ruled out by the dates: the 1838 law. Still possible: the 1836 and 1848 laws (need his kind of service). Can't check here: the 1853 and February 1855 laws (the source doesn't give their terms). To settle the most, tell us his kind of service (Continental Line, or State troops, volunteers or militia): it bears on the 1836 and 1848 laws. Next: look for the widow's pension file (see \"What to do next\")."
+      "detail": "In shortFits: the March 1855 bounty-land and 1878 laws (every rule checked here; other terms not checked)Ruled out: the 1838, 1853 and February 1855 laws (by the dates)Still possible: the 1836 and 1848 laws (need his kind of service)Next: tell us his kind of service (Continental Line, or State troops, volunteers or militia); then look for the widow's pension file (see \"What to do next\")."
     },
     {
       "name": "Widow checker: results explain 'Stat.' (Statutes at Large: volume, page) and 'bounty land' in plain words",
@@ -252,6 +250,21 @@
       "name": "Widow checker auto-fills his service end from the worksheet patriot",
       "ok": true,
       "detail": "Filled in from your worksheet: Test Patriot, North Carolina, continental army (the continental line), service ended 1779-06. Add the marriage date and, if you know them, his months or days of service."
+    },
+    {
+      "name": "Dates (Nov 5): fieldset + legend; Month list starts at \"Don't know\"; Day 2 and Year 4 digits on the number pad; Exactly/About/Before/After; autocomplete, autocorrect, autocapitalize off; no picker",
+      "ok": true,
+      "detail": "{\"legend\":\"When did the couple marry?\",\"months\":[\"Don't know\",\"January\",\"February\",\"March\",\"April\",\"May\",\"June\",\"July\",\"August\",\"September\",\"October\",\"November\",\"December\"],\"first\":\"\",\"day\":[\"numeric\",2],\"year\":[\"numeric\",4],\"off\":true,\"certs\":[\"Exactly\",\"About\",\"Before\",\"After\"],\"noPicker\":true}"
+    },
+    {
+      "name": "Dates (Nov 5): 'About May 1780' shows its range in words, says the day is ignored, and says 'About' is the site's rule of thumb",
+      "ok": true,
+      "detail": "About May 1780 is treated as November 1, 1779 to November 30, 1780. With \"About\", the day is ignored. 'About' is this site's rule of thumb, not part of the law. "
+    },
+    {
+      "name": "Dates (Nov 5): an impossible day (February 30) gets a plain message and no results table",
+      "ok": true,
+      "detail": "Couldn't read the datesWe couldn't read the dates: When did the couple marry? February 1780 has no day 30. Check the day, or leave it blank."
     },
     {
       "name": "Worksheet (audit 4 #1): a patriot born 1850 with 1777–79 service gets 'His dates don't add up', not 'Dates fit', and the plan opens with 'Check these dates first'",
@@ -534,24 +547,24 @@
       "detail": ""
     },
     {
-      "name": "Home: offers the Roadmap guide as a button and the worksheet in the tools section",
+      "name": "Home (Nov 5): 'Ready to get started?' links to both tools and to the Roadmap guide",
       "ok": true,
       "detail": ""
     },
     {
-      "name": "Home (beginner path): 'Just starting?', then 'How to join, in short', then the beginner guides, all ahead of the widow-pension checker",
+      "name": "Home (Nov 5 lock): subtitle names DAR and SAR; mission in flowing paragraphs (no lists) ahead of 'Ready to get started?'; purpose line, both tool names, one-sentence privacy",
       "ok": true,
-      "detail": "just-starting,how-to-join-in-short,beginner-guides,lead-widow"
+      "detail": "{\"ps\":7,\"lists\":0,\"text\":\"This site helps you organize the records that connect you to a Revolutionary War\",\"sub\":\"Plain-English help with DAR and SAR applications, for the Daughters and the Sons of the American Revolution\",\"ai\":\"Written with AI assistance and reviewed by the site's owner. Each fact is tied to a quoted official source, and software checks that the quote is still there.\",\"beforeStart\":true,\"words\":1273}"
     },
     {
-      "name": "Home (shorter): three beginner guides (the Roadmap first) come before the tools; the other guides are a compact list; no second tools list",
+      "name": "Home (Nov 5 lock): the exact AI line, the exact SAR line (sourced), no unsourced 'most people get stuck' / 'give up' / guarantee lines",
       "ok": true,
-      "detail": "{\"guides\":[\"/guides/lineage-proof-roadmap/\",\"/guides/substitute-evidence/\",\"/guides/read-pension-file/\"],\"words\":974,\"height\":3373,\"dupTools\":0,\"guideDescs\":0}"
+      "detail": "Written with AI assistance and reviewed by the site's owner. Each fact is tied to a quoted official source, and software checks that the quote is still there."
     },
     {
-      "name": "Home (beginner path): the first three links in the page go to how to join, Step 0 (find the soldier's name) and the worksheet",
+      "name": "Home: the first links (after source notes) are the worksheet, the widow checker and the Roadmap guide",
       "ok": true,
-      "detail": "#how-to-join-in-short /guides/lineage-proof-roadmap/#step-0-find-the-soldier-s-name /tools/lineage-matrix/"
+      "detail": "/tools/lineage-matrix/ /tools/widow-pension-checker/ /guides/lineage-proof-roadmap/"
     },
     {
       "name": "Navigation: 'Start here' (the Roadmap) comes first, then the widow-pension check",
@@ -559,14 +572,14 @@
       "detail": "Start here | Widow pension check | Worksheet | Guides | About"
     },
     {
-      "name": "Home: 'How to join, in short' has 4 sourced steps, the DAR chapter locator and the SAR contact finder",
-      "ok": true,
-      "detail": ""
-    },
-    {
       "name": "Roadmap: opens with 'How to join, in short' and 'Step 0: find the soldier's name' before the rest",
       "ok": true,
       "detail": "how-to-join-in-short,step-0-find-the-soldier-s-name,how-the-generations-are-numbered"
+    },
+    {
+      "name": "Roadmap: 'How to join, in short' has 4 sourced steps, the DAR chapter locator and the SAR contact finder",
+      "ok": true,
+      "detail": ""
     },
     {
       "name": "Roadmap Step 0: every point is sourced",
@@ -584,9 +597,9 @@
       "detail": ""
     },
     {
-      "name": "Audit 3 #7: 'patriot' is glossed in plain words, with a source, at its first use on the home page's first screen",
+      "name": "Audit 3 #7: 'patriot' is glossed in plain words, with a source, at its first use on the home page's first screen (after the site name)",
       "ok": true,
-      "detail": " older who can prove he descends from a patriot of the American Revolution. [2] (A patriot here means someone who supported the cause of American independence, for example by fighting in its battles or serving in the Continental Congress.) "
+      "detail": "that connect you to a Revolutionary War patriot, see where your documented family line still has gaps, and find where to look for the missing proof. (A patriot here means someone who supported the cause of American independence, for example"
     },
     {
       "name": "Audit 3 #7: both tools explain 'society' and 'registrar' in plain, sourced words just above the tool",
@@ -661,12 +674,12 @@
     {
       "name": "Logo (360px): the header logo loads, is at most 44px tall, fits the screen, has alt text, and the header stays compact (no hero image)",
       "ok": true,
-      "detail": "{\"ok\":true,\"h\":38,\"right\":155,\"alt\":\"Patriot, In Lay Terms\",\"header\":113,\"note\":\"An independent guide: not affiliated with DAR, SAR or any lineage society, and it doesn't search records for you.\",\"noteTop\":212}"
+      "detail": "{\"ok\":true,\"h\":38,\"right\":155,\"alt\":\"Patriot, In Lay Terms\",\"header\":113,\"note\":\"An independent guide: not affiliated with DAR, SAR or any lineage society, and it doesn't search records for you.\",\"noteTop\":275}"
     },
     {
       "name": "Home (audit 4 proposal, 360px): the first screen says the site is independent (not DAR, SAR or any society) and doesn't search records",
       "ok": true,
-      "detail": "{\"ok\":true,\"h\":38,\"right\":155,\"alt\":\"Patriot, In Lay Terms\",\"header\":113,\"note\":\"An independent guide: not affiliated with DAR, SAR or any lineage society, and it doesn't search records for you.\",\"noteTop\":212}"
+      "detail": "{\"ok\":true,\"h\":38,\"right\":155,\"alt\":\"Patriot, In Lay Terms\",\"header\":113,\"note\":\"An independent guide: not affiliated with DAR, SAR or any lineage society, and it doesn't search records for you.\",\"noteTop\":275}"
     },
     {
       "name": "Worksheet (audit 4 proposal): 'No birth certificate? Try these substitutes, in order' appears, closed, at each generation with no birth record (example: 3, 4, 5), in order, with the pension-file step only for older generations, and fits 360px open",
@@ -699,7 +712,7 @@
       "detail": ""
     }
   ],
-  "requestsTotal": 337,
+  "requestsTotal": 391,
   "externalRequests": 0,
   "interactionRequests": 0,
   "faviconLate": 25

@@ -52,20 +52,19 @@ function inline(text, ctx) {
   // Two claims from the same source side by side show one marker, not "[1][1]".
   return s.replace(/(<sup><a href="#src-(\d+)"[^>]*>\[\d+\]<\/a><\/sup>)(?:<sup><a href="#src-\2"[^>]*>\[\d+\]<\/a><\/sup>)+/g, "$1");
 }
-const DATE_HINT = `<p class="small hint" id="date-hint">Numbers only, e.g. 1776 or 1776-07 (a full date like 1776-07-04 also works).</p>`;
 const WIDOW_FULL = `<section class="tool" data-tool="widow" aria-labelledby="ta-h">
 <h2 id="ta-h">Use the checker</h2>
 <div class="howto"><p><strong>How this works.</strong> This checker does not search any records or databases. You type the marriage date and what you know about his service. It tests them against the date rules in each federal widow pension and bounty-land law, as the National Archives describes them, and shows the result law by law. Nothing you type leaves your device; it is saved only in this browser.</p>
 <p class="tool-actions"><button type="button" class="secondary" data-load-example>Load an example</button> <button type="button" class="secondary" data-from-worksheet>Fill in from my worksheet's patriot</button> <button type="button" class="secondary" data-clear="toolA" data-start-over>Start over</button></p>
 <p class="small" data-example-msg aria-live="polite">"Load an example" fills in a made-up couple so you can see a result right away. "Start over" empties the form and deletes this checker's saved data.</p><p class="small" data-worksheet-msg aria-live="polite"></p><p class="small saved-msg" data-saved-msg hidden></p></div>
 <h3 class="step"><span class="num">1</span> Type what you know about the widow and her husband</h3>
-<p class="small">Fill in what you know and leave the rest blank. ${DATE_HINT.replace(/<\/?p[^>]*>/g, "")}</p>
-<form data-form="widow"><label for="tw-m">When did the couple marry?</label><p class="small hint" data-why="marriage"></p><input id="tw-m" name="marriage" type="text" autocomplete="off" placeholder="e.g. 1776 or 1776-07">
-<label for="tw-e">When did his last period of service end?</label><p class="small hint" data-why="serviceEnd"></p><input id="tw-e" name="serviceEnd" type="text" autocomplete="off" placeholder="e.g. 1776 or 1776-07">
+<p class="small">Fill in what you know and leave the rest blank. For each date, pick the month (or "Don't know"), type the day if you know it and the 4-digit year, then say how sure you are.</p>
+<form data-form="widow"><div data-date-mount="marriage" data-id="tw-m" data-legend="When did the couple marry?" data-why="marriage"></div>
+<div data-date-mount="serviceEnd" data-id="tw-e" data-legend="When did his last period of service end?" data-why="serviceEnd"></div>
 <label for="tw-mo">Total months of service (a number)</label><p class="small hint" data-why="serviceMonths"></p><input id="tw-mo" name="serviceMonths" type="text" inputmode="numeric" autocomplete="off" placeholder="e.g. 24">
 <label for="tw-d">Total days of service (a number, if you know it)</label><p class="small hint" data-why="serviceDays"></p><input id="tw-d" name="serviceDays" type="text" inputmode="numeric" autocomplete="off" placeholder="e.g. 730">
 <label for="tw-b">Was he in at least one battle?</label><p class="small hint" data-why="engagement"></p><select id="tw-b" name="engagement"><option value="">Don't know</option><option value="yes">Yes</option><option value="no">No</option></select>
-<label for="tw-k">What kind of service was it?</label><p class="small hint" data-why="kind"></p><select id="tw-k" name="kind"><option value="">Don't know</option><option value="continental">Continental Army (the Continental Line)</option><option value="militia">State troops, volunteers or militia</option><option value="other">Something else (for example navy, civil or patriotic service)</option></select>
+<label for="tw-k">What kind of service was it?</label><p class="small hint" data-why="kind"></p><select id="tw-k" name="kind"><option value="">Don't know</option><option value="continental">Continental Army (the Continental Line)</option><option value="militia">State troops, volunteers or militia</option><option value="navy">Navy (an officer, marine or mariner)</option><option value="other">Something else (for example civil or patriotic service)</option></select>
 <button type="submit" class="big">Check the widow pension laws</button></form>
 <div data-out="widow" tabindex="-1" aria-live="polite"></div>
 <h3 class="step"><span class="num">2</span> What to do next</h3>
@@ -177,37 +176,33 @@ function renderFile(dir, f) {
 for (const f of readdirSync(join(ROOT, "src/content")).filter((x) => x.endsWith(".md"))) renderFile("src/content", f);
 for (const f of readdirSync(join(ROOT, "src/pages")).filter((x) => x.endsWith(".md"))) renderFile("src/pages", f);
 
-// Home-page glossary: rendered from src/partials/glossary.md so every definition carries a Source Manifest claim.
-const HOME_GLOSSARY = (() => { const ctx = { sources: [], tools: new Set(), claimCount: 0 };
-  const join_ = md(readFileSync(join(ROOT, "src/partials/how-to-join.md"), "utf8"), ctx);
-  const lead = md(readFileSync(join(ROOT, "src/partials/home-lead.md"), "utf8"), ctx).replace(/<h2 id="[^"]+">/, '<h2 id="lead-widow">');
+// Home page (Nov 5 full-page replacement): the flowing mission text in src/partials/home.md (Source Manifest gated like
+// every page), a "Ready to get started?" box, the guide list and the sourced glossary. The old "Just starting?" path and
+// "How to join, in short" box live on in the Roadmap guide, which opens with both.
+const HOME = (() => { const ctx = { sources: [], tools: new Set(), claimCount: 0 };
+  const body = md(readFileSync(join(ROOT, "src/partials/home.md"), "utf8"), ctx);
   const html = md(readFileSync(join(ROOT, "src/partials/glossary.md"), "utf8"), ctx).replace('<h2 id="words-you-ll-see-here">', '<h2 id="glossary">');
   const sources = `<h2 id="sources">Sources</h2><ol class="sources">${ctx.sources.map((u, i) => { const c = manifest.claims.find((x) => x.source_url === u);
     return `<li id="src-${i + 1}"><a href="${esc(u)}">${esc(c.source_title)}</a>. Retrieved ${c.last_retrieved}.</li>`; }).join("")}</ol>`;
-  return { join: join_, lead, html: `<div class="glossary">${html}</div>`, sources }; })();
+  return { body, html: `<div class="glossary">${html}</div>`, sources }; })();
 const guides = built.filter((b) => b.cornerstone).sort((a, b) => a.cornerstone - b.cornerstone);
-write("", page({ title: "Revolutionary War lineage, explained step by step", description: "Plain-English procedures and free browser tools for proving descent from a Revolutionary War patriot.", path: "/",
-  body: `<h1>Revolutionary War lineage, explained step by step</h1>
+write("", page({ title: "Patriot, In Lay Terms: plain-English help for DAR and SAR applications", description: "Plain-English guides and free browser tools for documenting descent from a Revolutionary War patriot for a DAR or SAR application.", path: "/",
+  body: `<h1>Patriot, In Lay Terms</h1>
+<p class="subtitle" data-subtitle>Plain-English help with DAR and SAR applications, for the Daughters and the Sons of the American Revolution</p>
 <p class="independent" data-independent>An independent guide: not affiliated with DAR, SAR or any lineage society, and it doesn't search records for you.</p>
-<section class="start-path" aria-labelledby="just-starting"><h2 id="just-starting">Just starting? Start here</h2>
-<p>New to DAR or SAR applications? Three steps, in order:</p>
-<ol class="start-steps"><li><a href="#how-to-join-in-short">How to join, in short</a>: who can join, and who helps you apply.</li><li><a href="/guides/lineage-proof-roadmap/#step-0-find-the-soldier-s-name">Find the soldier's name</a>: Step 0 of the Roadmap guide.</li><li><a href="/tools/lineage-matrix/">Start the free worksheet</a>: it lists the records still missing and where to look.</li></ol>
-<p><a class="button-link" href="/guides/lineage-proof-roadmap/" data-start-button>Start with the Roadmap guide</a> <a class="button-link secondary-link" href="#glossary">What the words mean</a></p></section>
-<aside class="card box-how-to-join" id="how-to-join">${HOME_GLOSSARY.join}</aside>
-<section aria-labelledby="beginner-guides"><h2 id="beginner-guides">Beginner guides</h2><ol class="guide-list">${guides.slice(0, 3).map((g) => `<li><a href="${g.path}">${esc(g.title)}</a><br><span class="small">${esc(g.description)}</span></li>`).join("")}</ol></section>
-<section class="lead-tool" aria-labelledby="lead-widow">${HOME_GLOSSARY.lead}
-<p><a class="button-link" href="/tools/widow-pension-checker/">Check the widow pension laws</a></p>
-<p><strong>Proving your whole line?</strong> The free worksheet asks who the patriot was and how he served, then lists the records still missing for each generation and where to look, fitted to each person's era and state. <a href="/tools/lineage-matrix/">Start my family-line worksheet</a></p>
-<p class="small">Both tools are free, need no account, and keep everything you type in your own browser. They don't search records for you.</p></section>
-<h2 id="guides">More guides</h2><ul class="guide-list compact">${guides.slice(3).map((g) => `<li><a href="${g.path}">${esc(g.title)}</a></li>`).join("")}</ul>
-${HOME_GLOSSARY.html}
-${HOME_GLOSSARY.sources}<p class="small">Written with AI and checked against quoted official sources at build time. <a href="/about/">About this site</a>.</p>` }));
+<section class="home-mission" data-mission>${HOME.body.replace(/<p>Written with AI assistance/, '<p class="ai-line" data-ai-line>Written with AI assistance')}</section>
+<section class="card start-here home-start" aria-labelledby="get-started" data-get-started><h2 id="get-started">Ready to get started?</h2>
+<p><a class="button-link" href="/tools/lineage-matrix/">Start the Lineage Evidence Matrix</a> <a class="button-link" href="/tools/widow-pension-checker/">Open the Widow Pension Law Checker</a></p>
+<p>New to all of this? <a href="/guides/lineage-proof-roadmap/" data-start-button>Begin with the Roadmap guide</a>: how to join, how to find the soldier's name, and the whole process, step by step.</p></section>
+<h2 id="guides">The guides</h2><ol class="guide-list">${guides.map((g) => `<li><a href="${g.path}">${esc(g.title)}</a><br><span class="small">${esc(g.description)}</span></li>`).join("")}</ol>
+${HOME.html}
+${HOME.sources}<p class="small"><a href="/about/">About this site</a> · <a href="/privacy/">Privacy</a></p>` }));
 sitemap.unshift("/");
 // Sources & methodology page
 const bySource = new Map(); for (const c of manifest.claims) { if (!bySource.has(c.source_url)) bySource.set(c.source_url, { t: c.source_title, n: 0 }); bySource.get(c.source_url).n++; }
 write("sources", page({ title: "Sources & Methodology", description: "How every fact on this site is tied to an official source.", path: "/sources/",
   body: `<h1>Sources &amp; Methodology</h1><p>Every factual sentence on this site carries a reference to an entry in a Source Manifest. Each entry quotes the exact passage from an official or institutional source. When the site is built, a script fetches every source and confirms that each quoted passage still appears in it. If a quote cannot be found, or a factual sentence has no entry, the build fails and the page is not published. Statements that cannot be verified this way are left out.</p>
-<p>The guides and tools are written by AI software. See <a href="/about/">About</a>.</p><h2>Sources in the manifest</h2><ol class="sources">${[...bySource].map(([u, v]) => `<li><a href="${esc(u)}">${esc(v.t)}</a> (${v.n} ${v.n === 1 ? "claim" : "claims"}). <span class="url">${esc(u)}</span></li>`).join("")}</ol><p class="small">Manifest: ${manifest.claims.length} verified claims, last retrieved ${BUILD_DATE}.</p>${START_HERE}` }));
+<p>Written with AI assistance and reviewed by the site's owner. See <a href="/about/">About</a>.</p><h2>Sources in the manifest</h2><ol class="sources">${[...bySource].map(([u, v]) => `<li><a href="${esc(u)}">${esc(v.t)}</a> (${v.n} ${v.n === 1 ? "claim" : "claims"}). <span class="url">${esc(u)}</span></li>`).join("")}</ol><p class="small">Manifest: ${manifest.claims.length} verified claims, last retrieved ${BUILD_DATE}.</p>${START_HERE}` }));
 sitemap.push("/sources/");
 // Report pages (noindex; render from localStorage only)
 write("tools/widow-pension-checker/report", page({ title: "Widow Pension Law Checker — your report", description: "Printable report of your last widow-pension check, rendered from this browser only.", path: "/tools/widow-pension-checker/report/", noindex: true,

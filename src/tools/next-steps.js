@@ -7,6 +7,7 @@ export const CHAPTER_LINKS = Object.freeze({
   sarContact: { label: "SAR: Find Your Local Society Contact (pick your state)", url: "https://www.sar.org/find-your-contact/" },
   pensionFiles: { label: "National Archives: Revolutionary War pension and bounty-land files (free on FamilySearch with login)", url: "https://www.archives.gov/research/military/american-revolution" },
   serviceRecords: { label: "National Archives: Revolutionary War service records (PDF)", url: "https://www.archives.gov/files/research/military/american-revolution/service-records.pdf" },
+  orderFile: { label: "National Archives: order a copy of a pension file (NATF Form 85)", url: "https://www.archives.gov/veterans/military-service-records/pre-ww-1-records" },
   darFaq: { label: "DAR: which records prove service and lineage", url: "https://membership.dar.org/NSDAR/AppFormz/FAQs.aspx" },
 });
 export const SITE_LINKS = Object.freeze({

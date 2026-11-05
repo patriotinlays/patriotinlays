@@ -4,6 +4,7 @@
 // Output wording rule: never state "Qualifies". Consistent results use MSG.consistent verbatim; a result is never a ruling.
 
 import { CONTACT_STEP, APPLY_STEP, linksFor } from "./next-steps.js";
+import { MIN_YEAR, MAX_YEAR, decodeDate, dateRange, dateLabel } from "./dates.js";
 
 export const MSG = Object.freeze({
   consistent: "Your dates fit the official service period for this type of service. This is not a ruling: your society decides. Next, find the original records that show the service.",
@@ -14,11 +15,11 @@ export const MSG = Object.freeze({
 });
 // Plain result wording for the widow-pension laws (same statuses, different subject).
 export const WIDOW_MSG = Object.freeze({
-  consistent: "Every rule this tool can check for this law fits what you typed. The law also has terms this tool can't check (see the next column). This is not a ruling: your society decides.",
+  consistent: "Every rule this tool can check for this law fits what you typed. The law also has terms this tool can't check (listed with the rule). This is not a ruling: your society decides.",
   partial: "Still possible: your dates are too rough to tell. A more exact date would settle it.",
-  possible: "Still possible: nothing you typed rules it out, but it isn't settled yet. See what it needs in the next column.",
+  possible: "Still possible: nothing you typed rules it out, but it isn't settled yet. What it needs is listed with the rule.",
   inconsistent: "Ruled out as you typed it. Double-check what you typed.",
-  not_evaluated: "Can't check here. See \"What to do\" in the next column.",
+  not_evaluated: "Can't check here. See \"What to do\" with the rule.",
 });
 // "Why this matters" help for each widow-act field. Every sentence restates a manifest claim (claims[] is checked by check-manifest).
 export const FIELD_HELP = Object.freeze({
@@ -34,12 +35,15 @@ export const NEXT_STEP_LINKS = Object.freeze({
   pensionFiles: { label: "National Archives: where to see the Revolutionary War pension files (free on FamilySearch with login)", url: "https://www.archives.gov/research/military/american-revolution", claim: "nara-amrev-familysearch" },
   m804: { label: "National Archives guide to the pension laws (PDF)", url: "https://www.archives.gov/files/research/military/army/dc/m804.pdf", claim: "nara-act-1853-1855" },
   serviceRecords: { label: "National Archives: Revolutionary War service records (PDF)", url: "https://www.archives.gov/files/research/military/american-revolution/service-records.pdf", claim: "nara-svc-state" },
-  // The laws themselves: Library of Congress scans of the Statutes at Large (one large PDF per Congress).
-  law1836: { label: "Read the 1836 law itself: 5 Stat. 128 (Library of Congress scan, large PDF)", url: "https://tile.loc.gov/storage-services/service/ll/llsl/llsl-c24/llsl-c24.pdf", claim: "stat-1836-unmarried" },
-  law1838: { label: "Read the 1838 law itself: 5 Stat. 303 (Library of Congress scan, large PDF)", url: "https://tile.loc.gov/storage-services/service/ll/llsl/llsl-c25/llsl-c25.pdf", claim: "stat-1838-after-service" },
-  law1848: { label: "Read the 1848 law itself: 9 Stat. 265 (Library of Congress scan, large PDF)", url: "https://tile.loc.gov/storage-services/service/ll/llsl/llsl-c30/llsl-c30.pdf", claim: "stat-1848-service" },
-  law1855: { label: "Read the 1855 bounty-land law itself: 10 Stat. 701 (Library of Congress scan, large PDF)", url: "https://tile.loc.gov/storage-services/service/ll/llsl/llsl-c33/llsl-c33.pdf", claim: "stat-1855-14-days" },
-  law1878: { label: "Read the 1878 law itself: 20 Stat. 27 (Library of Congress scan, large PDF)", url: "https://tile.loc.gov/storage-services/service/ll/llsl/llsl-c45/llsl-c45.pdf", claim: "stat-1878-14-days-a" },
+  // The laws themselves: Library of Congress scans of the Statutes at Large (one large PDF per Congress). "#page=N" opens
+  // the scan at the law's page (PDF page found by matching the quoted text; tested against the manifest URL without "#").
+  law1836: { label: "Read the 1836 law itself: 5 Stat. 128 (Library of Congress scan, large PDF; opens at the law's page in most browsers)", url: "https://tile.loc.gov/storage-services/service/ll/llsl/llsl-c24/llsl-c24.pdf#page=164", claim: "stat-1836-unmarried" },
+  law1838: { label: "Read the 1838 law itself: 5 Stat. 303 (Library of Congress scan, large PDF; opens at the law's page in most browsers)", url: "https://tile.loc.gov/storage-services/service/ll/llsl/llsl-c25/llsl-c25.pdf#page=96", claim: "stat-1838-after-service" },
+  law1848: { label: "Read the 1848 law itself: 9 Stat. 265 (Library of Congress scan, large PDF; opens at the law's page in most browsers)", url: "https://tile.loc.gov/storage-services/service/ll/llsl/llsl-c30/llsl-c30.pdf#page=57", claim: "stat-1848-service" },
+  law1855: { label: "Read the 1855 bounty-land law itself: 10 Stat. 701 (Library of Congress scan, large PDF; opens at the law's page in most browsers)", url: "https://tile.loc.gov/storage-services/service/ll/llsl/llsl-c33/llsl-c33.pdf#page=438", claim: "stat-1855-14-days" },
+  law1853: { label: "Read the 1853 law itself: 10 Stat. 154 (Library of Congress scan, large PDF; opens at the law's page in most browsers)", url: "https://tile.loc.gov/storage-services/service/ll/llsl/llsl-c32/llsl-c32.pdf#page=176", claim: "stat-1853-after-1800" },
+  law1855pension: { label: "Read the February 1855 law itself: 10 Stat. 616 (Library of Congress scan, large PDF; opens at the law's page in most browsers)", url: "https://tile.loc.gov/storage-services/service/ll/llsl/llsl-c33/llsl-c33.pdf#page=352", claim: "stat-1855feb-navy" },
+  law1878: { label: "Read the 1878 law itself: 20 Stat. 27 (Library of Congress scan, large PDF; opens at the law's page in most browsers)", url: "https://tile.loc.gov/storage-services/service/ll/llsl/llsl-c45/llsl-c45.pdf#page=54", claim: "stat-1878-14-days-a" },
 });
 // A ruled-out law needs nothing more from the user (audit 4).
 export const NO_ACTION = "No action needed for this law: what you typed already rules it out. If something you typed is wrong, fix it and check again.";
@@ -73,6 +77,10 @@ export const NEEDS = Object.freeze({
   // Two separate questions, either of which settles it (audit 4: don't merge them into one box).
   days: need("how many days he served (14 or more settles it), or whether he was in a battle (\"Yes\" settles it)", [{ ...BOX.d, hint: "14 or more settles it" }, { ...BOX.b, hint: "\"Yes\" settles it" }], "how many days he served, or whether he was in a battle"),
   battle: need("whether he was in a battle", [BOX.b]),
+  kindArmy: need("his kind of service (the 1853 law covered the Revolutionary army; navy widows came under the February 1855 law)", [BOX.k], "his kind of service"),
+  kindArmyCheck: need("whether his service counted as the Revolutionary army under this law (the law doesn't say whether militia counted; ask your society's registrar)", [BOX.k], "whether his service counted as the Revolutionary army"),
+  navy: need("whether he served in the navy (as an officer, marine or mariner)", [BOX.k], "whether he served in the navy"),
+  navyCheck: need("whether he served in the navy, as an officer, marine or mariner (ask your society's registrar)", [BOX.k], "whether he served in the navy"),
   exactMarriage: need("a more exact marriage date", [BOX.m]),
   exactBoth: need("a more exact marriage date or end-of-service date", [BOX.m, BOX.e]),
 });
@@ -85,7 +93,7 @@ export const NEEDS = Object.freeze({
 const PASS_KINDS = ["continental", "militia"]; // the 1832 law's categories, as the National Archives guide names them
 // Six months: typed months, or typed days that settle it either way (6 calendar months are 181 to 184 days).
 const sixMonths = (w) => w.serviceMonths != null ? w.serviceMonths >= 6 : w.serviceDays != null ? (w.serviceDays >= 184 ? true : w.serviceDays < 181 ? false : null) : null;
-const kindNeed = (w, checkKey) => (!w.kind || w.kind === "military" ? "kind" : PASS_KINDS.includes(w.kind) ? null : checkKey);
+const kindNeed = (w, checkKey) => (!w.kind || w.kind === "military" ? "kind" : PASS_KINDS.includes(w.kind) || (w.kind === "navy" && checkKey === "kindCheck1848") ? null : checkKey);
 // Marriage vs. end of his last service: "before", "after", "maybe" (the dates overlap), or null (one is missing).
 const order = (w) => !(w.marriage && w.serviceEnd) ? null : w.marriage.hi < w.serviceEnd.lo ? "before" : w.marriage.lo >= w.serviceEnd.hi ? "after" : "maybe";
 const sixFail = (w, law) => w.serviceMonths != null ? `You typed ${plural(w.serviceMonths, "month")} of service. The ${law} law relied on service under the 1832 law, which started at 6 months.`
@@ -145,12 +153,35 @@ export const WIDOW_ACTS = [
       const k = kindNeed(w, "kindCheck1848"); if (k) needs.push(k);
       return settle(needs, rule, m && m.hi >= cut ? `The marriage date you typed (${m.raw}) could fall on either side of January 2, 1800.` : null);
     } },
-  // Punch-list 1: the source states only that marriage-date restrictions were removed; full statutory terms are
-  // not given, so these acts are reported as "Can't check here" (not_evaluated), never as fitting.
-  { id: "act1853", label: "Act of February 3, 1853 (10 Stat. 154)", short: "1853", claim: "nara-act-1853-1855",
-    test: () => NOT_IN_SOURCE, nextClaim: "nara-act-1853-1855" },
-  { id: "act1855pension", label: "Act of February 28, 1855 (10 Stat. 616)", short: "February 1855", claim: "nara-act-1853-1855",
-    test: () => NOT_IN_SOURCE, nextClaim: "nara-act-1853-1855" },
+  // Nov 5 batch: both laws read from the statute text (10 Stat. 154, sec. 2; 10 Stat. 616, sec. 3). 1853 covered widows of
+  // the Revolutionary army married after January 1800 ("subsequent to January, anno Domini eighteen hundred"); a marriage
+  // inside January 1800 is left open (the text doesn't settle it). Feb 1855 did the same for widows of navy officers,
+  // marines or mariners married since January 1, 1800. Both gave pensions "in the same manner" as earlier widows.
+  { id: "act1853", label: "Act of February 3, 1853 (10 Stat. 154)", short: "1853", claim: "nara-act-1853-1855", claimRule: "stat-1853-after-1800", claimArmy: "stat-1853-army", nextLinks: ["law1853"],
+    unchecked: [{ text: "It gave these widows a pension in the same manner as widows married before 1800.", claim: "stat-1853-same-manner" }],
+    test: (w) => {
+      const rule = "Widow of an officer or soldier of the Revolutionary army, married after January 1800.";
+      const m = w.marriage, before = Date.UTC(1800, 0, 1), after = Date.UTC(1800, 1, 1);
+      if (m && m.hi < before) return { status: "inconsistent", ruledBy: "dates", text: rule, reason: `You typed a marriage date of ${m.raw}. This law covered marriages after January 1800, so the date you typed is too early (look at the 1836, 1838 and 1848 laws instead).` };
+      if (w.kind === "navy") return { status: "inconsistent", ruledBy: "service", text: rule, reason: "You picked the navy. This law covered widows of the Revolutionary army; the February 1855 law covered navy widows." };
+      const needs = [];
+      if (!m) needs.push("marriage"); else if (m.lo < after) needs.push("exactMarriage");
+      // Only the Continental Line is plainly "the Revolutionary army"; whether militia service counted, the text doesn't say.
+      if (!w.kind || w.kind === "military") needs.push("kindArmy"); else if (w.kind !== "continental") needs.push("kindArmyCheck");
+      return settle(needs, rule, m && m.lo < after ? `The marriage date you typed (${m.raw}) could fall in or before January 1800.` : null);
+    } },
+  { id: "act1855pension", label: "Act of February 28, 1855 (10 Stat. 616)", short: "February 1855", claim: "nara-act-1853-1855", claimRule: "stat-1855feb-navy", claimDate: "stat-1855feb-1800", nextLinks: ["law1855pension"],
+    unchecked: [{ text: "It gave them pensions in the same manner as army widows under the 1853 law.", claim: "stat-1855feb-same" }],
+    test: (w) => {
+      const rule = "Widow of a navy officer, marine or mariner of the Revolutionary War, married since January 1, 1800.";
+      const m = w.marriage, cut = Date.UTC(1800, 0, 1);
+      if (m && m.hi < cut) return { status: "inconsistent", ruledBy: "dates", text: rule, reason: `You typed a marriage date of ${m.raw}. This law covered marriages since January 1, 1800, so the date you typed is too early.` };
+      if (w.kind === "continental" || w.kind === "militia") return { status: "inconsistent", ruledBy: "service", text: rule, reason: "You picked army or militia service. This law covered widows of men who served in the navy (the 1853 law covered army widows)." };
+      const needs = [];
+      if (!m) needs.push("marriage"); else if (m.lo < cut) needs.push("exactMarriage");
+      if (w.kind !== "navy") needs.push(w.kind === "other" ? "navyCheck" : "navy");
+      return settle(needs, rule, m && m.lo < cut ? `The marriage date you typed (${m.raw}) could fall on either side of January 1, 1800.` : null);
+    } },
   { id: "act1855bounty", label: "Bounty-land act of March 3, 1855 (10 Stat. 701) — 160 acres", short: "March 1855 bounty-land", claim: "nara-bounty-1855", claimRule: "stat-1855-14-days", claimRev: "stat-1855-revwar", nextLinks: ["law1855"],
     unchecked: [{ text: "Militia, volunteers or State troops had to have been regularly mustered, with the service paid by the United States.", claim: "stat-1855-mustered" },
       { text: "No warrant if the muster rolls show he deserted or was dishonorably discharged.", claim: "stat-1855-deserted" },
@@ -161,12 +192,7 @@ export const WIDOW_ACTS = [
     test: (w) => minService(w, "A widow of a Revolutionary soldier who served at least 14 days or was in any engagement.") },
 ];
 
-// 1853 / Feb 1855 acts: the source gives only that marriage-date limits were removed.
-const NOT_IN_SOURCE = Object.freeze({ status: "not_evaluated",
-  text: "Source states only that marriage-date restrictions were removed; the act's full eligibility terms are not stated in the source used, so this tool does not check this law.",
-  why: "Why: the National Archives guide this site uses says only that this law removed the marriage-date limits. It does not list the law's other terms, so the tool can't test them.",
-  next: "What to do: read the widow's own pension papers (the National Archives lists the pension files online, free on FamilySearch with login), or ask your society's registrar.",
-  links: ["pensionFiles", "m804"] });
+
 // 14 days or a battle. Typed months of 1 or more settle the 14 days (a month is at least 28 days). An unanswered battle
 // question is "don't know", so short service alone never rules a law out unless the battle answer is "No".
 function minService(w, rule) {
@@ -180,21 +206,23 @@ function minService(w, rule) {
   return { status: "possible", text: rule, needs: ["days"] };
 }
 
-// Date parsing: accepts YYYY, YYYY-MM, YYYY-MM-DD. Returns {lo, hi, precision} in UTC ms (hi = last ms of period).
+// Date parsing: accepts YYYY, YYYY-MM, YYYY-MM-DD, each optionally prefixed "~" (about), "<" (before) or ">" (after)
+// (see dates.js). Returns {lo, hi, precision, raw} in UTC ms (hi = last ms of the range; ends inclusive).
 export function parseDate(s) {
   if (s == null || s === "") return null;
-  const m = /^(\d{4})(?:-(\d{2})(?:-(\d{2}))?)?$/.exec(String(s).trim());
-  if (!m) throw new Error(`"${s}" isn't a date this tool can read. Type numbers only: a year (1776), a year and month (1776-07), or a full date (1776-07-04).`);
-  const y = +m[1], mo = m[2] ? +m[2] : null, d = m[3] ? +m[3] : null;
-  if (y < 1600 || y > 1900) throw new Error(`the year ${y} looks like a typo. Use a year between 1600 and 1900.`);
-  if (mo !== null && (mo < 1 || mo > 12)) throw new Error(`the month "${m[2]}" isn't real. Months go from 01 (January) to 12 (December).`);
+  const t = String(s).trim();
+  const m = /^([~<>])?(\d{4})(?:-(\d{2})(?:-(\d{2}))?)?$/.exec(t);
+  if (!m) throw new Error(`"${s}" isn't a date this tool can read. Pick the month, and type the day (optional) and the 4-digit year.`);
+  const y = +m[2], mo = m[3] ? +m[3] : null, d = m[4] ? +m[4] : null;
+  if (y < MIN_YEAR || y > MAX_YEAR) throw new Error(`the year ${y} looks like a typo. Use a year between ${MIN_YEAR} and ${MAX_YEAR}.`);
+  if (mo !== null && (mo < 1 || mo > 12)) throw new Error(`the month "${m[3]}" isn't real. Months go from 01 (January) to 12 (December).`);
   if (d !== null) {
     const dim = new Date(Date.UTC(y, mo, 0)).getUTCDate();
-    if (d < 1 || d > dim) throw new Error(`${s} isn't a real calendar date. Check the day.`);
-    const lo = Date.UTC(y, mo - 1, d); return { lo, hi: lo + 86399999, precision: "day", raw: m[0] };
+    if (d < 1 || d > dim) throw new Error(`${dateLabel(t)} isn't a real calendar date. Check the day.`);
   }
-  if (mo !== null) return { lo: Date.UTC(y, mo - 1, 1), hi: Date.UTC(y, mo, 1) - 1, precision: "month", raw: m[0] };
-  return { lo: Date.UTC(y, 0, 1), hi: Date.UTC(y + 1, 0, 1) - 1, precision: "year", raw: m[0] };
+  const p = decodeDate(t); const r = dateRange(p);
+  if (r.hi < r.lo) throw new Error(`"${dateLabel(t)}" falls outside the years this tool checks (${MIN_YEAR} to ${MAX_YEAR}).`);
+  return { lo: r.lo, hi: r.hi, precision: r.precision, cert: p.cert, raw: p.cert === "exact" ? m[0].replace(/^[~<>]/, "") : dateLabel(t) };
 }
 
 const day = (iso, end) => { const t = Date.parse(iso + "T00:00:00Z"); return end ? t + 86399999 : t; };
@@ -258,21 +286,24 @@ export function widowSummary(rows) {
   const by = (f) => rows.filter(f).map((r) => r.short || r.label);
   const fit = by((r) => r.status === "consistent"), outD = by((r) => r.status === "inconsistent" && r.ruledBy === "dates"), outS = by((r) => r.status === "inconsistent" && r.ruledBy !== "dates");
   const open = rows.filter((r) => r.status === "possible" || r.status === "partial"), nc = by((r) => r.status === "not_evaluated");
-  const parts = [];
+  const parts = [], lines = []; const line = (label, text) => { lines.push({ label, text }); };
   parts.push(fit.length ? `Fits every rule checked here (other terms in the law not checked): the ${andList(fit)}.` : `None of the ${rows.length} laws is settled as fitting yet.`);
+  line("Fits", fit.length ? `the ${andList(fit)} (every rule checked here; other terms not checked)` : "none yet");
   if (outD.length) parts.push(`Ruled out by the dates: the ${andList(outD)}.`);
+  if (outD.length || outS.length) line("Ruled out", [outD.length ? `the ${andList(outD)} (by the dates)` : "", outS.length ? `the ${andList(outS)} (by the service you typed)` : ""].filter(Boolean).join("; "));
   if (outS.length) parts.push(`Ruled out by the service you typed: the ${andList(outS)}.`);
   // Group the open laws by what they need.
   const groups = new Map(); for (const r of open) { const k = r.needs.map((n) => n.key).join("+"); if (!groups.has(k)) groups.set(k, { needs: r.needs, laws: [] }); groups.get(k).laws.push(r.short); }
-  if (open.length) parts.push(`Still possible: ${[...groups.values()].map((g) => `the ${andList(g.laws)} (need ${g.needs.map((n) => n.short).join(", and ")})`).join("; ")}.`);
-  if (nc.length) parts.push(`Can't check here: the ${andList(nc)} (the source doesn't give their terms).`);
+  if (open.length) { const t = [...groups.values()].map((g) => `the ${andList(g.laws)} (need ${g.needs.map((n) => n.short).join(", and ")})`).join("; "); parts.push(`Still possible: ${t}.`); line("Still possible", t); }
+  if (nc.length) { parts.push(`Can't check here: the ${andList(nc)} (the source doesn't give their terms).`); line("Can't check", `the ${andList(nc)}`); }
   // The one question that would settle the most open laws.
   const count = new Map(); for (const r of open) for (const n of r.needs) count.set(n.key, (count.get(n.key) || 0) + 1);
   const best = [...count.entries()].sort((a, b) => b[1] - a[1])[0];
   const ask = best ? { key: best[0], field: NEEDS[best[0]].field, fields: NEEDS[best[0]].fields, text: NEEDS[best[0]].text, settles: open.filter((r) => r.needs.some((n) => n.key === best[0])).map((r) => r.short) } : null;
   if (ask) parts.push(`To settle the most, tell us ${ask.text}: it bears on the ${andList(ask.settles)}.`);
-  parts.push(fit.length || open.length ? "Next: look for the widow's pension file (see \"What to do next\")." : nc.length ? "Next: for the laws we can't check, read the widow's own pension papers or ask your society's registrar." : "Next: double-check the dates, or ask your society's registrar.");
-  return { text: parts.join(" "), fit: fit.length, total: rows.length, open: open.length, ask };
+  const next = fit.length || open.length ? "look for the widow's pension file (see \"What to do next\")." : nc.length ? "for the laws we can't check, read the widow's own pension papers or ask your society's registrar." : "double-check the dates, or ask your society's registrar.";
+  parts.push(`Next: ${next}`); line("Next", ask ? `tell us ${ask.text}; then ${next}` : next);
+  return { text: parts.join(" "), lines, fit: fit.length, total: rows.length, open: open.length, ask };
 }
 // Plain terms used in the results table (each tied to a Source Manifest claim).
 export const TERMS = Object.freeze({
@@ -285,7 +316,7 @@ export const TERMS = Object.freeze({
 export function nextSteps(window, widow) {
   const steps = [];
   const st = window?.status;
-  if (st === "invalid") steps.push({ title: "Fix the dates and check again", text: "Type numbers only: a year (1776), a year and month (1776-07), or a full date (1776-07-04).", claims: [], links: [] });
+  if (st === "invalid") steps.push({ title: "Fix the dates and check again", text: "Pick the month (or \"Don't know\"), type the day if you know it, and type the year as 4 digits. If you aren't sure of a date, choose \"About\", \"Before\" or \"After\".", claims: [], links: [] });
   if (st === "inconsistent") steps.push({ title: "Double-check the dates and the type of service", text: "Look again at the dates in your records, and make sure you picked the right type of service: some types have their own start dates. If the dates still fall outside, ask your society's registrar before going further.", claims: ["dar-committee-1774", "dar-va-oath", "dar-galvez-troops"], links: linksFor("service", "sides") });
   if (st === "partial") steps.push({ title: "Pin down the exact dates", text: "Part of your date range falls outside the official period. Find the exact dates in the original records, then check again.", claims: [], links: linksFor("pension") });
   if (st === "consistent" || st === "partial") steps.push({ title: "Find the original records that prove the service", text: "DAR asks for original records (or transcriptions) such as pensions, muster rolls, pay vouchers, oaths of allegiance, town meeting minutes and county court orders. SAR does not take family tradition as proof of service.", claims: ["dar-service-sources", "sar-tradition"], links: linksFor("pensionFiles", "serviceRecords", "pension", "byState") });
@@ -294,7 +325,7 @@ export function nextSteps(window, widow) {
   const notChecked = (widow || []).filter((r) => r.status === "not_evaluated");
   if (notChecked.length) steps.push({ title: "For the laws marked \"Can't check here\"", text: `${notChecked.map((r) => r.label).join("; ")}: read the widow's own pension papers, or ask your society's registrar.`, claims: ["nara-amrev-familysearch", "nps-applegate-widow"], links: linksFor("pensionFiles", "pension") });
   const fits = (widow || []).some((r) => ["consistent", "partial", "possible"].includes(r.status));
-  if (fits) steps.push({ title: "Look for the widow's pension file", text: "Widows' pension files are marked with a W and a file number. A widow's application may give her age, residence, maiden name, the date and place of the marriage, and the date and place of her husband's death, so it can prove a marriage in your line. The files are online free on FamilySearch (login needed).", claims: ["m804-w", "m804-widow-info", "nara-amrev-familysearch"], links: linksFor("pensionFiles", "pension") });
+  if (fits) steps.push({ title: "Look for the widow's pension file", text: "Widows' pension files are marked with a W and a file number. A widow's application may give her age, residence, maiden name, the date and place of the marriage, and the date and place of her husband's death, so it can prove a marriage in your line. The files are online free on FamilySearch (login needed). You can also order a copy of a Revolutionary War pension file from the National Archives with its NATF Form 85.", claims: ["m804-w", "m804-widow-info", "nara-amrev-familysearch", "nara-natf85-order", "nara-natf85-revwar"], links: linksFor("pensionFiles", "orderFile", "pension") });
   if (!window && !widow) steps.push({ title: "Fill in the form above", text: "Type the marriage date and what you know about his service, then press \"Check the widow pension laws\". Or press \"Load an example\" to see how it works.", claims: [], links: [] });
   steps.push({ title: "Prove each generation back to the patriot", text: "Use the free worksheet: record the patriot and his service, then the records you have for each person, and get a list of what is still missing and where to look.", claims: ["dar-each-relationship"], links: linksFor("matrix", "roadmap") });
   steps.push(CONTACT_STEP, APPLY_STEP);

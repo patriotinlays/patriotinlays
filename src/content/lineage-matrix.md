@@ -6,23 +6,35 @@ tool: lineage-matrix
 ---
 # Lineage Evidence Matrix
 
-This is a worksheet for proving your line back to a Revolutionary War patriot. It does not search any records. You tell it who the patriot was and how he served, then type in the records you already have for each generation. It shows what is still missing for each person and where to look for it, fitted to that person's era and state.
+**What it is.** A free worksheet for proving your line back to a Revolutionary War patriot, one generation at a time. It does not search any records; it organizes the ones you have and tells you what's still missing.
 
+**Who it helps.** Anyone preparing a DAR or SAR application, whether you're starting with nothing but a family story or already have a folder of certificates. Experienced researchers can use it as a quick checklist.
+
+**The problem it solves.** DAR asks for documentation of each name, date, place and relationship in your line. [[claim:dar-each-relationship]]
+With several generations and a stack of papers, it's easy to lose track of which links are proven and which still need a record. The worksheet keeps that straight.
+
+**How to use it.** Start with the patriot: his name, the state or colony he served for, his type of service and his rough service dates (pick the month, type the year, and say whether each date is exact or only about, before or after). Then add each generation, starting with yourself.
 Generation 1 is you, the applicant. [[claim:dar-gen1-applicant]]
 Your parents are generation 2, your grandparents generation 3, and so on back to the patriot. [[claim:dar-gen-numbering]]
+For each person, tick the records you have or add them one at a time. "Load an example" shows a made-up family filled in.
 
-The worksheet never grades a line. The best label any entry can earn is "Evidence Entered — Review Required", because only a society's genealogists decide what is proven. [[claim:dar-review-staff]]
+**What you'll get.** A list of what is still missing for each person and where to look for it, fitted to that person's era and state; a check of the patriot's dates against the period DAR accepts for his type of service; a gentle warning when years don't add up; and a "What to do next" plan and report you can print or save as a PDF. [[claim:dar-window-core]]
 
-Everything you enter is saved only in this browser's local storage under keys beginning "pi.toolB". Nothing is sent anywhere. Use "Delete all my worksheet data" to remove it.
+**Its limits.** The worksheet never grades a line. The best label any entry can earn is "Evidence Entered — Review Required", because only a society's genealogists decide what is proven. [[claim:dar-review-staff]]
+For states without a verified source yet, "Where to look" gives general advice and says so. Everything you enter is saved only in this browser, and nothing is sent anywhere. Use "Delete all my worksheet data" to remove it.
+
+**What to do next.** Work through the plan, starting with the records it marks as missing. If a widow's pension might help, try the [Widow Pension Law Checker](/tools/widow-pension-checker/). When you're ready, contact a local chapter's registrar; the plan links to both societies' chapter finders.
 
 ::partial tool-terms
 
 ::tool lineage-matrix-full
 
+**Do you keep a family tree on Ancestry, FamilySearch or a similar site?** [Tell us](mailto:contact@patriotinlays.com?subject=Family%20tree%20import) if importing it here would help.
+
 ## The patriot step
 
 Tell the worksheet who the patriot was: his name, the state or colony he served for, his unit if you know it, his type of service and rough service dates. For military service, DAR records only the state that controlled his unit, not every state he passed through. [[claim:dar-unit-state]]
-The types of service come from the sources this site uses: the Continental Line or State troops, volunteers or militia [[claim:nara-act-1832-categories]], civil service under the new state governments [[claim:dar-civil-service]], patriotic service such as furnishing supplies or signing an oath of allegiance [[claim:dar-material-aid]] [[claim:dar-oaths]], and the categories with their own dates below.
+The types of service come from the sources this site uses: the Continental Line or State troops, volunteers or militia [[claim:nara-act-1832-categories]], the naval service [[claim:stat-1848-service]], civil service under the new state governments [[claim:dar-civil-service]], patriotic service such as furnishing supplies or signing an oath of allegiance [[claim:dar-material-aid]] [[claim:dar-oaths]], and the categories with their own dates below.
 
 The worksheet compares his dates with the periods below. Each one has its own source:
 

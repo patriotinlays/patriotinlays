@@ -35,12 +35,16 @@ page.on("pageerror", (e) => consoleErrors.push(`${page.url()}: ${e.message}`));
 page.on("dialog", (d) => d.accept());
 const ls = () => page.evaluate(() => Object.fromEntries(Object.keys(localStorage).map((k) => [k, localStorage.getItem(k)])));
 const phase = (p) => { page.__phase = p; };
+// Nov 5: dates are memorable-date fields (Month / Day / Year / How sure). fillDate types a stored-format value into them.
+const fillDate = async (pg, id, v) => { const m = /^([~<>])?(\d{4})?(?:-(\d{2}))?(?:-(\d{2}))?$/.exec(v || "") || [];
+  await pg.selectOption(`#${id}-month`, m[3] ? String(+m[3]) : ""); await pg.fill(`#${id}-day`, m[4] ? String(+m[4]) : ""); await pg.fill(`#${id}-year`, m[2] || "");
+  await pg.selectOption(`#${id}-cert`, { "~": "about", "<": "before", ">": "after" }[m[1]] || "exact"); };
 
 // ---- Audit 2 #1: a fresh first visit starts empty; results only after the button; prefill never auto-runs; Start over ----
 { const fresh = await browser.newContext({ viewport: { width: 1280, height: 900 } }); const fp = await fresh.newPage();
   fp.on("pageerror", (e) => consoleErrors.push(`fresh: ${e.message}`));
-  const formState = () => fp.evaluate(() => ({ vals: [...document.querySelectorAll("form[data-form=widow] input, form[data-form=widow] select")].map((i) => i.type === "checkbox" ? i.checked : i.value),
-    rows: document.querySelectorAll("[data-out=widow] tbody tr").length, ls: Object.keys(localStorage), plan: (document.querySelector('[data-tool="widow"] [data-plan] [data-plan-wait]')?.textContent || "") + (document.querySelector('[data-tool="widow"] [data-plan] .plan-title') ? " PLAN-SHOWN" : ""),
+  const formState = () => fp.evaluate(() => ({ vals: [...document.querySelectorAll("form[data-form=widow] input, form[data-form=widow] select:not([data-part=cert])")].map((i) => i.type === "checkbox" ? i.checked : i.value),
+    rows: document.querySelectorAll("[data-out=widow] tbody tr").length, ls: Object.keys(localStorage), named: Object.fromEntries(new FormData(document.querySelector("form[data-form=widow]"))), plan: (document.querySelector('[data-tool="widow"] [data-plan] [data-plan-wait]')?.textContent || "") + (document.querySelector('[data-tool="widow"] [data-plan] .plan-title') ? " PLAN-SHOWN" : ""),
     saved: !document.querySelector("[data-saved-msg]").hidden }));
   await fp.goto(`${BASE}/tools/widow-pension-checker/`);
   let f = await formState();
@@ -51,7 +55,7 @@ const phase = (p) => { page.__phase = p; };
   check("Returning visit: the form starts empty and unticked with no old results; a note points to the saved check and 'Start over'", exRows === 7 && f.vals.every((v) => v === "" || v === false) && f.rows === 0 && /appear here after you press/.test(f.plan) && !/PLAN-SHOWN/.test(f.plan) && f.saved && /Start over/.test(await fp.textContent("[data-saved-msg]")), JSON.stringify(f));
   await fp.evaluate(() => localStorage.setItem("pi.toolB.v1", JSON.stringify({ generations: [{ gen: 1, living: true, cells: [] }, { gen: 2, cells: [] }], patriot: { name: "Prefill Test", state: "VA", kind: "militia", start: "1777", end: "1779-10", gen: "" } })));
   await fp.goto(`${BASE}/tools/widow-pension-checker/?from=worksheet`); f = await formState();
-  check("Prefill from the worksheet fills his service end but does not run the check", f.vals[1] === "1779-10" && f.vals[0] === "" && f.vals[4] === "" && f.rows === 0, JSON.stringify(f));
+  check("Prefill from the worksheet fills his service end but does not run the check", f.named.serviceEnd === "1779-10" && f.named.marriage === "" && f.named.serviceMonths === "" && f.rows === 0, JSON.stringify(f));
   await fp.click('form[data-form=widow] button[type=submit]'); const afterPress = (await formState()).rows;
   await fp.click("[data-start-over]"); f = await formState();
   check("Start over: empties the form, deletes this checker's saved data only, and says so", afterPress === 7 && f.vals.every((v) => v === "" || v === false) && !f.ls.some((k) => k.startsWith("pi.toolA.")) && f.ls.includes("pi.toolB.v1") && /Started over: deleted 1 saved item from this browser/.test(await fp.textContent("[data-out=widow]")) && !f.saved, JSON.stringify(f));
@@ -61,31 +65,31 @@ const phase = (p) => { page.__phase = p; };
 phase("load"); await page.goto(`${BASE}/tools/widow-pension-checker/`); await page.evaluate(() => localStorage.setItem("other.app.key", "keep-me"));
 phase("interact");
 const intro = await page.textContent("main");
-check("Widow checker page: explains what it tells you and why it matters for finding pension files", /What it tells you/.test(intro) && /Why it matters/.test(intro) && /pension file/i.test(intro));
+check("Widow checker page: the intro answers the 7 questions (what, who, problem, how, what you get, limits, next) and mentions pension files", ["What it is.", "Who it helps.", "The problem it solves.", "How to use it.", "What you'll get.", "Its limits.", "What to do next."].every((k) => intro.includes(k)) && /pension file/i.test(intro));
 check("Widow checker page: the standalone service-date form is gone", (await page.$$("form[data-form=window], #ta-start")).length === 0);
 const howA = await page.textContent('[data-tool="widow"] .howto');
 check("Widow checker: 'How this works' says it doesn't search records and nothing leaves the device", /does not search any records/.test(howA) && /Nothing you type leaves your device/.test(howA), howA.slice(0, 160));
 check("Widow checker: before any check, 'What to do next' shows only a labelled placeholder, not a generic plan (audit 3)", /appear here after you press/.test(await page.textContent('[data-tool="widow"] [data-plan]')) && (await page.$$('[data-tool="widow"] [data-plan] .plan-steps')).length === 0);
-await page.fill("#tw-m", "1780-05-01"); await page.fill("#tw-e", "1781-10-19"); await page.fill("#tw-mo", "24"); await page.fill("#tw-d", "730"); await page.click('form[data-form=widow] button[type=submit]');
+await fillDate(page, "tw-m", "1780-05-01"); await fillDate(page, "tw-e", "1781-10-19"); await page.fill("#tw-mo", "24"); await page.fill("#tw-d", "730"); await page.click('form[data-form=widow] button[type=submit]');
 let txt = await page.textContent('[data-out=widow]');
 check("Widow checker: table shows 1836 note about 1832 service categories", /1832/.test(txt) && /Continental Line/.test(txt), "");
 const rows = await page.$$eval('[data-out=widow] tbody tr', (trs) => trs.map((tr) => [tr.cells[0].textContent, tr.cells[1].textContent]));
 const r1853 = rows.find((r) => r[0].includes("1853")); const r1855 = rows.find((r) => r[0].includes("February 28, 1855"));
-check("Widow checker: 1853 and Feb-1855 acts display 'Can't check here'", r1853?.[1].includes("Can't check here") && r1855?.[1].includes("Can't check here"), `${r1853?.[1].slice(0, 30)} | ${r1855?.[1].slice(0, 30)}`);
+check("Widow checker (Nov 5, statute text): a 1780 marriage rules out the 1853 and Feb-1855 acts by the dates (they covered marriages after January 1800)", r1853?.[1].includes("Ruled out by the dates") && r1855?.[1].includes("Ruled out by the dates") && /January 1800/.test(r1853?.[1]), `${r1853?.[1].slice(0, 30)} | ${r1855?.[1].slice(0, 30)}`);
 const next1853 = await page.$$eval('[data-out=widow] tbody tr', (trs) => trs.find((tr) => tr.cells[0].textContent.includes("1853")).cells[2].textContent);
-check("Widow checker: 'Not checked' row says why and what to do (pension papers / registrar)", /Why:/.test(next1853) && /What to do/.test(next1853) && /registrar/.test(next1853), next1853.slice(0, 80));
-await page.fill("#tw-m", "1790"); await page.fill("#tw-e", "1779-10"); await page.fill("#tw-mo", "20"); await page.fill("#tw-d", ""); await page.click('form[data-form=widow] button[type=submit]');
+check("Widow checker: the ruled-out 1853 row gives the rule from the law's text and says no action is needed", /Revolutionary army, married after January 1800/.test(next1853) && /No action needed/.test(next1853), next1853.slice(0, 80));
+await fillDate(page, "tw-m", "1790"); await fillDate(page, "tw-e", "1779-10"); await page.fill("#tw-mo", "20"); await page.fill("#tw-d", ""); await page.click('form[data-form=widow] button[type=submit]');
 const r1836 = await page.$$eval('[data-out=widow] tbody tr', (trs) => trs.find((tr) => tr.cells[0].textContent.includes("1836")).cells[1].textContent);
 check("Widow checker (audit 2): 1836 'Ruled out by the dates' says why: married 1790, service ended 1779-10, and the rule", /Ruled out by the dates/.test(r1836) && /1790/.test(r1836) && /1779-10/.test(r1836) && /marriage came after his service ended/.test(r1836), r1836.slice(0, 160));
-await page.fill("#tw-m", "1790"); await page.fill("#tw-e", "1779"); await page.fill("#tw-mo", ""); await page.fill("#tw-d", ""); await page.selectOption("#tw-b", ""); await page.click('form[data-form=widow] button[type=submit]');
+await fillDate(page, "tw-m", "1790"); await fillDate(page, "tw-e", "1779"); await page.fill("#tw-mo", ""); await page.fill("#tw-d", ""); await page.selectOption("#tw-b", ""); await page.click('form[data-form=widow] button[type=submit]');
 const a3 = await page.evaluate(() => ({ r: [...document.querySelectorAll("[data-out=widow] tbody tr")].find((tr) => tr.cells[0].textContent.includes("1836")).cells[1].textContent, ans: document.querySelector("[data-answer]")?.textContent || "" }));
-check("Widow checker (audit 3 #1): married 1790, service ended 1779, no months typed -> 1836 'Ruled out by the dates' with the plain reason", /Ruled out by the dates/.test(a3.r) && !/Still possible/.test(a3.r) && /marriage came after his service ended/.test(a3.r) && /Ruled out by the dates: the 1836 law/.test(a3.ans), a3.r.slice(0, 120));
+check("Widow checker (audit 3 #1): married 1790, service ended 1779, no months typed -> 1836 'Ruled out by the dates' with the plain reason", /Ruled out by the dates/.test(a3.r) && !/Still possible/.test(a3.r) && /marriage came after his service ended/.test(a3.r) && /Ruled out: the 1836, 1853 and February 1855 laws \(by the dates\)/.test(a3.ans), a3.r.slice(0, 120));
 // ---- Dates only (Tim): every conclusion the dates support, open laws labelled with what they need, one question asked ----
 { const d = await page.evaluate(() => { const rows = [...document.querySelectorAll("[data-out=widow] tbody tr")].map((tr) => [tr.cells[0].textContent, tr.cells[1].querySelector(".badge").textContent]);
     const ask = document.querySelector("[data-out=widow] [data-ask]"); return { rows, ask: ask?.textContent || "", key: ask?.dataset.ask, href: ask?.querySelector("a")?.getAttribute("href") }; });
   const v = (y) => d.rows.find((r) => r[0].includes(y))?.[1] || "";
-  check("Widow checker, dates only (audit 4): 'Ruled out by the dates' (1836); 1838 and 1848 'Still possible' because their own text also needs his service; 1855 bounty-land and 1878 'Still possible: need …'; 1853 'Can't check here'; nothing 'Fits'",
-    v("1836") === "Ruled out by the dates" && v("1838") === "Still possible: need whether he served 6 months or more, and his kind of service" && v("1848") === "Still possible: need his kind of service" && v("Bounty-land act").startsWith("Still possible: need how many days he served, or whether he was in a battle") && v("1878").startsWith("Still possible") && v("February 3, 1853") === "Can't check here"
+  check("Widow checker, dates only (audit 4): 'Ruled out by the dates' (1836); 1838 and 1848 'Still possible' because their own text also needs his service; 1855 bounty-land and 1878 'Still possible: need …'; 1853 and Feb 1855 ruled out by a 1790 marriage; nothing 'Fits'",
+    v("1836") === "Ruled out by the dates" && v("1838") === "Still possible: need whether he served 6 months or more, and his kind of service" && v("1848") === "Still possible: need his kind of service" && v("Bounty-land act").startsWith("Still possible: need how many days he served, or whether he was in a battle") && v("1878").startsWith("Still possible") && v("February 3, 1853") === "Ruled out by the dates" && v("February 28, 1855") === "Ruled out by the dates"
     && d.rows.filter((r) => /^Fits/.test(r[1])).length === 0, JSON.stringify(d.rows.map((r) => r[1])));
   const out1836 = await page.$$eval("[data-out=widow] tbody tr", (trs) => trs.find((tr) => tr.cells[0].textContent.includes("1836")).cells[2].textContent);
   check("Widow checker (audit 4 #3): the ruled-out 1836 row says no action is needed and no longer says 'find out what kind of unit'", /No action needed for this law/.test(out1836) && !/find out/i.test(out1836), out1836.slice(0, 160));
@@ -108,15 +112,15 @@ const exD = await page.textContent('[data-out=widow]');
 const planA = await page.textContent('[data-tool="widow"] [data-plan]');
 check("Widow checker: example plan -> look for the widow's pension file, registrar (DAR Chapter Locator), start application", /Look for the widow's pension file/.test(planA) && /Contact a local chapter's registrar/.test(planA) && /Start the application/.test(planA)
   && (await page.$$('[data-tool="widow"] [data-plan] a[href="https://www.dar.org/discover/become-member/chapter-locator"]')).length === 1, planA.slice(0, 80));
-check("Widow checker: plan names the 'Can't check here' laws in their own step", /For the laws marked "Can't check here"/.test(planA) && /1853/.test(planA));
+check("Widow checker (Nov 5): every law is now read from its own text, so the example plan has no 'Can't check here' step", !/Can't check here/.test(planA));
 await page.evaluate(() => { window.__printed = 0; window.__planOnly = null; window.print = () => { window.__printed++; window.__planOnly = document.body.classList.contains("print-plan"); }; });
 await page.click('[data-tool="widow"] [data-print-plan]');
 check("Widow checker: 'Print or save this plan' prints in plan-only mode", (await page.evaluate(() => window.__printed === 1 && window.__planOnly === true)));
 check("Widow checker: no 'Not evaluated' wording anywhere on the page", !/not evaluated/i.test(await page.textContent("main")));
 check("Widow checker: 'Load an example' shows results at once", /Fits the rules checked here; other terms not checked/.test(exD) && /Not checked here \(from the law's own text\)/.test(exD), exD.slice(0, 60));
 const ans = await page.evaluate(() => { const a = document.querySelector("[data-out=widow] [data-answer]"); const t = document.querySelector("[data-out=widow] table.widow");
-  return a && t ? { text: a.textContent, above: !!(a.compareDocumentPosition(t) & Node.DOCUMENT_POSITION_FOLLOWING) } : null; });
-check("Widow checker: a one-line plain answer sits above the table (what fits, what is still possible and what it needs, with the next step)", ans?.above && /^In short: Fits every rule checked here \(other terms in the law not checked\): the March 1855 bounty-land and 1878 laws\. Ruled out by the dates: the 1838 law\. Still possible: the 1836 and 1848 laws \(need his kind of service\)/.test(ans.text) && /Next: look for the widow's pension file/.test(ans.text), ans?.text);
+  return a && t ? { text: a.textContent, lines: [...a.querySelectorAll("li[data-line]")].map((l) => l.dataset.line), above: !!(a.compareDocumentPosition(t) & Node.DOCUMENT_POSITION_FOLLOWING) } : null; });
+check("Widow checker (iPhone fix): 'In short' sits above the table as short lines: Fits / Ruled out / Still possible / Next", ans?.above && ans.lines.join("|") === "Fits|Ruled out|Still possible|Next" && /Fits: the March 1855 bounty-land and 1878 laws/.test(ans.text) && /Ruled out: the 1838, 1853 and February 1855 laws \(by the dates\)/.test(ans.text) && /Still possible: the 1836 and 1848 laws \(need his kind of service\)/.test(ans.text) && /Next: .*look for the widow's pension file/.test(ans.text), ans?.text);
 const terms = await page.textContent("[data-out=widow] [data-terms]");
 check("Widow checker: results explain 'Stat.' (Statutes at Large: volume, page) and 'bounty land' in plain words", /Statutes at Large/.test(terms) && /volume 5, page 128/.test(terms) && /Bounty land was free public land/.test(terms), terms.slice(0, 120));
 check("Widow checker page: no 'Qualif' anywhere in rendered text", !/qualif/i.test(await page.textContent("body")));
@@ -159,16 +163,27 @@ phase("load"); await page.goto(`${BASE}/tools/lineage-matrix/`); phase("interact
   phase("load"); await page.reload(); phase("interact");
   check("Worksheet (audit 4 proposal): once started, a reload goes straight to the steps", !(await page.isVisible("[data-ws-begin]")) && await page.isVisible("#pat-name")); }
 check("Worksheet: step 1 is the patriot step", /The patriot/.test(await page.textContent("#tb-patriot")) && (await page.$$("[data-patriot-form] #pat-kind option")).length >= 9);
-await page.fill("#pat-name", "Test Patriot"); await page.selectOption("#pat-state", "NC"); await page.selectOption("#pat-kind", "continental"); await page.fill("#pat-start", "1776-02"); await page.fill("#pat-end", "1779-06");
+await page.fill("#pat-name", "Test Patriot"); await page.selectOption("#pat-state", "NC"); await page.selectOption("#pat-kind", "continental"); await fillDate(page, "pat-start", "1776-02"); await fillDate(page, "pat-end", "1779-06");
 txt = await page.textContent("[data-patriot-check]");
 check("Patriot step: dates checked against DAR's period for that type of service (not a ruling), linking the widow checker", /Dates fit DAR's period/.test(txt) && /not a ruling/.test(txt) && (await page.$$('[data-patriot-check] a[href="/tools/widow-pension-checker/?from=worksheet"]')).length === 1, txt.slice(0, 120));
-await page.fill("#pat-start", "1785"); await page.fill("#pat-end", "");
+await fillDate(page, "pat-start", "1785"); await fillDate(page, "pat-end", "");
 check("Patriot step: dates outside the period are flagged", /outside|does not fit|not inside/i.test(await page.textContent("[data-patriot-check]")), (await page.textContent("[data-patriot-check]")).slice(0, 100));
-await page.fill("#pat-start", "1776-02"); await page.fill("#pat-end", "1779-06");
+await fillDate(page, "pat-start", "1776-02"); await fillDate(page, "pat-end", "1779-06");
 const planP = await page.textContent('[data-tool="lineage-matrix"] [data-plan]');
 check("Patriot step drives the plan: prove his service (North Carolina troop returns, M881), then the widow-pension step", /Prove the patriot's service/.test(planP) && /North Carolina/.test(planP) && /M881/.test(planP) && /widow-pension laws/.test(planP), planP.slice(0, 160));
 phase("load"); await page.goto(`${BASE}/tools/widow-pension-checker/?from=worksheet`); phase("interact");
-check("Widow checker auto-fills his service end from the worksheet patriot", (await page.inputValue("#tw-e")) === "1779-06" && /Test Patriot/.test(await page.textContent("[data-worksheet-msg]")), await page.textContent("[data-worksheet-msg]"));
+check("Widow checker auto-fills his service end from the worksheet patriot", (await page.inputValue("#tw-e-value")) === "1779-06" && /Test Patriot/.test(await page.textContent("[data-worksheet-msg]")), await page.textContent("[data-worksheet-msg]"));
+{ // Nov 5: memorable-date fields on a real page
+  const f = await page.evaluate(() => { const g = (id) => document.getElementById(id); const fs = g("tw-m");
+    return { legend: fs?.querySelector("legend")?.textContent, months: [...g("tw-m-month").options].map((o) => o.textContent), first: g("tw-m-month").value, day: [g("tw-m-day").inputMode, g("tw-m-day").maxLength], year: [g("tw-m-year").inputMode, g("tw-m-year").maxLength],
+      off: ["tw-m-day", "tw-m-year", "tw-m-month", "tw-m-cert"].every((id) => g(id).getAttribute("autocomplete") === "off" && g(id).getAttribute("autocorrect") === "off" && g(id).getAttribute("autocapitalize") === "off"), certs: [...g("tw-m-cert").options].map((o) => o.textContent),
+      noPicker: !document.querySelector('form[data-form=widow] input[type=date], form[data-form=widow] input[type=month]') }; });
+  check("Dates (Nov 5): fieldset + legend; Month list starts at \"Don't know\"; Day 2 and Year 4 digits on the number pad; Exactly/About/Before/After; autocomplete, autocorrect, autocapitalize off; no picker", f.legend === "When did the couple marry?" && f.months[0] === "Don't know" && f.months.length === 13 && f.first === "" && f.day.join() === "numeric,2" && f.year.join() === "numeric,4" && f.off && f.certs.join() === "Exactly,About,Before,After" && f.noPicker, JSON.stringify(f));
+  await fillDate(page, "tw-m", "~1780-05-04"); const about = await page.textContent("#tw-m [data-range]");
+  check("Dates (Nov 5): 'About May 1780' shows its range in words, says the day is ignored, and says 'About' is the site's rule of thumb", /About May 1780 is treated as November 1, 1779 to November 30, 1780\./.test(about) && /the day is ignored/.test(about) && /'About' is this site's rule of thumb, not part of the law\./.test(about) && (await page.inputValue("#tw-m-value")) === "~1780-05", about);
+  await fillDate(page, "tw-m", "1780-02-30"); await page.click('form[data-form=widow] button[type=submit]');
+  check("Dates (Nov 5): an impossible day (February 30) gets a plain message and no results table", /February 1780 has no day 30/.test(await page.textContent("[data-out=widow]")) && (await page.$$("[data-out=widow] tbody tr")).length === 0, await page.textContent("[data-out=widow]"));
+  await fillDate(page, "tw-m", ""); }
 await page.click("[data-clear=toolA]");
 phase("load"); await page.goto(`${BASE}/tools/lineage-matrix/`); phase("interact");
 // ---- Audit 4 #1: date sanity (patriot born 1850 with 1777–79 service) ----
@@ -372,23 +387,25 @@ phase("load"); await page.goto(`${BASE}/`); phase("interact");
 const home = await page.textContent("main");
 const gloss = await page.textContent(".glossary");
 check("Home: short glossary defines Patriot, DAR, SAR, NSCDA and lineage society, each with a source note", ["Patriot:", "DAR:", "SAR:", "NSCDA:", "Lineage society:"].every((k) => gloss.includes(k)) && (await page.$$eval(".glossary li", (lis) => lis.every((li) => li.querySelector("sup a[href^='#src-']")))) && (await page.$$("#sources + ol.sources li")).length >= 3);
-check("Home: offers the Roadmap guide as a button and the worksheet in the tools section", /Proving your whole line\?/.test(home) && (await page.$$('main section.lead-tool a[href="/tools/lineage-matrix/"]')).length === 1 && (await page.$$('main a.button-link[href="/guides/lineage-proof-roadmap/"]')).length === 1);
+check("Home (Nov 5): 'Ready to get started?' links to both tools and to the Roadmap guide", (await page.$$('main [data-get-started] a[href="/tools/lineage-matrix/"]')).length === 1 && (await page.$$('main [data-get-started] a[href="/tools/widow-pension-checker/"]')).length === 1 && (await page.$$('main [data-get-started] a[data-start-button][href="/guides/lineage-proof-roadmap/"]')).length === 1);
 const homeOrder = await page.evaluate(() => [...document.querySelectorAll("main h2")].map((h) => h.id));
-check("Home (beginner path): 'Just starting?', then 'How to join, in short', then the beginner guides, all ahead of the widow-pension checker", homeOrder[0] === "just-starting" && homeOrder[1] === "how-to-join-in-short" && homeOrder[2] === "beginner-guides" && homeOrder[3] === "lead-widow" && /pension file/i.test(await page.textContent("main section.lead-tool")), homeOrder.slice(0, 4).join(","));
-{ const hg = await page.evaluate(() => ({ guides: [...document.querySelectorAll("#beginner-guides + ol a")].map((a) => a.getAttribute("href")), words: document.querySelector("main").innerText.split(/\s+/).length, height: document.documentElement.scrollHeight,
-    dupTools: [...document.querySelectorAll("main h2")].filter((h) => /^Free tools$/.test(h.textContent)).length, guideDescs: document.querySelectorAll("#guides + ul .small").length }));
-  globalThis.__home = hg;
-  check("Home (shorter): three beginner guides (the Roadmap first) come before the tools; the other guides are a compact list; no second tools list", hg.guides.length === 3 && hg.guides[0] === "/guides/lineage-proof-roadmap/" && hg.dupTools === 0 && hg.guideDescs === 0 && hg.words < 1150, JSON.stringify(hg)); }
-const firstLinks = await page.$$eval("main a", (as) => as.slice(0, 3).map((a) => a.getAttribute("href")));
-check("Home (beginner path): the first three links in the page go to how to join, Step 0 (find the soldier's name) and the worksheet", firstLinks[0] === "#how-to-join-in-short" && firstLinks[1] === "/guides/lineage-proof-roadmap/#step-0-find-the-soldier-s-name" && firstLinks[2] === "/tools/lineage-matrix/", firstLinks.join(" "));
+{ const hm = await page.evaluate(() => { const m = document.querySelector("main [data-mission]"); return { ps: m.querySelectorAll("p").length, lists: m.querySelectorAll("ul, ol").length, text: m.textContent, sub: document.querySelector("main [data-subtitle]")?.textContent || "",
+    ai: document.querySelector("main [data-ai-line]")?.textContent.trim() || "", beforeStart: !!(m.compareDocumentPosition(document.querySelector("[data-get-started]")) & Node.DOCUMENT_POSITION_FOLLOWING), words: document.querySelector("main").innerText.split(/\s+/).length }; });
+  globalThis.__home = hm;
+  check("Home (Nov 5 lock): subtitle names DAR and SAR; mission in flowing paragraphs (no lists) ahead of 'Ready to get started?'; purpose line, both tool names, one-sentence privacy", /DAR/.test(hm.sub) && /SAR/.test(hm.sub) && hm.lists === 0 && hm.ps >= 6 && hm.beforeStart && homeOrder[0] === "get-started"
+    && /organize the records that connect you to a Revolutionary War patriot/.test(hm.text) && /Widow Pension Law Checker/.test(hm.text) && /Lineage Evidence Matrix/.test(hm.text) && /what you type into the tools stays in your own browser\./.test(hm.text), JSON.stringify({ ...hm, text: hm.text.slice(0, 80) }));
+  check("Home (Nov 5 lock): the exact AI line, the exact SAR line (sourced), no unsourced 'most people get stuck' / 'give up' / guarantee lines", hm.ai === "Written with AI assistance and reviewed by the site's owner. Each fact is tied to a quoted official source, and software checks that the quote is still there."
+    && /SAR's local sponsor, often the chapter registrar, can guide you through the application\./.test(hm.text) && !/most people get stuck|give up|so that doesn't happen to you|make sure you walk/i.test(hm.text) && !/No person reviews/i.test(await page.textContent("main")), hm.ai); }
+const firstLinks = await page.$$eval("main a", (as) => as.map((a) => a.getAttribute("href")).filter((h) => !h.startsWith("#src-")).slice(0, 3));
+check("Home: the first links (after source notes) are the worksheet, the widow checker and the Roadmap guide", firstLinks[0] === "/tools/lineage-matrix/" && firstLinks[1] === "/tools/widow-pension-checker/" && firstLinks[2] === "/guides/lineage-proof-roadmap/", firstLinks.join(" "));
 const navLinks = await page.$$eval("header.site nav a", (as) => as.map((a) => [a.getAttribute("href"), a.textContent]));
 check("Navigation: 'Start here' (the Roadmap) comes first, then the widow-pension check", navLinks[0][0] === "/guides/lineage-proof-roadmap/" && navLinks[0][1] === "Start here" && navLinks[1][0] === "/tools/widow-pension-checker/", navLinks.map((x) => x[1]).join(" | "));
-const joinItems = await page.$$eval("#how-to-join ol > li", (lis) => lis.map((li) => ({ t: li.textContent, sup: li.querySelectorAll("sup a").length })));
-check("Home: 'How to join, in short' has 4 sourced steps, the DAR chapter locator and the SAR contact finder", joinItems.length === 4 && joinItems.every((x) => x.sup > 0) && (await page.$$('#how-to-join a[href="https://www.dar.org/discover/become-member/chapter-locator"]')).length === 1 && (await page.$$('#how-to-join a[href="https://www.sar.org/find-your-contact/"]')).length === 1);
 // The beginner's three clicks: the big button -> Roadmap, whose top has "How to join" and "Step 0"
 phase("load"); await page.click("main [data-start-button]"); await page.waitForURL("**/guides/lineage-proof-roadmap/"); phase("interact");
 const rmOrder = await page.evaluate(() => [...document.querySelectorAll("main h2")].slice(0, 3).map((h) => h.id));
 check("Roadmap: opens with 'How to join, in short' and 'Step 0: find the soldier's name' before the rest", rmOrder[0] === "how-to-join-in-short" && rmOrder[1] === "step-0-find-the-soldier-s-name", rmOrder.join(","));
+const joinItems = await page.$$eval("#how-to-join ol > li", (lis) => lis.map((li) => ({ t: li.textContent, sup: li.querySelectorAll("sup a").length })));
+check("Roadmap: 'How to join, in short' has 4 sourced steps, the DAR chapter locator and the SAR contact finder", joinItems.length === 4 && joinItems.every((x) => x.sup > 0) && (await page.$$('#how-to-join a[href="https://www.dar.org/discover/become-member/chapter-locator"]')).length === 1 && (await page.$$('#how-to-join a[href="https://www.sar.org/find-your-contact/"]')).length === 1);
 const step0 = await page.evaluate(() => { const h = document.getElementById("step-0-find-the-soldier-s-name"); const ul = h.nextElementSibling.nextElementSibling; return [...ul.querySelectorAll("li")].map((li) => li.querySelectorAll("sup a").length); });
 check("Roadmap Step 0: every point is sourced", step0.length >= 4 && step0.every((n) => n > 0), JSON.stringify(step0));
 phase("load"); await page.goto(`${BASE}/`); phase("interact");
@@ -400,9 +417,9 @@ for (const gp of ["/guides/lineage-proof-roadmap/", "/guides/substitute-evidence
   if (!d || h.indexOf(d) > h.indexOf("</h1>") + 6 || !glossTerms.every((k) => d.includes(`<strong>${k}</strong>`)) || !/<sup><a href="#src-/.test(d) || !d.includes('href="/#glossary"')) defsBad.push(gp); }
 check("Definitions box (DAR, SAR, NSCDA, lineage society, patriot, bounty land, Stat.) right under the title on all 10 guides and both tools, sourced", defsBad.length === 0, defsBad.join(" "));
 { // Audit 3 #7: plain terms
-  const homeHtml = readFileSync(join(DIST, "index.html"), "utf8"); const mainTxt = homeHtml.slice(homeHtml.indexOf("<main")).replace(/<[^>]+>/g, " ").replace(/\s+/g, " ");
+  const homeHtml = readFileSync(join(DIST, "index.html"), "utf8"); const mainTxt = homeHtml.slice(homeHtml.indexOf("</h1>", homeHtml.indexOf("<main"))).replace(/<[^>]+>/g, " ").replace(/\s+/g, " ");
   const firstP = mainTxt.search(/patriot/i);
-  check("Audit 3 #7: 'patriot' is glossed in plain words, with a source, at its first use on the home page's first screen", firstP > 0 && /A patriot here means someone who supported the cause of American independence/.test(mainTxt.slice(firstP, firstP + 260)) && /sar-about-patriots|#src-/.test(homeHtml.slice(homeHtml.indexOf("A <strong>patriot</strong> here"), homeHtml.indexOf("A <strong>patriot</strong> here") + 600)), mainTxt.slice(firstP - 40, firstP + 200));
+  check("Audit 3 #7: 'patriot' is glossed in plain words, with a source, at its first use on the home page's first screen (after the site name)", firstP > 0 && /A patriot here means someone who supported the cause of American independence/.test(mainTxt.slice(firstP, firstP + 260)) && /sar-about-patriots|#src-/.test(homeHtml.slice(homeHtml.indexOf("A <strong>patriot</strong> here"), homeHtml.indexOf("A <strong>patriot</strong> here") + 600)), mainTxt.slice(firstP - 40, firstP + 200));
   const toolTerms = ["/tools/widow-pension-checker/", "/tools/lineage-matrix/"].map((tp) => { const h = readFileSync(join(DIST, tp, "index.html"), "utf8"); const i = h.indexOf('class="card box-tool-terms"'); const j = h.indexOf("data-tool="); const box = i > 0 ? h.slice(i, h.indexOf("</aside>", i)) : "";
     return i > 0 && i < j && /<strong>society<\/strong>/.test(box) && /<strong>registrar<\/strong>/.test(box) && (box.match(/<sup>/g) || []).length >= 2 && box.includes('href="/#glossary"'); });
   check("Audit 3 #7: both tools explain 'society' and 'registrar' in plain, sourced words just above the tool", toolTerms.every(Boolean), JSON.stringify(toolTerms));

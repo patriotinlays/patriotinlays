@@ -39,7 +39,7 @@ unknown or unverified claim, stale entry (> 120 days), quote that no longer appe
 | `manifest/` | Source Manifest (`claims.json`) and the Python that regenerates it (`npm run manifest`) |
 | `scripts/` | Static site generator, tests, manifest gate, link checker, gates doc generator |
 | `ops/gates.js`, `docs/gates.md` | Day 30/60/90 mixed-gate decision rules (code + generated doc) |
-| `qa/e2e.mjs` | Headless-browser end-to-end suite (135 checks, incl. 360px, fresh profile and the report page count) |
+| `qa/e2e.mjs` | Headless-browser end-to-end suite (138 checks, incl. 360px, fresh profile and the report page count) |
 | `.github/workflows/` | `build.yml` and `ci.yml`. **Both workflows are disabled on GitHub** (they don't run); every check they define is run locally before each deploy instead (see below) |
 | `dist/` | Build output (generated; this is what gets deployed) |
 
@@ -54,6 +54,15 @@ There is no `src/components/` directory; tool code lives in `src/tools/`.
 - Widow checker: a one-line plain answer above the results table and a plain-terms note.
 - Worksheet: a "What do you have?" checklist per generation and plain relationship choices ("my 3rd-great-grandfather").
 - Worksheet report: a summary first, each "Where to look" block shown once and referenced from the gaps, and a "Save as PDF" button. The example prints on 2 Letter pages with "Save as PDF" and 3 with Ctrl+P (headers and footers on, the way Chrome's print window prints), measured by `npm run e2e` (`exampleReportPages` in `qa/e2e-results.json`).
+
+### Thursday batch (Nov 5, 2026)
+
+- Home page replaced: flowing mission text (`src/partials/home.md`, manifest-gated), subtitle naming DAR and SAR, the locked AI line, the sourced SAR sponsor line, "Ready to get started?" links. The old "Just starting?" path and "How to join" box live in the Roadmap guide.
+- Dates use the memorable-date pattern (`src/tools/dates.js`, `src/tools/date-ui.js`): Month / Day / Year plus Exactly / About / Before / After. Stored as `1777-05`, `~1780`, `<1780-05`, `>1781`, so old saved values still load. About = ±2 years (year only) or ±6 months (month and year); the day is ignored.
+- 1853 (10 Stat. 154, sec. 2) and February 1855 (10 Stat. 616, sec. 3) widow laws are now tested from the statute text; Navy is a service option in both tools.
+- Statute links open the Library of Congress scan at the law's page (`#page=N`); the live source check retries slow downloads (3 tries, 5 minutes each).
+- Pension-file help: M805 and ordering a copy with NATF Form 85. Softer "Worth a second look" date warnings, an age ceiling and a died-before-service-ended check. "In short" is a list of short lines.
+- 7-question intros on both tool pages; About and Privacy rewritten in plain words; family-tree import feedback line on the worksheet.
 
 ### Logo and audit 4 proposals (Oct 31, 2026)
 

@@ -1,9 +1,9 @@
 {
-  "ranAt": "Sat Oct 31 2026 21:46:51 GMT-0500 (Central Daylight Time)",
+  "ranAt": "Thu Nov 05 2026 08:54:46 GMT-0600 (Central Standard Time)",
   "node": "v24.22.1",
-  "pass": 34,
-  "total": 34,
-  "plainChecks": "47/47",
+  "pass": 36,
+  "total": 36,
+  "plainChecks": "56/56",
   "wordingGuard": "PASS",
   "rows": [
     {
@@ -193,9 +193,25 @@
     {
       "id": 24,
       "group": "Widow claim",
-      "desc": "Married 1800-01-02: 1848 act (before 2 Jan 1800) vs 1853 & Feb 1855 acts (not evaluated)",
-      "expected": "inconsistent|not_evaluated|not_evaluated",
-      "actual": "inconsistent|not_evaluated|not_evaluated",
+      "desc": "Married 1800-01-02: 1848 out; 1853 (after January 1800) too rough to tell; Feb 1855 fits a navy widow; 1853 rules out a navy widow",
+      "expected": "inconsistent|partial|consistent|inconsistent",
+      "actual": "inconsistent|partial|consistent|inconsistent",
+      "result": "PASS"
+    },
+    {
+      "id": 24.1,
+      "group": "Widow claim",
+      "desc": "1853 act: continental, married 1800-02-01 fits; married 1799-12-31 ruled out by the dates; militia stays open (text doesn't say)",
+      "expected": "consistent|inconsistent|possible",
+      "actual": "consistent|inconsistent|possible",
+      "result": "PASS"
+    },
+    {
+      "id": 24.2,
+      "group": "Widow claim",
+      "desc": "Feb 1855 act: navy married 1800-01-01 fits; navy 1799-12-31 out; army 1810 out; unknown kind 1810 open",
+      "expected": "consistent|inconsistent|inconsistent|possible",
+      "actual": "consistent|inconsistent|inconsistent|possible",
       "result": "PASS"
     },
     {

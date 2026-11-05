@@ -79,10 +79,16 @@ if (LINKS) {
   for (const u of urls) {
     let status = 0, body = "", type = "", altHays = [];
     try {
-      const r = await fetch(u, { headers: { "user-agent": "Mozilla/5.0 (patriotinlays manifest checker)" }, redirect: "follow", signal: AbortSignal.timeout(180000) });
+      // Large statute scans (up to ~90 MB) can be slow: allow 5 minutes per try and retry twice before failing.
+      let r, buf = null;
+      for (let attempt = 1; ; attempt++) {
+        try { r = await fetch(u, { headers: { "user-agent": "Mozilla/5.0 (patriotinlays manifest checker)" }, redirect: "follow", signal: AbortSignal.timeout(300000) });
+          if ((r.headers.get("content-type") || "").includes("pdf")) buf = Buffer.from(await r.arrayBuffer()); break; }
+        catch (e) { if (attempt >= 3) throw e; warnings.push(`${u}: try ${attempt} failed (${e.message}); retrying`); await new Promise((res) => setTimeout(res, 5000 * attempt)); }
+      }
       status = r.status; type = r.headers.get("content-type") || "";
       if (type.includes("pdf")) {
-        const p = join(tmp, "s.pdf"); writeFileSync(p, Buffer.from(await r.arrayBuffer()));
+        const p = join(tmp, "s.pdf"); writeFileSync(p, buf);
         try { body = execFileSync("pdftotext", ["-layout", p, "-"], { encoding: "utf8", maxBuffer: 256e6 });
           // Scanned statute volumes read cleanly only in reading order (-raw); keep both, plus the rejoined-hyphen form.
           if (/tile\.loc\.gov/.test(u)) { const raw = execFileSync("pdftotext", ["-raw", p, "-"], { encoding: "utf8", maxBuffer: 256e6 }); altHays = [normJoin(raw), norm(raw), normJoin(body)]; } }

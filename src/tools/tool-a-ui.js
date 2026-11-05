@@ -5,6 +5,8 @@ import { renderPlan } from "./plan-ui.js";
 import { ns, el } from "./storage.js";
 import { kindOf } from "./patriot.js";
 import { stateName } from "./places.js";
+import { mountDates, setDate, dateErrors } from "./date-ui.js";
+import { dateLabel } from "./dates.js";
 const store = ns("pi.toolA.");
 const worksheet = ns("pi.toolB.");
 // Badges are deliberately not green: a matching date is a starting point, never an approval.
@@ -32,7 +34,8 @@ function renderWidow(rows) {
   const go = (f) => el("a", { href: `#${f.field}`, "data-ask-link": f.field, onclick: (e) => { e.preventDefault(); const x = document.getElementById(f.field); x?.scrollIntoView({ block: "center" }); x?.focus(); }, text: `Go to "${f.label}"` });
   const ask = sum?.ask ? el("div", { class: "ask", "data-ask": sum.ask.key }, el("p", {}, el("strong", { text: "One more answer would settle the most: " }), `${sum.ask.text}. It bears on the ${sum.ask.settles.length > 2 ? `${sum.ask.settles.slice(0, -1).join(", ")} and ${sum.ask.settles.at(-1)}` : sum.ask.settles.join(" and ")} law${sum.ask.settles.length > 1 ? "s" : ""}.`),
     sum.ask.fields.length > 1 ? el("ul", { class: "small" }, ...sum.ask.fields.map((f) => el("li", {}, `${f.label} ${f.hint ? `(${f.hint})` : ""} `, go(f)))) : el("p", { class: "small" }, go(sum.ask.fields[0]))) : null;
-  return el("div", {}, sum ? el("p", { class: "answer", "data-answer": "", role: "status" }, el("strong", { text: "In short: " }), sum.text) : null, ask,
+  return el("div", {}, sum ? el("div", { class: "answer", "data-answer": "", role: "status" }, el("strong", { text: "In short" }),
+    el("ul", { class: "answer-lines" }, ...sum.lines.map((l) => el("li", { "data-line": l.label }, el("strong", { text: `${l.label}: ` }), l.text)))) : null, ask,
     el("div", { class: "table-wrap" }, t),
     el("p", { class: "small terms", "data-terms": "" }, el("strong", { text: "Plain terms: " }), `${TERMS.stat.text} ${TERMS.bounty.text}`));
 }
@@ -58,7 +61,8 @@ function runWidow(form, out) {
   // The battle question has three answers: yes, no, or not answered (don't know). Only "No" can rule a law out.
   const input = { marriage: f.marriage || null, serviceEnd: f.serviceEnd || null, serviceMonths: num(f.serviceMonths), serviceDays: num(f.serviceDays),
     engagement: f.engagement === "yes" ? true : f.engagement === "no" ? false : null, kind: f.kind || null };
-  const rows = checkWidowActs(input);
+  const bad = dateErrors(form);
+  const rows = bad ? [{ act: "input", status: "invalid", message: `We couldn't read the dates: ${bad}` }] : checkWidowActs(input);
   store.set("widow", { input: { ...f }, norm: input, result: rows, at: new Date().toISOString() });
   ranThisVisit = rows; out.replaceChildren(renderWidow(rows)); const root = form.closest("[data-tool]"); updatePlan(root); savedNotice(root);
 }
@@ -69,7 +73,7 @@ function bindWidow(root) {
   for (const [k, h] of Object.entries(FIELD_HELP)) { const p = form.querySelector(`[data-why="${k}"]`); if (p) p.textContent = h.text; }
   // Every visit starts with an empty, unticked form and no results: results appear only after the button is pressed.
   // (Earlier visits restored the last entries, including the example's ticked battle box, and showed old results.)
-  form.reset(); out.replaceChildren(); savedNotice(root);
+  form.reset(); form.querySelectorAll("[data-date-field]").forEach((fs) => fs.setValue("")); out.replaceChildren(); savedNotice(root);
   form.addEventListener("submit", (ev) => { ev.preventDefault(); runWidow(form, out); out.focus(); });
 }
 // "Fill in from my worksheet": copies the patriot's service end date from the Lineage Evidence Matrix (same browser).
@@ -77,18 +81,18 @@ function fromWorksheet(root, auto = false) {
   const form = root.querySelector("form[data-form=widow]"); const msg = root.querySelector("[data-worksheet-msg]");
   const p = worksheet.get("v1", null)?.patriot;
   if (!p || !p.end && !p.start) { if (msg) msg.replaceChildren("No patriot service dates are saved in the worksheet in this browser yet. ", el("a", { href: "/tools/lineage-matrix/#tb-patriot", text: "Add them in the worksheet's patriot step" }), "."); return false; }
-  form.elements.serviceEnd.value = p.end || p.start;
+  setDate(form, "serviceEnd", p.end || p.start);
   const k = kindOf(p.kind);
   // His kind of service, when the worksheet's choice maps onto the 1832 law's categories (or is clearly something else).
-  if (form.elements.kind && p.kind) form.elements.kind.value = ["continental", "militia"].includes(p.kind) ? p.kind : p.kind === "military" ? "" : "other";
-  if (msg) msg.textContent = `Filled in from your worksheet: ${p.name || "the patriot"}${p.state ? `, ${stateName(p.state)}` : ""}${k ? `, ${k.label.toLowerCase()}` : ""}, service ended ${p.end || p.start}. Add the marriage date and, if you know them, his months or days of service.`;
-  if (!auto) form.elements.marriage.focus();
+  if (form.elements.kind && p.kind) form.elements.kind.value = ["continental", "militia"].includes(p.kind) ? p.kind : p.kind === "navy" ? "navy" : p.kind === "military" ? "" : "other";
+  if (msg) msg.textContent = `Filled in from your worksheet: ${p.name || "the patriot"}${p.state ? `, ${stateName(p.state)}` : ""}${k ? `, ${k.label.toLowerCase()}` : ""}, service ended ${dateLabel(p.end || p.start)}. Add the marriage date and, if you know them, his months or days of service.`;
+  if (!auto) form.querySelector("#tw-m-month")?.focus();
   return true;
 }
 function bindExample(root) {
   root.querySelector("[data-load-example]")?.addEventListener("click", () => {
     const d = root.querySelector("form[data-form=widow]");
-    d.elements.marriage.value = "1777-05"; d.elements.serviceEnd.value = "1778-03"; d.elements.serviceMonths.value = "20"; d.elements.serviceDays.value = ""; d.elements.engagement.value = "yes"; d.elements.kind.value = "";
+    setDate(d, "marriage", "1777-05"); setDate(d, "serviceEnd", "1778-03"); d.elements.serviceMonths.value = "20"; d.elements.serviceDays.value = ""; d.elements.engagement.value = "yes"; d.elements.kind.value = "";
     runWidow(d, root.querySelector("[data-out=widow]"));
     const m = root.querySelector("[data-example-msg]"); if (m) m.textContent = "Example loaded: a made-up couple who married in May 1777; his service ended in March 1778. The results are in the table below.";
     root.querySelector("[data-out=widow]").focus();
@@ -96,7 +100,7 @@ function bindExample(root) {
 }
 function bindClear(root) {
   root.querySelectorAll("[data-clear=toolA]").forEach((b) => b.addEventListener("click", () => {
-    const n = store.clear(); ranThisVisit = null; root.querySelectorAll("form").forEach((f) => f.reset());
+    const n = store.clear(); ranThisVisit = null; root.querySelectorAll("form").forEach((f) => { f.reset(); f.querySelectorAll("[data-date-field]").forEach((fs) => fs.setValue("")); });
     root.querySelectorAll("[data-example-msg], [data-worksheet-msg]").forEach((m) => { m.textContent = ""; });
     const msg = n ? `Started over: deleted ${plural(n, "saved item")} from this browser.` : "Started over. Nothing was saved in this browser.";
     if (root.matches("[data-tool-report]")) { renderReport(root); root.querySelector("[data-report]").prepend(el("p", { class: "small", role: "status", text: msg })); }
@@ -104,7 +108,7 @@ function bindClear(root) {
     updatePlan(root); savedNotice(root);
   }));
 }
-const KIND_TEXT = { continental: "Continental Line", militia: "State troops, volunteers or militia", other: "something else" };
+const KIND_TEXT = { continental: "Continental Line", militia: "State troops, volunteers or militia", navy: "Navy (officer, marine or mariner)", other: "something else" };
 function renderReport(root) {
   const d = store.get("widow", null);
   // Results are worked out again from what was typed, so a check saved by an older version shows today's labels.
@@ -113,10 +117,10 @@ function renderReport(root) {
   if (!d) { body.replaceChildren(el("p", { text: "Nothing saved in this browser yet. Open the checker, type the dates (or press \"Load an example\"), then come back." }),
     el("p", {}, el("a", { class: "button-link", href: "/tools/widow-pension-checker/", text: "Go to the Widow Pension Law Checker" }))); return; }
   body.replaceChildren(el("p", { class: "small", text: "These results compare your dates with the published pension laws. They are not a ruling: only your lineage society decides." }),
-    el("h2", { text: "Widow pension and bounty-land laws" }), el("p", { class: "small", text: `Saved ${new Date(d.at).toLocaleString()}. Marriage: ${d.input.marriage || "—"}. His last service ended: ${d.input.serviceEnd || "—"}. Months of service: ${d.input.serviceMonths || "—"}. Days of service: ${d.input.serviceDays || "—"}. In a battle: ${d.input.engagement === "yes" || d.input.engagement === true ? "yes" : d.input.engagement === "no" ? "no" : "don't know"}. Kind of service: ${KIND_TEXT[d.input.kind] || "don't know"}.` }),
+    el("h2", { text: "Widow pension and bounty-land laws" }), el("p", { class: "small", text: `Saved ${new Date(d.at).toLocaleString()}. Marriage: ${dateLabel(d.input.marriage) || "—"}. His last service ended: ${dateLabel(d.input.serviceEnd) || "—"}. Months of service: ${d.input.serviceMonths || "—"}. Days of service: ${d.input.serviceDays || "—"}. In a battle: ${d.input.engagement === "yes" || d.input.engagement === true ? "yes" : d.input.engagement === "no" ? "no" : "don't know"}. Kind of service: ${KIND_TEXT[d.input.kind] || "don't know"}.` }),
     renderWidow(rows), renderPlan(nextSteps(null, rows)));
 }
-document.querySelectorAll('[data-tool="widow"]').forEach((root) => { bindWidow(root); bindExample(root); bindClear(root); updatePlan(root);
+document.querySelectorAll('[data-tool="widow"]').forEach((root) => { mountDates(root); bindWidow(root); bindExample(root); bindClear(root); updatePlan(root);
   root.querySelector("[data-from-worksheet]")?.addEventListener("click", () => fromWorksheet(root));
   if (new URLSearchParams(location.search).get("from") === "worksheet") fromWorksheet(root, true); });
 document.querySelectorAll('[data-tool-report="widow"]').forEach((root) => { renderReport(root); bindClear(root);

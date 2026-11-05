@@ -1,21 +1,21 @@
 {
-  "checkedAt": "Sat Oct 31 2026 21:49:11 GMT-0500 (Central Daylight Time)",
+  "checkedAt": "Thu Nov 05 2026 08:57:20 GMT-0600 (Central Standard Time)",
   "htmlFiles": 20,
-  "internalLinks": 1073,
-  "externalUnique": 51,
+  "internalLinks": 1084,
+  "externalUnique": 53,
   "external": [
     {
       "url": "https://www.dar.org/discover/become-member/chapter-locator",
       "status": 200,
       "err": null,
-      "pages": 12,
+      "pages": 11,
       "via": "curl"
     },
     {
       "url": "https://www.sar.org/find-your-contact/",
       "status": 200,
       "err": null,
-      "pages": 12,
+      "pages": 11,
       "via": "fetch"
     },
     {
@@ -92,7 +92,7 @@
       "url": "https://membership.dar.org/NSDAR/AppFormz/App_Help_Step_By_Step_1.aspx",
       "status": 200,
       "err": null,
-      "pages": 8,
+      "pages": 9,
       "via": "curl"
     },
     {
@@ -120,7 +120,7 @@
       "url": "https://www.archives.gov/files/research/military/american-revolution/service-records.pdf",
       "status": 200,
       "err": null,
-      "pages": 4,
+      "pages": 5,
       "via": "fetch"
     },
     {
@@ -155,7 +155,7 @@
       "url": "https://www.archives.gov/research/military/american-revolution",
       "status": 200,
       "err": null,
-      "pages": 7,
+      "pages": 6,
       "via": "fetch"
     },
     {
@@ -169,14 +169,14 @@
       "url": "https://www.dar.org/national-society/accepted-revolutionary-war-service",
       "status": 200,
       "err": null,
-      "pages": 5,
+      "pages": 6,
       "via": "curl"
     },
     {
       "url": "https://www.nps.gov/articles/000/what-might-you-find-in-the-revolutionary-war-pension-files.htm",
       "status": 200,
       "err": null,
-      "pages": 5,
+      "pages": 6,
       "via": "fetch"
     },
     {
@@ -194,6 +194,13 @@
       "via": "fetch"
     },
     {
+      "url": "https://www.archives.gov/veterans/military-service-records/pre-ww-1-records",
+      "status": 200,
+      "err": null,
+      "pages": 2,
+      "via": "fetch"
+    },
+    {
       "url": "https://www.archives.gov/research/catalog/catalog-bulk-downloads/revwarpensionfiles",
       "status": 200,
       "err": null,
@@ -202,6 +209,20 @@
     },
     {
       "url": "https://tile.loc.gov/storage-services/service/ll/llsl/llsl-c25/llsl-c25.pdf",
+      "status": 200,
+      "err": null,
+      "pages": 3,
+      "via": "fetch"
+    },
+    {
+      "url": "https://tile.loc.gov/storage-services/service/ll/llsl/llsl-c32/llsl-c32.pdf",
+      "status": 200,
+      "err": null,
+      "pages": 3,
+      "via": "fetch"
+    },
+    {
+      "url": "https://tile.loc.gov/storage-services/service/ll/llsl/llsl-c33/llsl-c33.pdf",
       "status": 200,
       "err": null,
       "pages": 3,
@@ -344,14 +365,7 @@
       "url": "https://tile.loc.gov/storage-services/service/ll/llsl/llsl-c30/llsl-c30.pdf",
       "status": 200,
       "err": null,
-      "pages": 2,
-      "via": "fetch"
-    },
-    {
-      "url": "https://tile.loc.gov/storage-services/service/ll/llsl/llsl-c33/llsl-c33.pdf",
-      "status": 200,
-      "err": null,
-      "pages": 2,
+      "pages": 3,
       "via": "fetch"
     },
     {

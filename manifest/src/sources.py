@@ -50,6 +50,8 @@ SOURCES = {
  "LOC_C24": ("https://tile.loc.gov/storage-services/service/ll/llsl/llsl-c24/llsl-c24.pdf", "Library of Congress — U.S. Statutes at Large, 24th Congress (scanned; Act of July 4, 1836 at 5 Stat. 128)", "llsl-c24.pdf"),
  "LOC_C25": ("https://tile.loc.gov/storage-services/service/ll/llsl/llsl-c25/llsl-c25.pdf", "Library of Congress — U.S. Statutes at Large, 25th Congress (scanned; Act of July 7, 1838 at 5 Stat. 303)", "llsl-c25.pdf"),
  "LOC_C30": ("https://tile.loc.gov/storage-services/service/ll/llsl/llsl-c30/llsl-c30.pdf", "Library of Congress — U.S. Statutes at Large, 30th Congress (scanned; Act of July 29, 1848 at 9 Stat. 265)", "llsl-c30.pdf"),
+ "LOC_C32": ("https://tile.loc.gov/storage-services/service/ll/llsl/llsl-c32/llsl-c32.pdf", "Library of Congress — U.S. Statutes at Large, 32nd Congress (scanned; Act of February 3, 1853 at 10 Stat. 154)", "llsl-c32.pdf"),
+ "NARA_ORDER": ("https://www.archives.gov/veterans/military-service-records/pre-ww-1-records", "National Archives — Requesting Copies of Older Military Service Records", "nara_order.html"),
  "LOC_C33": ("https://tile.loc.gov/storage-services/service/ll/llsl/llsl-c33/llsl-c33.pdf", "Library of Congress — U.S. Statutes at Large, 33rd Congress (scanned; Act of March 3, 1855 at 10 Stat. 701)", "llsl-c33.pdf"),
  "LOC_C45": ("https://tile.loc.gov/storage-services/service/ll/llsl/llsl-c45/llsl-c45.pdf", "Library of Congress — U.S. Statutes at Large, 45th Congress (scanned; Act of March 9, 1878 at 20 Stat. 27)", "llsl-c45.pdf"),
 }

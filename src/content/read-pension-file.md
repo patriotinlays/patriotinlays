@@ -13,6 +13,8 @@ A pension file is often the single richest record for a Revolutionary War ancest
 The pension and bounty-land files are microfilm publication M804, and the National Archives Catalog holds them as NAID 300022. [[claim:nara-amrev-m804]]
 The same files are on FamilySearch, free with a login. [[claim:nara-amrev-familysearch]]
 NARA also publishes volunteer transcriptions of digitized pension pages as bulk downloads. [[claim:nara-bulk]]
+The selected records from the bigger files were also filmed as a separate, shorter publication, Selected Records From Revolutionary War Pension and Bounty-Land-Warrant Application Files. [[claim:m805-selected]] That publication is Microcopy 805 (M805 for short). [[claim:m805-number]]
+If you would rather have copies from the National Archives itself, its NATF Form 85 orders copies of federal military pension files for service from 1775. [[claim:nara-natf85-order]] An order can be for a pre-Civil War file, such as a Revolutionary War file; see [the National Archives' ordering page](https://www.archives.gov/veterans/military-service-records/pre-ww-1-records). [[claim:nara-natf85-revwar]]
 The files number around eighty thousand. [[claim:nara-amrev-80k]]
 The microfilm photographed more than 2.3 million documents in more than 83,000 files. [[claim:nps-scale]]
 
@@ -62,7 +64,7 @@ The act behind an application decides what the applicant had to say, so it tells
 | 1836 | Widows who married the veteran before his last period of service ended (NARA's wording) [[claim:nara-act-1836]] | Proof of marriage, widow's own testimony |
 | 1838 | Five-year pensions for widows married after his last service ended and before January 1, 1794, if his service met the 1832 act [[claim:nara-act-1838]] [[claim:stat-1838-after-service]] [[claim:stat-1838-1832-service]] | Marriage date and his service |
 | July 1848 | Life pensions for widows married before January 2, 1800 [[claim:nara-act-1848]] | Marriage date is central |
-| 1853 and 1855 | Marriage-date restrictions removed [[claim:nara-act-1853-1855]] | Later widows' claims |
+| 1853 and February 1855 | Marriage-date restrictions removed [[claim:nara-act-1853-1855]]: army widows (1853) and navy widows (1855) married after January 1800 [[claim:stat-1853-after-1800]] [[claim:stat-1855feb-1800]] | Later widows' claims |
 | 1878 | Widows of soldiers with as few as 14 days of service [[claim:nara-act-1878]] | Very late claims |
 
 Two summaries of the 1836 act do not match word for word. [[claim:nara-act-1836]] NARA's pamphlet says the widow married the veteran before his last period of service expired; the National Park Service summarizes it as marriage before the war ended in 1783. [[claim:nps-1836]]
