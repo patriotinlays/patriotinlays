@@ -59,8 +59,8 @@ function inline(text, ctx) {
 const WIDOW_FULL = `<section class="tool" data-tool="widow" aria-labelledby="ta-h">
 <h2 id="ta-h">Use the checker</h2>
 <div class="howto"><p><strong>How this works.</strong> This checker does not search any records or databases. You type the marriage date and what you know about his service. It tests them against the date rules in each federal widow pension and bounty-land law, as the National Archives describes them, and shows the result law by law. Nothing you type leaves your device; it is saved only in this browser.</p>
-<p class="tool-actions"><button type="button" class="secondary" data-load-example>Load an example</button> <button type="button" class="secondary" data-from-worksheet>Fill in from my worksheet's patriot</button> <button type="button" class="secondary" data-clear="toolA" data-start-over>Start over</button></p>
-<p class="small" data-example-msg aria-live="polite">"Load an example" fills in a made-up couple so you can see a result right away. "Start over" empties the form and deletes this checker's saved data.</p><p class="small" data-worksheet-msg aria-live="polite"></p><p class="small saved-msg" data-saved-msg hidden></p></div>
+<p class="tool-actions"><button type="button" class="secondary" data-load-example>Load an example</button> <button type="button" class="secondary" data-from-worksheet>Fill in from my worksheet's patriot</button> <button type="button" class="secondary" data-clear="toolA" data-start-over>Clear the form</button></p>
+<p class="small" data-example-msg aria-live="polite">"Load an example" fills in a made-up couple so you can see a result right away. "Clear the form" empties the form and deletes this checker's saved data.</p><p class="small" data-worksheet-msg aria-live="polite"></p><p class="small saved-msg" data-saved-msg hidden></p></div>
 <h3 class="step"><span class="num">1</span> Type what you know about the widow and her husband</h3>
 <p class="small">Fill in what you know and leave the rest blank. For each date, pick the month (or "Don't know"), type the day if you know it and the 4-digit year, then say how sure you are.</p>
 <form data-form="widow"><div data-date-mount="marriage" data-id="tw-m" data-legend="When did the couple marry?" data-why="marriage"></div>
@@ -95,7 +95,7 @@ const TOOL_B_FULL = `<section class="tool" data-tool="lineage-matrix" aria-label
 <p class="small">His state, type of service and rough dates shape the advice below. The worksheet checks his dates against the period DAR accepts for that type of service.</p>
 <div data-patriot></div>
 <h3 class="step"><span class="num">2</span> Start with yourself, then go back one generation at a time</h3>
-<p class="small">Generation 1 is you. Generation 2 is your parent, 3 your grandparent, and so on back to the patriot. For each person, add a rough birth year and the state, then press "Add a record" and answer A to D.</p>
+<p class="small">Generation 1 is you. Generation 2 is your parent, 3 your grandparent, and so on back to the patriot. For each person, add a rough birth year and the state, then press "Add a record" and answer A to D: A. What does this record show? B. What kind of record is it? C. Does the record say it in words, or only hint at it? D. Where did you find it?</p>
 <div data-matrix></div>
 <h3 class="step"><span class="num">3</span> Add or remove generations</h3>
 <button type="button" class="secondary" data-add-gen>+ Add an older generation</button><button type="button" class="secondary" data-remove-gen>Remove the oldest generation</button>
@@ -106,6 +106,7 @@ const TOOL_B_FULL = `<section class="tool" data-tool="lineage-matrix" aria-label
 <h3 class="step"><span class="num">6</span> Print or save</h3>
 <p><a class="button-link" href="/tools/lineage-matrix/report/">Open my printable report</a></p>
 <button type="button" class="secondary" data-clear="toolB">Delete all my worksheet data</button>
+<p class="small" data-privacy-note>Saved only in this browser. Nothing is sent anywhere. Clearing your browser data or switching browsers deletes your work. Print or save your report as a backup.</p>
 </div>
 <noscript><p>The worksheet needs JavaScript. The rules it applies are listed below.</p></noscript>
 </section><script type="module" src="/assets/js/tool-b-ui.js"></script>`;
@@ -163,7 +164,7 @@ function page({ title, description, path, body, noindex = false }) {
 function write(path, html) { const f = join(OUT, path, "index.html"); mkdirSync(dirname(f), { recursive: true }); writeFileSync(f, versionUrls(html)); }
 const sitemap = []; const built = [];
 const GUIDE_ORDER = readdirSync(join(ROOT, "src/content")).filter((x) => x.endsWith(".md")).map((f) => parseFront(readFileSync(join(ROOT, "src/content", f), "utf8")).fm).filter((fm) => fm.cornerstone);
-const START_HERE = `<aside class="card start-here"><strong>Ready to start?</strong><p><a href="/tools/widow-pension-checker/">Widow Pension Law Checker</a>: see which widow pension laws a marriage fits, and where to find her file. · <a href="/tools/lineage-matrix/">Lineage Evidence Matrix</a>: record the patriot and your records, and get a to-do list fitted to each person's era and state. · <a href="/guides/lineage-proof-roadmap/">The Roadmap guide</a>: the whole process, step by step.</p></aside>`;
+const START_HERE = `<aside class="card start-here"><strong>Ready to start?</strong><p><a href="/tools/widow-pension-checker/">Widow Pension Law Checker</a>: see which widow pension laws a marriage fits, and where her pension file would be kept, so you can request it. · <a href="/tools/lineage-matrix/">Lineage Evidence Matrix</a>: record the patriot and your records, and get a to-do list fitted to each person's era and state. · <a href="/guides/lineage-proof-roadmap/">The Roadmap guide</a>: the whole process, step by step.</p></aside>`;
 // Every guide and tool page opens with a short, sourced definitions box (the home page's glossary, reused).
 const DEFS_MD = readFileSync(join(ROOT, "src/partials/glossary.md"), "utf8").replace(/^## .*\n/, "");
 const DEFS_SUMMARY = 'New here? What DAR, SAR, NSCDA, "lineage society", "patriot", "bounty land" and "Stat." mean';
@@ -171,7 +172,10 @@ function renderFile(dir, f) {
   const raw = readFileSync(join(ROOT, dir, f), "utf8"); const { fm, body } = parseFront(raw);
   const ctx = { sources: [], tools: new Set(), claimCount: 0 };
   const defs = dir === "src/content" ? `<details class="defs" data-defs><summary>${esc(DEFS_SUMMARY)}</summary>${md(DEFS_MD, ctx)}<p class="small"><a href="/#glossary">The same definitions on the home page</a></p></details>` : "";
-  let html = md(body, ctx).replace("</h1>", `</h1>${defs}`);
+  let html = md(body, ctx);
+  // Tool pages: title, purpose, limits box, tool first; glossary and long copy sit below the tool.
+  if (fm.tool && defs) html = html.replace(/(<\/section><script type="module" src="\/assets\/js\/tool-[ab]-ui\.js"><\/script>)/, `$1${defs}`);
+  else if (defs) html = html.replace("</h1>", `</h1>${defs}`);
   // Guides end with a "What to do next" block (its own tool first) and a link to the next guide, so no guide is a dead end.
   if (fm.cornerstone) {
     const own = [...ctx.tools][0] === "widow" ? "widow" : "lineage";

@@ -45,6 +45,7 @@ function select(name, options, value, label, id) {
 // Blank records get a plain prompt instead of a label; they are never labelled or counted.
 const statusFor = (c) => isEmptyCell(c) ? [el("div", { class: "small hint", "data-blank": "", text: "Empty record: answer A to D, or remove it." })] : statusKids(evaluateCell(c));
 const statusKids = (ev) => [el("span", { class: `badge ${labelClass(ev.label)}`, text: ev.label }),
+  ev.label === LABELS.entered ? el("div", { class: "small", "data-entered-note": "", text: "You've entered evidence; a society registrar decides whether it's enough." }) : null,
   ...ev.issues.map((i) => el("div", { class: "small issue", text: i })), ...ev.cautions.map((k) => el("div", { class: "small caution", text: k.text }))];
 
 // "Where to look" block shared by the editor and the report. Notes carry the era- and state-specific facts.
@@ -264,7 +265,7 @@ function mountEditor(root) {
     if (msg) msg.textContent = "Example loaded: a made-up Virginia militiaman and four generations after him. Scroll down to see what's missing and where to look.";
   });
   root.querySelector("[data-clear=toolB]").addEventListener("click", () => {
-    if (!confirm("Delete all Lineage Evidence Matrix data saved in this browser?")) return;
+    if (!confirm("Delete your saved entries? This can't be undone.")) return;
     store.clear(); const fresh = blank(); state.generations = fresh.generations; state.patriot = fresh.patriot; rerender();
     msg.textContent = "All matrix data was deleted from this browser.";
   });
@@ -365,4 +366,4 @@ document.querySelectorAll('[data-tool-report="lineage-matrix"]').forEach((root) 
   root.querySelector("[data-save-pdf]")?.addEventListener("click", () => {
     document.body.classList.add("print-summary"); const done = () => { document.body.classList.remove("print-summary"); window.removeEventListener("afterprint", done); };
     window.addEventListener("afterprint", done); window.print(); setTimeout(done, 1000); });
-  root.querySelector("[data-clear=toolB]")?.addEventListener("click", () => { if (!confirm("Delete all Lineage Evidence Matrix data saved in this browser?")) return; store.clear(); mountReport(root); }); });
+  root.querySelector("[data-clear=toolB]")?.addEventListener("click", () => { if (!confirm("Delete your saved entries? This can't be undone.")) return; store.clear(); mountReport(root); }); });

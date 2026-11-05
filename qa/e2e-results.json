@@ -1,5 +1,5 @@
 {
-  "ranAt": "Thu Nov 05 2026 16:20:14 GMT-0600 (Central Standard Time)",
+  "ranAt": "Thu Nov 05 2026 17:06:09 GMT-0600 (Central Standard Time)",
   "browser": "/usr/bin/google-chrome (headless) via playwright-core 1.64.1",
   "passed": 144,
   "total": 144,
@@ -27,12 +27,12 @@
       "detail": "{\"vals\":[\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\"],\"rows\":0,\"ls\":[],\"named\":{\"marriage\":\"\",\"serviceEnd\":\"\",\"serviceMonths\":\"\",\"serviceDays\":\"\",\"engagement\":\"\",\"kind\":\"\"},\"plan\":\"Your next steps appear here after you press \\\"Check the widow pension laws\\\". They follow from your results.\",\"saved\":false}"
     },
     {
-      "name": "Widow checker: a visible 'Start over' button",
+      "name": "Widow checker: a visible 'Clear the form' button",
       "ok": true,
       "detail": ""
     },
     {
-      "name": "Returning visit: the form starts empty and unticked with no old results; a note points to the saved check and 'Start over'",
+      "name": "Returning visit: the form starts empty and unticked with no old results; a note points to the saved check and 'Clear the form'",
       "ok": true,
       "detail": "{\"vals\":[\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\"],\"rows\":0,\"ls\":[\"pi.toolA.widow\"],\"named\":{\"marriage\":\"\",\"serviceEnd\":\"\",\"serviceMonths\":\"\",\"serviceDays\":\"\",\"engagement\":\"\",\"kind\":\"\"},\"plan\":\"Your next steps appear here after you press \\\"Check the widow pension laws\\\". They follow from your results.\",\"saved\":true}"
     },
@@ -42,7 +42,7 @@
       "detail": "{\"vals\":[\"\",\"\",\"\",\"\",\"10\",\"\",\"1779\",\"1779-10\",\"\",\"\",\"\",\"militia\"],\"rows\":0,\"ls\":[\"pi.toolB.v1\",\"pi.toolA.widow\"],\"named\":{\"marriage\":\"\",\"serviceEnd\":\"1779-10\",\"serviceMonths\":\"\",\"serviceDays\":\"\",\"engagement\":\"\",\"kind\":\"militia\"},\"plan\":\"Your next steps appear here after you press \\\"Check the widow pension laws\\\". They follow from your results.\",\"saved\":true}"
     },
     {
-      "name": "Start over: empties the form, deletes this checker's saved data only, and says so",
+      "name": "Clear the form: empties the form, deletes this checker's saved data only, and says so",
       "ok": true,
       "detail": "{\"vals\":[\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\"],\"rows\":0,\"ls\":[\"pi.toolB.v1\"],\"named\":{\"marriage\":\"\",\"serviceEnd\":\"\",\"serviceMonths\":\"\",\"serviceDays\":\"\",\"engagement\":\"\",\"kind\":\"\"},\"plan\":\"Your next steps appear here after you press \\\"Check the widow pension laws\\\". They follow from your results.\",\"saved\":false}"
     },
@@ -79,7 +79,7 @@
     {
       "name": "Widow checker (Nov 5, statute text): a 1780 marriage rules out the 1853 and Feb-1855 acts by the dates (they covered marriages after January 1800)",
       "ok": true,
-      "detail": "Ruled out by the datesRuled ou | Ruled out by the datesRuled ou"
+      "detail": "Ruled out by the datesYour dat | Ruled out by the datesYour dat"
     },
     {
       "name": "Widow checker: the ruled-out 1853 row gives the rule from the law's text and says no action is needed",
@@ -89,12 +89,12 @@
     {
       "name": "Widow checker (audit 2): 1836 'Ruled out by the dates' says why: married 1790, service ended 1779-10, and the rule",
       "ok": true,
-      "detail": "Ruled out by the datesRuled out as you typed it. You typed a marriage date of 1790 and the end of his last service as 1779-10, so the marriage came after his se"
+      "detail": "Ruled out by the datesYour dates fall outside this law's rules. Check your entries if this surprises you.Ruled out as you typed it. You typed a marriage date of"
     },
     {
       "name": "Widow checker (audit 3 #1): married 1790, service ended 1779, no months typed -> 1836 'Ruled out by the dates' with the plain reason",
       "ok": true,
-      "detail": "Ruled out by the datesRuled out as you typed it. You typed a marriage date of 1790 and the end of his last service as 17"
+      "detail": "Ruled out by the datesYour dates fall outside this law's rules. Check your entries if this surprises you.Ruled out as yo"
     },
     {
       "name": "Widow checker, dates only (audit 4): 'Ruled out by the dates' (1836); 1838 and 1848 'Still possible' because their own text also needs his service; 1855 bounty-land and 1878 'Still possible: need …'; 1853 and Feb 1855 ruled out by a 1790 marriage; nothing 'Fits'",
@@ -309,7 +309,7 @@
     {
       "name": "Tool B: complete direct entry shows 'Evidence Entered — Review Required'",
       "ok": true,
-      "detail": "Evidence Entered — Review Required"
+      "detail": "Evidence Entered — Review RequiredYou've entered evidence; a"
     },
     {
       "name": "Tool B: 1850-70 census for parentage marked direct gets NSCDA caution, not an upgrade",
@@ -597,7 +597,7 @@
       "detail": ""
     },
     {
-      "name": "Definitions box (DAR, SAR, NSCDA, lineage society, patriot, bounty land, Stat.) right under the title on all 10 guides and both tools, sourced",
+      "name": "Definitions box (DAR, SAR, NSCDA, lineage society, patriot, bounty land, Stat.) on all 10 guides (under title) and both tools (below the tool), sourced",
       "ok": true,
       "detail": ""
     },
@@ -607,7 +607,7 @@
       "detail": "that connect you to a Revolutionary War patriot, see where your documented family line still has gaps, and find where to look for the missing proof. (A patriot here means someone who supported the cause of American independence, for example"
     },
     {
-      "name": "Audit 3 #7: both tools explain 'society' and 'registrar' in plain, sourced words just above the tool",
+      "name": "Audit 3 #7: both tools explain 'society' and 'registrar' in plain, sourced words just below the tool",
       "ok": true,
       "detail": "[true,true]"
     },

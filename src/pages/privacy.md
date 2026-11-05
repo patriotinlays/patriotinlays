@@ -15,7 +15,7 @@ Because the tools save your work in the browser, anyone who uses the same device
 
 ## How to delete it
 
-Each tool has its own button for this. On the Widow Pension Law Checker, press "Start over" or "Delete my saved checker data". On the Lineage Evidence Matrix, press "Delete all my worksheet data". Each button removes only its own tool's saved work. You can also delete this site's data in your browser's settings: look for "site data" or "website data" and remove patriotinlays.com. Clearing your browser's history and site data for all sites removes it too.
+Each tool has its own button for this. On the Widow Pension Law Checker, press "Clear the form" or "Delete my saved checker data". On the Lineage Evidence Matrix, press "Delete all my worksheet data". Each button removes only its own tool's saved work. You can also delete this site's data in your browser's settings: look for "site data" or "website data" and remove patriotinlays.com. Clearing your browser's history and site data for all sites removes it too.
 
 ## What the site itself collects
 

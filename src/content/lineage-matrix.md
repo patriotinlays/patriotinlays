@@ -6,7 +6,13 @@ tool: lineage-matrix
 ---
 # Lineage Evidence Matrix
 
-[Skip to the tool](#tb-h)
+A free worksheet for proving your line back to a Revolutionary War patriot, one generation at a time. It does not search any records; it organizes the ones you have and tells you what's still missing.
+
+::partial limits-matrix
+
+::tool lineage-matrix-full
+
+::partial tool-terms
 
 **What it is.** A free worksheet for proving your line back to a Revolutionary War patriot, one generation at a time. It does not search any records; it organizes the ones you have and tells you what's still missing.
 
@@ -23,13 +29,9 @@ For each person, tick the records you have or add them one at a time. "Load an e
 **What you'll get.** A list of what is still missing for each person and where to look for it, fitted to that person's era and state; a check of the patriot's dates against the period DAR accepts for his type of service; a gentle warning when years don't add up; and a "What to do next" plan and report you can print or save as a PDF. [[claim:dar-window-core]]
 
 **Its limits.** The worksheet never grades a line. The best label any entry can earn is "Evidence Entered — Review Required", because only a society's genealogists decide what is proven. [[claim:dar-review-staff]]
-For states without a verified source yet, "Where to look" gives general advice and says so. Everything you enter is saved only in this browser, and nothing is sent anywhere. Use "Delete all my worksheet data" to remove it.
+For states without a verified source yet, "Where to look" gives general advice and says so. Everything you enter is saved only in this browser, and nothing is sent anywhere. Clearing your browser data or switching browsers deletes your work. Print or save your report as a backup. Use "Delete all my worksheet data" to remove it.
 
 **What to do next.** Work through the plan, starting with the records it marks as missing. If a widow's pension might help, try the [Widow Pension Law Checker](/tools/widow-pension-checker/). When you're ready, contact a local chapter's registrar; the plan links to both societies' chapter finders.
-
-::partial tool-terms
-
-::tool lineage-matrix-full
 
 **Do you keep a family tree on Ancestry, FamilySearch or a similar site?** [Tell us](mailto:contact@patriotinlays.com?subject=Family%20tree%20import) if importing it here would help.
 

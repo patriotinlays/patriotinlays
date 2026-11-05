@@ -13,13 +13,23 @@ const worksheet = ns("pi.toolB.");
 // Labels: "Fits the rules checked here; other terms not checked" only when every rule the tool has is settled;
 // "Ruled out by the dates"; "Still possible: need …"; "Can't check here".
 const badge = (s, text) => el("span", { class: `badge b-${s}`, text: text || (s === "invalid" ? "Couldn't read the dates" : verdictFor({ status: s })) });
+// Plain line beside each result label (wording/layout batch). Law-specific explanations stay in r.message.
+const RESULT_PLAIN = {
+  consistent: "Your dates meet the rules this tool checks. The pension office's other requirements aren't checked here.",
+  possible: "Nothing rules this law out yet; the missing detail is listed.",
+  partial: "Nothing rules this law out yet; the missing detail is listed.",
+  not_evaluated: "This tool doesn't cover this law's rules; ask a registrar.",
+};
+const resultPlain = (r) => r.status === "inconsistent" && r.ruledBy === "dates"
+  ? "Your dates fall outside this law's rules. Check your entries if this surprises you."
+  : RESULT_PLAIN[r.status] || null;
 
 function renderWidow(rows) {
   if (rows.length === 1 && rows[0].act === "input") return el("div", { class: "result r-invalid" }, badge("invalid"), el("p", { text: rows[0].message }));
   const t = el("table", { class: "widow" }, el("thead", {}, el("tr", {}, el("th", { text: "Pension law" }), el("th", { text: "Result" }), el("th", { text: "The rule, and what to do next" }))));
   const tb = el("tbody");
   // data-label lets narrow screens show each row as a stacked card (see site.css).
-  for (const r of rows) tb.append(el("tr", {}, el("td", { "data-label": "Pension law", text: r.label || r.act }), el("td", { "data-label": "Result" }, badge(r.status, r.verdict), el("div", { class: "small", text: r.message })),
+  for (const r of rows) tb.append(el("tr", {}, el("td", { "data-label": "Pension law", text: r.label || r.act }), el("td", { "data-label": "Result" }, badge(r.status, r.verdict), resultPlain(r) ? el("div", { class: "small", "data-result-plain": "", text: resultPlain(r) }) : null, el("div", { class: "small", text: r.message })),
     el("td", { "data-label": "The rule, and what to do next" }, el("div", { class: "small", text: `Rule: ${r.ruleText || ""}` }),
       r.why ? el("div", { class: "small", text: r.why }) : null,
       r.next ? el("div", { class: "small next", text: r.next }) : null,
@@ -53,7 +63,7 @@ function savedNotice(root) {
   if (!d || ranThisVisit) { n.replaceChildren(); n.hidden = true; return; }
   n.hidden = false;
   n.replaceChildren(`A check you ran earlier (${new Date(d.at).toLocaleDateString()}) is saved in this browser. The form starts empty; `,
-    el("a", { href: "/tools/widow-pension-checker/report/", text: "see the saved check in your report" }), ", or press \"Start over\" to delete it.");
+    el("a", { href: "/tools/widow-pension-checker/report/", text: "see the saved check in your report" }), ", or press \"Clear the form\" to delete it.");
 }
 function runWidow(form, out) {
   const f = Object.fromEntries(new FormData(form));
@@ -100,9 +110,10 @@ function bindExample(root) {
 }
 function bindClear(root) {
   root.querySelectorAll("[data-clear=toolA]").forEach((b) => b.addEventListener("click", () => {
+    if (!confirm("Delete your saved entries? This can't be undone.")) return;
     const n = store.clear(); ranThisVisit = null; root.querySelectorAll("form").forEach((f) => { f.reset(); f.querySelectorAll("[data-date-field]").forEach((fs) => fs.setValue("")); });
     root.querySelectorAll("[data-example-msg], [data-worksheet-msg]").forEach((m) => { m.textContent = ""; });
-    const msg = n ? `Started over: deleted ${plural(n, "saved item")} from this browser.` : "Started over. Nothing was saved in this browser.";
+    const msg = n ? `Cleared the form: deleted ${plural(n, "saved item")} from this browser.` : "Cleared the form. Nothing was saved in this browser.";
     if (root.matches("[data-tool-report]")) { renderReport(root); root.querySelector("[data-report]").prepend(el("p", { class: "small", role: "status", text: msg })); }
     else root.querySelectorAll("[data-out]").forEach((o) => o.replaceChildren(el("p", { class: "small", role: "status", text: msg })));
     updatePlan(root); savedNotice(root);

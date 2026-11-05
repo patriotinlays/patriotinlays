@@ -1,11 +1,11 @@
 {
-  "checkedAt": "Thu Nov 05 2026 16:19:34 GMT-0600 (Central Standard Time)",
+  "checkedAt": "Thu Nov 05 2026 17:05:24 GMT-0600 (Central Standard Time)",
   "dirs": [
     "src/content",
     "src/pages",
     "src/partials"
   ],
-  "files": 23,
+  "files": 25,
   "perFile": {
     "src/content/application-problems.md": {
       "units": 39,
@@ -23,13 +23,13 @@
       "unmarked": 0
     },
     "src/content/lineage-matrix.md": {
-      "units": 63,
+      "units": 67,
       "marked": 27,
       "unmarked": 0
     },
     "src/content/lineage-proof-roadmap.md": {
-      "units": 75,
-      "marked": 44,
+      "units": 70,
+      "marked": 39,
       "unmarked": 0
     },
     "src/content/patriot-or-loyalist.md": {
@@ -63,8 +63,8 @@
       "unmarked": 0
     },
     "src/content/widow-pension-checker.md": {
-      "units": 85,
-      "marked": 49,
+      "units": 90,
+      "marked": 51,
       "unmarked": 0
     },
     "src/pages/about.md": {
@@ -79,7 +79,7 @@
     },
     "src/pages/faq.md": {
       "units": 47,
-      "marked": 18,
+      "marked": 16,
       "unmarked": 0
     },
     "src/pages/privacy.md": {
@@ -107,6 +107,16 @@
       "marked": 10,
       "unmarked": 0
     },
+    "src/partials/limits-matrix.md": {
+      "units": 7,
+      "marked": 1,
+      "unmarked": 0
+    },
+    "src/partials/limits-widow.md": {
+      "units": 6,
+      "marked": 0,
+      "unmarked": 0
+    },
     "src/partials/next-steps-lineage.md": {
       "units": 8,
       "marked": 4,
@@ -123,10 +133,10 @@
       "unmarked": 0
     }
   },
-  "sentences": 883,
-  "markedSentences": 473,
-  "manifestClaims": 392,
-  "referencedClaims": 392,
+  "sentences": 900,
+  "markedSentences": 469,
+  "manifestClaims": 387,
+  "referencedClaims": 387,
   "links": "not run (use --links)",
   "errors": [],
   "warnings": []

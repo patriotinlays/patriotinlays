@@ -1,22 +1,28 @@
 ---
 title: "Widow Pension Law Checker"
 slug: tools/widow-pension-checker
-description: "See which federal Revolutionary War widow pension and bounty-land laws (1836 to 1878) a widow's marriage date and her husband's service fit, and where to find her pension file."
+description: "See which federal Revolutionary War widow pension and bounty-land laws (1836 to 1878) a widow's marriage date and her husband's service fit, and where her pension file would be kept, so you can request it."
 tool: widow
 ---
 # Widow Pension Law Checker
 
-[Skip to the tool](#ta-h)
+A free checker that compares a widow's marriage date, and what you know about her husband's Revolutionary War service, with the rules of each federal widow pension and bounty-land law from 1836 to 1878, one law at a time. [[claim:nara-act-1836]] [[claim:nara-act-1878]]
+
+::partial limits-widow
+
+::tool widow-full
+
+::partial tool-terms
 
 **What it is.** A free checker that compares a widow's marriage date, and what you know about her husband's Revolutionary War service, with the rules of each federal widow pension and bounty-land law from 1836 to 1878, one law at a time. [[claim:nara-act-1836]] [[claim:nara-act-1878]]
 
-**Who it helps.** Anyone whose line runs through a patriot and his wife, and anyone wondering whether a widow's pension file might exist for their family. You don't need to know the laws; the checker does that part.
+**Who it helps.** Anyone whose line runs through a patriot and his wife, and anyone wondering whether a widow's pension file might exist for their family. You don't need to know the laws first; the checker shows which ones your dates fit.
 
 **The problem it solves.** Widows could apply for pensions beginning in 1836. [[claim:nara-amrev-1836]]
 A widow's application may give her age, residence, maiden name, the date and place of the marriage, and the date and place of her husband's death. [[claim:m804-widow-info]]
 So her file can prove a marriage in your line. Widows' files are marked "W" followed by a file number. [[claim:m804-w]]
 Her papers can sit in the same file as her husband's: in Zebulon Applegate's file, his widow Rebecca's 1853 pension begins on page 14. [[claim:nps-applegate-widow]]
-Each law had its own rules, though, and it's hard to tell from the law books which ones her dates fit. The checker sorts that out for you.
+Each law had its own rules, though, and it's hard to tell from the law books which ones her dates fit. The checker compares your dates to each law's rules.
 
 **How to use it.** Enter the marriage date and the date his last service ended. For each date, pick the month (or "Don't know"), type the day if you have it and the 4-digit year, then say whether the date is exact or only about, before or after. Add his months or days of service, whether he was in a battle and his kind of service if you know them, and press "Check the widow pension laws". Want to see it work first? "Load an example" fills in a made-up couple, and the [walkthrough](/walkthroughs/) shows exactly what it produces. If you've started the worksheet, "Fill in from my worksheet's patriot" copies his service end date for you.
 
@@ -25,10 +31,6 @@ Each law had its own rules, though, and it's hard to tell from the law books whi
 **Its limits.** It does not look anything up, and it never makes a decision about membership or a pension; your society does that. It never says a law simply fits, because every law has terms it can't test from dates, and it lists them. A rough date can leave a law "Still possible", and "About" is this site's rule of thumb, not part of the law. Everything you type stays in this browser.
 
 **What to do next.** When a law fits or is still possible, look for the widow's pension file. The files are online free on FamilySearch, with a login. [[claim:nara-amrev-familysearch]] Then record what the file says in the [Lineage Evidence Matrix](/tools/lineage-matrix/), and read [How to Read a Pension File](/guides/read-pension-file/) for help with the papers themselves.
-
-::partial tool-terms
-
-::tool widow-full
 
 ## The laws the checker uses
 
@@ -63,12 +65,12 @@ Terms about her later life (remarriage, other pensions) or about his muster roll
 
 ## What a result means
 
-The checker draws every conclusion your answers support and labels what stays open. It never says a law simply "fits": even when every rule it can test is settled, the law's own text has terms it can't test.
+The checker shows what your answers allow it to check and labels what stays open. It never says a law simply "fits": even when every rule it can test is settled, the law's own text has terms it can't test.
 
-- "Fits the rules checked here; other terms not checked": every rule the checker can test for that law is settled by what you typed, and it lines up. The row lists the terms it couldn't check. Look for her pension file.
-- "Ruled out by the dates" or "Ruled out by the service you typed": something you typed already breaks one of the law's rules, so the other boxes can't change it. No action is needed for that law unless you typed something wrong.
-- "Still possible: need …": nothing you typed rules it out, but at least one rule is still open. The result names what would settle it, and the answer line names the one question that settles the most laws, with a link to each box that answers it.
-- "Can't check here": the official sources this site uses do not give that law's terms. The result says what to do next, such as reading the widow's own pension papers or asking your society's registrar.
+- "Fits the rules checked here; other terms not checked": Your dates meet the rules this tool checks. The pension office's other requirements aren't checked here. The row lists the terms it couldn't check. Look for her pension file.
+- "Ruled out by the dates" or "Ruled out by the service you typed": Your dates fall outside this law's rules. Check your entries if this surprises you. Something you typed already breaks one of the law's rules, so the other boxes can't change it. No action is needed for that law unless you typed something wrong.
+- "Still possible: need …": Nothing rules this law out yet; the missing detail is listed. The result names what would settle it, and the answer line names the one question that settles the most laws, with a link to each box that answers it.
+- "Can't check here": This tool doesn't cover this law's rules; ask a registrar. The result says what to do next, such as reading the widow's own pension papers or asking your society's registrar.
 
 ## Where did the service-date check go?
 

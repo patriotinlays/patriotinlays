@@ -40,25 +40,26 @@ const fillDate = async (pg, id, v) => { const m = /^([~<>])?(\d{4})?(?:-(\d{2}))
   await pg.selectOption(`#${id}-month`, m[3] ? String(+m[3]) : ""); await pg.fill(`#${id}-day`, m[4] ? String(+m[4]) : ""); await pg.fill(`#${id}-year`, m[2] || "");
   await pg.selectOption(`#${id}-cert`, { "~": "about", "<": "before", ">": "after" }[m[1]] || "exact"); };
 
-// ---- Audit 2 #1: a fresh first visit starts empty; results only after the button; prefill never auto-runs; Start over ----
+// ---- Audit 2 #1: a fresh first visit starts empty; results only after the button; prefill never auto-runs; Clear the form ----
 { const fresh = await browser.newContext({ viewport: { width: 1280, height: 900 } }); const fp = await fresh.newPage();
   fp.on("pageerror", (e) => consoleErrors.push(`fresh: ${e.message}`));
+  fp.on("dialog", (d) => d.accept());
   const formState = () => fp.evaluate(() => ({ vals: [...document.querySelectorAll("form[data-form=widow] input, form[data-form=widow] select:not([data-part=cert])")].map((i) => i.type === "checkbox" ? i.checked : i.value),
     rows: document.querySelectorAll("[data-out=widow] tbody tr").length, ls: Object.keys(localStorage), named: Object.fromEntries(new FormData(document.querySelector("form[data-form=widow]"))), plan: (document.querySelector('[data-tool="widow"] [data-plan] [data-plan-wait]')?.textContent || "") + (document.querySelector('[data-tool="widow"] [data-plan] .plan-title') ? " PLAN-SHOWN" : ""),
     saved: !document.querySelector("[data-saved-msg]").hidden }));
   await fp.goto(`${BASE}/tools/widow-pension-checker/`);
   let f = await formState();
   check("Fresh profile: widow checker starts empty and unticked, with no results and nothing saved", f.vals.every((v) => v === "" || v === false) && f.rows === 0 && (await fp.$$("[data-answer]")).length === 0 && f.ls.length === 0 && /appear here after you press/.test(f.plan) && !/PLAN-SHOWN/.test(f.plan) && !f.saved, JSON.stringify(f));
-  check("Widow checker: a visible 'Start over' button", await fp.isVisible('[data-tool="widow"] [data-start-over]') && (await fp.textContent("[data-start-over]")).trim() === "Start over");
+  check("Widow checker: a visible 'Clear the form' button", await fp.isVisible('[data-tool="widow"] [data-start-over]') && (await fp.textContent("[data-start-over]")).trim() === "Clear the form");
   await fp.click("[data-load-example]"); const exRows = (await formState()).rows;
   await fp.reload(); f = await formState();
-  check("Returning visit: the form starts empty and unticked with no old results; a note points to the saved check and 'Start over'", exRows === 7 && f.vals.every((v) => v === "" || v === false) && f.rows === 0 && /appear here after you press/.test(f.plan) && !/PLAN-SHOWN/.test(f.plan) && f.saved && /Start over/.test(await fp.textContent("[data-saved-msg]")), JSON.stringify(f));
+  check("Returning visit: the form starts empty and unticked with no old results; a note points to the saved check and 'Clear the form'", exRows === 7 && f.vals.every((v) => v === "" || v === false) && f.rows === 0 && /appear here after you press/.test(f.plan) && !/PLAN-SHOWN/.test(f.plan) && f.saved && /Clear the form/.test(await fp.textContent("[data-saved-msg]")), JSON.stringify(f));
   await fp.evaluate(() => localStorage.setItem("pi.toolB.v1", JSON.stringify({ generations: [{ gen: 1, living: true, cells: [] }, { gen: 2, cells: [] }], patriot: { name: "Prefill Test", state: "VA", kind: "militia", start: "1777", end: "1779-10", gen: "" } })));
   await fp.goto(`${BASE}/tools/widow-pension-checker/?from=worksheet`); f = await formState();
   check("Prefill from the worksheet fills his service end but does not run the check", f.named.serviceEnd === "1779-10" && f.named.marriage === "" && f.named.serviceMonths === "" && f.rows === 0, JSON.stringify(f));
   await fp.click('form[data-form=widow] button[type=submit]'); const afterPress = (await formState()).rows;
   await fp.click("[data-start-over]"); f = await formState();
-  check("Start over: empties the form, deletes this checker's saved data only, and says so", afterPress === 7 && f.vals.every((v) => v === "" || v === false) && !f.ls.some((k) => k.startsWith("pi.toolA.")) && f.ls.includes("pi.toolB.v1") && /Started over: deleted 1 saved item from this browser/.test(await fp.textContent("[data-out=widow]")) && !f.saved, JSON.stringify(f));
+  check("Clear the form: empties the form, deletes this checker's saved data only, and says so", afterPress === 7 && f.vals.every((v) => v === "" || v === false) && !f.ls.some((k) => k.startsWith("pi.toolA.")) && f.ls.includes("pi.toolB.v1") && /Cleared the form: deleted 1 saved item from this browser/.test(await fp.textContent("[data-out=widow]")) && !f.saved, JSON.stringify(f));
   await fresh.close(); }
 
 // ---- Widow Pension Law Checker (leads the site) ----
@@ -418,15 +419,18 @@ check("Home glossary also explains 'Bounty land' and 'Stat.', each sourced", ["B
 const defsBad = [];
 for (const gp of ["/guides/lineage-proof-roadmap/", "/guides/substitute-evidence/", "/guides/read-pension-file/", "/guides/records-by-state/", "/guides/bounty-land-warrants/", "/guides/census-bridge/", "/guides/patriotic-service/", "/guides/same-name/", "/guides/patriot-or-loyalist/", "/guides/application-problems/", "/tools/widow-pension-checker/", "/tools/lineage-matrix/"]) {
   const h = readFileSync(join(DIST, gp, "index.html"), "utf8"); const d = (h.match(/<details class="defs"[\s\S]*?<\/details>/) || [""])[0];
-  if (!d || h.indexOf(d) > h.indexOf("</h1>") + 6 || !glossTerms.every((k) => d.includes(`<strong>${k}</strong>`)) || !/<sup><a href="#src-/.test(d) || !d.includes('href="/#glossary"')) defsBad.push(gp); }
-check("Definitions box (DAR, SAR, NSCDA, lineage society, patriot, bounty land, Stat.) right under the title on all 10 guides and both tools, sourced", defsBad.length === 0, defsBad.join(" "));
+  const isTool = gp.startsWith("/tools/");
+  // Guides: defs sit right under the title. Tool pages: title, purpose, limits, then tool; glossary sits below the tool.
+  const posOk = isTool ? (d && h.indexOf(d) > h.indexOf("data-tool=")) : (d && h.indexOf(d) <= h.indexOf("</h1>") + 6);
+  if (!d || !posOk || !glossTerms.every((k) => d.includes(`<strong>${k}</strong>`)) || !/<sup><a href="#src-/.test(d) || !d.includes('href="/#glossary"')) defsBad.push(gp); }
+check("Definitions box (DAR, SAR, NSCDA, lineage society, patriot, bounty land, Stat.) on all 10 guides (under title) and both tools (below the tool), sourced", defsBad.length === 0, defsBad.join(" "));
 { // Audit 3 #7: plain terms
   const homeHtml = readFileSync(join(DIST, "index.html"), "utf8"); const mainTxt = homeHtml.slice(homeHtml.indexOf("</h1>", homeHtml.indexOf("<main"))).replace(/<[^>]+>/g, " ").replace(/\s+/g, " ");
   const firstP = mainTxt.search(/patriot/i);
   check("Audit 3 #7: 'patriot' is glossed in plain words, with a source, at its first use on the home page's first screen (after the site name)", firstP > 0 && /A patriot here means someone who supported the cause of American independence/.test(mainTxt.slice(firstP, firstP + 260)) && /sar-about-patriots|#src-/.test(homeHtml.slice(homeHtml.indexOf("A <strong>patriot</strong> here"), homeHtml.indexOf("A <strong>patriot</strong> here") + 600)), mainTxt.slice(firstP - 40, firstP + 200));
   const toolTerms = ["/tools/widow-pension-checker/", "/tools/lineage-matrix/"].map((tp) => { const h = readFileSync(join(DIST, tp, "index.html"), "utf8"); const i = h.indexOf('class="card box-tool-terms"'); const j = h.indexOf("data-tool="); const box = i > 0 ? h.slice(i, h.indexOf("</aside>", i)) : "";
-    return i > 0 && i < j && /<strong>society<\/strong>/.test(box) && /<strong>registrar<\/strong>/.test(box) && (box.match(/<sup>/g) || []).length >= 2 && box.includes('href="/#glossary"'); });
-  check("Audit 3 #7: both tools explain 'society' and 'registrar' in plain, sourced words just above the tool", toolTerms.every(Boolean), JSON.stringify(toolTerms));
+    return i > 0 && i > j && /<strong>society<\/strong>/.test(box) && /<strong>registrar<\/strong>/.test(box) && (box.match(/<sup>/g) || []).length >= 2 && box.includes('href="/#glossary"'); });
+  check("Audit 3 #7: both tools explain 'society' and 'registrar' in plain, sourced words just below the tool", toolTerms.every(Boolean), JSON.stringify(toolTerms));
   check("Audit 3 #7: the glossary explains 'society' (under Lineage society) and Registrar, each sourced", /"society" on its own means a lineage society/.test(gloss) && gloss.includes("Registrar:") && /chapter registrar/.test(gloss));
 }
 check("Both reports link to the definitions", ["/tools/widow-pension-checker/report/", "/tools/lineage-matrix/report/"].every((p) => readFileSync(join(DIST, p, "index.html"), "utf8").includes('href="/#glossary"')));

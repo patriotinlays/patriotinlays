@@ -21,7 +21,7 @@ That's where most people start, and you don't have to solve it before touching a
 
 ## What records will I need?
 
-DAR asks for documentation of each birth, marriage and death in your line, and of your patriot's service. [[claim:dar-join-docs]] For the first three generations it wants complete birth and death dates and places. [[claim:dar-gen-1-3]] Further back, for people who lived before modern vital records, it asks for at least one documented date and place of birth or death. [[claim:dar-gen-older]] The records it lists most often are vital, census, probate, court, land and church records. [[claim:dar-lineage-sources]] The [worksheet](/tools/lineage-matrix/) turns that into a to-do list for your own family.
+Both societies ask you to document the line from you back to a patriot. DAR asks for every name, date, place and relationship [[claim:dar-each-relationship]], with complete birth and death dates and places for generations 1–3 [[claim:dar-gen-1-3]], and at least one documented date and place of birth or death for older generations who lived before modern vital records [[claim:dar-gen-older]]. SAR asks for proof of bloodline descent from the patriot to the applicant [[claim:sar-bloodline]], and two current SAR members sponsor the applicant [[claim:sar-sponsors]]; it does not take family tradition about service as proof [[claim:sar-tradition]]. The [side-by-side table in the Roadmap](/guides/lineage-proof-roadmap/#what-each-generation-needs-dar-and-sar-side-by-side) lays out both. The [worksheet](/tools/lineage-matrix/) turns that into a to-do list for your own family.
 
 ## What if a birth or death certificate doesn't exist?
 
@@ -33,7 +33,7 @@ Family stories are where you start looking, not where you stop. SAR does not tak
 
 ## Do I have to hire a genealogist?
 
-No. A DAR member helps guide you through completing and submitting the application. [[claim:dar-member-guides]] SAR's local sponsor, often the chapter registrar, can guide you through the application. [[claim:sar-registrar-guide]] That help is part of joining, and our guides are here to make your conversations with that person easier.
+No. A DAR member helps guide you through completing and submitting the application. [[claim:dar-member-guides]] SAR's local sponsor can guide you through the application. [[claim:sar-registrar-guide]] That help is part of joining, and our guides are here to make your conversations with that person easier.
 
 ## What does this site cost, and do I need an account?
 

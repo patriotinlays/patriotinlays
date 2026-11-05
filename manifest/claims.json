@@ -372,6 +372,7 @@
       "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
       "used_on": [
         "application-problems",
+        "faq",
         "lineage-matrix",
         "lineage-proof-roadmap",
         "partial:home",
@@ -803,6 +804,7 @@
         "faq",
         "lineage-matrix",
         "partial:home",
+        "partial:limits-matrix",
         "tool:next-steps.js",
         "tool:tool-b.js",
         "walkthroughs"
@@ -951,7 +953,6 @@
       "verification_status": "verified",
       "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
       "used_on": [
-        "faq",
         "lineage-proof-roadmap",
         "tool:tool-b.js"
       ],
@@ -1423,6 +1424,7 @@
       "verification_status": "verified",
       "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
       "used_on": [
+        "faq",
         "lineage-proof-roadmap",
         "partial:glossary"
       ],
@@ -1441,6 +1443,7 @@
       "verification_status": "verified",
       "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
       "used_on": [
+        "faq",
         "lineage-proof-roadmap"
       ],
       "notes": ""
@@ -1480,7 +1483,6 @@
       "verification_status": "verified",
       "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
       "used_on": [
-        "lineage-proof-roadmap",
         "tool:next-steps.js"
       ],
       "notes": ""
@@ -4504,7 +4506,6 @@
       "verification_status": "verified",
       "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
       "used_on": [
-        "faq",
         "partial:glossary",
         "partial:home",
         "partial:how-to-join"
@@ -6741,91 +6742,6 @@
       "archive_identifier": null,
       "last_retrieved": "2026-10-31",
       "quote_excerpt": "not acceptable as proof of service for an SAR application.",
-      "page_ref": null,
-      "verification_status": "verified",
-      "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
-      "used_on": [
-        "lineage-proof-roadmap"
-      ],
-      "notes": ""
-    },
-    {
-      "claim_id": "sar-prs-free",
-      "claim_text": "The SAR Patriot Research System can be accessed freely by anyone.",
-      "source_url": "https://www.familysearch.org/en/wiki/Sons_of_the_American_Revolution",
-      "source_title": "FamilySearch Wiki — Sons of the American Revolution",
-      "source_type": "official_secondary",
-      "archive_identifier": null,
-      "last_retrieved": "2026-10-31",
-      "quote_excerpt": "can be accessed freely by anyone, anywhere",
-      "page_ref": null,
-      "verification_status": "verified",
-      "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
-      "used_on": [
-        "lineage-proof-roadmap"
-      ],
-      "notes": ""
-    },
-    {
-      "claim_id": "fs-pension-by-name",
-      "claim_text": "The FamilySearch pension collection can be searched by name on its collection details page.",
-      "source_url": "https://www.familysearch.org/en/wiki/United_States,_Revolutionary_War_Pension_and_Bounty_Land_Warrant_Applications_-_FamilySearch_Historical_Records",
-      "source_title": "FamilySearch Wiki — US Revolutionary War Pension and Bounty Land Warrant Applications",
-      "source_type": "official_secondary",
-      "archive_identifier": null,
-      "last_retrieved": "2026-10-31",
-      "quote_excerpt": "Search by name on the Collection Details Page.",
-      "page_ref": null,
-      "verification_status": "verified",
-      "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
-      "used_on": [
-        "lineage-proof-roadmap"
-      ],
-      "notes": ""
-    },
-    {
-      "claim_id": "fs-pension-20-percent",
-      "claim_text": "The pension and bounty-land records cover about 20 percent of those who served.",
-      "source_url": "https://www.familysearch.org/en/wiki/United_States,_Revolutionary_War_Pension_and_Bounty_Land_Warrant_Applications_-_FamilySearch_Historical_Records",
-      "source_title": "FamilySearch Wiki — US Revolutionary War Pension and Bounty Land Warrant Applications",
-      "source_type": "official_secondary",
-      "archive_identifier": null,
-      "last_retrieved": "2026-10-31",
-      "quote_excerpt": "These records cover about 20 percent of American military, naval, and marine officers and enlisted men who served in the Revolutionary War.",
-      "page_ref": null,
-      "verification_status": "verified",
-      "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
-      "used_on": [
-        "lineage-proof-roadmap"
-      ],
-      "notes": ""
-    },
-    {
-      "claim_id": "nara-mission-search-within",
-      "claim_text": "The National Archives catalog lets you search within the pension series for a name.",
-      "source_url": "https://www.archives.gov/citizen-archivist/missions/revolutionary-war-pension-files",
-      "source_title": "National Archives — Citizen Archivist: Revolutionary War Pension Files",
-      "source_type": "official_secondary",
-      "archive_identifier": null,
-      "last_retrieved": "2026-10-31",
-      "quote_excerpt": "To find a name, you can do a Search Within the series.",
-      "page_ref": null,
-      "verification_status": "verified",
-      "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
-      "used_on": [
-        "lineage-proof-roadmap"
-      ],
-      "notes": ""
-    },
-    {
-      "claim_id": "nara-pensions-natf85-online",
-      "claim_text": "Copies of pension and bounty-land applications can be ordered with NATF Form 85 or online.",
-      "source_url": "https://www.archives.gov/research/military/army/pensions",
-      "source_title": "National Archives — Pensions and Bounty Land",
-      "source_type": "official_secondary",
-      "archive_identifier": null,
-      "last_retrieved": "2026-10-31",
-      "quote_excerpt": "Researchers can order copies of pension and bounty land applications by using NATF Form 85 or placing an order online.",
       "page_ref": null,
       "verification_status": "verified",
       "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",

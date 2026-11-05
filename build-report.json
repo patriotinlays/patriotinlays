@@ -1,5 +1,5 @@
 {
-  "builtAt": "Thu Nov 05 2026 16:19:34 GMT-0600 (Central Standard Time)",
+  "builtAt": "Thu Nov 05 2026 17:05:24 GMT-0600 (Central Standard Time)",
   "pages": [
     {
       "title": "Application Returned? Fixing Common DAR and SAR Proof Problems (Including Supplementals)",
@@ -46,8 +46,8 @@
       "description": "Organize the evidence for each generation of a DAR or SAR line in your browser, flag conflicts, and print a gap report.",
       "tool": "lineage-matrix",
       "path": "/tools/lineage-matrix/",
-      "words": 1250,
-      "claims": 61,
+      "words": 1302,
+      "claims": 62,
       "sources": 20,
       "tools": [
         "lineage-matrix"
@@ -59,9 +59,9 @@
       "description": "A generation-by-generation plan for documenting descent from a Revolutionary War patriot, with DAR and SAR rules side by side.",
       "cornerstone": "1",
       "path": "/guides/lineage-proof-roadmap/",
-      "words": 1191,
-      "claims": 83,
-      "sources": 22,
+      "words": 1106,
+      "claims": 78,
+      "sources": 18,
       "tools": [
         "lineage-matrix"
       ]
@@ -147,11 +147,11 @@
     {
       "title": "Widow Pension Law Checker",
       "slug": "tools/widow-pension-checker",
-      "description": "See which federal Revolutionary War widow pension and bounty-land laws (1836 to 1878) a widow's marriage date and her husband's service fit, and where to find her pension file.",
+      "description": "See which federal Revolutionary War widow pension and bounty-land laws (1836 to 1878) a widow's marriage date and her husband's service fit, and where her pension file would be kept, so you can request it.",
       "tool": "widow",
       "path": "/tools/widow-pension-checker/",
-      "words": 1456,
-      "claims": 76,
+      "words": 1507,
+      "claims": 78,
       "sources": 18,
       "tools": [
         "widow"
@@ -182,8 +182,8 @@
       "slug": "faq",
       "description": "Plain-English answers about joining DAR or SAR, what a patriot is, which records count, how this site's tools work, and where your information goes.",
       "path": "/faq/",
-      "words": 855,
-      "claims": 18,
+      "words": 881,
+      "claims": 20,
       "sources": 7,
       "tools": []
     },
@@ -192,7 +192,7 @@
       "slug": "privacy",
       "description": "What happens to what you type into patriotinlays.com's tools, how to delete it, and what the site collects.",
       "path": "/privacy/",
-      "words": 338,
+      "words": 339,
       "claims": 0,
       "sources": 0,
       "tools": []
