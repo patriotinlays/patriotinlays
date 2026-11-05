@@ -371,7 +371,7 @@ C = [
 ("stat-1838-after-service","LOC_C25","whose marriage took place after the expiration of the last period of his service, and before the first day of January, seventeen hundred and ninety-four","1838 act: the marriage had to come after his last period of service ended and before January 1, 1794.","5 Stat. 303"),
 ("stat-1838-remarriage","LOC_C25","in the event of the marriage of such widow, said annuity or pension shall be discontinued","1838 act: the pension stopped if the widow married again.","5 Stat. 303"),
 ("stat-1848-service","LOC_C30","who shall have served in the Continental line, State troops, volunteers, militia, or in the naval service, in the revolutionary war with Great Britain","1848 act: the husband had served in the Continental line, State troops, volunteers, militia or the naval service.","9 Stat. 265"),
-("stat-1848-widowhood","LOC_C30","their husbands during such widowhood, of equal amount per annum that their hus","1848 act: the pension was paid during her widowhood.","9 Stat. 266"),
+("stat-1848-widowhood","LOC_C30","their husbands during such widowhood, of equal amount per annum","1848 act: the pension was paid during her widowhood.","9 Stat. 266"),
 ("stat-1848-no-second","LOC_C30","no widow now receiving a pension shall be entitled to","1848 act: a widow already receiving a pension could not get a further one under it.","9 Stat. 266"),
 ("stat-1848-cutoff","LOC_C30","no widow married after the first day of January, one thousand eight hundred, shall be entitled to receive","1848 act: no widow married after January 1, 1800 was covered.","9 Stat. 266"),
 ("stat-1855-revwar","LOC_C33","the officers and soldiers of the revolutionary war, or their widows or minor children, shall be entitled to the","1855 bounty-land act: it extended to Revolutionary War officers and soldiers, their widows and minor children.","10 Stat. 702, sec. 8"),
@@ -418,4 +418,6 @@ C = [
 ('de-vital-recorders', 'DE_VITAL', "prior to 1913, it was the duty of each county's recorder of deeds to record the births, marriages, and deaths of the state", 'Before 1913, each Delaware county recorder of deeds recorded births, marriages and deaths.', None),
 
 
+('ri-pres-transcripts', 'RI_PRES', 'Revolutionary War Military Records transcripts: Volume 1', "The Rhode Island State Archives' digital archive has a Revolutionary War folder that includes military records transcripts.", None),
+('ri-pres-first-regiment', 'RI_PRES', 'Revolutionary War Record Book, First Rhode Island Regiment', "It also includes the First Rhode Island Regiment's record book.", None),
 ]

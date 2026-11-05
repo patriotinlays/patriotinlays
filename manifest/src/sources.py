@@ -53,6 +53,7 @@ SOURCES = {
  "LOC_C32": ("https://tile.loc.gov/storage-services/service/ll/llsl/llsl-c32/llsl-c32.pdf", "Library of Congress — U.S. Statutes at Large, 32nd Congress (scanned; Act of February 3, 1853 at 10 Stat. 154)", "llsl-c32.pdf"),
  "GA_BOUNTY": ("https://www.georgiaarchives.org/research/bounty_land_grants/", "Georgia Archives — Revolutionary War Bounty Land Grants", "ga_bounty.html"),
  "NH_FAM": ("https://www.nhsl.dncr.nh.gov/collections/genealogical-resources/researching-your-nh-family-history", "New Hampshire State Library — Researching Your NH Family History", "nh_family.html"),
+ "RI_PRES": ("https://sosri.access.preservica.com/uncategorized/SO_6db31295-6c55-44bb-a5af-83989afb8c81/", "Rhode Island State Archives Digital Archive — Revolutionary War folder", "ri_preservica.html"),
  "RI_VITAL": ("https://www.sos.ri.gov/divisions/state-archives/VitalRecords", "Rhode Island State Archives — State Vital Records", "ri_vital.html"),
  "DE_OATH": ("https://archives.delaware.gov/digital-archives/military-records-revolutionary-war-oaths-of-allegiance/", "Delaware Public Archives — Revolutionary War Oaths of Allegiance", "de_oaths.html"),
  "DE_VITAL": ("https://archives.delaware.gov/digital-archives/guide-to-vital-statistics-records/", "Delaware Public Archives — Guide to Vital Statistics Records", "de_vital.html"),
