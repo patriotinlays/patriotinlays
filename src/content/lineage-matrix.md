@@ -16,7 +16,7 @@ With several generations and a stack of papers, it's easy to lose track of which
 **How to use it.** Start with the patriot: his name, the state or colony he served for, his type of service and his rough service dates (pick the month, type the year, and say whether each date is exact or only about, before or after). Then add each generation, starting with yourself.
 Generation 1 is you, the applicant. [[claim:dar-gen1-applicant]]
 Your parents are generation 2, your grandparents generation 3, and so on back to the patriot. [[claim:dar-gen-numbering]]
-For each person, tick the records you have or add them one at a time. "Load an example" shows a made-up family filled in.
+For each person, tick the records you have or add them one at a time. "Load an example" shows a made-up family filled in, and the [walkthrough](/walkthroughs/) reads its results with you.
 
 **What you'll get.** A list of what is still missing for each person and where to look for it, fitted to that person's era and state; a check of the patriot's dates against the period DAR accepts for his type of service; a gentle warning when years don't add up; and a "What to do next" plan and report you can print or save as a PDF. [[claim:dar-window-core]]
 

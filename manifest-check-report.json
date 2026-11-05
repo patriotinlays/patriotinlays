@@ -1,11 +1,11 @@
 {
-  "checkedAt": "Thu Nov 05 2026 08:57:05 GMT-0600 (Central Standard Time)",
+  "checkedAt": "Thu Nov 05 2026 10:34:49 GMT-0600 (Central Standard Time)",
   "dirs": [
     "src/content",
     "src/pages",
     "src/partials"
   ],
-  "files": 21,
+  "files": 23,
   "perFile": {
     "src/content/application-problems.md": {
       "units": 39,
@@ -77,9 +77,19 @@
       "marked": 0,
       "unmarked": 0
     },
+    "src/pages/faq.md": {
+      "units": 47,
+      "marked": 18,
+      "unmarked": 0
+    },
     "src/pages/privacy.md": {
       "units": 20,
       "marked": 0,
+      "unmarked": 0
+    },
+    "src/pages/walkthroughs.md": {
+      "units": 69,
+      "marked": 29,
       "unmarked": 0
     },
     "src/partials/glossary.md": {
@@ -113,8 +123,8 @@
       "unmarked": 0
     }
   },
-  "sentences": 747,
-  "markedSentences": 412,
+  "sentences": 863,
+  "markedSentences": 459,
   "manifestClaims": 352,
   "referencedClaims": 352,
   "links": [

@@ -39,7 +39,7 @@ unknown or unverified claim, stale entry (> 120 days), quote that no longer appe
 | `manifest/` | Source Manifest (`claims.json`) and the Python that regenerates it (`npm run manifest`) |
 | `scripts/` | Static site generator, tests, manifest gate, link checker, gates doc generator |
 | `ops/gates.js`, `docs/gates.md` | Day 30/60/90 mixed-gate decision rules (code + generated doc) |
-| `qa/e2e.mjs` | Headless-browser end-to-end suite (138 checks, incl. 360px, fresh profile and the report page count) |
+| `qa/e2e.mjs` | Headless-browser end-to-end suite (143 checks, incl. 360px, fresh profile and the report page count) |
 | `.github/workflows/` | `build.yml` and `ci.yml`. **Both workflows are disabled on GitHub** (they don't run); every check they define is run locally before each deploy instead (see below) |
 | `dist/` | Build output (generated; this is what gets deployed) |
 
@@ -54,6 +54,13 @@ There is no `src/components/` directory; tool code lives in `src/tools/`.
 - Widow checker: a one-line plain answer above the results table and a plain-terms note.
 - Worksheet: a "What do you have?" checklist per generation and plain relationship choices ("my 3rd-great-grandfather").
 - Worksheet report: a summary first, each "Where to look" block shown once and referenced from the gaps, and a "Save as PDF" button. The example prints on 2 Letter pages with "Save as PDF" and 3 with Ctrl+P (headers and footers on, the way Chrome's print window prints), measured by `npm run e2e` (`exampleReportPages` in `qa/e2e-results.json`).
+
+### FAQ and job aids (Nov 5, 2026, second batch)
+
+- `/faq/`: plain-English answers about eligibility, patriots, records, substitutes, help, cost, privacy and accuracy, all manifest-gated.
+- `/walkthroughs/`: both tools walked through with their built-in made-up example families, real screenshots and exact outputs.
+- Evidence for the walkthroughs lives in `qa/walkthroughs/outputs.json` and `texts.json`, captured by running the tools: `node scripts/capture-walkthroughs.mjs` after a build. Every `::quote` in `src/pages/walkthroughs.md` must match a captured output, so the page cannot invent a result. `::figure name.png caption` renders a captioned screenshot from `qa/walkthroughs/`, cache-busted like other assets.
+- Nav, footer, sitemap, home and tool pages link to both pages; the only other changes are build support and tests.
 
 ### Thursday batch (Nov 5, 2026)
 

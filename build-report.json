@@ -1,5 +1,5 @@
 {
-  "builtAt": "Thu Nov 05 2026 08:57:05 GMT-0600 (Central Standard Time)",
+  "builtAt": "Thu Nov 05 2026 10:34:49 GMT-0600 (Central Standard Time)",
   "pages": [
     {
       "title": "Application Returned? Fixing Common DAR and SAR Proof Problems (Including Supplementals)",
@@ -46,7 +46,7 @@
       "description": "Organize the evidence for each generation of a DAR or SAR line in your browser, flag conflicts, and print a gap report.",
       "tool": "lineage-matrix",
       "path": "/tools/lineage-matrix/",
-      "words": 1223,
+      "words": 1231,
       "claims": 58,
       "sources": 20,
       "tools": [
@@ -150,7 +150,7 @@
       "description": "See which federal Revolutionary War widow pension and bounty-land laws (1836 to 1878) a widow's marriage date and her husband's service fit, and where to find her pension file.",
       "tool": "widow",
       "path": "/tools/widow-pension-checker/",
-      "words": 1444,
+      "words": 1452,
       "claims": 73,
       "sources": 17,
       "tools": [
@@ -178,6 +178,16 @@
       "tools": []
     },
     {
+      "title": "Questions, answered simply",
+      "slug": "faq",
+      "description": "Plain-English answers about joining DAR or SAR, what a patriot is, which records count, how this site's tools work, and where your information goes.",
+      "path": "/faq/",
+      "words": 855,
+      "claims": 18,
+      "sources": 7,
+      "tools": []
+    },
+    {
       "title": "Privacy",
       "slug": "privacy",
       "description": "What happens to what you type into patriotinlays.com's tools, how to delete it, and what the site collects.",
@@ -186,7 +196,17 @@
       "claims": 0,
       "sources": 0,
       "tools": []
+    },
+    {
+      "title": "See the tools in action",
+      "slug": "walkthroughs",
+      "description": "Step-by-step examples of the Widow Pension Law Checker and the Lineage Evidence Matrix, using a made-up family and the tools' real results.",
+      "path": "/walkthroughs/",
+      "words": 1105,
+      "claims": 16,
+      "sources": 10,
+      "tools": []
     }
   ],
-  "sitemapUrls": 17
+  "sitemapUrls": 19
 }

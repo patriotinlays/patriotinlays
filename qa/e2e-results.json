@@ -1,8 +1,8 @@
 {
-  "ranAt": "Thu Nov 05 2026 08:54:23 GMT-0600 (Central Standard Time)",
+  "ranAt": "Thu Nov 05 2026 10:32:12 GMT-0600 (Central Standard Time)",
   "browser": "/usr/bin/google-chrome (headless) via playwright-core 1.64.1",
-  "passed": 138,
-  "total": 138,
+  "passed": 143,
+  "total": 143,
   "exampleReportPages": {
     "summaryPages": 2,
     "fullPages": 3,
@@ -18,7 +18,7 @@
     "sub": "Plain-English help with DAR and SAR applications, for the Daughters and the Sons of the American Revolution",
     "ai": "Written with AI assistance and reviewed by the site's owner. Each fact is tied to a quoted official source, and software checks that the quote is still there.",
     "beforeStart": true,
-    "words": 1273
+    "words": 1290
   },
   "results": [
     {
@@ -554,7 +554,7 @@
     {
       "name": "Home (Nov 5 lock): subtitle names DAR and SAR; mission in flowing paragraphs (no lists) ahead of 'Ready to get started?'; purpose line, both tool names, one-sentence privacy",
       "ok": true,
-      "detail": "{\"ps\":7,\"lists\":0,\"text\":\"This site helps you organize the records that connect you to a Revolutionary War\",\"sub\":\"Plain-English help with DAR and SAR applications, for the Daughters and the Sons of the American Revolution\",\"ai\":\"Written with AI assistance and reviewed by the site's owner. Each fact is tied to a quoted official source, and software checks that the quote is still there.\",\"beforeStart\":true,\"words\":1273}"
+      "detail": "{\"ps\":7,\"lists\":0,\"text\":\"This site helps you organize the records that connect you to a Revolutionary War\",\"sub\":\"Plain-English help with DAR and SAR applications, for the Daughters and the Sons of the American Revolution\",\"ai\":\"Written with AI assistance and reviewed by the site's owner. Each fact is tied to a quoted official source, and software checks that the quote is still there.\",\"beforeStart\":true,\"words\":1290}"
     },
     {
       "name": "Home (Nov 5 lock): the exact AI line, the exact SAR line (sourced), no unsourced 'most people get stuck' / 'give up' / guarantee lines",
@@ -569,7 +569,7 @@
     {
       "name": "Navigation: 'Start here' (the Roadmap) comes first, then the widow-pension check",
       "ok": true,
-      "detail": "Start here | Widow pension check | Worksheet | Guides | About"
+      "detail": "Start here | Widow pension check | Worksheet | Guides | FAQ | About"
     },
     {
       "name": "Roadmap: opens with 'How to join, in short' and 'Step 0: find the soldier's name' before the rest",
@@ -627,7 +627,7 @@
       "detail": ""
     },
     {
-      "name": "Logo: all 20 pages link the new favicon (SVG + 32/16 PNG), apple-touch-icon and og:image, with the header logo, all cache-busted; the old 'PI' icon is replaced",
+      "name": "Logo: all 22 pages link the new favicon (SVG + 32/16 PNG), apple-touch-icon and og:image, with the header logo, all cache-busted; the old 'PI' icon is replaced",
       "ok": true,
       "detail": ""
     },
@@ -657,7 +657,7 @@
       "detail": ""
     },
     {
-      "name": "Mobile 375px: no horizontal page overflow on 19 pages",
+      "name": "Mobile 375px: no horizontal page overflow on 21 pages",
       "ok": true,
       "detail": ""
     },
@@ -702,6 +702,31 @@
       "detail": "0 small"
     },
     {
+      "name": "FAQ: sourced plain-English answers, not a bullet list; linked from nav, footer, home and every guide; in the sitemap",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "Walkthroughs: real screenshots load with captions and alt text; quoted outputs match the captured tool results; the example family is labeled made up",
+      "ok": true,
+      "detail": "[{\"src\":\"/assets/walkthroughs/widow-date-360.png?v=f8eaa4a6a8\",\"ok\":true,\"alt\":\"The marriage date as the example fills it in: month May, year 1777, no day, and Exactly.\"},{\"src\":\"/assets/walkthroughs/widow-summary.png?v=b46f914a51\",\"ok\":true,\"alt\":\"The example's \\\"In short\\\" summary, exactly as the checker prints it.\"},{\"src\":\"/assets/walkthroughs/widow-law-row.png?v=4b94fa78b7\",\"ok\":true,\"alt\":\"One law row in full: the March 1855 bounty-land law, its rule, and the terms the tool can't check.\"},{\"src\":\"/assets/walkthroughs/worksheet-patriot-360.png?v=24f56757ff\",\"ok\":true,\"alt\":\"The example patriot, with his rough service dates. The check below says his dates fall inside DAR's period for that service, and that it isn't a ruling.\"},{\"src\":\"/assets/walkthroughs/worksheet-gaps.png?v=5b1d3a8eb0\",\"ok\":true,\"alt\":\"The example's gap list, with the lettered \\\"Where to look\\\" advice underneath.\"}]"
+    },
+    {
+      "name": "Walkthroughs: every quoted output is a real captured result, and no bare 'Fits' verdict is shown",
+      "ok": true,
+      "detail": "[\"Fits: the March 1855 bounty-land and 1878 laws (every rule checked here; other terms not checked)\",\"Ruled out: the 1838, 1853 and February 1855 laws (by the dates)\",\"Still possible: the 1836 and 1848 laws (need his kind of service)\",\"Fits the rules checked here; other terms not checked\",\"His dates fall inside the period DAR accepts for this type of service. This is not a ruling: your society decides.\",\"No death evidence entered yet.\",\"No birth evidence entered yet.\",\"Add at least one birth or death record.\"]"
+    },
+    {
+      "name": "Print (/faq/): a real PDF is produced, header/footer hidden, figures keep together",
+      "ok": true,
+      "detail": "3 page(s)"
+    },
+    {
+      "name": "Print (/walkthroughs/): a real PDF is produced, header/footer hidden, figures keep together",
+      "ok": true,
+      "detail": "9 page(s)"
+    },
+    {
       "name": "Cache-busting: every page's script/CSS URL and every module import is versioned with the file's content hash",
       "ok": true,
       "detail": ""
@@ -712,7 +737,7 @@
       "detail": ""
     }
   ],
-  "requestsTotal": 391,
+  "requestsTotal": 417,
   "externalRequests": 0,
   "interactionRequests": 0,
   "faviconLate": 25

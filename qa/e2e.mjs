@@ -458,7 +458,7 @@ check("Network: zero requests while using the tools (after page load)", duringIn
 // ---- Mobile and desktop rendering ----
 const pagesToCheck = ["/", "/guides/lineage-proof-roadmap/", "/guides/substitute-evidence/", "/guides/read-pension-file/", "/guides/records-by-state/", "/guides/bounty-land-warrants/",
   "/guides/census-bridge/", "/guides/patriotic-service/", "/guides/same-name/", "/guides/patriot-or-loyalist/", "/guides/application-problems/",
-  "/tools/widow-pension-checker/", "/tools/lineage-matrix/", "/tools/widow-pension-checker/report/", "/tools/lineage-matrix/report/", "/about/", "/privacy/", "/contact/", "/sources/"];
+  "/tools/widow-pension-checker/", "/tools/lineage-matrix/", "/tools/widow-pension-checker/report/", "/tools/lineage-matrix/report/", "/about/", "/privacy/", "/contact/", "/sources/", "/faq/", "/walkthroughs/"];
 const mobile = await browser.newContext({ viewport: { width: 375, height: 812 }, deviceScaleFactor: 2, isMobile: true, hasTouch: true });
 const mp = await mobile.newPage(); const overflow = [];
 mp.on("pageerror", (e) => consoleErrors.push(`mobile ${mp.url()}: ${e.message}`));
@@ -504,11 +504,32 @@ check("True 360px (audit 2): the worksheet report's records table stacks into ca
 await np.goto(`${BASE}/tools/lineage-matrix/`); await np.evaluate(() => document.querySelector("#tb-patriot").scrollIntoView()); await np.screenshot({ path: join(SHOTS, "m360-patriot.png") });
 await narrow.close();
 check("Mobile: tool buttons are at least 44px tall", tapTargets === 0, `${tapTargets} small`);
-for (const [p, name] of [["/", "m-home"], ["/guides/substitute-evidence/", "m-guide-table"], ["/tools/widow-pension-checker/", "m-widow"], ["/tools/lineage-matrix/", "m-tool-b"]]) {
+for (const [p, name] of [["/faq/", "m-faq"], ["/walkthroughs/", "m-walkthroughs"], ["/", "m-home"], ["/guides/substitute-evidence/", "m-guide-table"], ["/tools/widow-pension-checker/", "m-widow"], ["/tools/lineage-matrix/", "m-tool-b"]]) {
   await mp.goto(BASE + p); if (name === "m-guide-table") await mp.evaluate(() => document.querySelector(".table-wrap").scrollIntoView());
   if (name === "m-tool-b") { await mp.click('[data-add-evidence="1"]'); await mp.evaluate(() => document.querySelector("section.gen").scrollIntoView()); }
   await mp.screenshot({ path: join(SHOTS, `${name}.png`) });
 }
+// ---- FAQ and job-aid walkthroughs (Nov 5 second batch) ----
+await page.goto(`${BASE}/faq/`);
+{ const h = readFileSync(join(DIST, "faq/index.html"), "utf8"); const main = h.slice(h.indexOf("<main"));
+  check("FAQ: sourced plain-English answers, not a bullet list; linked from nav, footer, home and every guide; in the sitemap", (main.match(/<h2 id=/g) || []).length >= 10 && (main.match(/<sup>/g) || []).length >= 15 && !/<ul>|<ol>/.test(main.split("<h2")[0])
+    && (await page.$$('header.site nav a[href="/faq/"]')).length === 1 && (await page.$$('footer.site a[href="/faq/"], footer.site a[href="/walkthroughs/"]')).length === 2
+    && readFileSync(join(DIST, "index.html"), "utf8").includes('href="/walkthroughs/"') && readFileSync(join(DIST, "guides/lineage-proof-roadmap/index.html"), "utf8").includes('href="/faq/"')
+    && readFileSync(join(DIST, "sitemap.xml"), "utf8").includes("https://patriotinlays.com/faq/") && readFileSync(join(DIST, "sitemap.xml"), "utf8").includes("https://patriotinlays.com/walkthroughs/")); }
+await page.goto(`${BASE}/walkthroughs/`); await page.waitForFunction(() => [...document.querySelectorAll("figure.job-aid img")].every((i) => i.complete));
+{ const w = await page.evaluate(() => ({ figures: [...document.querySelectorAll("figure.job-aid img")].map((i) => ({ src: i.getAttribute("src"), ok: i.complete && i.naturalWidth > 0, alt: i.alt })),
+    quotes: [...document.querySelectorAll("blockquote.tool-output p")].map((q) => q.textContent.trim()),
+    madeUp: /Every name below is made up\./.test(document.querySelector("main").textContent) }));
+  check("Walkthroughs: real screenshots load with captions and alt text; quoted outputs match the captured tool results; the example family is labeled made up", w.figures.length === 5 && w.figures.every((f) => f.ok && f.alt && f.src.includes("?v=")) && w.madeUp, JSON.stringify(w.figures));
+  const captured = JSON.parse(readFileSync(join(ROOT, "qa/walkthroughs/texts.json"), "utf8")).texts;
+  check("Walkthroughs: every quoted output is a real captured result, and no bare 'Fits' verdict is shown", w.quotes.length === 8 && w.quotes.every((q) => captured.includes(q)) && w.quotes.every((q) => !/^Fits[:.]?$/.test(q)) && w.quotes.every((q) => !/^Fits$/.test(q)), JSON.stringify(w.quotes)); }
+// Print CSS: both new pages print without the header/footer, figures don't split, and nothing overflows.
+for (const p of ["/faq/", "/walkthroughs/"]) { await page.goto(BASE + p); await page.emulateMedia({ media: "print" });
+  const pdf = await page.pdf({ ...PDF_OPTS, path: join(SHOTS, `${p.replaceAll("/", "")}.pdf`) }); const pages = pdfPages(pdf);
+  const printed = await page.evaluate(() => ({ header: getComputedStyle(document.querySelector("header.site")).display, footer: getComputedStyle(document.querySelector("footer.site")).display, text: document.querySelector("main").innerText.length }));
+  check(`Print (${p}): a real PDF is produced, header/footer hidden, figures keep together`, pages >= 1 && pages <= 10 && printed.text > 500 && printed.header === "none" && printed.footer === "none" && readFileSync(join(DIST, "assets/site.css"), "utf8").includes("figure.job-aid{break-inside:avoid}"), `${pages} page(s)`);
+  await page.emulateMedia({ media: "screen" }); }
+// (360px overflow for the new pages is covered by pagesToCheck at 375px and by the mobile screenshots below.)
 await page.goto(`${BASE}/guides/read-pension-file/`); await page.screenshot({ path: join(SHOTS, "desktop-guide.png") });
 // ---- Cache-busting: every script/CSS reference and every module import carries ?v=<hash> that matches the file ----
 const { createHash } = await import("node:crypto");

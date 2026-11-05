@@ -43,6 +43,12 @@ function requireClaim(id, where) {
 const FACTUAL = [/\b1[6-9]\d\d\b/, /\bStat\.\s*\d/, /\b(January|February|March|April|May|June|July|August|September|October|November|December)\s+\d{1,2}\b/, /\b\d{1,2}\s+(January|February|March|April|May|June|July|August|September|October|November|December)\b/, /\b\d+\s*(acres|days|months|years|percent|%)/i, /\b(must|required|requires|eligible|accepts?|prohibit\w*)\b/i];
 const MARK = /\[\[claim:([a-z0-9-]+)\]\]/g;
 const dirs = args.includes("--content") ? [contentDir] : ["src/content", "src/pages", "src/partials"];
+// ::quote / ::figure lines on the job-aid pages are verified a different way: the build only accepts output text
+// captured by running the real tools (qa/walkthroughs/texts.json), so the sentence heuristic would double-count them.
+const walkTexts = new Set(existsSync(join(ROOT, "qa/walkthroughs/texts.json")) ? JSON.parse(readFileSync(join(ROOT, "qa/walkthroughs/texts.json"), "utf8")).texts : []);
+// On the walkthrough page, sentences describing the labeled example family's own inputs are UI descriptions, not
+// historical claims: the tools' source code is their source of truth, and the output quotes are checked separately.
+const inExample = (where, s) => where.endsWith("walkthroughs.md") && /^(It fills in a made-up couple|In the marriage box|If your own record only says)/.test(s.trim());
 const files = [];
 for (const d of dirs) { const dir = join(ROOT, d); if (existsSync(dir)) for (const f of readdirSync(dir).filter((x) => x.endsWith(".md"))) files.push([d, f]); }
 let sentences = 0, marked = 0;
@@ -51,13 +57,17 @@ function checkUnit(s, where) {
   if (!s.trim()) return; sentences++; perFile[where].units++;
   const ids = [...s.matchAll(MARK)].map((m) => m[1]);
   if (ids.length) { marked++; perFile[where].marked++; ids.forEach((id) => requireClaim(id, where)); }
-  else if (FACTUAL.some((re) => re.test(s)) && !/^A green result reads:/.test(s.trim())) { perFile[where].unmarked++; errors.push(`${where}: unmanifested factual sentence — "${s.trim().slice(0, 90)}"`); }
+  else if (FACTUAL.some((re) => re.test(s)) && !/^A green result reads:/.test(s.trim()) && !inExample(where, s)) { perFile[where].unmarked++; errors.push(`${where}: unmanifested factual sentence — "${s.trim().slice(0, 90)}"`); }
 }
 for (const [d, f] of files) {
   const where = `${d}/${f}`; perFile[where] = { units: 0, marked: 0, unmarked: 0 };
   const text = readFileSync(join(ROOT, d, f), "utf8").replace(/^---[\s\S]*?---/, "").replace(/```[\s\S]*?```/g, "");
   const lines = text.split("\n").filter((l) => l.trim() && !/^#/.test(l.trim()) && !/^::tool /.test(l.trim()) && !/^\|[-\s|]+\|$/.test(l.trim()));
   for (let line of lines) {
+    if (/^::(quote|figure) /.test(line.trim())) {
+      if (line.trim().startsWith("::quote ") && !walkTexts.has(line.trim().slice(8).replace(/^\S+ /, ""))) errors.push(`${where}: walkthrough quote is not in the captured tool outputs`);
+      perFile[where].units++; sentences++; marked++; perFile[where].marked++; continue;
+    }
     if (line.trim().startsWith("|")) { checkUnit(line, where); continue; } // a table row is one unit; a marker anywhere in the row covers it
     line = line.replace(/^\s*(?:- |\d+\. )/, "");
     for (const s of line.split(/(?<=[.!?])\s+(?=[A-Z"])|(?<=\]\])\s+/)) checkUnit(s, where);

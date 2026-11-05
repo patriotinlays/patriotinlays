@@ -227,3 +227,11 @@ fieldset.date-field.has-error{border-color:#a33}
 .home-mission p{font-size:1.05rem;line-height:1.65}
 .home-mission .ai-line{font-size:.95rem;color:var(--muted);border-left:3px solid var(--line);padding-left:.6rem}
 .home-start .button-link{margin:.2rem .4rem .2rem 0}
+/* FAQ and job-aid walkthroughs */
+figure.job-aid{margin:1.2rem 0;border:1px solid var(--line);border-radius:6px;padding:.6rem;background:#fff}
+figure.job-aid img{display:block;max-width:100%;height:auto;margin:0 auto}
+figure.job-aid figcaption{font-size:.9rem;color:var(--muted);margin-top:.5rem}
+figure.job-aid:has(img[src*="360"]){max-width:430px}
+blockquote.tool-output{border-left:4px solid var(--navy);background:var(--soft);margin:.8rem 0;padding:.5rem .8rem}
+blockquote.tool-output p{margin:0}
+@media print{figure.job-aid{break-inside:avoid}blockquote.tool-output{break-inside:avoid}}

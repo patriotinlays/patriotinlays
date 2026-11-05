@@ -35,6 +35,8 @@ for (const f of ["logo-horizontal-white.svg", "logo-horizontal.svg", "icon.svg",
 for (const [src, dst] of [["favicon.svg", "favicon.svg"], ["favicon-32.png", "favicon-32.png"], ["favicon-16.png", "favicon-16.png"], ["apple-touch-icon-180.png", "apple-touch-icon.png"]]) {
   const b = readFileSync(join(ROOT, "src/assets", src)); writeFileSync(join(OUT, dst), b); ASSET_V.set(`/${dst}`, hash8(b)); }
 
+for (const f of readdirSync(join(ROOT, "qa/walkthroughs")).filter((f) => f.endsWith(".png"))) { mkdirSync(join(OUT, "assets/walkthroughs"), { recursive: true });
+  const b = readFileSync(join(ROOT, "qa/walkthroughs", f)); writeFileSync(join(OUT, "assets/walkthroughs", f), b); ASSET_V.set(`/assets/walkthroughs/${f}`, hash8(b)); }
 function parseFront(raw) {
   const m = /^---\n([\s\S]*?)\n---\n?/.exec(raw); const fm = {};
   if (m) for (const line of m[1].split("\n")) { const i = line.indexOf(":"); if (i > 0) fm[line.slice(0, i).trim()] = line.slice(i + 1).trim().replace(/^"|"$/g, ""); }
@@ -118,7 +120,10 @@ function md(body, ctx) {
     if (!l.trim()) { i++; continue; }
     // "::partial name" drops in a shared, sourced box (src/partials/name.md), e.g. "How to join, in short".
     if (l.startsWith("::partial ")) { const k = l.slice(10).trim(); out.push(`<aside class="card box-${k}" id="${k}">${md(readFileSync(join(ROOT, "src/partials", `${k}.md`), "utf8"), ctx)}</aside>`); i++; continue; }
-    if (l.startsWith("::tool ")) { const k = l.slice(7).trim(); if (!TOOLS[k]) throw new Error(`unknown tool ${k}`); out.push(TOOLS[k]); ctx.tools.add(k.replace("-full", "")); i++; continue; }
+        if (l.startsWith("::quote ")) { const [k, rest] = l.slice(8).split(/ (.+)/); out.push(quoteBlock(k, rest || "", ctx)); i++; continue; }
+  if (l.startsWith("::figure ")) { const m = /^::figure (\S+) (.+)$/.exec(l); 
+      out.push(`<figure class="job-aid"><img src="/assets/walkthroughs/${m[1]}" alt="${esc(m[2])}"><figcaption>${esc(m[2])}</figcaption></figure>`); i++; continue; }
+  if (l.startsWith("::tool ")) { const k = l.slice(7).trim(); if (!TOOLS[k]) throw new Error(`unknown tool ${k}`); out.push(TOOLS[k]); ctx.tools.add(k.replace("-full", "")); i++; continue; }
     const h = /^(#{1,3}) (.*)$/.exec(l);
     if (h) { const lvl = h[1].length; const txt = inline(h[2], ctx); const id = h[2].toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, ""); out.push(`<h${lvl}${lvl > 1 ? ` id="${id}"` : ""}>${txt}</h${lvl}>`); i++; continue; }
     if (l.startsWith("|")) {
@@ -130,13 +135,21 @@ function md(body, ctx) {
     }
     if (/^- /.test(l)) { const items = []; while (i < lines.length && /^- /.test(lines[i])) items.push(lines[i++].slice(2)); out.push(`<ul>${items.map((t) => `<li>${inline(t, ctx)}</li>`).join("")}</ul>`); continue; }
     if (/^\d+\. /.test(l)) { const items = []; while (i < lines.length && /^\d+\. /.test(lines[i])) items.push(lines[i++].replace(/^\d+\. /, "")); out.push(`<ol>${items.map((t) => `<li>${inline(t, ctx)}</li>`).join("")}</ol>`); continue; }
-    const para = []; while (i < lines.length && lines[i].trim() && !/^(#|\||- |\d+\. |::tool |::partial )/.test(lines[i])) para.push(lines[i++]);
+    const para = []; while (i < lines.length && lines[i].trim() && !/^(#|\||- |\d+\. |::tool |::partial |::figure |::quote )/.test(lines[i])) para.push(lines[i++]);
     out.push(`<p>${inline(para.join(" "), ctx)}</p>`);
   }
   return out.join("\n");
 }
-const NAV = `<header class="site"><div class="wrap"><a class="brand" href="/" aria-label="Patriot, In Lay Terms: home"><img class="logo" src="/assets/logo-horizontal-white.svg" alt="Patriot, In Lay Terms" width="161" height="44"></a><nav class="top" aria-label="Main"><a href="/guides/lineage-proof-roadmap/">Start here</a><a href="/tools/widow-pension-checker/">Widow pension check</a><a href="/tools/lineage-matrix/">Worksheet</a><a href="/#guides">Guides</a><a href="/about/">About</a></nav></div></header>`;
-const FOOT = `<footer class="site"><div class="wrap"><a href="/about/">About &amp; AI disclosure</a><a href="/sources/">Sources &amp; Methodology</a><a href="/privacy/">Privacy</a><a href="/contact/">Contact</a><p>Not affiliated with DAR, SAR, NSCDA or the National Archives. Not legal or professional genealogical advice.</p></div></footer>`;
+// Job aids: exact tool outputs are generated from qa/walkthroughs/outputs.json, which qa/walkthroughs.mjs
+// refreshes by running the real tools. A build fails if a quoted output no longer matches the tool's own text.
+const walkthrough = { ...JSON.parse(readFileSync(join(ROOT, "qa/walkthroughs/outputs.json"), "utf8")), ...JSON.parse(readFileSync(join(ROOT, "qa/walkthroughs/texts.json"), "utf8")) };
+function quoteBlock(key, text, ctx) {
+  const html = inline(text, ctx);
+  if (!walkthrough.texts.some((t) => t === text)) throw new Error(`walkthrough quote not produced by the tools: ${text.slice(0, 90)}`);
+  return `<blockquote class="tool-output" data-tool-output="${esc(key)}"><p>${html}</p></blockquote>`;
+}
+const NAV = `<header class="site"><div class="wrap"><a class="brand" href="/" aria-label="Patriot, In Lay Terms: home"><img class="logo" src="/assets/logo-horizontal-white.svg" alt="Patriot, In Lay Terms" width="161" height="44"></a><nav class="top" aria-label="Main"><a href="/guides/lineage-proof-roadmap/">Start here</a><a href="/tools/widow-pension-checker/">Widow pension check</a><a href="/tools/lineage-matrix/">Worksheet</a><a href="/#guides">Guides</a><a href="/faq/">FAQ</a><a href="/about/">About</a></nav></div></header>`;
+const FOOT = `<footer class="site"><div class="wrap"><a href="/about/">About &amp; AI disclosure</a><a href="/faq/">FAQ</a><a href="/walkthroughs/">Walkthroughs</a><a href="/sources/">Sources &amp; Methodology</a><a href="/privacy/">Privacy</a><a href="/contact/">Contact</a><p>Not affiliated with DAR, SAR, NSCDA or the National Archives. Not legal or professional genealogical advice.</p></div></footer>`;
 function page({ title, description, path, body, noindex = false }) {
   return `<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>${esc(title)} | Patriot In Lay Terms</title><meta name="description" content="${esc(description || "")}">
@@ -162,7 +175,7 @@ function renderFile(dir, f) {
     const own = [...ctx.tools][0] === "widow" ? "widow" : "lineage";
     html += "\n" + md(readFileSync(join(ROOT, "src/partials", `next-steps-${own}.md`), "utf8"), ctx);
     const next = GUIDE_ORDER.find((g) => +g.cornerstone === +fm.cornerstone + 1);
-    html += `<p class="next-guide">${next ? `Next guide: <a href="/${next.slug}/">${esc(next.title)}</a> · ` : ""}<a href="/#guides">All 10 guides</a></p>`;
+    html += `<p class="next-guide">${next ? `Next guide: <a href="/${next.slug}/">${esc(next.title)}</a> · ` : ""}<a href="/#guides">All 10 guides</a> · <a href="/faq/">FAQ</a></p>`;
   }
   if (dir === "src/pages") html += START_HERE;
   const srcList = ctx.sources.length ? `<h2 id="sources">Sources</h2><ol class="sources">${ctx.sources.map((u, i) => { const c = manifest.claims.find((x) => x.source_url === u);
@@ -195,6 +208,7 @@ write("", page({ title: "Patriot, In Lay Terms: plain-English help for DAR and S
 <p><a class="button-link" href="/tools/lineage-matrix/">Start the Lineage Evidence Matrix</a> <a class="button-link" href="/tools/widow-pension-checker/">Open the Widow Pension Law Checker</a></p>
 <p>New to all of this? <a href="/guides/lineage-proof-roadmap/" data-start-button>Begin with the Roadmap guide</a>: how to join, how to find the soldier's name, and the whole process, step by step.</p></section>
 <h2 id="guides">The guides</h2><ol class="guide-list">${guides.map((g) => `<li><a href="${g.path}">${esc(g.title)}</a><br><span class="small">${esc(g.description)}</span></li>`).join("")}</ol>
+<p class="home-help">Questions? <a href="/faq/">Questions, answered simply</a> · New to the tools? <a href="/walkthroughs/">See them in action</a>, with a made-up family.</p>
 ${HOME.html}
 ${HOME.sources}<p class="small"><a href="/about/">About this site</a> · <a href="/privacy/">Privacy</a></p>` }));
 sitemap.unshift("/");

@@ -1,14 +1,63 @@
 {
-  "checkedAt": "Thu Nov 05 2026 08:57:20 GMT-0600 (Central Standard Time)",
-  "htmlFiles": 20,
-  "internalLinks": 1084,
+  "checkedAt": "Thu Nov 05 2026 10:35:02 GMT-0600 (Central Standard Time)",
+  "htmlFiles": 22,
+  "internalLinks": 1254,
   "externalUnique": 53,
   "external": [
+    {
+      "url": "https://www.dar.org/discover/become-member/how-join",
+      "status": 200,
+      "err": null,
+      "pages": 15,
+      "via": "curl"
+    },
+    {
+      "url": "https://www.sar.org/sar-missions-and-goals/",
+      "status": 200,
+      "err": null,
+      "pages": 15,
+      "via": "fetch"
+    },
+    {
+      "url": "https://membership.dar.org/NSDAR/AppFormz/App_Help_Step_By_Step_1.aspx",
+      "status": 200,
+      "err": null,
+      "pages": 11,
+      "via": "curl"
+    },
+    {
+      "url": "https://www.dar.org/national-society/accepted-revolutionary-war-service",
+      "status": 200,
+      "err": null,
+      "pages": 8,
+      "via": "curl"
+    },
+    {
+      "url": "https://membership.dar.org/NSDAR/AppFormz/FAQs.aspx",
+      "status": 200,
+      "err": null,
+      "pages": 9,
+      "via": "curl"
+    },
+    {
+      "url": "https://www.sar.org/step-1/",
+      "status": 200,
+      "err": null,
+      "pages": 6,
+      "via": "fetch"
+    },
+    {
+      "url": "https://www.sar.org/how-to-apply/",
+      "status": 200,
+      "err": null,
+      "pages": 16,
+      "via": "fetch"
+    },
     {
       "url": "https://www.dar.org/discover/become-member/chapter-locator",
       "status": 200,
       "err": null,
-      "pages": 11,
+      "pages": 12,
       "via": "curl"
     },
     {
@@ -19,21 +68,7 @@
       "via": "fetch"
     },
     {
-      "url": "https://www.sar.org/sar-missions-and-goals/",
-      "status": 200,
-      "err": null,
-      "pages": 14,
-      "via": "fetch"
-    },
-    {
       "url": "https://www.dar.org/discover/become-member/what-dar",
-      "status": 200,
-      "err": null,
-      "pages": 14,
-      "via": "curl"
-    },
-    {
-      "url": "https://www.dar.org/discover/become-member/how-join",
       "status": 200,
       "err": null,
       "pages": 14,
@@ -54,17 +89,10 @@
       "via": "fetch"
     },
     {
-      "url": "https://www.sar.org/how-to-apply/",
-      "status": 200,
-      "err": null,
-      "pages": 14,
-      "via": "fetch"
-    },
-    {
       "url": "https://www.archives.gov/files/research/military/army/dc/m804.pdf",
       "status": 200,
       "err": null,
-      "pages": 14,
+      "pages": 15,
       "via": "fetch"
     },
     {
@@ -86,20 +114,6 @@
       "status": 200,
       "err": null,
       "pages": 5,
-      "via": "curl"
-    },
-    {
-      "url": "https://membership.dar.org/NSDAR/AppFormz/App_Help_Step_By_Step_1.aspx",
-      "status": 200,
-      "err": null,
-      "pages": 9,
-      "via": "curl"
-    },
-    {
-      "url": "https://membership.dar.org/NSDAR/AppFormz/FAQs.aspx",
-      "status": 200,
-      "err": null,
-      "pages": 8,
       "via": "curl"
     },
     {
@@ -155,22 +169,8 @@
       "url": "https://www.archives.gov/research/military/american-revolution",
       "status": 200,
       "err": null,
-      "pages": 6,
+      "pages": 7,
       "via": "fetch"
-    },
-    {
-      "url": "https://www.sar.org/step-1/",
-      "status": 200,
-      "err": null,
-      "pages": 5,
-      "via": "fetch"
-    },
-    {
-      "url": "https://www.dar.org/national-society/accepted-revolutionary-war-service",
-      "status": 200,
-      "err": null,
-      "pages": 6,
-      "via": "curl"
     },
     {
       "url": "https://www.nps.gov/articles/000/what-might-you-find-in-the-revolutionary-war-pension-files.htm",
@@ -211,7 +211,7 @@
       "url": "https://tile.loc.gov/storage-services/service/ll/llsl/llsl-c25/llsl-c25.pdf",
       "status": 200,
       "err": null,
-      "pages": 3,
+      "pages": 4,
       "via": "fetch"
     },
     {
@@ -225,7 +225,7 @@
       "url": "https://tile.loc.gov/storage-services/service/ll/llsl/llsl-c33/llsl-c33.pdf",
       "status": 200,
       "err": null,
-      "pages": 3,
+      "pages": 4,
       "via": "fetch"
     },
     {
@@ -246,7 +246,7 @@
       "url": "https://lva-virginia.libguides.com/bmd",
       "status": 200,
       "err": null,
-      "pages": 2,
+      "pages": 3,
       "via": "fetch"
     },
     {
@@ -372,7 +372,7 @@
       "url": "https://tile.loc.gov/storage-services/service/ll/llsl/llsl-c45/llsl-c45.pdf",
       "status": 200,
       "err": null,
-      "pages": 2,
+      "pages": 3,
       "via": "fetch"
     }
   ],

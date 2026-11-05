@@ -1,0 +1,133 @@
+{
+  "widow": {
+    "form": {
+      "marriage": "1777-05",
+      "serviceEnd": "1778-03",
+      "serviceMonths": "20",
+      "serviceDays": "",
+      "engagement": "yes",
+      "kind": ""
+    },
+    "exampleMsg": "Example loaded: a made-up couple who married in May 1777; his service ended in March 1778. The results are in the table below.",
+    "summary": [
+      "Fits: the March 1855 bounty-land and 1878 laws (every rule checked here; other terms not checked)",
+      "Ruled out: the 1838, 1853 and February 1855 laws (by the dates)",
+      "Still possible: the 1836 and 1848 laws (need his kind of service)",
+      "Next: tell us his kind of service (Continental Line, or State troops, volunteers or militia); then look for the widow's pension file (see \"What to do next\")."
+    ],
+    "rows": [
+      {
+        "law": "Act of July 4, 1836 (5 Stat. 128)",
+        "verdict": "Still possible: need his kind of service",
+        "rule": "Rule: Marriage must precede expiration of veteran's last period of service; service as specified in act of June 7, 1832 (at least 6 months, in the Continental Line or State troops, volunteers or militia).To settle it, tell us his kind of service (Continental Line, or State troops, volunteers or militia).Not checked here (from the law's own text): She was paid only while she stayed unmarried.What to do: find out what kind of unit he served in. For state militia, the National Archives says to check the archives of the state where he served; for Continental troops, see its service-records guide.National Archives: Revolutionary War service records (PDF)Read the 1836 law itself: 5 Stat. 128 (Library of Congress scan, large PDF; opens at the law's page in most browsers)"
+      },
+      {
+        "law": "Act of July 7, 1838 (5 Stat. 303) — 5-year pensions",
+        "verdict": "Ruled out by the dates",
+        "rule": "Rule: Service as specified in act of June 7, 1832 (at least 6 months, in the Continental Line or State troops, volunteers or militia); marriage after his last period of service ended and before January 1, 1794.No action needed for this law: what you typed already rules it out. If something you typed is wrong, fix it and check again."
+      },
+      {
+        "law": "Act of July 29, 1848 (9 Stat. 265) — life pensions",
+        "verdict": "Still possible: need his kind of service",
+        "rule": "Rule: Marriage before January 2, 1800; he served in the Continental line, State troops, volunteers, militia or the naval service.To settle it, tell us his kind of service (Continental Line, or State troops, volunteers or militia).Not checked here (from the law's own text): It was paid during her widowhood. A widow already receiving a pension could not get a further one under this law.What to do: find out what kind of unit he served in. For state militia, the National Archives says to check the archives of the state where he served; for Continental troops, see its service-records guide.National Archives: Revolutionary War service records (PDF)Read the 1848 law itself: 9 Stat. 265 (Library of Congress scan, large PDF; opens at the law's page in most browsers)"
+      },
+      {
+        "law": "Act of February 3, 1853 (10 Stat. 154)",
+        "verdict": "Ruled out by the dates",
+        "rule": "Rule: Widow of an officer or soldier of the Revolutionary army, married after January 1800.No action needed for this law: what you typed already rules it out. If something you typed is wrong, fix it and check again."
+      },
+      {
+        "law": "Act of February 28, 1855 (10 Stat. 616)",
+        "verdict": "Ruled out by the dates",
+        "rule": "Rule: Widow of a navy officer, marine or mariner of the Revolutionary War, married since January 1, 1800.No action needed for this law: what you typed already rules it out. If something you typed is wrong, fix it and check again."
+      },
+      {
+        "law": "Bounty-land act of March 3, 1855 (10 Stat. 701) — 160 acres",
+        "verdict": "Fits the rules checked here; other terms not checked",
+        "rule": "Rule: At least 14 days of service, or actually in a battle; the law extended to Revolutionary War soldiers, their widows and minor children.Not checked here (from the law's own text): Militia, volunteers or State troops had to have been regularly mustered, with the service paid by the United States. No warrant if the muster rolls show he deserted or was dishonorably discharged. A widow who had married again could still apply if she was a widow when she applied.Read the 1855 bounty-land law itself: 10 Stat. 701 (Library of Congress scan, large PDF; opens at the law's page in most browsers)"
+      },
+      {
+        "law": "Act of March 9, 1878 (20 Stat. 29) — widows' life pensions",
+        "verdict": "Fits the rules checked here; other terms not checked",
+        "rule": "Rule: A widow of a Revolutionary soldier who served at least 14 days or was in any engagement.Not checked here (from the law's own text): Her pension ended if she married again. It didn't apply to anyone already receiving a pension of $8 a month or more.Read the 1878 law itself: 20 Stat. 27 (Library of Congress scan, large PDF; opens at the law's page in most browsers)"
+      }
+    ],
+    "plan": [
+      "Answer one more question Tell us his kind of service (Continental Line, or State troops, volunteers or militia), in the \"What kind of service was it?\" box, then check again. It bears on the 1836 and 1848 laws.",
+      "Look for the widow's pension file Widows' pension files are marked with a W and a file number. A widow's application may give her age, residence, maiden name, the date and place of the marriage, and the date and place of her husband's death, so it can prove a marriage in your line. The files are online free on FamilySearch (login needed). You can also order a copy of a Revolutionary War pension file from the National Archives with its NATF Form 85. National Archives: Revolutionary War pension and bounty-land files (free on FamilySearch with login) National Archives: order a copy of a pension file (NATF Form 85) Guide: How to Read a Revolutionary War Pension File",
+      "Prove each generation back to the patriot Use the free worksheet: record the patriot and his service, then the records you have for each person, and get a list of what is still missing and where to look. Lineage Evidence Matrix (free worksheet on this site) Guide: The Patriot Lineage Proof Roadmap",
+      "Contact a local chapter's registrar The registrar is the chapter member who helps people with their applications. For DAR, the Chapter Locator finds chapters in your area, and the Membership Interest Form connects you to one. For SAR, your sponsor is often the local chapter registrar; pick your state on SAR's contact page. DAR Chapter Locator (find a DAR chapter near you) DAR: How to Join SAR: Apply in 4 Easy Steps SAR: Find Your Local Society Contact (pick your state)",
+      "Start the application with that person's help A DAR member, or your SAR sponsor, helps guide you through the application. Bring your printed plan and copies of your records. Only the society decides what is proven. Guide: The Patriot Lineage Proof Roadmap Guide: Application Returned?"
+    ]
+  },
+  "worksheet": {
+    "patriot": {
+      "name": "John (made up)",
+      "state": "VA",
+      "unit": "Culpeper County militia (made up)",
+      "kind": "militia",
+      "start": "1777-05",
+      "end": "1779-10",
+      "gen": "5"
+    },
+    "dateCheck": "Dates fit DAR's period for this service (not a ruling)His dates fall inside the period DAR accepts for this type of service. This is not a ruling: your society decides.Period checked: General Revolutionary War service period (DAR)His service end date can feed the widow-pension check.",
+    "generations": [
+      {
+        "gen": "1",
+        "who": "Example: Jane (made up)",
+        "born": "1948"
+      },
+      {
+        "gen": "2",
+        "who": "Example: Robert (made up)",
+        "born": "1915",
+        "died": "1990"
+      },
+      {
+        "gen": "3",
+        "who": "Example: William (made up)",
+        "born": "1878",
+        "died": "1940"
+      },
+      {
+        "gen": "4",
+        "who": "Example: Thomas (made up)",
+        "born": "1810",
+        "died": "1880"
+      },
+      {
+        "gen": "5",
+        "who": "Example: John, the patriot (made up)",
+        "born": "1755",
+        "died": "1838"
+      }
+    ],
+    "gaps": [
+      "No death evidence entered yet. + Add a death record Where to look: A, B",
+      "Parent–child link record. 1850–1870 census records do not state relationships; NSCDA treats them as supporting documentation only. Where to look: C",
+      "No birth evidence entered yet. + Add a birth record Where to look: D, E, F",
+      "No record yet that links this person to the next generation in your line. + Add a record that links them Where to look: C, F",
+      "Add at least one birth or death record. + Add a birth or death record Where to look: G, H, I, J, F",
+      "Add at least one birth or death record. + Add a birth or death record Where to look: G, H, I"
+    ],
+    "where": [
+      "A. Look for a death certificate. DAR: the most common record types for proving a line Our guide: No Birth Certificate? Substitute Evidence For: Gen 2 death",
+      "B. The Pennsylvania State Archives holds state death certificates for 1906 to 1975, and all certified copies of death records come from the Department of Health's Division of Vital Records. Pennsylvania Department of Health: vital records for genealogy Pennsylvania State Archives: archival birth and death certificates For: Gen 2 death",
+      "C. Look for a long-form birth certificate that names the parents; short forms without the parents' names don't count. The 1880–1900 censuses are also listed as a source. DAR: the most common record types for proving a line Our guide: No Birth Certificate? Substitute Evidence Our guide: From the 1850 Census Back to 1776 For: Gen 2 parent–child link; Gen 3 parent–child link",
+      "D. Look for a long-form birth certificate (the kind that names the parents). No certificate? A baptism or christening record can stand in for the birth date. DAR: the most common record types for proving a line Our guide: No Birth Certificate? Substitute Evidence For: Gen 3 birth",
+      "E. Virginia counties and cities kept birth registers from 1853 to 1896. Library of Virginia: birth, marriage and death records (1853 to present) For: Gen 3 birth",
+      "F. Census: NSCDA lists the 1880–1900 censuses as primary sources. For: Gen 3 birth; Gen 3 parent–child link; Gen 4 birth or death",
+      "G. Look for a church baptism record. An age given in a census or at death can be used to estimate a birth year. DAR application help: using baptisms, wills and censuses to date births and deaths National Archives: Revolutionary War pension and bounty-land files (free on FamilySearch with login) National Archives: clues in the 1790–1840 censuses Our guide: No Birth Certificate? Substitute Evidence Our guide: How to Read a Revolutionary War Pension File For: Gen 4 birth or death; Gen 5 birth or death",
+      "H. Virginia had no statewide recording of births before 1853, so there is no state birth record to find for this person. Birth records from before then are rare. How to prove a birth without a birth certificate (our guide) Library of Virginia: birth, marriage and death records (1853 to present) For: Gen 4 birth or death; Gen 5 birth or death",
+      "I. Census: The 1790–1840 censuses named only the head of household and counted everyone else by age group. For: Gen 4 birth or death; Gen 5 birth or death",
+      "J. Census: The 1850–1870 censuses do not state relationships. For: Gen 4 birth or death"
+    ],
+    "plan": [
+      "Prove the patriot's service Where to look, based on his type of service and the state he served for: The National Archives does not hold state militia records; check the archives of the state he served. The 1832 pension law opened pensions to militia service of at least six months, so look for his pension file too. DAR also asks for original records such as pensions, muster rolls and pay vouchers. Virginia: Most Virginians who served did so in the county militia, and the Library of Virginia says few records of militia service exist. Militia officer appointments are often in the county court order books, and many federal pensions after 1832 mention militia service. Payrolls and muster rolls exist for most Continental Line soldiers. SAR does not take family tradition as proof of service. National Archives: Revolutionary War service records (PDF) National Archives: The American Revolution (service records, rolls and pension files) Library of Virginia: Virginia Revolutionary War service records (research guide) Guide: Revolutionary War Records by State",
+      "Check the widow-pension laws for him Widows could apply for pensions from 1836. A widow's application may give her maiden name and the date and place of the marriage, so her file can prove a link in your line. The free checker shows which widow laws fit; it can fill in his service end date from this worksheet. Widow Pension Law Checker (free tool on this site) Guide: How to Read a Revolutionary War Pension File",
+      "Records to find or fix, generation by generation Each item says where to look. Sort out any records you flagged as disagreeing before relying on them. Generation 2: Your parent No death evidence entered yet. Where to look: A, B Parent–child link record. 1850–1870 census records do not state relationships; NSCDA treats them as supporting documentation only. Where to look: C Generation 3: Your grandparent No birth evidence entered yet. Where to look: D, E, F No record yet that links this person to the next generation in your line. Where to look: C, F Generation 4: Your great-grandparent Add at least one birth or death record. Where to look: G, H, I, J, F Generation 5: Your 2nd-great-grandparent (the patriot) Add at least one birth or death record. Where to look: G, H, I",
+      "Contact a local chapter's registrar The registrar is the chapter member who helps people with their applications. For DAR, the Chapter Locator finds chapters in your area, and the Membership Interest Form connects you to one. For SAR, your sponsor is often the local chapter registrar; pick your state on SAR's contact page. DAR Chapter Locator (find a DAR chapter near you) DAR: How to Join SAR: Apply in 4 Easy Steps SAR: Find Your Local Society Contact (pick your state)",
+      "Start the application with that person's help A DAR member, or your SAR sponsor, helps guide you through the application. Bring your printed plan and copies of your records. Only the society decides what is proven. Guide: The Patriot Lineage Proof Roadmap Guide: Application Returned?"
+    ]
+  }
+}
