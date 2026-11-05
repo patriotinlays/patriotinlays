@@ -3,6 +3,7 @@ import { execFileSync } from "node:child_process";
 // every external link is fetched and must return HTTP 200 after redirects. Exits 1 on any broken link.
 import { readFileSync, readdirSync, statSync, existsSync, writeFileSync } from "node:fs";
 import { join, relative } from "node:path";
+import { decideSourceCheck } from "./lib/source-pass.mjs";
 const ROOT = new URL("..", import.meta.url).pathname; const DIST = join(ROOT, "dist");
 const offline = process.argv.includes("--offline");
 const walk = (d) => readdirSync(d).flatMap((f) => { const p = join(d, f); return statSync(p).isDirectory() ? walk(p) : [p]; });
@@ -24,18 +25,29 @@ for (const [f, h] of pages) {
     const hash = u.split("#")[1]; if (hash && !ids.get(target)?.has(hash)) broken.push({ from, link: u, why: "missing anchor in target" });
   }
 }
+const LAST_PASSED_PATH = join(ROOT, "manifest/source-last-passed.json");
+const lastPassedStore = existsSync(LAST_PASSED_PATH) ? JSON.parse(readFileSync(LAST_PASSED_PATH, "utf8")) : { sources: {} };
 const extResults = [];
 if (!offline) for (const [u, froms] of external) {
   let status = 0, err = null;
   for (let attempt = 0; attempt < 2 && status !== 200; attempt++) {
     try { const r = await fetch(u, { redirect: "follow", headers: { "user-agent": "Mozilla/5.0 (patriotinlays link checker)" }, signal: AbortSignal.timeout(45000) }); status = r.status; await r.arrayBuffer(); }
-    catch (e) { err = e.message; }
+    catch (e) { err = e.message; status = status || "error"; }
   }
   // Bot filters (e.g. dar.org's Cloudflare) can reject Node's HTTP client while serving the page to curl; re-check with curl.
   let via = "fetch";
-  if (status === 403 || status === 429) { try { const c = Number(execFileSync("curl", ["-sL", "-o", "/dev/null", "--max-time", "45", "-A", "Mozilla/5.0 (patriotinlays link checker)", "-H", "Accept: text/html", "-w", "%{http_code}", u], { encoding: "utf8" })); if (c === 200) { status = 200; via = "curl"; } } catch { /* keep status */ } }
-  extResults.push({ url: u, status, err, pages: froms.size, via });
-  if (status !== 200) broken.push({ from: [...froms][0], link: u, why: `HTTP ${status || err}` });
+  if (status === 403 || status === 429) { try { const c = Number(execFileSync("curl", ["-sL", "-o", "/dev/null", "--max-time", "45", "-A", "Mozilla/5.0 (patriotinlays link checker)", "-H", "Accept: text/html", "-w", "%{http_code}", u], { encoding: "utf8" })); if (c === 200) { status = 200; via = "curl"; } else if (Number.isFinite(c) && c) status = c; } catch { /* keep status */ } }
+  let fallback = false;
+  if (status !== 200) {
+    const d = decideSourceCheck({ status, errorMessage: err || "", lastPassedAt: lastPassedStore.sources?.[u] || null });
+    if (d.outcome === "fallback") {
+      fallback = true;
+      console.log(`WARN  ${u}: ${d.warning}`);
+    } else {
+      broken.push({ from: [...froms][0], link: u, why: d.error || `HTTP ${status || err}` });
+    }
+  }
+  extResults.push({ url: u, status, err, pages: froms.size, via, fallback });
 }
 const report = { checkedAt: new Date().toString(), htmlFiles: htmlFiles.length, internalLinks: internal, externalUnique: external.size, external: extResults, broken };
 writeFileSync(join(ROOT, "link-check-report.json"), JSON.stringify(report, null, 2));

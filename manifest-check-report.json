@@ -1,5 +1,5 @@
 {
-  "checkedAt": "Thu Nov 05 2026 10:34:49 GMT-0600 (Central Standard Time)",
+  "checkedAt": "Thu Nov 05 2026 14:49:31 GMT-0600 (Central Standard Time)",
   "dirs": [
     "src/content",
     "src/pages",
@@ -23,7 +23,7 @@
       "unmarked": 0
     },
     "src/content/lineage-matrix.md": {
-      "units": 62,
+      "units": 63,
       "marked": 27,
       "unmarked": 0
     },
@@ -63,7 +63,7 @@
       "unmarked": 0
     },
     "src/content/widow-pension-checker.md": {
-      "units": 84,
+      "units": 85,
       "marked": 49,
       "unmarked": 0
     },
@@ -93,8 +93,8 @@
       "unmarked": 0
     },
     "src/partials/glossary.md": {
-      "units": 23,
-      "marked": 19,
+      "units": 26,
+      "marked": 22,
       "unmarked": 0
     },
     "src/partials/home.md": {
@@ -123,10 +123,10 @@
       "unmarked": 0
     }
   },
-  "sentences": 863,
-  "markedSentences": 459,
-  "manifestClaims": 352,
-  "referencedClaims": 352,
+  "sentences": 868,
+  "markedSentences": 462,
+  "manifestClaims": 374,
+  "referencedClaims": 374,
   "links": [
     {
       "url": "https://www.dar.org/national-society/accepted-revolutionary-war-service",
@@ -136,15 +136,21 @@
     },
     {
       "url": "https://membership.dar.org/NSDAR/AppFormz/App_Help_Step_By_Step_1.aspx",
-      "status": 200,
-      "quotesFound": 28,
-      "quotesMissing": 0
+      "status": 403,
+      "quotesFound": "-",
+      "quotesMissing": "-",
+      "fallback": true,
+      "lastPassed": "2026-11-05T16:34:49.000Z",
+      "failureKind": "http_403"
     },
     {
       "url": "https://membership.dar.org/NSDAR/AppFormz/FAQs.aspx",
-      "status": 200,
-      "quotesFound": 13,
-      "quotesMissing": 0
+      "status": 403,
+      "quotesFound": "-",
+      "quotesMissing": "-",
+      "fallback": true,
+      "lastPassed": "2026-11-05T16:34:49.000Z",
+      "failureKind": "http_403"
     },
     {
       "url": "https://blog.dar.org/2021/02/26/why-was-his-service-removed",
@@ -154,9 +160,12 @@
     },
     {
       "url": "https://services.dar.org/Public/DAR_Research/search_revwar/?Tab_ID=14&Tab_ID_Sub=0&action=list",
-      "status": 200,
-      "quotesFound": 4,
-      "quotesMissing": 0
+      "status": 503,
+      "quotesFound": "-",
+      "quotesMissing": "-",
+      "fallback": true,
+      "lastPassed": "2026-11-05T16:34:49.000Z",
+      "failureKind": "http_503"
     },
     {
       "url": "https://www.sar.org/step-1/",
@@ -445,15 +454,45 @@
       "status": 200,
       "quotesFound": 2,
       "quotesMissing": 0
+    },
+    {
+      "url": "https://www.georgiaarchives.org/research/bounty_land_grants/",
+      "status": 200,
+      "quotesFound": 6,
+      "quotesMissing": 0
+    },
+    {
+      "url": "https://www.nhsl.dncr.nh.gov/collections/genealogical-resources/researching-your-nh-family-history",
+      "status": 200,
+      "quotesFound": 4,
+      "quotesMissing": 0
+    },
+    {
+      "url": "https://www.sos.ri.gov/divisions/state-archives/VitalRecords",
+      "status": 200,
+      "quotesFound": 4,
+      "quotesMissing": 0
+    },
+    {
+      "url": "https://archives.delaware.gov/digital-archives/military-records-revolutionary-war-oaths-of-allegiance/",
+      "status": 200,
+      "quotesFound": 3,
+      "quotesMissing": 0
+    },
+    {
+      "url": "https://archives.delaware.gov/digital-archives/guide-to-vital-statistics-records/",
+      "status": 200,
+      "quotesFound": 5,
+      "quotesMissing": 0
     }
   ],
   "errors": [],
   "warnings": [
     "https://www.dar.org/national-society/accepted-revolutionary-war-service: Node fetch got 403/429; verified with curl instead",
-    "https://membership.dar.org/NSDAR/AppFormz/App_Help_Step_By_Step_1.aspx: Node fetch got 403/429; verified with curl instead",
-    "https://membership.dar.org/NSDAR/AppFormz/FAQs.aspx: Node fetch got 403/429; verified with curl instead",
+    "https://membership.dar.org/NSDAR/AppFormz/App_Help_Step_By_Step_1.aspx: FALLBACK: unreachable source accepted on last successful check under 30 days. URL failure=http_403; lastPassed=2026-11-05T16:34:49.000Z; ageDays=0.18. Re-check required on every run.",
+    "https://membership.dar.org/NSDAR/AppFormz/FAQs.aspx: FALLBACK: unreachable source accepted on last successful check under 30 days. URL failure=http_403; lastPassed=2026-11-05T16:34:49.000Z; ageDays=0.18. Re-check required on every run.",
     "https://blog.dar.org/2021/02/26/why-was-his-service-removed: Node fetch got 403/429; verified with curl instead",
-    "https://services.dar.org/Public/DAR_Research/search_revwar/?Tab_ID=14&Tab_ID_Sub=0&action=list: Node fetch got 403/429; verified with curl instead",
+    "https://services.dar.org/Public/DAR_Research/search_revwar/?Tab_ID=14&Tab_ID_Sub=0&action=list: FALLBACK: unreachable source accepted on last successful check under 30 days. URL failure=http_503; lastPassed=2026-11-05T16:34:49.000Z; ageDays=0.18. Re-check required on every run.",
     "https://www.dar.org/discover/become-member/chapter-locator: Node fetch got 403/429; verified with curl instead",
     "https://www.dar.org/discover/become-member/how-join: Node fetch got 403/429; verified with curl instead",
     "https://www.dar.org/discover/become-member/what-dar: Node fetch got 403/429; verified with curl instead"

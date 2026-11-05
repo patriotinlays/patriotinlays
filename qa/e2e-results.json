@@ -1,8 +1,8 @@
 {
-  "ranAt": "Thu Nov 05 2026 10:32:12 GMT-0600 (Central Standard Time)",
+  "ranAt": "Thu Nov 05 2026 14:50:43 GMT-0600 (Central Standard Time)",
   "browser": "/usr/bin/google-chrome (headless) via playwright-core 1.64.1",
-  "passed": 143,
-  "total": 143,
+  "passed": 144,
+  "total": 144,
   "exampleReportPages": {
     "summaryPages": 2,
     "fullPages": 3,
@@ -18,7 +18,7 @@
     "sub": "Plain-English help with DAR and SAR applications, for the Daughters and the Sons of the American Revolution",
     "ai": "Written with AI assistance and reviewed by the site's owner. Each fact is tied to a quoted official source, and software checks that the quote is still there.",
     "beforeStart": true,
-    "words": 1290
+    "words": 1312
   },
   "results": [
     {
@@ -60,6 +60,11 @@
       "name": "Widow checker: 'How this works' says it doesn't search records and nothing leaves the device",
       "ok": true,
       "detail": "How this works. This checker does not search any records or databases. You type the marriage date and what you know about his service. It tests them against the"
+    },
+    {
+      "name": "Dates: month or day chosen with the year blank shows the 4-digit-year message",
+      "ok": true,
+      "detail": "{\"hidden\":false,\"text\":\"Check this date: type the year as 4 digits, for example 1780.\"}"
     },
     {
       "name": "Widow checker: before any check, 'What to do next' shows only a labelled placeholder, not a generic plan (audit 3)",
@@ -554,7 +559,7 @@
     {
       "name": "Home (Nov 5 lock): subtitle names DAR and SAR; mission in flowing paragraphs (no lists) ahead of 'Ready to get started?'; purpose line, both tool names, one-sentence privacy",
       "ok": true,
-      "detail": "{\"ps\":7,\"lists\":0,\"text\":\"This site helps you organize the records that connect you to a Revolutionary War\",\"sub\":\"Plain-English help with DAR and SAR applications, for the Daughters and the Sons of the American Revolution\",\"ai\":\"Written with AI assistance and reviewed by the site's owner. Each fact is tied to a quoted official source, and software checks that the quote is still there.\",\"beforeStart\":true,\"words\":1290}"
+      "detail": "{\"ps\":7,\"lists\":0,\"text\":\"This site helps you organize the records that connect you to a Revolutionary War\",\"sub\":\"Plain-English help with DAR and SAR applications, for the Daughters and the Sons of the American Revolution\",\"ai\":\"Written with AI assistance and reviewed by the site's owner. Each fact is tied to a quoted official source, and software checks that the quote is still there.\",\"beforeStart\":true,\"words\":1312}"
     },
     {
       "name": "Home (Nov 5 lock): the exact AI line, the exact SAR line (sourced), no unsourced 'most people get stuck' / 'give up' / guarantee lines",

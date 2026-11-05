@@ -33,7 +33,7 @@ export function dateField(opts) {
   const update = (fire = true) => {
     const p = parts(), bad = dateProblem(p);
     hidden.value = bad ? "" : encodeDate(p);
-    err.hidden = !bad || (!p.year && !p.day) ; err.textContent = bad ? `Check this date: ${bad}` : "";
+    err.hidden = !bad || (!p.year && !p.day && !p.month); err.textContent = bad ? `Check this date: ${bad}` : "";
     const words = !bad && p.year ? rangeWords(hidden.value) : "";
     range.replaceChildren(...[words, p.cert === "about" && p.year ? `With "About", the day is ignored. ${ABOUT_NOTE}` : ""].filter(Boolean).map((t) => el("span", { text: `${t} ` })));
     fs.classList.toggle("has-error", !!bad && !err.hidden);

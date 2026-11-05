@@ -3,13 +3,14 @@
 //  2. a marker or a tool rule references a claim_id missing from the manifest     (unmanifested claim)
 //  3. a referenced claim is not verification_status: "verified"                   (unverified claim)
 //  4. a manifest entry is missing required fields or is older than MAX_AGE_DAYS   (stale/incomplete)
-//  5. with --links: a source URL is not HTTP 200, or its quote_excerpt is not found in the live source.
+//  5. with --links: live-check every source URL; 404/410 and quote mismatches always fail; 403/5xx/timeouts/certificate errors may use a last-pass under 30 days (loud warning).
 // Policy (non-negotiable accuracy rule): a claim that cannot pass this gate is omitted from the site, never shipped.
 import { readFileSync, readdirSync, existsSync, writeFileSync, mkdtempSync } from "node:fs";
 import { join, resolve } from "node:path";
 import { execFileSync } from "node:child_process";
 import { tmpdir } from "node:os";
 import { norm, normJoin, stripHtml } from "./lib/normalize.mjs";
+import { decideSourceCheck } from "./lib/source-pass.mjs";
 
 const args = process.argv.slice(2);
 const LINKS = args.includes("--links");
@@ -81,13 +82,17 @@ for (const t of readdirSync(join(ROOT, "src/tools")).filter((f) => f.endsWith(".
 }
 for (const id of byId.keys()) if (!referenced.has(id)) warnings.push(`manifest ${id}: not referenced by any page or tool`);
 
-// Live source verification.
+// Live source verification, with the Tim-approved 30-day unreachable fallback (see scripts/lib/source-pass.mjs).
+const LAST_PASSED_PATH = join(ROOT, "manifest/source-last-passed.json");
+const lastPassedStore = existsSync(LAST_PASSED_PATH) ? JSON.parse(readFileSync(LAST_PASSED_PATH, "utf8")) : { schema_version: 1, sources: {} };
+if (!lastPassedStore.sources) lastPassedStore.sources = {};
+let lastPassedDirty = false;
 const linkReport = [];
 if (LINKS) {
   const urls = [...new Set(manifest.claims.map((c) => c.source_url))];
   const tmp = mkdtempSync(join(tmpdir(), "manifest-"));
   for (const u of urls) {
-    let status = 0, body = "", type = "", altHays = [];
+    let status = 0, body = "", type = "", altHays = [], fetchError = "";
     try {
       // Large statute scans (up to ~90 MB) can be slow: allow 5 minutes per try and retry twice before failing.
       let r, buf = null;
@@ -104,28 +109,51 @@ if (LINKS) {
           if (/tile\.loc\.gov/.test(u)) { const raw = execFileSync("pdftotext", ["-raw", p, "-"], { encoding: "utf8", maxBuffer: 256e6 }); altHays = [normJoin(raw), norm(raw), normJoin(body)]; } }
         catch { body = null; warnings.push(`${u}: PDF fetched but pdftotext unavailable — quote check skipped`); }
       } else body = await r.text();
-    } catch (e) { errors.push(`${u}: fetch failed (${e.message})`); linkReport.push({ url: u, status: "error" }); continue; }
+    } catch (e) {
+      fetchError = e.message || String(e);
+      status = "error";
+    }
     // Some sites' bot filters (e.g. dar.org's Cloudflare) reject Node's HTTP client but serve the same public page to curl.
-    // Re-read the page with curl and still quote-check it; a non-200 from curl still fails the build.
+    // Re-read the page with curl and still quote-check it; a non-200 from curl still fails unless the 30-day fallback applies.
     if ((status === 403 || status === 429) && !type.includes("pdf")) {
       try { const out = execFileSync("curl", ["-sL", "--max-time", "45", "-A", "Mozilla/5.0 (patriotinlays manifest checker)", "-H", "Accept: text/html", "-w", "\n%{http_code}", u], { encoding: "utf8", maxBuffer: 64e6 });
         const i = out.lastIndexOf("\n"); status = Number(out.slice(i + 1)); body = out.slice(0, i); if (status === 200) warnings.push(`${u}: Node fetch got 403/429; verified with curl instead`); } catch { /* keep original status */ }
     }
-    if (status !== 200) { errors.push(`${u}: HTTP ${status}`); linkReport.push({ url: u, status }); continue; }
+    if (status !== 200) {
+      const d = decideSourceCheck({ status, errorMessage: fetchError, lastPassedAt: lastPassedStore.sources[u] || null });
+      if (d.outcome === "fallback") {
+        warnings.push(`${u}: ${d.warning}`);
+        linkReport.push({ url: u, status, quotesFound: "-", quotesMissing: "-", fallback: true, lastPassed: d.lastPassedAt, failureKind: d.failureKind });
+        continue;
+      }
+      errors.push(`${u}: ${d.error || (`HTTP ${status}` + (fetchError ? ` (${fetchError})` : ""))}`);
+      linkReport.push({ url: u, status, fallback: false, failureKind: d.failureKind || null });
+      continue;
+    }
     const hay = body == null ? null : norm(type.includes("pdf") ? body : stripHtml(body));
     let found = 0, missing = 0;
     for (const c of manifest.claims.filter((c) => c.source_url === u)) {
       if (hay == null) continue;
       if (hay.includes(norm(c.quote_excerpt)) || altHays.some((h) => h.includes(norm(c.quote_excerpt)))) found++; else { missing++; errors.push(`${c.claim_id}: quote_excerpt not found in live source ${u}`); }
     }
+    if (missing > 0) {
+      // Quote mismatches always block; do not refresh last-passed.
+      linkReport.push({ url: u, status, quotesFound: found, quotesMissing: missing, fallback: false, failureKind: "quote_mismatch" });
+      continue;
+    }
+    if (hay != null) {
+      lastPassedStore.sources[u] = new Date().toISOString();
+      lastPassedDirty = true;
+    }
     linkReport.push({ url: u, status, quotesFound: found, quotesMissing: missing });
   }
+  if (lastPassedDirty) writeFileSync(LAST_PASSED_PATH, JSON.stringify({ schema_version: 1, note: lastPassedStore.note || "Per-source last successful live quote check (ISO 8601 UTC).", sources: lastPassedStore.sources }, null, 2) + "\n");
 }
 
 const summary = { checkedAt: new Date().toString(), dirs, files: files.length, perFile, sentences, markedSentences: marked, manifestClaims: byId.size, referencedClaims: referenced.size, links: LINKS ? linkReport : "not run (use --links)", errors, warnings };
 if (!args.includes("--content")) writeFileSync(join(ROOT, "manifest-check-report.json"), JSON.stringify(summary, null, 2));
 console.log(`Source Manifest gate: ${files.length} page(s), ${sentences} sentence(s), ${marked} with claim markers; ${byId.size} manifest claims, ${referenced.size} referenced.`);
-if (LINKS) for (const l of linkReport) console.log(`  link ${l.status}  quotes found ${l.quotesFound ?? "-"} / missing ${l.quotesMissing ?? "-"}  ${l.url}`);
+if (LINKS) for (const l of linkReport) console.log(`  link ${l.status}${l.fallback ? " FALLBACK" : ""}  quotes found ${l.quotesFound ?? "-"} / missing ${l.quotesMissing ?? "-"}  ${l.url}`);
 warnings.forEach((w) => console.log("WARN  " + w));
 errors.forEach((e) => console.log("ERROR " + e));
 console.log(errors.length ? `FAILED with ${errors.length} error(s). Unverifiable claims must be omitted.` : "PASSED: every factual claim maps to a verified manifest entry.");

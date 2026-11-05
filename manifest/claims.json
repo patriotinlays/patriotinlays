@@ -19,6 +19,7 @@
         "lineage-proof-roadmap",
         "patriotic-service",
         "tool:tool-a.js",
+        "walkthroughs",
         "widow-pension-checker"
       ],
       "notes": ""
@@ -223,7 +224,9 @@
       "verification_status": "verified",
       "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
       "used_on": [
+        "faq",
         "lineage-matrix",
+        "partial:home",
         "patriotic-service",
         "tool:patriot.js"
       ],
@@ -327,6 +330,7 @@
       "verification_status": "verified",
       "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
       "used_on": [
+        "faq",
         "lineage-matrix",
         "lineage-proof-roadmap",
         "substitute-evidence",
@@ -347,6 +351,7 @@
       "verification_status": "verified",
       "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
       "used_on": [
+        "faq",
         "lineage-matrix",
         "lineage-proof-roadmap",
         "substitute-evidence"
@@ -369,6 +374,7 @@
         "application-problems",
         "lineage-matrix",
         "lineage-proof-roadmap",
+        "partial:home",
         "tool:tool-a.js",
         "tool:tool-b.js"
       ],
@@ -389,7 +395,8 @@
       "used_on": [
         "lineage-matrix",
         "lineage-proof-roadmap",
-        "tool:tool-b.js"
+        "tool:tool-b.js",
+        "walkthroughs"
       ],
       "notes": ""
     },
@@ -408,7 +415,8 @@
       "used_on": [
         "lineage-matrix",
         "lineage-proof-roadmap",
-        "tool:tool-b.js"
+        "tool:tool-b.js",
+        "walkthroughs"
       ],
       "notes": ""
     },
@@ -792,9 +800,12 @@
       "verification_status": "verified",
       "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
       "used_on": [
+        "faq",
         "lineage-matrix",
+        "partial:home",
         "tool:next-steps.js",
-        "tool:tool-b.js"
+        "tool:tool-b.js",
+        "walkthroughs"
       ],
       "notes": ""
     },
@@ -865,6 +876,7 @@
       "verification_status": "verified",
       "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
       "used_on": [
+        "faq",
         "substitute-evidence"
       ],
       "notes": ""
@@ -939,6 +951,7 @@
       "verification_status": "verified",
       "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
       "used_on": [
+        "faq",
         "lineage-proof-roadmap",
         "tool:tool-b.js"
       ],
@@ -1410,7 +1423,8 @@
       "verification_status": "verified",
       "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
       "used_on": [
-        "lineage-proof-roadmap"
+        "lineage-proof-roadmap",
+        "partial:glossary"
       ],
       "notes": ""
     },
@@ -1444,6 +1458,7 @@
       "verification_status": "verified",
       "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
       "used_on": [
+        "faq",
         "lineage-proof-roadmap",
         "patriot-or-loyalist",
         "patriotic-service",
@@ -2050,6 +2065,7 @@
         "lineage-matrix",
         "tool:patriot.js",
         "tool:tool-a.js",
+        "walkthroughs",
         "widow-pension-checker"
       ],
       "notes": ""
@@ -2067,7 +2083,6 @@
       "verification_status": "verified",
       "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
       "used_on": [
-        "partial:home-lead",
         "read-pension-file",
         "tool:tool-a.js",
         "widow-pension-checker"
@@ -2146,6 +2161,7 @@
       "used_on": [
         "read-pension-file",
         "tool:tool-a.js",
+        "walkthroughs",
         "widow-pension-checker"
       ],
       "notes": ""
@@ -2165,6 +2181,7 @@
       "used_on": [
         "bounty-land-warrants",
         "tool:tool-a.js",
+        "walkthroughs",
         "widow-pension-checker"
       ],
       "notes": ""
@@ -2545,12 +2562,12 @@
       "verification_status": "verified",
       "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
       "used_on": [
-        "partial:home-lead",
         "read-pension-file",
         "substitute-evidence",
         "tool:patriot.js",
         "tool:tool-a.js",
         "tool:tool-b.js",
+        "walkthroughs",
         "widow-pension-checker"
       ],
       "notes": ""
@@ -2695,6 +2712,7 @@
       "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
       "used_on": [
         "lineage-matrix",
+        "partial:home",
         "records-by-state",
         "tool:patriot.js",
         "tool:tool-a.js"
@@ -3008,9 +3026,10 @@
       "used_on": [
         "lineage-matrix",
         "lineage-proof-roadmap",
-        "partial:home-lead",
         "read-pension-file",
-        "tool:tool-a.js"
+        "tool:tool-a.js",
+        "walkthroughs",
+        "widow-pension-checker"
       ],
       "notes": ""
     },
@@ -3080,7 +3099,6 @@
       "verification_status": "verified",
       "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
       "used_on": [
-        "partial:home-lead",
         "tool:patriot.js",
         "widow-pension-checker"
       ],
@@ -3469,6 +3487,7 @@
       "verification_status": "verified",
       "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
       "used_on": [
+        "partial:home",
         "read-pension-file"
       ],
       "notes": ""
@@ -4394,7 +4413,8 @@
       "used_on": [
         "partial:next-steps-lineage",
         "partial:next-steps-widow",
-        "tool:next-steps.js"
+        "tool:next-steps.js",
+        "walkthroughs"
       ],
       "notes": ""
     },
@@ -4445,6 +4465,8 @@
       "verification_status": "verified",
       "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
       "used_on": [
+        "faq",
+        "partial:home",
         "partial:how-to-join",
         "partial:next-steps-lineage",
         "partial:next-steps-widow",
@@ -4465,6 +4487,9 @@
       "verification_status": "verified",
       "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
       "used_on": [
+        "faq",
+        "partial:glossary",
+        "partial:home",
         "partial:how-to-join"
       ],
       "notes": ""
@@ -4483,11 +4508,13 @@
       "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
       "used_on": [
         "partial:glossary",
+        "partial:home",
         "partial:how-to-join",
         "partial:next-steps-lineage",
         "partial:next-steps-widow",
         "partial:tool-terms",
-        "tool:next-steps.js"
+        "tool:next-steps.js",
+        "walkthroughs"
       ],
       "notes": ""
     },
@@ -4504,7 +4531,9 @@
       "verification_status": "verified",
       "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
       "used_on": [
+        "faq",
         "partial:glossary",
+        "partial:home",
         "partial:tool-terms"
       ],
       "notes": ""
@@ -4610,6 +4639,7 @@
       "verification_status": "verified",
       "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
       "used_on": [
+        "faq",
         "lineage-proof-roadmap"
       ],
       "notes": ""
@@ -4810,6 +4840,7 @@
       "verification_status": "verified",
       "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
       "used_on": [
+        "faq",
         "partial:glossary",
         "partial:how-to-join",
         "partial:tool-terms"
@@ -4846,6 +4877,7 @@
       "verification_status": "verified",
       "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
       "used_on": [
+        "faq",
         "partial:glossary",
         "partial:how-to-join"
       ],
@@ -4864,6 +4896,7 @@
       "verification_status": "verified",
       "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
       "used_on": [
+        "faq",
         "partial:glossary",
         "partial:how-to-join",
         "partial:tool-terms"
@@ -4883,7 +4916,9 @@
       "verification_status": "verified",
       "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
       "used_on": [
+        "faq",
         "partial:glossary",
+        "partial:home",
         "partial:how-to-join"
       ],
       "notes": ""
@@ -4925,13 +4960,13 @@
     },
     {
       "claim_id": "nscdama-lineage",
-      "claim_text": "NSCDA's Massachusetts society says membership is based on lineage.",
+      "claim_text": "NSCDA's Massachusetts society says membership is based on lineage and dedication to its mission.",
       "source_url": "https://nscdama.org/membership/",
       "source_title": "NSCDA in the Commonwealth of Massachusetts — Membership",
       "source_type": "official_secondary",
       "archive_identifier": null,
       "last_retrieved": "2026-10-31",
-      "quote_excerpt": "It is based on lineage and dedication to the Society",
+      "quote_excerpt": "It is based on lineage and dedication to the Society's mission",
       "page_ref": null,
       "verification_status": "verified",
       "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
@@ -5041,7 +5076,8 @@
       "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
       "used_on": [
         "lineage-matrix",
-        "tool:places.js"
+        "tool:places.js",
+        "walkthroughs"
       ],
       "notes": ""
     },
@@ -5779,6 +5815,7 @@
       "used_on": [
         "read-pension-file",
         "tool:tool-a.js",
+        "walkthroughs",
         "widow-pension-checker"
       ],
       "notes": ""
@@ -5814,6 +5851,8 @@
       "verification_status": "verified",
       "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
       "used_on": [
+        "lineage-matrix",
+        "tool:patriot.js",
         "tool:tool-a.js",
         "widow-pension-checker"
       ],
@@ -5827,7 +5866,7 @@
       "source_type": "primary",
       "archive_identifier": null,
       "last_retrieved": "2026-10-31",
-      "quote_excerpt": "during such widowhood",
+      "quote_excerpt": "their husbands during such widowhood, of equal amount per annum that their hus",
       "page_ref": "9 Stat. 266",
       "verification_status": "verified",
       "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
@@ -5904,6 +5943,7 @@
       "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
       "used_on": [
         "tool:tool-a.js",
+        "walkthroughs",
         "widow-pension-checker"
       ],
       "notes": ""
@@ -6012,6 +6052,7 @@
       "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
       "used_on": [
         "tool:tool-a.js",
+        "walkthroughs",
         "widow-pension-checker"
       ],
       "notes": ""
@@ -6079,7 +6120,7 @@
       "source_type": "primary",
       "archive_identifier": null,
       "last_retrieved": "2026-11-05",
-      "quote_excerpt": "in the same manner as those who",
+      "quote_excerpt": "shall be entitled to a pension in the same manner as those who were married before that date",
       "page_ref": "10 Stat. 154, sec. 2",
       "verification_status": "verified",
       "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-11-05 CT",
@@ -6102,6 +6143,7 @@
       "verification_status": "verified",
       "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-11-05 CT",
       "used_on": [
+        "tool:patriot.js",
         "tool:tool-a.js",
         "widow-pension-checker"
       ],
@@ -6211,6 +6253,380 @@
       "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-11-05 CT",
       "used_on": [
         "read-pension-file"
+      ],
+      "notes": ""
+    },
+    {
+      "claim_id": "ga-bounty-certificates",
+      "claim_text": "The Georgia Archives says there were three types of certificates of service for bounty-land grants.",
+      "source_url": "https://www.georgiaarchives.org/research/bounty_land_grants/",
+      "source_title": "Georgia Archives — Revolutionary War Bounty Land Grants",
+      "source_type": "official_secondary",
+      "archive_identifier": null,
+      "last_retrieved": "2026-10-31",
+      "quote_excerpt": "There were three types of certificates of service issued",
+      "page_ref": null,
+      "verification_status": "verified",
+      "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
+      "used_on": [
+        "tool:places.js"
+      ],
+      "notes": ""
+    },
+    {
+      "claim_id": "ga-bounty-line",
+      "claim_text": "The Georgia Archives names the Georgia Line (Continental Army) among the service categories for bounty-land grants.",
+      "source_url": "https://www.georgiaarchives.org/research/bounty_land_grants/",
+      "source_title": "Georgia Archives — Revolutionary War Bounty Land Grants",
+      "source_type": "official_secondary",
+      "archive_identifier": null,
+      "last_retrieved": "2026-10-31",
+      "quote_excerpt": "Georgia Line (Continental Army)",
+      "page_ref": null,
+      "verification_status": "verified",
+      "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
+      "used_on": [
+        "tool:places.js"
+      ],
+      "notes": ""
+    },
+    {
+      "claim_id": "ga-bounty-minute",
+      "claim_text": "The Georgia Archives names the Minute Battalion among the service categories for bounty-land grants.",
+      "source_url": "https://www.georgiaarchives.org/research/bounty_land_grants/",
+      "source_title": "Georgia Archives — Revolutionary War Bounty Land Grants",
+      "source_type": "official_secondary",
+      "archive_identifier": null,
+      "last_retrieved": "2026-10-31",
+      "quote_excerpt": "Minute Battalion",
+      "page_ref": null,
+      "verification_status": "verified",
+      "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
+      "used_on": [
+        "tool:places.js"
+      ],
+      "notes": ""
+    },
+    {
+      "claim_id": "ga-bounty-militia",
+      "claim_text": "The Georgia Archives names the Georgia Militia among the service categories for bounty-land grants.",
+      "source_url": "https://www.georgiaarchives.org/research/bounty_land_grants/",
+      "source_title": "Georgia Archives — Revolutionary War Bounty Land Grants",
+      "source_type": "official_secondary",
+      "archive_identifier": null,
+      "last_retrieved": "2026-10-31",
+      "quote_excerpt": "Georgia Militia",
+      "page_ref": null,
+      "verification_status": "verified",
+      "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
+      "used_on": [
+        "tool:places.js"
+      ],
+      "notes": ""
+    },
+    {
+      "claim_id": "ga-bounty-submit",
+      "claim_text": "The applicant had to submit one of the three types of certificate of service.",
+      "source_url": "https://www.georgiaarchives.org/research/bounty_land_grants/",
+      "source_title": "Georgia Archives — Revolutionary War Bounty Land Grants",
+      "source_type": "official_secondary",
+      "archive_identifier": null,
+      "last_retrieved": "2026-10-31",
+      "quote_excerpt": "Applicant must submit one of the three types of certificates of service",
+      "page_ref": null,
+      "verification_status": "verified",
+      "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
+      "used_on": [
+        "tool:places.js"
+      ],
+      "notes": ""
+    },
+    {
+      "claim_id": "ga-bounty-private-acres",
+      "claim_text": "The Georgia Archives says privates received 250 acres, with the amount based on rank.",
+      "source_url": "https://www.georgiaarchives.org/research/bounty_land_grants/",
+      "source_title": "Georgia Archives — Revolutionary War Bounty Land Grants",
+      "source_type": "official_secondary",
+      "archive_identifier": null,
+      "last_retrieved": "2026-10-31",
+      "quote_excerpt": "Amount of grant for soldiers based on rank: Privates received 250 acres",
+      "page_ref": null,
+      "verification_status": "verified",
+      "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
+      "used_on": [
+        "tool:places.js"
+      ],
+      "notes": ""
+    },
+    {
+      "claim_id": "nh-rev-familysearch",
+      "claim_text": "The New Hampshire State Library says Revolutionary War records can be searched at FamilySearch after creating a free account.",
+      "source_url": "https://www.nhsl.dncr.nh.gov/collections/genealogical-resources/researching-your-nh-family-history",
+      "source_title": "New Hampshire State Library — Researching Your NH Family History",
+      "source_type": "official_secondary",
+      "archive_identifier": null,
+      "last_retrieved": "2026-10-31",
+      "quote_excerpt": "Rev War records can be searched at FamilySearch.org after creating a free account",
+      "page_ref": null,
+      "verification_status": "verified",
+      "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
+      "used_on": [
+        "tool:places.js"
+      ],
+      "notes": ""
+    },
+    {
+      "claim_id": "nh-state-papers-rolls",
+      "claim_text": "The State Library describes New Hampshire State and Provincial Papers as including Revolutionary War rolls.",
+      "source_url": "https://www.nhsl.dncr.nh.gov/collections/genealogical-resources/researching-your-nh-family-history",
+      "source_title": "New Hampshire State Library — Researching Your NH Family History",
+      "source_type": "official_secondary",
+      "archive_identifier": null,
+      "last_retrieved": "2026-10-31",
+      "quote_excerpt": "French & Indian War & Rev War rolls",
+      "page_ref": null,
+      "verification_status": "verified",
+      "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
+      "used_on": [
+        "tool:places.js"
+      ],
+      "notes": ""
+    },
+    {
+      "claim_id": "nh-town-reports",
+      "claim_text": "The State Library says most towns published annual lists of births, marriages and deaths in town reports.",
+      "source_url": "https://www.nhsl.dncr.nh.gov/collections/genealogical-resources/researching-your-nh-family-history",
+      "source_title": "New Hampshire State Library — Researching Your NH Family History",
+      "source_type": "official_secondary",
+      "archive_identifier": null,
+      "last_retrieved": "2026-10-31",
+      "quote_excerpt": "Most towns have published an annual list of births, marriages, and deaths in the reports",
+      "page_ref": null,
+      "verification_status": "verified",
+      "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
+      "used_on": [
+        "tool:places.js"
+      ],
+      "notes": ""
+    },
+    {
+      "claim_id": "nh-town-after-1937",
+      "claim_text": "The State Library says inclusion of those vital statistics in town reports was up to the town after 1937.",
+      "source_url": "https://www.nhsl.dncr.nh.gov/collections/genealogical-resources/researching-your-nh-family-history",
+      "source_title": "New Hampshire State Library — Researching Your NH Family History",
+      "source_type": "official_secondary",
+      "archive_identifier": null,
+      "last_retrieved": "2026-10-31",
+      "quote_excerpt": "After 1937, it was up to the town to include them or not",
+      "page_ref": null,
+      "verification_status": "verified",
+      "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
+      "used_on": [
+        "tool:places.js"
+      ],
+      "notes": ""
+    },
+    {
+      "claim_id": "ri-vital-certify",
+      "claim_text": "The Rhode Island State Archives can certify open state birth and marriage records from 1853-1925.",
+      "source_url": "https://www.sos.ri.gov/divisions/state-archives/VitalRecords",
+      "source_title": "Rhode Island State Archives — State Vital Records",
+      "source_type": "official_secondary",
+      "archive_identifier": null,
+      "last_retrieved": "2026-10-31",
+      "quote_excerpt": "The State Archives can certify all open state vital records for births and marriages from 1853-1925",
+      "page_ref": null,
+      "verification_status": "verified",
+      "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
+      "used_on": [
+        "tool:places.js"
+      ],
+      "notes": ""
+    },
+    {
+      "claim_id": "ri-vital-closed-health",
+      "claim_text": "Rhode Island directs requests for closed vital records to the Department of Health.",
+      "source_url": "https://www.sos.ri.gov/divisions/state-archives/VitalRecords",
+      "source_title": "Rhode Island State Archives — State Vital Records",
+      "source_type": "official_secondary",
+      "archive_identifier": null,
+      "last_retrieved": "2026-10-31",
+      "quote_excerpt": "Requests for closed vital records should be directed to the following repository: Rhode Island Department of Health",
+      "page_ref": null,
+      "verification_status": "verified",
+      "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
+      "used_on": [
+        "tool:places.js"
+      ],
+      "notes": ""
+    },
+    {
+      "claim_id": "ri-vital-deaths",
+      "claim_text": "The State Archives can certify open state death records from 1853-1975.",
+      "source_url": "https://www.sos.ri.gov/divisions/state-archives/VitalRecords",
+      "source_title": "Rhode Island State Archives — State Vital Records",
+      "source_type": "official_secondary",
+      "archive_identifier": null,
+      "last_retrieved": "2026-10-31",
+      "quote_excerpt": "deaths from 1853-1975",
+      "page_ref": null,
+      "verification_status": "verified",
+      "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
+      "used_on": [
+        "tool:places.js"
+      ],
+      "notes": ""
+    },
+    {
+      "claim_id": "ri-vital-pre1853",
+      "claim_text": "The State Archives has microfilm copies of vital records before 1853.",
+      "source_url": "https://www.sos.ri.gov/divisions/state-archives/VitalRecords",
+      "source_title": "Rhode Island State Archives — State Vital Records",
+      "source_type": "official_secondary",
+      "archive_identifier": null,
+      "last_retrieved": "2026-10-31",
+      "quote_excerpt": "Microfilm copies of records prior to 1853 are available at the State Archives",
+      "page_ref": null,
+      "verification_status": "verified",
+      "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
+      "used_on": [
+        "tool:places.js"
+      ],
+      "notes": ""
+    },
+    {
+      "claim_id": "de-oath-series",
+      "claim_text": "The Delaware Public Archives holds oaths of allegiance or declarations of fidelity sworn to the United States or Delaware.",
+      "source_url": "https://archives.delaware.gov/digital-archives/military-records-revolutionary-war-oaths-of-allegiance/",
+      "source_title": "Delaware Public Archives — Revolutionary War Oaths of Allegiance",
+      "source_type": "official_secondary",
+      "archive_identifier": null,
+      "last_retrieved": "2026-10-31",
+      "quote_excerpt": "This series contains Oaths of Allegiance or declarations of fidelity sworn to the United States or the State of Delaware",
+      "page_ref": null,
+      "verification_status": "verified",
+      "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
+      "used_on": [
+        "tool:places.js"
+      ],
+      "notes": ""
+    },
+    {
+      "claim_id": "de-oath-dates",
+      "claim_text": "The Delaware oath series covers oaths sworn between 1777 and 1784.",
+      "source_url": "https://archives.delaware.gov/digital-archives/military-records-revolutionary-war-oaths-of-allegiance/",
+      "source_title": "Delaware Public Archives — Revolutionary War Oaths of Allegiance",
+      "source_type": "official_secondary",
+      "archive_identifier": null,
+      "last_retrieved": "2026-10-31",
+      "quote_excerpt": "sworn to the United States or the State of Delaware between 1777 and 1784",
+      "page_ref": null,
+      "verification_status": "verified",
+      "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
+      "used_on": [
+        "tool:places.js"
+      ],
+      "notes": ""
+    },
+    {
+      "claim_id": "de-oath-contents",
+      "claim_text": "The Delaware oath documents show the oath and who administered it.",
+      "source_url": "https://archives.delaware.gov/digital-archives/military-records-revolutionary-war-oaths-of-allegiance/",
+      "source_title": "Delaware Public Archives — Revolutionary War Oaths of Allegiance",
+      "source_type": "official_secondary",
+      "archive_identifier": null,
+      "last_retrieved": "2026-10-31",
+      "quote_excerpt": "The documents show the oath taken, the name of the person administering the oath",
+      "page_ref": null,
+      "verification_status": "verified",
+      "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
+      "used_on": [
+        "tool:places.js"
+      ],
+      "notes": ""
+    },
+    {
+      "claim_id": "de-vital-public",
+      "claim_text": "The Delaware Public Archives holds only vital records that have become public.",
+      "source_url": "https://archives.delaware.gov/digital-archives/guide-to-vital-statistics-records/",
+      "source_title": "Delaware Public Archives — Guide to Vital Statistics Records",
+      "source_type": "official_secondary",
+      "archive_identifier": null,
+      "last_retrieved": "2026-10-31",
+      "quote_excerpt": "are only those which have become public (records)",
+      "page_ref": null,
+      "verification_status": "verified",
+      "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
+      "used_on": [
+        "tool:places.js"
+      ],
+      "notes": ""
+    },
+    {
+      "claim_id": "de-vital-birth-72",
+      "claim_text": "Delaware birth records become public at 72 years old.",
+      "source_url": "https://archives.delaware.gov/digital-archives/guide-to-vital-statistics-records/",
+      "source_title": "Delaware Public Archives — Guide to Vital Statistics Records",
+      "source_type": "official_secondary",
+      "archive_identifier": null,
+      "last_retrieved": "2026-10-31",
+      "quote_excerpt": "once a birth record reaches 72 years of age",
+      "page_ref": null,
+      "verification_status": "verified",
+      "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
+      "used_on": [
+        "tool:places.js"
+      ],
+      "notes": ""
+    },
+    {
+      "claim_id": "de-vital-marriage-death-ages",
+      "claim_text": "Delaware marriage records become public at 50 years and death records at 40 years.",
+      "source_url": "https://archives.delaware.gov/digital-archives/guide-to-vital-statistics-records/",
+      "source_title": "Delaware Public Archives — Guide to Vital Statistics Records",
+      "source_type": "official_secondary",
+      "archive_identifier": null,
+      "last_retrieved": "2026-10-31",
+      "quote_excerpt": "marriage records 50 years of age, and death records 40 years of age",
+      "page_ref": null,
+      "verification_status": "verified",
+      "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
+      "used_on": [
+        "tool:places.js"
+      ],
+      "notes": ""
+    },
+    {
+      "claim_id": "de-vital-1913",
+      "claim_text": "Delaware law has required recording of births, deaths and marriages since 1913.",
+      "source_url": "https://archives.delaware.gov/digital-archives/guide-to-vital-statistics-records/",
+      "source_title": "Delaware Public Archives — Guide to Vital Statistics Records",
+      "source_type": "official_secondary",
+      "archive_identifier": null,
+      "last_retrieved": "2026-10-31",
+      "quote_excerpt": "since 1913, state law has required the recording of these vital records",
+      "page_ref": null,
+      "verification_status": "verified",
+      "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
+      "used_on": [
+        "tool:places.js"
+      ],
+      "notes": ""
+    },
+    {
+      "claim_id": "de-vital-recorders",
+      "claim_text": "Before 1913, each Delaware county recorder of deeds recorded births, marriages and deaths.",
+      "source_url": "https://archives.delaware.gov/digital-archives/guide-to-vital-statistics-records/",
+      "source_title": "Delaware Public Archives — Guide to Vital Statistics Records",
+      "source_type": "official_secondary",
+      "archive_identifier": null,
+      "last_retrieved": "2026-10-31",
+      "quote_excerpt": "prior to 1913, it was the duty of each county's recorder of deeds to record the births, marriages, and deaths of the state",
+      "page_ref": null,
+      "verification_status": "verified",
+      "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
+      "used_on": [
+        "tool:places.js"
       ],
       "notes": ""
     }

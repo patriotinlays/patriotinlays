@@ -69,6 +69,10 @@ check("Widow checker page: the intro answers the 7 questions (what, who, problem
 check("Widow checker page: the standalone service-date form is gone", (await page.$$("form[data-form=window], #ta-start")).length === 0);
 const howA = await page.textContent('[data-tool="widow"] .howto');
 check("Widow checker: 'How this works' says it doesn't search records and nothing leaves the device", /does not search any records/.test(howA) && /Nothing you type leaves your device/.test(howA), howA.slice(0, 160));
+await page.selectOption("#tw-m-month", "5"); await page.fill("#tw-m-day", "4");
+{ const yr = await page.evaluate(() => { const e = document.querySelector("#tw-m [data-date-error]"); return { hidden: e.hidden, text: e.textContent }; });
+  check("Dates: month or day chosen with the year blank shows the 4-digit-year message", !yr.hidden && /type the year as 4 digits/.test(yr.text), JSON.stringify(yr)); }
+await page.selectOption("#tw-m-month", ""); await page.fill("#tw-m-day", "");
 check("Widow checker: before any check, 'What to do next' shows only a labelled placeholder, not a generic plan (audit 3)", /appear here after you press/.test(await page.textContent('[data-tool="widow"] [data-plan]')) && (await page.$$('[data-tool="widow"] [data-plan] .plan-steps')).length === 0);
 await fillDate(page, "tw-m", "1780-05-01"); await fillDate(page, "tw-e", "1781-10-19"); await page.fill("#tw-mo", "24"); await page.fill("#tw-d", "730"); await page.click('form[data-form=widow] button[type=submit]');
 let txt = await page.textContent('[data-out=widow]');
@@ -396,7 +400,7 @@ const homeOrder = await page.evaluate(() => [...document.querySelectorAll("main 
     && /organize the records that connect you to a Revolutionary War patriot/.test(hm.text) && /Widow Pension Law Checker/.test(hm.text) && /Lineage Evidence Matrix/.test(hm.text) && /what you type into the tools stays in your own browser\./.test(hm.text), JSON.stringify({ ...hm, text: hm.text.slice(0, 80) }));
   check("Home (Nov 5 lock): the exact AI line, the exact SAR line (sourced), no unsourced 'most people get stuck' / 'give up' / guarantee lines", hm.ai === "Written with AI assistance and reviewed by the site's owner. Each fact is tied to a quoted official source, and software checks that the quote is still there."
     && /SAR's local sponsor, often the chapter registrar, can guide you through the application\./.test(hm.text) && !/most people get stuck|give up|so that doesn't happen to you|make sure you walk/i.test(hm.text) && !/No person reviews/i.test(await page.textContent("main")), hm.ai); }
-const firstLinks = await page.$$eval("main a", (as) => as.map((a) => a.getAttribute("href")).filter((h) => !h.startsWith("#src-")).slice(0, 3));
+const firstLinks = await page.$$eval("main a", (as) => as.filter((a) => !a.closest(".home-tool-choice")).map((a) => a.getAttribute("href")).filter((h) => !h.startsWith("#src-")).slice(0, 3));
 check("Home: the first links (after source notes) are the worksheet, the widow checker and the Roadmap guide", firstLinks[0] === "/tools/lineage-matrix/" && firstLinks[1] === "/tools/widow-pension-checker/" && firstLinks[2] === "/guides/lineage-proof-roadmap/", firstLinks.join(" "));
 const navLinks = await page.$$eval("header.site nav a", (as) => as.map((a) => [a.getAttribute("href"), a.textContent]));
 check("Navigation: 'Start here' (the Roadmap) comes first, then the widow-pension check", navLinks[0][0] === "/guides/lineage-proof-roadmap/" && navLinks[0][1] === "Start here" && navLinks[1][0] === "/tools/widow-pension-checker/", navLinks.map((x) => x[1]).join(" | "));

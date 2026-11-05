@@ -6,6 +6,8 @@ tool: lineage-matrix
 ---
 # Lineage Evidence Matrix
 
+[Skip to the tool](#tb-h)
+
 **What it is.** A free worksheet for proving your line back to a Revolutionary War patriot, one generation at a time. It does not search any records; it organizes the ones you have and tells you what's still missing.
 
 **Who it helps.** Anyone preparing a DAR or SAR application, whether you're starting with nothing but a family story or already have a folder of certificates. Experienced researchers can use it as a quick checklist.
@@ -60,7 +62,7 @@ Every missing item comes with a "Where to look" note. Type a rough birth year (a
 
 - It lists only the censuses taken in that person's lifetime. The 1790–1840 censuses named only the head of household [[claim:nara-census-head]], the 1850–1870 censuses do not state relationships [[claim:nscda-census-1850-1870]], and the 1840 census named Revolutionary War pensioners with their exact ages. [[claim:nara-census-1840]]
 - For birth, death and marriage it uses what the state's own archives or vital-records office says about when that state kept those records. For example, Virginia did not record births, marriages and deaths statewide before 1853 [[claim:lva-bmd-pre1853]], and New Jersey births before 1848 were not filed by any level of government, except records of births of enslaved children. [[claim:nj-pre1848-birth]] When the state did not keep the record then, the note points to church, probate and other older records instead.
-- So far the worksheet has verified birth, death or marriage sources for Maryland, New Jersey, North Carolina, Pennsylvania, South Carolina and Virginia, and Revolutionary War service sources for Connecticut, Maryland, Massachusetts, New Jersey, North Carolina, Pennsylvania, South Carolina and Virginia.
+- So far the worksheet has verified birth, death or marriage sources for Delaware, Maryland, New Hampshire, New Jersey, North Carolina, Pennsylvania, Rhode Island, South Carolina and Virginia, and Revolutionary War service sources for Connecticut, Delaware, Georgia, Maryland, Massachusetts, New Hampshire, New Jersey, North Carolina, Pennsylvania, South Carolina and Virginia.
 - For any other state it says so plainly and falls back to general advice: a census entry that gives the state and approximate year of birth tells you which local office to ask. [[claim:nara-vital-census]]
 
 Links go only to sources this site already cites, such as the National Archives page that lists the Revolutionary War pension files (free on FamilySearch with login). [[claim:nara-amrev-familysearch]]

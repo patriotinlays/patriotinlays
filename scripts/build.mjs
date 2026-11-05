@@ -204,6 +204,7 @@ write("", page({ title: "Patriot, In Lay Terms: plain-English help for DAR and S
 <p class="subtitle" data-subtitle>Plain-English help with DAR and SAR applications, for the Daughters and the Sons of the American Revolution</p>
 <p class="independent" data-independent>An independent guide: not affiliated with DAR, SAR or any lineage society, and it doesn't search records for you.</p>
 <section class="home-mission" data-mission>${HOME.body.replace(/<p>Written with AI assistance/, '<p class="ai-line" data-ai-line>Written with AI assistance')}</section>
+<nav class="home-tool-choice" aria-label="Choose a tool"><p><strong>Choose a tool:</strong> <a href="/tools/widow-pension-checker/">Widow Pension Law Checker</a> · <a href="/tools/lineage-matrix/">Lineage Evidence Matrix</a></p></nav>
 <section class="card start-here home-start" aria-labelledby="get-started" data-get-started><h2 id="get-started">Ready to get started?</h2>
 <p><a class="button-link" href="/tools/lineage-matrix/">Start the Lineage Evidence Matrix</a> <a class="button-link" href="/tools/widow-pension-checker/">Open the Widow Pension Law Checker</a></p>
 <p>New to all of this? <a href="/guides/lineage-proof-roadmap/" data-start-button>Begin with the Roadmap guide</a>: how to join, how to find the soldier's name, and the whole process, step by step.</p></section>
