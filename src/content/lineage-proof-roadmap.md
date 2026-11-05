@@ -49,17 +49,19 @@ SAR states that it requires proof of bloodline descent, whether legitimate or il
 | Question | DAR | SAR |
 |---|---|---|
 | Who counts as the patriot? | Military, civil or patriotic service between 19 April 1775 and 26 November 1783, with a few special windows [[claim:dar-window-core]] | Patriotic service, with some exceptions, between 19 April 1775 and 26 November 1783 [[claim:sar-window]] |
-| Generations 1–3 | Complete dates and places of birth and death for each person [[claim:dar-gen-1-3]] | Not stated on the SAR Step 1 page; SAR gives no preliminary decisions on a line of descent [[claim:sar-no-prelim]] |
+| Generations 1–3 | Complete dates and places of birth and death for each person [[claim:dar-gen-1-3]] | Not stated |
 | Older generations | At least one documented date and place of birth or death for people who lived before modern vital records [[claim:dar-gen-older]] | Proof of bloodline descent from the patriot to the applicant [[claim:sar-bloodline]] |
-| Both parents? | Both the man and the woman in each generation are documented [[claim:dar-both-parents]] | Not separately stated on the SAR Step 1 page |
+| Both parents? | Both the man and the woman in each generation are documented [[claim:dar-both-parents]] | Not stated |
 | What has to be proven? | Every name, date, place and relationship [[claim:dar-each-relationship]] | Family tradition about service is not proof [[claim:sar-tradition]] |
-| Sponsors | Not covered on the pages used here | Two current SAR members sponsor the applicant [[claim:sar-sponsors]] |
+| Sponsors | Not stated | Two current SAR members sponsor the applicant [[claim:sar-sponsors]] |
+
+Not stated means the society's own pages don't say; ask its registrar.
 
 ## The roadmap, step by step
 
 1. Write the chain first, evidence second. List every generation from you back to the patriot by number, with names only. Mark each link you believe but cannot yet show on paper.
 2. Check whether the patriot is already on file. The DAR electronic application works only for ancestors already fully established with DAR. [[claim:dar-eapp-established]] A new ancestor, or a line that needs an analysis compiling indirect evidence, goes on the traditional paper application. [[claim:dar-paper-analysis]]
-3. Build an evidence grid. For every generation, list birth, marriage, death and the parent-child link, and next to each one the record that supports it. The Lineage Evidence Matrix below does this in your browser.
+3. Build an evidence grid. For every generation, list birth, marriage, death and the parent-child link, and next to each one the record that supports it. The [Lineage Evidence Matrix](/tools/lineage-matrix/) does this in your browser.
 4. Use the record types reviewers see most often. DAR names vital records, census records, probate records, court records, land records and church records as the most common lineage sources. [[claim:dar-lineage-sources]]
 5. Replace trees with records. DAR states that online family trees from any website are not an acceptable form of documentation. [[claim:dar-online-trees]] Images of original records downloaded from a website are a different matter and are evaluated in the context of the whole lineage. [[claim:dar-images-ok]]
 6. Prefer original records over compiled books. DAR prefers primary and original records over compiled family genealogies. [[claim:dar-primary-preferred]]

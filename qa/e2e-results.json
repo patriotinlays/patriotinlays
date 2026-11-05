@@ -1,5 +1,5 @@
 {
-  "ranAt": "Thu Nov 05 2026 16:05:44 GMT-0600 (Central Standard Time)",
+  "ranAt": "Thu Nov 05 2026 16:20:14 GMT-0600 (Central Standard Time)",
   "browser": "/usr/bin/google-chrome (headless) via playwright-core 1.64.1",
   "passed": 144,
   "total": 144,
@@ -18,7 +18,7 @@
     "sub": "Plain-English help with DAR and SAR applications, for the Daughters and the Sons of the American Revolution",
     "ai": "Written with AI assistance and reviewed by the site's owner. Each fact is tied to a quoted official source, and software checks that the quote is still there.",
     "beforeStart": true,
-    "words": 1312
+    "words": 1325
   },
   "results": [
     {
@@ -559,7 +559,7 @@
     {
       "name": "Home (Nov 5 lock): subtitle names DAR and SAR; mission in flowing paragraphs (no lists) ahead of 'Ready to get started?'; purpose line, both tool names, one-sentence privacy",
       "ok": true,
-      "detail": "{\"ps\":7,\"lists\":0,\"text\":\"This site helps you organize the records that connect you to a Revolutionary War\",\"sub\":\"Plain-English help with DAR and SAR applications, for the Daughters and the Sons of the American Revolution\",\"ai\":\"Written with AI assistance and reviewed by the site's owner. Each fact is tied to a quoted official source, and software checks that the quote is still there.\",\"beforeStart\":true,\"words\":1312}"
+      "detail": "{\"ps\":7,\"lists\":0,\"text\":\"This site helps you organize the records that connect you to a Revolutionary War\",\"sub\":\"Plain-English help with DAR and SAR applications, for the Daughters and the Sons of the American Revolution\",\"ai\":\"Written with AI assistance and reviewed by the site's owner. Each fact is tied to a quoted official source, and software checks that the quote is still there.\",\"beforeStart\":true,\"words\":1325}"
     },
     {
       "name": "Home (Nov 5 lock): the exact AI line, the exact SAR line (sourced), no unsourced 'most people get stuck' / 'give up' / guarantee lines",

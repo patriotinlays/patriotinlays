@@ -1,5 +1,5 @@
 {
-  "checkedAt": "Thu Nov 05 2026 16:05:06 GMT-0600 (Central Standard Time)",
+  "checkedAt": "Thu Nov 05 2026 16:19:34 GMT-0600 (Central Standard Time)",
   "dirs": [
     "src/content",
     "src/pages",
@@ -28,7 +28,7 @@
       "unmarked": 0
     },
     "src/content/lineage-proof-roadmap.md": {
-      "units": 74,
+      "units": 75,
       "marked": 44,
       "unmarked": 0
     },
@@ -123,7 +123,7 @@
       "unmarked": 0
     }
   },
-  "sentences": 882,
+  "sentences": 883,
   "markedSentences": 473,
   "manifestClaims": 392,
   "referencedClaims": 392,

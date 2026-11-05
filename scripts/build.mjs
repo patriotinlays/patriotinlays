@@ -2,6 +2,8 @@
 // Renders src/content/*.md (guides + tool pages) and src/pages/*.md (site pages) into dist/, plus home,
 // sources page, tool report pages, sitemap.xml, robots.txt and 404.html.
 import { readFileSync, writeFileSync, mkdirSync, readdirSync, copyFileSync, rmSync } from "node:fs";
+const LAST_PASSED = (() => { try { return JSON.parse(readFileSync(new URL("../manifest/source-last-passed.json", import.meta.url), "utf8")).sources || {}; } catch { return {}; } })();
+const lastChecked = (u, fallback) => { const t = LAST_PASSED[u]; return t && !Number.isNaN(Date.parse(t)) ? new Date(t).toISOString().slice(0, 10) : fallback; };
 import { join, dirname } from "node:path";
 import { createHash } from "node:crypto";
 const ROOT = new URL("..", import.meta.url).pathname;
@@ -179,7 +181,7 @@ function renderFile(dir, f) {
   }
   if (dir === "src/pages") html += START_HERE;
   const srcList = ctx.sources.length ? `<h2 id="sources">Sources</h2><ol class="sources">${ctx.sources.map((u, i) => { const c = manifest.claims.find((x) => x.source_url === u);
-    return `<li id="src-${i + 1}"><a href="${esc(u)}">${esc(c.source_title)}</a>. Retrieved ${c.last_retrieved}. <span class="url">${esc(u)}</span></li>`; }).join("")}</ol>` : "";
+    return `<li id="src-${i + 1}"><a href="${esc(u)}">${esc(c.source_title)}</a>. Last checked ${lastChecked(c.source_url, c.last_retrieved)}. <span class="url">${esc(u)}</span></li>`; }).join("")}</ol>` : "";
   const meta = fm.cornerstone ? `<p class="meta">Guide ${fm.cornerstone} of 10 · Sources last checked ${BUILD_DATE} · Written with AI; every fact is tied to a quoted official source (<a href="/about/">how this works</a>)</p>` : "";
   const path = `/${fm.slug}/`;
   write(fm.slug, page({ title: fm.title, description: fm.description, path, body: meta + html + srcList }));
@@ -196,7 +198,7 @@ const HOME = (() => { const ctx = { sources: [], tools: new Set(), claimCount: 0
   const body = md(readFileSync(join(ROOT, "src/partials/home.md"), "utf8"), ctx);
   const html = md(readFileSync(join(ROOT, "src/partials/glossary.md"), "utf8"), ctx).replace('<h2 id="words-you-ll-see-here">', '<h2 id="glossary">');
   const sources = `<h2 id="sources">Sources</h2><ol class="sources">${ctx.sources.map((u, i) => { const c = manifest.claims.find((x) => x.source_url === u);
-    return `<li id="src-${i + 1}"><a href="${esc(u)}">${esc(c.source_title)}</a>. Retrieved ${c.last_retrieved}.</li>`; }).join("")}</ol>`;
+    return `<li id="src-${i + 1}"><a href="${esc(u)}">${esc(c.source_title)}</a>. Last checked ${lastChecked(c.source_url, c.last_retrieved)}.</li>`; }).join("")}</ol>`;
   return { body, html: `<div class="glossary">${html}</div>`, sources }; })();
 const guides = built.filter((b) => b.cornerstone).sort((a, b) => a.cornerstone - b.cornerstone);
 write("", page({ title: "Patriot, In Lay Terms: plain-English help for DAR and SAR applications", description: "Plain-English guides and free browser tools for documenting descent from a Revolutionary War patriot for a DAR or SAR application.", path: "/",
