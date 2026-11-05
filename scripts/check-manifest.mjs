@@ -11,6 +11,7 @@ import { execFileSync } from "node:child_process";
 import { tmpdir } from "node:os";
 import { norm, normJoin, stripHtml } from "./lib/normalize.mjs";
 import { decideSourceCheck } from "./lib/source-pass.mjs";
+import { isNysedHost, nysedGet, nysedAvailable } from "./lib/nysed-tls.mjs";
 
 const args = process.argv.slice(2);
 const LINKS = args.includes("--links");
@@ -94,6 +95,14 @@ if (LINKS) {
   for (const u of urls) {
     let status = 0, body = "", type = "", altHays = [], fetchError = "";
     try {
+      // New York State Library/Archives omit their intermediate certificate. Supply it for that
+      // host only, verification fully on; other hosts keep Node's default path.
+      const nyHost = isNysedHost(new URL(u).hostname);
+      if (nyHost && nysedAvailable()) {
+        const ny = await nysedGet(u);
+        status = ny.status; body = ny.body; type = ny.type;
+        if (status === 200) warnings.push(`${u}: verified with the official GlobalSign intermediate for nysed.gov (their server omits it)`);
+      } else {
       // Large statute scans (up to ~90 MB) can be slow: allow 5 minutes per try and retry twice before failing.
       let r, buf = null;
       for (let attempt = 1; ; attempt++) {
@@ -109,6 +118,7 @@ if (LINKS) {
           if (/tile\.loc\.gov/.test(u)) { const raw = execFileSync("pdftotext", ["-raw", p, "-"], { encoding: "utf8", maxBuffer: 256e6 }); altHays = [normJoin(raw), norm(raw), normJoin(body)]; } }
         catch { body = null; warnings.push(`${u}: PDF fetched but pdftotext unavailable — quote check skipped`); }
       } else body = await r.text();
+      }
     } catch (e) {
       fetchError = e.message || String(e);
       status = "error";

@@ -2908,6 +2908,23 @@
       "notes": ""
     },
     {
+      "claim_id": "nara-gen-nomilitia",
+      "claim_text": "NARA does not hold state militia records.",
+      "source_url": "https://www.archives.gov/research/military/genealogy",
+      "source_title": "NARA — Genealogy Research in Military Records",
+      "source_type": "official_secondary",
+      "archive_identifier": null,
+      "last_retrieved": "2026-10-31",
+      "quote_excerpt": "The National Archives does not hold state militia records.",
+      "page_ref": null,
+      "verification_status": "verified",
+      "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
+      "used_on": [
+        "lineage-proof-roadmap"
+      ],
+      "notes": ""
+    },
+    {
       "claim_id": "nara-gen-combined",
       "claim_text": "Many bounty-land files are combined with pension files.",
       "source_url": "https://www.archives.gov/research/military/genealogy",
@@ -6656,6 +6673,261 @@
       "archive_identifier": null,
       "last_retrieved": "2026-10-31",
       "quote_excerpt": "Revolutionary War Record Book, First Rhode Island Regiment",
+      "page_ref": null,
+      "verification_status": "verified",
+      "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
+      "used_on": [
+        "tool:places.js"
+      ],
+      "notes": ""
+    },
+    {
+      "claim_id": "dar-ancestor-search",
+      "claim_text": "DAR's Ancestor Tab searches established patriots in the GRS.",
+      "source_url": "https://blog.dar.org/using-ancestor-tab-grs",
+      "source_title": "Today's DAR — Using the Ancestor Tab in the GRS",
+      "source_type": "official_secondary",
+      "archive_identifier": null,
+      "last_retrieved": "2026-10-31",
+      "quote_excerpt": "The Ancestor Tab lets you search for established patriots in the GRS.",
+      "page_ref": null,
+      "verification_status": "verified",
+      "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
+      "used_on": [
+        "lineage-proof-roadmap"
+      ],
+      "notes": ""
+    },
+    {
+      "claim_id": "dar-grs-only-joined",
+      "claim_text": "The GRS lists only patriots someone has joined DAR through, or had a supplemental application verified.",
+      "source_url": "https://blog.dar.org/using-ancestor-tab-grs",
+      "source_title": "Today's DAR — Using the Ancestor Tab in the GRS",
+      "source_type": "official_secondary",
+      "archive_identifier": null,
+      "last_retrieved": "2026-10-31",
+      "quote_excerpt": "the GRS contains only those patriots through whom someone has joined the DAR or has had a supplemental application verified.",
+      "page_ref": null,
+      "verification_status": "verified",
+      "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
+      "used_on": [
+        "lineage-proof-roadmap"
+      ],
+      "notes": ""
+    },
+    {
+      "claim_id": "sar-prs-not-complete",
+      "claim_text": "SAR's Patriot Research System is not a complete list of everyone who served.",
+      "source_url": "https://www.sar.org/patriot-research-system/",
+      "source_title": "SAR — Patriot Research System",
+      "source_type": "official_secondary",
+      "archive_identifier": null,
+      "last_retrieved": "2026-10-31",
+      "quote_excerpt": "not a comprehensive list of all the individuals who served in the American Revolutionary War.",
+      "page_ref": null,
+      "verification_status": "verified",
+      "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
+      "used_on": [
+        "lineage-proof-roadmap"
+      ],
+      "notes": ""
+    },
+    {
+      "claim_id": "sar-prs-not-proof",
+      "claim_text": "SAR's Patriot Research System is not acceptable as proof of service.",
+      "source_url": "https://www.sar.org/patriot-research-system/",
+      "source_title": "SAR — Patriot Research System",
+      "source_type": "official_secondary",
+      "archive_identifier": null,
+      "last_retrieved": "2026-10-31",
+      "quote_excerpt": "not acceptable as proof of service for an SAR application.",
+      "page_ref": null,
+      "verification_status": "verified",
+      "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
+      "used_on": [
+        "lineage-proof-roadmap"
+      ],
+      "notes": ""
+    },
+    {
+      "claim_id": "sar-prs-free",
+      "claim_text": "The SAR Patriot Research System can be accessed freely by anyone.",
+      "source_url": "https://www.familysearch.org/en/wiki/Sons_of_the_American_Revolution",
+      "source_title": "FamilySearch Wiki — Sons of the American Revolution",
+      "source_type": "official_secondary",
+      "archive_identifier": null,
+      "last_retrieved": "2026-10-31",
+      "quote_excerpt": "can be accessed freely by anyone, anywhere",
+      "page_ref": null,
+      "verification_status": "verified",
+      "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
+      "used_on": [
+        "lineage-proof-roadmap"
+      ],
+      "notes": ""
+    },
+    {
+      "claim_id": "fs-pension-by-name",
+      "claim_text": "The FamilySearch pension collection can be searched by name on its collection details page.",
+      "source_url": "https://www.familysearch.org/en/wiki/United_States,_Revolutionary_War_Pension_and_Bounty_Land_Warrant_Applications_-_FamilySearch_Historical_Records",
+      "source_title": "FamilySearch Wiki — US Revolutionary War Pension and Bounty Land Warrant Applications",
+      "source_type": "official_secondary",
+      "archive_identifier": null,
+      "last_retrieved": "2026-10-31",
+      "quote_excerpt": "Search by name on the Collection Details Page.",
+      "page_ref": null,
+      "verification_status": "verified",
+      "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
+      "used_on": [
+        "lineage-proof-roadmap"
+      ],
+      "notes": ""
+    },
+    {
+      "claim_id": "fs-pension-20-percent",
+      "claim_text": "The pension and bounty-land records cover about 20 percent of those who served.",
+      "source_url": "https://www.familysearch.org/en/wiki/United_States,_Revolutionary_War_Pension_and_Bounty_Land_Warrant_Applications_-_FamilySearch_Historical_Records",
+      "source_title": "FamilySearch Wiki — US Revolutionary War Pension and Bounty Land Warrant Applications",
+      "source_type": "official_secondary",
+      "archive_identifier": null,
+      "last_retrieved": "2026-10-31",
+      "quote_excerpt": "These records cover about 20 percent of American military, naval, and marine officers and enlisted men who served in the Revolutionary War.",
+      "page_ref": null,
+      "verification_status": "verified",
+      "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
+      "used_on": [
+        "lineage-proof-roadmap"
+      ],
+      "notes": ""
+    },
+    {
+      "claim_id": "nara-mission-search-within",
+      "claim_text": "The National Archives catalog lets you search within the pension series for a name.",
+      "source_url": "https://www.archives.gov/citizen-archivist/missions/revolutionary-war-pension-files",
+      "source_title": "National Archives — Citizen Archivist: Revolutionary War Pension Files",
+      "source_type": "official_secondary",
+      "archive_identifier": null,
+      "last_retrieved": "2026-10-31",
+      "quote_excerpt": "To find a name, you can do a Search Within the series.",
+      "page_ref": null,
+      "verification_status": "verified",
+      "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
+      "used_on": [
+        "lineage-proof-roadmap"
+      ],
+      "notes": ""
+    },
+    {
+      "claim_id": "nara-pensions-natf85-online",
+      "claim_text": "Copies of pension and bounty-land applications can be ordered with NATF Form 85 or online.",
+      "source_url": "https://www.archives.gov/research/military/army/pensions",
+      "source_title": "National Archives — Pensions and Bounty Land",
+      "source_type": "official_secondary",
+      "archive_identifier": null,
+      "last_retrieved": "2026-10-31",
+      "quote_excerpt": "Researchers can order copies of pension and bounty land applications by using NATF Form 85 or placing an order online.",
+      "page_ref": null,
+      "verification_status": "verified",
+      "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
+      "used_on": [
+        "lineage-proof-roadmap"
+      ],
+      "notes": ""
+    },
+    {
+      "claim_id": "ny-lib-capitol-fire",
+      "claim_text": "Many New York Revolutionary War records were destroyed in the 1911 Capitol fire.",
+      "source_url": "https://nysl.nysed.gov/genealogy/precivil",
+      "source_title": "New York State Library — Military records before the Civil War",
+      "source_type": "official_secondary",
+      "archive_identifier": null,
+      "last_retrieved": "2026-10-31",
+      "quote_excerpt": "although many of those records were destroyed in the Capitol fire of 1911",
+      "page_ref": null,
+      "verification_status": "verified",
+      "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
+      "used_on": [
+        "tool:places.js"
+      ],
+      "notes": ""
+    },
+    {
+      "claim_id": "ny-lib-roster",
+      "claim_text": "New York in the Revolution as Colony and State includes an alphabetical roster of state troops drawn from muster rolls.",
+      "source_url": "https://nysl.nysed.gov/genealogy/precivil",
+      "source_title": "New York State Library — Military records before the Civil War",
+      "source_type": "official_secondary",
+      "archive_identifier": null,
+      "last_retrieved": "2026-10-31",
+      "quote_excerpt": "This work includes an alphabetical roster of State troops and other details extracted from muster rolls.",
+      "page_ref": null,
+      "verification_status": "verified",
+      "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
+      "used_on": [
+        "tool:places.js"
+      ],
+      "notes": ""
+    },
+    {
+      "claim_id": "ny-lib-pension-not-held",
+      "claim_text": "The pension and bounty-land warrant files indexed in that work are not in the New York State Library.",
+      "source_url": "https://nysl.nysed.gov/genealogy/precivil",
+      "source_title": "New York State Library — Military records before the Civil War",
+      "source_type": "official_secondary",
+      "archive_identifier": null,
+      "last_retrieved": "2026-10-31",
+      "quote_excerpt": "The pension and bounty land warrant files indexed in this book are not in the New York State Library.",
+      "page_ref": null,
+      "verification_status": "verified",
+      "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
+      "used_on": [
+        "tool:places.js"
+      ],
+      "notes": ""
+    },
+    {
+      "claim_id": "ny-vital-1880-1881",
+      "claim_text": "New York's state records provide births and marriages from 1881 and deaths from 1880.",
+      "source_url": "https://nysl.nysed.gov/genealogy/vitrec",
+      "source_title": "New York State Library — Vital records",
+      "source_type": "official_secondary",
+      "archive_identifier": null,
+      "last_retrieved": "2026-10-31",
+      "quote_excerpt": "provides birth and marriage records from 1881, death records from 1880",
+      "page_ref": null,
+      "verification_status": "verified",
+      "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
+      "used_on": [
+        "tool:places.js"
+      ],
+      "notes": ""
+    },
+    {
+      "claim_id": "ny-vital-local-church",
+      "claim_text": "Earlier information may be found in local government offices and church or cemetery records.",
+      "source_url": "https://nysl.nysed.gov/genealogy/vitrec",
+      "source_title": "New York State Library — Vital records",
+      "source_type": "official_secondary",
+      "archive_identifier": null,
+      "last_retrieved": "2026-10-31",
+      "quote_excerpt": "Some information may be found in local government records offices and in church or cemetery records.",
+      "page_ref": null,
+      "verification_status": "verified",
+      "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
+      "used_on": [
+        "tool:places.js"
+      ],
+      "notes": ""
+    },
+    {
+      "claim_id": "ny-vital-pre1881-library",
+      "claim_text": "Pre-1881 vital records may be obtained from the New York State Library's collection.",
+      "source_url": "https://nysl.nysed.gov/genealogy/vitrec",
+      "source_title": "New York State Library — Vital records",
+      "source_type": "official_secondary",
+      "archive_identifier": null,
+      "last_retrieved": "2026-10-31",
+      "quote_excerpt": "Vital records for the period before 1881 may be obtained from the New York State Library's extensive collection",
       "page_ref": null,
       "verification_status": "verified",
       "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",

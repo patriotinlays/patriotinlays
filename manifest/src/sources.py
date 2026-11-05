@@ -60,4 +60,13 @@ SOURCES = {
  "NARA_ORDER": ("https://www.archives.gov/veterans/military-service-records/pre-ww-1-records", "National Archives — Requesting Copies of Older Military Service Records", "nara_order.html"),
  "LOC_C33": ("https://tile.loc.gov/storage-services/service/ll/llsl/llsl-c33/llsl-c33.pdf", "Library of Congress — U.S. Statutes at Large, 33rd Congress (scanned; Act of March 3, 1855 at 10 Stat. 701)", "llsl-c33.pdf"),
  "LOC_C45": ("https://tile.loc.gov/storage-services/service/ll/llsl/llsl-c45/llsl-c45.pdf", "Library of Congress — U.S. Statutes at Large, 45th Congress (scanned; Act of March 9, 1878 at 20 Stat. 27)", "llsl-c45.pdf"),
+ "DAR_ANCESTOR": ("https://blog.dar.org/using-ancestor-tab-grs", "Today's DAR — Using the Ancestor Tab in the GRS", "dar_ancestor.html"),
+ "SAR_PRS": ("https://www.sar.org/patriot-research-system/", "SAR — Patriot Research System", "sar_prs.html"),
+ "FS_SAR": ("https://www.familysearch.org/en/wiki/Sons_of_the_American_Revolution", "FamilySearch Wiki — Sons of the American Revolution", "fs_sar.html"),
+ "FS_PENSION": ("https://www.familysearch.org/en/wiki/United_States,_Revolutionary_War_Pension_and_Bounty_Land_Warrant_Applications_-_FamilySearch_Historical_Records", "FamilySearch Wiki — US Revolutionary War Pension and Bounty Land Warrant Applications", "fs_pension.html"),
+ "NARA_MISSION": ("https://www.archives.gov/citizen-archivist/missions/revolutionary-war-pension-files", "National Archives — Citizen Archivist: Revolutionary War Pension Files", "nara_mission.html"),
+ "NARA_PENSIONS": ("https://www.archives.gov/research/military/army/pensions", "National Archives — Pensions and Bounty Land", "nara_pensions.html"),
+ "FOLD3_PENSION": ("https://www.fold3.com/publication/467/us-revolutionary-war-pensions-1800-1900", "Fold3 — US Revolutionary War Pensions, 1800-1900", "fold3_pension.html"),
+ "NYSL_PRECIVIL": ("https://nysl.nysed.gov/genealogy/precivil", "New York State Library — Military records before the Civil War", "nysl_precivil.html"),
+ "NYSL_VITREC": ("https://nysl.nysed.gov/genealogy/vitrec", "New York State Library — Vital records", "nysl_vitrec.html"),
 }

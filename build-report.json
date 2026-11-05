@@ -1,5 +1,5 @@
 {
-  "builtAt": "Thu Nov 05 2026 15:29:36 GMT-0600 (Central Standard Time)",
+  "builtAt": "Thu Nov 05 2026 16:05:06 GMT-0600 (Central Standard Time)",
   "pages": [
     {
       "title": "Application Returned? Fixing Common DAR and SAR Proof Problems (Including Supplementals)",
@@ -46,7 +46,7 @@
       "description": "Organize the evidence for each generation of a DAR or SAR line in your browser, flag conflicts, and print a gap report.",
       "tool": "lineage-matrix",
       "path": "/tools/lineage-matrix/",
-      "words": 1246,
+      "words": 1250,
       "claims": 61,
       "sources": 20,
       "tools": [
@@ -59,9 +59,9 @@
       "description": "A generation-by-generation plan for documenting descent from a Revolutionary War patriot, with DAR and SAR rules side by side.",
       "cornerstone": "1",
       "path": "/guides/lineage-proof-roadmap/",
-      "words": 967,
-      "claims": 73,
-      "sources": 15,
+      "words": 1208,
+      "claims": 84,
+      "sources": 22,
       "tools": [
         "lineage-matrix"
       ]
