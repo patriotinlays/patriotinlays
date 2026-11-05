@@ -11,7 +11,9 @@ export function stripHtml(s) {
 export function norm(s) {
   return decodeEntities(s)
     .replace(/[\u2018\u2019\u02bc]/g, "'").replace(/[\u201c\u201d]/g, '"').replace(/[\u2013\u2014\u2212]/g, "-")
-    .replace(/\u00a0/g, " ").replace(/-\s*\n\s*/g, "-").replace(/\s+/g, " ").trim().toLowerCase();
+    .replace(/\u00a0/g, " ").replace(/-\s*\n\s*/g, "-").replace(/\s+/g, " ")
+    // Inline HTML tags can leave a space before punctuation ("the series ."); drop whitespace right before . , ; : ! ?
+    .replace(/ ([.,;:!?])/g, "$1").trim().toLowerCase();
 }
 // Scanned statute volumes break words across lines ("an-\nnuity"); this variant rejoins them. A quote may match either form.
 export function normJoin(s) {

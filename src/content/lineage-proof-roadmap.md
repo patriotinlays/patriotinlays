@@ -27,7 +27,7 @@ Work down this list. A name that doesn't appear in one place isn't a dead end.
 1. **[DAR Ancestor Search](https://services.dar.org/Public/DAR_Research/search/?Tab_ID=1) — free.** It searches the patriots DAR has already established in its GRS, and the GRS lists only patriots someone has joined DAR through or had a supplemental application verified, so a missing name doesn't mean your ancestor didn't serve. [[claim:dar-ancestor-search]] [[claim:dar-grs-only-joined]]
 2. **[SAR Patriot Research System](https://sarpatriots.sar.org/).** A useful second check, but SAR says it isn't a comprehensive list of everyone who served and isn't acceptable as proof of service for an application. [[claim:sar-prs-not-complete]] [[claim:sar-prs-not-proof]]
 3. **[FamilySearch's pension index](https://www.familysearch.org/search/collection/1417475) — free with a FamilySearch login.** The National Archives says the pension files are on FamilySearch free with login. [[claim:nara-amrev-familysearch]]
-4. **[The National Archives](https://www.archives.gov/research/military/american-revolution).** It does not hold state militia records, so for those, see your state's guidance below. [[claim:nara-gen-nomilitia]]
+4. **[The National Archives](https://www.archives.gov/research/military/american-revolution) — free to search; copies cost money.** You can search within the pension series for a name in its online catalog, and order copies of pension and bounty-land applications with NATF Form 85 or online. [[claim:nara-mission-search-within]] [[claim:nara-pensions-natf85-online]] It does not hold state militia records, so for those, see your state's guidance below. [[claim:nara-gen-nomilitia]]
 
 If none of these find your patriot, check your state's archives for militia records.
 

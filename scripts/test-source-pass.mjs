@@ -1,4 +1,7 @@
-import { classifyFailure, decideSourceCheck, lastPassAgeDays, FALLBACK_MAX_DAYS } from "./lib/source-pass.mjs";
+import { classifyFailure, decideSourceCheck, lastPassAgeDays, FALLBACK_MAX_DAYS, loadLastPassed, recordPass } from "./lib/source-pass.mjs";
+import { mkdtempSync, readFileSync, writeFileSync } from "node:fs";
+import { join } from "node:path";
+import { tmpdir } from "node:os";
 let ok = 0, fail = 0;
 const t = (name, cond) => { const p = !!cond; p ? ok++ : fail++; console.log(`${p ? "PASS" : "FAIL"}  ${name}`); };
 const now = new Date("2026-11-05T20:40:00.000Z");
@@ -21,6 +24,23 @@ t("classifyFailure marks 403/5xx/timeout/certificate as fallback-eligible", clas
 t("classifyFailure marks 404/410/quote mismatch as non-fallback", !classifyFailure({ status: 404 }).fallbackEligible && !classifyFailure({ status: 410 }).fallbackEligible && !classifyFailure({ quoteMissing: true }).fallbackEligible);
 t(`lastPassAgeDays under ${FALLBACK_MAX_DAYS} for today's seed`, lastPassAgeDays(fresh, now) < FALLBACK_MAX_DAYS);
 t("lastPassAgeDays null when missing", lastPassAgeDays(null, now) == null);
+
+// Last-passed store: every passing source is written to disk at once, including a URL never seen before,
+// and stays recorded when a later source fails or the run stops early.
+{ const dir = mkdtempSync(join(tmpdir(), "lastpass-")); const f = join(dir, "source-last-passed.json");
+  writeFileSync(f, JSON.stringify({ schema_version: 1, sources: { "https://old.example/a": "2026-11-01T00:00:00.000Z" } }));
+  const store = loadLastPassed(f);
+  const at = new Date("2026-11-05T22:00:00.000Z");
+  recordPass(f, store, "https://new.example/never-seen", at);
+  const onDisk = () => JSON.parse(readFileSync(f, "utf8")).sources;
+  t("a new URL's pass is saved to disk immediately", onDisk()["https://new.example/never-seen"] === at.toISOString());
+  t("existing entries are kept when a new one is recorded", onDisk()["https://old.example/a"] === "2026-11-01T00:00:00.000Z");
+  // A later source fails (block): nothing is written for it, and the earlier pass is still on disk.
+  const later = decideSourceCheck({ status: 403, lastPassedAt: store.sources["https://later.example/x"] || null, now: at });
+  t("a later failing source doesn't erase earlier passes", later.outcome === "block" && onDisk()["https://new.example/never-seen"] === at.toISOString() && !("https://later.example/x" in onDisk()));
+  t("a source recorded earlier in the run is fallback-eligible right after (403 within 30 days)", decideSourceCheck({ status: 403, lastPassedAt: loadLastPassed(f).sources["https://new.example/never-seen"], now: at }).outcome === "fallback");
+  const many = ["https://s1.example/", "https://s2.example/", "https://s3.example/"]; many.forEach((u) => recordPass(f, store, u, at));
+  t("every passing source in a run gets its own date", many.every((u) => onDisk()[u] === at.toISOString())); }
 
 console.log(`Source-pass rules: ${ok}/${ok + fail} passed.`);
 process.exit(fail ? 1 : 0);

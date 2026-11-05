@@ -1,5 +1,5 @@
 {
-  "checkedAt": "Thu Nov 05 2026 17:05:24 GMT-0600 (Central Standard Time)",
+  "checkedAt": "Thu Nov 05 2026 17:20:00 GMT-0600 (Central Standard Time)",
   "dirs": [
     "src/content",
     "src/pages",
@@ -28,8 +28,8 @@
       "unmarked": 0
     },
     "src/content/lineage-proof-roadmap.md": {
-      "units": 70,
-      "marked": 39,
+      "units": 72,
+      "marked": 41,
       "unmarked": 0
     },
     "src/content/patriot-or-loyalist.md": {
@@ -133,10 +133,10 @@
       "unmarked": 0
     }
   },
-  "sentences": 900,
-  "markedSentences": 469,
-  "manifestClaims": 387,
-  "referencedClaims": 387,
+  "sentences": 902,
+  "markedSentences": 471,
+  "manifestClaims": 389,
+  "referencedClaims": 389,
   "links": "not run (use --links)",
   "errors": [],
   "warnings": []

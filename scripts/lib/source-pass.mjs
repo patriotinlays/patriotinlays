@@ -51,3 +51,22 @@ export function decideSourceCheck({ status, errorMessage = "", quoteMissing = fa
     lastPassedAt,
   };
 }
+
+// Per-source last-passed store (manifest/source-last-passed.json). Every source that passes a live check is
+// recorded and saved to disk immediately, so a later failing source, a crash or an early exit can't lose it.
+import { readFileSync as _rf, writeFileSync as _wf, existsSync as _ex, renameSync as _mv } from "node:fs";
+export function loadLastPassed(path) {
+  const s = _ex(path) ? JSON.parse(_rf(path, "utf8")) : { schema_version: 1, sources: {} };
+  if (!s.sources) s.sources = {};
+  return s;
+}
+export function saveLastPassed(path, store) {
+  const tmp = `${path}.tmp-${process.pid}`;
+  _wf(tmp, JSON.stringify({ schema_version: 1, note: store.note || "Per-source last successful live quote check (ISO 8601 UTC).", sources: store.sources }, null, 2) + "\n");
+  _mv(tmp, path);
+}
+export function recordPass(path, store, url, at = new Date()) {
+  store.sources[url] = at.toISOString();
+  saveLastPassed(path, store);
+  return store.sources[url];
+}

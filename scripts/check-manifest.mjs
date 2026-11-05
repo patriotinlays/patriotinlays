@@ -10,7 +10,7 @@ import { join, resolve } from "node:path";
 import { execFileSync } from "node:child_process";
 import { tmpdir } from "node:os";
 import { norm, normJoin, stripHtml } from "./lib/normalize.mjs";
-import { decideSourceCheck } from "./lib/source-pass.mjs";
+import { decideSourceCheck, loadLastPassed, recordPass } from "./lib/source-pass.mjs";
 import { isNysedHost, nysedGet, nysedAvailable } from "./lib/nysed-tls.mjs";
 
 const args = process.argv.slice(2);
@@ -85,9 +85,7 @@ for (const id of byId.keys()) if (!referenced.has(id)) warnings.push(`manifest $
 
 // Live source verification, with the Tim-approved 30-day unreachable fallback (see scripts/lib/source-pass.mjs).
 const LAST_PASSED_PATH = join(ROOT, "manifest/source-last-passed.json");
-const lastPassedStore = existsSync(LAST_PASSED_PATH) ? JSON.parse(readFileSync(LAST_PASSED_PATH, "utf8")) : { schema_version: 1, sources: {} };
-if (!lastPassedStore.sources) lastPassedStore.sources = {};
-let lastPassedDirty = false;
+const lastPassedStore = loadLastPassed(LAST_PASSED_PATH);
 const linkReport = [];
 if (LINKS) {
   const urls = [...new Set(manifest.claims.map((c) => c.source_url))];
@@ -151,13 +149,10 @@ if (LINKS) {
       linkReport.push({ url: u, status, quotesFound: found, quotesMissing: missing, fallback: false, failureKind: "quote_mismatch" });
       continue;
     }
-    if (hay != null) {
-      lastPassedStore.sources[u] = new Date().toISOString();
-      lastPassedDirty = true;
-    }
+    // Record and save this source's pass right away (new URLs included), so a later failure can't drop it.
+    if (hay != null) recordPass(LAST_PASSED_PATH, lastPassedStore, u);
     linkReport.push({ url: u, status, quotesFound: found, quotesMissing: missing });
   }
-  if (lastPassedDirty) writeFileSync(LAST_PASSED_PATH, JSON.stringify({ schema_version: 1, note: lastPassedStore.note || "Per-source last successful live quote check (ISO 8601 UTC).", sources: lastPassedStore.sources }, null, 2) + "\n");
 }
 
 const summary = { checkedAt: new Date().toString(), dirs, files: files.length, perFile, sentences, markedSentences: marked, manifestClaims: byId.size, referencedClaims: referenced.size, links: LINKS ? linkReport : "not run (use --links)", errors, warnings };

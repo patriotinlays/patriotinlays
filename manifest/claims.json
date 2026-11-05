@@ -6751,6 +6751,40 @@
       "notes": ""
     },
     {
+      "claim_id": "nara-mission-search-within",
+      "claim_text": "The National Archives catalog lets you search within the pension series for a name.",
+      "source_url": "https://www.archives.gov/citizen-archivist/missions/revolutionary-war-pension-files",
+      "source_title": "National Archives — Citizen Archivist: Revolutionary War Pension Files",
+      "source_type": "official_secondary",
+      "archive_identifier": null,
+      "last_retrieved": "2026-10-31",
+      "quote_excerpt": "To find a name, you can do a Search Within the series.",
+      "page_ref": null,
+      "verification_status": "verified",
+      "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
+      "used_on": [
+        "lineage-proof-roadmap"
+      ],
+      "notes": ""
+    },
+    {
+      "claim_id": "nara-pensions-natf85-online",
+      "claim_text": "Copies of pension and bounty-land applications can be ordered with NATF Form 85 or online.",
+      "source_url": "https://www.archives.gov/research/military/army/pensions",
+      "source_title": "National Archives — Pensions and Bounty Land",
+      "source_type": "official_secondary",
+      "archive_identifier": null,
+      "last_retrieved": "2026-10-31",
+      "quote_excerpt": "Researchers can order copies of pension and bounty land applications by using NATF Form 85 or placing an order online.",
+      "page_ref": null,
+      "verification_status": "verified",
+      "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
+      "used_on": [
+        "lineage-proof-roadmap"
+      ],
+      "notes": ""
+    },
+    {
       "claim_id": "ny-lib-capitol-fire",
       "claim_text": "Many New York Revolutionary War records were destroyed in the 1911 Capitol fire.",
       "source_url": "https://nysl.nysed.gov/genealogy/precivil",
