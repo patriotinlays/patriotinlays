@@ -1,8 +1,10 @@
 {
-  "checkedAt": "Thu Nov 05 2026 17:20:00 GMT-0600 (Central Standard Time)",
+  "live_source_check": "NOT RUN",
+  "live_source_check_line": "Live-source check: NOT RUN",
+  "checkedAt": "Thu Nov 05 2026 17:31:22 GMT-0600 (Central Standard Time)",
   "htmlFiles": 22,
-  "internalLinks": 1306,
-  "externalUnique": 68,
+  "internalLinks": 1278,
+  "externalUnique": 67,
   "external": [],
   "broken": []
 }

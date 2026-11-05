@@ -1,5 +1,5 @@
 {
-  "builtAt": "Thu Nov 05 2026 17:20:00 GMT-0600 (Central Standard Time)",
+  "builtAt": "Thu Nov 05 2026 17:31:22 GMT-0600 (Central Standard Time)",
   "pages": [
     {
       "title": "Application Returned? Fixing Common DAR and SAR Proof Problems (Including Supplementals)",
@@ -8,8 +8,8 @@
       "cornerstone": "10",
       "path": "/guides/application-problems/",
       "words": 658,
-      "claims": 60,
-      "sources": 14,
+      "claims": 58,
+      "sources": 13,
       "tools": [
         "lineage-matrix"
       ]
@@ -21,8 +21,8 @@
       "cornerstone": "5",
       "path": "/guides/bounty-land-warrants/",
       "words": 657,
-      "claims": 56,
-      "sources": 13,
+      "claims": 54,
+      "sources": 12,
       "tools": [
         "lineage-matrix"
       ]
@@ -34,8 +34,8 @@
       "cornerstone": "6",
       "path": "/guides/census-bridge/",
       "words": 804,
-      "claims": 47,
-      "sources": 15,
+      "claims": 45,
+      "sources": 14,
       "tools": [
         "lineage-matrix"
       ]
@@ -47,8 +47,8 @@
       "tool": "lineage-matrix",
       "path": "/tools/lineage-matrix/",
       "words": 1302,
-      "claims": 62,
-      "sources": 20,
+      "claims": 59,
+      "sources": 19,
       "tools": [
         "lineage-matrix"
       ]
@@ -59,9 +59,9 @@
       "description": "A generation-by-generation plan for documenting descent from a Revolutionary War patriot, with DAR and SAR rules side by side.",
       "cornerstone": "1",
       "path": "/guides/lineage-proof-roadmap/",
-      "words": 1141,
-      "claims": 80,
-      "sources": 20,
+      "words": 1136,
+      "claims": 78,
+      "sources": 19,
       "tools": [
         "lineage-matrix"
       ]
@@ -73,8 +73,8 @@
       "cornerstone": "9",
       "path": "/guides/patriot-or-loyalist/",
       "words": 663,
-      "claims": 42,
-      "sources": 13,
+      "claims": 40,
+      "sources": 12,
       "tools": [
         "patriot"
       ]
@@ -86,8 +86,8 @@
       "cornerstone": "7",
       "path": "/guides/patriotic-service/",
       "words": 826,
-      "claims": 65,
-      "sources": 15,
+      "claims": 63,
+      "sources": 14,
       "tools": [
         "patriot"
       ]
@@ -99,8 +99,8 @@
       "cornerstone": "3",
       "path": "/guides/read-pension-file/",
       "words": 1036,
-      "claims": 75,
-      "sources": 18,
+      "claims": 73,
+      "sources": 17,
       "tools": [
         "widow"
       ]
@@ -112,8 +112,8 @@
       "cornerstone": "4",
       "path": "/guides/records-by-state/",
       "words": 734,
-      "claims": 65,
-      "sources": 19,
+      "claims": 63,
+      "sources": 18,
       "tools": [
         "patriot"
       ]
@@ -125,8 +125,8 @@
       "cornerstone": "8",
       "path": "/guides/same-name/",
       "words": 699,
-      "claims": 43,
-      "sources": 15,
+      "claims": 41,
+      "sources": 14,
       "tools": [
         "lineage-matrix"
       ]
@@ -138,8 +138,8 @@
       "cornerstone": "2",
       "path": "/guides/substitute-evidence/",
       "words": 824,
-      "claims": 58,
-      "sources": 14,
+      "claims": 56,
+      "sources": 13,
       "tools": [
         "lineage-matrix"
       ]
@@ -151,8 +151,8 @@
       "tool": "widow",
       "path": "/tools/widow-pension-checker/",
       "words": 1507,
-      "claims": 78,
-      "sources": 18,
+      "claims": 75,
+      "sources": 17,
       "tools": [
         "widow"
       ]

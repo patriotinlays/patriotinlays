@@ -1,5 +1,7 @@
 {
-  "checkedAt": "Thu Nov 05 2026 17:20:00 GMT-0600 (Central Standard Time)",
+  "live_source_check": "NOT RUN",
+  "live_source_check_line": "Live-source check: NOT RUN",
+  "checkedAt": "Thu Nov 05 2026 17:31:22 GMT-0600 (Central Standard Time)",
   "dirs": [
     "src/content",
     "src/pages",
@@ -93,8 +95,8 @@
       "unmarked": 0
     },
     "src/partials/glossary.md": {
-      "units": 26,
-      "marked": 22,
+      "units": 24,
+      "marked": 20,
       "unmarked": 0
     },
     "src/partials/home.md": {
@@ -128,16 +130,28 @@
       "unmarked": 0
     },
     "src/partials/tool-terms.md": {
-      "units": 6,
-      "marked": 5,
+      "units": 5,
+      "marked": 4,
       "unmarked": 0
     }
   },
-  "sentences": 902,
-  "markedSentences": 471,
+  "sentences": 899,
+  "markedSentences": 468,
   "manifestClaims": 389,
   "referencedClaims": 389,
   "links": "not run (use --links)",
   "errors": [],
-  "warnings": []
+  "warnings": [],
+  "last_live_source_check": {
+    "checkedAt": "Thu Nov 05 2026 17:30:42 GMT-0600 (Central Standard Time)",
+    "result": "PASSED",
+    "manifestClaims": 389,
+    "errors": 0,
+    "fallbacks": [
+      "https://membership.dar.org/NSDAR/AppFormz/App_Help_Step_By_Step_1.aspx",
+      "https://membership.dar.org/NSDAR/AppFormz/FAQs.aspx",
+      "https://services.dar.org/Public/DAR_Research/search_revwar/?Tab_ID=14&Tab_ID_Sub=0&action=list"
+    ],
+    "report": "manifest-live-check-report.json"
+  }
 }

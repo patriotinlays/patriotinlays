@@ -49,10 +49,13 @@ if (!offline) for (const [u, froms] of external) {
   }
   extResults.push({ url: u, status, err, pages: froms.size, via, fallback });
 }
-const report = { checkedAt: new Date().toString(), htmlFiles: htmlFiles.length, internalLinks: internal, externalUnique: external.size, external: extResults, broken };
+// This script checks that links resolve; it never verifies source quotes, so it always reports the live-source check as not run.
+const LIVE_LINE = "Live-source check: NOT RUN";
+const report = { live_source_check: "NOT RUN", live_source_check_line: LIVE_LINE, checkedAt: new Date().toString(), htmlFiles: htmlFiles.length, internalLinks: internal, externalUnique: external.size, external: extResults, broken };
 writeFileSync(join(ROOT, "link-check-report.json"), JSON.stringify(report, null, 2));
 console.log(`Link check: ${htmlFiles.length} HTML files, ${internal} internal links, ${external.size} unique external URLs${offline ? " (not fetched)" : ""}.`);
 for (const e of extResults) console.log(`  ${e.status || "ERR"}  ${e.url}`);
 for (const b of broken) console.log(`BROKEN ${b.from} -> ${b.link} (${b.why})`);
 console.log(broken.length ? `FAILED: ${broken.length} broken link(s).` : "PASSED: zero broken links.");
+console.log(LIVE_LINE);
 process.exit(broken.length ? 1 : 0);

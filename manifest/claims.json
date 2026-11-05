@@ -3053,6 +3053,23 @@
       "notes": ""
     },
     {
+      "claim_id": "nara-amrev-fs-m804",
+      "claim_text": "The National Archives lists the Revolutionary War pension and bounty-land warrant application files on FamilySearch, free with login.",
+      "source_url": "https://www.archives.gov/research/military/american-revolution",
+      "source_title": "NARA — The American Revolution (research page)",
+      "source_type": "official_secondary",
+      "archive_identifier": null,
+      "last_retrieved": "2026-10-31",
+      "quote_excerpt": "Revolutionary War Pension and Bounty-Land Warrant Application Files (Microfilm Roll # M804, Record Group 15) National Archives Catalog (NAID: 300022) Ancestry.com (free from NARA computers) | Ancestry.com ($ - by subscription) FamilySearch.org (free with login)",
+      "page_ref": null,
+      "verification_status": "verified",
+      "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
+      "used_on": [
+        "lineage-proof-roadmap"
+      ],
+      "notes": ""
+    },
+    {
       "claim_id": "nara-amrev-m246",
       "claim_text": "Revolutionary War Rolls (M246) are in the Catalog as NAID 602384.",
       "source_url": "https://www.archives.gov/research/military/american-revolution",
@@ -4973,25 +4990,6 @@
       "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
       "used_on": [
         "partial:glossary"
-      ],
-      "notes": ""
-    },
-    {
-      "claim_id": "nscdama-lineage",
-      "claim_text": "NSCDA's Massachusetts society says membership is based on lineage and dedication to its mission.",
-      "source_url": "https://nscdama.org/membership/",
-      "source_title": "NSCDA in the Commonwealth of Massachusetts — Membership",
-      "source_type": "official_secondary",
-      "archive_identifier": null,
-      "last_retrieved": "2026-10-31",
-      "quote_excerpt": "It is based on lineage and dedication to the Society's mission",
-      "page_ref": null,
-      "verification_status": "verified",
-      "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
-      "used_on": [
-        "partial:glossary",
-        "partial:tool-terms",
-        "tool:tool-b.js"
       ],
       "notes": ""
     },

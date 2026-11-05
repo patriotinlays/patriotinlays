@@ -26,7 +26,6 @@ SOURCES = {
  "DAR_WHAT": ("https://www.dar.org/discover/become-member/what-dar", "DAR — What is DAR?", "dar_what.html"),
  "SAR_ABOUT": ("https://www.sar.org/sar-missions-and-goals/", "SAR — About (Mission & Goals)", "sar_about.html"),
  "NSCDA_MEM": ("https://nscda.org/about/membership/", "The National Society of the Colonial Dames of America — Membership", "nscda_mem.html"),
- "NSCDA_MA": ("https://nscdama.org/membership/", "NSCDA in the Commonwealth of Massachusetts — Membership", "nscda_ma.html"),
  "UELAC": ("https://uelac.ca/loyalist-directory/help/", "United Empire Loyalists' Association of Canada — Loyalist Directory Detail Help", "uelac.html"),
  # ---- Round 5: state archives and vital-records offices (era/state "Where to look") ----
  "LVA_REV": ("https://lva-virginia.libguides.com/revolutionary-war/home", "Library of Virginia — Virginia Revolutionary War Service Records (research guide)", "lva_rev.html"),
@@ -62,8 +61,6 @@ SOURCES = {
  "LOC_C45": ("https://tile.loc.gov/storage-services/service/ll/llsl/llsl-c45/llsl-c45.pdf", "Library of Congress — U.S. Statutes at Large, 45th Congress (scanned; Act of March 9, 1878 at 20 Stat. 27)", "llsl-c45.pdf"),
  "DAR_ANCESTOR": ("https://blog.dar.org/using-ancestor-tab-grs", "Today's DAR — Using the Ancestor Tab in the GRS", "dar_ancestor.html"),
  "SAR_PRS": ("https://www.sar.org/patriot-research-system/", "SAR — Patriot Research System", "sar_prs.html"),
- "FS_SAR": ("https://www.familysearch.org/en/wiki/Sons_of_the_American_Revolution", "FamilySearch Wiki — Sons of the American Revolution", "fs_sar.html"),
- "FS_PENSION": ("https://www.familysearch.org/en/wiki/United_States,_Revolutionary_War_Pension_and_Bounty_Land_Warrant_Applications_-_FamilySearch_Historical_Records", "FamilySearch Wiki — US Revolutionary War Pension and Bounty Land Warrant Applications", "fs_pension.html"),
  "NARA_MISSION": ("https://www.archives.gov/citizen-archivist/missions/revolutionary-war-pension-files", "National Archives — Citizen Archivist: Revolutionary War Pension Files", "nara_mission.html"),
  "NARA_PENSIONS": ("https://www.archives.gov/research/military/army/pensions", "National Archives — Pensions and Bounty Land", "nara_pensions.html"),
  "FOLD3_PENSION": ("https://www.fold3.com/publication/467/us-revolutionary-war-pensions-1800-1900", "Fold3 — US Revolutionary War Pensions, 1800-1900", "fold3_pension.html"),

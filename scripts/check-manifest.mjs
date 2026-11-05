@@ -155,11 +155,25 @@ if (LINKS) {
   }
 }
 
-const summary = { checkedAt: new Date().toString(), dirs, files: files.length, perFile, sentences, markedSentences: marked, manifestClaims: byId.size, referencedClaims: referenced.size, links: LINKS ? linkReport : "not run (use --links)", errors, warnings };
+// Every report states plainly whether sources were fetched live (Tim, Nov 5): "Live-source check: RUN" / "NOT RUN".
+const LIVE_STATUS = LINKS ? "RUN" : "NOT RUN";
+const LIVE_LINE = `Live-source check: ${LIVE_STATUS}`;
+const LIVE_REPORT_PATH = join(ROOT, "manifest-live-check-report.json");
+const summary = { live_source_check: LIVE_STATUS, live_source_check_line: LIVE_LINE, checkedAt: new Date().toString(), dirs, files: files.length, perFile, sentences, markedSentences: marked, manifestClaims: byId.size, referencedClaims: referenced.size, links: LINKS ? linkReport : "not run (use --links)", errors, warnings };
+if (LINKS) {
+  summary.result = errors.length ? "FAILED" : "PASSED";
+  // The live run's evidence lives in its own file; a later consistency-only run never overwrites it.
+  if (!args.includes("--content")) writeFileSync(LIVE_REPORT_PATH, JSON.stringify(summary, null, 2));
+} else if (existsSync(LIVE_REPORT_PATH)) {
+  // A consistency-only report points to the most recent live run instead of hiding it.
+  try { const L = JSON.parse(readFileSync(LIVE_REPORT_PATH, "utf8")); summary.last_live_source_check = { checkedAt: L.checkedAt, result: L.result, manifestClaims: L.manifestClaims, errors: (L.errors || []).length, fallbacks: (L.links || []).filter((x) => x.fallback).map((x) => x.url), report: "manifest-live-check-report.json" }; } catch { /* ignore */ }
+}
 if (!args.includes("--content")) writeFileSync(join(ROOT, "manifest-check-report.json"), JSON.stringify(summary, null, 2));
+console.log(LIVE_LINE);
 console.log(`Source Manifest gate: ${files.length} page(s), ${sentences} sentence(s), ${marked} with claim markers; ${byId.size} manifest claims, ${referenced.size} referenced.`);
 if (LINKS) for (const l of linkReport) console.log(`  link ${l.status}${l.fallback ? " FALLBACK" : ""}  quotes found ${l.quotesFound ?? "-"} / missing ${l.quotesMissing ?? "-"}  ${l.url}`);
 warnings.forEach((w) => console.log("WARN  " + w));
 errors.forEach((e) => console.log("ERROR " + e));
 console.log(errors.length ? `FAILED with ${errors.length} error(s). Unverifiable claims must be omitted.` : "PASSED: every factual claim maps to a verified manifest entry.");
+console.log(LIVE_LINE);
 process.exit(errors.length ? 1 : 0);

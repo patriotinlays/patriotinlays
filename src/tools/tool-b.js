@@ -161,7 +161,7 @@ export const WHERE_TO_LOOK = Object.freeze({
   },
 });
 // Plain term for NSCDA, shown wherever advice cites its Standards of Proof (audit 4: the report used it unexplained).
-export const NSCDA_TERM = Object.freeze({ text: "NSCDA is The National Society of the Colonial Dames of America, a lineage society; notes marked NSCDA cite its Standards of Proof.", claims: ["nscda-name-national", "nscdama-lineage"] });
+export const NSCDA_TERM = Object.freeze({ text: "NSCDA is The National Society of the Colonial Dames of America; notes marked NSCDA cite its Standards of Proof.", claims: ["nscda-name-national", "nscda-census-1850-1870"] });
 export const START_HERE = Object.freeze({ text: "Start with yourself as generation 1, then add your parent, grandparent and so on back to the patriot.", claims: ["dar-gen1-applicant", "dar-gen-numbering"], links: [], guides: ["roadmap"] });
 // A rough year typed by the visitor ("1820", " 1820 ") -> 1820, else null.
 export const yr = (v) => { const m = /^\s*(\d{4})\s*$/.exec(v == null ? "" : String(v)); return m ? +m[1] : null; };

@@ -194,6 +194,7 @@ C = [
 ("nara-natf85","NARA_GEN","use NATF Form 85","Order pension and pre-1856 bounty-land files online or with NATF Form 85.",None),
 ("nara-amrev-m804","NARA_AMREV","National Archives Catalog (NAID: 300022)","The pension files are in the National Archives Catalog as NAID 300022.",None),
 ("nara-amrev-familysearch","NARA_AMREV","FamilySearch.org (free with login)","The pension files are on FamilySearch, free with login.",None),
+("nara-amrev-fs-m804","NARA_AMREV","Revolutionary War Pension and Bounty-Land Warrant Application Files (Microfilm Roll # M804, Record Group 15) National Archives Catalog (NAID: 300022) Ancestry.com (free from NARA computers) | Ancestry.com ($ - by subscription) FamilySearch.org (free with login)","The National Archives lists the Revolutionary War pension and bounty-land warrant application files on FamilySearch, free with login.",None),
 ("nara-amrev-m246","NARA_AMREV","National Archives Catalog (NAID: 602384)","Revolutionary War Rolls (M246) are in the Catalog as NAID 602384.",None),
 ("nara-amrev-m881","NARA_AMREV","National Archives Catalog (NAID: 570910)","Compiled service records (M881) are in the Catalog as NAID 570910.",None),
 ("nara-amrev-80k","NARA_AMREV","The Revolutionary War pension files, numbering around eighty thousand","The Revolutionary War pension files number around eighty thousand.",None),
@@ -315,7 +316,6 @@ C = [
 ("sar-about-patriots","SAR_ABOUT","lineal descendants of the patriots who wintered at Valley Forge, signed the Declaration of Independence, fought in the battles of the American Revolution, served in the Continental Congress, or otherwise supported the cause of American Independence","SAR describes patriots as those who fought, served in the Continental Congress, signed the Declaration or otherwise supported American independence.",None),
 ("nscda-name-national","NSCDA_MEM","The National Society of the Colonial Dames of America is a national organization","NSCDA is The National Society of the Colonial Dames of America, a national organization.",None),
 ("nscda-members-colonial","NSCDA_MEM","Members are descended from more than 10,000 men and women who served the American colonies prior to July 5, 1776.","NSCDA members descend from men and women who served the American colonies before July 5, 1776.",None),
-("nscdama-lineage","NSCDA_MA","It is based on lineage and dedication to the Society's mission","NSCDA's Massachusetts society says membership is based on lineage and dedication to its mission.",None),
 # ---- Round 5: state records (verified live 2026-10-31) ----
 ("lva-rev-nosingle","LVA_REV","There is no single source or index for Virginia Revolutionary War records","The Library of Virginia says there is no single source or index for Virginia Revolutionary War records.",None),
 ("lva-rev-militia","LVA_REV","Most Virginians serving in the war did so as part of the county militia.","Most Virginians who served did so in the county militia.",None),
