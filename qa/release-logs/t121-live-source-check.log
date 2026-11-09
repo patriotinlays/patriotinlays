@@ -1,0 +1,88 @@
+
+> patriotinlays-pilot@0.1.0 check:links
+> node scripts/check-manifest.mjs --links
+
+Live-source check: RUN
+Source Manifest gate: 25 page(s), 905 sentence(s), 472 with claim markers; 393 manifest claims, 393 referenced.
+  link 200  quotes found 17 / missing 0  https://www.dar.org/national-society/accepted-revolutionary-war-service
+  link 522 FALLBACK  quotes found - / missing -  https://membership.dar.org/NSDAR/AppFormz/App_Help_Step_By_Step_1.aspx
+  link 522 FALLBACK  quotes found - / missing -  https://membership.dar.org/NSDAR/AppFormz/FAQs.aspx
+  link 200  quotes found 14 / missing 0  https://blog.dar.org/2021/02/26/why-was-his-service-removed
+  link 522 FALLBACK  quotes found - / missing -  https://services.dar.org/Public/DAR_Research/search_revwar/?Tab_ID=14&Tab_ID_Sub=0&action=list
+  link 200  quotes found 13 / missing 0  https://www.sar.org/step-1/
+  link 200  quotes found 8 / missing 0  https://www.sar.org/wp-content/uploads/2019/10/Revolutionary-Taxes-as-Evidence-of-Patriotic-Service.pdf
+  link 200  quotes found 17 / missing 0  https://cincinnatisar.org/wp-content/uploads/2023/05/Presentation-How-to-Produce-Approval-Ready-Applications-and-Reduce-Turnaround-Time.pdf
+  link 200  quotes found 40 / missing 0  https://www.archives.gov/files/research/military/army/dc/m804.pdf
+  link 200  quotes found 14 / missing 0  https://www.archives.gov/files/research/military/american-revolution/service-records.pdf
+  link 200  quotes found 6 / missing 0  https://www.archives.gov/research/military/genealogy
+  link 200  quotes found 7 / missing 0  https://www.archives.gov/research/military/american-revolution
+  link 200  quotes found 1 / missing 0  https://www.dar.org/library/search.cfm
+  link 200  quotes found 2 / missing 0  https://www.dar.org/library/collections/dar-lineage-resources
+  link 200  quotes found 1 / missing 0  https://www.sar.org/genealogical-copy-services/
+  link 200  quotes found 8 / missing 0  https://www.archives.gov/research/census/1790-1840.html
+  link 200  quotes found 1 / missing 0  https://www.archives.gov/research/catalog/catalog-bulk-downloads/revwarpensionfiles
+  link 200  quotes found 4 / missing 0  https://www.archives.gov/publications/prologue/2015/summer/rev-war-pensions.html
+  link 200  quotes found 15 / missing 0  https://www.nps.gov/articles/000/what-might-you-find-in-the-revolutionary-war-pension-files.htm
+  link 200  quotes found 12 / missing 0  https://lva-virginia.libguides.com/bounty-claims/home
+  link 200  quotes found 6 / missing 0  https://libguides.nypl.org/military-genealogy/revolutionary-war
+  link 200  quotes found 21 / missing 0  https://nscdasnc.memberclicks.net/assets/membership/Standards%20of%20Proof%202025.pdf
+  link 200  quotes found 7 / missing 0  https://uelac.ca/loyalist-directory/help/
+  link 200  quotes found 2 / missing 0  https://www.dar.org/discover/become-member/chapter-locator
+  link 200  quotes found 8 / missing 0  https://www.dar.org/discover/become-member/how-join
+  link 200  quotes found 6 / missing 0  https://www.sar.org/how-to-apply/
+  link 200  quotes found 1 / missing 0  https://www.sar.org/find-your-contact/
+  link 200  quotes found 3 / missing 0  https://www.loc.gov/collections/united-states-statutes-at-large/about-this-collection/
+  link 200  quotes found 1 / missing 0  https://www.dar.org/discover/become-member/what-dar
+  link 200  quotes found 4 / missing 0  https://www.sar.org/sar-missions-and-goals/
+  link 200  quotes found 2 / missing 0  https://nscda.org/about/membership/
+  link 200  quotes found 5 / missing 0  https://lva-virginia.libguides.com/revolutionary-war/home
+  link 200  quotes found 5 / missing 0  https://lva-virginia.libguides.com/bmd
+  link 200  quotes found 3 / missing 0  https://guide.msa.maryland.gov/pages/viewer.aspx?page=military
+  link 200  quotes found 2 / missing 0  https://guide.msa.maryland.gov/pages/viewer.aspx?page=birth
+  link 200  quotes found 3 / missing 0  https://appx.archives.ncdcr.gov/findingaids/TRPR_Troop_Returns_Collection.html
+  link 200  quotes found 6 / missing 0  https://vitalrecords.nc.gov/research.htm
+  link 200  quotes found 2 / missing 0  https://nj.gov/state/archives/guides/sdea0003.pdf
+  link 200  quotes found 4 / missing 0  https://www.nj.gov/state/archives/search-genealogical-collections.shtml
+  link 200  quotes found 1 / missing 0  https://www.pa.gov/agencies/phmc/pa-state-archives/research-online/research-guides/revolutionary-war-overview
+  link 200  quotes found 2 / missing 0  https://www.pa.gov/agencies/health/programs/vital-records/genealogy
+  link 200  quotes found 1 / missing 0  https://www.pa.gov/services/phmc/request-a-birth-or-death-certificate
+  link 200  quotes found 2 / missing 0  https://libguides.ctstatelibrary.org/hg/militaryrecords/revwar
+  link 200  quotes found 2 / missing 0  https://scdah.sc.gov/sites/scdah/files/Documents/Research%20and%20Genealogy/Resources/Military%20Records/rvwr.pdf
+  link 200  quotes found 2 / missing 0  https://scdah.sc.gov/news/2020-03/sc-birth-certificates-archives
+  link 200  quotes found 2 / missing 0  https://guides.statelibrary.sc.gov/genealogy/vitalrecords
+  link 200  quotes found 2 / missing 0  https://www.mass.gov/info-details/researching-massachusetts-soldiers-and-sailors
+  link 200  quotes found 2 / missing 0  https://www.archives.gov/research/vital-records
+  link 200  quotes found 1 / missing 0  https://tile.loc.gov/storage-services/service/ll/llsl/llsl-c24/llsl-c24.pdf
+  link 200  quotes found 3 / missing 0  https://tile.loc.gov/storage-services/service/ll/llsl/llsl-c25/llsl-c25.pdf
+  link 200  quotes found 4 / missing 0  https://tile.loc.gov/storage-services/service/ll/llsl/llsl-c30/llsl-c30.pdf
+  link 200  quotes found 8 / missing 0  https://tile.loc.gov/storage-services/service/ll/llsl/llsl-c33/llsl-c33.pdf
+  link 200  quotes found 4 / missing 0  https://tile.loc.gov/storage-services/service/ll/llsl/llsl-c45/llsl-c45.pdf
+  link 200  quotes found 3 / missing 0  https://tile.loc.gov/storage-services/service/ll/llsl/llsl-c32/llsl-c32.pdf
+  link 200  quotes found 2 / missing 0  https://www.archives.gov/veterans/military-service-records/pre-ww-1-records
+  link 200  quotes found 6 / missing 0  https://www.georgiaarchives.org/research/bounty_land_grants/
+  link 200  quotes found 4 / missing 0  https://www.nhsl.dncr.nh.gov/collections/genealogical-resources/researching-your-nh-family-history
+  link 200  quotes found 4 / missing 0  https://www.sos.ri.gov/divisions/state-archives/VitalRecords
+  link 200  quotes found 3 / missing 0  https://archives.delaware.gov/digital-archives/military-records-revolutionary-war-oaths-of-allegiance/
+  link 200  quotes found 5 / missing 0  https://archives.delaware.gov/digital-archives/guide-to-vital-statistics-records/
+  link 200  quotes found 2 / missing 0  https://sosri.access.preservica.com/uncategorized/SO_6db31295-6c55-44bb-a5af-83989afb8c81/
+  link 200  quotes found 2 / missing 0  https://blog.dar.org/using-ancestor-tab-grs
+  link 200  quotes found 2 / missing 0  https://www.sar.org/patriot-research-system/
+  link 200  quotes found 1 / missing 0  https://www.archives.gov/citizen-archivist/missions/revolutionary-war-pension-files
+  link 200  quotes found 1 / missing 0  https://www.archives.gov/research/military/army/pensions
+  link 200  quotes found 3 / missing 0  https://nysl.nysed.gov/genealogy/precivil
+  link 200  quotes found 3 / missing 0  https://nysl.nysed.gov/genealogy/vitrec
+WARN  https://www.dar.org/national-society/accepted-revolutionary-war-service: Node fetch got 403/429; verified with curl instead
+WARN  https://membership.dar.org/NSDAR/AppFormz/App_Help_Step_By_Step_1.aspx: FALLBACK: unreachable source accepted on last successful check under 30 days. URL failure=http_522; lastPassed=2026-11-05T16:34:49.000Z; ageDays=3.83. Re-check required on every run.
+WARN  https://membership.dar.org/NSDAR/AppFormz/FAQs.aspx: FALLBACK: unreachable source accepted on last successful check under 30 days. URL failure=http_522; lastPassed=2026-11-05T16:34:49.000Z; ageDays=3.83. Re-check required on every run.
+WARN  https://blog.dar.org/2021/02/26/why-was-his-service-removed: Node fetch got 403/429; verified with curl instead
+WARN  https://services.dar.org/Public/DAR_Research/search_revwar/?Tab_ID=14&Tab_ID_Sub=0&action=list: FALLBACK: unreachable source accepted on last successful check under 30 days. URL failure=http_522; lastPassed=2026-11-05T16:34:49.000Z; ageDays=3.83. Re-check required on every run.
+WARN  https://www.dar.org/library/search.cfm: Node fetch got 403/429; verified with curl instead
+WARN  https://www.dar.org/library/collections/dar-lineage-resources: Node fetch got 403/429; verified with curl instead
+WARN  https://www.dar.org/discover/become-member/chapter-locator: Node fetch got 403/429; verified with curl instead
+WARN  https://www.dar.org/discover/become-member/how-join: Node fetch got 403/429; verified with curl instead
+WARN  https://www.dar.org/discover/become-member/what-dar: Node fetch got 403/429; verified with curl instead
+WARN  https://blog.dar.org/using-ancestor-tab-grs: Node fetch got 403/429; verified with curl instead
+WARN  https://nysl.nysed.gov/genealogy/precivil: verified with the official GlobalSign intermediate for nysed.gov (their server omits it)
+WARN  https://nysl.nysed.gov/genealogy/vitrec: verified with the official GlobalSign intermediate for nysed.gov (their server omits it)
+PASSED: every factual claim maps to a verified manifest entry.
+Live-source check: RUN

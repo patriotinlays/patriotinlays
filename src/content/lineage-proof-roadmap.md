@@ -36,9 +36,9 @@ Once you have a name, the free [Lineage Evidence Matrix](/tools/lineage-matrix/)
 ## If your patriot is already in DAR's or SAR's database
 
 If DAR has already accepted your patriot, an earlier member's approved application can help with your research and can also be used as documentation for your own application. [[claim:dar-lib-record-copy-use]]
-DAR calls these copies "record copies," and you can order them online. [[claim:dar-linres-record-copies]]
+DAR calls these copies "record copies," and you can download them online. [[claim:dar-linres-record-copies]]
 Older applications may include little information, so check what each one actually proves. [[claim:dar-linres-little-info]]
-SAR also sells record copies of approved applications. [[claim:sar-record-copy]]
+SAR also offers record copies of approved applications. [[claim:sar-record-copy]]
 Ask your chapter registrar which of your generations still need proof.
 
 ## How the generations are numbered

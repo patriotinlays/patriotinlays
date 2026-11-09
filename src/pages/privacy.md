@@ -19,8 +19,6 @@ Each tool has its own button for this. On the Widow Pension Law Checker, press "
 
 ## What the site itself collects
 
-The site may count page views with a privacy-first analytics service that uses no cookies. It doesn't read anything you type into the tools.
-
 The site is hosted by Cloudflare, so Cloudflare's servers deliver every page you load.
 
 On pages that show an email address, Cloudflare adds a small script that hides the address from spam robots.

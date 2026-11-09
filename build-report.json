@@ -1,5 +1,5 @@
 {
-  "builtAt": "Mon Nov 09 2026 06:28:08 GMT-0600 (Central Standard Time)",
+  "builtAt": "Mon Nov 09 2026 06:35:22 GMT-0600 (Central Standard Time)",
   "pages": [
     {
       "title": "Application Returned? Fixing Common DAR and SAR Proof Problems (Including Supplementals)",
@@ -192,7 +192,7 @@
       "slug": "privacy",
       "description": "What happens to what you type into patriotinlays.com's tools, how to delete it, and what the site collects.",
       "path": "/privacy/",
-      "words": 387,
+      "words": 363,
       "claims": 0,
       "sources": 0,
       "tools": []
