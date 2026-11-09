@@ -17,7 +17,7 @@ It isn't affiliated with DAR, SAR, NSCDA, the National Archives or any other org
 
 ## How the facts are kept accurate
 
-Every factual statement on the site is tied to a quoted passage from an official or institutional source, such as the National Archives, the National Park Service, the Library of Congress, DAR, SAR or a state library. When the site is built, software checks that each quoted passage still appears in its source. If a statement can't be matched to a source, it's left out. Each page lists its sources with links at the bottom, and the full method is on the [Sources & Methodology](/sources/) page.
+Every factual statement on the site is tied to a quoted passage from an official or institutional source, such as the National Archives, the National Park Service, the Library of Congress, DAR, SAR or a state library. Each time the site is updated, and on a regular schedule, software checks that each quoted passage still appears in its source. If a statement can't be matched to a source, it's left out. Each page lists its sources with links at the bottom, and the full method is on the [Sources & Methodology](/sources/) page.
 
 ## Corrections and suggestions
 

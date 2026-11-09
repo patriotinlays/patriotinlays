@@ -71,4 +71,5 @@ SOURCES = {
  "NYSL_VITREC": ("https://nysl.nysed.gov/genealogy/vitrec", "New York State Library — Vital records", "nysl_vitrec.html"),
  "LOC_CT_VITAL": ("https://guides.loc.gov/connecticut-local-history-genealogy/vital-records", "Library of Congress — Connecticut: Local History & Genealogy Resource Guide, Vital Records", "loc_ct_vital.html"),
  "GA_VITAL": ("https://georgiaarchives.org/research/vital_records", "Georgia Archives — Vital Records", "ga_vital.html"),
+ "MA_SL_GEN": ("https://www.mass.gov/guides/guide-to-genealogical-resources-in-the-state-library", "Mass.gov (State Library of Massachusetts) — Guide to Genealogical Resources in the State Library", "ma_sl_gen.html"),
 }

@@ -1,8 +1,8 @@
 {
-  "ranAt": "Mon Nov 09 2026 09:40:18 GMT-0600 (Central Standard Time)",
+  "ranAt": "Mon Nov 09 2026 10:23:18 GMT-0600 (Central Standard Time)",
   "browser": "/usr/bin/google-chrome (headless) via playwright-core 1.59.1",
-  "passed": 176,
-  "total": 176,
+  "passed": 179,
+  "total": 179,
   "exampleReportPages": {
     "summaryPages": 2,
     "fullPages": 3,
@@ -27,11 +27,11 @@
   "home": {
     "ps": 7,
     "lists": 0,
-    "text": "This site helps you organize the records that connect you to a Revolutionary War patriot, see where your documented family line still has gaps, and find where to look for the missing proof. (A patriot here means someone who supported the cause of American independence, for example by fighting in its battles or serving in the Continental Congress.)[1]\nSomewhere in your family's past, there may be someone who stood up for American independence. Maybe they carried a musket as a soldier, or maybe they helped in another way, such as furnishing supplies or lending money.[2] If you'd like to honor that person by joining the Daughters or Sons of the American Revolution, you'll be asked to show, with records, how you are connected to them, one generation at a time.[3][4]\nThat can be harder than it sounds. The records are often in more than one place: for militia service, for example, the National Archives sends you to the archives of the state where the patriot served.[5] Even a single pension file can arrive with its papers in no particular order.[6] And nobody hands you a map of which papers count as proof, or of what to try when the one record you need seems to have vanished.\nPatriot, In Lay Terms explains the process in everyday language, the way a patient friend who has done this before might explain it at the kitchen table. The guides walk you through the kinds of records you're likely to find, what each one can show, and where to turn when something is missing. Two free tools help you lay out what you already have. The Widow Pension Law Checker shows which federal widow pension laws a couple's marriage fits and where her pension file may be. The Lineage Evidence Matrix lists, generation by generation, what is still missing in your line and where to look for it. Every fact on the site links to an official source, so you can check it yourself.\nThis site can't do the searching for you, and it won't pretend to. You'll still visit archives, courthouses and websites to find and copy the records themselves. A DAR member helps guide you through completing and submitting the application.[4] SAR's local sponsor, often the chapter registrar, can guide you through the application.[7] The society, not this site, reviews what you send: at DAR, all documentation is subject to review by its genealogy staff.[3] What this site does is explain what each of those steps asks for and which records can answer it.\nIt's free, there's nothing to sign up for, and what you type into the tools stays in your own browser.\nWritten with AI assistance and reviewed by the site's owner. Each fact is tied to a quoted official source, and software checks that the quote is still there.",
+    "text": "This site helps you organize the records that connect you to a Revolutionary War patriot, see where your documented family line still has gaps, and find where to look for the missing proof. (A patriot here means someone who supported the cause of American independence, for example by fighting in its battles or serving in the Continental Congress.)[1]\nSomewhere in your family's past, there may be someone who stood up for American independence. Maybe they carried a musket as a soldier, or maybe they helped in another way, such as furnishing supplies or lending money.[2] If you'd like to honor that person by joining the Daughters or Sons of the American Revolution, you'll be asked to show, with records, how you are connected to them, one generation at a time.[3][4]\nThat can be harder than it sounds. The records are often in more than one place: for militia service, for example, the National Archives sends you to the archives of the state where the patriot served.[5] Even a single pension file can arrive with its papers in no particular order.[6] And nobody hands you a map of which papers count as proof, or of what to try when the one record you need seems to have vanished.\nPatriot, In Lay Terms explains the process in everyday language, the way a patient friend who has done this before might explain it at the kitchen table. The guides walk you through the kinds of records you're likely to find, what each one can show, and where to turn when something is missing. Two free tools help you lay out what you already have. The Widow Pension Law Checker shows which federal widow pension laws a couple's marriage fits and where her pension file may be. The Lineage Evidence Matrix lists, generation by generation, what is still missing in your line and where to look for it. Every fact on the site links to an official source, so you can check it yourself.\nThis site can't do the searching for you, and it won't pretend to. You'll still visit archives, courthouses and websites to find and copy the records themselves. A DAR member helps guide you through completing and submitting the application.[4] SAR's local sponsor can guide you through the application.[7] The society, not this site, reviews what you send: at DAR, all documentation is subject to review by its genealogy staff.[3] What this site does is explain what each of those steps asks for and which records can answer it.\nIt's free, there's nothing to sign up for, and what you type into the tools stays in your own browser.\nWritten with AI assistance and reviewed by the site's owner. Each fact is tied to a quoted official source, and software checks that the quote is still there.",
     "sub": "Plain-English help with DAR and SAR applications, for the Daughters and the Sons of the American Revolution",
     "ai": "Written with AI assistance and reviewed by the site's owner. Each fact is tied to a quoted official source, and software checks that the quote is still there.",
     "beforeStart": true,
-    "words": 1415
+    "words": 1409
   },
   "results": [
     {
@@ -572,10 +572,10 @@
     {
       "name": "Home (Nov 5 lock): subtitle names DAR and SAR; mission in flowing paragraphs (no lists) ahead of 'Ready to get started?'; purpose line, both tool names, one-sentence privacy",
       "ok": true,
-      "detail": "{\"ps\":7,\"lists\":0,\"text\":\"This site helps you organize the records that connect you to a Revolutionary War\",\"sub\":\"Plain-English help with DAR and SAR applications, for the Daughters and the Sons of the American Revolution\",\"ai\":\"Written with AI assistance and reviewed by the site's owner. Each fact is tied to a quoted official source, and software checks that the quote is still there.\",\"beforeStart\":true,\"words\":1415}"
+      "detail": "{\"ps\":7,\"lists\":0,\"text\":\"This site helps you organize the records that connect you to a Revolutionary War\",\"sub\":\"Plain-English help with DAR and SAR applications, for the Daughters and the Sons of the American Revolution\",\"ai\":\"Written with AI assistance and reviewed by the site's owner. Each fact is tied to a quoted official source, and software checks that the quote is still there.\",\"beforeStart\":true,\"words\":1409}"
     },
     {
-      "name": "Home (Nov 5 lock): the exact AI line, the exact SAR line (sourced), no unsourced 'most people get stuck' / 'give up' / guarantee lines",
+      "name": "Home (Nov 5 lock, SAR line updated by t125u): the exact AI line, the exact SAR line (sourced), no unsourced 'most people get stuck' / 'give up' / guarantee lines",
       "ok": true,
       "detail": "Written with AI assistance and reviewed by the site's owner. Each fact is tied to a quoted official source, and software checks that the quote is still there."
     },
@@ -795,7 +795,7 @@
       "detail": "{\"h1s\":1,\"sr\":\"Patriot, In Lay Terms: \",\"srHidden\":true,\"vis\":\"Plain-English help with DAR and SAR applications, for the Daughters and the Sons of the American Revolution\",\"visH\":143.9375,\"title\":\"Patriot, In Lay Terms: plain-English help for DAR and SAR applications | Patriot In Lay Terms\",\"rule\":\"rgb(178, 34, 52)\",\"ruleW\":\"56px\"}"
     },
     {
-      "name": "t122u #11: every visible text element on all 22 pages passes WCAG AA contrast (4.5:1, large text 3:1) — 3492 elements",
+      "name": "t122u #11: every visible text element on all 22 pages passes WCAG AA contrast (4.5:1, large text 3:1) — 3495 elements",
       "ok": true,
       "detail": ""
     },
@@ -815,7 +815,7 @@
       "detail": "lineage-proof-roadmap=2026-11-05 substitute-evidence=2026-11-05 read-pension-file=2026-11-09 records-by-state=2026-11-05 bounty-land-warrants=2026-11-09 census-bridge=2026-11-05 patriotic-service=2026-11-05 same-name=2026-11-09 patriot-or-loyalist=2026-11-09 application-problems=2026-11-05"
     },
     {
-      "name": "t124u #1 (390px): every Sources entry on every page (16 pages, 283 entries) has a visible \"Used for: ...\" line of at most about 8 words, and the raw URL is hidden on screen",
+      "name": "t124u #1 (390px): every Sources entry on every page (16 pages, 284 entries) has a visible \"Used for: ...\" line of at most about 8 words, and the raw URL is hidden on screen",
       "ok": true,
       "detail": ""
     },
@@ -825,7 +825,7 @@
       "detail": "{\"urls\":true,\"icons\":true}"
     },
     {
-      "name": "t124u #11 (390px): every link that leaves the site (324) opens in a new tab with rel=\"noopener noreferrer\", a small icon and \"(opens in new tab)\" for screen readers; no internal or email link does",
+      "name": "t124u #11 (390px): every link that leaves the site (325) opens in a new tab with rel=\"noopener noreferrer\", a small icon and \"(opens in new tab)\" for screen readers; no internal or email link does",
       "ok": true,
       "detail": ""
     },
@@ -840,12 +840,12 @@
       "detail": ""
     },
     {
-      "name": "t124u #13 + #11 (390px): the worksheet's \"Where to look\" shows Tim's CT and GA sentences (MA dropped: live check failed) and links their sources, and its outside links open in a new tab",
+      "name": "t124u #13 + #11 (390px): the worksheet's \"Where to look\" shows Tim's CT, GA and MA sentences and links their sources, and its outside links open in a new tab",
       "ok": true,
       "detail": "{\"n\":15,\"ok\":true}"
     },
     {
-      "name": "t124u #1 (1280px): every Sources entry on every page (16 pages, 283 entries) has a visible \"Used for: ...\" line of at most about 8 words, and the raw URL is hidden on screen",
+      "name": "t124u #1 (1280px): every Sources entry on every page (16 pages, 284 entries) has a visible \"Used for: ...\" line of at most about 8 words, and the raw URL is hidden on screen",
       "ok": true,
       "detail": ""
     },
@@ -855,7 +855,7 @@
       "detail": "{\"urls\":true,\"icons\":true}"
     },
     {
-      "name": "t124u #11 (1280px): every link that leaves the site (324) opens in a new tab with rel=\"noopener noreferrer\", a small icon and \"(opens in new tab)\" for screen readers; no internal or email link does",
+      "name": "t124u #11 (1280px): every link that leaves the site (325) opens in a new tab with rel=\"noopener noreferrer\", a small icon and \"(opens in new tab)\" for screen readers; no internal or email link does",
       "ok": true,
       "detail": ""
     },
@@ -870,12 +870,27 @@
       "detail": ""
     },
     {
-      "name": "t124u #13 + #11 (1280px): the worksheet's \"Where to look\" shows Tim's CT and GA sentences (MA dropped: live check failed) and links their sources, and its outside links open in a new tab",
+      "name": "t124u #13 + #11 (1280px): the worksheet's \"Where to look\" shows Tim's CT, GA and MA sentences and links their sources, and its outside links open in a new tab",
       "ok": true,
       "detail": "{\"n\":15,\"ok\":true}"
     },
     {
       "name": "t124u #2: a separate AI disclosure page carries the AI text unchanged; About no longer has it; guide top lines and the Sources page point to the AI disclosure",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "t125u #2: 'often the chapter registrar' is gone from the home SAR line and the glossary (and every built page)",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "t125u #1: About says the quote check runs each time the site is updated, and on a regular schedule (FAQ wording); 'when the site is built' is gone",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "t125u #3: the widow checker's storage note is Tim's text, with no 'pi.toolA' key names",
       "ok": true,
       "detail": ""
     },

@@ -242,3 +242,10 @@ Docs: https://developers.cloudflare.com/pages/how-to/web-analytics/
 - `{{asof:claim-id}}` in content expands to "As of <last-passed date>," from `manifest/source-last-passed.json`; the build fails if the source has no record.
 - Worksheet birth/death/marriage notes for Connecticut and Georgia (12 vital states, 13 service states). Massachusetts dropped (live check failed).
 - check-manifest re-reads tiny Incapsula bot-check pages (up to 4 curl retries) and never widens the fallback.
+
+### t125u (Nov 9, 2026)
+- Process rule: run the full live-source check (`node scripts/check-manifest.mjs --links`) before EVERY deploy, including visual-only batches.
+- About now says the quote check runs "each time the site is updated, and on a regular schedule" (FAQ wording).
+- Home SAR line and glossary no longer say "often the chapter registrar" (Tim approved the lock change).
+- Widow checker storage note: plain text, no `pi.toolA` key names.
+- Worksheet: Massachusetts birth/death/marriage note from the Mass.gov State Library guide (13 vital states, 13 service states).

@@ -94,6 +94,7 @@ export const SOURCE_TOPICS = {
   "https://nysl.nysed.gov/genealogy/vitrec": R("New York vital records"),
   "https://guides.loc.gov/connecticut-local-history-genealogy/vital-records": R("Connecticut birth, marriage and death records"),
   "https://georgiaarchives.org/research/vital_records": R("Georgia birth, marriage and death records"),
+  "https://www.mass.gov/guides/guide-to-genealogical-resources-in-the-state-library": R("Massachusetts birth, marriage and death records"),
 };
 export const words = (s) => s.split(/\s+/).filter(Boolean).length;
 export function topicFor(url, claimId) {

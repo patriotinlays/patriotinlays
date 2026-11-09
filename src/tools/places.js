@@ -38,6 +38,7 @@ export const PLACE_SOURCES = Object.freeze({
   deVital: { label: "Delaware Public Archives: guide to vital statistics records", url: "https://archives.delaware.gov/digital-archives/guide-to-vital-statistics-records/" },
   ctVital: { label: "Library of Congress: Connecticut vital records (research guide)", url: "https://guides.loc.gov/connecticut-local-history-genealogy/vital-records" },
   gaVital: { label: "Georgia Archives: vital records", url: "https://georgiaarchives.org/research/vital_records" },
+  maVital: { label: "Mass.gov: guide to genealogical resources in the State Library", url: "https://www.mass.gov/guides/guide-to-genealogical-resources-in-the-state-library" },
   maMil: { label: "Mass.gov: researching Massachusetts soldiers and sailors", url: "https://www.mass.gov/info-details/researching-massachusetts-soldiers-and-sailors" },
   naraVital: { label: "National Archives: vital records (where birth, death and marriage records are kept)", url: "https://www.archives.gov/research/vital-records" },
   nypl: { label: "New York Public Library: Revolutionary War records, with state archives listed", url: "https://libguides.nypl.org/military-genealogy/revolutionary-war" },
@@ -142,13 +143,16 @@ export const STATE_VITAL = Object.freeze({
     birth: [P(null, null, null, "Connecticut's early births, marriages and deaths were recorded by each town's clerk. The Barbour Collection indexes most Connecticut town birth, marriage and death records before 1850.", { claims: ["ct-vital-town-clerk", "ct-vital-barbour"] })],
     death: [P(null, null, null, "Connecticut's early births, marriages and deaths were recorded by each town's clerk. The Barbour Collection indexes most Connecticut town birth, marriage and death records before 1850.", { claims: ["ct-vital-town-clerk", "ct-vital-barbour"] })],
     marriage: [P(null, null, null, "Connecticut's early births, marriages and deaths were recorded by each town's clerk. The Barbour Collection indexes most Connecticut town birth, marriage and death records before 1850.", { claims: ["ct-vital-town-clerk", "ct-vital-barbour"] })] },
-  // t124u: Georgia (Tim's site text, verbatim). Massachusetts was dropped: vitalrecordsidx.htm returns 404, the fallback page
-  // served only a bot-check page on the Nov 9 live check (1841 quote, f), its clerk quote (g) does not match the page, and
-  // genidx.htm (h) returns 404. Massachusetts keeps the "no verified source yet" note.
+  // t124u: Georgia (Tim's site text, verbatim). t125u: Massachusetts from the Mass.gov State Library guide (Tim's site text,
+  // verbatim); the t124u Massachusetts Archives sentences stay out (bot-check page / 404 / quote mismatch).
   GA: { links: S("gaVital"),
     birth: [P(null, null, null, "Georgia's statewide birth and death records start in 1919, so Revolutionary-era events need other sources.", { claims: ["ga-vital-1919"] })],
     death: [P(null, null, null, "Georgia's statewide birth and death records start in 1919, so Revolutionary-era events need other sources.", { claims: ["ga-vital-1919"] })],
     marriage: [P(null, null, null, "From 1805, marriages were recorded by each county's Court of Ordinary, now the Probate Court. Look in the county where the bride lived.", { claims: ["ga-vital-marriage-1805", "ga-vital-bride-county"] })] },
+  MA: { links: S("maVital"),
+    birth: [P(null, null, null, "The Massachusetts Archives holds the state's birth, marriage and death records from 1841 to 1920, so Revolutionary-era events need other sources.", { claims: ["ma-vital-1841-1920"] })],
+    death: [P(null, null, null, "The Massachusetts Archives holds the state's birth, marriage and death records from 1841 to 1920, so Revolutionary-era events need other sources.", { claims: ["ma-vital-1841-1920"] })],
+    marriage: [P(null, null, null, "The Massachusetts Archives holds the state's birth, marriage and death records from 1841 to 1920, so Revolutionary-era events need other sources.", { claims: ["ma-vital-1841-1920"] })] },
 });
 // facts: one fact ("birth") or several (["birth", "death"]) when the report merges a state's notes into one block.
 export const noVitalText = (name, facts) => { const f = [].concat(facts); const list = f.length > 1 ? `${f.slice(0, -1).join(", ")} or ${f.at(-1)}` : f[0];

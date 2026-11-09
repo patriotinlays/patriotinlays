@@ -443,4 +443,5 @@ C = [
 ("ga-vital-1919", "GA_VITAL", "Statewide registration of births and deaths began in Georgia in 1919.", "Georgia's statewide birth and death records start in 1919, so Revolutionary-era events need other sources.", None),
 ("ga-vital-marriage-1805", "GA_VITAL", "Beginning in 1805, Georgia law required marriages to be recorded in the Court of Ordinary, now known as the Probate Court.", "From 1805, marriages were recorded by each county's Court of Ordinary, now the Probate Court.", None),
 ("ga-vital-bride-county", "GA_VITAL", "Generally, marriages are recorded in the county of residence of the bride.", "Look in the county where the bride lived.", None),
+("ma-vital-1841-1920", "MA_SL_GEN", "The Massachusetts Archives is the repository for Massachusetts vital records (births, marriages and deaths) for the period between 1841 and 1920.", "The Massachusetts Archives holds the state's birth, marriage and death records from 1841 to 1920, so Revolutionary-era events need other sources.", None),
 ]

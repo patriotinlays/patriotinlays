@@ -165,15 +165,15 @@ t("audit 4: substitutes are listed in order (baptism, Bible, then estimates and 
 t("audit 4: every substitute step, and the 'use two or more' note, rests on verified manifest claims; links are manifest URLs and the guide is a real page", (() => { const b = birthSubstitutes({ gen: 6, cells: [] });
   return [...BIRTH_SUBSTITUTES.steps, BIRTH_SUBSTITUTES.combine].every((x) => x.claims.length && x.claims.every((c) => verified.has(c))) && b.links.every((l) => manifestUrls.has(l.url)) && slugs.has(b.guide.url); })());
 t("audit 4: the 'Don't know your patriot's name yet?' checklist has 4 plain to-dos; any fact it states (DAR's free database) carries a verified claim", NAME_CHECKLIST.length === 4 && NAME_CHECKLIST.every((x) => x.text.length > 20 && (x.claims || []).every((c) => verified.has(c))) && NAME_CHECKLIST.find((x) => /free/.test(x.text)).claims.includes("dar-join-grs"));
-// ---- t124u #13: Connecticut and Georgia birth, marriage and death guidance ----
+// ---- t124u #13 / t125u #4: Connecticut, Georgia and Massachusetts birth, marriage and death guidance ----
 { const { STATE_VITAL, STATE_SERVICE, STATES } = await import("../src/tools/places.js");
   const claimText = new Map(manifest.claims.map((c) => [c.claim_id, c.claim_text]));
   const ct = vitalNote("CT", "birth"), ga = vitalNote("GA", "death"), gaM = vitalNote("GA", "marriage"), ma = vitalNote("MA", "marriage");
-  t("t124u: CT and GA have birth, death and marriage notes (12 states with vital guidance)", ["CT", "GA"].every((st) => ["birth", "death", "marriage"].every((f) => STATE_VITAL[st]?.[f]?.length)) && Object.keys(STATE_VITAL).length === 12);
+  t("t124u/t125u: CT, GA and MA have birth, death and marriage notes (13 states with vital guidance)", ["CT", "GA", "MA"].every((st) => ["birth", "death", "marriage"].every((f) => STATE_VITAL[st]?.[f]?.length)) && Object.keys(STATE_VITAL).length === 13);
   t("t124u: each new note is exactly Tim's site text, and every sentence is a verified claim's own text", ct.text === `${claimText.get("ct-vital-town-clerk")} ${claimText.get("ct-vital-barbour")}` && ga.text === claimText.get("ga-vital-1919")
-    && gaM.text === `${claimText.get("ga-vital-marriage-1805")} ${claimText.get("ga-vital-bride-county")}`
-    && [ct, ga, gaM].every((n) => !n.noSource && n.claims.every((c) => verified.has(c)) && n.links.every((l) => manifestUrls.has(l.url))));
-  t("t124u: Massachusetts (live check failed: bot-check page / 404 / quote mismatch) has no vital note and keeps the 'no verified source yet' text", !STATE_VITAL.MA && ma.noSource && !/1841|city or town where the event happened|Vital Records to 1850/.test(JSON.stringify(STATE_VITAL)));
+    && gaM.text === `${claimText.get("ga-vital-marriage-1805")} ${claimText.get("ga-vital-bride-county")}` && ma.text === claimText.get("ma-vital-1841-1920")
+    && [ct, ga, gaM, ma].every((n) => !n.noSource && n.claims.every((c) => verified.has(c)) && n.links.every((l) => manifestUrls.has(l.url))));
+  t("t125u: Massachusetts uses only Tim's Mass.gov sentence (no 'no verified source yet' note); the failed t124u MA sentences stay out", !ma.noSource && ["birth", "death", "marriage"].every((f) => !vitalNote("MA", f).noSource) && !/city or town where the event happened|Vital Records to 1850|statewide birth, marriage and death records start in 1841/.test(JSON.stringify(STATE_VITAL)));
   const page = readFileSync(new URL("../src/content/lineage-matrix.md", import.meta.url), "utf8");
   const names = (o) => Object.keys(o).map((c) => STATES.find(([k]) => k === c)[1]).sort();
   const m = /verified birth, death or marriage sources for (\d+) states: ([^.]+)\. It has Revolutionary War service sources for (\d+) states: ([^.]+)\./.exec(page);

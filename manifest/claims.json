@@ -7036,6 +7036,23 @@
         "tool:places.js"
       ],
       "notes": ""
+    },
+    {
+      "claim_id": "ma-vital-1841-1920",
+      "claim_text": "The Massachusetts Archives holds the state's birth, marriage and death records from 1841 to 1920, so Revolutionary-era events need other sources.",
+      "source_url": "https://www.mass.gov/guides/guide-to-genealogical-resources-in-the-state-library",
+      "source_title": "Mass.gov (State Library of Massachusetts) — Guide to Genealogical Resources in the State Library",
+      "source_type": "official_secondary",
+      "archive_identifier": null,
+      "last_retrieved": "2026-11-09",
+      "quote_excerpt": "The Massachusetts Archives is the repository for Massachusetts vital records (births, marriages and deaths) for the period between 1841 and 1920.",
+      "page_ref": null,
+      "verification_status": "verified",
+      "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-11-09 CT",
+      "used_on": [
+        "tool:places.js"
+      ],
+      "notes": ""
     }
   ]
 }

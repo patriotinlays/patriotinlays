@@ -1,5 +1,5 @@
 {
-  "builtAt": "Mon Nov 09 2026 09:38:58 GMT-0600 (Central Standard Time)",
+  "builtAt": "Mon Nov 09 2026 10:21:55 GMT-0600 (Central Standard Time)",
   "guideSourcesChecked": [
     {
       "slug": "guides/application-problems",
@@ -108,7 +108,7 @@
       "description": "Organize the evidence for each generation of a DAR or SAR line in your browser, flag conflicts, and print a gap report.",
       "tool": "lineage-matrix",
       "path": "/tools/lineage-matrix/",
-      "words": 1322,
+      "words": 1323,
       "claims": 59,
       "sources": 19,
       "tools": [
@@ -224,7 +224,7 @@
       "slug": "about",
       "description": "What patriotinlays.com does, who it helps, what it doesn't do, and how its facts are checked.",
       "path": "/about/",
-      "words": 381,
+      "words": 387,
       "claims": 0,
       "sources": 0,
       "tools": []
