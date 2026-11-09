@@ -32,7 +32,7 @@ unknown or unverified claim, stale entry (> 120 days), quote that no longer appe
 | Path | What it is |
 |---|---|
 | `src/content/*.md` | 10 cornerstone guides + 2 tool pages |
-| `src/pages/*.md` | About (AI disclosure), Privacy, Contact |
+| `src/pages/*.md` | About, AI disclosure, Privacy, Contact |
 | `src/tools/` | Tool logic (`tool-a.js`, `tool-b.js`), UI modules (`tool-a-ui.js`, `tool-b-ui.js`), `storage.js` |
 | `src/assets/` | CSS (responsive + print), header logo, favicons, apple-touch icon and social share image |
 | `tools/logo/` | Logo sources and rebuild scripts (`build.py`, `preview.py`, `og_image.py`; fonts under the SIL OFL, see `FONT-LICENSE.txt`) |
@@ -49,7 +49,7 @@ There is no `src/components/` directory; tool code lives in `src/tools/`.
 ### Beginner features (Oct 31, 2026)
 
 - Home page opens with "Just starting? Start here" and a sourced "How to join, in short" box (DAR How to Join, SAR How to Apply).
-- The Roadmap guide starts with a sourced "Step 0: find the soldier's name".
+- The Roadmap guide starts with a sourced "Step 0: find your patriot's name" (old `#step-0-find-the-soldier-s-name` anchor kept).
 - Every guide and tool page has a "New here?" definitions box (DAR, SAR, NSCDA, lineage society, patriot, bounty land, Stat.) linking to the glossary.
 - Widow checker: a one-line plain answer above the results table and a plain-terms note.
 - Worksheet: a "What do you have?" checklist per generation and plain relationship choices ("my 3rd-great-grandfather").
@@ -74,7 +74,7 @@ There is no `src/components/` directory; tool code lives in `src/tools/`.
 ### Logo and audit 4 proposals (Oct 31, 2026)
 
 - Header logo (white on navy, 44px tall, 38px on narrow phones), SVG + PNG favicons, apple-touch icon and a 1200x630 og:image; all cache-busted. Sources and rebuild scripts in `tools/logo/`.
-- Worksheet: a purpose line; a first visit shows "Start my worksheet" and an inline "Don't know his name yet?" checklist (ticks saved as `pi.toolB.nameChecklist`), and the steps stay hidden until you start (saved data, the example, or a link to a step opens them).
+- Worksheet: a purpose line; a first visit shows "Start my worksheet" and an inline "Don't know your patriot's name yet?" checklist (ticks saved as `pi.toolB.nameChecklist`), and the steps stay hidden until you start (saved data, the example, or a link to a step opens them).
 - Worksheet: each generation with no birth record gets a closed "No birth certificate? Try these substitutes, in order" panel (baptism, Bible, pension file for generation 4+, census or death age, affidavit; use two or more), all from manifest claims.
 - Home page: a first-screen note that the site is independent (not affiliated with DAR, SAR or any lineage society) and doesn't search records.
 - The unfinished-record label is now "Needs details" (was "Entry Incomplete").
@@ -83,7 +83,7 @@ There is no `src/components/` directory; tool code lives in `src/tools/`.
 
 - Widow checker with only dates: each law is labelled "Fits" (only when what you typed settles every rule), "Ruled out by the dates", "Ruled out by the service you typed", "Still possible: need X" or "Can't check here", and the answer asks for the one field that settles the most. Battle is Don't know / Yes / No and the 1836 law now asks for his kind of service. Tests prove dates-only input only gives "Fits" when the dates decide every rule, and that a settled answer never flips when more fields are filled in.
 - Worksheet page: "Where to look" uses the report's lettered A-L index; gaps and "What to do next" point to letters, each block appears once.
-- Worksheet patriot step: "Don't know his name yet?" links to Roadmap Step 0.
+- Worksheet patriot step: "Don't know your patriot's name yet?" links to Roadmap Step 0.
 - Home page: shorter (about 1190 to 955 words); start-here path, "How to join, in short" and beginner guides come before the widow checker.
 
 ### Audit 3 fixes (Oct 31, 2026)
@@ -234,3 +234,11 @@ Docs: https://developers.cloudflare.com/pages/how-to/web-analytics/
 - Gates: evaluate Day 30, 60 and 90 with `ops/gates.js` (rules and the D90-9 refresh / re-test in `docs/gates.md`).
 - AdSense: apply only after a Day-90 PASS; ad code and `ads.txt` are added then, and the Privacy page is updated first.
 - Re-run `npm run build` at least every 120 days; the manifest age gate fails the build when sources go stale.
+
+### t124u (Nov 9, 2026)
+- Separate `/ai-disclosure/` page (AI text moved unchanged from About); every footer starts "About · AI disclosure".
+- Sources lists: a "Used for: ..." label per source (`scripts/lib/source-labels.mjs`, build fails if a URL has no label); raw URLs hidden on screen, shown in print.
+- Every outside link opens in a new tab (`rel="noopener noreferrer"`, small inline SVG icon, sr-only "(opens in new tab)"), in built pages and tool-rendered links (`markExternal` in `src/tools/storage.js`).
+- `{{asof:claim-id}}` in content expands to "As of <last-passed date>," from `manifest/source-last-passed.json`; the build fails if the source has no record.
+- Worksheet birth/death/marriage notes for Connecticut and Georgia (12 vital states, 13 service states). Massachusetts dropped (live check failed).
+- check-manifest re-reads tiny Incapsula bot-check pages (up to 4 curl retries) and never widens the fallback.

@@ -12,18 +12,18 @@ The most common dead end in Revolutionary War research is searching the right na
 
 The National Archives holds records of Continental troops and of state troops that served as Continental troops. [[claim:nara-svc-holds]]
 It does not hold state militia records. [[claim:nara-svc-custody]]
-For militia service, NARA's advice is to check with the archives of the state in which the soldier served. [[claim:nara-svc-state]]
+For militia service, NARA's advice is to check with the archives of the state in which your patriot served. [[claim:nara-svc-state]]
 
 ## Decision procedure
 
 1. Identify the type of service. Continental Army, state troops, militia, navy, or civil and patriotic service.
 2. Continental, or state troops serving as Continentals: start with the federal compiled service records and rolls (below).
-3. Militia: go to the state archives or state library of the state he served for, and check the pension files too, since the 1832 act opened pensions to militia service. [[claim:nps-1832]]
+3. Militia: go to the state archives or state library of the state your patriot served for, and check the pension files too, since the 1832 act opened pensions to militia service. [[claim:nps-1832]]
 4. Civil or patriotic service, such as town office, committees, oaths or supplies: DAR lists oaths of allegiance, town meeting minutes and county court orders among service sources, so start with town and county records, then the state archives. [[claim:dar-service-sources]]
 5. Unsure: search the federal pension files first. A veteran's application normally gives his former rank, unit and period of service, which tells you where to search next. [[claim:m804-rank-unit]]
 
 When you record the result, DAR's service-state field means the state the ancestor served for. [[claim:dar-service-state]]
-For military service it is the state in control of his unit, not every state he marched through. [[claim:dar-unit-state]]
+For military service it is the state in control of your patriot's unit, not every state your patriot marched through. [[claim:dar-unit-state]]
 
 ## Federal records: what exists and what it covers
 

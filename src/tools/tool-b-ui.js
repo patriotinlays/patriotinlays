@@ -74,18 +74,18 @@ const stateOptions = () => STATES.map(([c, n]) => [c, n]);
 // The patriot's date check, in plain words (the old standalone service-date check, folded into this step).
 function patriotCheckEl(p, rows = null) {
   const d = patriotDates(p);
-  if (!d) return el("p", { class: "small hint", text: "Type his rough service dates to check them against the period DAR accepts for his type of service." });
+  if (!d) return el("p", { class: "small hint", text: "Type your patriot's rough service dates to check them against the period DAR accepts for that type of service." });
   // His birth year and service must add up before the period check can say anything fits (audit 4).
   const warn = rows ? dateWarnings(rows, p).filter((w) => w.patriot) : [];
   // Only "can't be right" warnings hold back the period check; "unlikely" ones get a softer badge and the check still runs (code review).
   const hard = warn.filter((w) => w.kind === "impossible");
-  if (hard.length && d.status !== "invalid") return el("div", { class: "result r-inconsistent", "data-date-warn": "" }, el("span", { class: "badge b-inconsistent", text: "His dates don't add up" }),
-    ...warn.map((w) => el("p", { text: w.text })), el("p", { class: "small", text: "The period check waits until his birth year and service dates make sense together." }));
+  if (hard.length && d.status !== "invalid") return el("div", { class: "result r-inconsistent", "data-date-warn": "" }, el("span", { class: "badge b-inconsistent", text: "Your patriot's dates don't add up" }),
+    ...warn.map((w) => el("p", { text: w.text })), el("p", { class: "small", text: "The period check waits until your patriot's birth year and service dates make sense together." }));
   const soft = warn.length && d.status !== "invalid" ? el("div", { class: "result r-possible", "data-date-warn": "", "data-date-unlikely": "" }, el("span", { class: "badge b-possible", text: "Worth a second look" }), ...warn.map((w) => el("p", { text: w.text }))) : null;
   const label = { consistent: "Dates fit DAR's period for this service (not a ruling)", partial: "Partly inside the period", inconsistent: "Outside the period as typed", invalid: "Couldn't read the dates" }[d.status];
   return el("div", {}, soft, el("div", { class: `result r-${d.status}` }, el("span", { class: `badge b-${d.status}`, text: label }), el("p", { text: d.plain }),
     el("p", { class: "small", text: `Period checked: ${d.rule || ""}` }),
-    p.end ? el("p", { class: "small" }, "His service end date can feed the ", el("a", { href: "/tools/widow-pension-checker/?from=worksheet", "data-to-widow": "", text: "widow-pension check" }), ".") : null));
+    p.end ? el("p", { class: "small" }, "Your patriot's service end date can feed the ", el("a", { href: "/tools/widow-pension-checker/?from=worksheet", "data-to-widow": "", text: "widow-pension check" }), ".") : null));
 }
 function patriotForm(state, refresh, rerender = refresh) {
   const p = state.patriot; const set = (k, v) => { p[k] = v; save(state); refresh(); };
@@ -105,20 +105,20 @@ function patriotForm(state, refresh, rerender = refresh) {
       if (+v > state.generations.length) { for (let g = state.generations.length + 1; g <= +v; g++) state.generations.push(newGen(g)); save(state); rerender(); return; }
       x.closest("[data-patriot-form]")?.querySelector("[data-gen-warn]")?.remove(); save(state); refresh(); }); return x; })();
   const genWarn = p.gen === "1" ? "Generation 1 is you, the person applying, so it can't be the patriot. The worksheet is using your oldest generation instead."
-    : oldest === 1 ? "Generation 1 is you, so it can't be the patriot. Add generations below, back to him; he'll be the oldest one unless you pick another." : null;
+    : oldest === 1 ? "Generation 1 is you, so it can't be the patriot. Add generations below, back to your patriot; your patriot will be the oldest one unless you pick another." : null;
   return el("div", { class: "patriot-form", "data-patriot-form": "" },
     // Most beginners start without the soldier's name: point them to Roadmap Step 0 instead of leaving the step blank.
-    el("p", { class: "no-name", "data-no-name": "" }, el("strong", { text: "Don't know his name yet? " }), "That's where most people start. ",
-      el("a", { href: "/guides/lineage-proof-roadmap/#step-0-find-the-soldier-s-name", text: "Step 0 of our Roadmap guide: how to find the soldier's name" }),
-      ". Meanwhile, fill in the people you do know below, starting with yourself; you can add him here later."),
+    el("p", { class: "no-name", "data-no-name": "" }, el("strong", { text: "Don't know your patriot's name yet? " }), "That's where most people start. ",
+      el("a", { href: "/guides/lineage-proof-roadmap/#step-0-find-your-patriot-s-name", text: "Step 0 of our Roadmap guide: how to find your patriot's name" }),
+      ". Meanwhile, fill in the people you do know below, starting with yourself; you can add your patriot here later."),
     nameChecklistEl(false),
-    ...inp("name", "His name (optional, stays in this browser)"),
-    ...sel("state", "State or colony he served for", stateOptions(), PATRIOT_HELP.state.text),
+    ...inp("name", "Your patriot's name (optional, stays in this browser)"),
+    ...sel("state", "State or colony your patriot served for", stateOptions(), PATRIOT_HELP.state.text),
     ...inp("unit", "Unit or company (optional)", "For example a county militia company or a numbered regiment, if you know it."),
     ...sel("kind", "Type of service", SERVICE_KINDS.map((k) => [k.id, k.label]), PATRIOT_HELP.kind.text),
-    dateField({ id: "pat-start", name: "start", legend: "When did his service start?", hint: "A rough date is fine: pick \"About\" if you aren't sure.", value: p.start || "", onChange: (v) => set("start", v) }),
-    dateField({ id: "pat-end", name: "end", legend: "When did his service end?", hint: "Leave it blank if you only have one date.", value: p.end || "", onChange: (v) => set("end", v) }),
-    el("label", { for: "pat-gen", text: "How is he related to you?" }), el("p", { class: "small hint", text: "Pick the relationship, for example \"my 3rd-great-grandfather\"; the worksheet adds the generations in between. Generation 1 is you, so it isn't offered." }), genSel,
+    dateField({ id: "pat-start", name: "start", legend: "When did your patriot's service start?", hint: "A rough date is fine: pick \"About\" if you aren't sure.", value: p.start || "", onChange: (v) => set("start", v) }),
+    dateField({ id: "pat-end", name: "end", legend: "When did your patriot's service end?", hint: "Leave it blank if you only have one date.", value: p.end || "", onChange: (v) => set("end", v) }),
+    el("label", { for: "pat-gen", text: "How is your patriot related to you?" }), el("p", { class: "small hint", text: "Pick the relationship, for example \"my 3rd-great-grandfather\"; the worksheet adds the generations in between. Generation 1 is you, so it isn't offered." }), genSel,
     genWarn ? el("p", { class: "small warn", role: "status", "data-gen-warn": "", text: genWarn }) : null,
     el("div", { "data-patriot-check": "", "aria-live": "polite" }, patriotCheckEl(p, state.generations)));
 }
@@ -163,9 +163,9 @@ function nameChecklistEl(open = true) {
   const body = [el("ul", { class: "name-checklist" }, ...NAME_CHECKLIST.map((it) => el("li", {}, el("label", { class: "check" },
       el("input", { type: "checkbox", "data-name-check": it.id, checked: !!ticks[it.id], onchange: (e) => { const t = store.get("nameChecklist", {}) || {}; t[it.id] = e.target.checked; store.set("nameChecklist", t);
         document.querySelectorAll(`[data-name-check="${it.id}"]`).forEach((x) => { x.checked = e.target.checked; }); } }), " ", it.text)))),
-    el("p", { class: "small" }, "More detail: ", el("a", { href: "/guides/lineage-proof-roadmap/#step-0-find-the-soldier-s-name", text: "Step 0 of our Roadmap guide: how to find the soldier's name" }), ".")];
-  return open ? el("div", { class: "name-check", "data-name-box": "" }, el("p", {}, el("strong", { text: "Don't know his name yet? " }), "That's where most people start. A short checklist:"), ...body)
-    : el("details", { class: "name-check", "data-name-box": "" }, el("summary", { text: "Don't know his name yet? A short checklist" }), ...body);
+    el("p", { class: "small" }, "More detail: ", el("a", { href: "/guides/lineage-proof-roadmap/#step-0-find-your-patriot-s-name", text: "Step 0 of our Roadmap guide: how to find your patriot's name" }), ".")];
+  return open ? el("div", { class: "name-check", "data-name-box": "" }, el("p", {}, el("strong", { text: "Don't know your patriot's name yet? " }), "That's where most people start. A short checklist:"), ...body)
+    : el("details", { class: "name-check", "data-name-box": "" }, el("summary", { text: "Don't know your patriot's name yet? A short checklist" }), ...body);
 }
 function cellEditor(state, g, c, rerender, n) {
   const ev = evaluateCell(c);
@@ -289,7 +289,7 @@ function mountCard(root) {
 }
 function patriotSummary(p, gens = null) {
   const k = kindOf(p.kind);
-  const rows = [["Name", p.name], ["State or colony he served for", stateName(p.state)], ["Unit or company", p.unit], ["Type of service", k?.label], ["Service dates", p.start ? `${p.start}${p.end && p.end !== p.start ? ` to ${p.end}` : ""}` : ""]];
+  const rows = [["Name", p.name], ["State or colony your patriot served for", stateName(p.state)], ["Unit or company", p.unit], ["Type of service", k?.label], ["Service dates", p.start ? `${p.start}${p.end && p.end !== p.start ? ` to ${p.end}` : ""}` : ""]];
   return el("div", { class: "patriot-summary" }, el("dl", {}, ...rows.flatMap(([a, b]) => [el("dt", { text: a }), el("dd", { text: b || "—" })])), patriotCheckEl(p, gens));
 }
 // "Where to look" index for the report: the general advice and each state/census note become separate lettered
@@ -342,7 +342,7 @@ function mountReport(root) {
   const plan = renderPlan(actionPlan(s.generations, s.patriot), { heading: false, printable: false, tip: false, whereRef: refFor, addHref: (it) => `/tools/lineage-matrix/#gen-${it.gen}` });
   const n = countEntries(s.generations); const missing = gaps(s.generations, s.patriot).length;
   const pd = hasPatriot(s.patriot) ? patriotDates(s.patriot) : null; const k = kindOf(s.patriot?.kind);
-  const patLine = hasPatriot(s.patriot) ? `${s.patriot.name || "Not named"}${s.patriot.state ? `, ${stateName(s.patriot.state)}` : ""}${k ? `, ${k.label.toLowerCase()}` : ""}${s.patriot.start ? `, ${dateLabel(s.patriot.start)}${s.patriot.end && s.patriot.end !== s.patriot.start ? ` to ${dateLabel(s.patriot.end)}` : ""}` : ""}${pg ? ` (generation ${pg})` : ""}.${pd ? ` Date check: ${dateWarnings(s.generations, s.patriot).some((w) => w.patriot && w.kind === "impossible") && pd.status !== "invalid" ? "his birth year and service dates don't add up (see \"Check these dates first\")" : PATRIOT_BADGE[pd.status] || pd.status}.` : ""}` : "Not filled in yet.";
+  const patLine = hasPatriot(s.patriot) ? `${s.patriot.name || "Not named"}${s.patriot.state ? `, ${stateName(s.patriot.state)}` : ""}${k ? `, ${k.label.toLowerCase()}` : ""}${s.patriot.start ? `, ${dateLabel(s.patriot.start)}${s.patriot.end && s.patriot.end !== s.patriot.start ? ` to ${dateLabel(s.patriot.end)}` : ""}` : ""}${pg ? ` (generation ${pg})` : ""}.${pd ? ` Date check: ${dateWarnings(s.generations, s.patriot).some((w) => w.patriot && w.kind === "impossible") && pd.status !== "invalid" ? "the patriot's birth year and service dates don't add up (see \"Check these dates first\")" : PATRIOT_BADGE[pd.status] || pd.status}.` : ""}` : "Not filled in yet.";
   const summary = el("section", { class: "report-summary", "data-summary": "" },
     el("h2", { text: "Summary" }),
     el("p", { class: "small", text: `Saved ${s.updated ? new Date(s.updated).toLocaleString() : ""}. Your own worksheet, not a decision: a society's genealogists review every entry.` }),

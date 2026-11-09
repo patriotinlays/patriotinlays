@@ -19,14 +19,14 @@ A free worksheet for proving your line back to a Revolutionary War patriot, one 
 **Who it helps.** Anyone preparing a DAR or SAR application, whether you're starting with nothing but a family story or already have a folder of certificates. Experienced researchers can use it as a quick checklist.
 
 **The problem it solves.** DAR asks for documentation of each name, date, place and relationship in your line. [[claim:dar-each-relationship]]
-With several generations and a stack of papers, it's easy to lose track of which links are proven and which still need a record. The worksheet keeps that straight.
+With several generations and a stack of papers, it's easy to lose track of which links are proven and which still need a record. The worksheet lists the records you've entered for each link and what is still missing.
 
-**How to use it.** Start with the patriot: his name, the state or colony he served for, his type of service and his rough service dates (pick the month, type the year, and say whether each date is exact or only about, before or after). Then add each generation, starting with yourself.
+**How to use it.** Start with your patriot: name, the state or colony your patriot served for, type of service and rough service dates (pick the month, type the year, and say whether each date is exact or only about, before or after). Then add each generation, starting with yourself.
 Generation 1 is you, the applicant. [[claim:dar-gen1-applicant]]
 Your parents are generation 2, your grandparents generation 3, and so on back to the patriot. [[claim:dar-gen-numbering]]
 For each person, tick the records you have or add them one at a time. "Load an example" shows a made-up family filled in, and the [walkthrough](/walkthroughs/) reads its results with you.
 
-**What you'll get.** A list of what is still missing for each person and where to look for it, fitted to that person's era and state; a check of the patriot's dates against the period DAR accepts for his type of service; a gentle warning when years don't add up; and a "What to do next" plan and report you can print or save as a PDF. [[claim:dar-window-core]]
+**What you'll get.** A list of what is still missing for each person and where to look for it, fitted to that person's era and state; a check of the patriot's dates against the period DAR accepts for your patriot's type of service; a gentle warning when years don't add up; and a "What to do next" plan and report you can print or save as a PDF. [[claim:dar-window-core]]
 
 **Its limits.** The worksheet never grades a line. The best label any entry can earn is "Evidence Entered — Review Required", because only a society's genealogists decide what is proven. [[claim:dar-review-staff]]
 For states without a verified source yet, "Where to look" gives general advice and says so. Everything you enter is saved only in this browser, and nothing is sent anywhere. Clearing your browser data or switching browsers deletes your work. Print or save your report as a backup. Use "Delete all my worksheet data" to remove it.
@@ -37,10 +37,10 @@ For states without a verified source yet, "Where to look" gives general advice a
 
 ## The patriot step
 
-Tell the worksheet who the patriot was: his name, the state or colony he served for, his unit if you know it, his type of service and rough service dates. For military service, DAR records only the state that controlled his unit, not every state he passed through. [[claim:dar-unit-state]]
+Tell the worksheet who your patriot was: name, the state or colony your patriot served for, unit if you know it, type of service and rough service dates. For military service, DAR records only the state that controlled the unit, not every state your patriot passed through. [[claim:dar-unit-state]]
 The types of service come from the sources this site uses: the Continental Line or State troops, volunteers or militia [[claim:nara-act-1832-categories]], the naval service [[claim:stat-1848-service]], civil service under the new state governments [[claim:dar-civil-service]], patriotic service such as furnishing supplies or signing an oath of allegiance [[claim:dar-material-aid]] [[claim:dar-oaths]], and the categories with their own dates below.
 
-The worksheet compares his dates with the periods below. Each one has its own source:
+The worksheet compares your patriot's dates with the periods below. Each one has its own source:
 
 - DAR accepts service performed between 19 April 1775 and 26 November 1783. [[claim:dar-window-core]] SAR accepts patriotic service, with some exceptions, for the same period. [[claim:sar-window]]
 - Committee service that furthered the cause of the Colonies counts from April 1774. [[claim:dar-committee-1774]]
@@ -49,8 +49,8 @@ The worksheet compares his dates with the periods below. Each one has its own so
 - Supplying cattle for Gálvez's forces in Spanish America counts after 24 December 1776. [[claim:dar-galvez-cattle]]
 
 DAR gives no end date for the two Gálvez categories or for committee service, so the worksheet applies the general end date.
-His type of service decides where his records are: the National Archives holds records of Continental troops [[claim:nara-svc-holds]] but not state militia records [[claim:nara-svc-custody]], so for militia it points you to the archives of the state he served. [[claim:nara-svc-state]]
-His service end date can also be passed to the free [Widow Pension Law Checker](/tools/widow-pension-checker/).
+Your patriot's type of service decides where the service records are: the National Archives holds records of Continental troops [[claim:nara-svc-holds]] but not state militia records [[claim:nara-svc-custody]], so for militia it points you to the archives of the state your patriot served. [[claim:nara-svc-state]]
+Your patriot's service end date can also be passed to the free [Widow Pension Law Checker](/tools/widow-pension-checker/).
 
 ## How the matrix evaluates an entry
 
@@ -64,7 +64,7 @@ Every missing item comes with a "Where to look" note. Type a rough birth year (a
 
 - It lists only the censuses taken in that person's lifetime. The 1790–1840 censuses named only the head of household [[claim:nara-census-head]], the 1850–1870 censuses do not state relationships [[claim:nscda-census-1850-1870]], and the 1840 census named Revolutionary War pensioners with their exact ages. [[claim:nara-census-1840]]
 - For birth, death and marriage it uses what the state's own archives or vital-records office says about when that state kept those records. For example, Virginia did not record births, marriages and deaths statewide before 1853 [[claim:lva-bmd-pre1853]], and New Jersey births before 1848 were not filed by any level of government, except records of births of enslaved children. [[claim:nj-pre1848-birth]] When the state did not keep the record then, the note points to church, probate and other older records instead.
-- So far the worksheet has verified birth, death or marriage sources for Delaware, Maryland, New York, New Hampshire, New Jersey, North Carolina, Pennsylvania, Rhode Island, South Carolina and Virginia, and Revolutionary War service sources for Connecticut, Delaware, Georgia, Maryland, Massachusetts, New Hampshire, New Jersey, New York, North Carolina, Pennsylvania, Rhode Island, South Carolina and Virginia.
+- So far the worksheet has verified birth, death or marriage sources for 12 states: Connecticut, Delaware, Georgia, Maryland, New Hampshire, New Jersey, New York, North Carolina, Pennsylvania, Rhode Island, South Carolina and Virginia. It has Revolutionary War service sources for 13 states: Connecticut, Delaware, Georgia, Maryland, Massachusetts, New Hampshire, New Jersey, New York, North Carolina, Pennsylvania, Rhode Island, South Carolina and Virginia.
 - For any other state it says so plainly and falls back to general advice: a census entry that gives the state and approximate year of birth tells you which local office to ask. [[claim:nara-vital-census]]
 
 Links go only to sources this site already cites, such as the National Archives page that lists the Revolutionary War pension files (free on FamilySearch with login). [[claim:nara-amrev-familysearch]]

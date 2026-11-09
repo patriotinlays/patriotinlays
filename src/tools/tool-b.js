@@ -235,10 +235,10 @@ export function birthSubstitutes(row = {}) {
 // Inline "Don't know his name yet?" checklist on the worksheet's start screen (audit 4 proposal). Plain to-dos, no facts claimed;
 // the Roadmap's Step 0 has the sourced detail.
 export const NAME_CHECKLIST = Object.freeze([
-  { id: "known", text: "Write down the people you do know: your parents, grandparents and great-grandparents, with rough birth years and states. The worksheet starts with them; you don't need his name." },
+  { id: "known", text: "Write down the people you do know: your parents, grandparents and great-grandparents, with rough birth years and states. The worksheet starts with them; you don't need your patriot's name." },
   { id: "ask", text: "Ask older relatives for family Bibles, obituaries, old letters, and the papers of anyone in the family who joined DAR, SAR or another lineage society." },
   { id: "search", text: "Search DAR's free ancestor database (the Genealogical Research System) with your family surnames and states. Step 0 of our Roadmap guide shows how.", claims: ["dar-join-grs"] },
-  { id: "add", text: "Found a likely name? Add him in the patriot step. Not yet? Start anyway and add him later." },
+  { id: "add", text: "Found a likely name? Add your patriot in the patriot step. Not yet? Start anyway and add your patriot later." },
 ]);
 const whereFor = (...a) => whereToLook(...a);
 const startHere = () => ({ text: START_HERE.text, claims: START_HERE.claims, links: [], guides: START_HERE.guides.map((k) => GUIDES[k]), registrar: REGISTRAR });
@@ -321,11 +321,11 @@ export function dateWarnings(rows = [], patriot = null) {
   const pr = pg != null ? by.get(pg) : null; const { s, e } = svcYears(patriot);
   if (pr && s != null) {
     const b = yr(pr.born), d = pr.living ? null : yr(pr.died);
-    if (b != null && b > (e ?? s)) out.push({ gen: pg, kind: "impossible", patriot: true, text: `The patriot (generation ${pg}) is listed as born about ${b}, after his service (${s}${e && e !== s ? ` to ${e}` : ""}): he wasn't born yet. Check his birth year, his service dates, and that the right generation is marked as the patriot.` });
-    else if (b != null && b > s) out.push({ gen: pg, kind: "impossible", patriot: true, text: `The patriot (generation ${pg}) is listed as born about ${b}, after his service began (${s}). Check his birth year and service dates.` });
-    else if (b != null && s - b < AGE.youngService) out.push({ gen: pg, kind: "unlikely", patriot: true, text: `The patriot (generation ${pg}, born about ${b}) would have been only about ${s - b} when his service began in ${s}. That's very unlikely. Check his birth year and service dates.` });
-    if (d != null && d < s) out.push({ gen: pg, kind: "impossible", patriot: true, text: `The patriot (generation ${pg}) is listed as dying about ${d}, before his service began (${s}). Check his death year and service dates.` });
-    else if (d != null && e != null && d < e) out.push({ gen: pg, kind: "unlikely", patriot: true, text: `The patriot (generation ${pg}) is listed as dying about ${d}, before his service ended (${e}). That can happen if he died in service; otherwise check his death year and service dates.` });
+    if (b != null && b > (e ?? s)) out.push({ gen: pg, kind: "impossible", patriot: true, text: `The patriot (generation ${pg}) is listed as born about ${b}, after the patriot's service (${s}${e && e !== s ? ` to ${e}` : ""}): your patriot wasn't born yet. Check the patriot's birth year, the service dates, and that the right generation is marked as the patriot.` });
+    else if (b != null && b > s) out.push({ gen: pg, kind: "impossible", patriot: true, text: `The patriot (generation ${pg}) is listed as born about ${b}, after the patriot's service began (${s}). Check the patriot's birth year and service dates.` });
+    else if (b != null && s - b < AGE.youngService) out.push({ gen: pg, kind: "unlikely", patriot: true, text: `The patriot (generation ${pg}, born about ${b}) would have been only about ${s - b} when the patriot's service began in ${s}. That's very unlikely. Check the patriot's birth year and service dates.` });
+    if (d != null && d < s) out.push({ gen: pg, kind: "impossible", patriot: true, text: `The patriot (generation ${pg}) is listed as dying about ${d}, before the patriot's service began (${s}). Check the patriot's death year and service dates.` });
+    else if (d != null && e != null && d < e) out.push({ gen: pg, kind: "unlikely", patriot: true, text: `The patriot (generation ${pg}) is listed as dying about ${d}, before the patriot's service ended (${e}). That can happen if your patriot died in service; otherwise check the patriot's death year and service dates.` });
   }
   return out;
 }

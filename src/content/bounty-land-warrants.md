@@ -23,10 +23,10 @@ Bounty-land files relate to wartime service between 1775 and March 3, 1855. [[cl
 
 | Question | What a bounty-land file can show | Reliability |
 |---|---|---|
-| Did he serve? | An approved warrant rests on claimed service; Virginia certificates verify service [[claim:lva-certificates]] | Strong for service |
-| Where did he live? | The land named is not necessarily where he lived: many recipients stayed home and sold the warrants [[claim:m804-sold]] | Weak for residence |
-| Did he own the land? | Virginia certificates were often sold or assigned to speculators [[claim:lva-assigned]] | Weak for ownership |
-| Who was his family? | Files can hold applications by widows or heirs, Bible pages and marriage-record copies [[claim:m804-bl-contents]] | Strong when heirs applied |
+| Did your patriot serve? | An approved warrant rests on claimed service; Virginia certificates verify service [[claim:lva-certificates]] | Strong for service |
+| Where did your patriot live? | The land named is not necessarily where your patriot lived: many recipients stayed home and sold the warrants [[claim:m804-sold]] | Weak for residence |
+| Did your patriot own the land? | Virginia certificates were often sold or assigned to speculators [[claim:lva-assigned]] | Weak for ownership |
+| Who was your patriot's family? | Files can hold applications by widows or heirs, Bible pages and marriage-record copies [[claim:m804-bl-contents]] | Strong when heirs applied |
 
 A warrant holder could "locate" it, choosing public land in exchange. [[claim:m804-locate]]
 Because many holders sold instead, a land entry far from home is not, on its own, evidence that the family moved. [[claim:m804-sold]]

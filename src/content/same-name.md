@@ -1,10 +1,10 @@
 ---
-title: "Same Name, Different Man: Separating Soldiers Who Share a Name"
+title: "Same Name, Different Man: Separating Patriots Who Share a Name"
 slug: guides/same-name
 description: "A disambiguation checklist for proving that a Revolutionary War record belongs to your ancestor and not to another man of the same name."
 cornerstone: 8
 ---
-# Same Name, Different Man: Separating Soldiers Who Share a Name
+# Same Name, Different Man: Separating Patriots Who Share a Name
 
 Finding a service record with your ancestor's name is the start of the work, not the end. Common names repeat across towns and counties, cousins were named for the same grandfather, and record-keepers spelled freely. Lineage reviewers check this, so plan to prove it before you submit.
 
@@ -28,10 +28,10 @@ Work through these for each candidate record. Every "no" is a reason the record 
 
 | Test | What to compare | Why it matters |
 |---|---|---|
-| Residence vs. service | Where he lived and where the service was performed | A residence and service location that do not match is a standard DAR review trigger [[claim:darblog-residence]] |
+| Residence vs. service | Where your patriot lived and where the service was performed | A residence and service location that do not match is a standard DAR review trigger [[claim:darblog-residence]] |
 | Distance | Towns, not just counties | DAR's example: two Middlesex County towns nearly 45 miles apart pointed to two men, not one [[claim:darblog-woburn]] |
-| Alive at the time | Death date vs. service date | DAR adds a service date for patriots who died during the war, to show he was alive then [[claim:darblog-died]] |
-| Right age | Birth range vs. service | SAR wants the patriot's generation to show he was alive, of the right age, and resident where the service was claimed [[claim:ohsar-patriot-gen]] |
+| Alive at the time | Death date vs. service date | DAR adds a service date for patriots who died during the war, to show the patriot was alive then [[claim:darblog-died]] |
+| Right age | Birth range vs. service | SAR wants the patriot's generation to show the patriot was alive, of the right age, and resident where the service was claimed [[claim:ohsar-patriot-gen]] |
 | Same household over time | Age brackets across censuses | Census brackets help track one head of household among same-name men [[claim:nara-census-ballpark]] |
 | Same place, several records | Census, deed and court order in one county | NSCDA: three such records in the same county MAY be enough to show one man [[claim:nscda-same-county]] |
 | Unit and officers | Names of officers and companies in each record | A pension application normally states rank, unit and period of service [[claim:m804-rank-unit]] |
@@ -50,7 +50,7 @@ For each candidate man, keep one line per record: the record, the place, the dat
 
 1. Group records that agree on place, age and kin into "Man A", "Man B" and so on.
 2. Mark any record that fits more than one man as unresolved.
-3. Only attach service to your ancestor when it sits in the same group as a record that ties him to your line.
+3. Only attach service to your ancestor when it sits in the same group as a record that ties your patriot to your line.
 
 The Lineage Evidence Matrix has a conflict flag for exactly this. A flagged cell keeps its conflict label until you clear the flag.
 

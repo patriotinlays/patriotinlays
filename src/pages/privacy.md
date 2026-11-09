@@ -19,11 +19,9 @@ Each tool has its own button for this. On the Widow Pension Law Checker, press "
 
 ## What the site itself collects
 
-The site is hosted by Cloudflare, so Cloudflare's servers deliver every page you load.
+The site itself collects nothing.
 
-On pages that show an email address, Cloudflare adds a small script that hides the address from spam robots.
-
-If a page fails to load, your browser may send Cloudflare a short network-error report.
+The site is hosted by Cloudflare. Like any web host, it delivers each page, and it adds two small technical features: a script that hides email addresses from spam robots, and a short error report if a page fails to load.
 
 There are no ads at present. If advertising is ever added, this page will be updated first to describe the advertising provider, its use of cookies, and how to opt out.
 
@@ -33,4 +31,4 @@ Questions about privacy can be sent to contact@patriotinlays.com (see the [Conta
 
 ## Technical note
 
-The tools use the browser's local storage, which is not encrypted. The Widow Pension Law Checker's saved items begin with "pi.toolA" and the Lineage Evidence Matrix's begin with "pi.toolB".
+Your entries are saved only in this browser, and that storage isn't encrypted. On a shared or public computer, use the delete button when you're done.

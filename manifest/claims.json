@@ -6951,6 +6951,91 @@
         "tool:places.js"
       ],
       "notes": ""
+    },
+    {
+      "claim_id": "ct-vital-town-clerk",
+      "claim_text": "Connecticut's early births, marriages and deaths were recorded by each town's clerk.",
+      "source_url": "https://guides.loc.gov/connecticut-local-history-genealogy/vital-records",
+      "source_title": "Library of Congress — Connecticut: Local History & Genealogy Resource Guide, Vital Records",
+      "source_type": "primary",
+      "archive_identifier": null,
+      "last_retrieved": "2026-11-09",
+      "quote_excerpt": "By 1650, registration of births, marriages, and deaths had become the town clerk's responsibility.",
+      "page_ref": null,
+      "verification_status": "verified",
+      "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-11-09 CT",
+      "used_on": [
+        "tool:places.js"
+      ],
+      "notes": ""
+    },
+    {
+      "claim_id": "ct-vital-barbour",
+      "claim_text": "The Barbour Collection indexes most Connecticut town birth, marriage and death records before 1850.",
+      "source_url": "https://guides.loc.gov/connecticut-local-history-genealogy/vital-records",
+      "source_title": "Library of Congress — Connecticut: Local History & Genealogy Resource Guide, Vital Records",
+      "source_type": "primary",
+      "archive_identifier": null,
+      "last_retrieved": "2026-11-09",
+      "quote_excerpt": "serves as an index to and an abstract of most pre-1850 Connecticut vital records",
+      "page_ref": null,
+      "verification_status": "verified",
+      "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-11-09 CT",
+      "used_on": [
+        "tool:places.js"
+      ],
+      "notes": ""
+    },
+    {
+      "claim_id": "ga-vital-1919",
+      "claim_text": "Georgia's statewide birth and death records start in 1919, so Revolutionary-era events need other sources.",
+      "source_url": "https://georgiaarchives.org/research/vital_records",
+      "source_title": "Georgia Archives — Vital Records",
+      "source_type": "official_secondary",
+      "archive_identifier": null,
+      "last_retrieved": "2026-11-09",
+      "quote_excerpt": "Statewide registration of births and deaths began in Georgia in 1919.",
+      "page_ref": null,
+      "verification_status": "verified",
+      "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-11-09 CT",
+      "used_on": [
+        "tool:places.js"
+      ],
+      "notes": ""
+    },
+    {
+      "claim_id": "ga-vital-marriage-1805",
+      "claim_text": "From 1805, marriages were recorded by each county's Court of Ordinary, now the Probate Court.",
+      "source_url": "https://georgiaarchives.org/research/vital_records",
+      "source_title": "Georgia Archives — Vital Records",
+      "source_type": "official_secondary",
+      "archive_identifier": null,
+      "last_retrieved": "2026-11-09",
+      "quote_excerpt": "Beginning in 1805, Georgia law required marriages to be recorded in the Court of Ordinary, now known as the Probate Court.",
+      "page_ref": null,
+      "verification_status": "verified",
+      "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-11-09 CT",
+      "used_on": [
+        "tool:places.js"
+      ],
+      "notes": ""
+    },
+    {
+      "claim_id": "ga-vital-bride-county",
+      "claim_text": "Look in the county where the bride lived.",
+      "source_url": "https://georgiaarchives.org/research/vital_records",
+      "source_title": "Georgia Archives — Vital Records",
+      "source_type": "official_secondary",
+      "archive_identifier": null,
+      "last_retrieved": "2026-11-09",
+      "quote_excerpt": "Generally, marriages are recorded in the county of residence of the bride.",
+      "page_ref": null,
+      "verification_status": "verified",
+      "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-11-09 CT",
+      "used_on": [
+        "tool:places.js"
+      ],
+      "notes": ""
     }
   ]
 }

@@ -127,6 +127,18 @@ if (LINKS) {
       try { const out = execFileSync("curl", ["-sL", "--max-time", "45", "-A", "Mozilla/5.0 (patriotinlays manifest checker)", "-H", "Accept: text/html", "-w", "\n%{http_code}", u], { encoding: "utf8", maxBuffer: 64e6 });
         const i = out.lastIndexOf("\n"); status = Number(out.slice(i + 1)); body = out.slice(0, i); if (status === 200) warnings.push(`${u}: Node fetch got 403/429; verified with curl instead`); } catch { /* keep original status */ }
     }
+    // t124u: some state sites (sec.state.ma.us) sometimes answer with a tiny bot-check page instead of the article.
+    // Re-read the same public page with curl a few times; if it never serves the article, the quote check fails as usual
+    // (this never widens the 30-day fallback, and TLS verification stays on).
+    const isChallenge = (b) => typeof b === "string" && b.length < 5000 && /_Incapsula_Resource|Request unsuccessful\. Incapsula/i.test(b);
+    if (status === 200 && !type.includes("pdf") && isChallenge(body)) {
+      for (let attempt = 1; attempt <= 4 && isChallenge(body); attempt++) {
+        await new Promise((res) => setTimeout(res, 15000 * attempt));
+        try { const out = execFileSync("curl", ["-sL", "--max-time", "45", "-A", "Mozilla/5.0 (patriotinlays manifest checker)", "-H", "Accept: text/html", "-w", "\n%{http_code}", u], { encoding: "utf8", maxBuffer: 64e6 });
+          const i = out.lastIndexOf("\n"); const st = Number(out.slice(i + 1)); if (st === 200) body = out.slice(0, i); } catch { /* keep the challenge body */ }
+      }
+      warnings.push(`${u}: first read was a bot-check page; ${isChallenge(body) ? "every re-read was too, so its quotes cannot be found" : "re-read with curl and quote-checked"}`);
+    }
     if (status !== 200) {
       const d = decideSourceCheck({ status, errorMessage: fetchError, lastPassedAt: lastPassedStore.sources[u] || null });
       if (d.outcome === "fallback") {

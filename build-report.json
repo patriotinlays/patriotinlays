@@ -1,5 +1,5 @@
 {
-  "builtAt": "Mon Nov 09 2026 07:49:06 GMT-0600 (Central Standard Time)",
+  "builtAt": "Mon Nov 09 2026 09:38:58 GMT-0600 (Central Standard Time)",
   "guideSourcesChecked": [
     {
       "slug": "guides/application-problems",
@@ -69,7 +69,7 @@
       "description": "Diagnose why a DAR or SAR application or a patriot's service was questioned, and how to fix it, from the societies' own guidance.",
       "cornerstone": "10",
       "path": "/guides/application-problems/",
-      "words": 658,
+      "words": 700,
       "claims": 58,
       "sources": 13,
       "tools": [
@@ -82,7 +82,7 @@
       "description": "How federal and state Revolutionary War bounty-land files work as evidence of service, residence and family, and where they mislead.",
       "cornerstone": "5",
       "path": "/guides/bounty-land-warrants/",
-      "words": 657,
+      "words": 662,
       "claims": 54,
       "sources": 12,
       "tools": [
@@ -95,7 +95,7 @@
       "description": "Connect an ancestor named in the 1850 census to a Revolutionary-era household listed only by its head, using age brackets, pension clues and supporting records.",
       "cornerstone": "6",
       "path": "/guides/census-bridge/",
-      "words": 804,
+      "words": 806,
       "claims": 45,
       "sources": 14,
       "tools": [
@@ -108,7 +108,7 @@
       "description": "Organize the evidence for each generation of a DAR or SAR line in your browser, flag conflicts, and print a gap report.",
       "tool": "lineage-matrix",
       "path": "/tools/lineage-matrix/",
-      "words": 1302,
+      "words": 1322,
       "claims": 59,
       "sources": 19,
       "tools": [
@@ -121,7 +121,7 @@
       "description": "A generation-by-generation plan for documenting descent from a Revolutionary War patriot, with DAR and SAR rules side by side.",
       "cornerstone": "1",
       "path": "/guides/lineage-proof-roadmap/",
-      "words": 1219,
+      "words": 1235,
       "claims": 82,
       "sources": 22,
       "tools": [
@@ -134,7 +134,7 @@
       "description": "Test your ancestor's loyalty evidence from both sides before you apply, using SAR and DAR rules and Loyalist records.",
       "cornerstone": "9",
       "path": "/guides/patriot-or-loyalist/",
-      "words": 663,
+      "words": 666,
       "claims": 40,
       "sources": 12,
       "tools": [
@@ -147,7 +147,7 @@
       "description": "How non-military service counts for DAR and SAR, the special date windows, and what evidence to look for.",
       "cornerstone": "7",
       "path": "/guides/patriotic-service/",
-      "words": 826,
+      "words": 827,
       "claims": 63,
       "sources": 14,
       "tools": [
@@ -173,7 +173,7 @@
       "description": "Work out whether an ancestor's service records sit at the National Archives or a state archive, then search the right place.",
       "cornerstone": "4",
       "path": "/guides/records-by-state/",
-      "words": 734,
+      "words": 737,
       "claims": 63,
       "sources": 18,
       "tools": [
@@ -181,12 +181,12 @@
       ]
     },
     {
-      "title": "Same Name, Different Man: Separating Soldiers Who Share a Name",
+      "title": "Same Name, Different Man: Separating Patriots Who Share a Name",
       "slug": "guides/same-name",
       "description": "A disambiguation checklist for proving that a Revolutionary War record belongs to your ancestor and not to another man of the same name.",
       "cornerstone": "8",
       "path": "/guides/same-name/",
-      "words": 699,
+      "words": 703,
       "claims": 41,
       "sources": 14,
       "tools": [
@@ -222,9 +222,19 @@
     {
       "title": "About Patriot In Lay Terms",
       "slug": "about",
-      "description": "What patriotinlays.com does, who it helps, what it doesn't do, how its facts are checked, and how AI is used.",
+      "description": "What patriotinlays.com does, who it helps, what it doesn't do, and how its facts are checked.",
       "path": "/about/",
-      "words": 422,
+      "words": 381,
+      "claims": 0,
+      "sources": 0,
+      "tools": []
+    },
+    {
+      "title": "AI disclosure",
+      "slug": "ai-disclosure",
+      "description": "How AI is used to write patriotinlays.com, and how its facts are checked.",
+      "path": "/ai-disclosure/",
+      "words": 62,
       "claims": 0,
       "sources": 0,
       "tools": []
@@ -232,9 +242,9 @@
     {
       "title": "Contact",
       "slug": "contact",
-      "description": "How to contact patriotinlays.com with corrections and questions.",
+      "description": "How to contact patriotinlays.com with corrections, suggestions and questions.",
       "path": "/contact/",
-      "words": 86,
+      "words": 119,
       "claims": 0,
       "sources": 0,
       "tools": []
@@ -244,7 +254,7 @@
       "slug": "faq",
       "description": "Plain-English answers about joining DAR or SAR, what a patriot is, which records count, how this site's tools work, and where your information goes.",
       "path": "/faq/",
-      "words": 881,
+      "words": 916,
       "claims": 20,
       "sources": 7,
       "tools": []
@@ -254,7 +264,7 @@
       "slug": "privacy",
       "description": "What happens to what you type into patriotinlays.com's tools, how to delete it, and what the site collects.",
       "path": "/privacy/",
-      "words": 363,
+      "words": 358,
       "claims": 0,
       "sources": 0,
       "tools": []
@@ -264,11 +274,11 @@
       "slug": "walkthroughs",
       "description": "Step-by-step examples of the Widow Pension Law Checker and the Lineage Evidence Matrix, using a made-up family and the tools' real results.",
       "path": "/walkthroughs/",
-      "words": 1105,
+      "words": 1109,
       "claims": 16,
       "sources": 10,
       "tools": []
     }
   ],
-  "sitemapUrls": 19
+  "sitemapUrls": 20
 }

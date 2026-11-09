@@ -437,4 +437,10 @@ C = [
 ('ny-vital-1880-1881', 'NYSL_VITREC', 'provides birth and marriage records from 1881, death records from 1880', "New York's state records provide births and marriages from 1881 and deaths from 1880.", None),
 ('ny-vital-local-church', 'NYSL_VITREC', 'Some information may be found in local government records offices and in church or cemetery records.', 'Earlier information may be found in local government offices and church or cemetery records.', None),
 ('ny-vital-pre1881-library', 'NYSL_VITREC', "Vital records for the period before 1881 may be obtained from the New York State Library's extensive collection", "Pre-1881 vital records may be obtained from the New York State Library's collection.", None),
+# ---- t124u (Nov 9, 2026): birth, marriage and death guidance for CT, GA, MA (Tim's quotes, verbatim; site text = claim_text) ----
+("ct-vital-town-clerk", "LOC_CT_VITAL", "By 1650, registration of births, marriages, and deaths had become the town clerk's responsibility.", "Connecticut's early births, marriages and deaths were recorded by each town's clerk.", None),
+("ct-vital-barbour", "LOC_CT_VITAL", "serves as an index to and an abstract of most pre-1850 Connecticut vital records", "The Barbour Collection indexes most Connecticut town birth, marriage and death records before 1850.", None),
+("ga-vital-1919", "GA_VITAL", "Statewide registration of births and deaths began in Georgia in 1919.", "Georgia's statewide birth and death records start in 1919, so Revolutionary-era events need other sources.", None),
+("ga-vital-marriage-1805", "GA_VITAL", "Beginning in 1805, Georgia law required marriages to be recorded in the Court of Ordinary, now known as the Probate Court.", "From 1805, marriages were recorded by each county's Court of Ordinary, now the Probate Court.", None),
+("ga-vital-bride-county", "GA_VITAL", "Generally, marriages are recorded in the county of residence of the bride.", "Look in the county where the bride lived.", None),
 ]

@@ -37,17 +37,17 @@ The last thing to read is "What to do next". Here it starts with the one answer 
 
 ## The Lineage Evidence Matrix
 
-Now imagine the bigger job: you want to see, generation by generation, which links in your line are proven and which still need a record. Open the [worksheet](/tools/lineage-matrix/) and press "Load an example". This family is made up too: a Virginia militiaman named John, and four generations between him and the person applying.
+Now imagine the bigger job: you want to see, generation by generation, which links in your line are proven and which still need a record. Open the [worksheet](/tools/lineage-matrix/) and press "Load an example". This family is made up too: a Virginia militiaman named John, and four generations between that patriot and the person applying.
 
-The first step asks who the patriot was and how he served. The example gives his name, Virginia, a county militia unit, and service from May 1777 to October 1779. [[claim:dar-window-core]] Below that it asks how he's related to you, and it fills in the generations in between for you.
+The first step asks for your patriot's name and service. The example gives the patriot's name, Virginia, a county militia unit, and service from May 1777 to October 1779. [[claim:dar-window-core]] Below that it asks how your patriot is related to you, and it fills in the generations in between for you.
 
-::figure worksheet-patriot-360.png The example patriot, with his rough service dates. The check below says his dates fall inside DAR's period for that service, and that it isn't a ruling.
+::figure worksheet-patriot-360.png The example patriot, with rough service dates. The check below says your patriot's dates fall inside DAR's period for that service, and that it isn't a ruling.
 
 Under the dates you'll see a small result box. For this example it says:
 
-::quote worksheet-dates His dates fall inside the period DAR accepts for this type of service. This is not a ruling: your society decides.
+::quote worksheet-dates Your patriot's dates fall inside the period DAR accepts for this type of service. This is not a ruling: your society decides.
 
-The next step is yourself, then your parent, your grandparent, and so on back to him. Generation 1 is you, the applicant. [[claim:dar-gen1-applicant]] Your parents are generation 2, your grandparents generation 3. [[claim:dar-gen-numbering]] For each person, add a rough birth year and state, press "Add a record", and answer the four short questions: what the record shows, what kind of record it is, whether it says it in words or only hints at it, and where you found it. The example's first two generations each have two records filled in, so you can see how the answers look. The best label any record earns is "Evidence Entered — Review Required", because only a society's genealogists decide what's proven. [[claim:dar-review-staff]]
+The next step is yourself, then your parent, your grandparent, and so on back to your patriot. Generation 1 is you, the applicant. [[claim:dar-gen1-applicant]] Your parents are generation 2, your grandparents generation 3. [[claim:dar-gen-numbering]] For each person, add a rough birth year and state, press "Add a record", and answer the four short questions: what the record shows, what kind of record it is, whether it says it in words or only hints at it, and where you found it. The example's first two generations each have two records filled in, so you can see how the answers look. The best label any record earns is "Evidence Entered — Review Required", because only a society's genealogists decide what's proven. [[claim:dar-review-staff]]
 
 Then comes the part the worksheet is really for: the gaps. For this example family it lists six, in plain words. For instance:
 

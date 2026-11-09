@@ -10,9 +10,9 @@ A lineage application is a chain. Each link is one generation, and each link hol
 
 ::partial how-to-join
 
-## Step 0: find the soldier's name
+## Step 0: find your patriot's name
 
-Everything else in this guide depends on knowing which ancestor was the patriot. If you don't know his name yet, start here.
+Everything else in this guide depends on knowing which ancestor was the patriot. If you don't know your patriot's name yet, start here.
 
 - **Start with what you know.** DAR's first research step is to ask what you already know about your family history and lineage. [[claim:dar-join-gather]]
 - **Search DAR's free Genealogical Research System.** DAR offers it free to help with research and with the membership process; it is linked from [DAR's How to Join page](https://www.dar.org/discover/become-member/how-join). [[claim:dar-join-grs]] [[claim:dar-grs-purpose]]
@@ -31,7 +31,7 @@ Work down this list. A name that doesn't appear in one place isn't a dead end.
 
 If none of these find your patriot, check your state's archives for militia records.
 
-Once you have a name, the free [Lineage Evidence Matrix](/tools/lineage-matrix/) starts with him: his state, his type of service and his rough dates.
+Once you have a name, the free [Lineage Evidence Matrix](/tools/lineage-matrix/) starts with your patriot: state, type of service and rough dates.
 
 ## If your patriot is already in DAR's or SAR's database
 
@@ -68,20 +68,20 @@ Not stated means the society's own pages don't say; ask its registrar.
 ## The roadmap, step by step
 
 1. Write the chain first, evidence second. List every generation from you back to the patriot by number, with names only. Mark each link you believe but cannot yet show on paper.
-2. Check whether the patriot is already on file. The DAR electronic application works only for ancestors already fully established with DAR. [[claim:dar-eapp-established]] A new ancestor, or a line that needs an analysis compiling indirect evidence, goes on the traditional paper application. [[claim:dar-paper-analysis]]
+2. Check whether the patriot is already on file. {{asof:dar-eapp-established}} DAR says its electronic application works only for ancestors already fully established with DAR. [[claim:dar-eapp-established]] A new ancestor, or a line that needs an analysis compiling indirect evidence, goes on the traditional paper application. [[claim:dar-paper-analysis]]
 3. Build an evidence grid. For every generation, list birth, marriage, death and the parent-child link, and next to each one the record that supports it. The [Lineage Evidence Matrix](/tools/lineage-matrix/) does this in your browser.
 4. Use the record types reviewers see most often. DAR names vital records, census records, probate records, court records, land records and church records as the most common lineage sources. [[claim:dar-lineage-sources]]
 5. Replace trees with records. DAR states that online family trees from any website are not an acceptable form of documentation. [[claim:dar-online-trees]] Images of original records downloaded from a website are a different matter and are evaluated in the context of the whole lineage. [[claim:dar-images-ok]]
 6. Prefer original records over compiled books. DAR prefers primary and original records over compiled family genealogies. [[claim:dar-primary-preferred]]
-7. Cite as you go. For a census, DAR asks for the year, state, county, town, enumeration district and page number. [[claim:dar-census-cite]] Every uploaded document is cited at least once, and every cited document is uploaded. [[claim:dar-upload-each]]
+7. Cite as you go. For a census, DAR asks for the year, state, county, town, enumeration district and page number. [[claim:dar-census-cite]] {{asof:dar-upload-each}} DAR says every uploaded document is cited at least once, and every cited document is uploaded. [[claim:dar-upload-each]]
 8. Prove the patriot's service separately from the lineage. DAR lists pensions, muster rolls, pay vouchers, oaths of allegiance, town meeting minutes and county court orders as typical service sources. [[claim:dar-service-sources]]
 
 ## Practical details people miss
 
-DAR e-application uploads are JPG files only, so convert PDFs and phone scans before you start. [[claim:dar-jpg]]
-Years are entered as four digits. [[claim:dar-4digit]]
-Once submitted, DAR staff review generally takes about six weeks. [[claim:dar-six-weeks]]
-The DAR application cost includes a $75 application fee plus the first year's national dues, and chapters and state societies add their own dues. [[claim:dar-fee]]
+{{asof:dar-jpg}} DAR says e-application uploads are JPG files only, so convert PDFs and phone scans before you start. [[claim:dar-jpg]]
+{{asof:dar-4digit}} DAR says years are entered as four digits. [[claim:dar-4digit]]
+{{asof:dar-six-weeks}} DAR says staff review generally takes about six weeks once an application is submitted. [[claim:dar-six-weeks]]
+{{asof:dar-fee}} DAR says the application cost includes a $75 application fee plus the first year's national dues, and chapters and state societies add their own dues. [[claim:dar-fee]]
 
 ## Where to go next
 

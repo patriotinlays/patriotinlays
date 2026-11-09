@@ -142,7 +142,7 @@ t("audit 3: census notes carry their separate facts so the report prints each on
   t("audit 4: a patriot born in 1850 with 1777-79 service gets an 'impossible' warning (he wasn't born yet)", W(line(1850, 1950, 1920, 1890)).some((w) => w.patriot && w.kind === "impossible" && /wasn't born yet/.test(w.text)));
   t("audit 4: the plan opens with 'Check these dates first' when years don't add up, and has no such step when they do", actionPlan(line(1850, 1950, 1920, 1890), pat)[0].title === "Check these dates first" && !actionPlan(line(1745, 1950, 1915, 1878, 1810, 1775), pat).some((x) => x.title === "Check these dates first"));
   t("audit 4: a patriot aged about 5 at his service start is flagged as unlikely; aged 22 is not", W(line(1772, 1950, 1920, 1880, 1840, 1800)).some((w) => w.patriot && w.kind === "unlikely" && /about 5/.test(w.text)) && !W(line(1755, 1950, 1920, 1880, 1840, 1800)).some((w) => w.patriot));
-  t("audit 4: a patriot who died before his service began is flagged", W([{ gen: 1, living: true, born: "1950", cells: [] }, { gen: 2, born: "1740", died: "1770", cells: [] }]).some((w) => w.patriot && /dying about 1770, before his service began/.test(w.text)));
+  t("audit 4: a patriot who died before the service began is flagged", W([{ gen: 1, living: true, born: "1950", cells: [] }, { gen: 2, born: "1740", died: "1770", cells: [] }]).some((w) => w.patriot && /dying about 1770, before the patriot's service began/.test(w.text)));
   t("audit 4: a child born before or the same year as the parent is 'impossible'; 8 years after is 'unlikely'; 75 years after is 'unusually old'", (() => {
     const a = W([{ gen: 1, living: true, born: "1950", cells: [] }, { gen: 2, born: "1960", cells: [] }], null), b = W([{ gen: 1, living: true, born: "1950", cells: [] }, { gen: 2, born: "1950", cells: [] }], null);
     const c = W([{ gen: 1, living: true, born: "1950", cells: [] }, { gen: 2, born: "1942", cells: [] }], null), d = W([{ gen: 1, living: true, born: "1950", cells: [] }, { gen: 2, born: "1875", cells: [] }], null);
@@ -164,6 +164,26 @@ t("audit 4: substitutes are listed in order (baptism, Bible, then estimates and 
   return r.join() === "baptism,bible,age,affidavit" && o.join() === "baptism,bible,pension,age,affidavit" && birthSubstitutes({ gen: 2, cells: [] }).title === "No birth certificate? Try these substitutes, in order"; })());
 t("audit 4: every substitute step, and the 'use two or more' note, rests on verified manifest claims; links are manifest URLs and the guide is a real page", (() => { const b = birthSubstitutes({ gen: 6, cells: [] });
   return [...BIRTH_SUBSTITUTES.steps, BIRTH_SUBSTITUTES.combine].every((x) => x.claims.length && x.claims.every((c) => verified.has(c))) && b.links.every((l) => manifestUrls.has(l.url)) && slugs.has(b.guide.url); })());
-t("audit 4: the 'Don't know his name yet?' checklist has 4 plain to-dos; any fact it states (DAR's free database) carries a verified claim", NAME_CHECKLIST.length === 4 && NAME_CHECKLIST.every((x) => x.text.length > 20 && (x.claims || []).every((c) => verified.has(c))) && NAME_CHECKLIST.find((x) => /free/.test(x.text)).claims.includes("dar-join-grs"));
+t("audit 4: the 'Don't know your patriot's name yet?' checklist has 4 plain to-dos; any fact it states (DAR's free database) carries a verified claim", NAME_CHECKLIST.length === 4 && NAME_CHECKLIST.every((x) => x.text.length > 20 && (x.claims || []).every((c) => verified.has(c))) && NAME_CHECKLIST.find((x) => /free/.test(x.text)).claims.includes("dar-join-grs"));
+// ---- t124u #13: Connecticut and Georgia birth, marriage and death guidance ----
+{ const { STATE_VITAL, STATE_SERVICE, STATES } = await import("../src/tools/places.js");
+  const claimText = new Map(manifest.claims.map((c) => [c.claim_id, c.claim_text]));
+  const ct = vitalNote("CT", "birth"), ga = vitalNote("GA", "death"), gaM = vitalNote("GA", "marriage"), ma = vitalNote("MA", "marriage");
+  t("t124u: CT and GA have birth, death and marriage notes (12 states with vital guidance)", ["CT", "GA"].every((st) => ["birth", "death", "marriage"].every((f) => STATE_VITAL[st]?.[f]?.length)) && Object.keys(STATE_VITAL).length === 12);
+  t("t124u: each new note is exactly Tim's site text, and every sentence is a verified claim's own text", ct.text === `${claimText.get("ct-vital-town-clerk")} ${claimText.get("ct-vital-barbour")}` && ga.text === claimText.get("ga-vital-1919")
+    && gaM.text === `${claimText.get("ga-vital-marriage-1805")} ${claimText.get("ga-vital-bride-county")}`
+    && [ct, ga, gaM].every((n) => !n.noSource && n.claims.every((c) => verified.has(c)) && n.links.every((l) => manifestUrls.has(l.url))));
+  t("t124u: Massachusetts (live check failed: bot-check page / 404 / quote mismatch) has no vital note and keeps the 'no verified source yet' text", !STATE_VITAL.MA && ma.noSource && !/1841|city or town where the event happened|Vital Records to 1850/.test(JSON.stringify(STATE_VITAL)));
+  const page = readFileSync(new URL("../src/content/lineage-matrix.md", import.meta.url), "utf8");
+  const names = (o) => Object.keys(o).map((c) => STATES.find(([k]) => k === c)[1]).sort();
+  const m = /verified birth, death or marriage sources for (\d+) states: ([^.]+)\. It has Revolutionary War service sources for (\d+) states: ([^.]+)\./.exec(page);
+  const list = (x) => x.replace(/ and /, ", ").split(", ").map((y) => y.trim()).sort();
+  t("t124u: the worksheet page's state sentence matches the tool exactly (names and counts, vital and service)", m && +m[1] === Object.keys(STATE_VITAL).length && +m[3] === Object.keys(STATE_SERVICE).length
+    && JSON.stringify(list(m[2])) === JSON.stringify(names(STATE_VITAL)) && JSON.stringify(list(m[4])) === JSON.stringify(names(STATE_SERVICE))); }
+// ---- t124u #9: the worksheet's patriot step says "your patriot", not "he/his" ----
+{ const ui = readFileSync(new URL("../src/tools/tool-b-ui.js", import.meta.url), "utf8"), pat = readFileSync(new URL("../src/tools/patriot.js", import.meta.url), "utf8");
+  const strings = (src) => [...src.replace(/^\s*\/\/.*$/gm, "").matchAll(/"((?:[^"\\]|\\.)*)"/g)].map((x) => x[1]);
+  const bad = [...strings(ui), ...strings(pat)].filter((x) => /\b(he|his|him|he's|he'll|soldier's)\b/i.test(x) && !/names his son|husband|veteran|militiaman/.test(x));
+  t("t124u: no 'he/his/him' or 'soldier's' left in the patriot step's own text (made-up example, husbands and veterans excepted)", bad.length === 0); }
 let p = 0; for (const [n, ok] of T) { console.log(`${ok ? "PASS" : "FAIL"}  ${n}`); if (ok) p++; }
 console.log(`\nLineage Evidence Matrix: ${p}/${T.length} sanity checks passed.`); process.exit(p === T.length ? 0 : 1);

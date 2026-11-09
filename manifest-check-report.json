@@ -1,13 +1,13 @@
 {
   "live_source_check": "NOT RUN",
   "live_source_check_line": "Live-source check: NOT RUN",
-  "checkedAt": "Mon Nov 09 2026 07:49:05 GMT-0600 (Central Standard Time)",
+  "checkedAt": "Mon Nov 09 2026 09:39:33 GMT-0600 (Central Standard Time)",
   "dirs": [
     "src/content",
     "src/pages",
     "src/partials"
   ],
-  "files": 25,
+  "files": 26,
   "perFile": {
     "src/content/application-problems.md": {
       "units": 39,
@@ -25,12 +25,12 @@
       "unmarked": 0
     },
     "src/content/lineage-matrix.md": {
-      "units": 67,
+      "units": 68,
       "marked": 27,
       "unmarked": 0
     },
     "src/content/lineage-proof-roadmap.md": {
-      "units": 77,
+      "units": 76,
       "marked": 45,
       "unmarked": 0
     },
@@ -70,17 +70,22 @@
       "unmarked": 0
     },
     "src/pages/about.md": {
-      "units": 19,
+      "units": 17,
+      "marked": 0,
+      "unmarked": 0
+    },
+    "src/pages/ai-disclosure.md": {
+      "units": 3,
       "marked": 0,
       "unmarked": 0
     },
     "src/pages/contact.md": {
-      "units": 5,
+      "units": 7,
       "marked": 0,
       "unmarked": 0
     },
     "src/pages/faq.md": {
-      "units": 47,
+      "units": 50,
       "marked": 16,
       "unmarked": 0
     },
@@ -100,7 +105,7 @@
       "unmarked": 0
     },
     "src/partials/home.md": {
-      "units": 26,
+      "units": 25,
       "marked": 10,
       "unmarked": 0
     },
@@ -135,18 +140,18 @@
       "unmarked": 0
     }
   },
-  "sentences": 905,
+  "sentences": 910,
   "markedSentences": 472,
-  "manifestClaims": 393,
-  "referencedClaims": 393,
+  "manifestClaims": 398,
+  "referencedClaims": 398,
   "links": "not run (use --links)",
   "errors": [],
   "warnings": [],
   "last_live_source_check": {
-    "checkedAt": "Mon Nov 09 2026 06:34:46 GMT-0600 (Central Standard Time)",
-    "result": "PASSED",
-    "manifestClaims": 393,
-    "errors": 0,
+    "checkedAt": "Mon Nov 09 2026 09:37:55 GMT-0600 (Central Standard Time)",
+    "result": "FAILED",
+    "manifestClaims": 399,
+    "errors": 1,
     "fallbacks": [
       "https://membership.dar.org/NSDAR/AppFormz/App_Help_Step_By_Step_1.aspx",
       "https://membership.dar.org/NSDAR/AppFormz/FAQs.aspx",

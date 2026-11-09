@@ -36,6 +36,8 @@ export const PLACE_SOURCES = Object.freeze({
   nyMil: { label: "New York State Library: military records before the Civil War", url: "https://nysl.nysed.gov/genealogy/precivil" },
   nyVital: { label: "New York State Library: vital records", url: "https://nysl.nysed.gov/genealogy/vitrec" },
   deVital: { label: "Delaware Public Archives: guide to vital statistics records", url: "https://archives.delaware.gov/digital-archives/guide-to-vital-statistics-records/" },
+  ctVital: { label: "Library of Congress: Connecticut vital records (research guide)", url: "https://guides.loc.gov/connecticut-local-history-genealogy/vital-records" },
+  gaVital: { label: "Georgia Archives: vital records", url: "https://georgiaarchives.org/research/vital_records" },
   maMil: { label: "Mass.gov: researching Massachusetts soldiers and sailors", url: "https://www.mass.gov/info-details/researching-massachusetts-soldiers-and-sailors" },
   naraVital: { label: "National Archives: vital records (where birth, death and marriage records are kept)", url: "https://www.archives.gov/research/vital-records" },
   nypl: { label: "New York Public Library: Revolutionary War records, with state archives listed", url: "https://libguides.nypl.org/military-genealogy/revolutionary-war" },
@@ -49,7 +51,7 @@ export const STATE_SERVICE = Object.freeze({
     claims: ["lva-rev-militia", "lva-rev-few", "lva-rev-orderbooks", "lva-rev-pensions", "lva-rev-continental"], links: S("lvaRev") },
   MD: { text: "Maryland militia was organized by county. The Maryland State Archives' Revolutionary War Papers Index (MSA S1422) is a place to start, and the Archives notes that many Maryland service records are at the National Archives.",
     claims: ["msa-militia", "msa-index", "msa-nara"], links: S("msaMil") },
-  NC: { text: "The State Archives of North Carolina holds 221 rosters, troop returns and muster rolls for militia, volunteers and draftees. Militia records usually name the officers and soldiers and are organized by district or county, and the lists are arranged by year, then by county, commanding officer or unit number, so search by his county, commander and unit as well as his name.",
+  NC: { text: "The State Archives of North Carolina holds 221 rosters, troop returns and muster rolls for militia, volunteers and draftees. Militia records usually name the officers and soldiers and are organized by district or county, and the lists are arranged by year, then by county, commanding officer or unit number, so search by your patriot's county, commander and unit as well as the name.",
     claims: ["nc-trpr-rosters", "nc-trpr-county", "nc-trpr-arranged"], links: S("ncTrpr") },
   NJ: { text: "The New Jersey State Archives holds compiled rosters of New Jersey militia and Continental Line, including a county-by-county list of militiamen who were issued indents.",
     claims: ["nj-mil-rosters", "nj-mil-indents"], links: S("njMil") },
@@ -136,6 +138,17 @@ export const STATE_VITAL = Object.freeze({
     marriage: [P(null, null, null, "Delaware has required statewide recording of births, deaths and marriages since 1913; before then, each county recorder of deeds recorded them. The Public Archives holds only vital records that have become public: marriage records become public at 50 years old. Some older records may therefore be closed.", { claims: ["de-vital-1913", "de-vital-recorders", "de-vital-public", "de-vital-marriage-death-ages"] })] },
   MD: { links: S("msaBirth"),
     birth: [P(null, null, null, "The Maryland State Archives lists birth records for the counties from 1898 and for Baltimore City from 1875.", { claims: ["msa-birth-counties", "msa-birth-baltimore"] })] },
+  CT: { links: S("ctVital"),
+    birth: [P(null, null, null, "Connecticut's early births, marriages and deaths were recorded by each town's clerk. The Barbour Collection indexes most Connecticut town birth, marriage and death records before 1850.", { claims: ["ct-vital-town-clerk", "ct-vital-barbour"] })],
+    death: [P(null, null, null, "Connecticut's early births, marriages and deaths were recorded by each town's clerk. The Barbour Collection indexes most Connecticut town birth, marriage and death records before 1850.", { claims: ["ct-vital-town-clerk", "ct-vital-barbour"] })],
+    marriage: [P(null, null, null, "Connecticut's early births, marriages and deaths were recorded by each town's clerk. The Barbour Collection indexes most Connecticut town birth, marriage and death records before 1850.", { claims: ["ct-vital-town-clerk", "ct-vital-barbour"] })] },
+  // t124u: Georgia (Tim's site text, verbatim). Massachusetts was dropped: vitalrecordsidx.htm returns 404, the fallback page
+  // served only a bot-check page on the Nov 9 live check (1841 quote, f), its clerk quote (g) does not match the page, and
+  // genidx.htm (h) returns 404. Massachusetts keeps the "no verified source yet" note.
+  GA: { links: S("gaVital"),
+    birth: [P(null, null, null, "Georgia's statewide birth and death records start in 1919, so Revolutionary-era events need other sources.", { claims: ["ga-vital-1919"] })],
+    death: [P(null, null, null, "Georgia's statewide birth and death records start in 1919, so Revolutionary-era events need other sources.", { claims: ["ga-vital-1919"] })],
+    marriage: [P(null, null, null, "From 1805, marriages were recorded by each county's Court of Ordinary, now the Probate Court. Look in the county where the bride lived.", { claims: ["ga-vital-marriage-1805", "ga-vital-bride-county"] })] },
 });
 // facts: one fact ("birth") or several (["birth", "death"]) when the report merges a state's notes into one block.
 export const noVitalText = (name, facts) => { const f = [].concat(facts); const list = f.length > 1 ? `${f.slice(0, -1).join(", ")} or ${f.at(-1)}` : f[0];

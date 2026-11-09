@@ -6,7 +6,7 @@ cornerstone: 6
 ---
 # From the 1850 Census Back to 1776: Bridging the Unnamed-Household Gap
 
-Lines to a Revolutionary War patriot very often stall at the same place: you can find your ancestor by name as an adult in a mid-1800s census, but the earlier censuses list only the head of the household. This guide turns that gap into a step-by-step plan, using what each census actually recorded.
+Lines to a Revolutionary War patriot very often stall at the same place: you can find your ancestor by name as an adult in a mid-1800s census, but the earlier censuses list only the head of the household. This guide gives a step-by-step plan for working across that gap, using what each census actually recorded.
 
 ## What each census can and cannot do for you
 

@@ -33,7 +33,7 @@ writeFileSync(join(OUT, "outputs.json"), JSON.stringify(out, null, 2));
 // Quotable output text: the only strings a ::quote on the walkthrough page may use.
 const texts = [...out.widow.summary, ...out.widow.rows.map((r) => r.verdict),
   "Dates fit DAR's period for this service (not a ruling)",
-  "His dates fall inside the period DAR accepts for this type of service. This is not a ruling: your society decides.",
+  "Your patriot's dates fall inside the period DAR accepts for this type of service. This is not a ruling: your society decides.",
   ...out.worksheet.gaps.map((g) => g.replace(/\s*\+ Add.*$/, "").trim())];
 writeFileSync(join(OUT, "texts.json"), JSON.stringify({ texts: [...new Set(texts)].sort() }, null, 2));
 for (const [name, url, sel] of [

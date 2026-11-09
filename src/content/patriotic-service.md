@@ -22,7 +22,7 @@ A few DAR categories have their own windows:
 | Supplying cattle for Gálvez's forces in Spanish America | After 24 December 1776 [[claim:dar-galvez-cattle]] | DAR |
 | Battle of Point Pleasant | 10 October 1774, that location and date only [[claim:sar-point-pleasant]] | SAR |
 
-The patriot step in the free [Lineage Evidence Matrix](/tools/lineage-matrix/) tests his service dates against these windows for the type of service you pick. DAR does not state an end date for the Gálvez categories, so the worksheet applies the general end of 26 November 1783. [[claim:dar-window-core]]
+The patriot step in the free [Lineage Evidence Matrix](/tools/lineage-matrix/) tests your patriot's service dates against these windows for the type of service you pick. DAR does not state an end date for the Gálvez categories, so the worksheet applies the general end of 26 November 1783. [[claim:dar-window-core]]
 
 ## Service types and the evidence that fits them
 

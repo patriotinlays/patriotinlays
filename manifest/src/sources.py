@@ -69,4 +69,6 @@ SOURCES = {
  "DAR_LINRES": ("https://www.dar.org/library/collections/dar-lineage-resources", "DAR Library — DAR Lineage Resources", "dar_linres.html"),
  "SAR_COPY": ("https://www.sar.org/genealogical-copy-services/", "SAR — Genealogical Copy Services", "sar_copy.html"),
  "NYSL_VITREC": ("https://nysl.nysed.gov/genealogy/vitrec", "New York State Library — Vital records", "nysl_vitrec.html"),
+ "LOC_CT_VITAL": ("https://guides.loc.gov/connecticut-local-history-genealogy/vital-records", "Library of Congress — Connecticut: Local History & Genealogy Resource Guide, Vital Records", "loc_ct_vital.html"),
+ "GA_VITAL": ("https://georgiaarchives.org/research/vital_records", "Georgia Archives — Vital Records", "ga_vital.html"),
 }

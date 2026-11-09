@@ -1,13 +1,13 @@
 {
   "live_source_check": "RUN",
   "live_source_check_line": "Live-source check: RUN",
-  "checkedAt": "Mon Nov 09 2026 06:34:46 GMT-0600 (Central Standard Time)",
+  "checkedAt": "Mon Nov 09 2026 09:37:55 GMT-0600 (Central Standard Time)",
   "dirs": [
     "src/content",
     "src/pages",
     "src/partials"
   ],
-  "files": 25,
+  "files": 26,
   "perFile": {
     "src/content/application-problems.md": {
       "units": 39,
@@ -25,12 +25,12 @@
       "unmarked": 0
     },
     "src/content/lineage-matrix.md": {
-      "units": 67,
+      "units": 68,
       "marked": 27,
       "unmarked": 0
     },
     "src/content/lineage-proof-roadmap.md": {
-      "units": 77,
+      "units": 76,
       "marked": 45,
       "unmarked": 0
     },
@@ -70,17 +70,22 @@
       "unmarked": 0
     },
     "src/pages/about.md": {
-      "units": 19,
+      "units": 17,
+      "marked": 0,
+      "unmarked": 0
+    },
+    "src/pages/ai-disclosure.md": {
+      "units": 3,
       "marked": 0,
       "unmarked": 0
     },
     "src/pages/contact.md": {
-      "units": 5,
+      "units": 7,
       "marked": 0,
       "unmarked": 0
     },
     "src/pages/faq.md": {
-      "units": 47,
+      "units": 50,
       "marked": 16,
       "unmarked": 0
     },
@@ -100,7 +105,7 @@
       "unmarked": 0
     },
     "src/partials/home.md": {
-      "units": 26,
+      "units": 25,
       "marked": 10,
       "unmarked": 0
     },
@@ -135,10 +140,10 @@
       "unmarked": 0
     }
   },
-  "sentences": 905,
+  "sentences": 910,
   "markedSentences": 472,
-  "manifestClaims": 393,
-  "referencedClaims": 393,
+  "manifestClaims": 399,
+  "referencedClaims": 399,
   "links": [
     {
       "url": "https://www.dar.org/national-society/accepted-revolutionary-war-service",
@@ -550,15 +555,37 @@
       "status": 200,
       "quotesFound": 3,
       "quotesMissing": 0
+    },
+    {
+      "url": "https://guides.loc.gov/connecticut-local-history-genealogy/vital-records",
+      "status": 200,
+      "quotesFound": 2,
+      "quotesMissing": 0
+    },
+    {
+      "url": "https://georgiaarchives.org/research/vital_records",
+      "status": 200,
+      "quotesFound": 3,
+      "quotesMissing": 0
+    },
+    {
+      "url": "https://www.sec.state.ma.us/divisions/archives/collections/vital-records.htm",
+      "status": 200,
+      "quotesFound": 0,
+      "quotesMissing": 1,
+      "fallback": false,
+      "failureKind": "quote_mismatch"
     }
   ],
-  "errors": [],
+  "errors": [
+    "ma-vital-1841: quote_excerpt not found in live source https://www.sec.state.ma.us/divisions/archives/collections/vital-records.htm"
+  ],
   "warnings": [
     "https://www.dar.org/national-society/accepted-revolutionary-war-service: Node fetch got 403/429; verified with curl instead",
-    "https://membership.dar.org/NSDAR/AppFormz/App_Help_Step_By_Step_1.aspx: FALLBACK: unreachable source accepted on last successful check under 30 days. URL failure=http_522; lastPassed=2026-11-05T16:34:49.000Z; ageDays=3.83. Re-check required on every run.",
-    "https://membership.dar.org/NSDAR/AppFormz/FAQs.aspx: FALLBACK: unreachable source accepted on last successful check under 30 days. URL failure=http_522; lastPassed=2026-11-05T16:34:49.000Z; ageDays=3.83. Re-check required on every run.",
+    "https://membership.dar.org/NSDAR/AppFormz/App_Help_Step_By_Step_1.aspx: FALLBACK: unreachable source accepted on last successful check under 30 days. URL failure=http_522; lastPassed=2026-11-05T16:34:49.000Z; ageDays=3.96. Re-check required on every run.",
+    "https://membership.dar.org/NSDAR/AppFormz/FAQs.aspx: FALLBACK: unreachable source accepted on last successful check under 30 days. URL failure=http_522; lastPassed=2026-11-05T16:34:49.000Z; ageDays=3.96. Re-check required on every run.",
     "https://blog.dar.org/2021/02/26/why-was-his-service-removed: Node fetch got 403/429; verified with curl instead",
-    "https://services.dar.org/Public/DAR_Research/search_revwar/?Tab_ID=14&Tab_ID_Sub=0&action=list: FALLBACK: unreachable source accepted on last successful check under 30 days. URL failure=http_522; lastPassed=2026-11-05T16:34:49.000Z; ageDays=3.83. Re-check required on every run.",
+    "https://services.dar.org/Public/DAR_Research/search_revwar/?Tab_ID=14&Tab_ID_Sub=0&action=list: FALLBACK: unreachable source accepted on last successful check under 30 days. URL failure=http_522; lastPassed=2026-11-05T16:34:49.000Z; ageDays=3.96. Re-check required on every run.",
     "https://www.dar.org/library/search.cfm: Node fetch got 403/429; verified with curl instead",
     "https://www.dar.org/library/collections/dar-lineage-resources: Node fetch got 403/429; verified with curl instead",
     "https://www.dar.org/discover/become-member/chapter-locator: Node fetch got 403/429; verified with curl instead",
@@ -566,7 +593,8 @@
     "https://www.dar.org/discover/become-member/what-dar: Node fetch got 403/429; verified with curl instead",
     "https://blog.dar.org/using-ancestor-tab-grs: Node fetch got 403/429; verified with curl instead",
     "https://nysl.nysed.gov/genealogy/precivil: verified with the official GlobalSign intermediate for nysed.gov (their server omits it)",
-    "https://nysl.nysed.gov/genealogy/vitrec: verified with the official GlobalSign intermediate for nysed.gov (their server omits it)"
+    "https://nysl.nysed.gov/genealogy/vitrec: verified with the official GlobalSign intermediate for nysed.gov (their server omits it)",
+    "https://www.sec.state.ma.us/divisions/archives/collections/vital-records.htm: first read was a bot-check page; every re-read was too, so its quotes cannot be found"
   ],
-  "result": "PASSED"
+  "result": "FAILED"
 }

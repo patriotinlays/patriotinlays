@@ -154,20 +154,20 @@ check("Sitemap lists the widow checker and not the retired URL; no page links to
 
 // ---- Worksheet patriot step ----
 phase("load"); await page.goto(`${BASE}/tools/lineage-matrix/`); phase("interact");
-// Audit 4 proposal #2: a first visit shows the purpose line, a Start button and the "Don't know his name yet?" checklist;
+// Audit 4 proposal #2: a first visit shows the purpose line, a Start button and the "Don't know your patriot's name yet?" checklist;
 // the steps (and the generation cards) stay hidden until the visitor starts.
 { const st = await page.evaluate(() => ({ purpose: document.querySelector("[data-purpose]")?.textContent || "", start: !!document.querySelector("[data-ws-start]") && !document.querySelector("[data-ws-start]").hidden,
     bodyHidden: document.querySelector("[data-ws-body]")?.hidden, genVisible: [...document.querySelectorAll("section.gen")].some((g) => g.offsetParent !== null),
-    list: [...document.querySelectorAll("[data-ws-start] [data-name-check]")].length, step0: !!document.querySelector('[data-ws-start] a[href="/guides/lineage-proof-roadmap/#step-0-find-the-soldier-s-name"]'), ls: Object.keys(localStorage).filter((k) => k.startsWith("pi.toolB")) }));
+    list: [...document.querySelectorAll("[data-ws-start] [data-name-check]")].length, step0: !!document.querySelector('[data-ws-start] a[href="/guides/lineage-proof-roadmap/#step-0-find-your-patriot-s-name"]'), ls: Object.keys(localStorage).filter((k) => k.startsWith("pi.toolB")) }));
   check("Worksheet (audit 4 proposal): a first visit opens with the purpose line and a Start button; the generation cards stay hidden; nothing is saved yet", /What it's for/.test(st.purpose) && st.start && st.bodyHidden === true && !st.genVisible && st.ls.length === 0, JSON.stringify(st));
-  check("Worksheet (audit 4 proposal): the start screen has the inline 'Don't know his name yet?' checklist (4 items) plus the Step 0 link", st.list === 4 && st.step0 && /Don't know his name yet\?/.test(await page.textContent("[data-ws-start]")), JSON.stringify(st));
+  check("Worksheet (audit 4 proposal): the start screen has the inline 'Don't know your patriot's name yet?' checklist (4 items) plus the Step 0 link", st.list === 4 && st.step0 && /Don't know your patriot's name yet\?/.test(await page.textContent("[data-ws-start]")), JSON.stringify(st));
   await page.check('[data-ws-start] [data-name-check="known"]');
   await page.click("[data-ws-begin]");
   const after = await page.evaluate(() => ({ startHidden: document.querySelector("[data-ws-start]").hidden, bodyHidden: document.querySelector("[data-ws-body]").hidden, focus: document.activeElement?.id, saved: !!localStorage.getItem("pi.toolB.v1"), tick: JSON.parse(localStorage.getItem("pi.toolB.nameChecklist") || "{}").known, patBox: document.querySelector('[data-patriot-form] details[data-name-box] [data-name-check="known"]')?.checked }));
   check("Worksheet (audit 4 proposal): 'Start my worksheet' opens the steps at the patriot step, saves a blank worksheet, and keeps the checklist tick (also shown in the patriot step)", after.startHidden && !after.bodyHidden && after.focus === "tb-patriot" && after.saved && after.tick === true && after.patBox === true, JSON.stringify(after));
   phase("load"); await page.reload(); phase("interact");
   check("Worksheet (audit 4 proposal): once started, a reload goes straight to the steps", !(await page.isVisible("[data-ws-begin]")) && await page.isVisible("#pat-name")); }
-check("Worksheet: step 1 is the patriot step", /The patriot/.test(await page.textContent("#tb-patriot")) && (await page.$$("[data-patriot-form] #pat-kind option")).length >= 9);
+check("Worksheet: step 1 is the patriot step", /Your patriot/.test(await page.textContent("#tb-patriot")) && (await page.$$("[data-patriot-form] #pat-kind option")).length >= 9);
 await page.fill("#pat-name", "Test Patriot"); await page.selectOption("#pat-state", "NC"); await page.selectOption("#pat-kind", "continental"); await fillDate(page, "pat-start", "1776-02"); await fillDate(page, "pat-end", "1779-06");
 txt = await page.textContent("[data-patriot-check]");
 check("Patriot step: dates checked against DAR's period for that type of service (not a ruling), linking the widow checker", /Dates fit DAR's period/.test(txt) && /not a ruling/.test(txt) && (await page.$$('[data-patriot-check] a[href="/tools/widow-pension-checker/?from=worksheet"]')).length === 1, txt.slice(0, 120));
@@ -196,7 +196,7 @@ await page.evaluate(() => localStorage.setItem("pi.toolB.v1", JSON.stringify({ g
   patriot: { name: "Test", state: "VA", kind: "militia", start: "1777", end: "1779", gen: "4" } })));
 phase("load"); await page.reload(); phase("interact");
 { const ds = await page.evaluate(() => ({ check: document.querySelector("[data-patriot-check]")?.textContent || "", plan: document.querySelector('[data-tool="lineage-matrix"] [data-plan] [data-date-warnings]')?.textContent || "", first: document.querySelector('[data-tool="lineage-matrix"] [data-plan] .plan-steps > li .plan-title')?.textContent }));
-  check("Worksheet (audit 4 #1): a patriot born 1850 with 1777–79 service gets 'His dates don't add up', not 'Dates fit', and the plan opens with 'Check these dates first'", /His dates don't add up/.test(ds.check) && /wasn't born yet/.test(ds.check) && !/Dates fit/.test(ds.check) && ds.first === "Check these dates first" && /wasn't born yet/.test(ds.plan), JSON.stringify(ds).slice(0, 240));
+  check("Worksheet (audit 4 #1): a patriot born 1850 with 1777–79 service gets 'Your patriot's dates don't add up', not 'Dates fit', and the plan opens with 'Check these dates first'", /Your patriot's dates don't add up/.test(ds.check) && /wasn't born yet/.test(ds.check) && !/Dates fit/.test(ds.check) && ds.first === "Check these dates first" && /wasn't born yet/.test(ds.plan), JSON.stringify(ds).slice(0, 240));
   phase("load"); await page.goto(`${BASE}/tools/lineage-matrix/report/`); phase("interact");
   const rs = await page.textContent("[data-report]");
   check("Report (audit 4 #1): the summary says his birth year and service don't add up, and never 'dates fit'", /don't add up/.test(rs) && !/dates fit/i.test(rs) && /Check these dates first/.test(rs), rs.slice(0, 200));
@@ -273,7 +273,7 @@ check("Tool B: action plan lists each missing record with a Where-to-look link, 
 check("Tool B: 'Load an example' fills a made-up patriot and family and shows gaps with where to look", (await page.$$("section.gen")).length === 5 && (await page.inputValue("#pat-name")).length > 0 && (await page.$$("[data-gaps] [data-where-block] a[href*='archives.gov']")).length > 0);
 { const nn = await page.evaluate(() => { const p = document.querySelector("[data-patriot] [data-no-name]"); return p ? { text: p.textContent, href: p.querySelector("a")?.getAttribute("href") } : null; });
   const road = readFileSync(join(DIST, "guides/lineage-proof-roadmap/index.html"), "utf8");
-  check("Worksheet patriot step: 'Don't know his name yet?' links in plain words to Roadmap Step 0", nn && /^Don't know his name yet\?/.test(nn.text) && nn.href === "/guides/lineage-proof-roadmap/#step-0-find-the-soldier-s-name" && road.includes('id="step-0-find-the-soldier-s-name"'), JSON.stringify(nn)); }
+  check("Worksheet patriot step: 'Don't know your patriot's name yet?' links in plain words to Roadmap Step 0", nn && /^Don't know your patriot's name yet\?/.test(nn.text) && nn.href === "/guides/lineage-proof-roadmap/#step-0-find-your-patriot-s-name" && road.includes('id="step-0-find-your-patriot-s-name"'), JSON.stringify(nn)); }
 const notes = await page.$$eval("[data-gaps] [data-where-block] p:first-child", (ns) => ns.map((n) => n.textContent));
 check("Where to look is tailored: Virginia's 1853-1896 birth registers and the censuses in each lifetime appear", notes.some((n) => /1853 to 1896/.test(n)) && notes.some((n) => /Census: The 1850–1870 censuses/.test(n)), notes.slice(0, 2).join(" | ").slice(0, 160));
 check("Where to look: the patriot's generation is labelled", /\(the patriot\)/.test(await page.textContent("[data-gaps]")));
@@ -347,7 +347,7 @@ check("Report: links to the definitions", (await page.$$('main a[href="/#glossar
   check("Audit 3 #4: in the report, the patriot's missing birth or death record links to his generation in the worksheet", rb.g6add === "/tools/lineage-matrix/#gen-6", rb.g6add);
   check("Audit 3 #5: the report prints the Ohio no-source note once, and each census fact once", rb.ohio === 1 && rb.censusBlocks.length === new Set(rb.censusBlocks).size && rb.censusBlocks.length >= 2, JSON.stringify(rb.censusBlocks));
   await page.emulateMedia({ media: "print" }); await page.evaluate(() => document.body.classList.add("print-summary"));
-  const bS = pdfPages(await page.pdf(PDF_OPTS)); await page.evaluate(() => document.body.classList.remove("print-summary")); const bF = pdfPages(await page.pdf(PDF_OPTS));
+  const bS = pdfPages(await page.pdf(PDF_OPTS)); await page.evaluate(() => document.body.classList.remove("print-summary")); const bF = pdfPages(await page.pdf({ ...PDF_OPTS, path: join(SHOTS, "persona-b-report-full.pdf") }));
   await page.emulateMedia({ media: "screen" }); globalThis.__reportPages = { ...(globalThis.__reportPages || {}), personaB: { summaryPages: bS, fullPages: bF } };
   check("Audit 3 #2: the audit's longer persona-B report prints shorter than before (Save as PDF 3 -> at most 2, Ctrl+P 5 -> at most 3)", bS <= 2 && bF <= 3, `summary ${bS}, full ${bF}`);
   await page.evaluate(() => localStorage.removeItem("pi.toolB.v1"));
@@ -408,10 +408,10 @@ check("Navigation: 'Start here' (the Roadmap) comes first, then the widow-pensio
 // The beginner's three clicks: the big button -> Roadmap, whose top has "How to join" and "Step 0"
 phase("load"); await page.click("main [data-start-button]"); await page.waitForURL("**/guides/lineage-proof-roadmap/"); phase("interact");
 const rmOrder = await page.evaluate(() => [...document.querySelectorAll("main h2")].slice(0, 3).map((h) => h.id));
-check("Roadmap: opens with 'How to join, in short' and 'Step 0: find the soldier's name' before the rest", rmOrder[0] === "how-to-join-in-short" && rmOrder[1] === "step-0-find-the-soldier-s-name", rmOrder.join(","));
+check("Roadmap: opens with 'How to join, in short' and 'Step 0: find your patriot's name' before the rest", rmOrder[0] === "how-to-join-in-short" && rmOrder[1] === "step-0-find-your-patriot-s-name", rmOrder.join(","));
 const joinItems = await page.$$eval("#how-to-join ol > li", (lis) => lis.map((li) => ({ t: li.textContent, sup: li.querySelectorAll("sup a").length })));
 check("Roadmap: 'How to join, in short' has 4 sourced steps, the DAR chapter locator and the SAR contact finder", joinItems.length === 4 && joinItems.every((x) => x.sup > 0) && (await page.$$('#how-to-join a[href="https://www.dar.org/discover/become-member/chapter-locator"]')).length === 1 && (await page.$$('#how-to-join a[href="https://www.sar.org/find-your-contact/"]')).length === 1);
-const step0 = await page.evaluate(() => { const h = document.getElementById("step-0-find-the-soldier-s-name"); const ul = h.nextElementSibling.nextElementSibling; return [...ul.querySelectorAll("li")].map((li) => li.querySelectorAll("sup a").length); });
+const step0 = await page.evaluate(() => { const h = document.getElementById("step-0-find-your-patriot-s-name"); const ul = h.nextElementSibling.nextElementSibling; return [...ul.querySelectorAll("li")].map((li) => li.querySelectorAll("sup a").length); });
 check("Roadmap Step 0: every point is sourced", step0.length >= 4 && step0.every((n) => n > 0), JSON.stringify(step0));
 phase("load"); await page.goto(`${BASE}/`); phase("interact");
 const glossTerms = ["DAR:", "SAR:", "NSCDA:", "Lineage society:", "Patriot:", "Bounty land:", "Stat.:"];
@@ -556,7 +556,7 @@ await page.goto(`${BASE}/guides/read-pension-file/`); await page.screenshot({ pa
     && /^Disallow: \/tools\/widow-pension-checker\/report\/$/m.test(rb5) && /^Disallow: \/tools\/lineage-matrix\/report\/$/m.test(rb5)); }
 { // #4 Roadmap: the record-copies section right after Step 0, every fact sourced, ending with the registrar line
   const h = readFileSync(join(DIST, "guides/lineage-proof-roadmap/index.html"), "utf8"); const ids = [...h.matchAll(/<h2 id="([^"]+)"/g)].map((m) => m[1]);
-  const i0 = ids.indexOf("step-0-find-the-soldier-s-name"); const sec = (h.match(/<h2 id="if-your-patriot-is-already-in-dar-s-or-sar-s-database">[\s\S]*?(?=<h2 )/) || [""])[0];
+  const i0 = ids.indexOf("step-0-find-your-patriot-s-name"); const sec = (h.match(/<h2 id="if-your-patriot-is-already-in-dar-s-or-sar-s-database">[\s\S]*?(?=<h2 )/) || [""])[0];
   check("t119u #4: Roadmap has 'If your patriot is already in DAR's or SAR's database' right after Step 0; its facts are sourced and it ends with the registrar line", i0 >= 0 && ids[i0 + 1] === "if-your-patriot-is-already-in-dar-s-or-sar-s-database"
     && (sec.match(/<sup>/g) || []).length >= 4 && /Ask your chapter registrar which of your generations still need proof\.<\/p>\s*$/.test(sec), ids.slice(i0, i0 + 2).join(",")); }
 { // #3 Worksheet: "Skip for now" on A to D; skipped answers read "Still needed", never an error
@@ -636,6 +636,80 @@ phase("load"); await page.goto(`${BASE}/`); phase("interact");
     const missing = srcs.filter((u) => !lp[u]); const oldest = srcs.map((u) => lp[u]).filter(Boolean).sort()[0]; const want = oldest ? new Date(oldest).toISOString().slice(0, 10) : null;
     seen.push(`${g}=${shown}`); if (!shown || !srcs.length || missing.length || shown !== want) bad.push(`${g}: shown ${shown}, oldest ${want}, missing ${missing.join(" ")}`); }
   check("t123u #2: each guide's 'Sources last checked' date is the oldest recorded live pass among its own listed sources (every source has a record; nothing invented)", bad.length === 0, bad.join(" | ") || seen.join(" ")); }
+
+// ---- t124u (Nov 9): sources labels, AI disclosure page, privacy/FAQ/corrections copy, external links, dated rules, CT/GA/MA guidance ----
+{ const staticPages = htmlFiles.map((f) => "/" + f.slice(DIST.length + 1).replace(/index\.html$/, "")).filter((u) => !u.endsWith("404.html"));
+  const lp = JSON.parse(readFileSync(join(ROOT, "manifest/source-last-passed.json"), "utf8")).sources;
+  const MONTHS = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+  const longDate = (t) => { const d = new Date(t); return `${MONTHS[d.getUTCMonth()]} ${d.getUTCDate()}, ${d.getUTCFullYear()}`; };
+  const claimsById = new Map(JSON.parse(readFileSync(join(ROOT, "manifest/claims.json"), "utf8")).claims.map((c) => [c.claim_id, c]));
+  const res = {};
+  for (const w of [390, 1280]) {
+    const c = await browser.newContext({ viewport: { width: w, height: 900 } }); const pg = await c.newPage(); const r = res[w] = { srcPages: 0, items: 0, badItems: [], ext: 0, badExt: [], internalTargets: [], overflow: [], footer: [] };
+    for (const u of staticPages) {
+      await pg.goto(`${BASE}${u}`);
+      const x = await pg.evaluate(() => {
+        const items = [...document.querySelectorAll("ol.sources > li")].map((li) => { const use = li.querySelector("[data-source-use]"); const url = li.querySelector(".url");
+          return { use: use?.textContent || "", useShown: use ? getComputedStyle(use).display !== "none" && use.getBoundingClientRect().height > 0 : false, urlHidden: url ? getComputedStyle(url).display === "none" : false }; });
+        const ext = [...document.querySelectorAll("a[href^='http']")].filter((a) => !/^https?:\/\/(www\.)?patriotinlays\.com/.test(a.href)).map((a) => { const i = a.querySelector("svg.ext-icon"); const s = a.querySelector(".sr-only");
+          return { href: a.getAttribute("href"), target: a.target, rel: a.rel, icon: !!i && i.getAttribute("aria-hidden") === "true" && (a.getClientRects().length === 0 || i.getBoundingClientRect().width > 0), sr: s?.textContent === " (opens in new tab)" }; });
+        const internal = [...document.querySelectorAll("a[href]")].filter((a) => /^(\/|#|mailto:)/.test(a.getAttribute("href")) && (a.target || a.querySelector(".ext-icon"))).map((a) => a.getAttribute("href"));
+        const foot = [...document.querySelectorAll("footer.site a")].slice(0, 2).map((a) => `${a.textContent}=${a.getAttribute("href")}`).join(",");
+        return { items, ext, internal, foot, overflow: document.documentElement.scrollWidth > window.innerWidth + 1 }; });
+      if (x.items.length) r.srcPages++;
+      for (const it of x.items) { r.items++; const words = it.use.replace(/^Used for: /, "").replace(/\.$/, "").split(/\s+/).length;
+        if (!/^Used for: .+\.$/.test(it.use) || words > 9 || !it.useShown || !it.urlHidden) r.badItems.push(`${u}: ${JSON.stringify(it)}`); }
+      for (const e of x.ext) { r.ext++; if (e.target !== "_blank" || e.rel !== "noopener noreferrer" || !e.icon || !e.sr) r.badExt.push(`${u} ${e.href}`); }
+      r.internalTargets.push(...x.internal.map((h) => `${u} ${h}`)); if (x.overflow) r.overflow.push(u); if (x.foot !== "About=/about/,AI disclosure=/ai-disclosure/") r.footer.push(`${u}: ${x.foot}`);
+    }
+    // Print: the raw URL shows under each source; the new-tab icon and its screen-reader text do not.
+    await pg.goto(`${BASE}/guides/lineage-proof-roadmap/`); await pg.emulateMedia({ media: "print" });
+    r.print = await pg.evaluate(() => ({ urls: [...document.querySelectorAll("ol.sources .url")].every((s) => getComputedStyle(s).display !== "none"), icons: [...document.querySelectorAll(".ext-icon")].every((i) => getComputedStyle(i).display === "none") }));
+    await pg.emulateMedia({ media: "screen" });
+    // Tool-rendered links (worksheet "Where to look") open in a new tab too; CT and GA show Tim's sentences; MA keeps the no-source note.
+    await pg.goto(`${BASE}/tools/lineage-matrix/`);
+    await pg.evaluate(() => localStorage.setItem("pi.toolB.v1", JSON.stringify({ version: 1, updated: new Date().toISOString(), generations: [{ gen: 1, living: true, born: "1950", state: "OH", cells: [] },
+      { gen: 2, born: "1780", died: "1840", state: "CT", cells: [] }, { gen: 3, born: "1750", died: "1820", state: "GA", cells: [] }, { gen: 4, born: "1720", died: "1790", state: "MA", cells: [] }] })));
+    await pg.reload();
+    r.tool = await pg.evaluate(() => { const t = document.querySelector("[data-gaps]")?.textContent || ""; const links = [...document.querySelectorAll("[data-gaps] a[href^='http']")];
+      return { t, n: links.length, ok: links.every((a) => a.target === "_blank" && a.rel === "noopener noreferrer" && a.querySelector("svg.ext-icon") && a.querySelector(".sr-only")?.textContent === " (opens in new tab)"),
+        hrefs: links.map((a) => a.getAttribute("href")), overflow: document.documentElement.scrollWidth > window.innerWidth + 1 }; });
+    await pg.evaluate(() => localStorage.removeItem("pi.toolB.v1"));
+    await c.close();
+  }
+  for (const w of [390, 1280]) { const r = res[w];
+    check(`t124u #1 (${w}px): every Sources entry on every page (${r.srcPages} pages, ${r.items} entries) has a visible "Used for: ..." line of at most about 8 words, and the raw URL is hidden on screen`, r.srcPages >= 15 && r.badItems.length === 0, r.badItems.slice(0, 3).join(" | "));
+    check(`t124u #1 (${w}px): in print the raw URLs show under each source and the new-tab icons do not`, r.print.urls && r.print.icons, JSON.stringify(r.print));
+    check(`t124u #11 (${w}px): every link that leaves the site (${r.ext}) opens in a new tab with rel="noopener noreferrer", a small icon and "(opens in new tab)" for screen readers; no internal or email link does`, r.ext > 100 && r.badExt.length === 0 && r.internalTargets.length === 0, [...r.badExt, ...r.internalTargets].slice(0, 4).join(" | "));
+    check(`t124u #2 (${w}px): every page's footer starts with two links, "About" and "AI disclosure"`, r.footer.length === 0, r.footer.slice(0, 3).join(" | "));
+    check(`t124u (${w}px): no page scrolls sideways`, r.overflow.length === 0 && !r.tool.overflow, r.overflow.join(" "));
+    check(`t124u #13 + #11 (${w}px): the worksheet's "Where to look" shows Tim's CT and GA sentences (MA dropped: live check failed) and links their sources, and its outside links open in a new tab`,
+      [claimsById.get("ct-vital-town-clerk"), claimsById.get("ct-vital-barbour"), claimsById.get("ga-vital-1919")].every((c) => r.tool.t.includes(c.claim_text))
+      && !claimsById.has("ma-vital-1841") && !/1841/.test(r.tool.t) && r.tool.t.includes("no verified source yet on when Massachusetts began keeping")
+      && ["https://guides.loc.gov/connecticut-local-history-genealogy/vital-records", "https://georgiaarchives.org/research/vital_records"].every((h) => r.tool.hrefs.includes(h)) && !r.tool.hrefs.some((h) => h.includes("sec.state.ma.us")) && r.tool.ok && r.tool.n > 0,
+      JSON.stringify({ n: r.tool.n, ok: r.tool.ok }));
+  }
+  const H = (p) => readFileSync(join(DIST, p, "index.html"), "utf8"); const text = (p) => H(p).replace(/<script[\s\S]*?<\/script>/g, "").replace(/<[^>]+>/g, "").replace(/&#39;|&apos;/g, "'").replace(/&amp;/g, "&").replace(/&quot;/g, '"');
+  const AI = "Written with AI assistance and reviewed by the site's owner. Each fact is tied to a quoted official source, and software checks that the quote is still there. The owner supervises the project, decides what goes on the site and reads the pages; the source check is what holds every fact to its quote.";
+  check("t124u #2: a separate AI disclosure page carries the AI text unchanged; About no longer has it; guide top lines and the Sources page point to the AI disclosure", /<h1>AI disclosure<\/h1>/.test(H("ai-disclosure")) && text("ai-disclosure").includes(AI) && !/How AI is used/.test(H("about")) && !text("about").includes("The owner supervises the project")
+    && /Sources last checked [^<]*· Written with AI; every fact is tied to a quoted official source \(<a href="\/ai-disclosure\/">how this works<\/a>\)/.test(H("guides/census-bridge")) && /See the <a href="\/ai-disclosure\/">AI disclosure<\/a>/.test(H("sources")) && !/About &amp; AI disclosure/.test(H("")));
+  const priv = text("privacy");
+  check("t124u #3/#4: Privacy starts its 'collects' section with 'The site itself collects nothing.', has the one Cloudflare line and the ads line, and the technical note has no storage key names", /What the site itself collects\s*The site itself collects nothing\.\s*The site is hosted by Cloudflare\. Like any web host, it delivers each page, and it adds two small technical features: a script that hides email addresses from spam robots, and a short error report if a page fails to load\.\s*There are no ads at present\./.test(priv)
+    && !/pi\.tool/.test(priv) && priv.includes("Your entries are saved only in this browser, and that storage isn't encrypted. On a shared or public computer, use the delete button when you're done.") && !/network-error report|Cloudflare's servers deliver/.test(priv));
+  const faq = text("faq");
+  check("t124u #5/#6/#7: the FAQ's genealogist answer, trust answer and intro use Tim's wording", faq.includes("That help comes with joining. Our guides can help you prepare: what records to gather and what questions to ask.") && !/often the chapter registrar/.test(faq.slice(faq.indexOf("Do I have to hire"), faq.indexOf("What does this site cost")))
+    && faq.includes("Every factual statement is tied to a quoted passage from an official or institutional source. Each time the site is updated, and on a regular schedule, software checks that every quote still appears on its source page. Any statement that can't be matched is removed. Each page lists its sources at the bottom with the date each was last checked, and the Sources & Methodology page explains the method. The site is written with AI assistance and reviewed by its owner.")
+    && faq.includes("If your question isn't here, a DAR or SAR chapter registrar is the best person to ask. To report a mistake on this site, use the Contact page."));
+  const corr = "Each correction is checked against the cited source before the page is updated. Every suggestion is read, though not every one can be added.";
+  check("t124u #8: About and Contact both have 'Corrections and suggestions' with the same wording", /<h2 id="corrections-and-suggestions">Corrections and suggestions<\/h2>/.test(H("about")) && /<h2 id="corrections-and-suggestions">Corrections and suggestions<\/h2>/.test(H("contact"))
+    && text("about").includes(`If you find an error, or have an idea for a tool or guide that would help, please tell us through the Contact page. ${corr}`) && text("contact").includes(corr));
+  const rm = H("guides/lineage-proof-roadmap"); const asof = [...rm.matchAll(/As of <span data-asof="([a-z0-9-]+)">([^<]+)<\/span>, (DAR|SAR) says/g)];
+  const prac = (rm.match(/<h2 id="practical-details-people-miss">[\s\S]*?<\/p>/) || [""])[0];
+  check("t124u #10: dated rules start 'As of <date>, DAR says' with the date of that source's last recorded pass (Roadmap 'Practical details' and the application guide)", (prac.match(/As of <span data-asof/g) || []).length === 4
+    && [...asof, ...H("guides/application-problems").matchAll(/As of <span data-asof="([a-z0-9-]+)">([^<]+)<\/span>, (DAR|SAR) says/g)].every((m) => m[2] === longDate(lp[claimsById.get(m[1]).source_url])) && asof.length >= 6);
+  check("t124u #9: Roadmap Step 0 reads 'Step 0: find your patriot's name' and 'If you don't know your patriot's name yet'; the old #step-0 link still lands there", /<h2 id="step-0-find-your-patriot-s-name">Step 0: find your patriot&#39;s name<\/h2>|<h2 id="step-0-find-your-patriot-s-name">Step 0: find your patriot's name<\/h2>/.test(rm)
+    && text("guides/lineage-proof-roadmap").includes("If you don't know your patriot's name yet, start here.") && rm.includes('id="step-0-find-the-soldier-s-name"') && !/find the soldier/.test(H("")));
+}
 
 // ---- Cache-busting: every script/CSS reference and every module import carries ?v=<hash> that matches the file ----
 const { createHash } = await import("node:crypto");

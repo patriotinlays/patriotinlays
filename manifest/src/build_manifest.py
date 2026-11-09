@@ -16,7 +16,8 @@ for f in glob.glob(os.path.join(root, "src/partials/*.md")):
 NOV5 = {"stat-1853-army","stat-1853-after-1800","stat-1853-same-manner","stat-1855feb-navy","stat-1855feb-1800","stat-1855feb-same","nara-natf85-order","nara-natf85-revwar","m805-selected","m805-number"}
 # Claims first matched later carry their real first-match date (never a made-up one): nara-amrev-fs-m804 matched in the
 # Nov 5, 2026 live check (t111u); the t119u record-copy claims matched their live pages on Nov 9, 2026.
-FIRST_MATCHED = {"nara-amrev-fs-m804": "2026-11-05", "dar-lib-record-copy-use": "2026-11-09", "dar-linres-record-copies": "2026-11-09", "dar-linres-little-info": "2026-11-09", "sar-record-copy": "2026-11-09"}
+FIRST_MATCHED = {"nara-amrev-fs-m804": "2026-11-05", "dar-lib-record-copy-use": "2026-11-09", "dar-linres-record-copies": "2026-11-09", "dar-linres-little-info": "2026-11-09", "sar-record-copy": "2026-11-09",
+    "ct-vital-town-clerk": "2026-11-09", "ct-vital-barbour": "2026-11-09", "ga-vital-1919": "2026-11-09", "ga-vital-marriage-1805": "2026-11-09", "ga-vital-bride-county": "2026-11-09"}
 def retrieved(cid): return FIRST_MATCHED.get(cid) or ("2026-11-05" if cid in NOV5 else "2026-10-31")
 out = []; unused = []
 for cid, sk, quote, text, page in C:
