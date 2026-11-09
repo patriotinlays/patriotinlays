@@ -235,3 +235,64 @@ figure.job-aid:has(img[src*="360"]){max-width:430px}
 blockquote.tool-output{border-left:4px solid var(--navy);background:var(--soft);margin:.8rem 0;padding:.5rem .8rem}
 blockquote.tool-output p{margin:0}
 @media print{figure.job-aid{break-inside:avoid}blockquote.tool-output{break-inside:avoid}}
+
+/* ===== t122u Warmth & polish (Nov 9, 2026): visual only, no outside fonts or services ===== */
+/* Screen only: printed reports keep the compact layout tested in audit 3 (page counts) exactly as before. */
+@media screen{
+:root{--ink:#2b2622;--navy:#13294b;--navy-dark:#0b1a33;--red:#b22234;--muted:#5e554b;--line:#e6ded0;--bg:#faf7f0;--card:#fffdf8;--soft:#f4efe5;
+  --serif:"Iowan Old Style","Charter","Palatino Linotype","Palatino","Book Antiqua",Georgia,serif;
+  --sans:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  --shadow:0 1px 2px rgba(60,44,24,.05),0 2px 8px rgba(60,44,24,.05)}
+body{font-family:var(--serif);line-height:1.65;color:var(--ink);background:var(--bg)}
+h1,h2,h3{font-family:var(--serif);color:var(--navy)}
+/* Text column about 66 characters on large screens, centered (29.5rem measures ~66 characters at 17px in a Palatino-class
+   serif). The tools, tables and figures keep their earlier 46rem width, centered like plates in a booklet. Phones unchanged. */
+@media (min-width:600px){
+  main .wrap>:not(section.tool):not(.table-wrap):not(.plan):not(figure.job-aid){max-width:29.5rem;margin-left:auto;margin-right:auto}
+}
+main p{margin:.9em 0}
+h1{margin:1.4rem 0 .5rem}
+h2{margin:2.2rem 0 .7rem;border-bottom-color:var(--line)}
+h3{margin:1.6rem 0 .5rem}
+/* A short thin red rule under each page's main heading (decorative, CSS only). */
+main h1::after{content:"";display:block;width:3.5rem;height:2px;margin-top:.6rem;background:var(--red)}
+/* Home: the tagline is the visible main heading; the site name stays in the title tag and for screen readers. */
+.sr-only{position:absolute!important;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+h1.home-h1 .subtitle{display:block;margin:0;font-size:inherit;color:var(--navy)}
+/* Links: navy with a subtle underline; hover darkens. */
+a{color:var(--navy);text-decoration:underline;text-decoration-color:rgba(19,41,75,.35);text-decoration-thickness:1px;text-underline-offset:.16em}
+a:hover{color:var(--navy-dark);text-decoration-color:currentColor}
+header.site a,header.site a:hover{color:#fff;text-decoration:none}
+sup a{text-decoration:none}
+/* Menu, buttons, labels and small text stay sans-serif. */
+nav.top a,.small,.meta,.sources,footer.site,table,.badge{font-family:var(--sans)}
+/* Buttons: navy, slightly rounded, soft shadow, gentle hover lift. */
+.tool button,a.button-link{border-radius:6px;box-shadow:0 1px 2px rgba(11,26,51,.18),0 2px 6px rgba(11,26,51,.10);transition:transform .15s ease,box-shadow .15s ease,background-color .15s ease}
+.tool button:hover,a.button-link:hover{transform:translateY(-1px);box-shadow:0 2px 4px rgba(11,26,51,.18),0 6px 14px rgba(11,26,51,.14)}
+.tool button:not(.secondary):not(.link):hover,a.button-link:not(.secondary-link):hover{background:var(--navy-dark);border-color:var(--navy-dark);color:#fff}
+.tool button.secondary,a.button-link.secondary-link{background:var(--card);color:var(--navy)}
+.tool button.secondary:hover,a.button-link.secondary-link:hover{background:#fff;color:var(--navy-dark)}
+.tool button.link,.tool button.link:hover{box-shadow:none;transform:none;background:none}
+a.button-link,a.button-link:hover{text-decoration:none}
+@media (prefers-reduced-motion:reduce){.tool button,a.button-link{transition:none}.tool button:hover,a.button-link:hover{transform:none}}
+/* Cards and boxes: slightly lighter than the page, thin warm border, very soft shadow. */
+.tool,.card,.plan,.lead-tool,.start-path,details.defs,figure.job-aid,.ws-start,details.birth-subs{background:var(--card);border:1px solid var(--line);box-shadow:var(--shadow)}
+.lead-tool,.start-path{border-left:6px solid var(--red)}
+.tool .cell,.result,.where-block,.where-note,.answer,.no-name,.tool .gen-facts,.tool input[type=text],.tool select,table.widow tr,table.records tr{background:var(--card)}
+.tool .cell{border-color:var(--line);border-left-color:var(--navy)}
+.tool .howto{background:var(--soft);border-color:var(--line)}
+.where{background:var(--soft)}
+.name-check,blockquote.tool-output{background:var(--soft)}
+.table-wrap{border-color:var(--line);background:var(--card)}
+td{border-top-color:var(--line)}
+.tool .gen{border-top-color:var(--line)}
+.tool fieldset,.have,fieldset.date-field{border-color:var(--line)}
+.tool input[type=text],.tool select{border-color:#8f8577}
+footer.site{border-top-color:var(--line)}
+footer.site a{color:var(--navy)}
+/* Section labels and small headings ("What it does.", glossary terms): small caps in the sans font. */
+main .wrap>p>strong:first-child,.card p>strong:first-child,.glossary li>strong:first-child,details.defs li>strong:first-child,.term>strong,.patriot-summary dt{font-family:var(--sans);font-variant-caps:all-small-caps;letter-spacing:.06em;font-weight:700;font-size:1.05em}
+sup{line-height:0;vertical-align:baseline;position:relative;top:-.45em}
+sup a{line-height:0}
+.card>:first-child,.tool>:first-child,.plan>:first-child{margin-top:0}.card>:last-child{margin-bottom:0}
+}

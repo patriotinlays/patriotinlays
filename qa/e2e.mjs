@@ -582,6 +582,45 @@ await page.goto(`${BASE}/guides/read-pension-file/`); await page.screenshot({ pa
   check('t119u #3: the printable gap report shows each skipped answer as "Still needed" and the record as "Needs details", never an error', rr.cells.slice(0, 4).every((c) => c === "Still needed") && /Needs details/.test(rr.cells[4] || "") && !rr.err && !rr.conflict, JSON.stringify(rr));
   await page.evaluate(() => localStorage.removeItem("pi.toolB.v1")); }
 
+// ---- t122u (Nov 9): warm booklet styling; WCAG AA contrast on every visible text element of every page ----
+{ const css = readFileSync(join(ROOT, "src/assets/site.css"), "utf8");
+  check("t122u: no outside fonts or services (no @import, @font-face or http URLs in the stylesheet)", !/@import|@font-face|url\(\s*["']?https?:/i.test(css));
+  check("t122u: serif stack, warm page and card colors, warm charcoal text, navy headings", /--serif:"Iowan Old Style","Charter","Palatino Linotype","Palatino","Book Antiqua",Georgia,serif/.test(css) && /--bg:#faf7f0/.test(css) && /--card:#fffdf8/.test(css) && /--line:#e6ded0/.test(css) && /--ink:#2b2622/.test(css)); }
+phase("load"); await page.goto(`${BASE}/`); phase("interact");
+{ const h = await page.evaluate(() => { const h1 = document.querySelector("main h1"); const sr = h1.querySelector(".sr-only"); const vis = h1.querySelector("[data-subtitle]");
+    return { h1s: document.querySelectorAll("main h1").length, sr: sr?.textContent || "", srHidden: sr ? sr.getBoundingClientRect().width <= 1 : false, vis: vis?.textContent || "", visH: vis ? vis.getBoundingClientRect().height : 0, title: document.title, rule: getComputedStyle(h1, "::after").backgroundColor, ruleW: getComputedStyle(h1, "::after").width }; });
+  check("t122u #9/#8: the home page's one visible heading is the tagline; the site name is in the h1 for screen readers and in the title; a short red rule sits under it", h.h1s === 1 && /^Patriot, In Lay Terms/.test(h.sr) && h.srHidden && /^Plain-English help with DAR and SAR applications/.test(h.vis) && h.visH > 20 && /Patriot, In Lay Terms/.test(h.title) && h.rule === "rgb(178, 34, 52)" && parseFloat(h.ruleW) <= 80, JSON.stringify(h)); }
+{ const pages = htmlFiles.map((f) => "/" + f.slice(DIST.length + 1).replace(/index\.html$/, "")).filter((u) => !u.endsWith("404.html"));
+  const fails = []; let checked = 0; const mins = {};
+  for (const u of pages) {
+    phase("load"); await page.goto(`${BASE}${u}`); phase("interact");
+    if (u.includes("lineage-matrix") && !u.includes("report")) await page.click("[data-ws-begin]").catch(() => {});
+    const r = await page.evaluate(() => {
+      const parse = (c) => { const m = c.match(/rgba?\(([^)]+)\)/); if (!m) return null; const v = m[1].split(/[ ,/]+/).filter(Boolean).map(Number); return { r: v[0], g: v[1], b: v[2], a: v.length > 3 ? v[3] : 1 }; };
+      const lum = ({ r, g, b }) => { const f = (x) => { x /= 255; return x <= 0.03928 ? x / 12.92 : ((x + 0.055) / 1.055) ** 2.4; }; return 0.2126 * f(r) + 0.7152 * f(g) + 0.0722 * f(b); };
+      const ratio = (a, b) => { const [x, y] = [lum(a), lum(b)].sort((p, q) => q - p); return (x + 0.05) / (y + 0.05); };
+      const bgOf = (el) => { const stack = []; for (let e = el; e; e = e.parentElement) { const c = parse(getComputedStyle(e).backgroundColor); if (c && c.a > 0) { stack.push(c); if (c.a >= 1) break; } }
+        let out = { r: 255, g: 255, b: 255 }; for (const c of stack.reverse()) out = { r: c.r * c.a + out.r * (1 - c.a), g: c.g * c.a + out.g * (1 - c.a), b: c.b * c.a + out.b * (1 - c.a) }; return out; };
+      const out = []; let n = 0; const mins = {};
+      for (const el of document.querySelectorAll("body *")) {
+        if (!["#text"].some(() => [...el.childNodes].some((c) => c.nodeType === 3 && c.textContent.trim()))) continue;
+        if (el.closest(".sr-only,script,style,noscript")) continue; const rc = el.getBoundingClientRect(); const cs = getComputedStyle(el);
+        if (rc.width < 2 || rc.height < 2 || cs.visibility === "hidden" || cs.display === "none" || el.closest("[hidden]")) continue;
+        const fg = parse(cs.color); const bg = bgOf(el); const fs = parseFloat(cs.fontSize); const bold = +cs.fontWeight >= 700;
+        const large = fs >= 24 || (bold && fs >= 18.66); const need = large ? 3 : 4.5; const r = ratio(fg, bg); n++;
+        const key = `${cs.color} on rgb(${Math.round(bg.r)}, ${Math.round(bg.g)}, ${Math.round(bg.b)})`; if (!mins[key] || mins[key] > r) mins[key] = +r.toFixed(2);
+        if (r < need) out.push(`${el.tagName.toLowerCase()}.${el.className}: ${r.toFixed(2)} (${key}, ${fs}px) "${el.textContent.trim().slice(0, 30)}"`); }
+      return { out, n, mins }; });
+    checked += r.n; for (const f of r.out) fails.push(`${u} ${f}`); for (const [k, v] of Object.entries(r.mins)) if (!mins[k] || mins[k] > v) mins[k] = v; }
+  globalThis.__contrast = mins;
+  check(`t122u #11: every visible text element on all ${pages.length} pages passes WCAG AA contrast (4.5:1, large text 3:1) — ${checked} elements`, fails.length === 0 && checked > 1000, fails.slice(0, 6).join(" | ")); }
+{ // hover and focus states
+  phase("load"); await page.goto(`${BASE}/`); phase("interact");
+  await page.hover("main a.button-link"); await page.waitForTimeout(250);
+  const bh = await page.evaluate(() => { const a = document.querySelector("main a.button-link"); const cs = getComputedStyle(a); return { bg: cs.backgroundColor, fg: cs.color, tf: cs.transform, sh: cs.boxShadow }; });
+  await page.hover("main .guide-list a"); const lh = await page.evaluate(() => { const cs = getComputedStyle(document.querySelector("main .guide-list a")); return { fg: cs.color, deco: cs.textDecorationLine }; });
+  check("t122u #7: buttons darken and lift gently on hover (white on dark navy); links darken on hover and stay underlined", bh.bg === "rgb(11, 26, 51)" && bh.fg === "rgb(255, 255, 255)" && /matrix/.test(bh.tf) && bh.sh !== "none" && lh.fg === "rgb(11, 26, 51)" && /underline/.test(lh.deco), JSON.stringify({ bh, lh })); }
+
 // ---- Cache-busting: every script/CSS reference and every module import carries ?v=<hash> that matches the file ----
 const { createHash } = await import("node:crypto");
 const htmlRefs = pagesToCheck.flatMap((p) => [...readFileSync(join(DIST, p, "index.html"), "utf8").matchAll(/(?:src|href)="(\/assets\/[^"]+\.(?:js|css)[^"]*)"/g)].map((m) => m[1]));
@@ -593,6 +632,6 @@ check("Cache-busting: every page's script/CSS URL and every module import is ver
 check("No JavaScript errors in the console on any page visited", consoleErrors.length === 0, consoleErrors.slice(0, 3).join(" | "));
 await browser.close(); server.close();
 const passed = results.filter((r) => r.ok).length;
-writeFileSync(join(ROOT, "qa/e2e-results.json"), JSON.stringify({ ranAt: new Date().toString(), browser: `${CHROME || "playwright Chromium"} (headless) via playwright-core ${require("playwright-core/package.json").version}`, passed, total: results.length, exampleReportPages: globalThis.__reportPages || null, home: globalThis.__home || null, results, requestsTotal: requests.length, externalRequests: external.length, interactionRequests: duringInteraction.length, faviconLate }, null, 2));
+writeFileSync(join(ROOT, "qa/e2e-results.json"), JSON.stringify({ ranAt: new Date().toString(), browser: `${CHROME || "playwright Chromium"} (headless) via playwright-core ${require("playwright-core/package.json").version}`, passed, total: results.length, exampleReportPages: globalThis.__reportPages || null, contrastMinByPair: globalThis.__contrast || null, home: globalThis.__home || null, results, requestsTotal: requests.length, externalRequests: external.length, interactionRequests: duringInteraction.length, faviconLate }, null, 2));
 console.log(`\nE2E: ${passed}/${results.length} checks passed.`);
 process.exit(passed === results.length ? 0 : 1);

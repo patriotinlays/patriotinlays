@@ -1,8 +1,8 @@
 {
-  "ranAt": "Mon Nov 09 2026 06:36:00 GMT-0600 (Central Standard Time)",
+  "ranAt": "Mon Nov 09 2026 07:41:29 GMT-0600 (Central Standard Time)",
   "browser": "/usr/bin/google-chrome (headless) via playwright-core 1.59.1",
-  "passed": 151,
-  "total": 151,
+  "passed": 156,
+  "total": 156,
   "exampleReportPages": {
     "summaryPages": 2,
     "fullPages": 3,
@@ -10,6 +10,19 @@
       "summaryPages": 2,
       "fullPages": 3
     }
+  },
+  "contrastMinByPair": {
+    "rgb(255, 255, 255) on rgb(19, 41, 75)": 14.52,
+    "rgb(19, 41, 75) on rgb(250, 247, 240)": 13.57,
+    "rgb(43, 38, 34) on rgb(250, 247, 240)": 13.99,
+    "rgb(43, 38, 34) on rgb(255, 253, 248)": 14.72,
+    "rgb(19, 41, 75) on rgb(255, 253, 248)": 14.28,
+    "rgb(94, 85, 75) on rgb(250, 247, 240)": 6.82,
+    "rgb(43, 38, 34) on rgb(244, 239, 229)": 13.06,
+    "rgb(19, 41, 75) on rgb(244, 239, 229)": 12.67,
+    "rgb(94, 85, 75) on rgb(255, 253, 248)": 7.18,
+    "rgb(94, 85, 75) on rgb(244, 239, 229)": 6.37,
+    "rgb(107, 69, 0) on rgb(255, 253, 248)": 8.34
   },
   "home": {
     "ps": 7,
@@ -669,7 +682,7 @@
     {
       "name": "Mobile 360px (regression): widow-act table shows stacked cards, no horizontal overflow",
       "ok": true,
-      "detail": "{\"sw\":360,\"iw\":360,\"tw\":292,\"td\":\"block\",\"thead\":\"none\",\"label\":\"\\\"Pension law\\\"\"}"
+      "detail": "{\"sw\":360,\"iw\":360,\"tw\":294,\"td\":\"block\",\"thead\":\"none\",\"label\":\"\\\"Pension law\\\"\"}"
     },
     {
       "name": "Mobile 360px (regression): checker report's widow table also stacks, no overflow",
@@ -679,17 +692,17 @@
     {
       "name": "Logo (360px): the header logo loads, is at most 44px tall, fits the screen, has alt text, and the header stays compact (no hero image)",
       "ok": true,
-      "detail": "{\"ok\":true,\"h\":38,\"right\":155,\"alt\":\"Patriot, In Lay Terms\",\"header\":113,\"note\":\"An independent guide: not affiliated with DAR, SAR or any lineage society, and it doesn't search records for you.\",\"noteTop\":275}"
+      "detail": "{\"ok\":true,\"h\":38,\"right\":155,\"alt\":\"Patriot, In Lay Terms\",\"header\":113,\"note\":\"An independent guide: not affiliated with DAR, SAR or any lineage society, and it doesn't search records for you.\",\"noteTop\":288}"
     },
     {
       "name": "Home (audit 4 proposal, 360px): the first screen says the site is independent (not DAR, SAR or any society) and doesn't search records",
       "ok": true,
-      "detail": "{\"ok\":true,\"h\":38,\"right\":155,\"alt\":\"Patriot, In Lay Terms\",\"header\":113,\"note\":\"An independent guide: not affiliated with DAR, SAR or any lineage society, and it doesn't search records for you.\",\"noteTop\":275}"
+      "detail": "{\"ok\":true,\"h\":38,\"right\":155,\"alt\":\"Patriot, In Lay Terms\",\"header\":113,\"note\":\"An independent guide: not affiliated with DAR, SAR or any lineage society, and it doesn't search records for you.\",\"noteTop\":288}"
     },
     {
       "name": "Worksheet (audit 4 proposal): 'No birth certificate? Try these substitutes, in order' appears, closed, at each generation with no birth record (example: 3, 4, 5), in order, with the pension-file step only for older generations, and fits 360px open",
       "ok": true,
-      "detail": "{\"gens\":\"3,4,5\",\"open\":false,\"title\":\"No birth certificate? Try these substitutes, in order\",\"g5\":\"baptism,bible,pension,age,affidavit\",\"g3\":\"baptism,bible,age,affidavit\",\"guide\":true,\"sw\":360,\"r\":326}"
+      "detail": "{\"gens\":\"3,4,5\",\"open\":false,\"title\":\"No birth certificate? Try these substitutes, in order\",\"g5\":\"baptism,bible,pension,age,affidavit\",\"g3\":\"baptism,bible,age,affidavit\",\"guide\":true,\"sw\":360,\"r\":327}"
     },
     {
       "name": "True 360px (audit 2): home, worksheet (example loaded), its report, widow checker (example loaded) and its report fit 360px with nothing off-screen",
@@ -767,6 +780,31 @@
       "detail": "{\"cells\":[\"Still needed\",\"Still needed\",\"Still needed\",\"Still needed\",\"Needs details\"],\"err\":false,\"conflict\":false}"
     },
     {
+      "name": "t122u: no outside fonts or services (no @import, @font-face or http URLs in the stylesheet)",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "t122u: serif stack, warm page and card colors, warm charcoal text, navy headings",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "t122u #9/#8: the home page's one visible heading is the tagline; the site name is in the h1 for screen readers and in the title; a short red rule sits under it",
+      "ok": true,
+      "detail": "{\"h1s\":1,\"sr\":\"Patriot, In Lay Terms: \",\"srHidden\":true,\"vis\":\"Plain-English help with DAR and SAR applications, for the Daughters and the Sons of the American Revolution\",\"visH\":143.9375,\"title\":\"Patriot, In Lay Terms: plain-English help for DAR and SAR applications | Patriot In Lay Terms\",\"rule\":\"rgb(178, 34, 52)\",\"ruleW\":\"56px\"}"
+    },
+    {
+      "name": "t122u #11: every visible text element on all 21 pages passes WCAG AA contrast (4.5:1, large text 3:1) — 3411 elements",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "t122u #7: buttons darken and lift gently on hover (white on dark navy); links darken on hover and stay underlined",
+      "ok": true,
+      "detail": "{\"bh\":{\"bg\":\"rgb(11, 26, 51)\",\"fg\":\"rgb(255, 255, 255)\",\"tf\":\"matrix(1, 0, 0, 1, 0, -1)\",\"sh\":\"rgba(11, 26, 51, 0.18) 0px 2px 4px 0px, rgba(11, 26, 51, 0.14) 0px 6px 14px 0px\"},\"lh\":{\"fg\":\"rgb(11, 26, 51)\",\"deco\":\"underline\"}}"
+    },
+    {
       "name": "Cache-busting: every page's script/CSS URL and every module import is versioned with the file's content hash",
       "ok": true,
       "detail": ""
@@ -777,7 +815,7 @@
       "detail": ""
     }
   ],
-  "requestsTotal": 459,
+  "requestsTotal": 654,
   "externalRequests": 0,
   "interactionRequests": 0,
   "faviconLate": 25

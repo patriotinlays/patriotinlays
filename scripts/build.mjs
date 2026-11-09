@@ -209,8 +209,7 @@ const HOME = (() => { const ctx = { sources: [], tools: new Set(), claimCount: 0
   return { body, html: `<div class="glossary">${html}</div>`, sources }; })();
 const guides = built.filter((b) => b.cornerstone).sort((a, b) => a.cornerstone - b.cornerstone);
 write("", page({ title: "Patriot, In Lay Terms: plain-English help for DAR and SAR applications", description: "Plain-English guides and free browser tools for documenting descent from a Revolutionary War patriot for a DAR or SAR application.", path: "/",
-  body: `<h1>Patriot, In Lay Terms</h1>
-<p class="subtitle" data-subtitle>Plain-English help with DAR and SAR applications, for the Daughters and the Sons of the American Revolution</p>
+  body: `<h1 class="home-h1" data-home-h1><span class="sr-only">Patriot, In Lay Terms: </span><span class="subtitle" data-subtitle>Plain-English help with DAR and SAR applications, for the Daughters and the Sons of the American Revolution</span></h1>
 <p class="independent" data-independent>An independent guide: not affiliated with DAR, SAR or any lineage society, and it doesn't search records for you.</p>
 <section class="home-mission" data-mission>${HOME.body.replace(/<p>Written with AI assistance/, '<p class="ai-line" data-ai-line>Written with AI assistance')}</section>
 <section class="card start-here home-start" aria-labelledby="get-started" data-get-started><h2 id="get-started">Ready to get started?</h2>
