@@ -621,6 +621,22 @@ phase("load"); await page.goto(`${BASE}/`); phase("interact");
   await page.hover("main .guide-list a"); const lh = await page.evaluate(() => { const cs = getComputedStyle(document.querySelector("main .guide-list a")); return { fg: cs.color, deco: cs.textDecorationLine }; });
   check("t122u #7: buttons darken and lift gently on hover (white on dark navy); links darken on hover and stay underlined", bh.bg === "rgb(11, 26, 51)" && bh.fg === "rgb(255, 255, 255)" && /matrix/.test(bh.tf) && bh.sh !== "none" && lh.fg === "rgb(11, 26, 51)" && /underline/.test(lh.deco), JSON.stringify({ bh, lh })); }
 
+// ---- t123u (Nov 9): phone home heading; guide "Sources last checked" = oldest recorded pass among the page's own sources ----
+{ const sizes = {};
+  for (const w of [375, 390, 600, 1280]) { const c = await browser.newContext({ viewport: { width: w, height: 800 } }); const pg = await c.newPage(); phase("load"); await pg.goto(`${BASE}/`); phase("interact");
+    sizes[w] = await pg.evaluate(() => { const s = document.querySelector("h1.home-h1 [data-subtitle]"); const cs = getComputedStyle(s); return { fs: parseFloat(cs.fontSize), lines: Math.round(s.getBoundingClientRect().height / parseFloat(cs.lineHeight)) }; });
+    await c.close(); }
+  globalThis.__homeHeading = sizes;
+  check("t123u #1: on phones the home heading is about 25% smaller (24px -> 18px) and fits in at most 4 lines at 375px and 390px; 600px and wider unchanged (28.8px)",
+    sizes[375].fs === 18 && sizes[390].fs === 18 && sizes[375].lines <= 4 && sizes[390].lines <= 4 && sizes[600].fs === 28.8 && sizes[1280].fs === 28.8, JSON.stringify(sizes)); }
+{ const lp = JSON.parse(readFileSync(join(ROOT, "manifest/source-last-passed.json"), "utf8")).sources; const bad = []; const seen = [];
+  for (const g of ["lineage-proof-roadmap", "substitute-evidence", "read-pension-file", "records-by-state", "bounty-land-warrants", "census-bridge", "patriotic-service", "same-name", "patriot-or-loyalist", "application-problems"]) {
+    const h = readFileSync(join(DIST, "guides", g, "index.html"), "utf8"); const shown = (h.match(/Sources last checked (\d{4}-\d{2}-\d{2})/) || [])[1];
+    const srcs = [...(h.match(/<h2 id="sources">Sources<\/h2><ol class="sources">([\s\S]*?)<\/ol>/) || ["", ""])[1].matchAll(/<span class="url">([^<]+)<\/span>/g)].map((m) => m[1].replace(/&amp;/g, "&"));
+    const missing = srcs.filter((u) => !lp[u]); const oldest = srcs.map((u) => lp[u]).filter(Boolean).sort()[0]; const want = oldest ? new Date(oldest).toISOString().slice(0, 10) : null;
+    seen.push(`${g}=${shown}`); if (!shown || !srcs.length || missing.length || shown !== want) bad.push(`${g}: shown ${shown}, oldest ${want}, missing ${missing.join(" ")}`); }
+  check("t123u #2: each guide's 'Sources last checked' date is the oldest recorded live pass among its own listed sources (every source has a record; nothing invented)", bad.length === 0, bad.join(" | ") || seen.join(" ")); }
+
 // ---- Cache-busting: every script/CSS reference and every module import carries ?v=<hash> that matches the file ----
 const { createHash } = await import("node:crypto");
 const htmlRefs = pagesToCheck.flatMap((p) => [...readFileSync(join(DIST, p, "index.html"), "utf8").matchAll(/(?:src|href)="(\/assets\/[^"]+\.(?:js|css)[^"]*)"/g)].map((m) => m[1]));

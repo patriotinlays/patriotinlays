@@ -162,7 +162,7 @@ function page({ title, description, path, body, noindex = false }) {
 <link rel="stylesheet" href="/assets/site.css"></head><body>${NAV}<main><div class="wrap">${body}</div></main>${FOOT}</body></html>`;
 }
 function write(path, html) { const f = join(OUT, path, "index.html"); mkdirSync(dirname(f), { recursive: true }); writeFileSync(f, versionUrls(html)); }
-const sitemap = []; const built = [];
+const sitemap = []; const built = []; const guideChecked = [];
 const GUIDE_ORDER = readdirSync(join(ROOT, "src/content")).filter((x) => x.endsWith(".md")).map((f) => parseFront(readFileSync(join(ROOT, "src/content", f), "utf8")).fm).filter((fm) => fm.cornerstone);
 const START_HERE = `<aside class="card start-here"><strong>Ready to start?</strong><p><a href="/tools/widow-pension-checker/">Widow Pension Law Checker</a>: see which widow pension laws a marriage fits, and where her pension file would be kept, so you can request it. · <a href="/tools/lineage-matrix/">Lineage Evidence Matrix</a>: record the patriot and your records, and get a to-do list fitted to each person's era and state. · <a href="/guides/lineage-proof-roadmap/">The Roadmap guide</a>: the whole process, step by step.</p></aside>`;
 // Every guide and tool page opens with a short, sourced definitions box (the home page's glossary, reused).
@@ -189,7 +189,16 @@ function renderFile(dir, f) {
   if (dir === "src/pages") html += START_HERE;
   const srcList = ctx.sources.length ? `<h2 id="sources">Sources</h2><ol class="sources">${ctx.sources.map((u, i) => { const c = manifest.claims.find((x) => x.source_url === u);
     return `<li id="src-${i + 1}"><a href="${esc(u)}">${esc(c.source_title)}</a>. Last checked ${lastChecked(c.source_url, c.last_retrieved)}. <span class="url">${esc(u)}</span></li>`; }).join("")}</ol>` : "";
-  const meta = fm.cornerstone ? `<p class="meta">Guide ${fm.cornerstone} of 10 · Sources last checked ${BUILD_DATE} · Written with AI; every fact is tied to a quoted official source (<a href="/about/">how this works</a>)</p>` : "";
+  // t123u: the guide's top line shows the OLDEST recorded live pass among this page's own sources (the list at its foot),
+  // read from manifest/source-last-passed.json. A source with no record is never given a date: the build stops and names it.
+  let oldest = null;
+  if (fm.cornerstone) {
+    const noRecord = ctx.sources.filter((u) => !(LAST_PASSED[u] && !Number.isNaN(Date.parse(LAST_PASSED[u]))));
+    if (noRecord.length) throw new Error(`${fm.slug}: no last-passed record for ${noRecord.join(", ")}; run the live-source check (never invent a date)`);
+    oldest = ctx.sources.map((u) => ({ u, t: Date.parse(LAST_PASSED[u]) })).sort((a, b) => a.t - b.t)[0];
+    guideChecked.push({ slug: fm.slug, date: oldest ? lastChecked(oldest.u) : null, source: oldest?.u || null, sources: ctx.sources.length });
+  }
+  const meta = fm.cornerstone ? `<p class="meta" data-sources-checked="${oldest ? lastChecked(oldest.u) : ""}">Guide ${fm.cornerstone} of 10 · Sources last checked ${oldest ? lastChecked(oldest.u) : ""} · Written with AI; every fact is tied to a quoted official source (<a href="/about/">how this works</a>)</p>` : "";
   const path = `/${fm.slug}/`;
   write(fm.slug, page({ title: fm.title, description: fm.description, path, body: meta + html + srcList }));
   if (fm.launch_setup) console.log(`LAUNCH SETUP REQUIRED (${path}): ${fm.launch_setup}`);
@@ -237,6 +246,6 @@ writeFileSync(join(OUT, "robots.txt"), `User-agent: *\nDisallow: /tools/widow-pe
 // The standalone service-date checker was folded into the worksheet's patriot step; old URLs redirect (Cloudflare Pages _redirects).
 writeFileSync(join(OUT, "_redirects"), ["/tools/service-window-checker /tools/widow-pension-checker/ 301", "/tools/service-window-checker/ /tools/widow-pension-checker/ 301",
   "/tools/service-window-checker/report /tools/widow-pension-checker/report/ 301", "/tools/service-window-checker/report/ /tools/widow-pension-checker/report/ 301"].join("\n") + "\n");
-writeFileSync(join(ROOT, "build-report.json"), JSON.stringify({ builtAt: new Date().toString(), pages: built, sitemapUrls: sitemap.length }, null, 2));
+writeFileSync(join(ROOT, "build-report.json"), JSON.stringify({ builtAt: new Date().toString(), guideSourcesChecked: guideChecked, pages: built, sitemapUrls: sitemap.length }, null, 2));
 for (const b of built) console.log(`built ${b.path.padEnd(42)} ${String(b.words).padStart(5)} words  ${String(b.claims).padStart(3)} claim refs  ${String(b.sources).padStart(2)} sources  tools: ${b.tools.join(",") || "-"}`);
 console.log(`sitemap.xml: ${sitemap.length} URLs; robots.txt, 404.html, 2 report pages written.`);

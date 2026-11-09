@@ -1,8 +1,8 @@
 {
-  "ranAt": "Mon Nov 09 2026 07:41:29 GMT-0600 (Central Standard Time)",
+  "ranAt": "Mon Nov 09 2026 07:49:46 GMT-0600 (Central Standard Time)",
   "browser": "/usr/bin/google-chrome (headless) via playwright-core 1.59.1",
-  "passed": 156,
-  "total": 156,
+  "passed": 158,
+  "total": 158,
   "exampleReportPages": {
     "summaryPages": 2,
     "fullPages": 3,
@@ -692,12 +692,12 @@
     {
       "name": "Logo (360px): the header logo loads, is at most 44px tall, fits the screen, has alt text, and the header stays compact (no hero image)",
       "ok": true,
-      "detail": "{\"ok\":true,\"h\":38,\"right\":155,\"alt\":\"Patriot, In Lay Terms\",\"header\":113,\"note\":\"An independent guide: not affiliated with DAR, SAR or any lineage society, and it doesn't search records for you.\",\"noteTop\":288}"
+      "detail": "{\"ok\":true,\"h\":38,\"right\":155,\"alt\":\"Patriot, In Lay Terms\",\"header\":113,\"note\":\"An independent guide: not affiliated with DAR, SAR or any lineage society, and it doesn't search records for you.\",\"noteTop\":238}"
     },
     {
       "name": "Home (audit 4 proposal, 360px): the first screen says the site is independent (not DAR, SAR or any society) and doesn't search records",
       "ok": true,
-      "detail": "{\"ok\":true,\"h\":38,\"right\":155,\"alt\":\"Patriot, In Lay Terms\",\"header\":113,\"note\":\"An independent guide: not affiliated with DAR, SAR or any lineage society, and it doesn't search records for you.\",\"noteTop\":288}"
+      "detail": "{\"ok\":true,\"h\":38,\"right\":155,\"alt\":\"Patriot, In Lay Terms\",\"header\":113,\"note\":\"An independent guide: not affiliated with DAR, SAR or any lineage society, and it doesn't search records for you.\",\"noteTop\":238}"
     },
     {
       "name": "Worksheet (audit 4 proposal): 'No birth certificate? Try these substitutes, in order' appears, closed, at each generation with no birth record (example: 3, 4, 5), in order, with the pension-file step only for older generations, and fits 360px open",
@@ -805,6 +805,16 @@
       "detail": "{\"bh\":{\"bg\":\"rgb(11, 26, 51)\",\"fg\":\"rgb(255, 255, 255)\",\"tf\":\"matrix(1, 0, 0, 1, 0, -1)\",\"sh\":\"rgba(11, 26, 51, 0.18) 0px 2px 4px 0px, rgba(11, 26, 51, 0.14) 0px 6px 14px 0px\"},\"lh\":{\"fg\":\"rgb(11, 26, 51)\",\"deco\":\"underline\"}}"
     },
     {
+      "name": "t123u #1: on phones the home heading is about 25% smaller (24px -> 18px) and fits in at most 4 lines at 375px and 390px; 600px and wider unchanged (28.8px)",
+      "ok": true,
+      "detail": "{\"375\":{\"fs\":18,\"lines\":3},\"390\":{\"fs\":18,\"lines\":3},\"600\":{\"fs\":28.8,\"lines\":4},\"1280\":{\"fs\":28.8,\"lines\":4}}"
+    },
+    {
+      "name": "t123u #2: each guide's 'Sources last checked' date is the oldest recorded live pass among its own listed sources (every source has a record; nothing invented)",
+      "ok": true,
+      "detail": "lineage-proof-roadmap=2026-11-05 substitute-evidence=2026-11-05 read-pension-file=2026-11-09 records-by-state=2026-11-05 bounty-land-warrants=2026-11-09 census-bridge=2026-11-05 patriotic-service=2026-11-05 same-name=2026-11-09 patriot-or-loyalist=2026-11-09 application-problems=2026-11-05"
+    },
+    {
       "name": "Cache-busting: every page's script/CSS URL and every module import is versioned with the file's content hash",
       "ok": true,
       "detail": ""
@@ -815,7 +825,7 @@
       "detail": ""
     }
   ],
-  "requestsTotal": 654,
+  "requestsTotal": 655,
   "externalRequests": 0,
   "interactionRequests": 0,
   "faviconLate": 25

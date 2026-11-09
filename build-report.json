@@ -1,5 +1,67 @@
 {
-  "builtAt": "Mon Nov 09 2026 07:40:48 GMT-0600 (Central Standard Time)",
+  "builtAt": "Mon Nov 09 2026 07:49:06 GMT-0600 (Central Standard Time)",
+  "guideSourcesChecked": [
+    {
+      "slug": "guides/application-problems",
+      "date": "2026-11-05",
+      "source": "https://membership.dar.org/NSDAR/AppFormz/App_Help_Step_By_Step_1.aspx",
+      "sources": 13
+    },
+    {
+      "slug": "guides/bounty-land-warrants",
+      "date": "2026-11-09",
+      "source": "https://www.sar.org/step-1/",
+      "sources": 12
+    },
+    {
+      "slug": "guides/census-bridge",
+      "date": "2026-11-05",
+      "source": "https://membership.dar.org/NSDAR/AppFormz/App_Help_Step_By_Step_1.aspx",
+      "sources": 14
+    },
+    {
+      "slug": "guides/lineage-proof-roadmap",
+      "date": "2026-11-05",
+      "source": "https://services.dar.org/Public/DAR_Research/search_revwar/?Tab_ID=14&Tab_ID_Sub=0&action=list",
+      "sources": 22
+    },
+    {
+      "slug": "guides/patriot-or-loyalist",
+      "date": "2026-11-09",
+      "source": "https://blog.dar.org/2021/02/26/why-was-his-service-removed",
+      "sources": 12
+    },
+    {
+      "slug": "guides/patriotic-service",
+      "date": "2026-11-05",
+      "source": "https://membership.dar.org/NSDAR/AppFormz/FAQs.aspx",
+      "sources": 14
+    },
+    {
+      "slug": "guides/read-pension-file",
+      "date": "2026-11-09",
+      "source": "https://www.sar.org/step-1/",
+      "sources": 17
+    },
+    {
+      "slug": "guides/records-by-state",
+      "date": "2026-11-05",
+      "source": "https://membership.dar.org/NSDAR/AppFormz/FAQs.aspx",
+      "sources": 18
+    },
+    {
+      "slug": "guides/same-name",
+      "date": "2026-11-09",
+      "source": "https://blog.dar.org/2021/02/26/why-was-his-service-removed",
+      "sources": 14
+    },
+    {
+      "slug": "guides/substitute-evidence",
+      "date": "2026-11-05",
+      "source": "https://membership.dar.org/NSDAR/AppFormz/App_Help_Step_By_Step_1.aspx",
+      "sources": 13
+    }
+  ],
   "pages": [
     {
       "title": "Application Returned? Fixing Common DAR and SAR Proof Problems (Including Supplementals)",

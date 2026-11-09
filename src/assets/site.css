@@ -296,3 +296,6 @@ sup{line-height:0;vertical-align:baseline;position:relative;top:-.45em}
 sup a{line-height:0}
 .card>:first-child,.tool>:first-child,.plan>:first-child{margin-top:0}.card>:last-child{margin-bottom:0}
 }
+/* t123u: on phones the home page's main heading is about 25% smaller (1.5rem -> 1.125rem; 1.8rem -> 1.35rem up to 599px), so it fits in about 4 lines. Larger screens unchanged. */
+@media screen and (max-width:599px){h1.home-h1{font-size:1.35rem;line-height:1.3}}
+@media screen and (max-width:480px){h1.home-h1{font-size:1.125rem}}
