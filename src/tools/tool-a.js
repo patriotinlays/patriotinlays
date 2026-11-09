@@ -42,7 +42,7 @@ export const NEXT_STEP_LINKS = Object.freeze({
   law1848: { label: "Read the 1848 law itself: 9 Stat. 265 (Library of Congress scan, large PDF, about 19 MB; opens at the law's page in most browsers)", url: "https://tile.loc.gov/storage-services/service/ll/llsl/llsl-c30/llsl-c30.pdf#page=57", claim: "stat-1848-service" },
   law1855: { label: "Read the 1855 bounty-land law itself: 10 Stat. 701 (Library of Congress scan, large PDF, about 89 MB; opens at the law's page in most browsers)", url: "https://tile.loc.gov/storage-services/service/ll/llsl/llsl-c33/llsl-c33.pdf#page=438", claim: "stat-1855-14-days" },
   law1853: { label: "Read the 1853 law itself: 10 Stat. 154 (Library of Congress scan, large PDF, about 27 MB; opens at the law's page in most browsers)", url: "https://tile.loc.gov/storage-services/service/ll/llsl/llsl-c32/llsl-c32.pdf#page=176", claim: "stat-1853-after-1800" },
-  law1855pension: { label: "Read the February 1855 law itself: 10 Stat. 616 (Library of Congress scan, large PDF, about 89 MB; opens at the law's page in most browsers)", url: "https://tile.loc.gov/storage-services/service/ll/llsl/llsl-c33/llsl-c33.pdf#page=352", claim: "stat-1855feb-navy" },
+  law1855pension: { label: "Read the February 28, 1855 law itself: chapter 126, section 3, at 10 Stat. 616 (Library of Congress scan, large PDF, about 89 MB; opens at the law's page in most browsers)", url: "https://tile.loc.gov/storage-services/service/ll/llsl/llsl-c33/llsl-c33.pdf#page=352", claim: "stat-1855feb-navy" },
   law1878: { label: "Read the 1878 law itself: 20 Stat. 27 (Library of Congress scan, large PDF, about 88 MB; opens at the law's page in most browsers)", url: "https://tile.loc.gov/storage-services/service/ll/llsl/llsl-c45/llsl-c45.pdf#page=54", claim: "stat-1878-14-days-a" },
 });
 // A ruled-out law needs nothing more from the user (audit 4).
@@ -170,7 +170,7 @@ export const WIDOW_ACTS = [
       if (!w.kind || w.kind === "military") needs.push("kindArmy"); else if (w.kind !== "continental") needs.push("kindArmyCheck");
       return settle(needs, rule, m && m.lo < after ? `The marriage date you typed (${m.raw}) could fall in or before January 1800.` : null);
     } },
-  { id: "act1855pension", label: "Act of February 28, 1855 (10 Stat. 616)", short: "February 1855", claim: "nara-act-1853-1855", claimRule: "stat-1855feb-navy", claimDate: "stat-1855feb-1800", nextLinks: ["law1855pension"],
+  { id: "act1855pension", label: "Act of February 28, 1855, ch. 126 (10 Stat. 616)", short: "February 1855", claim: "nara-act-1853-1855", claimRule: "stat-1855feb-navy", claimDate: "stat-1855feb-1800", nextLinks: ["law1855pension"],
     unchecked: [{ text: "It gave them pensions in the same manner as army widows under the 1853 law.", claim: "stat-1855feb-same" }],
     test: (w) => {
       const rule = "Widow of a navy officer, marine or mariner of the Revolutionary War, married since January 1, 1800.";

@@ -9,6 +9,7 @@ const longDate = (t) => { const d = new Date(t); return `${MONTHS[d.getUTCMonth(
 const lastChecked = (u, fallback) => { const t = LAST_PASSED[u]; return t && !Number.isNaN(Date.parse(t)) ? new Date(t).toISOString().slice(0, 10) : fallback; };
 import { join, dirname } from "node:path";
 import { sourceLabel, SOURCE_TOPICS } from "./lib/source-labels.mjs";
+import { asofAllowed } from "./lib/source-scope.mjs";
 import { createHash } from "node:crypto";
 const ROOT = new URL("..", import.meta.url).pathname;
 const OUT = join(ROOT, "dist");
@@ -68,6 +69,8 @@ function inline(text, ctx) {
   // A source with no record stops the build: a date is never invented.
   s = s.replace(/\{\{asof:([a-z0-9-]+)\}\}/g, (_, id) => {
     const c = claims.get(id); if (!c) throw new Error(`build: asof: unknown claim ${id}`);
+    // t127u: "As of [date]," only for official national or state sources, never chapter-local or third-party ones.
+    if (!asofAllowed(c)) throw new Error(`build: asof ${id}: its source is ${c.source_scope || "untagged"}; the "As of" format is only for national or state sources`);
     const t = LAST_PASSED[c.source_url]; if (!(t && !Number.isNaN(Date.parse(t)))) throw new Error(`build: asof ${id}: no last-passed record for ${c.source_url}; run the live-source check (never invent a date)`);
     ctx.asof = (ctx.asof || 0) + 1; return `As of <span data-asof="${esc(id)}">${longDate(t)}</span>,`;
   });
@@ -118,7 +121,7 @@ const TOOL_B_FULL = `<section class="tool" data-tool="lineage-matrix" aria-label
 <h3 class="step" id="tb-patriot"><span class="num">1</span> Your patriot: name and service</h3>
 <p class="small">Your patriot's state, type of service and rough dates shape the advice below. The worksheet checks those dates against the period DAR accepts for that type of service.</p>
 <div data-patriot></div>
-<h3 class="step"><span class="num">2</span> Start with yourself, then go back one generation at a time</h3>
+<h3 class="step"><span class="num">2</span> Then your family: start with yourself, and go back one generation at a time</h3>
 <p class="small">Generation 1 is you. Generation 2 is your parent, 3 your grandparent, and so on back to the patriot. For each person, add a rough birth year and the state, then press "Add a record" and answer A to D: A. What does this record show? B. What kind of record is it? C. Does the record say it in words, or only hint at it? D. Where did you find it?</p>
 <div data-matrix></div>
 <h3 class="step"><span class="num">3</span> Add or remove generations</h3>

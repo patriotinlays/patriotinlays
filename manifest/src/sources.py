@@ -17,7 +17,7 @@ SOURCES = {
  "NPS": ("https://www.nps.gov/articles/000/what-might-you-find-in-the-revolutionary-war-pension-files.htm", "National Park Service — Revolutionary War Pension Files: Tips and a Guide for the Curious", "nps.html"),
  "LVA": ("https://lva-virginia.libguides.com/bounty-claims/home", "Library of Virginia — Revolutionary War Bounty Land Claims", "lva.html"),
  "NYPL": ("https://libguides.nypl.org/military-genealogy/revolutionary-war", "New York Public Library — Military Genealogy: Revolutionary War", "nypl.html"),
- "NSCDA": ("https://nscdasnc.memberclicks.net/assets/membership/Standards%20of%20Proof%202025.pdf", "NSCDA (South Carolina) — Standards of Proof (rev. 7/14/2025)", "nscda.pdf"),
+ "NSCDA": ("https://nscdasnc.memberclicks.net/assets/membership/Standards%20of%20Proof%202025.pdf", "NSCDA South Carolina Society — Standards of Proof (2025)", "nscda.pdf"),
  "DAR_LOCATOR": ("https://www.dar.org/discover/become-member/chapter-locator", "DAR — Chapter Locator", "dar_locator.html"),
  "DAR_JOIN": ("https://www.dar.org/discover/become-member/how-join", "DAR — How to Join", "dar_join.html"),
  "SAR_APPLY": ("https://www.sar.org/how-to-apply/", "SAR — Apply in 4 Easy Steps", "sar_apply.html"),
@@ -57,7 +57,7 @@ SOURCES = {
  "DE_OATH": ("https://archives.delaware.gov/digital-archives/military-records-revolutionary-war-oaths-of-allegiance/", "Delaware Public Archives — Revolutionary War Oaths of Allegiance", "de_oaths.html"),
  "DE_VITAL": ("https://archives.delaware.gov/digital-archives/guide-to-vital-statistics-records/", "Delaware Public Archives — Guide to Vital Statistics Records", "de_vital.html"),
  "NARA_ORDER": ("https://www.archives.gov/veterans/military-service-records/pre-ww-1-records", "National Archives — Requesting Copies of Older Military Service Records", "nara_order.html"),
- "LOC_C33": ("https://tile.loc.gov/storage-services/service/ll/llsl/llsl-c33/llsl-c33.pdf", "Library of Congress — U.S. Statutes at Large, 33rd Congress (scanned; Act of March 3, 1855 at 10 Stat. 701)", "llsl-c33.pdf"),
+ "LOC_C33": ("https://tile.loc.gov/storage-services/service/ll/llsl/llsl-c33/llsl-c33.pdf", "Library of Congress — U.S. Statutes at Large, 33rd Congress (scanned; Act of February 28, 1855, ch. 126, sec. 3 at 10 Stat. 616, and Act of March 3, 1855 at 10 Stat. 701)", "llsl-c33.pdf"),
  "LOC_C45": ("https://tile.loc.gov/storage-services/service/ll/llsl/llsl-c45/llsl-c45.pdf", "Library of Congress — U.S. Statutes at Large, 45th Congress (scanned; Act of March 9, 1878 at 20 Stat. 27)", "llsl-c45.pdf"),
  "DAR_ANCESTOR": ("https://blog.dar.org/using-ancestor-tab-grs", "Today's DAR — Using the Ancestor Tab in the GRS", "dar_ancestor.html"),
  "SAR_PRS": ("https://www.sar.org/patriot-research-system/", "SAR — Patriot Research System", "sar_prs.html"),
@@ -71,5 +71,26 @@ SOURCES = {
  "NYSL_VITREC": ("https://nysl.nysed.gov/genealogy/vitrec", "New York State Library — Vital records", "nysl_vitrec.html"),
  "LOC_CT_VITAL": ("https://guides.loc.gov/connecticut-local-history-genealogy/vital-records", "Library of Congress — Connecticut: Local History & Genealogy Resource Guide, Vital Records", "loc_ct_vital.html"),
  "GA_VITAL": ("https://georgiaarchives.org/research/vital_records", "Georgia Archives — Vital Records", "ga_vital.html"),
+ "SAR_CHECKLIST": ("https://members.sar.org/media/uploads/pages/334/wPXSPrcD0cuU.pdf", "SAR — Application Checklist", "sar_checklist.pdf"),
  "MA_SL_GEN": ("https://www.mass.gov/guides/guide-to-genealogical-resources-in-the-state-library", "Mass.gov (State Library of Massachusetts) — Guide to Genealogical Resources in the State Library", "ma_sl_gen.html"),
 }
+
+# ---- t127u standing rule: every source is tagged by who publishes it. ----
+# national      = a national society (DAR, SAR, NSCDA national) or a federal agency (NARA, NPS, Library of Congress)
+# state         = a state government office (archives, library, vital records) or a state society's official rules
+# chapter-local = a chapter's own material, or material hosted only by a chapter (not an official society publication)
+# third-party   = anyone else (public libraries, other countries' associations, commercial sites)
+# Only national sources may back wording that states a society-wide rule ("DAR says", "SAR:", "As of ..., SAR says").
+# The "As of [date]," prefix is only allowed for national and state sources.
+SCOPE = {k: "national" for k in ["DAR_SVC","DAR_STEP","DAR_FAQ","DAR_BLOG","DAR_PRP","SAR1","SAR_TAX","M804","NARA_SVC","NARA_GEN","NARA_AMREV","NARA_CENSUS","NARA_BULK",
+    "PROLOGUE","NPS","DAR_LOCATOR","DAR_JOIN","SAR_APPLY","LOC_STAT","SAR_CONTACT","DAR_WHAT","SAR_ABOUT","NSCDA_MEM","NARA_VITAL","LOC_C24","LOC_C25","LOC_C30","LOC_C32",
+    "LOC_C33","LOC_C45","NARA_ORDER","DAR_ANCESTOR","SAR_PRS","NARA_MISSION","NARA_PENSIONS","DAR_LIBSEARCH","DAR_LINRES","SAR_COPY","LOC_CT_VITAL","SAR_CHECKLIST"]}
+SCOPE.update({k: "state" for k in ["LVA","LVA_REV","LVA_BMD","MSA_MIL","MSA_BIRTH","NC_TRPR","NC_VR","NJ_MIL","NJ_GEN","PA_REV","PA_DOH","PA_ARCH_VR","CT_REV","SC_REV",
+    "SC_BIRTH","SC_SL_VR","MA_MIL","MA_SL_GEN","GA_BOUNTY","GA_VITAL","NH_FAM","RI_PRES","RI_VITAL","DE_OATH","DE_VITAL","NYSL_PRECIVIL","NYSL_VITREC",
+    # NSCDA's South Carolina society: one state society's official standards, not NSCDA's national rules.
+    "NSCDA"]})
+SCOPE.update({
+    # Slides from a talk at the Ohio Society SAR's 2023 annual meeting, hosted on the Cincinnati Chapter's website:
+    # not an official SAR (national or state) publication of rules.
+    "OH_SAR": "chapter-local",
+    "NYPL": "third-party", "UELAC": "third-party", "FOLD3_PENSION": "third-party"})

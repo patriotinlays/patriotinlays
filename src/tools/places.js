@@ -177,8 +177,8 @@ export function vitalNote(state, fact, { year = null, lower = null } = {}) {
 // Which censuses fall in this person's lifetime (by the years typed), and what the sources say about each.
 export const CENSUS_ERAS = Object.freeze([
   { from: 1790, to: 1840, text: "The 1790–1840 censuses named only the head of household and counted everyone else by age group.", claims: ["nara-census-head"] },
-  { from: 1850, to: 1870, text: "The 1850–1870 censuses do not state relationships.", claims: ["nscda-census-1850-1870"] },
-  { from: 1880, to: 1900, text: "NSCDA lists the 1880–1900 censuses as primary sources.", claims: ["nscda-census-1880"] },
+  { from: 1850, to: 1870, text: "NSCDA's South Carolina society's standards say the 1850–1870 censuses do not state relationships.", claims: ["nscda-census-1850-1870"] },
+  { from: 1880, to: 1900, text: "NSCDA's South Carolina society's standards list the 1880–1900 censuses as primary sources.", claims: ["nscda-census-1880"] },
 ]);
 export const PENSIONER_1840 = Object.freeze({ text: "The 1840 census named Revolutionary War pensioners with their exact ages; pensioners included veterans and widows.", claims: ["nara-census-1840", "nara-census-widows"] });
 export function censusNote(born, died, { patriot = false } = {}) {

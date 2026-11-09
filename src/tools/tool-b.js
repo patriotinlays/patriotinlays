@@ -60,7 +60,7 @@ export const genTitle = (gen) => `Generation ${gen}: ${genLabel(gen)}`;
 // Plain explanation of the "states it directly / only hints at it" choice.
 export const MODE_HELP = Object.freeze({
   direct: "Says it in words. Example: a long-form birth certificate that names the parents.",
-  indirect: "Only hints at it. Example: a child living in the household on an 1850–1870 census, which does not state relationships.",
+  indirect: "Only hints at it. Example: a child living in the household on an 1850–1870 census, which NSCDA's South Carolina society's standards say does not state relationships.",
   claim: "nscda-census-1850-1870",
 });
 
@@ -88,9 +88,9 @@ export function isEmptyCell(c = {}) {
 // These produce WARNINGS shown to the user; they never upgrade a cell and never set a final grade.
 export const CAUTIONS = [
   { doc: "birth_cert_short", facts: ["parentage"], claim: "nscda-short-form",
-    text: "Short-form birth certificates that omit parents' names are not acceptable (NSCDA Standards of Proof)." },
+    text: "NSCDA's South Carolina society's standards say short-form birth certificates are not acceptable." },
   { doc: "census_1850_1870", facts: ["parentage", "marriage"], claim: "nscda-census-1850-1870",
-    text: "1850–1870 census records do not state relationships; NSCDA treats them as supporting documentation only." },
+    text: "NSCDA's South Carolina society's standards say 1850–1870 census records do not state relationships and treat them as supporting documentation only." },
   { doc: "family_genealogy", facts: FACTS, claim: "dar-primary-preferred",
     text: "DAR prefers primary and original records over compiled family genealogies." },
 ];
@@ -156,29 +156,29 @@ export const GUIDES = Object.freeze({
 export const REGISTRAR = "Not sure where to order it? Ask your society's registrar.";
 export const WHERE_TO_LOOK = Object.freeze({
   birth: {
-    recent: { text: "Look for a long-form birth certificate (the kind that names the parents). No certificate? A baptism or christening record can stand in for the birth date.", claims: ["nscda-short-form", "dar-baptism"], links: ["darFaq"], guides: ["substitute"] },
-    older: { text: "Look for a church baptism record. An age given in a census or at death can be used to estimate a birth year.", claims: ["dar-baptism", "dar-circa", "nscda-church"], links: ["darSteps", "naraRev", "naraCensus"], guides: ["substitute", "pension"] },
+    recent: { text: "Look for a long-form birth certificate (the kind that names the parents). No certificate? A baptism or christening record can stand in for the birth date.", claims: ["dar-lineage-sources", "dar-baptism"], links: ["darFaq"], guides: ["substitute"] },
+    older: { text: "Look for a church baptism record. An age given in a census or at death can be used to estimate a birth year.", claims: ["dar-baptism", "dar-circa", "dar-usually-acceptable"], links: ["darSteps", "naraRev", "naraCensus"], guides: ["substitute", "pension"] },
   },
   death: {
     recent: { text: "Look for a death certificate.", claims: ["dar-lineage-sources"], links: ["darFaq"], guides: ["substitute"] },
-    older: { text: "Look for a will or probate record, or a church burial record. A will date, or a last appearance on a census or deed, can be used to estimate a death date.", claims: ["nscda-county", "nscda-church", "dar-death-post", "dar-death-ante"], links: ["darSteps", "naraCensus"], guides: ["substitute"] },
+    older: { text: "Look for a will or probate record, or a church burial record. A will date, or a last appearance on a census or deed, can be used to estimate a death date.", claims: ["dar-lineage-sources", "dar-usually-acceptable", "dar-death-post", "dar-death-ante"], links: ["darSteps", "naraCensus"], guides: ["substitute"] },
   },
   marriage: {
-    recent: { text: "Look for a marriage record. A marriage license alone does not prove the marriage took place.", claims: ["dar-lineage-sources", "nscda-license"], links: ["darFaq"], guides: ["substitute"] },
-    older: { text: "Look for a church marriage record. If the husband was a Revolutionary War veteran, check his pension file: a widow's pension can be in the same file.", claims: ["nscda-church", "nps-applegate-widow"], links: ["naraRev", "naraOrder"], guides: ["pension"] },
+    recent: { text: "Look for a marriage record. NSCDA's South Carolina society's standards say a marriage license alone does not prove the marriage took place.", claims: ["dar-lineage-sources", "nscda-license"], links: ["darFaq"], guides: ["substitute"] },
+    older: { text: "Look for a church marriage record. If the husband was a Revolutionary War veteran, check his pension file: a widow's pension can be in the same file.", claims: ["dar-usually-acceptable", "nps-applegate-widow"], links: ["naraRev", "naraOrder"], guides: ["pension"] },
   },
   parentage: {
-    recent: { text: "Look for a long-form birth certificate that names the parents; short forms without the parents' names don't count. The 1880–1900 censuses are also listed as a source.", claims: ["nscda-short-form", "nscda-census-1880"], links: ["darFaq"], guides: ["substitute", "census"] },
-    older: { text: "Look for wills, probate records and deeds that name children. The 1850–1870 censuses don't state relationships and the 1790–1840 censuses name only the head of household, so treat them as clues.", claims: ["nscda-county", "nscda-census-1850-1870", "nara-census-head"], links: ["naraCensus", "naraRev"], guides: ["census", "sameName"] },
+    recent: { text: "Look for a long-form birth certificate that names the parents.", claims: ["dar-lineage-sources"], links: ["darFaq"], guides: ["substitute", "census"] },
+    older: { text: "Look for wills, probate records and deeds that name children. The 1790–1840 censuses name only the head of household, and NSCDA's South Carolina society's standards say the 1850–1870 censuses don't state relationships, so treat them as clues.", claims: ["dar-lineage-sources", "nscda-census-1850-1870", "nara-census-head"], links: ["naraCensus", "naraRev"], guides: ["census", "sameName"] },
   },
   residence: {
-    recent: { text: "Census records, deeds and tax lists place a person in a county.", claims: ["dar-lineage-sources", "nscda-county"], links: ["darFaq"], guides: ["census"] },
-    older: { text: "Look at census records, deeds and tax lists for the place, and go through all the records that survive there.", claims: ["nscda-county", "nara-census-exhaust"], links: ["naraCensus"], guides: ["census", "byState"] },
+    recent: { text: "Census records, deeds and court records place a person in a county.", claims: ["dar-lineage-sources"], links: ["darFaq"], guides: ["census"] },
+    older: { text: "Look at census records, deeds and court records for the place, and go through all the records that survive there.", claims: ["dar-lineage-sources", "nara-census-exhaust"], links: ["naraCensus"], guides: ["census", "byState"] },
   },
 });
 // Plain term for NSCDA, shown wherever advice cites its Standards of Proof (audit 4: the report used it unexplained).
-export const NSCDA_TERM = Object.freeze({ text: "NSCDA is The National Society of the Colonial Dames of America; notes marked NSCDA cite its Standards of Proof.", claims: ["nscda-name-national", "nscda-census-1850-1870"] });
-export const START_HERE = Object.freeze({ text: "Start with yourself as generation 1, then add your parent, grandparent and so on back to the patriot.", claims: ["dar-gen1-applicant", "dar-gen-numbering"], links: [], guides: ["roadmap"] });
+export const NSCDA_TERM = Object.freeze({ text: "NSCDA is The National Society of the Colonial Dames of America; notes that mention NSCDA cite its South Carolina society's standards.", claims: ["nscda-name-national", "nscda-census-1850-1870"] });
+export const START_HERE = Object.freeze({ text: "Start with your patriot in step 1, then add yourself as generation 1 and go back through your parent, grandparent and so on to the patriot. Don't know the patriot yet? Start with yourself and add the patriot later.", claims: ["dar-gen1-applicant", "dar-gen-numbering"], links: [], guides: ["roadmap"] });
 // A rough year typed by the visitor ("1820", " 1820 ") -> 1820, else null.
 export const yr = (v) => { const m = /^\s*(\d{4})\s*$/.exec(v == null ? "" : String(v)); return m ? +m[1] : null; };
 // Resolve a fact + generation (+ the person's rough years and state) to a ready-to-render "Where to look" entry.
@@ -213,13 +213,13 @@ export const BIRTH_SUBSTITUTES = Object.freeze({
   title: "No birth certificate? Try these substitutes, in order",
   intro: "Our suggested order: records that give a date first, then records you can work out a year from, then papers that back them up.",
   steps: Object.freeze([
-    { id: "baptism", text: "A church baptism or christening record. DAR lets you use an infant baptism or christening date when you can't document the birth date.", claims: ["dar-baptism", "nscda-church"] },
-    { id: "bible", text: "A family Bible page with the births written in. Copy the Bible's title page with its publication date too: NSCDA asks for it with Bible entries.", claims: ["m804-bible-pages", "nscda-bible-title"] },
+    { id: "baptism", text: "A church baptism or christening record. DAR lets you use an infant baptism or christening date when you can't document the birth date.", claims: ["dar-baptism", "dar-usually-acceptable"] },
+    { id: "bible", text: "A family Bible page with the births written in. Copy the Bible's title page with its publication date too: NSCDA's South Carolina society's standards ask for it with Bible entries.", claims: ["m804-bible-pages", "nscda-bible-title"] },
     { id: "pension", older: true, text: "If this person was a Revolutionary War veteran, his wife or widow, or their child: his pension or bounty-land file. Some files hold family Bible pages with birth dates, and a widow's application may give her age.", claims: ["m804-bible-pages", "m804-widow-info"] },
     { id: "age", text: "An age on a census or at death, to work out the birth year. DAR marks a birth year estimated this way as \"circa\" (about).", claims: ["dar-circa"] },
-    { id: "affidavit", text: "A sworn statement (affidavit) from someone with personal knowledge of the birth. NSCDA lists these among substitute sources.", claims: ["nscda-affidavits"] },
+    { id: "affidavit", text: "A sworn statement (affidavit) from someone with personal knowledge of the birth. NSCDA's South Carolina society's standards list these among substitute sources.", claims: ["nscda-affidavits"] },
   ]),
-  combine: { text: "Use two or more together: NSCDA advises that a proof shouldn't rest on one substitute document.", claims: ["nscda-combine"] },
+  combine: { text: "Use two or more together: NSCDA's South Carolina society's standards advise that a proof shouldn't rest on one substitute document.", claims: ["nscda-combine"] },
   links: ["darSteps"], guide: "substitute",
 });
 export const hasBirthRecord = (row = {}) => filledCells(row.cells || []).some((c) => c.fact === "birth");
@@ -336,7 +336,7 @@ export function actionPlan(rows = [], patriot = null) {
   const real = g.filter((x) => x.gen != null);
   const warn = dateWarnings(rows, patriot);
   if (warn.length) steps.push({ title: "Check these dates first", text: warn.some((w) => w.kind === "impossible") ? "Some of the years you typed don't add up. Fix them before relying on the rest of this plan." : "Some of the years you typed are unusual. They may be right, but give them a second look.", claims: [], links: [], warn: true, items: warn.map((w) => ({ text: w.text })) });
-  if (rows.length < 2) steps.push({ title: "Fill in the worksheet", text: "Start with yourself as generation 1, then add your parent, grandparent and so on back to the patriot.", claims: ["dar-gen1-applicant", "dar-gen-numbering"], links: linksFor("roadmap") });
+  if (rows.length < 2) steps.push({ title: "Fill in the worksheet", text: START_HERE.text, claims: ["dar-gen1-applicant", "dar-gen-numbering"], links: linksFor("roadmap") });
   steps.push(...patriotSteps(patriot));
   if (real.length) steps.push({ title: "Records to find or fix, generation by generation", text: "Each item says where to look. Sort out any records you flagged as disagreeing before relying on them.", claims: ["dar-each-relationship"], links: [],
     items: groupGaps(real, pg).map((grp) => ({ text: grp.title, sub: grp.items.map((x) => ({ text: x.short, brief: x.brief || null, add: x.add || null, gen: x.gen, where: x.where, conflict: x.priority === 0, who: grp.gen ? `Gen ${grp.gen}` : "", fact: x.fact, anyOf: /birth or death/.test(x.short || "") })) })) });

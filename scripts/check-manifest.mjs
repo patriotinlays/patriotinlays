@@ -12,6 +12,7 @@ import { tmpdir } from "node:os";
 import { norm, normJoin, stripHtml } from "./lib/normalize.mjs";
 import { decideSourceCheck, loadLastPassed, recordPass } from "./lib/source-pass.mjs";
 import { isNysedHost, nysedGet, nysedAvailable } from "./lib/nysed-tls.mjs";
+import { SCOPES, scopeFlags } from "./lib/source-scope.mjs";
 
 const args = process.argv.slice(2);
 const LINKS = args.includes("--links");
@@ -30,6 +31,7 @@ for (const c of manifest.claims) {
   byId.set(c.claim_id, c);
   if (!SOURCE_TYPES.includes(c.source_type)) errors.push(`manifest ${c.claim_id}: source_type must be one of ${SOURCE_TYPES.join("/")}`);
   if (!/^https:\/\//.test(c.source_url || "")) errors.push(`manifest ${c.claim_id}: source_url must be https`);
+  if (!SCOPES.includes(c.source_scope)) errors.push(`manifest ${c.claim_id}: source_scope must be one of ${SCOPES.join("/")} (t127u rule 7)`);
   const age = (Date.now() - Date.parse(c.last_retrieved + "T00:00:00")) / 864e5;
   if (!(age >= -1 && age <= MAX_AGE_DAYS)) errors.push(`manifest ${c.claim_id}: last_retrieved ${c.last_retrieved} is stale or invalid (max ${MAX_AGE_DAYS} days)`);
 }
@@ -55,10 +57,15 @@ const files = [];
 for (const d of dirs) { const dir = join(ROOT, d); if (existsSync(dir)) for (const f of readdirSync(dir).filter((x) => x.endsWith(".md"))) files.push([d, f]); }
 let sentences = 0, marked = 0;
 const perFile = {};
+// t127u rule 7: society-wide wording needs that society's national source (scripts/lib/source-scope.mjs).
+const scopeFlagged = [];
+function scopeCheck(s, ids, where) {
+  for (const f of scopeFlags(s, ids, byId)) { scopeFlagged.push(`${where}: "${s.replace(MARK, "").trim().slice(0, 90)}" — ${f}`); errors.push(`${where}: source scope (rule 7): "${s.replace(MARK, "").trim().slice(0, 90)}" ${f}`); }
+}
 function checkUnit(s, where) {
   if (!s.trim()) return; sentences++; perFile[where].units++;
   const ids = [...s.matchAll(MARK)].map((m) => m[1]);
-  if (ids.length) { marked++; perFile[where].marked++; ids.forEach((id) => requireClaim(id, where)); }
+  if (ids.length) { marked++; perFile[where].marked++; ids.forEach((id) => requireClaim(id, where)); scopeCheck(s, ids, where); }
   else if (FACTUAL.some((re) => re.test(s)) && !/^A green result reads:/.test(s.trim()) && !inExample(where, s)) { perFile[where].unmarked++; errors.push(`${where}: unmanifested factual sentence — "${s.trim().slice(0, 90)}"`); }
 }
 for (const [d, f] of files) {
@@ -80,6 +87,10 @@ for (const t of readdirSync(join(ROOT, "src/tools")).filter((f) => f.endsWith(".
   const src = readFileSync(join(ROOT, "src/tools", t), "utf8");
   for (const m of src.matchAll(/claim\w*:\s*"([a-z0-9-]+)"/g)) requireClaim(m[1], `src/tools/${t}`);
   for (const m of src.matchAll(/claims:\s*\[([^\]]*)\]/g)) for (const q of m[1].matchAll(/"([a-z0-9-]+)"/g)) requireClaim(q[1], `src/tools/${t}`);
+  // Rule 7 for tool text: an object literal's text with its claim / claims.
+  for (const m of src.matchAll(/\b(?:text|indirect|direct):\s*"((?:[^"\\]|\\.)*)",?[^{}]*?\bclaims?:\s*(\[[^\]]*\]|"[a-z0-9-]+")/g)) {
+    const ids = [...m[2].matchAll(/"([a-z0-9-]+)"/g)].map((q) => q[1]); if (ids.length) scopeCheck(m[1], ids, `src/tools/${t}`);
+  }
 }
 for (const id of byId.keys()) if (!referenced.has(id)) warnings.push(`manifest ${id}: not referenced by any page or tool`);
 
@@ -186,6 +197,7 @@ console.log(`Source Manifest gate: ${files.length} page(s), ${sentences} sentenc
 if (LINKS) for (const l of linkReport) console.log(`  link ${l.status}${l.fallback ? " FALLBACK" : ""}  quotes found ${l.quotesFound ?? "-"} / missing ${l.quotesMissing ?? "-"}  ${l.url}`);
 warnings.forEach((w) => console.log("WARN  " + w));
 errors.forEach((e) => console.log("ERROR " + e));
+console.log(`Source scope (rule 7): ${scopeFlagged.length} flagged`);
 console.log(errors.length ? `FAILED with ${errors.length} error(s). Unverifiable claims must be omitted.` : "PASSED: every factual claim maps to a verified manifest entry.");
 console.log(LIVE_LINE);
 process.exit(errors.length ? 1 : 0);

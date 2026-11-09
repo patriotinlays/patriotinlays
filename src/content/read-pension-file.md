@@ -64,7 +64,7 @@ The act behind an application decides what the applicant had to say, so it tells
 | 1836 | Widows who married the veteran before his last period of service ended (NARA's wording) [[claim:nara-act-1836]] | Proof of marriage, widow's own testimony |
 | 1838 | Five-year pensions for widows married after his last service ended and before January 1, 1794, if his service met the 1832 act [[claim:nara-act-1838]] [[claim:stat-1838-after-service]] [[claim:stat-1838-1832-service]] | Marriage date and his service |
 | July 1848 | Life pensions for widows married before January 2, 1800 [[claim:nara-act-1848]] | Marriage date is central |
-| 1853 and February 1855 | Marriage-date restrictions removed [[claim:nara-act-1853-1855]]: army widows (1853) and navy widows (1855) married after January 1800 [[claim:stat-1853-after-1800]] [[claim:stat-1855feb-1800]] | Later widows' claims |
+| 1853 and February 1855 | Marriage-date restrictions removed [[claim:nara-act-1853-1855]]: army widows (Act of February 3, 1853, 10 Stat. 154) and navy widows (Act of February 28, 1855, ch. 126, sec. 3, 10 Stat. 616) married after January 1800 [[claim:stat-1853-after-1800]] [[claim:stat-1855feb-1800]] | Later widows' claims |
 | 1878 | Widows of soldiers with as few as 14 days of service [[claim:nara-act-1878]] | Very late claims |
 
 Two summaries of the 1836 act do not match word for word. [[claim:nara-act-1836]] NARA's pamphlet says the widow married the veteran before his last period of service expired; the National Park Service summarizes it as marriage before the war ended in 1783. [[claim:nps-1836]]

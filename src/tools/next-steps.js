@@ -24,7 +24,7 @@ const L = (...k) => k.map((x) => CHAPTER_LINKS[x] || SITE_LINKS[x]);
 // A plan step: { title, text, items?: [{text, links}], links, claims }
 export const CONTACT_STEP = Object.freeze({
   title: "Contact a local chapter's registrar",
-  text: "The registrar is the chapter member who helps people with their applications. For DAR, the Chapter Locator finds chapters in your area, and the Membership Interest Form connects you to one. For SAR, your sponsor is often the local chapter registrar; pick your state on SAR's contact page.",
+  text: "The registrar is the chapter member who helps people with their applications. For DAR, the Chapter Locator finds chapters in your area, and the Membership Interest Form connects you to one. For SAR, the next step is finding a sponsor near you; pick your state on SAR's contact page.",
   claims: ["dar-chapter-locator", "dar-interest-form", "sar-sponsor-registrar", "sar-state-residence", "sar-find-contact"],
   links: L("darLocator", "darJoin", "sarApply", "sarContact"),
 });

@@ -22,7 +22,8 @@
         "walkthroughs",
         "widow-pension-checker"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "national"
     },
     {
       "claim_id": "dar-committee-1774",
@@ -42,7 +43,8 @@
         "tool:patriot.js",
         "tool:tool-a.js"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "national"
     },
     {
       "claim_id": "dar-va-oath",
@@ -62,7 +64,8 @@
         "tool:patriot.js",
         "tool:tool-a.js"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "national"
     },
     {
       "claim_id": "dar-galvez-troops",
@@ -82,7 +85,8 @@
         "tool:patriot.js",
         "tool:tool-a.js"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "national"
     },
     {
       "claim_id": "dar-galvez-cattle",
@@ -102,7 +106,8 @@
         "tool:patriot.js",
         "tool:tool-a.js"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "national"
     },
     {
       "claim_id": "dar-civil-service",
@@ -121,7 +126,8 @@
         "patriotic-service",
         "tool:patriot.js"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "national"
     },
     {
       "claim_id": "dar-civil-examples",
@@ -139,7 +145,8 @@
         "patriotic-service",
         "tool:patriot.js"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "national"
     },
     {
       "claim_id": "dar-oaths",
@@ -158,7 +165,8 @@
         "patriotic-service",
         "tool:patriot.js"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "national"
     },
     {
       "claim_id": "dar-petitions",
@@ -175,7 +183,8 @@
       "used_on": [
         "patriotic-service"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "national"
     },
     {
       "claim_id": "dar-petitions-religious",
@@ -192,7 +201,8 @@
       "used_on": [
         "patriotic-service"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "national"
     },
     {
       "claim_id": "dar-supply-tax",
@@ -209,7 +219,8 @@
       "used_on": [
         "patriotic-service"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "national"
     },
     {
       "claim_id": "dar-material-aid",
@@ -230,7 +241,8 @@
         "patriotic-service",
         "tool:patriot.js"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "national"
     },
     {
       "claim_id": "dar-forts",
@@ -247,7 +259,8 @@
       "used_on": [
         "patriotic-service"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "national"
     },
     {
       "claim_id": "dar-aid-wounded",
@@ -264,7 +277,8 @@
       "used_on": [
         "patriotic-service"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "national"
     },
     {
       "claim_id": "dar-substitute",
@@ -281,7 +295,8 @@
       "used_on": [
         "patriotic-service"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "national"
     },
     {
       "claim_id": "dar-va-land",
@@ -298,7 +313,8 @@
       "used_on": [
         "patriotic-service"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "national"
     },
     {
       "claim_id": "dar-reserves-right",
@@ -315,7 +331,8 @@
       "used_on": [
         "patriotic-service"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "national"
     },
     {
       "claim_id": "dar-gen-1-3",
@@ -336,7 +353,8 @@
         "substitute-evidence",
         "tool:tool-b.js"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "national"
     },
     {
       "claim_id": "dar-gen-older",
@@ -356,7 +374,8 @@
         "lineage-proof-roadmap",
         "substitute-evidence"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "national"
     },
     {
       "claim_id": "dar-each-relationship",
@@ -379,7 +398,8 @@
         "tool:tool-a.js",
         "tool:tool-b.js"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "national"
     },
     {
       "claim_id": "dar-gen1-applicant",
@@ -399,7 +419,8 @@
         "tool:tool-b.js",
         "walkthroughs"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "national"
     },
     {
       "claim_id": "dar-gen-numbering",
@@ -419,7 +440,8 @@
         "tool:tool-b.js",
         "walkthroughs"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "national"
     },
     {
       "claim_id": "dar-biological",
@@ -436,7 +458,8 @@
       "used_on": [
         "lineage-proof-roadmap"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "national"
     },
     {
       "claim_id": "dar-no-step",
@@ -453,7 +476,8 @@
       "used_on": [
         "lineage-proof-roadmap"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "national"
     },
     {
       "claim_id": "dar-both-parents",
@@ -470,7 +494,8 @@
       "used_on": [
         "lineage-proof-roadmap"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "national"
     },
     {
       "claim_id": "dar-pedigree",
@@ -487,7 +512,8 @@
       "used_on": [
         "lineage-proof-roadmap"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "national"
     },
     {
       "claim_id": "dar-census-cite",
@@ -505,7 +531,8 @@
         "census-bridge",
         "lineage-proof-roadmap"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "national"
     },
     {
       "claim_id": "dar-jpg",
@@ -522,7 +549,8 @@
       "used_on": [
         "lineage-proof-roadmap"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "national"
     },
     {
       "claim_id": "dar-usually-acceptable",
@@ -537,9 +565,12 @@
       "verification_status": "verified",
       "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
       "used_on": [
-        "census-bridge"
+        "census-bridge",
+        "substitute-evidence",
+        "tool:tool-b.js"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "national"
     },
     {
       "claim_id": "dar-caution-genealogies",
@@ -556,7 +587,8 @@
       "used_on": [
         "substitute-evidence"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "national"
     },
     {
       "claim_id": "dar-baptism",
@@ -574,7 +606,8 @@
         "substitute-evidence",
         "tool:tool-b.js"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "national"
     },
     {
       "claim_id": "dar-circa",
@@ -593,7 +626,8 @@
         "substitute-evidence",
         "tool:tool-b.js"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "national"
     },
     {
       "claim_id": "dar-death-post",
@@ -612,7 +646,8 @@
         "substitute-evidence",
         "tool:tool-b.js"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "national"
     },
     {
       "claim_id": "dar-death-ante",
@@ -630,7 +665,8 @@
         "substitute-evidence",
         "tool:tool-b.js"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "national"
     },
     {
       "claim_id": "dar-service-state",
@@ -647,7 +683,8 @@
       "used_on": [
         "records-by-state"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "national"
     },
     {
       "claim_id": "dar-unit-state",
@@ -666,7 +703,8 @@
         "records-by-state",
         "tool:patriot.js"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "national"
     },
     {
       "claim_id": "dar-cs",
@@ -683,7 +721,8 @@
       "used_on": [
         "patriotic-service"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "national"
     },
     {
       "claim_id": "dar-ps",
@@ -700,7 +739,8 @@
       "used_on": [
         "patriotic-service"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "national"
     },
     {
       "claim_id": "dar-no-genealogy-service",
@@ -717,7 +757,8 @@
       "used_on": [
         "patriotic-service"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "national"
     },
     {
       "claim_id": "dar-delay",
@@ -734,7 +775,8 @@
       "used_on": [
         "application-problems"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "national"
     },
     {
       "claim_id": "dar-symbols",
@@ -751,7 +793,8 @@
       "used_on": [
         "application-problems"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "national"
     },
     {
       "claim_id": "dar-4digit",
@@ -769,7 +812,8 @@
         "application-problems",
         "lineage-proof-roadmap"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "national"
     },
     {
       "claim_id": "dar-cert-names",
@@ -786,7 +830,8 @@
       "used_on": [
         "application-problems"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "national"
     },
     {
       "claim_id": "dar-review-staff",
@@ -809,7 +854,8 @@
         "tool:tool-b.js",
         "walkthroughs"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "national"
     },
     {
       "claim_id": "dar-upload-each",
@@ -827,7 +873,8 @@
         "application-problems",
         "lineage-proof-roadmap"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "national"
     },
     {
       "claim_id": "dar-primary-preferred",
@@ -846,7 +893,8 @@
         "lineage-proof-roadmap",
         "tool:tool-b.js"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "national"
     },
     {
       "claim_id": "dar-case-by-case",
@@ -863,7 +911,8 @@
       "used_on": [
         "substitute-evidence"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "national"
     },
     {
       "claim_id": "dar-genealogy-may",
@@ -881,7 +930,8 @@
         "faq",
         "substitute-evidence"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "national"
     },
     {
       "claim_id": "dar-online-trees",
@@ -899,7 +949,8 @@
         "application-problems",
         "lineage-proof-roadmap"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "national"
     },
     {
       "claim_id": "dar-images-ok",
@@ -916,7 +967,8 @@
       "used_on": [
         "lineage-proof-roadmap"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "national"
     },
     {
       "claim_id": "dar-service-sources",
@@ -938,7 +990,8 @@
         "tool:patriot.js",
         "tool:tool-a.js"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "national"
     },
     {
       "claim_id": "dar-lineage-sources",
@@ -953,10 +1006,13 @@
       "verification_status": "verified",
       "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
       "used_on": [
+        "census-bridge",
         "lineage-proof-roadmap",
+        "substitute-evidence",
         "tool:tool-b.js"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "national"
     },
     {
       "claim_id": "dar-eapp-established",
@@ -974,7 +1030,8 @@
         "application-problems",
         "lineage-proof-roadmap"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "national"
     },
     {
       "claim_id": "dar-paper-analysis",
@@ -993,7 +1050,8 @@
         "census-bridge",
         "lineage-proof-roadmap"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "national"
     },
     {
       "claim_id": "dar-six-weeks",
@@ -1011,7 +1069,8 @@
         "application-problems",
         "lineage-proof-roadmap"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "national"
     },
     {
       "claim_id": "dar-nbm",
@@ -1028,7 +1087,8 @@
       "used_on": [
         "application-problems"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "national"
     },
     {
       "claim_id": "dar-fee",
@@ -1045,7 +1105,8 @@
       "used_on": [
         "lineage-proof-roadmap"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "national"
     },
     {
       "claim_id": "dar-unknown-parent",
@@ -1062,7 +1123,8 @@
       "used_on": [
         "substitute-evidence"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "national"
     },
     {
       "claim_id": "darblog-1890s",
@@ -1079,7 +1141,8 @@
       "used_on": [
         "application-problems"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "national"
     },
     {
       "claim_id": "darblog-missing",
@@ -1096,7 +1159,8 @@
       "used_on": [
         "application-problems"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "national"
     },
     {
       "claim_id": "darblog-died",
@@ -1113,7 +1177,8 @@
       "used_on": [
         "same-name"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "national"
     },
     {
       "claim_id": "darblog-residence",
@@ -1132,7 +1197,8 @@
         "patriotic-service",
         "same-name"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "national"
     },
     {
       "claim_id": "darblog-woburn",
@@ -1149,7 +1215,8 @@
       "used_on": [
         "same-name"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "national"
     },
     {
       "claim_id": "darblog-multiple",
@@ -1166,7 +1233,8 @@
       "used_on": [
         "same-name"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "national"
     },
     {
       "claim_id": "darblog-same-name",
@@ -1183,7 +1251,8 @@
       "used_on": [
         "same-name"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "national"
     },
     {
       "claim_id": "darblog-gillespie",
@@ -1200,7 +1269,8 @@
       "used_on": [
         "same-name"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "national"
     },
     {
       "claim_id": "darblog-gillespie-four",
@@ -1217,7 +1287,8 @@
       "used_on": [
         "same-name"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "national"
     },
     {
       "claim_id": "darblog-loyalist",
@@ -1235,7 +1306,8 @@
         "application-problems",
         "patriot-or-loyalist"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "national"
     },
     {
       "claim_id": "darblog-longisland",
@@ -1252,7 +1324,8 @@
       "used_on": [
         "patriot-or-loyalist"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "national"
     },
     {
       "claim_id": "darblog-neutral",
@@ -1269,7 +1342,8 @@
       "used_on": [
         "patriot-or-loyalist"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "national"
     },
     {
       "claim_id": "darblog-last-act",
@@ -1286,7 +1360,8 @@
       "used_on": [
         "patriot-or-loyalist"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "national"
     },
     {
       "claim_id": "darblog-unrecognized",
@@ -1303,7 +1378,8 @@
       "used_on": [
         "application-problems"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "national"
     },
     {
       "claim_id": "prp-coverage",
@@ -1320,7 +1396,8 @@
       "used_on": [
         "records-by-state"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "national"
     },
     {
       "claim_id": "prp-500k",
@@ -1337,7 +1414,8 @@
       "used_on": [
         "records-by-state"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "national"
     },
     {
       "claim_id": "prp-french-spanish",
@@ -1355,7 +1433,8 @@
         "records-by-state",
         "tool:patriot.js"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "national"
     },
     {
       "claim_id": "prp-pension-index",
@@ -1373,7 +1452,8 @@
         "lineage-proof-roadmap",
         "records-by-state"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "national"
     },
     {
       "claim_id": "sar-window",
@@ -1392,7 +1472,8 @@
         "lineage-proof-roadmap",
         "patriotic-service"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "national"
     },
     {
       "claim_id": "sar-loyalty",
@@ -1409,7 +1490,8 @@
       "used_on": [
         "patriot-or-loyalist"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "national"
     },
     {
       "claim_id": "sar-bloodline",
@@ -1428,7 +1510,8 @@
         "lineage-proof-roadmap",
         "partial:glossary"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "national"
     },
     {
       "claim_id": "sar-sponsors",
@@ -1446,7 +1529,8 @@
         "faq",
         "lineage-proof-roadmap"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "national"
     },
     {
       "claim_id": "sar-tradition",
@@ -1468,7 +1552,8 @@
         "tool:patriot.js",
         "tool:tool-a.js"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "national"
     },
     {
       "claim_id": "sar-no-prelim",
@@ -1485,7 +1570,8 @@
       "used_on": [
         "tool:next-steps.js"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "national"
     },
     {
       "claim_id": "sar-point-pleasant",
@@ -1502,7 +1588,8 @@
       "used_on": [
         "patriotic-service"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "national"
     },
     {
       "claim_id": "sar-committees",
@@ -1519,7 +1606,8 @@
       "used_on": [
         "patriotic-service"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "national"
     },
     {
       "claim_id": "sar-oaths",
@@ -1536,7 +1624,8 @@
       "used_on": [
         "patriotic-service"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "national"
     },
     {
       "claim_id": "sar-directed",
@@ -1553,7 +1642,8 @@
       "used_on": [
         "patriotic-service"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "national"
     },
     {
       "claim_id": "sar-material",
@@ -1570,7 +1660,8 @@
       "used_on": [
         "patriotic-service"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "national"
     },
     {
       "claim_id": "sar-clergy",
@@ -1587,7 +1678,8 @@
       "used_on": [
         "patriotic-service"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "national"
     },
     {
       "claim_id": "sar-ggp",
@@ -1604,7 +1696,8 @@
       "used_on": [
         "lineage-proof-roadmap"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "national"
     },
     {
       "claim_id": "sartax-dar-2006",
@@ -1621,7 +1714,8 @@
       "used_on": [
         "patriotic-service"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "national"
     },
     {
       "claim_id": "sartax-policy-2012",
@@ -1638,7 +1732,8 @@
       "used_on": [
         "patriotic-service"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "national"
     },
     {
       "claim_id": "sartax-statute",
@@ -1655,7 +1750,8 @@
       "used_on": [
         "patriotic-service"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "national"
     },
     {
       "claim_id": "sartax-fees",
@@ -1672,7 +1768,8 @@
       "used_on": [
         "patriotic-service"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "national"
     },
     {
       "claim_id": "sartax-license",
@@ -1689,7 +1786,8 @@
       "used_on": [
         "patriotic-service"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "national"
     },
     {
       "claim_id": "sartax-burden",
@@ -1706,7 +1804,8 @@
       "used_on": [
         "patriotic-service"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "national"
     },
     {
       "claim_id": "sartax-assessment",
@@ -1723,7 +1822,8 @@
       "used_on": [
         "patriotic-service"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "national"
     },
     {
       "claim_id": "sartax-scga",
@@ -1740,11 +1840,12 @@
       "used_on": [
         "patriotic-service"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "national"
     },
     {
       "claim_id": "ohsar-bc",
-      "claim_text": "A common SAR pend reason: missing applicant birth certificate or one without gender.",
+      "claim_text": "A 2023 Ohio Society SAR presentation listed a missing applicant birth certificate, or one without gender, as a pend reason.",
       "source_url": "https://cincinnatisar.org/wp-content/uploads/2023/05/Presentation-How-to-Produce-Approval-Ready-Applications-and-Reduce-Turnaround-Time.pdf",
       "source_title": "SAR presentation, OHSSAR Annual Meeting (May 5, 2023) — How to Produce Approval-Ready Applications",
       "source_type": "official_secondary",
@@ -1757,11 +1858,12 @@
       "used_on": [
         "application-problems"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "chapter-local"
     },
     {
       "claim_id": "ohsar-bc-parents",
-      "claim_text": "SAR wants the applicant's birth certificate to name both parents, including the mother's maiden name.",
+      "claim_text": "A 2023 Ohio Society SAR presentation said the applicant's birth certificate should name both parents, including the mother's maiden name.",
       "source_url": "https://cincinnatisar.org/wp-content/uploads/2023/05/Presentation-How-to-Produce-Approval-Ready-Applications-and-Reduce-Turnaround-Time.pdf",
       "source_title": "SAR presentation, OHSSAR Annual Meeting (May 5, 2023) — How to Produce Approval-Ready Applications",
       "source_type": "official_secondary",
@@ -1774,11 +1876,12 @@
       "used_on": [
         "application-problems"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "chapter-local"
     },
     {
       "claim_id": "ohsar-date-format",
-      "claim_text": "SAR lineage dates use the 01 Jan 2023 format.",
+      "claim_text": "A 2023 Ohio Society SAR presentation said lineage dates use the 01 Jan 2023 format.",
       "source_url": "https://cincinnatisar.org/wp-content/uploads/2023/05/Presentation-How-to-Produce-Approval-Ready-Applications-and-Reduce-Turnaround-Time.pdf",
       "source_title": "SAR presentation, OHSSAR Annual Meeting (May 5, 2023) — How to Produce Approval-Ready Applications",
       "source_type": "official_secondary",
@@ -1791,11 +1894,12 @@
       "used_on": [
         "application-problems"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "chapter-local"
     },
     {
       "claim_id": "ohsar-record-copies",
-      "claim_text": "SAR considers DAR record copies, not chapter copies.",
+      "claim_text": "A 2023 Ohio Society SAR presentation said only DAR record copies are considered, not chapter copies.",
       "source_url": "https://cincinnatisar.org/wp-content/uploads/2023/05/Presentation-How-to-Produce-Approval-Ready-Applications-and-Reduce-Turnaround-Time.pdf",
       "source_title": "SAR presentation, OHSSAR Annual Meeting (May 5, 2023) — How to Produce Approval-Ready Applications",
       "source_type": "official_secondary",
@@ -1808,11 +1912,12 @@
       "used_on": [
         "application-problems"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "chapter-local"
     },
     {
       "claim_id": "ohsar-naming",
-      "claim_text": "A common SAR pend reason: weak parent-to-child proof, including unresolved naming conflicts.",
+      "claim_text": "A 2023 Ohio Society SAR presentation listed weak parent-to-child proof, including unresolved naming conflicts, as a pend reason.",
       "source_url": "https://cincinnatisar.org/wp-content/uploads/2023/05/Presentation-How-to-Produce-Approval-Ready-Applications-and-Reduce-Turnaround-Time.pdf",
       "source_title": "SAR presentation, OHSSAR Annual Meeting (May 5, 2023) — How to Produce Approval-Ready Applications",
       "source_type": "official_secondary",
@@ -1826,11 +1931,12 @@
         "application-problems",
         "same-name"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "chapter-local"
     },
     {
       "claim_id": "ohsar-patriot-gen",
-      "claim_text": "SAR wants the patriot's generation to show he was alive, of age and resident where the service was claimed.",
+      "claim_text": "A 2023 Ohio Society SAR presentation said the patriot's generation should show he was alive, of age and resident where the service was claimed.",
       "source_url": "https://cincinnatisar.org/wp-content/uploads/2023/05/Presentation-How-to-Produce-Approval-Ready-Applications-and-Reduce-Turnaround-Time.pdf",
       "source_title": "SAR presentation, OHSSAR Annual Meeting (May 5, 2023) — How to Produce Approval-Ready Applications",
       "source_type": "official_secondary",
@@ -1844,11 +1950,12 @@
         "application-problems",
         "same-name"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "chapter-local"
     },
     {
       "claim_id": "ohsar-superfluous",
-      "claim_text": "Superfluous documentation slows SAR review.",
+      "claim_text": "A 2023 Ohio Society SAR presentation listed superfluous documentation as slowing review.",
       "source_url": "https://cincinnatisar.org/wp-content/uploads/2023/05/Presentation-How-to-Produce-Approval-Ready-Applications-and-Reduce-Turnaround-Time.pdf",
       "source_title": "SAR presentation, OHSSAR Annual Meeting (May 5, 2023) — How to Produce Approval-Ready Applications",
       "source_type": "official_secondary",
@@ -1861,11 +1968,12 @@
       "used_on": [
         "application-problems"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "chapter-local"
     },
     {
       "claim_id": "ohsar-unsupported",
-      "claim_text": "Unsupported lineage data slows SAR review.",
+      "claim_text": "A 2023 Ohio Society SAR presentation listed lineage data not supported by documentation as slowing review.",
       "source_url": "https://cincinnatisar.org/wp-content/uploads/2023/05/Presentation-How-to-Produce-Approval-Ready-Applications-and-Reduce-Turnaround-Time.pdf",
       "source_title": "SAR presentation, OHSSAR Annual Meeting (May 5, 2023) — How to Produce Approval-Ready Applications",
       "source_type": "official_secondary",
@@ -1878,11 +1986,12 @@
       "used_on": [
         "application-problems"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "chapter-local"
     },
     {
       "claim_id": "ohsar-from-docs",
-      "claim_text": "SAR advises completing the application from the documentation.",
+      "claim_text": "A 2023 Ohio Society SAR presentation advised completing the application from the documentation.",
       "source_url": "https://cincinnatisar.org/wp-content/uploads/2023/05/Presentation-How-to-Produce-Approval-Ready-Applications-and-Reduce-Turnaround-Time.pdf",
       "source_title": "SAR presentation, OHSSAR Annual Meeting (May 5, 2023) — How to Produce Approval-Ready Applications",
       "source_type": "official_secondary",
@@ -1895,11 +2004,12 @@
       "used_on": [
         "application-problems"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "chapter-local"
     },
     {
       "claim_id": "ohsar-30min",
-      "claim_text": "Correctly prepared SAR applications can be reviewed in as little as 30 minutes.",
+      "claim_text": "A 2023 Ohio Society SAR presentation said correctly prepared applications can be reviewed at National in as little as 30 minutes.",
       "source_url": "https://cincinnatisar.org/wp-content/uploads/2023/05/Presentation-How-to-Produce-Approval-Ready-Applications-and-Reduce-Turnaround-Time.pdf",
       "source_title": "SAR presentation, OHSSAR Annual Meeting (May 5, 2023) — How to Produce Approval-Ready Applications",
       "source_type": "official_secondary",
@@ -1912,11 +2022,12 @@
       "used_on": [
         "application-problems"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "chapter-local"
     },
     {
       "claim_id": "ohsar-nonrefundable",
-      "claim_text": "SAR application fees are non-refundable.",
+      "claim_text": "A 2023 Ohio Society SAR presentation said application fees are non-refundable.",
       "source_url": "https://cincinnatisar.org/wp-content/uploads/2023/05/Presentation-How-to-Produce-Approval-Ready-Applications-and-Reduce-Turnaround-Time.pdf",
       "source_title": "SAR presentation, OHSSAR Annual Meeting (May 5, 2023) — How to Produce Approval-Ready Applications",
       "source_type": "official_secondary",
@@ -1929,11 +2040,12 @@
       "used_on": [
         "application-problems"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "chapter-local"
     },
     {
       "claim_id": "ohsar-replacements",
-      "claim_text": "SAR new-member applications get two replacement chances.",
+      "claim_text": "A 2023 Ohio Society SAR presentation said new-member applications get two replacement chances.",
       "source_url": "https://cincinnatisar.org/wp-content/uploads/2023/05/Presentation-How-to-Produce-Approval-Ready-Applications-and-Reduce-Turnaround-Time.pdf",
       "source_title": "SAR presentation, OHSSAR Annual Meeting (May 5, 2023) — How to Produce Approval-Ready Applications",
       "source_type": "official_secondary",
@@ -1946,11 +2058,12 @@
       "used_on": [
         "application-problems"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "chapter-local"
     },
     {
       "claim_id": "ohsar-supp-once",
-      "claim_text": "SAR supplementals may be replaced once.",
+      "claim_text": "A 2023 Ohio Society SAR presentation said supplementals may be replaced once.",
       "source_url": "https://cincinnatisar.org/wp-content/uploads/2023/05/Presentation-How-to-Produce-Approval-Ready-Applications-and-Reduce-Turnaround-Time.pdf",
       "source_title": "SAR presentation, OHSSAR Annual Meeting (May 5, 2023) — How to Produce Approval-Ready Applications",
       "source_type": "official_secondary",
@@ -1963,11 +2076,12 @@
       "used_on": [
         "application-problems"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "chapter-local"
     },
     {
       "claim_id": "ohsar-3yrs",
-      "claim_text": "SAR withdraws applications pended for three years.",
+      "claim_text": "A 2023 Ohio Society SAR presentation said applications pended for three years are withdrawn.",
       "source_url": "https://cincinnatisar.org/wp-content/uploads/2023/05/Presentation-How-to-Produce-Approval-Ready-Applications-and-Reduce-Turnaround-Time.pdf",
       "source_title": "SAR presentation, OHSSAR Annual Meeting (May 5, 2023) — How to Produce Approval-Ready Applications",
       "source_type": "official_secondary",
@@ -1980,11 +2094,12 @@
       "used_on": [
         "application-problems"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "chapter-local"
     },
     {
       "claim_id": "ohsar-fee",
-      "claim_text": "The SAR application fee was $100 at the time of the 2023 presentation.",
+      "claim_text": "The fee cited in the 2023 Ohio Society SAR presentation was $100.",
       "source_url": "https://cincinnatisar.org/wp-content/uploads/2023/05/Presentation-How-to-Produce-Approval-Ready-Applications-and-Reduce-Turnaround-Time.pdf",
       "source_title": "SAR presentation, OHSSAR Annual Meeting (May 5, 2023) — How to Produce Approval-Ready Applications",
       "source_type": "official_secondary",
@@ -1997,28 +2112,12 @@
       "used_on": [
         "application-problems"
       ],
-      "notes": ""
-    },
-    {
-      "claim_id": "ohsar-signatures",
-      "claim_text": "SAR new-member applications need five signatures.",
-      "source_url": "https://cincinnatisar.org/wp-content/uploads/2023/05/Presentation-How-to-Produce-Approval-Ready-Applications-and-Reduce-Turnaround-Time.pdf",
-      "source_title": "SAR presentation, OHSSAR Annual Meeting (May 5, 2023) — How to Produce Approval-Ready Applications",
-      "source_type": "official_secondary",
-      "archive_identifier": null,
-      "last_retrieved": "2026-10-31",
-      "quote_excerpt": "New-member apps must have five signatures",
-      "page_ref": null,
-      "verification_status": "verified",
-      "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
-      "used_on": [
-        "application-problems"
-      ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "chapter-local"
     },
     {
       "claim_id": "ohsar-supp-sig",
-      "claim_text": "SAR supplemental applications need two signatures.",
+      "claim_text": "A 2023 Ohio Society SAR presentation said supplemental applications need two signatures.",
       "source_url": "https://cincinnatisar.org/wp-content/uploads/2023/05/Presentation-How-to-Produce-Approval-Ready-Applications-and-Reduce-Turnaround-Time.pdf",
       "source_title": "SAR presentation, OHSSAR Annual Meeting (May 5, 2023) — How to Produce Approval-Ready Applications",
       "source_type": "official_secondary",
@@ -2031,7 +2130,26 @@
       "used_on": [
         "application-problems"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "chapter-local"
+    },
+    {
+      "claim_id": "sar-checklist-signatures",
+      "claim_text": "SAR's application checklist asks whether the State Registrar, State Secretary and two sponsors have signed a new-member application.",
+      "source_url": "https://members.sar.org/media/uploads/pages/334/wPXSPrcD0cuU.pdf",
+      "source_title": "SAR — Application Checklist",
+      "source_type": "official_secondary",
+      "archive_identifier": null,
+      "last_retrieved": "2026-11-09",
+      "quote_excerpt": "For new-member applications, have the State Registrar, State Secretary, and two Sponsors signed the application?",
+      "page_ref": null,
+      "verification_status": "verified",
+      "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-11-09 CT",
+      "used_on": [
+        "application-problems"
+      ],
+      "notes": "",
+      "source_scope": "national"
     },
     {
       "claim_id": "nara-act-1832",
@@ -2049,7 +2167,8 @@
         "tool:tool-a.js",
         "widow-pension-checker"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "national"
     },
     {
       "claim_id": "nara-act-1832-categories",
@@ -2070,7 +2189,8 @@
         "walkthroughs",
         "widow-pension-checker"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "national"
     },
     {
       "claim_id": "nara-act-1836",
@@ -2089,7 +2209,8 @@
         "tool:tool-a.js",
         "widow-pension-checker"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "national"
     },
     {
       "claim_id": "nara-act-1838",
@@ -2108,7 +2229,8 @@
         "tool:tool-a.js",
         "widow-pension-checker"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "national"
     },
     {
       "claim_id": "nara-act-1848",
@@ -2127,7 +2249,8 @@
         "tool:tool-a.js",
         "widow-pension-checker"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "national"
     },
     {
       "claim_id": "nara-act-1853-1855",
@@ -2146,7 +2269,8 @@
         "tool:tool-a.js",
         "widow-pension-checker"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "national"
     },
     {
       "claim_id": "nara-act-1878",
@@ -2166,7 +2290,8 @@
         "walkthroughs",
         "widow-pension-checker"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "national"
     },
     {
       "claim_id": "nara-bounty-1855",
@@ -2186,7 +2311,8 @@
         "walkthroughs",
         "widow-pension-checker"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "national"
     },
     {
       "claim_id": "m804-bl-1776",
@@ -2203,7 +2329,8 @@
       "used_on": [
         "bounty-land-warrants"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "national"
     },
     {
       "claim_id": "m804-bl-100",
@@ -2220,7 +2347,8 @@
       "used_on": [
         "bounty-land-warrants"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "national"
     },
     {
       "claim_id": "m804-bl-generals",
@@ -2237,7 +2365,8 @@
       "used_on": [
         "bounty-land-warrants"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "national"
     },
     {
       "claim_id": "m804-1856",
@@ -2254,7 +2383,8 @@
       "used_on": [
         "bounty-land-warrants"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "national"
     },
     {
       "claim_id": "m804-sold",
@@ -2271,7 +2401,8 @@
       "used_on": [
         "bounty-land-warrants"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "national"
     },
     {
       "claim_id": "m804-locate",
@@ -2288,7 +2419,8 @@
       "used_on": [
         "bounty-land-warrants"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "national"
     },
     {
       "claim_id": "m804-fire",
@@ -2306,7 +2438,8 @@
         "read-pension-file",
         "substitute-evidence"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "national"
     },
     {
       "claim_id": "m804-s",
@@ -2323,7 +2456,8 @@
       "used_on": [
         "read-pension-file"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "national"
     },
     {
       "claim_id": "m804-w",
@@ -2342,7 +2476,8 @@
         "tool:tool-a.js",
         "widow-pension-checker"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "national"
     },
     {
       "claim_id": "m804-r-latest",
@@ -2359,7 +2494,8 @@
       "used_on": [
         "read-pension-file"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "national"
     },
     {
       "claim_id": "m804-former-widow",
@@ -2376,7 +2512,8 @@
       "used_on": [
         "read-pension-file"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "national"
     },
     {
       "claim_id": "m804-dis",
@@ -2393,7 +2530,8 @@
       "used_on": [
         "read-pension-file"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "national"
     },
     {
       "claim_id": "m804-blwt",
@@ -2411,7 +2549,8 @@
         "bounty-land-warrants",
         "read-pension-file"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "national"
     },
     {
       "claim_id": "m804-55",
@@ -2429,7 +2568,8 @@
         "bounty-land-warrants",
         "read-pension-file"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "national"
     },
     {
       "claim_id": "m804-bl-contents",
@@ -2446,7 +2586,8 @@
       "used_on": [
         "bounty-land-warrants"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "national"
     },
     {
       "claim_id": "m804-r-approved",
@@ -2463,7 +2604,8 @@
       "used_on": [
         "read-pension-file"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "national"
     },
     {
       "claim_id": "m804-rank-unit",
@@ -2481,7 +2623,8 @@
         "records-by-state",
         "same-name"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "national"
     },
     {
       "claim_id": "m804-variant",
@@ -2498,7 +2641,8 @@
       "used_on": [
         "same-name"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "national"
     },
     {
       "claim_id": "m804-voucher",
@@ -2515,7 +2659,8 @@
       "used_on": [
         "read-pension-file"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "national"
     },
     {
       "claim_id": "m804-veteran-info",
@@ -2532,7 +2677,8 @@
       "used_on": [
         "read-pension-file"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "national"
     },
     {
       "claim_id": "m804-property",
@@ -2549,7 +2695,8 @@
       "used_on": [
         "read-pension-file"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "national"
     },
     {
       "claim_id": "m804-widow-info",
@@ -2572,7 +2719,8 @@
         "walkthroughs",
         "widow-pension-checker"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "national"
     },
     {
       "claim_id": "m804-bible-pages",
@@ -2591,7 +2739,8 @@
         "substitute-evidence",
         "tool:tool-b.js"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "national"
     },
     {
       "claim_id": "m804-same-name",
@@ -2608,7 +2757,8 @@
       "used_on": [
         "same-name"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "national"
     },
     {
       "claim_id": "m804-unarranged",
@@ -2625,7 +2775,8 @@
       "used_on": [
         "read-pension-file"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "national"
     },
     {
       "claim_id": "m804-selected",
@@ -2642,7 +2793,8 @@
       "used_on": [
         "read-pension-file"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "national"
     },
     {
       "claim_id": "m804-star",
@@ -2659,7 +2811,8 @@
       "used_on": [
         "read-pension-file"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "national"
     },
     {
       "claim_id": "nara-svc-holds",
@@ -2679,7 +2832,8 @@
         "tool:patriot.js",
         "tool:tool-a.js"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "national"
     },
     {
       "claim_id": "nara-svc-custody",
@@ -2698,7 +2852,8 @@
         "records-by-state",
         "tool:patriot.js"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "national"
     },
     {
       "claim_id": "nara-svc-state",
@@ -2719,7 +2874,8 @@
         "tool:patriot.js",
         "tool:tool-a.js"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "national"
     },
     {
       "claim_id": "nara-cmsr-1890s",
@@ -2736,7 +2892,8 @@
       "used_on": [
         "records-by-state"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "national"
     },
     {
       "claim_id": "nara-cmsr-missing",
@@ -2753,7 +2910,8 @@
       "used_on": [
         "records-by-state"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "national"
     },
     {
       "claim_id": "nara-cmsr-fires",
@@ -2770,7 +2928,8 @@
       "used_on": [
         "records-by-state"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "national"
     },
     {
       "claim_id": "nara-m881",
@@ -2787,7 +2946,8 @@
       "used_on": [
         "records-by-state"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "national"
     },
     {
       "claim_id": "nara-m860",
@@ -2804,7 +2964,8 @@
       "used_on": [
         "records-by-state"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "national"
     },
     {
       "claim_id": "nara-m246",
@@ -2821,7 +2982,8 @@
       "used_on": [
         "records-by-state"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "national"
     },
     {
       "claim_id": "nara-m920",
@@ -2838,7 +3000,8 @@
       "used_on": [
         "records-by-state"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "national"
     },
     {
       "claim_id": "nara-m1051",
@@ -2855,7 +3018,8 @@
       "used_on": [
         "records-by-state"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "national"
     },
     {
       "claim_id": "nara-m257",
@@ -2872,7 +3036,8 @@
       "used_on": [
         "records-by-state"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "national"
     },
     {
       "claim_id": "nara-m829",
@@ -2890,7 +3055,8 @@
         "bounty-land-warrants",
         "records-by-state"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "national"
     },
     {
       "claim_id": "nara-m910",
@@ -2907,7 +3073,8 @@
       "used_on": [
         "records-by-state"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "national"
     },
     {
       "claim_id": "nara-gen-nomilitia",
@@ -2924,7 +3091,8 @@
       "used_on": [
         "lineage-proof-roadmap"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "national"
     },
     {
       "claim_id": "nara-gen-combined",
@@ -2941,7 +3109,8 @@
       "used_on": [
         "bounty-land-warrants"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "national"
     },
     {
       "claim_id": "nara-gen-unindexed",
@@ -2958,7 +3127,8 @@
       "used_on": [
         "bounty-land-warrants"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "national"
     },
     {
       "claim_id": "nara-gen-bl-range",
@@ -2975,7 +3145,8 @@
       "used_on": [
         "bounty-land-warrants"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "national"
     },
     {
       "claim_id": "nara-natf86",
@@ -2992,7 +3163,8 @@
       "used_on": [
         "records-by-state"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "national"
     },
     {
       "claim_id": "nara-natf85",
@@ -3010,7 +3182,8 @@
         "bounty-land-warrants",
         "records-by-state"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "national"
     },
     {
       "claim_id": "nara-amrev-m804",
@@ -3028,7 +3201,8 @@
         "read-pension-file",
         "records-by-state"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "national"
     },
     {
       "claim_id": "nara-amrev-familysearch",
@@ -3050,7 +3224,8 @@
         "walkthroughs",
         "widow-pension-checker"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "national"
     },
     {
       "claim_id": "dar-lib-record-copy-use",
@@ -3067,7 +3242,8 @@
       "used_on": [
         "lineage-proof-roadmap"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "national"
     },
     {
       "claim_id": "dar-linres-record-copies",
@@ -3084,7 +3260,8 @@
       "used_on": [
         "lineage-proof-roadmap"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "national"
     },
     {
       "claim_id": "dar-linres-little-info",
@@ -3101,7 +3278,8 @@
       "used_on": [
         "lineage-proof-roadmap"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "national"
     },
     {
       "claim_id": "sar-record-copy",
@@ -3118,7 +3296,8 @@
       "used_on": [
         "lineage-proof-roadmap"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "national"
     },
     {
       "claim_id": "nara-amrev-fs-m804",
@@ -3135,7 +3314,8 @@
       "used_on": [
         "lineage-proof-roadmap"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "national"
     },
     {
       "claim_id": "nara-amrev-m246",
@@ -3153,7 +3333,8 @@
         "records-by-state",
         "tool:patriot.js"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "national"
     },
     {
       "claim_id": "nara-amrev-m881",
@@ -3171,7 +3352,8 @@
         "records-by-state",
         "tool:patriot.js"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "national"
     },
     {
       "claim_id": "nara-amrev-80k",
@@ -3188,7 +3370,8 @@
       "used_on": [
         "read-pension-file"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "national"
     },
     {
       "claim_id": "nara-amrev-1836",
@@ -3206,7 +3389,8 @@
         "tool:patriot.js",
         "widow-pension-checker"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "national"
     },
     {
       "claim_id": "nara-census-head",
@@ -3227,7 +3411,8 @@
         "tool:places.js",
         "tool:tool-b.js"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "national"
     },
     {
       "claim_id": "nara-census-brackets",
@@ -3244,7 +3429,8 @@
       "used_on": [
         "census-bridge"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "national"
     },
     {
       "claim_id": "nara-census-ballpark",
@@ -3262,7 +3448,8 @@
         "census-bridge",
         "same-name"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "national"
     },
     {
       "claim_id": "nara-census-confirm",
@@ -3280,7 +3467,8 @@
         "census-bridge",
         "substitute-evidence"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "national"
     },
     {
       "claim_id": "nara-census-1840",
@@ -3299,7 +3487,8 @@
         "lineage-matrix",
         "tool:places.js"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "national"
     },
     {
       "claim_id": "nara-census-widows",
@@ -3317,7 +3506,8 @@
         "census-bridge",
         "tool:places.js"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "national"
     },
     {
       "claim_id": "nara-census-kin",
@@ -3334,7 +3524,8 @@
       "used_on": [
         "census-bridge"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "national"
     },
     {
       "claim_id": "nara-census-exhaust",
@@ -3352,7 +3543,8 @@
         "census-bridge",
         "tool:tool-b.js"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "national"
     },
     {
       "claim_id": "nara-bulk",
@@ -3369,7 +3561,8 @@
       "used_on": [
         "read-pension-file"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "national"
     },
     {
       "claim_id": "prologue-ide-affidavit",
@@ -3386,7 +3579,8 @@
       "used_on": [
         "census-bridge"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "national"
     },
     {
       "claim_id": "prologue-ide-age",
@@ -3403,7 +3597,8 @@
       "used_on": [
         "census-bridge"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "national"
     },
     {
       "claim_id": "prologue-ide-ma",
@@ -3421,7 +3616,8 @@
         "census-bridge",
         "same-name"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "national"
     },
     {
       "claim_id": "prologue-federal-only",
@@ -3438,7 +3634,8 @@
       "used_on": [
         "read-pension-file"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "national"
     },
     {
       "claim_id": "nps-scale",
@@ -3455,7 +3652,8 @@
       "used_on": [
         "read-pension-file"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "national"
     },
     {
       "claim_id": "nps-1818",
@@ -3472,7 +3670,8 @@
       "used_on": [
         "read-pension-file"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "national"
     },
     {
       "claim_id": "nps-1820",
@@ -3489,7 +3688,8 @@
       "used_on": [
         "read-pension-file"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "national"
     },
     {
       "claim_id": "nps-1832",
@@ -3508,7 +3708,8 @@
         "records-by-state",
         "tool:patriot.js"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "national"
     },
     {
       "claim_id": "nps-1832-court",
@@ -3525,7 +3726,8 @@
       "used_on": [
         "read-pension-file"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "national"
     },
     {
       "claim_id": "nps-witness",
@@ -3542,7 +3744,8 @@
       "used_on": [
         "read-pension-file"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "national"
     },
     {
       "claim_id": "nps-questions",
@@ -3559,7 +3762,8 @@
       "used_on": [
         "read-pension-file"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "national"
     },
     {
       "claim_id": "nps-1836",
@@ -3576,7 +3780,8 @@
       "used_on": [
         "read-pension-file"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "national"
     },
     {
       "claim_id": "nps-order",
@@ -3594,7 +3799,8 @@
         "partial:home",
         "read-pension-file"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "national"
     },
     {
       "claim_id": "nps-applegate",
@@ -3611,7 +3817,8 @@
       "used_on": [
         "read-pension-file"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "national"
     },
     {
       "claim_id": "nps-applegate-widow",
@@ -3631,7 +3838,8 @@
         "tool:tool-b.js",
         "widow-pension-checker"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "national"
     },
     {
       "claim_id": "nps-applegate-32",
@@ -3648,7 +3856,8 @@
       "used_on": [
         "read-pension-file"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "national"
     },
     {
       "claim_id": "nps-shoemaker",
@@ -3665,7 +3874,8 @@
       "used_on": [
         "patriot-or-loyalist"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "national"
     },
     {
       "claim_id": "nps-shoemaker-approved",
@@ -3682,7 +3892,8 @@
       "used_on": [
         "patriot-or-loyalist"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "national"
     },
     {
       "claim_id": "nps-memory",
@@ -3699,7 +3910,8 @@
       "used_on": [
         "read-pension-file"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "national"
     },
     {
       "claim_id": "lva-1779",
@@ -3717,7 +3929,8 @@
         "bounty-land-warrants",
         "records-by-state"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "state"
     },
     {
       "claim_id": "lva-3yrs",
@@ -3735,7 +3948,8 @@
         "bounty-land-warrants",
         "records-by-state"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "state"
     },
     {
       "claim_id": "lva-militia",
@@ -3753,7 +3967,8 @@
         "bounty-land-warrants",
         "records-by-state"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "state"
     },
     {
       "claim_id": "lva-certificates",
@@ -3770,7 +3985,8 @@
       "used_on": [
         "bounty-land-warrants"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "state"
     },
     {
       "claim_id": "lva-assigned",
@@ -3787,7 +4003,8 @@
       "used_on": [
         "bounty-land-warrants"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "state"
     },
     {
       "claim_id": "lva-9926",
@@ -3804,7 +4021,8 @@
       "used_on": [
         "bounty-land-warrants"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "state"
     },
     {
       "claim_id": "lva-acreage",
@@ -3821,7 +4039,8 @@
       "used_on": [
         "bounty-land-warrants"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "state"
     },
     {
       "claim_id": "lva-ky-oh",
@@ -3838,7 +4057,8 @@
       "used_on": [
         "bounty-land-warrants"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "state"
     },
     {
       "claim_id": "lva-scrip",
@@ -3855,7 +4075,8 @@
       "used_on": [
         "bounty-land-warrants"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "state"
     },
     {
       "claim_id": "lva-files",
@@ -3872,7 +4093,8 @@
       "used_on": [
         "records-by-state"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "state"
     },
     {
       "claim_id": "lva-heirs",
@@ -3889,7 +4111,8 @@
       "used_on": [
         "bounty-land-warrants"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "state"
     },
     {
       "claim_id": "lva-proof",
@@ -3906,7 +4129,8 @@
       "used_on": [
         "bounty-land-warrants"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "state"
     },
     {
       "claim_id": "nypl-representative",
@@ -3923,7 +4147,8 @@
       "used_on": [
         "records-by-state"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "third-party"
     },
     {
       "claim_id": "nypl-search",
@@ -3941,7 +4166,8 @@
         "records-by-state",
         "tool:places.js"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "third-party"
     },
     {
       "claim_id": "nypl-ct",
@@ -3958,7 +4184,8 @@
       "used_on": [
         "records-by-state"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "third-party"
     },
     {
       "claim_id": "nypl-de",
@@ -3975,7 +4202,8 @@
       "used_on": [
         "records-by-state"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "third-party"
     },
     {
       "claim_id": "nypl-pa",
@@ -3992,7 +4220,8 @@
       "used_on": [
         "records-by-state"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "third-party"
     },
     {
       "claim_id": "nypl-sc",
@@ -4009,13 +4238,14 @@
       "used_on": [
         "records-by-state"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "third-party"
     },
     {
       "claim_id": "nscda-short-form",
-      "claim_text": "NSCDA does not accept short-form birth certificates without parents' names.",
+      "claim_text": "NSCDA's South Carolina society's standards do not accept short-form birth certificates.",
       "source_url": "https://nscdasnc.memberclicks.net/assets/membership/Standards%20of%20Proof%202025.pdf",
-      "source_title": "NSCDA (South Carolina) — Standards of Proof (rev. 7/14/2025)",
+      "source_title": "NSCDA South Carolina Society — Standards of Proof (2025)",
       "source_type": "official_secondary",
       "archive_identifier": null,
       "last_retrieved": "2026-10-31",
@@ -4028,13 +4258,14 @@
         "substitute-evidence",
         "tool:tool-b.js"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "state"
     },
     {
       "claim_id": "nscda-census-1850-1870",
-      "claim_text": "NSCDA: 1850–1870 censuses do not state relationships and are supporting only.",
+      "claim_text": "NSCDA's South Carolina society's standards say 1850–1870 censuses do not state relationships and are supporting only.",
       "source_url": "https://nscdasnc.memberclicks.net/assets/membership/Standards%20of%20Proof%202025.pdf",
-      "source_title": "NSCDA (South Carolina) — Standards of Proof (rev. 7/14/2025)",
+      "source_title": "NSCDA South Carolina Society — Standards of Proof (2025)",
       "source_type": "official_secondary",
       "archive_identifier": null,
       "last_retrieved": "2026-10-31",
@@ -4049,13 +4280,14 @@
         "tool:places.js",
         "tool:tool-b.js"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "state"
     },
     {
       "claim_id": "nscda-census-case",
-      "claim_text": "NSCDA weighs 1850–1870 censuses case by case or as part of a body of evidence.",
+      "claim_text": "NSCDA's South Carolina society's standards weigh 1850–1870 censuses case by case or as part of a body of evidence.",
       "source_url": "https://nscdasnc.memberclicks.net/assets/membership/Standards%20of%20Proof%202025.pdf",
-      "source_title": "NSCDA (South Carolina) — Standards of Proof (rev. 7/14/2025)",
+      "source_title": "NSCDA South Carolina Society — Standards of Proof (2025)",
       "source_type": "official_secondary",
       "archive_identifier": null,
       "last_retrieved": "2026-10-31",
@@ -4066,13 +4298,14 @@
       "used_on": [
         "census-bridge"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "state"
     },
     {
       "claim_id": "nscda-census-1880",
-      "claim_text": "NSCDA lists 1880–1900 censuses as primary sources.",
+      "claim_text": "NSCDA's South Carolina society's standards list 1880–1900 censuses as primary sources.",
       "source_url": "https://nscdasnc.memberclicks.net/assets/membership/Standards%20of%20Proof%202025.pdf",
-      "source_title": "NSCDA (South Carolina) — Standards of Proof (rev. 7/14/2025)",
+      "source_title": "NSCDA South Carolina Society — Standards of Proof (2025)",
       "source_type": "official_secondary",
       "archive_identifier": null,
       "last_retrieved": "2026-10-31",
@@ -4082,16 +4315,16 @@
       "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
       "used_on": [
         "substitute-evidence",
-        "tool:places.js",
-        "tool:tool-b.js"
+        "tool:places.js"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "state"
     },
     {
       "claim_id": "nscda-gps",
-      "claim_text": "NSCDA cites the genealogical proof standard: a reasonably exhaustive search.",
+      "claim_text": "NSCDA's South Carolina society's standards cite the genealogical proof standard: a reasonably exhaustive search.",
       "source_url": "https://nscdasnc.memberclicks.net/assets/membership/Standards%20of%20Proof%202025.pdf",
-      "source_title": "NSCDA (South Carolina) — Standards of Proof (rev. 7/14/2025)",
+      "source_title": "NSCDA South Carolina Society — Standards of Proof (2025)",
       "source_type": "official_secondary",
       "archive_identifier": null,
       "last_retrieved": "2026-10-31",
@@ -4102,13 +4335,14 @@
       "used_on": [
         "census-bridge"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "state"
     },
     {
       "claim_id": "nscda-existence",
-      "claim_text": "NSCDA requires existence and parentage to be proven in each generation.",
+      "claim_text": "NSCDA's South Carolina society's standards say existence and parentage must be proven in each generation.",
       "source_url": "https://nscdasnc.memberclicks.net/assets/membership/Standards%20of%20Proof%202025.pdf",
-      "source_title": "NSCDA (South Carolina) — Standards of Proof (rev. 7/14/2025)",
+      "source_title": "NSCDA South Carolina Society — Standards of Proof (2025)",
       "source_type": "official_secondary",
       "archive_identifier": null,
       "last_retrieved": "2026-10-31",
@@ -4119,13 +4353,14 @@
       "used_on": [
         "substitute-evidence"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "state"
     },
     {
       "claim_id": "nscda-license",
-      "claim_text": "NSCDA: a marriage license alone does not prove the marriage took place.",
+      "claim_text": "NSCDA's South Carolina society's standards say a marriage license alone does not prove the marriage took place.",
       "source_url": "https://nscdasnc.memberclicks.net/assets/membership/Standards%20of%20Proof%202025.pdf",
-      "source_title": "NSCDA (South Carolina) — Standards of Proof (rev. 7/14/2025)",
+      "source_title": "NSCDA South Carolina Society — Standards of Proof (2025)",
       "source_type": "official_secondary",
       "archive_identifier": null,
       "last_retrieved": "2026-10-31",
@@ -4137,50 +4372,14 @@
         "substitute-evidence",
         "tool:tool-b.js"
       ],
-      "notes": ""
-    },
-    {
-      "claim_id": "nscda-county",
-      "claim_text": "NSCDA lists wills, probate, inventories, deeds, court orders and tax lists as primary sources.",
-      "source_url": "https://nscdasnc.memberclicks.net/assets/membership/Standards%20of%20Proof%202025.pdf",
-      "source_title": "NSCDA (South Carolina) — Standards of Proof (rev. 7/14/2025)",
-      "source_type": "official_secondary",
-      "archive_identifier": null,
-      "last_retrieved": "2026-10-31",
-      "quote_excerpt": "Official records including wills, probate records, inventories, deeds, court orders, tax lists",
-      "page_ref": "p. 1",
-      "verification_status": "verified",
-      "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
-      "used_on": [
-        "census-bridge",
-        "substitute-evidence",
-        "tool:tool-b.js"
-      ],
-      "notes": ""
-    },
-    {
-      "claim_id": "nscda-church",
-      "claim_text": "NSCDA lists church birth, baptism, marriage, death and burial records.",
-      "source_url": "https://nscdasnc.memberclicks.net/assets/membership/Standards%20of%20Proof%202025.pdf",
-      "source_title": "NSCDA (South Carolina) — Standards of Proof (rev. 7/14/2025)",
-      "source_type": "official_secondary",
-      "archive_identifier": null,
-      "last_retrieved": "2026-10-31",
-      "quote_excerpt": "Birth, baptism, marriage, death, or burial records.",
-      "page_ref": "p. 2",
-      "verification_status": "verified",
-      "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
-      "used_on": [
-        "substitute-evidence",
-        "tool:tool-b.js"
-      ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "state"
     },
     {
       "claim_id": "nscda-bible-title",
-      "claim_text": "NSCDA requires the Bible's title page with publication date.",
+      "claim_text": "NSCDA's South Carolina society's standards ask for the Bible's title page with its publication date.",
       "source_url": "https://nscdasnc.memberclicks.net/assets/membership/Standards%20of%20Proof%202025.pdf",
-      "source_title": "NSCDA (South Carolina) — Standards of Proof (rev. 7/14/2025)",
+      "source_title": "NSCDA South Carolina Society — Standards of Proof (2025)",
       "source_type": "official_secondary",
       "archive_identifier": null,
       "last_retrieved": "2026-10-31",
@@ -4192,13 +4391,14 @@
         "substitute-evidence",
         "tool:tool-b.js"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "state"
     },
     {
       "claim_id": "nscda-newspapers",
-      "claim_text": "NSCDA requires newspaper notices to show the dateline and paper name.",
+      "claim_text": "NSCDA's South Carolina society's standards say newspaper notices must show the dateline and paper name.",
       "source_url": "https://nscdasnc.memberclicks.net/assets/membership/Standards%20of%20Proof%202025.pdf",
-      "source_title": "NSCDA (South Carolina) — Standards of Proof (rev. 7/14/2025)",
+      "source_title": "NSCDA South Carolina Society — Standards of Proof (2025)",
       "source_type": "official_secondary",
       "archive_identifier": null,
       "last_retrieved": "2026-10-31",
@@ -4209,13 +4409,14 @@
       "used_on": [
         "substitute-evidence"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "state"
     },
     {
       "claim_id": "nscda-affidavits",
-      "claim_text": "NSCDA lists affidavits of personal knowledge as substitutes.",
+      "claim_text": "NSCDA's South Carolina society's standards list affidavits of personal knowledge as substitutes.",
       "source_url": "https://nscdasnc.memberclicks.net/assets/membership/Standards%20of%20Proof%202025.pdf",
-      "source_title": "NSCDA (South Carolina) — Standards of Proof (rev. 7/14/2025)",
+      "source_title": "NSCDA South Carolina Society — Standards of Proof (2025)",
       "source_type": "official_secondary",
       "archive_identifier": null,
       "last_retrieved": "2026-10-31",
@@ -4227,13 +4428,14 @@
         "substitute-evidence",
         "tool:tool-b.js"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "state"
     },
     {
       "claim_id": "nscda-combine",
-      "claim_text": "NSCDA: combine substitutes so a proof does not rest on one document.",
+      "claim_text": "NSCDA's South Carolina society's standards say to combine substitutes so a proof does not rest on one document.",
       "source_url": "https://nscdasnc.memberclicks.net/assets/membership/Standards%20of%20Proof%202025.pdf",
-      "source_title": "NSCDA (South Carolina) — Standards of Proof (rev. 7/14/2025)",
+      "source_title": "NSCDA South Carolina Society — Standards of Proof (2025)",
       "source_type": "official_secondary",
       "archive_identifier": null,
       "last_retrieved": "2026-10-31",
@@ -4245,13 +4447,14 @@
         "substitute-evidence",
         "tool:tool-b.js"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "state"
     },
     {
       "claim_id": "nscda-accumulation",
-      "claim_text": "NSCDA: an accumulation of indirect or substitute proofs can be convincing.",
+      "claim_text": "NSCDA's South Carolina society's standards say an accumulation of indirect or substitute proofs can be convincing.",
       "source_url": "https://nscdasnc.memberclicks.net/assets/membership/Standards%20of%20Proof%202025.pdf",
-      "source_title": "NSCDA (South Carolina) — Standards of Proof (rev. 7/14/2025)",
+      "source_title": "NSCDA South Carolina Society — Standards of Proof (2025)",
       "source_type": "official_secondary",
       "archive_identifier": null,
       "last_retrieved": "2026-10-31",
@@ -4262,13 +4465,14 @@
       "used_on": [
         "substitute-evidence"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "state"
     },
     {
       "claim_id": "nscda-same-county",
-      "claim_text": "NSCDA: census, deed and court order in the same county MAY identify one man.",
+      "claim_text": "NSCDA's South Carolina society's standards say a census, deed and court order in the same county MAY identify one man.",
       "source_url": "https://nscdasnc.memberclicks.net/assets/membership/Standards%20of%20Proof%202025.pdf",
-      "source_title": "NSCDA (South Carolina) — Standards of Proof (rev. 7/14/2025)",
+      "source_title": "NSCDA South Carolina Society — Standards of Proof (2025)",
       "source_type": "official_secondary",
       "archive_identifier": null,
       "last_retrieved": "2026-10-31",
@@ -4279,13 +4483,14 @@
       "used_on": [
         "same-name"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "state"
     },
     {
       "claim_id": "nscda-cadwalader",
-      "claim_text": "NSCDA's same-name example: two cousins named Cadwalader Jones in a burned county.",
+      "claim_text": "NSCDA's South Carolina society's standards give a same-name example: two cousins named Cadwalader Jones.",
       "source_url": "https://nscdasnc.memberclicks.net/assets/membership/Standards%20of%20Proof%202025.pdf",
-      "source_title": "NSCDA (South Carolina) — Standards of Proof (rev. 7/14/2025)",
+      "source_title": "NSCDA South Carolina Society — Standards of Proof (2025)",
       "source_type": "official_secondary",
       "archive_identifier": null,
       "last_retrieved": "2026-10-31",
@@ -4296,13 +4501,14 @@
       "used_on": [
         "same-name"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "state"
     },
     {
       "claim_id": "nscda-genealogy-citations",
-      "claim_text": "NSCDA rejects printed genealogies without complete primary-source citations.",
+      "claim_text": "NSCDA's South Carolina society's standards reject printed genealogies without complete primary-source citations.",
       "source_url": "https://nscdasnc.memberclicks.net/assets/membership/Standards%20of%20Proof%202025.pdf",
-      "source_title": "NSCDA (South Carolina) — Standards of Proof (rev. 7/14/2025)",
+      "source_title": "NSCDA South Carolina Society — Standards of Proof (2025)",
       "source_type": "official_secondary",
       "archive_identifier": null,
       "last_retrieved": "2026-10-31",
@@ -4313,13 +4519,14 @@
       "used_on": [
         "substitute-evidence"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "state"
     },
     {
       "claim_id": "nscda-other-society",
-      "claim_text": "NSCDA: other societies' lineage papers are not proofs by themselves.",
+      "claim_text": "NSCDA's South Carolina society's standards say other societies' lineage papers are not proofs.",
       "source_url": "https://nscdasnc.memberclicks.net/assets/membership/Standards%20of%20Proof%202025.pdf",
-      "source_title": "NSCDA (South Carolina) — Standards of Proof (rev. 7/14/2025)",
+      "source_title": "NSCDA South Carolina Society — Standards of Proof (2025)",
       "source_type": "official_secondary",
       "archive_identifier": null,
       "last_retrieved": "2026-10-31",
@@ -4330,13 +4537,14 @@
       "used_on": [
         "substitute-evidence"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "state"
     },
     {
       "claim_id": "nscda-not-same",
-      "claim_text": "Lineage societies' proof requirements differ.",
+      "claim_text": "NSCDA's South Carolina society's standards note that lineage societies' proof requirements differ.",
       "source_url": "https://nscdasnc.memberclicks.net/assets/membership/Standards%20of%20Proof%202025.pdf",
-      "source_title": "NSCDA (South Carolina) — Standards of Proof (rev. 7/14/2025)",
+      "source_title": "NSCDA South Carolina Society — Standards of Proof (2025)",
       "source_type": "official_secondary",
       "archive_identifier": null,
       "last_retrieved": "2026-10-31",
@@ -4347,13 +4555,14 @@
       "used_on": [
         "substitute-evidence"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "state"
     },
     {
       "claim_id": "nscda-will-example",
-      "claim_text": "NSCDA: a will that does not mention a marriage does not prove it.",
+      "claim_text": "NSCDA's South Carolina society's standards say a will that does not mention a marriage does not prove it.",
       "source_url": "https://nscdasnc.memberclicks.net/assets/membership/Standards%20of%20Proof%202025.pdf",
-      "source_title": "NSCDA (South Carolina) — Standards of Proof (rev. 7/14/2025)",
+      "source_title": "NSCDA South Carolina Society — Standards of Proof (2025)",
       "source_type": "official_secondary",
       "archive_identifier": null,
       "last_retrieved": "2026-10-31",
@@ -4364,13 +4573,14 @@
       "used_on": [
         "substitute-evidence"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "state"
     },
     {
       "claim_id": "nscda-marriage-cert",
-      "claim_text": "NSCDA: a marriage certificate is issued by the officiant or clerk after the ceremony.",
+      "claim_text": "NSCDA's South Carolina society's standards say a marriage certificate is issued by the officiant or clerk after the ceremony.",
       "source_url": "https://nscdasnc.memberclicks.net/assets/membership/Standards%20of%20Proof%202025.pdf",
-      "source_title": "NSCDA (South Carolina) — Standards of Proof (rev. 7/14/2025)",
+      "source_title": "NSCDA South Carolina Society — Standards of Proof (2025)",
       "source_type": "official_secondary",
       "archive_identifier": null,
       "last_retrieved": "2026-10-31",
@@ -4381,7 +4591,8 @@
       "used_on": [
         "substitute-evidence"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "state"
     },
     {
       "claim_id": "uelac-proven",
@@ -4398,7 +4609,8 @@
       "used_on": [
         "patriot-or-loyalist"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "third-party"
     },
     {
       "claim_id": "uelac-expunged",
@@ -4415,7 +4627,8 @@
       "used_on": [
         "patriot-or-loyalist"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "third-party"
     },
     {
       "claim_id": "uelac-disproven",
@@ -4432,7 +4645,8 @@
       "used_on": [
         "patriot-or-loyalist"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "third-party"
     },
     {
       "claim_id": "uelac-1789",
@@ -4449,7 +4663,8 @@
       "used_on": [
         "patriot-or-loyalist"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "third-party"
     },
     {
       "claim_id": "uelac-enlistment",
@@ -4466,7 +4681,8 @@
       "used_on": [
         "patriot-or-loyalist"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "third-party"
     },
     {
       "claim_id": "uelac-settled-before",
@@ -4483,7 +4699,8 @@
       "used_on": [
         "patriot-or-loyalist"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "third-party"
     },
     {
       "claim_id": "uelac-digit",
@@ -4500,7 +4717,8 @@
       "used_on": [
         "patriot-or-loyalist"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "third-party"
     },
     {
       "claim_id": "dar-chapter-locator",
@@ -4520,7 +4738,8 @@
         "tool:next-steps.js",
         "walkthroughs"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "national"
     },
     {
       "claim_id": "dar-interest-form",
@@ -4537,7 +4756,8 @@
       "used_on": [
         "tool:next-steps.js"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "national"
     },
     {
       "claim_id": "dar-join-locator",
@@ -4554,7 +4774,8 @@
       "used_on": [
         "partial:how-to-join"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "national"
     },
     {
       "claim_id": "dar-member-guides",
@@ -4576,7 +4797,8 @@
         "partial:next-steps-widow",
         "tool:next-steps.js"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "national"
     },
     {
       "claim_id": "dar-join-docs",
@@ -4595,11 +4817,12 @@
         "partial:home",
         "partial:how-to-join"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "national"
     },
     {
       "claim_id": "sar-sponsor-registrar",
-      "claim_text": "SAR's next step is finding a sponsor near you, often the local chapter registrar.",
+      "claim_text": "SAR's next step is finding a sponsor near you.",
       "source_url": "https://www.sar.org/how-to-apply/",
       "source_title": "SAR — Apply in 4 Easy Steps",
       "source_type": "official_secondary",
@@ -4619,11 +4842,12 @@
         "tool:next-steps.js",
         "walkthroughs"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "national"
     },
     {
       "claim_id": "sar-registrar-guide",
-      "claim_text": "SAR's local sponsor, often the chapter registrar, guides you through the application and can review what you've gathered.",
+      "claim_text": "SAR's local sponsor guides you through the application and can review what you've gathered.",
       "source_url": "https://www.sar.org/how-to-apply/",
       "source_title": "SAR — Apply in 4 Easy Steps",
       "source_type": "official_secondary",
@@ -4639,7 +4863,8 @@
         "partial:home",
         "partial:tool-terms"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "national"
     },
     {
       "claim_id": "sar-registrar-process",
@@ -4656,7 +4881,8 @@
       "used_on": [
         "partial:glossary"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "national"
     },
     {
       "claim_id": "sar-sponsor-guides",
@@ -4675,7 +4901,8 @@
         "partial:next-steps-widow",
         "tool:next-steps.js"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "national"
     },
     {
       "claim_id": "sar-state-residence",
@@ -4692,7 +4919,8 @@
       "used_on": [
         "tool:next-steps.js"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "national"
     },
     {
       "claim_id": "sar-find-contact",
@@ -4709,7 +4937,8 @@
       "used_on": [
         "tool:next-steps.js"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "national"
     },
     {
       "claim_id": "dar-join-interest",
@@ -4727,7 +4956,8 @@
         "lineage-proof-roadmap",
         "partial:how-to-join"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "national"
     },
     {
       "claim_id": "dar-join-gather",
@@ -4745,7 +4975,8 @@
         "faq",
         "lineage-proof-roadmap"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "national"
     },
     {
       "claim_id": "dar-join-grs",
@@ -4763,7 +4994,8 @@
         "lineage-proof-roadmap",
         "tool:tool-b.js"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "national"
     },
     {
       "claim_id": "dar-grs-purpose",
@@ -4780,7 +5012,8 @@
       "used_on": [
         "lineage-proof-roadmap"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "national"
     },
     {
       "claim_id": "sar-apply-submit",
@@ -4797,7 +5030,8 @@
       "used_on": [
         "partial:how-to-join"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "national"
     },
     {
       "claim_id": "m804-bl-define",
@@ -4817,7 +5051,8 @@
         "tool:tool-a.js",
         "widow-pension-checker"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "national"
     },
     {
       "claim_id": "m804-bl-who",
@@ -4837,7 +5072,8 @@
         "tool:tool-a.js",
         "widow-pension-checker"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "national"
     },
     {
       "claim_id": "m804-bl-reward",
@@ -4854,7 +5090,8 @@
       "used_on": [
         "bounty-land-warrants"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "national"
     },
     {
       "claim_id": "loc-stat-name",
@@ -4873,7 +5110,8 @@
         "tool:tool-a.js",
         "widow-pension-checker"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "national"
     },
     {
       "claim_id": "loc-stat-volume",
@@ -4892,7 +5130,8 @@
         "tool:tool-a.js",
         "widow-pension-checker"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "national"
     },
     {
       "claim_id": "loc-stat-page",
@@ -4911,7 +5150,8 @@
         "tool:tool-a.js",
         "widow-pension-checker"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "national"
     },
     {
       "claim_id": "dar-name",
@@ -4928,7 +5168,8 @@
       "used_on": [
         "partial:glossary"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "national"
     },
     {
       "claim_id": "dar-join-eligible",
@@ -4948,7 +5189,8 @@
         "partial:how-to-join",
         "partial:tool-terms"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "national"
     },
     {
       "claim_id": "sar-name",
@@ -4965,7 +5207,8 @@
       "used_on": [
         "partial:glossary"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "national"
     },
     {
       "claim_id": "sar-about-age",
@@ -4984,7 +5227,8 @@
         "partial:glossary",
         "partial:how-to-join"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "national"
     },
     {
       "claim_id": "sar-about-eligible",
@@ -5004,7 +5248,8 @@
         "partial:how-to-join",
         "partial:tool-terms"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "national"
     },
     {
       "claim_id": "sar-about-patriots",
@@ -5024,7 +5269,8 @@
         "partial:home",
         "partial:how-to-join"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "national"
     },
     {
       "claim_id": "nscda-name-national",
@@ -5042,7 +5288,8 @@
         "partial:glossary",
         "tool:tool-b.js"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "national"
     },
     {
       "claim_id": "nscda-members-colonial",
@@ -5059,7 +5306,8 @@
       "used_on": [
         "partial:glossary"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "national"
     },
     {
       "claim_id": "lva-rev-militia",
@@ -5076,7 +5324,8 @@
       "used_on": [
         "tool:places.js"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "state"
     },
     {
       "claim_id": "lva-rev-few",
@@ -5093,7 +5342,8 @@
       "used_on": [
         "tool:places.js"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "state"
     },
     {
       "claim_id": "lva-rev-orderbooks",
@@ -5110,7 +5360,8 @@
       "used_on": [
         "tool:places.js"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "state"
     },
     {
       "claim_id": "lva-rev-pensions",
@@ -5127,7 +5378,8 @@
       "used_on": [
         "tool:places.js"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "state"
     },
     {
       "claim_id": "lva-rev-continental",
@@ -5144,7 +5396,8 @@
       "used_on": [
         "tool:places.js"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "state"
     },
     {
       "claim_id": "lva-bmd-pre1853",
@@ -5163,7 +5416,8 @@
         "tool:places.js",
         "walkthroughs"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "state"
     },
     {
       "claim_id": "lva-bmd-rare",
@@ -5180,7 +5434,8 @@
       "used_on": [
         "tool:places.js"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "state"
     },
     {
       "claim_id": "lva-bmd-1853",
@@ -5197,7 +5452,8 @@
       "used_on": [
         "tool:places.js"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "state"
     },
     {
       "claim_id": "lva-bmd-gap",
@@ -5214,7 +5470,8 @@
       "used_on": [
         "tool:places.js"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "state"
     },
     {
       "claim_id": "lva-bmd-1912",
@@ -5231,7 +5488,8 @@
       "used_on": [
         "tool:places.js"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "state"
     },
     {
       "claim_id": "msa-militia",
@@ -5248,7 +5506,8 @@
       "used_on": [
         "tool:places.js"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "state"
     },
     {
       "claim_id": "msa-index",
@@ -5265,7 +5524,8 @@
       "used_on": [
         "tool:places.js"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "state"
     },
     {
       "claim_id": "msa-nara",
@@ -5282,7 +5542,8 @@
       "used_on": [
         "tool:places.js"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "state"
     },
     {
       "claim_id": "msa-birth-counties",
@@ -5299,7 +5560,8 @@
       "used_on": [
         "tool:places.js"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "state"
     },
     {
       "claim_id": "msa-birth-baltimore",
@@ -5316,7 +5578,8 @@
       "used_on": [
         "tool:places.js"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "state"
     },
     {
       "claim_id": "nc-trpr-rosters",
@@ -5333,7 +5596,8 @@
       "used_on": [
         "tool:places.js"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "state"
     },
     {
       "claim_id": "nc-trpr-county",
@@ -5350,7 +5614,8 @@
       "used_on": [
         "tool:places.js"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "state"
     },
     {
       "claim_id": "nc-trpr-arranged",
@@ -5367,7 +5632,8 @@
       "used_on": [
         "tool:places.js"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "state"
     },
     {
       "claim_id": "nc-vr-have-birth",
@@ -5384,7 +5650,8 @@
       "used_on": [
         "tool:places.js"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "state"
     },
     {
       "claim_id": "nc-vr-have-death",
@@ -5401,7 +5668,8 @@
       "used_on": [
         "tool:places.js"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "state"
     },
     {
       "claim_id": "nc-vr-have-marriage",
@@ -5418,7 +5686,8 @@
       "used_on": [
         "tool:places.js"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "state"
     },
     {
       "claim_id": "nc-vr-birth",
@@ -5435,7 +5704,8 @@
       "used_on": [
         "tool:places.js"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "state"
     },
     {
       "claim_id": "nc-vr-death",
@@ -5452,7 +5722,8 @@
       "used_on": [
         "tool:places.js"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "state"
     },
     {
       "claim_id": "nc-vr-marriage",
@@ -5469,7 +5740,8 @@
       "used_on": [
         "tool:places.js"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "state"
     },
     {
       "claim_id": "nj-mil-rosters",
@@ -5486,7 +5758,8 @@
       "used_on": [
         "tool:places.js"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "state"
     },
     {
       "claim_id": "nj-mil-indents",
@@ -5503,7 +5776,8 @@
       "used_on": [
         "tool:places.js"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "state"
     },
     {
       "claim_id": "nj-pre1848-birth",
@@ -5521,7 +5795,8 @@
         "lineage-matrix",
         "tool:places.js"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "state"
     },
     {
       "claim_id": "nj-vital-1848",
@@ -5538,7 +5813,8 @@
       "used_on": [
         "tool:places.js"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "state"
     },
     {
       "claim_id": "nj-pre1848-death",
@@ -5555,7 +5831,8 @@
       "used_on": [
         "tool:places.js"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "state"
     },
     {
       "claim_id": "nj-pre1848-marriage",
@@ -5572,7 +5849,8 @@
       "used_on": [
         "tool:places.js"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "state"
     },
     {
       "claim_id": "pa-rev-slip",
@@ -5589,7 +5867,8 @@
       "used_on": [
         "tool:places.js"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "state"
     },
     {
       "claim_id": "pa-doh-pre1906",
@@ -5606,7 +5885,8 @@
       "used_on": [
         "tool:places.js"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "state"
     },
     {
       "claim_id": "pa-doh-certified",
@@ -5623,7 +5903,8 @@
       "used_on": [
         "tool:places.js"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "state"
     },
     {
       "claim_id": "pa-arch-1906",
@@ -5640,7 +5921,8 @@
       "used_on": [
         "tool:places.js"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "state"
     },
     {
       "claim_id": "ct-pension-index",
@@ -5657,7 +5939,8 @@
       "used_on": [
         "tool:places.js"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "state"
     },
     {
       "claim_id": "ct-archives-indexes",
@@ -5674,7 +5957,8 @@
       "used_on": [
         "tool:places.js"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "state"
     },
     {
       "claim_id": "sc-rev-audited",
@@ -5691,7 +5975,8 @@
       "used_on": [
         "tool:places.js"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "state"
     },
     {
       "claim_id": "sc-rev-cardindex",
@@ -5708,7 +5993,8 @@
       "used_on": [
         "tool:places.js"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "state"
     },
     {
       "claim_id": "sc-birth-1915",
@@ -5725,7 +6011,8 @@
       "used_on": [
         "tool:places.js"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "state"
     },
     {
       "claim_id": "sc-birth-law",
@@ -5742,7 +6029,8 @@
       "used_on": [
         "tool:places.js"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "state"
     },
     {
       "claim_id": "sc-death-1915",
@@ -5759,7 +6047,8 @@
       "used_on": [
         "tool:places.js"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "state"
     },
     {
       "claim_id": "sc-marriage-1911",
@@ -5776,7 +6065,8 @@
       "used_on": [
         "tool:places.js"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "state"
     },
     {
       "claim_id": "ma-adjutant",
@@ -5793,7 +6083,8 @@
       "used_on": [
         "tool:places.js"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "state"
     },
     {
       "claim_id": "ma-complete",
@@ -5810,7 +6101,8 @@
       "used_on": [
         "tool:places.js"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "state"
     },
     {
       "claim_id": "nara-vital-states",
@@ -5827,7 +6119,8 @@
       "used_on": [
         "tool:places.js"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "national"
     },
     {
       "claim_id": "nara-vital-census",
@@ -5845,7 +6138,8 @@
         "lineage-matrix",
         "tool:places.js"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "national"
     },
     {
       "claim_id": "stat-1836-unmarried",
@@ -5863,7 +6157,8 @@
         "tool:tool-a.js",
         "widow-pension-checker"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "national"
     },
     {
       "claim_id": "stat-1838-1832-service",
@@ -5882,7 +6177,8 @@
         "tool:tool-a.js",
         "widow-pension-checker"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "national"
     },
     {
       "claim_id": "stat-1838-after-service",
@@ -5902,7 +6198,8 @@
         "walkthroughs",
         "widow-pension-checker"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "national"
     },
     {
       "claim_id": "stat-1838-remarriage",
@@ -5920,7 +6217,8 @@
         "tool:tool-a.js",
         "widow-pension-checker"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "national"
     },
     {
       "claim_id": "stat-1848-service",
@@ -5940,7 +6238,8 @@
         "tool:tool-a.js",
         "widow-pension-checker"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "national"
     },
     {
       "claim_id": "stat-1848-widowhood",
@@ -5958,7 +6257,8 @@
         "tool:tool-a.js",
         "widow-pension-checker"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "national"
     },
     {
       "claim_id": "stat-1848-no-second",
@@ -5976,7 +6276,8 @@
         "tool:tool-a.js",
         "widow-pension-checker"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "national"
     },
     {
       "claim_id": "stat-1848-cutoff",
@@ -5993,13 +6294,14 @@
       "used_on": [
         "tool:tool-a.js"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "national"
     },
     {
       "claim_id": "stat-1855-revwar",
       "claim_text": "1855 bounty-land act: it extended to Revolutionary War officers and soldiers, their widows and minor children.",
       "source_url": "https://tile.loc.gov/storage-services/service/ll/llsl/llsl-c33/llsl-c33.pdf",
-      "source_title": "Library of Congress — U.S. Statutes at Large, 33rd Congress (scanned; Act of March 3, 1855 at 10 Stat. 701)",
+      "source_title": "Library of Congress — U.S. Statutes at Large, 33rd Congress (scanned; Act of February 28, 1855, ch. 126, sec. 3 at 10 Stat. 616, and Act of March 3, 1855 at 10 Stat. 701)",
       "source_type": "primary",
       "archive_identifier": null,
       "last_retrieved": "2026-10-31",
@@ -6011,13 +6313,14 @@
         "tool:tool-a.js",
         "widow-pension-checker"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "national"
     },
     {
       "claim_id": "stat-1855-14-days",
       "claim_text": "1855 bounty-land act: no warrant for under 14 days of service unless he was actually in a battle.",
       "source_url": "https://tile.loc.gov/storage-services/service/ll/llsl/llsl-c33/llsl-c33.pdf",
-      "source_title": "Library of Congress — U.S. Statutes at Large, 33rd Congress (scanned; Act of March 3, 1855 at 10 Stat. 701)",
+      "source_title": "Library of Congress — U.S. Statutes at Large, 33rd Congress (scanned; Act of February 28, 1855, ch. 126, sec. 3 at 10 Stat. 616, and Act of March 3, 1855 at 10 Stat. 701)",
       "source_type": "primary",
       "archive_identifier": null,
       "last_retrieved": "2026-10-31",
@@ -6030,13 +6333,14 @@
         "walkthroughs",
         "widow-pension-checker"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "national"
     },
     {
       "claim_id": "stat-1855-mustered",
       "claim_text": "1855 bounty-land act: militia, volunteers or State troops had to be regularly mustered, with service paid by the United States.",
       "source_url": "https://tile.loc.gov/storage-services/service/ll/llsl/llsl-c33/llsl-c33.pdf",
-      "source_title": "Library of Congress — U.S. Statutes at Large, 33rd Congress (scanned; Act of March 3, 1855 at 10 Stat. 701)",
+      "source_title": "Library of Congress — U.S. Statutes at Large, 33rd Congress (scanned; Act of February 28, 1855, ch. 126, sec. 3 at 10 Stat. 616, and Act of March 3, 1855 at 10 Stat. 701)",
       "source_type": "primary",
       "archive_identifier": null,
       "last_retrieved": "2026-10-31",
@@ -6048,13 +6352,14 @@
         "tool:tool-a.js",
         "widow-pension-checker"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "national"
     },
     {
       "claim_id": "stat-1855-deserted",
       "claim_text": "1855 bounty-land act: no warrant if the muster rolls show he deserted or was dishonorably discharged.",
       "source_url": "https://tile.loc.gov/storage-services/service/ll/llsl/llsl-c33/llsl-c33.pdf",
-      "source_title": "Library of Congress — U.S. Statutes at Large, 33rd Congress (scanned; Act of March 3, 1855 at 10 Stat. 701)",
+      "source_title": "Library of Congress — U.S. Statutes at Large, 33rd Congress (scanned; Act of February 28, 1855, ch. 126, sec. 3 at 10 Stat. 616, and Act of March 3, 1855 at 10 Stat. 701)",
       "source_type": "primary",
       "archive_identifier": null,
       "last_retrieved": "2026-10-31",
@@ -6066,13 +6371,14 @@
         "tool:tool-a.js",
         "widow-pension-checker"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "national"
     },
     {
       "claim_id": "stat-1855-widow-at-application",
       "claim_text": "1855 bounty-land act: remarriage didn't bar a widow if she was a widow when she applied.",
       "source_url": "https://tile.loc.gov/storage-services/service/ll/llsl/llsl-c33/llsl-c33.pdf",
-      "source_title": "Library of Congress — U.S. Statutes at Large, 33rd Congress (scanned; Act of March 3, 1855 at 10 Stat. 701)",
+      "source_title": "Library of Congress — U.S. Statutes at Large, 33rd Congress (scanned; Act of February 28, 1855, ch. 126, sec. 3 at 10 Stat. 616, and Act of March 3, 1855 at 10 Stat. 701)",
       "source_type": "primary",
       "archive_identifier": null,
       "last_retrieved": "2026-10-31",
@@ -6084,7 +6390,8 @@
         "tool:tool-a.js",
         "widow-pension-checker"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "national"
     },
     {
       "claim_id": "stat-1878-14-days-a",
@@ -6102,7 +6409,8 @@
         "tool:tool-a.js",
         "widow-pension-checker"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "national"
     },
     {
       "claim_id": "stat-1878-14-days-b",
@@ -6120,7 +6428,8 @@
         "tool:tool-a.js",
         "widow-pension-checker"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "national"
     },
     {
       "claim_id": "stat-1878-remarriage",
@@ -6139,7 +6448,8 @@
         "walkthroughs",
         "widow-pension-checker"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "national"
     },
     {
       "claim_id": "stat-1878-eight-dollars",
@@ -6157,7 +6467,8 @@
         "tool:tool-a.js",
         "widow-pension-checker"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "national"
     },
     {
       "claim_id": "stat-1853-army",
@@ -6175,7 +6486,8 @@
         "tool:tool-a.js",
         "widow-pension-checker"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "national"
     },
     {
       "claim_id": "stat-1853-after-1800",
@@ -6194,7 +6506,8 @@
         "tool:tool-a.js",
         "widow-pension-checker"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "national"
     },
     {
       "claim_id": "stat-1853-same-manner",
@@ -6212,18 +6525,19 @@
         "tool:tool-a.js",
         "widow-pension-checker"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "national"
     },
     {
       "claim_id": "stat-1855feb-navy",
       "claim_text": "February 1855 act: it covered widows of navy officers, non-commissioned officers, marines or mariners of the Revolutionary War.",
       "source_url": "https://tile.loc.gov/storage-services/service/ll/llsl/llsl-c33/llsl-c33.pdf",
-      "source_title": "Library of Congress — U.S. Statutes at Large, 33rd Congress (scanned; Act of March 3, 1855 at 10 Stat. 701)",
+      "source_title": "Library of Congress — U.S. Statutes at Large, 33rd Congress (scanned; Act of February 28, 1855, ch. 126, sec. 3 at 10 Stat. 616, and Act of March 3, 1855 at 10 Stat. 701)",
       "source_type": "primary",
       "archive_identifier": null,
       "last_retrieved": "2026-11-05",
       "quote_excerpt": "non-commissioned officers, marines or mariners who served in the navy",
-      "page_ref": "10 Stat. 616, sec. 3",
+      "page_ref": "10 Stat. 616, ch. 126, sec. 3 (Act of February 28, 1855; chapter begins at 10 Stat. 615)",
       "verification_status": "verified",
       "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-11-05 CT",
       "used_on": [
@@ -6231,18 +6545,19 @@
         "tool:tool-a.js",
         "widow-pension-checker"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "national"
     },
     {
       "claim_id": "stat-1855feb-1800",
       "claim_text": "February 1855 act: it covered those widows married since January 1, 1800.",
       "source_url": "https://tile.loc.gov/storage-services/service/ll/llsl/llsl-c33/llsl-c33.pdf",
-      "source_title": "Library of Congress — U.S. Statutes at Large, 33rd Congress (scanned; Act of March 3, 1855 at 10 Stat. 701)",
+      "source_title": "Library of Congress — U.S. Statutes at Large, 33rd Congress (scanned; Act of February 28, 1855, ch. 126, sec. 3 at 10 Stat. 616, and Act of March 3, 1855 at 10 Stat. 701)",
       "source_type": "primary",
       "archive_identifier": null,
       "last_retrieved": "2026-11-05",
       "quote_excerpt": "since the first day of January, eighteen hundred, shall be entitled to",
-      "page_ref": "10 Stat. 616, sec. 3",
+      "page_ref": "10 Stat. 616, ch. 126, sec. 3 (Act of February 28, 1855; chapter begins at 10 Stat. 615)",
       "verification_status": "verified",
       "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-11-05 CT",
       "used_on": [
@@ -6250,25 +6565,27 @@
         "tool:tool-a.js",
         "widow-pension-checker"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "national"
     },
     {
       "claim_id": "stat-1855feb-same",
       "claim_text": "February 1855 act: their pensions were in the same manner as army widows under section 2 of the 1853 act.",
       "source_url": "https://tile.loc.gov/storage-services/service/ll/llsl/llsl-c33/llsl-c33.pdf",
-      "source_title": "Library of Congress — U.S. Statutes at Large, 33rd Congress (scanned; Act of March 3, 1855 at 10 Stat. 701)",
+      "source_title": "Library of Congress — U.S. Statutes at Large, 33rd Congress (scanned; Act of February 28, 1855, ch. 126, sec. 3 at 10 Stat. 616, and Act of March 3, 1855 at 10 Stat. 701)",
       "source_type": "primary",
       "archive_identifier": null,
       "last_retrieved": "2026-11-05",
       "quote_excerpt": "section of the act of February third, eighteen hundred and fifty-three",
-      "page_ref": "10 Stat. 616, sec. 3",
+      "page_ref": "10 Stat. 616, ch. 126, sec. 3 (Act of February 28, 1855; chapter begins at 10 Stat. 615)",
       "verification_status": "verified",
       "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-11-05 CT",
       "used_on": [
         "tool:tool-a.js",
         "widow-pension-checker"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "national"
     },
     {
       "claim_id": "nara-natf85-order",
@@ -6286,7 +6603,8 @@
         "read-pension-file",
         "tool:tool-a.js"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "national"
     },
     {
       "claim_id": "nara-natf85-revwar",
@@ -6304,7 +6622,8 @@
         "read-pension-file",
         "tool:tool-a.js"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "national"
     },
     {
       "claim_id": "m805-selected",
@@ -6321,7 +6640,8 @@
       "used_on": [
         "read-pension-file"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "national"
     },
     {
       "claim_id": "m805-number",
@@ -6338,7 +6658,8 @@
       "used_on": [
         "read-pension-file"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "national"
     },
     {
       "claim_id": "ga-bounty-certificates",
@@ -6355,7 +6676,8 @@
       "used_on": [
         "tool:places.js"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "state"
     },
     {
       "claim_id": "ga-bounty-line",
@@ -6372,7 +6694,8 @@
       "used_on": [
         "tool:places.js"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "state"
     },
     {
       "claim_id": "ga-bounty-minute",
@@ -6389,7 +6712,8 @@
       "used_on": [
         "tool:places.js"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "state"
     },
     {
       "claim_id": "ga-bounty-militia",
@@ -6406,7 +6730,8 @@
       "used_on": [
         "tool:places.js"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "state"
     },
     {
       "claim_id": "ga-bounty-submit",
@@ -6423,7 +6748,8 @@
       "used_on": [
         "tool:places.js"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "state"
     },
     {
       "claim_id": "ga-bounty-private-acres",
@@ -6440,7 +6766,8 @@
       "used_on": [
         "tool:places.js"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "state"
     },
     {
       "claim_id": "nh-rev-familysearch",
@@ -6457,7 +6784,8 @@
       "used_on": [
         "tool:places.js"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "state"
     },
     {
       "claim_id": "nh-state-papers-rolls",
@@ -6474,7 +6802,8 @@
       "used_on": [
         "tool:places.js"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "state"
     },
     {
       "claim_id": "nh-town-reports",
@@ -6491,7 +6820,8 @@
       "used_on": [
         "tool:places.js"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "state"
     },
     {
       "claim_id": "nh-town-after-1937",
@@ -6508,7 +6838,8 @@
       "used_on": [
         "tool:places.js"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "state"
     },
     {
       "claim_id": "ri-vital-certify",
@@ -6525,7 +6856,8 @@
       "used_on": [
         "tool:places.js"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "state"
     },
     {
       "claim_id": "ri-vital-closed-health",
@@ -6542,7 +6874,8 @@
       "used_on": [
         "tool:places.js"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "state"
     },
     {
       "claim_id": "ri-vital-deaths",
@@ -6559,7 +6892,8 @@
       "used_on": [
         "tool:places.js"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "state"
     },
     {
       "claim_id": "ri-vital-pre1853",
@@ -6576,7 +6910,8 @@
       "used_on": [
         "tool:places.js"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "state"
     },
     {
       "claim_id": "de-oath-series",
@@ -6593,7 +6928,8 @@
       "used_on": [
         "tool:places.js"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "state"
     },
     {
       "claim_id": "de-oath-dates",
@@ -6610,7 +6946,8 @@
       "used_on": [
         "tool:places.js"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "state"
     },
     {
       "claim_id": "de-oath-contents",
@@ -6627,7 +6964,8 @@
       "used_on": [
         "tool:places.js"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "state"
     },
     {
       "claim_id": "de-vital-public",
@@ -6644,7 +6982,8 @@
       "used_on": [
         "tool:places.js"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "state"
     },
     {
       "claim_id": "de-vital-birth-72",
@@ -6661,7 +7000,8 @@
       "used_on": [
         "tool:places.js"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "state"
     },
     {
       "claim_id": "de-vital-marriage-death-ages",
@@ -6678,7 +7018,8 @@
       "used_on": [
         "tool:places.js"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "state"
     },
     {
       "claim_id": "de-vital-1913",
@@ -6695,7 +7036,8 @@
       "used_on": [
         "tool:places.js"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "state"
     },
     {
       "claim_id": "de-vital-recorders",
@@ -6712,7 +7054,8 @@
       "used_on": [
         "tool:places.js"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "state"
     },
     {
       "claim_id": "ri-pres-transcripts",
@@ -6729,7 +7072,8 @@
       "used_on": [
         "tool:places.js"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "state"
     },
     {
       "claim_id": "ri-pres-first-regiment",
@@ -6746,7 +7090,8 @@
       "used_on": [
         "tool:places.js"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "state"
     },
     {
       "claim_id": "dar-ancestor-search",
@@ -6763,7 +7108,8 @@
       "used_on": [
         "lineage-proof-roadmap"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "national"
     },
     {
       "claim_id": "dar-grs-only-joined",
@@ -6780,7 +7126,8 @@
       "used_on": [
         "lineage-proof-roadmap"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "national"
     },
     {
       "claim_id": "sar-prs-not-complete",
@@ -6797,7 +7144,8 @@
       "used_on": [
         "lineage-proof-roadmap"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "national"
     },
     {
       "claim_id": "sar-prs-not-proof",
@@ -6814,7 +7162,8 @@
       "used_on": [
         "lineage-proof-roadmap"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "national"
     },
     {
       "claim_id": "nara-mission-search-within",
@@ -6831,7 +7180,8 @@
       "used_on": [
         "lineage-proof-roadmap"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "national"
     },
     {
       "claim_id": "nara-pensions-natf85-online",
@@ -6848,7 +7198,8 @@
       "used_on": [
         "lineage-proof-roadmap"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "national"
     },
     {
       "claim_id": "ny-lib-capitol-fire",
@@ -6865,7 +7216,8 @@
       "used_on": [
         "tool:places.js"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "state"
     },
     {
       "claim_id": "ny-lib-roster",
@@ -6882,7 +7234,8 @@
       "used_on": [
         "tool:places.js"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "state"
     },
     {
       "claim_id": "ny-lib-pension-not-held",
@@ -6899,7 +7252,8 @@
       "used_on": [
         "tool:places.js"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "state"
     },
     {
       "claim_id": "ny-vital-1880-1881",
@@ -6916,7 +7270,8 @@
       "used_on": [
         "tool:places.js"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "state"
     },
     {
       "claim_id": "ny-vital-local-church",
@@ -6933,7 +7288,8 @@
       "used_on": [
         "tool:places.js"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "state"
     },
     {
       "claim_id": "ny-vital-pre1881-library",
@@ -6950,7 +7306,8 @@
       "used_on": [
         "tool:places.js"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "state"
     },
     {
       "claim_id": "ct-vital-town-clerk",
@@ -6967,7 +7324,8 @@
       "used_on": [
         "tool:places.js"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "national"
     },
     {
       "claim_id": "ct-vital-barbour",
@@ -6984,7 +7342,8 @@
       "used_on": [
         "tool:places.js"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "national"
     },
     {
       "claim_id": "ga-vital-1919",
@@ -7001,7 +7360,8 @@
       "used_on": [
         "tool:places.js"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "state"
     },
     {
       "claim_id": "ga-vital-marriage-1805",
@@ -7018,7 +7378,8 @@
       "used_on": [
         "tool:places.js"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "state"
     },
     {
       "claim_id": "ga-vital-bride-county",
@@ -7035,7 +7396,8 @@
       "used_on": [
         "tool:places.js"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "state"
     },
     {
       "claim_id": "ma-vital-1841-1920",
@@ -7052,7 +7414,8 @@
       "used_on": [
         "tool:places.js"
       ],
-      "notes": ""
+      "notes": "",
+      "source_scope": "state"
     }
   ]
 }

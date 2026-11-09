@@ -252,3 +252,10 @@ Docs: https://developers.cloudflare.com/pages/how-to/web-analytics/
 
 ### t126u (Nov 9, 2026)
 - Widow checker storage note starts with "Nothing is sent anywhere." again.
+
+### t127u (Nov 9, 2026)
+- Source scope tags (standing rule): every source in `manifest/src/sources.py` has a `SCOPE` of national / state / chapter-local / third-party, copied to each claim as `source_scope` (manifest build fails if a source is untagged). `scripts/lib/source-scope.mjs` flags any sentence or tool text worded as a society-wide rule ("DAR says", "SAR:", "NSCDA lists", "As of ..., SAR says") without a cited claim from that society's national source; the gate fails on any flag (`Source scope (rule 7): N flagged`). Test: `scripts/test-source-scope.mjs`.
+- `{{asof:}}` is only allowed for national or state sources; the build stops otherwise.
+- The 2023 Ohio Society SAR presentation (chapter-local) and NSCDA's South Carolina standards (state) are attributed by name; SAR new-member signatures come from SAR's national application checklist.
+- February 28, 1855 navy-widow law cited as ch. 126, sec. 3, 10 Stat. 616 (chapter begins at 615); 10 Stat. 701 is only the March 3, 1855 bounty-land act.
+- Worksheet: step 1 is the patriot, step 2 starts the family with yourself; removing the oldest generation asks for confirmation.

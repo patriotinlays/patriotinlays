@@ -265,7 +265,7 @@ function mountEditor(root) {
     if (msg) msg.textContent = `Added a ${FACT_LABELS[fact]?.toLowerCase() || ""} record for ${genLabel(g.gen).toLowerCase()}. Answer the questions for it below.`;
   });
   root.querySelector("[data-add-gen]").addEventListener("click", () => { state.generations.push(newGen(state.generations.length + 1)); save(state); rerender(); });
-  root.querySelector("[data-remove-gen]").addEventListener("click", () => { if (state.generations.length > 2) { state.generations.pop(); save(state); rerender(); } });
+  root.querySelector("[data-remove-gen]").addEventListener("click", () => { if (state.generations.length > 2 && confirm("Remove this generation and its entries? This can't be undone.")) { state.generations.pop(); save(state); rerender(); } });
   root.querySelector("[data-load-example]")?.addEventListener("click", () => {
     const hasData = state.generations.some((g) => g.cells.length || g.who) || hasPatriot(state.patriot);
     if (hasData && !confirm("Replace what you've entered with the made-up example?")) return;

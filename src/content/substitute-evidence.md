@@ -14,34 +14,36 @@ For people who lived before modern vital records, DAR asks for at least one docu
 Generations 1 to 3 are different: DAR expects complete birth and death dates and places for you, your parents and your grandparents. [[claim:dar-gen-1-3]]
 In practice, deal first with any missing record in the three most recent generations, then work on the older links.
 
-Another society's standard puts the goal plainly: NSCDA states that existence and parentage are proven in each generation. [[claim:nscda-existence]]
-Rules differ between societies, so check the one you are applying to. [[claim:nscda-not-same]]
+Another society's standard puts the goal plainly: NSCDA's South Carolina society's standards say existence and parentage must be proven in each generation. [[claim:nscda-existence]]
+The same standards say not all lineage societies have the same proof requirements, so check the one you are applying to. [[claim:nscda-not-same]]
 
 ## Era-by-era substitute matrix
 
+Many examples below come from one state society's standards (NSCDA in South Carolina). DAR and SAR apply their own standards, so ask your registrar.
+
 | Era of the event | Record | What it can show | Caution |
 |---|---|---|---|
-| Recent generations | Long-form birth certificate | Birth plus parents' names | Short forms without parents' names are rejected by NSCDA [[claim:nscda-short-form]] |
-| 1880–1900 | Federal census | Listed by NSCDA among primary sources [[claim:nscda-census-1880]] | Ages can be approximate; DAR marks birth dates estimated from a census age as circa [[claim:dar-circa]] |
-| 1850–1870 | Federal census | Names every household member | Does not state relationships; supporting evidence only under NSCDA rules [[claim:nscda-census-1850-1870]] |
+| Recent generations | Long-form birth certificate | Birth plus parents' names | NSCDA's South Carolina society's standards say short forms are not acceptable [[claim:nscda-short-form]] |
+| 1880–1900 | Federal census | NSCDA's South Carolina society's standards list these censuses among primary sources [[claim:nscda-census-1880]] | Ages can be approximate; DAR marks birth dates estimated from a census age as circa [[claim:dar-circa]] |
+| 1850–1870 | Federal census | Names every household member | NSCDA's South Carolina society's standards say these censuses do not state relationships and are supporting evidence only [[claim:nscda-census-1850-1870]] |
 | 1790–1840 | Federal census | Head of household by name, others counted by age group [[claim:nara-census-head]] | Cannot prove parentage alone; family composition has to be confirmed from other records [[claim:nara-census-confirm]] |
-| Any era | Infant baptism or christening | DAR lets you enter a baptism date when no birth date can be documented [[claim:dar-baptism]] | Church birth, baptism, marriage, death and burial records are listed by NSCDA [[claim:nscda-church]] |
-| Any era | Family Bible | Birth, marriage and death entries [[claim:m804-bible-pages]] | NSCDA asks for the title page with the publication date [[claim:nscda-bible-title]] |
-| Any era | Wills, probate, deeds, court orders | Named heirs and children; NSCDA lists these county court records [[claim:nscda-county]] | NSCDA's example: a will that never mentions the relationship does not prove it [[claim:nscda-will-example]] |
+| Any era | Infant baptism or christening | DAR lets you enter a baptism date when no birth date can be documented [[claim:dar-baptism]] | DAR says church records are usually acceptable, but each is evaluated in the context of the whole lineage [[claim:dar-usually-acceptable]] |
+| Any era | Family Bible | Birth, marriage and death entries [[claim:m804-bible-pages]] | NSCDA's South Carolina society's standards ask for the title page with the publication date [[claim:nscda-bible-title]] |
+| Any era | Wills, probate, deeds, court orders | Named heirs and children; DAR lists probate, court and land records among the most common sources used to establish lineage [[claim:dar-lineage-sources]] | NSCDA's South Carolina society's standards say a will that does not mention a marriage does not prove it [[claim:nscda-will-example]] |
 | Revolutionary era and later | Pension file | A widow's file may give her maiden name, marriage date and place, and her husband's death [[claim:m804-widow-info]] | Papers submitted before a War Department fire on November 8, 1800 were apparently destroyed [[claim:m804-fire]] |
 
 ## Five substitutes, and how each one gets weighed
 
-1. Affidavits. NSCDA lists affidavits attesting to personal knowledge of an event among substitute sources. [[claim:nscda-affidavits]]
-2. Newspapers. Birth, death and marriage notices count for NSCDA only with the dateline and the name of the paper. [[claim:nscda-newspapers]]
-3. Marriage evidence. A marriage license gives permission; NSCDA notes it is not proof that the marriage took place. [[claim:nscda-license]] A marriage certificate is issued by the officiant or clerk after the ceremony. [[claim:nscda-marriage-cert]]
-4. Family genealogies. DAR reviews all documentation case by case. [[claim:dar-case-by-case]] A family genealogy might be acceptable for a specific individual or generation if it meets DAR standards. [[claim:dar-genealogy-may]] NSCDA rejects printed genealogies that lack complete citations to primary sources. [[claim:nscda-genealogy-citations]] DAR also lists modern local histories and index-only records as sources to use with caution. [[claim:dar-caution-genealogies]]
-5. Other societies' papers. NSCDA states that lineage papers from other genealogy societies are not proofs by themselves. [[claim:nscda-other-society]] Use the documents they cite, not the summary.
+1. Affidavits. NSCDA's South Carolina society's standards list affidavits attesting to personal knowledge of an event among substitute sources. [[claim:nscda-affidavits]]
+2. Newspapers. NSCDA's South Carolina society's standards say birth, death and marriage notices must include the dateline and the name of the paper. [[claim:nscda-newspapers]]
+3. Marriage evidence. A marriage license gives permission; NSCDA's South Carolina society's standards say it is not proof that the marriage took place. [[claim:nscda-license]] The same standards say a marriage certificate is issued by the officiant or clerk after the ceremony. [[claim:nscda-marriage-cert]]
+4. Family genealogies. DAR reviews all documentation case by case. [[claim:dar-case-by-case]] A family genealogy might be acceptable for a specific individual or generation if it meets DAR standards. [[claim:dar-genealogy-may]] NSCDA's South Carolina society's standards say printed genealogies without complete citations to primary sources are unacceptable. [[claim:nscda-genealogy-citations]] DAR also lists modern local histories and index-only records as sources to use with caution. [[claim:dar-caution-genealogies]]
+5. Other societies' papers. NSCDA's South Carolina society's standards say lineage papers from other genealogy societies are not proofs. [[claim:nscda-other-society]] Use the documents they cite, not the summary.
 
 ## Building a proof from several weak records
 
-No single substitute has to carry the whole link. NSCDA advises using each substitute together with one or more others, so that a proof does not rest on one document. [[claim:nscda-combine]]
-When a primary record is missing, an accumulation of indirect or substitute proofs can sometimes be convincing. [[claim:nscda-accumulation]]
+No single substitute has to carry the whole link. NSCDA's South Carolina society's standards advise using each substitute together with one or more others, so that a proof does not rest on one document. [[claim:nscda-combine]]
+The same standards say that when a primary record is missing, an accumulation of indirect or substitute proofs can sometimes be convincing. [[claim:nscda-accumulation]]
 A practical method:
 
 - Pick the fact you need, such as "Mary is the daughter of John".

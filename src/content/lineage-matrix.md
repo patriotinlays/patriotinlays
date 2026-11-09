@@ -56,13 +56,13 @@ Your patriot's service end date can also be passed to the free [Widow Pension La
 
 Each record you add is judged on four things together: what kind of record it is, what it shows (birth, death, marriage, the parent–child link, or where the person lived), whether it says that in words or only hints at it, and whether you have flagged that it disagrees with another record. The kind of record alone never changes the label.
 
-"Says it in words" means the record states the fact outright, like a birth certificate that names the parents. "Only hints at it" means you are working it out from clues, like a child listed in a household on a census that does not state relationships. [[claim:nscda-census-1850-1870]]
+"Says it in words" means the record states the fact outright, like a birth certificate that names the parents. "Only hints at it" means you are working it out from clues, like a child listed in a household on an 1850–1870 census, which NSCDA's South Carolina society's standards say does not state relationships. [[claim:nscda-census-1850-1870]]
 
 ## Where to look, by era and state
 
 Every missing item comes with a "Where to look" note. Type a rough birth year (and death year) and the state for each person, and the note fits that era and state.
 
-- It lists only the censuses taken in that person's lifetime. The 1790–1840 censuses named only the head of household [[claim:nara-census-head]], the 1850–1870 censuses do not state relationships [[claim:nscda-census-1850-1870]], and the 1840 census named Revolutionary War pensioners with their exact ages. [[claim:nara-census-1840]]
+- It lists only the censuses taken in that person's lifetime. The 1790–1840 censuses named only the head of household [[claim:nara-census-head]], NSCDA's South Carolina society's standards say the 1850–1870 censuses do not state relationships [[claim:nscda-census-1850-1870]], and the 1840 census named Revolutionary War pensioners with their exact ages. [[claim:nara-census-1840]]
 - For birth, death and marriage it uses what the state's own archives or vital-records office says about when that state kept those records. For example, Virginia did not record births, marriages and deaths statewide before 1853 [[claim:lva-bmd-pre1853]], and New Jersey births before 1848 were not filed by any level of government, except records of births of enslaved children. [[claim:nj-pre1848-birth]] When the state did not keep the record then, the note points to church, probate and other older records instead.
 - So far the worksheet has verified birth, death or marriage sources for 13 states: Connecticut, Delaware, Georgia, Maryland, Massachusetts, New Hampshire, New Jersey, New York, North Carolina, Pennsylvania, Rhode Island, South Carolina and Virginia. It has Revolutionary War service sources for 13 states: Connecticut, Delaware, Georgia, Maryland, Massachusetts, New Hampshire, New Jersey, New York, North Carolina, Pennsylvania, Rhode Island, South Carolina and Virginia.
 - For any other state it says so plainly and falls back to general advice: a census entry that gives the state and approximate year of birth tells you which local office to ask. [[claim:nara-vital-census]]
@@ -72,8 +72,8 @@ When no listed source fits, it says to ask your society's registrar.
 
 ## Published cautions the matrix shows
 
-- A 1850–1870 census used for parentage gets a caution, because NSCDA notes those censuses do not state relationships. [[claim:nscda-census-1850-1870]]
-- A short-form birth certificate used for parentage gets a caution, because NSCDA does not accept short forms without parents' names. [[claim:nscda-short-form]]
+- A 1850–1870 census used for parentage gets a caution, because NSCDA's South Carolina society's standards say those censuses do not state relationships. [[claim:nscda-census-1850-1870]]
+- A short-form birth certificate used for parentage gets a caution, because NSCDA's South Carolina society's standards say short forms are not acceptable. [[claim:nscda-short-form]]
 - A compiled family genealogy gets a caution, because DAR prefers primary and original records. [[claim:dar-primary-preferred]]
 
 ## The gap rules

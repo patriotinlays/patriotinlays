@@ -1,11 +1,11 @@
 {
-  "builtAt": "Mon Nov 09 2026 10:32:10 GMT-0600 (Central Standard Time)",
+  "builtAt": "Mon Nov 09 2026 17:19:54 GMT-0600 (Central Standard Time)",
   "guideSourcesChecked": [
     {
       "slug": "guides/application-problems",
       "date": "2026-11-05",
       "source": "https://membership.dar.org/NSDAR/AppFormz/App_Help_Step_By_Step_1.aspx",
-      "sources": 13
+      "sources": 14
     },
     {
       "slug": "guides/bounty-land-warrants",
@@ -66,12 +66,12 @@
     {
       "title": "Application Returned? Fixing Common DAR and SAR Proof Problems (Including Supplementals)",
       "slug": "guides/application-problems",
-      "description": "Diagnose why a DAR or SAR application or a patriot's service was questioned, and how to fix it, from the societies' own guidance.",
+      "description": "Diagnose why a DAR or SAR application or a patriot's service was questioned, and how to fix it, from DAR guidance and a 2023 Ohio Society SAR presentation.",
       "cornerstone": "10",
       "path": "/guides/application-problems/",
-      "words": 700,
+      "words": 813,
       "claims": 58,
-      "sources": 13,
+      "sources": 14,
       "tools": [
         "lineage-matrix"
       ]
@@ -95,7 +95,7 @@
       "description": "Connect an ancestor named in the 1850 census to a Revolutionary-era household listed only by its head, using age brackets, pension clues and supporting records.",
       "cornerstone": "6",
       "path": "/guides/census-bridge/",
-      "words": 806,
+      "words": 821,
       "claims": 45,
       "sources": 14,
       "tools": [
@@ -108,7 +108,7 @@
       "description": "Organize the evidence for each generation of a DAR or SAR line in your browser, flag conflicts, and print a gap report.",
       "tool": "lineage-matrix",
       "path": "/tools/lineage-matrix/",
-      "words": 1323,
+      "words": 1342,
       "claims": 59,
       "sources": 19,
       "tools": [
@@ -160,7 +160,7 @@
       "description": "Find a Revolutionary War pension file, decode its envelope, and read declarations, affidavits and widow's papers in the right order.",
       "cornerstone": "3",
       "path": "/guides/read-pension-file/",
-      "words": 1036,
+      "words": 1054,
       "claims": 73,
       "sources": 17,
       "tools": [
@@ -173,7 +173,7 @@
       "description": "Work out whether an ancestor's service records sit at the National Archives or a state archive, then search the right place.",
       "cornerstone": "4",
       "path": "/guides/records-by-state/",
-      "words": 737,
+      "words": 738,
       "claims": 63,
       "sources": 18,
       "tools": [
@@ -186,7 +186,7 @@
       "description": "A disambiguation checklist for proving that a Revolutionary War record belongs to your ancestor and not to another man of the same name.",
       "cornerstone": "8",
       "path": "/guides/same-name/",
-      "words": 703,
+      "words": 723,
       "claims": 41,
       "sources": 14,
       "tools": [
@@ -199,7 +199,7 @@
       "description": "What to use when a generation has no birth record, era by era, and how lineage societies weigh substitutes.",
       "cornerstone": "2",
       "path": "/guides/substitute-evidence/",
-      "words": 824,
+      "words": 930,
       "claims": 56,
       "sources": 13,
       "tools": [
@@ -212,7 +212,7 @@
       "description": "See which federal Revolutionary War widow pension and bounty-land laws (1836 to 1878) a widow's marriage date and her husband's service fit, and where her pension file would be kept, so you can request it.",
       "tool": "widow",
       "path": "/tools/widow-pension-checker/",
-      "words": 1507,
+      "words": 1516,
       "claims": 75,
       "sources": 17,
       "tools": [
@@ -224,7 +224,7 @@
       "slug": "about",
       "description": "What patriotinlays.com does, who it helps, what it doesn't do, and how its facts are checked.",
       "path": "/about/",
-      "words": 387,
+      "words": 396,
       "claims": 0,
       "sources": 0,
       "tools": []
@@ -274,7 +274,7 @@
       "slug": "walkthroughs",
       "description": "Step-by-step examples of the Widow Pension Law Checker and the Lineage Evidence Matrix, using a made-up family and the tools' real results.",
       "path": "/walkthroughs/",
-      "words": 1109,
+      "words": 1117,
       "claims": 16,
       "sources": 10,
       "tools": []

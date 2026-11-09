@@ -1,23 +1,23 @@
 ---
 title: "Application Returned? Fixing Common DAR and SAR Proof Problems (Including Supplementals)"
 slug: guides/application-problems
-description: "Diagnose why a DAR or SAR application or a patriot's service was questioned, and how to fix it, from the societies' own guidance."
+description: "Diagnose why a DAR or SAR application or a patriot's service was questioned, and how to fix it, from DAR guidance and a 2023 Ohio Society SAR presentation."
 cornerstone: 10
 ---
 # Application Returned? Fixing Common DAR and SAR Proof Problems (Including Supplementals)
 
-Start by assuming the problem is in the documentation, not the ancestor. Both societies have published what they see most often. This guide turns that guidance into a problem, cause and fix table, then a pre-submission checklist.
+Start by assuming the problem is in the documentation, not the ancestor. DAR has published what it sees most often, and a 2023 Ohio Society SAR presentation listed common SAR problems. This guide turns that guidance into a problem, cause and fix table, then a pre-submission checklist.
 
 ## Problem, cause and fix
 
 | Problem | Cause the society describes | Fix |
 |---|---|---|
-| Applicant birth certificate questioned | SAR: missing applicant birth certificate, or one that does not show gender [[claim:ohsar-bc]] | Order a long-form certificate naming both parents, including the mother's maiden name [[claim:ohsar-bc-parents]] |
-| Parent-child link questioned | SAR: inadequate proof of parent-to-child connections, including unresolved naming conflicts [[claim:ohsar-naming]] | Add a record that states the relationship; see [Substitute Evidence](/guides/substitute-evidence/) |
-| Patriot generation questioned | SAR: no proof the patriot was alive, of the right age, and resident where the service was claimed [[claim:ohsar-patriot-gen]] | Add residence and age evidence for the service years |
-| Dates rejected | {{asof:ohsar-date-format}} SAR says dates go in the form 01 Jan 2023 [[claim:ohsar-date-format]] | Re-enter dates in that format |
-| DAR papers used as proof rejected | SAR: only DAR record copies are considered, not chapter copies [[claim:ohsar-record-copies]] | Order the DAR record copy |
-| Review slowed | SAR: superfluous documentation [[claim:ohsar-superfluous]], and lineage data not supported by documents [[claim:ohsar-unsupported]] | Cut extra papers; delete any data you cannot document |
+| Applicant birth certificate questioned | A 2023 Ohio Society SAR presentation said a missing applicant birth certificate, or one that does not show gender, gets an application pended [[claim:ohsar-bc]] | Order a long-form certificate naming both parents, including the mother's maiden name [[claim:ohsar-bc-parents]] |
+| Parent-child link questioned | A 2023 Ohio Society SAR presentation said inadequate proof of parent-to-child connections, including unresolved naming conflicts, gets an application pended [[claim:ohsar-naming]] | Add a record that states the relationship; see [Substitute Evidence](/guides/substitute-evidence/) |
+| Patriot generation questioned | A 2023 Ohio Society SAR presentation said the patriot's generation should prove the patriot was alive, of the right age, and resident where the service was claimed [[claim:ohsar-patriot-gen]] | Add residence and age evidence for the service years |
+| Dates rejected | A 2023 Ohio Society SAR presentation said dates go in the form 01 Jan 2023 [[claim:ohsar-date-format]] | Re-enter dates in that format |
+| DAR papers used as proof rejected | A 2023 Ohio Society SAR presentation said only DAR record copies are considered, not chapter copies [[claim:ohsar-record-copies]] | Order the DAR record copy |
+| Review slowed | A 2023 Ohio Society SAR presentation said superfluous documentation [[claim:ohsar-superfluous]], and lineage data not supported by documents, slow review [[claim:ohsar-unsupported]] | Cut extra papers; delete any data you cannot document |
 | Service removed or questioned | DAR: older applications verified when DAR did not require documentation to prove service [[claim:darblog-1890s]] | Find a service source that meets current standards |
 | Service questioned | DAR: missing source of service or complete residence [[claim:darblog-missing]] | Add both |
 | Service questioned | DAR: residence and service location do not match [[claim:darblog-residence]] | See [Same Name, Different Man](/guides/same-name/) |
@@ -35,17 +35,18 @@ Start by assuming the problem is in the documentation, not the ancestor. Both so
 
 ## Supplementals and replacements (SAR)
 
-These figures come from a 2023 SAR presentation, so confirm current rules with your state registrar.
+Except for the signature checklist, these points come from a 2023 Ohio Society SAR presentation, not from SAR's national rules, so confirm current rules with your state registrar.
 
-- {{asof:ohsar-signatures}} SAR says new-member applications need five signatures; supplementals need two. [[claim:ohsar-signatures]] [[claim:ohsar-supp-sig]]
-- {{asof:ohsar-replacements}} SAR says new-member applications get two chances to resolve problems with replacement applications. [[claim:ohsar-replacements]]
-- {{asof:ohsar-supp-once}} SAR says a supplemental may be replaced only once. [[claim:ohsar-supp-once]]
-- {{asof:ohsar-3yrs}} SAR says applications pended for three years are withdrawn. [[claim:ohsar-3yrs]]
-- {{asof:ohsar-nonrefundable}} SAR says application fees are non-refundable [[claim:ohsar-nonrefundable]], and the fee cited in the presentation was $100. [[claim:ohsar-fee]]
+- {{asof:sar-checklist-signatures}} SAR's application checklist asks whether the State Registrar, State Secretary and two sponsors have signed a new-member application. [[claim:sar-checklist-signatures]]
+- A 2023 Ohio Society SAR presentation said supplemental applications need two signatures. [[claim:ohsar-supp-sig]]
+- A 2023 Ohio Society SAR presentation said new-member applications get two chances to resolve problems with replacement applications. [[claim:ohsar-replacements]]
+- A 2023 Ohio Society SAR presentation said a supplemental may be replaced only once. [[claim:ohsar-supp-once]]
+- A 2023 Ohio Society SAR presentation said applications pended for three years are withdrawn. [[claim:ohsar-3yrs]]
+- A 2023 Ohio Society SAR presentation said application fees are non-refundable [[claim:ohsar-nonrefundable]], and the fee it cited was $100. [[claim:ohsar-fee]]
 
 ## Pre-submission checklist
 
-1. Fill the form from the documents, not the documents to the form. SAR's guidance puts it in capitals: always complete an application from the documentation. [[claim:ohsar-from-docs]]
+1. Fill the form from the documents, not the documents to the form. A 2023 Ohio Society SAR presentation put it in capitals: always complete an application from the documentation. [[claim:ohsar-from-docs]]
 2. Every name, date, place and relationship has a document behind it. [[claim:dar-each-relationship]]
 3. {{asof:dar-upload-each}} DAR says every uploaded document is cited, and every cited document is uploaded. [[claim:dar-upload-each]]
 4. {{asof:dar-4digit}} DAR says years are four digits. [[claim:dar-4digit]]
@@ -54,7 +55,7 @@ These figures come from a 2023 SAR presentation, so confirm current rules with y
 7. Service source is an original record or a transcription of one. [[claim:dar-service-sources]]
 8. Run the Lineage Evidence Matrix report and clear every gap and conflict it lists.
 
-{{asof:ohsar-30min}} SAR says a correctly prepared application can be reviewed at National in as little as 30 minutes. [[claim:ohsar-30min]]
+A 2023 Ohio Society SAR presentation said a correctly prepared application can be reviewed at National in as little as 30 minutes. [[claim:ohsar-30min]]
 
 Related guides: [The Patriot Lineage Proof Roadmap](/guides/lineage-proof-roadmap/), [No Birth Certificate?](/guides/substitute-evidence/), [Patriotic Service Without a Musket](/guides/patriotic-service/).
 

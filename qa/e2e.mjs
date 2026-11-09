@@ -275,7 +275,7 @@ check("Tool B: 'Load an example' fills a made-up patriot and family and shows ga
   const road = readFileSync(join(DIST, "guides/lineage-proof-roadmap/index.html"), "utf8");
   check("Worksheet patriot step: 'Don't know your patriot's name yet?' links in plain words to Roadmap Step 0", nn && /^Don't know your patriot's name yet\?/.test(nn.text) && nn.href === "/guides/lineage-proof-roadmap/#step-0-find-your-patriot-s-name" && road.includes('id="step-0-find-your-patriot-s-name"'), JSON.stringify(nn)); }
 const notes = await page.$$eval("[data-gaps] [data-where-block] p:first-child", (ns) => ns.map((n) => n.textContent));
-check("Where to look is tailored: Virginia's 1853-1896 birth registers and the censuses in each lifetime appear", notes.some((n) => /1853 to 1896/.test(n)) && notes.some((n) => /Census: The 1850–1870 censuses/.test(n)), notes.slice(0, 2).join(" | ").slice(0, 160));
+check("Where to look is tailored: Virginia's 1853-1896 birth registers and the censuses in each lifetime appear", notes.some((n) => /1853 to 1896/.test(n)) && notes.some((n) => /Census: (The 1850–1870 censuses|NSCDA's South Carolina society's standards say the 1850–1870 censuses)/.test(n)), notes.slice(0, 2).join(" | ").slice(0, 160));
 check("Where to look: the patriot's generation is labelled", /\(the patriot\)/.test(await page.textContent("[data-gaps]")));
 const noteHrefs = await page.$$eval("[data-gaps] [data-where-block] a", (as) => [...new Set(as.map((a) => a.getAttribute("href")))]);
 check("Where to look: state/era links (Library of Virginia, Pennsylvania) are Source Manifest sources", noteHrefs.includes("https://lva-virginia.libguides.com/bmd") && noteHrefs.some((h) => h.startsWith("https://www.pa.gov/")) && noteHrefs.every((h) => mUrls.has(h) || /^\/guides\/[a-z-]+\/$/.test(h)), noteHrefs.join(" "));
@@ -714,6 +714,67 @@ phase("load"); await page.goto(`${BASE}/`); phase("interact");
     && [...asof, ...H("guides/application-problems").matchAll(/As of <span data-asof="([a-z0-9-]+)">([^<]+)<\/span>, (DAR|SAR) says/g)].every((m) => m[2] === longDate(lp[claimsById.get(m[1]).source_url])) && asof.length >= 6);
   check("t124u #9: Roadmap Step 0 reads 'Step 0: find your patriot's name' and 'If you don't know your patriot's name yet'; the old #step-0 link still lands there", /<h2 id="step-0-find-your-patriot-s-name">Step 0: find your patriot&#39;s name<\/h2>|<h2 id="step-0-find-your-patriot-s-name">Step 0: find your patriot's name<\/h2>/.test(rm)
     && text("guides/lineage-proof-roadmap").includes("If you don't know your patriot's name yet, start here.") && rm.includes('id="step-0-find-the-soldier-s-name"') && !/find the soldier/.test(H("")));
+}
+
+// ---- t127u: audit fixes (attribution, 1855 navy act, registrar phrase, About, worksheet start/confirm, Virginia scope, rule 7) ----
+{
+  const lp = JSON.parse(readFileSync(join(ROOT, "manifest/source-last-passed.json"), "utf8")).sources;
+  const MONTHS = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+  const longDate = (t) => { const d = new Date(t); return `${MONTHS[d.getUTCMonth()]} ${d.getUTCDate()}, ${d.getUTCFullYear()}`; };
+  const claimsAll = JSON.parse(readFileSync(join(ROOT, "manifest/claims.json"), "utf8")).claims;
+  const H = (p) => readFileSync(join(DIST, p, "index.html"), "utf8"); const text = (p) => H(p).replace(/<script[\s\S]*?<\/script>/g, "").replace(/<[^>]+>/g, "").replace(/&#39;|&apos;/g, "'").replace(/&amp;/g, "&").replace(/&quot;/g, '"').replace(/\s+/g, " ");
+  const { readdirSync: rdT } = await import("node:fs");
+  const pagesOf = (re) => rdT(DIST, { recursive: true }).filter((f) => re.test(f)).map((f) => [f, readFileSync(join(DIST, f), "utf8")]);
+  const ap = text("guides/application-problems"), apH = H("guides/application-problems");
+  const BAD = /\b(?:SAR|NSCDA)(?:'s)? (?:says|wants|lists|treats|notes|states|considers|rejects|advises|asks for|cites)\b|\bSAR:(?! the National)|\bNSCDA:(?! The National)|SAR presenters|under NSCDA rules|Listed by NSCDA|SAR's guidance|NSCDA's own example|NSCDA Standards of Proof\)/;
+  const ohSentences = ["A 2023 Ohio Society SAR presentation said dates go in the form 01 Jan 2023", "A 2023 Ohio Society SAR presentation said applications pended for three years are withdrawn.", "A 2023 Ohio Society SAR presentation put it in capitals: always complete an application from the documentation.", "A 2023 Ohio Society SAR presentation said a correctly prepared application can be reviewed at National in as little as 30 minutes."];
+  check("t127u #1: Application Returned attributes the Ohio points to 'A 2023 Ohio Society SAR presentation', never 'SAR says' or 'SAR:', and none of them carries an 'As of' date",
+    ohSentences.every((x) => ap.includes(x)) && !/\bSAR says\b|SAR: (?!the National)/.test(ap) && ![...apH.matchAll(/data-asof="([a-z0-9-]+)"/g)].some((m) => m[1].startsWith("ohsar-")), ohSentences.filter((x) => !ap.includes(x)).join(" | "));
+  check("t127u #1: SAR signatures come from SAR's national application checklist (members.sar.org), with an 'As of' date from its last pass",
+    new RegExp(`As of <span data-asof="sar-checklist-signatures">${longDate(lp["https://members.sar.org/media/uploads/pages/334/wPXSPrcD0cuU.pdf"])}</span>, SAR(?:'|&#39;)s application checklist asks whether the State Registrar, State Secretary and two sponsors have signed a new-member application\\.`).test(apH.replace(/&apos;/g, "&#39;"))
+    && apH.includes('href="https://members.sar.org/media/uploads/pages/334/wPXSPrcD0cuU.pdf"') && !/five signatures/.test(ap));
+  const se = H("guides/substitute-evidence");
+  check("t127u #1: Substitute Evidence opens its matrix with Tim's sentence, and the source is renamed 'NSCDA South Carolina Society — Standards of Proof (2025)'",
+    /<h2 id="era-by-era-substitute-matrix">Era-by-era substitute matrix<\/h2>\s*<p>Many examples below come from one state society(?:'|&#39;)s standards \(NSCDA in South Carolina\)\. DAR and SAR apply their own standards, so ask your registrar\.<\/p>\s*(<div class="table-wrap[^>]*>)?\s*<table/.test(se.replace(/&apos;/g, "&#39;"))
+    && se.includes("NSCDA South Carolina Society — Standards of Proof (2025)") && !/NSCDA \(South Carolina\) — Standards of Proof \(rev/.test(se));
+  const affected = ["guides/application-problems", "guides/same-name", "guides/substitute-evidence", "guides/census-bridge", "tools/lineage-matrix"];
+  const bad = affected.filter((p) => BAD.test(text(p)));
+  check("t127u #1: Application Returned, Same Name, Substitute Evidence, Census Bridge and the Lineage Evidence Matrix never word the Ohio or South Carolina points as SAR-wide or NSCDA-wide rules", bad.length === 0, bad.join(" "));
+  check("t127u #1: those pages use the honest attributions", text("guides/same-name").includes("A 2023 Ohio Society SAR presentation said") && /NSCDA's South Carolina society's standards (say|give)/.test(text("guides/same-name"))
+    && text("guides/census-bridge").includes("NSCDA's South Carolina society's standards say they do not state relationships") && text("tools/lineage-matrix").includes("NSCDA's South Carolina society's standards say"));
+  const ta = H("tools/widow-pension-checker"), rp = text("guides/read-pension-file");
+  check("t127u #2: the navy-widow law is cited as the Act of February 28, 1855, ch. 126, sec. 3, 10 Stat. 616 on the widow checker and the Read a Pension File guide",
+    text("tools/widow-pension-checker").includes("The Act of February 28, 1855 (ch. 126, sec. 3, 10 Stat. 616) did the same for widows of navy officers") && rp.includes("navy widows (Act of February 28, 1855, ch. 126, sec. 3, 10 Stat. 616)")
+    && /Act of February 28, 1855, ch\. 126, sec\. 3 at 10 Stat\. 616, and Act of March 3, 1855 at 10 Stat\. 701/.test(H("guides/read-pension-file")));
+  const s701 = pagesOf(/\.(html|js)$/).flatMap(([f, h]) => [...h.replace(/<[^>]+>/g, " ").matchAll(/.{0,160}10 Stat\. 701.{0,10}/g)].map((m) => [f, m[0]]));
+  check(`t127u #2: every '10 Stat. 701' (${s701.length}) is the March 3, 1855 bounty-land act, never the navy-widow law`, s701.length > 0 && s701.every(([, c]) => /March( 3,)? 1855|bounty-land|Bounty-land/.test(c) && !/navy widows \(|February 28, 1855 \(/.test(c.slice(-60))), s701.filter(([, c]) => !/March|bounty/i.test(c)).map(([f]) => f).join(" "));
+  const reg = pagesOf(/\.(html|js)$/).filter(([, h]) => /often (?:the|a) (?:local )?(?:SAR )?chapter registrar/i.test(h)).map(([f]) => f);
+  check("t127u #3: 'often the chapter registrar' (any form) is gone from every built page and script, including the Patriotic Service guide and the FAQ", reg.length === 0 && /next step is finding a sponsor near you/.test(text("guides/patriotic-service")), reg.join(" "));
+  const ab = text("about");
+  check("t127u #4: About uses the FAQ wording ('each time the site is updated, and on a regular schedule') and spells out NSCDA on first use", ab.includes("Each time the site is updated, and on a regular schedule, software checks") && !/when the site is built/i.test(ab)
+    && ab.indexOf("The National Society of the Colonial Dames of America (NSCDA)") > -1 && ab.indexOf("The National Society of the Colonial Dames of America (NSCDA)") <= ab.indexOf("NSCDA") - "The National Society of the Colonial Dames of America (".length);
+  const rs = text("guides/records-by-state");
+  check("t127u #6: Records by State makes the militia bounty-land sentence Virginia-specific (its source is the Library of Virginia)", rs.includes("Virginia gave no state bounty land for militia service.") && !/No state bounty land was given for militia service/.test(rs));
+  for (const w of [390, 1280]) {
+    const c = await browser.newContext({ viewport: { width: w, height: 900 } }); const pg = await c.newPage();
+    await pg.goto(`${BASE}/tools/lineage-matrix/`);
+    await pg.evaluate(() => localStorage.setItem("pi.toolB.v1", JSON.stringify({ version: 1, updated: new Date().toISOString(), generations: [{ gen: 1, living: true, cells: [] }, { gen: 2, cells: [] }, { gen: 3, born: "1750", cells: [{ fact: "birth", docType: "other", mode: "direct", citation: "family Bible page 2" }] }] })));
+    await pg.reload();
+    const step2 = (await pg.textContent("h3.step:nth-of-type(2), .tool h3.step >> nth=1")).replace(/\s+/g, " ").trim();
+    const msgs = []; let answer = false;
+    pg.on("dialog", async (d) => { msgs.push(d.message()); answer ? await d.accept() : await d.dismiss(); });
+    const n0 = (await pg.evaluate(() => JSON.parse(localStorage.getItem("pi.toolB.v1")).generations.length));
+    await pg.click("[data-remove-gen]"); await pg.waitForTimeout(150);
+    const n1 = (await pg.evaluate(() => JSON.parse(localStorage.getItem("pi.toolB.v1")).generations.length));
+    answer = true; await pg.click("[data-remove-gen]"); await pg.waitForTimeout(150);
+    const n2 = (await pg.evaluate(() => JSON.parse(localStorage.getItem("pi.toolB.v1")).generations.length));
+    check(`t127u #5 (${w}px): "Remove the oldest generation" asks "Remove this generation and its entries? This can't be undone."; Cancel keeps it, OK removes it`, msgs[0] === "Remove this generation and its entries? This can't be undone." && n0 === 3 && n1 === 3 && n2 === 2, JSON.stringify({ msgs, n0, n1, n2 }));
+    check(`t127u #5 (${w}px): the worksheet's starting point is consistent: step 1 is your patriot, step 2 starts the family with yourself`, /^2 Then your family: start with yourself, and go back one generation at a time$/.test(step2) && /Start with your patriot/.test(text("tools/lineage-matrix")), step2);
+    await c.close();
+  }
+  const { execFileSync: xT } = await import("node:child_process");
+  const gateOut = xT("node", [join(ROOT, "scripts/check-manifest.mjs")], { encoding: "utf8" });
+  check("t127u #7: every claim has a source scope tag, and the gate reports 0 society-wide wordings backed only by state, chapter-local or third-party sources", /Source scope \(rule 7\): 0 flagged/.test(gateOut) && claimsAll.every((c) => ["national", "state", "chapter-local", "third-party"].includes(c.source_scope)));
 }
 
 // ---- Cache-busting: every script/CSS reference and every module import carries ?v=<hash> that matches the file ----

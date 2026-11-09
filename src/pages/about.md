@@ -13,7 +13,7 @@ The site has ten plain-English guides and two free tools that run in your browse
 
 ## What this site doesn't do
 
-It isn't affiliated with DAR, SAR, NSCDA, the National Archives or any other organization it cites. It doesn't decide anyone's membership; only a society's own genealogists do that. It doesn't search records for you, and it isn't legal or professional genealogical advice.
+It isn't affiliated with DAR, SAR, The National Society of the Colonial Dames of America (NSCDA), the National Archives or any other organization it cites. It doesn't decide anyone's membership; only a society's own genealogists do that. It doesn't search records for you, and it isn't legal or professional genealogical advice.
 
 ## How the facts are kept accurate
 

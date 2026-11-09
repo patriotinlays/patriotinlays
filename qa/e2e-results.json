@@ -1,8 +1,8 @@
 {
-  "ranAt": "Mon Nov 09 2026 10:28:49 GMT-0600 (Central Standard Time)",
+  "ranAt": "Mon Nov 09 2026 17:21:29 GMT-0600 (Central Standard Time)",
   "browser": "/usr/bin/google-chrome (headless) via playwright-core 1.59.1",
-  "passed": 179,
-  "total": 179,
+  "passed": 194,
+  "total": 194,
   "exampleReportPages": {
     "summaryPages": 2,
     "fullPages": 3,
@@ -31,7 +31,7 @@
     "sub": "Plain-English help with DAR and SAR applications, for the Daughters and the Sons of the American Revolution",
     "ai": "Written with AI assistance and reviewed by the site's owner. Each fact is tied to a quoted official source, and software checks that the quote is still there.",
     "beforeStart": true,
-    "words": 1409
+    "words": 1414
   },
   "results": [
     {
@@ -447,7 +447,7 @@
     {
       "name": "Report (audit 4 #5): where advice cites NSCDA, the report explains it once (The National Society of the Colonial Dames of America)",
       "ok": true,
-      "detail": "{\"uses\":true,\"terms\":1,\"text\":\"NSCDA: The National Society of the Colonial Dames of America; notes marked NSCDA cite its Standards of Proof.\"}"
+      "detail": "{\"uses\":true,\"terms\":1,\"text\":\"NSCDA: The National Society of the Colonial Dames of America; notes that mention NSCDA cite its South Carolina society's standards.\"}"
     },
     {
       "name": "Report: each 'Where to look' block appears once, and every to-do points to it by letter",
@@ -502,7 +502,7 @@
     {
       "name": "Audit 3 #5: the report prints the Ohio no-source note once, and each census fact once",
       "ok": true,
-      "detail": "[\"Census: NSCDA lists the 1880–1900 censuses as primary sources.\",\"Census: The 1850–1870 censuses do not state relationships.\",\"Census: The 1790–1840 censuses named only the head of household and counted everyone else by age group.\"]"
+      "detail": "[\"Census: NSCDA's South Carolina society's standards list the 1880–1900 censuses as primary sources.\",\"Census: NSCDA's South Carolina society's standards say the 1850–1870 censuses do not state relationships.\",\"Census: The 1790–1840 censuses named only the head of household and counted everyone else by age group.\"]"
     },
     {
       "name": "Audit 3 #2: the audit's longer persona-B report prints shorter than before (Save as PDF 3 -> at most 2, Ctrl+P 5 -> at most 3)",
@@ -572,7 +572,7 @@
     {
       "name": "Home (Nov 5 lock): subtitle names DAR and SAR; mission in flowing paragraphs (no lists) ahead of 'Ready to get started?'; purpose line, both tool names, one-sentence privacy",
       "ok": true,
-      "detail": "{\"ps\":7,\"lists\":0,\"text\":\"This site helps you organize the records that connect you to a Revolutionary War\",\"sub\":\"Plain-English help with DAR and SAR applications, for the Daughters and the Sons of the American Revolution\",\"ai\":\"Written with AI assistance and reviewed by the site's owner. Each fact is tied to a quoted official source, and software checks that the quote is still there.\",\"beforeStart\":true,\"words\":1409}"
+      "detail": "{\"ps\":7,\"lists\":0,\"text\":\"This site helps you organize the records that connect you to a Revolutionary War\",\"sub\":\"Plain-English help with DAR and SAR applications, for the Daughters and the Sons of the American Revolution\",\"ai\":\"Written with AI assistance and reviewed by the site's owner. Each fact is tied to a quoted official source, and software checks that the quote is still there.\",\"beforeStart\":true,\"words\":1414}"
     },
     {
       "name": "Home (Nov 5 lock, SAR line updated by t125u): the exact AI line, the exact SAR line (sourced), no unsourced 'most people get stuck' / 'give up' / guarantee lines",
@@ -727,7 +727,7 @@
     {
       "name": "Walkthroughs: real screenshots load with captions and alt text; quoted outputs match the captured tool results; the example family is labeled made up",
       "ok": true,
-      "detail": "[{\"src\":\"/assets/walkthroughs/widow-date-360.png?v=d2d45cee26\",\"ok\":true,\"alt\":\"The marriage date as the example fills it in: month May, year 1777, no day, and Exactly.\"},{\"src\":\"/assets/walkthroughs/widow-summary.png?v=21c4bb43ad\",\"ok\":true,\"alt\":\"The example's \\\"In short\\\" summary, exactly as the checker prints it.\"},{\"src\":\"/assets/walkthroughs/widow-law-row.png?v=a774812044\",\"ok\":true,\"alt\":\"One law row in full: the March 1855 bounty-land law, its rule, and the terms the tool can't check.\"},{\"src\":\"/assets/walkthroughs/worksheet-patriot-360.png?v=906d057d63\",\"ok\":true,\"alt\":\"The example patriot, with rough service dates. The check below says your patriot's dates fall inside DAR's period for that service, and that it isn't a ruling.\"},{\"src\":\"/assets/walkthroughs/worksheet-gaps.png?v=4aaba65df4\",\"ok\":true,\"alt\":\"The example's gap list, with the lettered \\\"Where to look\\\" advice underneath.\"}]"
+      "detail": "[{\"src\":\"/assets/walkthroughs/widow-date-360.png?v=d2d45cee26\",\"ok\":true,\"alt\":\"The marriage date as the example fills it in: month May, year 1777, no day, and Exactly.\"},{\"src\":\"/assets/walkthroughs/widow-summary.png?v=21c4bb43ad\",\"ok\":true,\"alt\":\"The example's \\\"In short\\\" summary, exactly as the checker prints it.\"},{\"src\":\"/assets/walkthroughs/widow-law-row.png?v=a774812044\",\"ok\":true,\"alt\":\"One law row in full: the March 1855 bounty-land law, its rule, and the terms the tool can't check.\"},{\"src\":\"/assets/walkthroughs/worksheet-patriot-360.png?v=906d057d63\",\"ok\":true,\"alt\":\"The example patriot, with rough service dates. The check below says your patriot's dates fall inside DAR's period for that service, and that it isn't a ruling.\"},{\"src\":\"/assets/walkthroughs/worksheet-gaps.png?v=3fa40ff017\",\"ok\":true,\"alt\":\"The example's gap list, with the lettered \\\"Where to look\\\" advice underneath.\"}]"
     },
     {
       "name": "Walkthroughs: every quoted output is a real captured result, and no bare 'Fits' verdict is shown",
@@ -795,7 +795,7 @@
       "detail": "{\"h1s\":1,\"sr\":\"Patriot, In Lay Terms: \",\"srHidden\":true,\"vis\":\"Plain-English help with DAR and SAR applications, for the Daughters and the Sons of the American Revolution\",\"visH\":143.9375,\"title\":\"Patriot, In Lay Terms: plain-English help for DAR and SAR applications | Patriot In Lay Terms\",\"rule\":\"rgb(178, 34, 52)\",\"ruleW\":\"56px\"}"
     },
     {
-      "name": "t122u #11: every visible text element on all 22 pages passes WCAG AA contrast (4.5:1, large text 3:1) — 3495 elements",
+      "name": "t122u #11: every visible text element on all 22 pages passes WCAG AA contrast (4.5:1, large text 3:1) — 3498 elements",
       "ok": true,
       "detail": ""
     },
@@ -815,7 +815,7 @@
       "detail": "lineage-proof-roadmap=2026-11-05 substitute-evidence=2026-11-05 read-pension-file=2026-11-09 records-by-state=2026-11-05 bounty-land-warrants=2026-11-09 census-bridge=2026-11-05 patriotic-service=2026-11-05 same-name=2026-11-09 patriot-or-loyalist=2026-11-09 application-problems=2026-11-05"
     },
     {
-      "name": "t124u #1 (390px): every Sources entry on every page (16 pages, 284 entries) has a visible \"Used for: ...\" line of at most about 8 words, and the raw URL is hidden on screen",
+      "name": "t124u #1 (390px): every Sources entry on every page (16 pages, 286 entries) has a visible \"Used for: ...\" line of at most about 8 words, and the raw URL is hidden on screen",
       "ok": true,
       "detail": ""
     },
@@ -825,7 +825,7 @@
       "detail": "{\"urls\":true,\"icons\":true}"
     },
     {
-      "name": "t124u #11 (390px): every link that leaves the site (325) opens in a new tab with rel=\"noopener noreferrer\", a small icon and \"(opens in new tab)\" for screen readers; no internal or email link does",
+      "name": "t124u #11 (390px): every link that leaves the site (327) opens in a new tab with rel=\"noopener noreferrer\", a small icon and \"(opens in new tab)\" for screen readers; no internal or email link does",
       "ok": true,
       "detail": ""
     },
@@ -845,7 +845,7 @@
       "detail": "{\"n\":15,\"ok\":true}"
     },
     {
-      "name": "t124u #1 (1280px): every Sources entry on every page (16 pages, 284 entries) has a visible \"Used for: ...\" line of at most about 8 words, and the raw URL is hidden on screen",
+      "name": "t124u #1 (1280px): every Sources entry on every page (16 pages, 286 entries) has a visible \"Used for: ...\" line of at most about 8 words, and the raw URL is hidden on screen",
       "ok": true,
       "detail": ""
     },
@@ -855,7 +855,7 @@
       "detail": "{\"urls\":true,\"icons\":true}"
     },
     {
-      "name": "t124u #11 (1280px): every link that leaves the site (325) opens in a new tab with rel=\"noopener noreferrer\", a small icon and \"(opens in new tab)\" for screen readers; no internal or email link does",
+      "name": "t124u #11 (1280px): every link that leaves the site (327) opens in a new tab with rel=\"noopener noreferrer\", a small icon and \"(opens in new tab)\" for screen readers; no internal or email link does",
       "ok": true,
       "detail": ""
     },
@@ -916,6 +916,81 @@
     },
     {
       "name": "t124u #9: Roadmap Step 0 reads 'Step 0: find your patriot's name' and 'If you don't know your patriot's name yet'; the old #step-0 link still lands there",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "t127u #1: Application Returned attributes the Ohio points to 'A 2023 Ohio Society SAR presentation', never 'SAR says' or 'SAR:', and none of them carries an 'As of' date",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "t127u #1: SAR signatures come from SAR's national application checklist (members.sar.org), with an 'As of' date from its last pass",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "t127u #1: Substitute Evidence opens its matrix with Tim's sentence, and the source is renamed 'NSCDA South Carolina Society — Standards of Proof (2025)'",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "t127u #1: Application Returned, Same Name, Substitute Evidence, Census Bridge and the Lineage Evidence Matrix never word the Ohio or South Carolina points as SAR-wide or NSCDA-wide rules",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "t127u #1: those pages use the honest attributions",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "t127u #2: the navy-widow law is cited as the Act of February 28, 1855, ch. 126, sec. 3, 10 Stat. 616 on the widow checker and the Read a Pension File guide",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "t127u #2: every '10 Stat. 701' (5) is the March 3, 1855 bounty-land act, never the navy-widow law",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "t127u #3: 'often the chapter registrar' (any form) is gone from every built page and script, including the Patriotic Service guide and the FAQ",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "t127u #4: About uses the FAQ wording ('each time the site is updated, and on a regular schedule') and spells out NSCDA on first use",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "t127u #6: Records by State makes the militia bounty-land sentence Virginia-specific (its source is the Library of Virginia)",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "t127u #5 (390px): \"Remove the oldest generation\" asks \"Remove this generation and its entries? This can't be undone.\"; Cancel keeps it, OK removes it",
+      "ok": true,
+      "detail": "{\"msgs\":[\"Remove this generation and its entries? This can't be undone.\",\"Remove this generation and its entries? This can't be undone.\"],\"n0\":3,\"n1\":3,\"n2\":2}"
+    },
+    {
+      "name": "t127u #5 (390px): the worksheet's starting point is consistent: step 1 is your patriot, step 2 starts the family with yourself",
+      "ok": true,
+      "detail": "2 Then your family: start with yourself, and go back one generation at a time"
+    },
+    {
+      "name": "t127u #5 (1280px): \"Remove the oldest generation\" asks \"Remove this generation and its entries? This can't be undone.\"; Cancel keeps it, OK removes it",
+      "ok": true,
+      "detail": "{\"msgs\":[\"Remove this generation and its entries? This can't be undone.\",\"Remove this generation and its entries? This can't be undone.\"],\"n0\":3,\"n1\":3,\"n2\":2}"
+    },
+    {
+      "name": "t127u #5 (1280px): the worksheet's starting point is consistent: step 1 is your patriot, step 2 starts the family with yourself",
+      "ok": true,
+      "detail": "2 Then your family: start with yourself, and go back one generation at a time"
+    },
+    {
+      "name": "t127u #7: every claim has a source scope tag, and the gate reports 0 society-wide wordings backed only by state, chapter-local or third-party sources",
       "ok": true,
       "detail": ""
     },

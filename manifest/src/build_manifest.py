@@ -17,8 +17,11 @@ NOV5 = {"stat-1853-army","stat-1853-after-1800","stat-1853-same-manner","stat-18
 # Claims first matched later carry their real first-match date (never a made-up one): nara-amrev-fs-m804 matched in the
 # Nov 5, 2026 live check (t111u); the t119u record-copy claims matched their live pages on Nov 9, 2026.
 FIRST_MATCHED = {"nara-amrev-fs-m804": "2026-11-05", "dar-lib-record-copy-use": "2026-11-09", "dar-linres-record-copies": "2026-11-09", "dar-linres-little-info": "2026-11-09", "sar-record-copy": "2026-11-09",
-    "ct-vital-town-clerk": "2026-11-09", "ct-vital-barbour": "2026-11-09", "ga-vital-1919": "2026-11-09", "ga-vital-marriage-1805": "2026-11-09", "ga-vital-bride-county": "2026-11-09", "ma-vital-1841-1920": "2026-11-09"}
+    "ct-vital-town-clerk": "2026-11-09", "ct-vital-barbour": "2026-11-09", "ga-vital-1919": "2026-11-09", "ga-vital-marriage-1805": "2026-11-09", "ga-vital-bride-county": "2026-11-09", "ma-vital-1841-1920": "2026-11-09", "sar-checklist-signatures": "2026-11-09"}
 def retrieved(cid): return FIRST_MATCHED.get(cid) or ("2026-11-05" if cid in NOV5 else "2026-10-31")
+missing_scope = [k for k in SOURCES if k not in SCOPE]
+if missing_scope: raise SystemExit("sources without a scope tag (national/state/chapter-local/third-party): " + ", ".join(missing_scope))
+assert set(SCOPE.values()) <= {"national", "state", "chapter-local", "third-party"}
 out = []; unused = []
 for cid, sk, quote, text, page in C:
     if cid not in used: unused.append(cid); continue
@@ -26,7 +29,7 @@ for cid, sk, quote, text, page in C:
     out.append(dict(claim_id=cid, claim_text=text, source_url=url, source_title=title,
         source_type="primary" if sk.startswith("LOC_C") else "official_secondary", archive_identifier=None,
         last_retrieved=retrieved(cid), quote_excerpt=quote, page_ref=page, verification_status="verified",
-        verified_by="bot:R3-verify — quote matched in source text fetched " + retrieved(cid) + " CT", used_on=sorted(used.get(cid, [])), notes=""))
+        verified_by="bot:R3-verify — quote matched in source text fetched " + retrieved(cid) + " CT", used_on=sorted(used.get(cid, [])), notes="", source_scope=SCOPE[sk]))
 json.dump({"schema_version": 1, "policy": "Any claim not verifiable against an official primary/secondary source in this manifest is omitted from the site. Build fails on unmanifested claims.", "claims": out},
           open(os.path.join(root, "manifest/claims.json"), "w"), indent=2, ensure_ascii=False)
 print(len(out), "claims written (all referenced);", len(unused), "drafted claims dropped as unused:", ", ".join(unused))

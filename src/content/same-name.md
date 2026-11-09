@@ -14,7 +14,7 @@ A DAR staff genealogist describes sorting six men named Thomas Gillespie in Sout
 In the end only four of them had properly sourced service. [[claim:darblog-gillespie-four]]
 DAR names multiple people of the same name in an area as a common reason to re-examine a patriot's service. [[claim:darblog-multiple]]
 It also checks whether another ancestor of the same name has been established since, to make sure there are two distinct people. [[claim:darblog-same-name]]
-SAR presenters list weak parent-to-child proof, including unresolved naming conflicts, among the most common reasons applications are pended. [[claim:ohsar-naming]]
+A 2023 Ohio Society SAR presentation said weak parent-to-child proof, including unresolved naming conflicts, is among the most common reasons applications are pended. [[claim:ohsar-naming]]
 
 ## How the federal files handle same-name veterans
 
@@ -31,15 +31,15 @@ Work through these for each candidate record. Every "no" is a reason the record 
 | Residence vs. service | Where your patriot lived and where the service was performed | A residence and service location that do not match is a standard DAR review trigger [[claim:darblog-residence]] |
 | Distance | Towns, not just counties | DAR's example: two Middlesex County towns nearly 45 miles apart pointed to two men, not one [[claim:darblog-woburn]] |
 | Alive at the time | Death date vs. service date | DAR adds a service date for patriots who died during the war, to show the patriot was alive then [[claim:darblog-died]] |
-| Right age | Birth range vs. service | SAR wants the patriot's generation to show the patriot was alive, of the right age, and resident where the service was claimed [[claim:ohsar-patriot-gen]] |
+| Right age | Birth range vs. service | A 2023 Ohio Society SAR presentation said the patriot's generation should show the patriot was alive, of the right age, and resident where the service was claimed [[claim:ohsar-patriot-gen]] |
 | Same household over time | Age brackets across censuses | Census brackets help track one head of household among same-name men [[claim:nara-census-ballpark]] |
-| Same place, several records | Census, deed and court order in one county | NSCDA: three such records in the same county MAY be enough to show one man [[claim:nscda-same-county]] |
+| Same place, several records | Census, deed and court order in one county | NSCDA's South Carolina society's standards say three such records in the same county MAY be enough to show one man [[claim:nscda-same-county]] |
 | Unit and officers | Names of officers and companies in each record | A pension application normally states rank, unit and period of service [[claim:m804-rank-unit]] |
 | Witnesses and neighbors | Who swore affidavits, who appears on deeds | Compare each witness against known kin and neighbors |
 
 ## Watch for these traps
 
-1. Cousins with identical names. NSCDA's own example is two cousins named Cadwalader Jones, each the son of a different father, in a county whose records burned. [[claim:nscda-cadwalader]]
+1. Cousins with identical names. NSCDA's South Carolina society's standards give the example of two cousins named Cadwalader Jones, each the son of a different father, in a county whose records burned. [[claim:nscda-cadwalader]]
 2. Service in another state. In NARA's Daniel Ide example, the key pension file belonged to a man who served from Massachusetts though the family lived in Vermont, and was easy to pass over for that reason. [[claim:prologue-ide-ma]]
 3. A record that only matches on name. A name match with no supporting place, age or kin detail is a lead, not proof. Log it as indirect.
 4. Spelling variants. Check the variant-spelling cross-references before deciding a man has no file. [[claim:m804-variant]]
