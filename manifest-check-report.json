@@ -1,7 +1,7 @@
 {
   "live_source_check": "NOT RUN",
   "live_source_check_line": "Live-source check: NOT RUN",
-  "checkedAt": "Thu Nov 05 2026 17:31:22 GMT-0600 (Central Standard Time)",
+  "checkedAt": "Mon Nov 09 2026 06:28:08 GMT-0600 (Central Standard Time)",
   "dirs": [
     "src/content",
     "src/pages",
@@ -30,8 +30,8 @@
       "unmarked": 0
     },
     "src/content/lineage-proof-roadmap.md": {
-      "units": 72,
-      "marked": 41,
+      "units": 77,
+      "marked": 45,
       "unmarked": 0
     },
     "src/content/patriot-or-loyalist.md": {
@@ -85,7 +85,7 @@
       "unmarked": 0
     },
     "src/pages/privacy.md": {
-      "units": 20,
+      "units": 23,
       "marked": 0,
       "unmarked": 0
     },
@@ -135,17 +135,17 @@
       "unmarked": 0
     }
   },
-  "sentences": 899,
-  "markedSentences": 468,
-  "manifestClaims": 389,
-  "referencedClaims": 389,
+  "sentences": 907,
+  "markedSentences": 472,
+  "manifestClaims": 393,
+  "referencedClaims": 393,
   "links": "not run (use --links)",
   "errors": [],
   "warnings": [],
   "last_live_source_check": {
-    "checkedAt": "Thu Nov 05 2026 17:30:42 GMT-0600 (Central Standard Time)",
+    "checkedAt": "Mon Nov 09 2026 06:27:29 GMT-0600 (Central Standard Time)",
     "result": "PASSED",
-    "manifestClaims": 389,
+    "manifestClaims": 393,
     "errors": 0,
     "fallbacks": [
       "https://membership.dar.org/NSDAR/AppFormz/App_Help_Step_By_Step_1.aspx",

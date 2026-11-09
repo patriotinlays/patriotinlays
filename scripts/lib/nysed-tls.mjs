@@ -6,7 +6,11 @@ import tls from "node:tls";
 import https from "node:https";
 
 const PEM = new URL("../../manifest/nysed-intermediate.pem", import.meta.url).pathname;
-export const NYSED_ISSUER = "C=BE, O=GlobalSign nv-sa, CN=GlobalSign RSA OV SSL CA 2018";
+// Re-pinned Nov 9, 2026: nysed.gov's certificate renewed Nov 3, 2026 under GlobalSign GCC R46 OV TLS CA 2025 (replacing
+// GlobalSign RSA OV SSL CA 2018). The intermediate came from the CA-issuers URL in nysed's own certificate
+// (secure.globalsign.com/cacert/gsgccr46ovtlsca2025.crt), SHA-256 D1:60:E2:DE:...:C0:40:63:F9, and chains to GlobalSign Root R46.
+export const NYSED_ISSUER = "C=BE, O=GlobalSign nv-sa, CN=GlobalSign GCC R46 OV TLS CA 2025";
+export const NYSED_ISSUER_CN = "GlobalSign GCC R46 OV TLS CA 2025";
 
 export function isNysedHost(hostname) {
   return /(^|\.)nysed\.gov$/i.test(hostname || "");

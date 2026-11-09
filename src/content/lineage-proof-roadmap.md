@@ -33,6 +33,14 @@ If none of these find your patriot, check your state's archives for militia reco
 
 Once you have a name, the free [Lineage Evidence Matrix](/tools/lineage-matrix/) starts with him: his state, his type of service and his rough dates.
 
+## If your patriot is already in DAR's or SAR's database
+
+If DAR has already accepted your patriot, an earlier member's approved application can help with your research and can also be used as documentation for your own application. [[claim:dar-lib-record-copy-use]]
+DAR calls these copies "record copies," and you can order them online. [[claim:dar-linres-record-copies]]
+Older applications may include little information, so check what each one actually proves. [[claim:dar-linres-little-info]]
+SAR also sells record copies of approved applications. [[claim:sar-record-copy]]
+Ask your chapter registrar which of your generations still need proof.
+
 ## How the generations are numbered
 
 On a DAR application the lineage starts with you, the applicant, as generation 1. [[claim:dar-gen1-applicant]]

@@ -3053,17 +3053,85 @@
       "notes": ""
     },
     {
+      "claim_id": "dar-lib-record-copy-use",
+      "claim_text": "DAR says previously verified applications can be used for research and as documentation for new applications.",
+      "source_url": "https://www.dar.org/library/search.cfm",
+      "source_title": "DAR Library — Search Services",
+      "source_type": "official_secondary",
+      "archive_identifier": null,
+      "last_retrieved": "2026-11-09",
+      "quote_excerpt": "Previously verified DAR membership and supplemental applications can be used as genealogical research tools as well as documentation for new applications.",
+      "page_ref": null,
+      "verification_status": "verified",
+      "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-11-09 CT",
+      "used_on": [
+        "lineage-proof-roadmap"
+      ],
+      "notes": ""
+    },
+    {
+      "claim_id": "dar-linres-record-copies",
+      "claim_text": "DAR calls copies of previously verified applications record copies, and they can be downloaded online.",
+      "source_url": "https://www.dar.org/library/collections/dar-lineage-resources",
+      "source_title": "DAR Library — DAR Lineage Resources",
+      "source_type": "official_secondary",
+      "archive_identifier": null,
+      "last_retrieved": "2026-11-09",
+      "quote_excerpt": "Copies of previously verified DAR membership applications (record copies) can be downloaded online",
+      "page_ref": null,
+      "verification_status": "verified",
+      "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-11-09 CT",
+      "used_on": [
+        "lineage-proof-roadmap"
+      ],
+      "notes": ""
+    },
+    {
+      "claim_id": "dar-linres-little-info",
+      "claim_text": "DAR says some previously verified applications may include little or no information.",
+      "source_url": "https://www.dar.org/library/collections/dar-lineage-resources",
+      "source_title": "DAR Library — DAR Lineage Resources",
+      "source_type": "official_secondary",
+      "archive_identifier": null,
+      "last_retrieved": "2026-11-09",
+      "quote_excerpt": "some previously verified applications may include little or no information",
+      "page_ref": null,
+      "verification_status": "verified",
+      "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-11-09 CT",
+      "used_on": [
+        "lineage-proof-roadmap"
+      ],
+      "notes": ""
+    },
+    {
+      "claim_id": "sar-record-copy",
+      "claim_text": "SAR offers record copies: verified official copies of approved membership or supplemental applications.",
+      "source_url": "https://www.sar.org/genealogical-copy-services/",
+      "source_title": "SAR — Genealogical Copy Services",
+      "source_type": "official_secondary",
+      "archive_identifier": null,
+      "last_retrieved": "2026-11-09",
+      "quote_excerpt": "An SAR Record Copy is a verified official copy of an approved SAR membership application or supplemental application.",
+      "page_ref": null,
+      "verification_status": "verified",
+      "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-11-09 CT",
+      "used_on": [
+        "lineage-proof-roadmap"
+      ],
+      "notes": ""
+    },
+    {
       "claim_id": "nara-amrev-fs-m804",
       "claim_text": "The National Archives lists the Revolutionary War pension and bounty-land warrant application files on FamilySearch, free with login.",
       "source_url": "https://www.archives.gov/research/military/american-revolution",
       "source_title": "NARA — The American Revolution (research page)",
       "source_type": "official_secondary",
       "archive_identifier": null,
-      "last_retrieved": "2026-10-31",
+      "last_retrieved": "2026-11-05",
       "quote_excerpt": "Revolutionary War Pension and Bounty-Land Warrant Application Files (Microfilm Roll # M804, Record Group 15) National Archives Catalog (NAID: 300022) Ancestry.com (free from NARA computers) | Ancestry.com ($ - by subscription) FamilySearch.org (free with login)",
       "page_ref": null,
       "verification_status": "verified",
-      "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
+      "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-11-05 CT",
       "used_on": [
         "lineage-proof-roadmap"
       ],

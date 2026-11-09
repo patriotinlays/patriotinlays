@@ -64,9 +64,24 @@ export const MODE_HELP = Object.freeze({
   claim: "nscda-census-1850-1870",
 });
 
-// A cell nobody has filled in yet (used to stop "Add a record" from stacking blank rows).
+// "Skip for now" (Tim t119u #3): each of a record's four questions (A to D) can be skipped. A skipped or blank answer is
+// never an error: the record reads "Needs details" and the gap report lists the answer as "Still needed".
+export const SKIP_TEXT = "Skip for now";
+export const SKIPPABLE = Object.freeze(["fact", "docType", "mode", "citation"]);
+export const STILL_NEEDED = "Still needed";
+export const isSkipped = (c = {}, k) => Array.isArray(c.skipped) && c.skipped.includes(k);
+// Mark (or unmark) a question as skipped. Skipping clears that answer; giving an answer clears the skip.
+export function setSkip(c, k, on) {
+  const s = new Set(Array.isArray(c.skipped) ? c.skipped : []);
+  if (on) { s.add(k); c[k] = ""; } else s.delete(k);
+  c.skipped = SKIPPABLE.filter((x) => s.has(x));
+  return c;
+}
+
+// A cell nobody has filled in yet (used to stop "Add a record" from stacking blank rows). A record with a skipped
+// question is not blank: the visitor has started it, so it shows in the gap report with "Still needed".
 export function isEmptyCell(c = {}) {
-  return !c.fact && !c.docType && !c.mode && !c.conflict && !(c.citation || "").trim();
+  return !c.fact && !c.docType && !c.mode && !c.conflict && !(c.citation || "").trim() && !(Array.isArray(c.skipped) && c.skipped.length);
 }
 
 // Published cautions that apply to a (document type, fact) pair. Each carries a manifest claim_id.
@@ -96,12 +111,13 @@ export function evaluateCell(cell = {}) {
   // entry, so its status is "Needs details" until A to D are answered (audit 3: a ticked census showed "No Evidence Entered").
   if (isEmptyCell(cell)) return { label: LABELS.none, issues, cautions, needs: [] };
   const needs = [];
-  if (!cell.docType) { issues.push("Still needed: pick what kind of record this is."); needs.push("its kind"); }
+  const sk = (k) => (isSkipped(cell, k) ? " (skipped for now)" : "");
+  if (!cell.docType) { issues.push("Still needed" + sk("docType") + ": pick what kind of record this is."); needs.push("its kind"); }
   else if (cell.docType === "census") { issues.push("Still needed: pick which census it is (the year range)."); needs.push("which census"); }
   else if (!DOC_TYPES[cell.docType]) { issues.push(`Still needed: pick a record type from the list ("${cell.docType}" isn't one).`); needs.push("its kind"); }
-  if (!FACTS.includes(cell.fact)) { issues.push("Still needed: pick what this record shows (birth, death, marriage, parent–child link or where they lived)."); needs.push("what it shows"); }
-  if (!["direct", "indirect"].includes(cell.mode)) { issues.push("Still needed: pick whether the record says it in words or only hints at it."); needs.push("words or hints"); }
-  if (!cell.citation || cell.citation.trim().length < 8) { issues.push("Still needed: say where you found the record, in a few words (for example: county courthouse, will book 3, page 12)."); needs.push("where you found it"); }
+  if (!FACTS.includes(cell.fact)) { issues.push("Still needed" + sk("fact") + ": pick what this record shows (birth, death, marriage, parent–child link or where they lived)."); needs.push("what it shows"); }
+  if (!["direct", "indirect"].includes(cell.mode)) { issues.push("Still needed" + sk("mode") + ": pick whether the record says it in words or only hints at it."); needs.push("words or hints"); }
+  if (!cell.citation || cell.citation.trim().length < 8) { issues.push("Still needed" + sk("citation") + ": say where you found the record, in a few words (for example: county courthouse, will book 3, page 12)."); needs.push("where you found it"); }
   for (const c of CAUTIONS) if (c.doc === cell.docType && c.facts.includes(cell.fact)) cautions.push({ text: c.text, claim: c.claim });
   if (cell.mode === "direct" && cautions.some((c) => c.claim === "nscda-census-1850-1870"))
     cautions.push({ text: "You picked \"says it in words\", but the published standard above says this record type does not state relationships.", claim: "nscda-census-1850-1870" });
@@ -241,12 +257,12 @@ export function gaps(rows = [], patriot = null) {
     for (const f of req.need) if (!has(f)) out.push({ gen: r.gen, fact: f, priority: 1, add: f, text: `${who}: no ${f} evidence entered yet.`, claim: req.claim, where: whereToLook(f, r.gen) });
     if (req.anyOf && !req.anyOf.some(has)) out.push({ gen: r.gen, fact: "birth", priority: 1, add: "birth", text: `${who}: add at least one birth or death record.`, claim: req.claim, where: whereToLook("birth", r.gen) });
     if (req.link && !has("parentage")) out.push({ gen: r.gen, fact: "parentage", priority: 1, add: "parentage", text: `${who}: no record yet that links this person to the next generation in your line.`, claim: "dar-each-relationship", where: whereToLook("parentage", r.gen) });
-    for (const c of filledCells(r.cells)) { const ev = evaluateCell(c); const fl = c.fact ? factName(c.fact) : "record";
+    for (const c of filledCells(r.cells)) { const ev = evaluateCell(c); const fl = c.fact ? factName(c.fact) : "";
       const where = c.fact ? whereToLook(c.fact, r.gen) : { text: "", notes: [], claims: [], links: [], guides: [], registrar: REGISTRAR };
-      if (ev.label === LABELS.conflict) out.push({ gen: r.gen, fact: c.fact, priority: 0, text: `${who}: you flagged a conflict on the ${fl} record. Sort it out before relying on it.`, where });
-      else if (ev.label === LABELS.incomplete) out.push({ gen: r.gen, fact: c.fact, priority: 2, text: `${who}: the ${fl} record isn't finished. ${ev.issues.join(" ")}`,
-        brief: `The ${fl} record isn't finished. Still needed: ${ev.needs.join(", ")}.`, where });
-      else if (ev.cautions.length) out.push({ gen: r.gen, fact: c.fact, priority: 2, text: `${who}: ${fl} record. ${ev.cautions[0].text}`, claim: ev.cautions[0].claim, where }); }
+      if (ev.label === LABELS.conflict) out.push({ gen: r.gen, fact: c.fact, priority: 0, text: `${who}: you flagged a conflict on the ${fl ? fl + " " : ""}record. Sort it out before relying on it.`, where });
+      else if (ev.label === LABELS.incomplete) out.push({ gen: r.gen, fact: c.fact, priority: 2, text: `${who}: the ${fl ? fl + " " : ""}record isn't finished. ${ev.issues.join(" ")}`,
+        brief: `The ${fl ? fl + " " : ""}record isn't finished. Still needed: ${ev.needs.join(", ")}.`, where });
+      else if (ev.cautions.length) out.push({ gen: r.gen, fact: c.fact, priority: 2, text: `${who}: ${fl ? fl + " " : ""}record. ${ev.cautions[0].text}`, claim: ev.cautions[0].claim, where }); }
   }
   // Each item also gets a "short" text without the "Generation N (...)" prefix, for grouped display.
   for (const g of out) g.short = g.gen == null ? g.text : g.text.replace(/^Generation \d+ \([^)]*\): /, "").replace(/^./, (c) => c.toUpperCase());

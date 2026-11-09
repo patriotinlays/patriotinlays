@@ -174,6 +174,9 @@ function renderFile(dir, f) {
   const defs = dir === "src/content" ? `<details class="defs" data-defs><summary>${esc(DEFS_SUMMARY)}</summary>${md(DEFS_MD, ctx)}<p class="small"><a href="/#glossary">The same definitions on the home page</a></p></details>` : "";
   let html = md(body, ctx);
   // Tool pages: title, purpose, limits box, tool first; glossary and long copy sit below the tool.
+  // Tim t119u #2: on tool pages, one line right under the one-sentence purpose (above the "What it does" box) points beginners to the Roadmap.
+  if (fm.tool) { const i = html.indexOf("</p>", html.indexOf("</h1>")); if (i < 0) throw new Error(`tool page ${f}: no purpose line`);
+    html = html.slice(0, i + 4) + '<p class="roadmap-pointer" data-roadmap-pointer>New to this? <a href="/guides/lineage-proof-roadmap/">Start with the Roadmap guide.</a></p>' + html.slice(i + 4); }
   if (fm.tool && defs) html = html.replace(/(<\/section><script type="module" src="\/assets\/js\/tool-[ab]-ui\.js"><\/script>)/, `$1${defs}`);
   else if (defs) html = html.replace("</h1>", `</h1>${defs}`);
   // Guides end with a "What to do next" block (its own tool first) and a link to the next guide, so no guide is a dead end.
@@ -210,7 +213,6 @@ write("", page({ title: "Patriot, In Lay Terms: plain-English help for DAR and S
 <p class="subtitle" data-subtitle>Plain-English help with DAR and SAR applications, for the Daughters and the Sons of the American Revolution</p>
 <p class="independent" data-independent>An independent guide: not affiliated with DAR, SAR or any lineage society, and it doesn't search records for you.</p>
 <section class="home-mission" data-mission>${HOME.body.replace(/<p>Written with AI assistance/, '<p class="ai-line" data-ai-line>Written with AI assistance')}</section>
-<nav class="home-tool-choice" aria-label="Choose a tool"><p><strong>Choose a tool:</strong> <a href="/tools/widow-pension-checker/">Widow Pension Law Checker</a> · <a href="/tools/lineage-matrix/">Lineage Evidence Matrix</a></p></nav>
 <section class="card start-here home-start" aria-labelledby="get-started" data-get-started><h2 id="get-started">Ready to get started?</h2>
 <p><a class="button-link" href="/tools/lineage-matrix/">Start the Lineage Evidence Matrix</a> <a class="button-link" href="/tools/widow-pension-checker/">Open the Widow Pension Law Checker</a></p>
 <p>New to all of this? <a href="/guides/lineage-proof-roadmap/" data-start-button>Begin with the Roadmap guide</a>: how to join, how to find the soldier's name, and the whole process, step by step.</p></section>

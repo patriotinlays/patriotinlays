@@ -401,7 +401,7 @@ const homeOrder = await page.evaluate(() => [...document.querySelectorAll("main 
     && /organize the records that connect you to a Revolutionary War patriot/.test(hm.text) && /Widow Pension Law Checker/.test(hm.text) && /Lineage Evidence Matrix/.test(hm.text) && /what you type into the tools stays in your own browser\./.test(hm.text), JSON.stringify({ ...hm, text: hm.text.slice(0, 80) }));
   check("Home (Nov 5 lock): the exact AI line, the exact SAR line (sourced), no unsourced 'most people get stuck' / 'give up' / guarantee lines", hm.ai === "Written with AI assistance and reviewed by the site's owner. Each fact is tied to a quoted official source, and software checks that the quote is still there."
     && /SAR's local sponsor, often the chapter registrar, can guide you through the application\./.test(hm.text) && !/most people get stuck|give up|so that doesn't happen to you|make sure you walk/i.test(hm.text) && !/No person reviews/i.test(await page.textContent("main")), hm.ai); }
-const firstLinks = await page.$$eval("main a", (as) => as.filter((a) => !a.closest(".home-tool-choice")).map((a) => a.getAttribute("href")).filter((h) => !h.startsWith("#src-")).slice(0, 3));
+const firstLinks = await page.$$eval("main a", (as) => as.map((a) => a.getAttribute("href")).filter((h) => !h.startsWith("#src-")).slice(0, 3));
 check("Home: the first links (after source notes) are the worksheet, the widow checker and the Roadmap guide", firstLinks[0] === "/tools/lineage-matrix/" && firstLinks[1] === "/tools/widow-pension-checker/" && firstLinks[2] === "/guides/lineage-proof-roadmap/", firstLinks.join(" "));
 const navLinks = await page.$$eval("header.site nav a", (as) => as.map((a) => [a.getAttribute("href"), a.textContent]));
 check("Navigation: 'Start here' (the Roadmap) comes first, then the widow-pension check", navLinks[0][0] === "/guides/lineage-proof-roadmap/" && navLinks[0][1] === "Start here" && navLinks[1][0] === "/tools/widow-pension-checker/", navLinks.map((x) => x[1]).join(" | "));
@@ -539,6 +539,49 @@ for (const p of ["/faq/", "/walkthroughs/"]) { await page.goto(BASE + p); await 
   await page.emulateMedia({ media: "screen" }); }
 // (360px overflow for the new pages is covered by pagesToCheck at 375px and by the mobile screenshots below.)
 await page.goto(`${BASE}/guides/read-pension-file/`); await page.screenshot({ path: join(SHOTS, "desktop-guide.png") });
+// ---- Polish batch t119u (Nov 9) ----
+{ // #1 Home: no "Choose a tool:" row; the two big buttons stay in "Ready to get started?"
+  const home = readFileSync(join(DIST, "index.html"), "utf8"); const gs = (home.match(/<section[^>]*data-get-started[\s\S]*?<\/section>/) || [""])[0];
+  check('t119u #1: home has no "Choose a tool:" link row; "Ready to get started?" keeps both big buttons', !/Choose a tool/.test(home) && !/home-tool-choice/.test(home)
+    && /class="button-link" href="\/tools\/lineage-matrix\/"/.test(gs) && /class="button-link" href="\/tools\/widow-pension-checker\/"/.test(gs)); }
+{ // #2 Tool pages: the Roadmap line sits right under the one-sentence purpose, above the "What it does" box
+  const bad = [];
+  for (const tp of ["/tools/widow-pension-checker/", "/tools/lineage-matrix/"]) { const h = readFileSync(join(DIST, tp, "index.html"), "utf8");
+    const after = h.slice(h.indexOf("</h1>") + 5).trimStart(); const m = after.match(/^<p>[\s\S]*?<\/p>(<p class="roadmap-pointer"[^>]*>[\s\S]*?<\/p>)\s*<aside class="card box-limits/);
+    if (!m || !/New to this\? <a href="\/guides\/lineage-proof-roadmap\/">Start with the Roadmap guide\.<\/a>/.test(m[1]) || (h.match(/data-roadmap-pointer/g) || []).length !== 1) bad.push(tp); }
+  check('t119u #2: both tool pages show "New to this? Start with the Roadmap guide." (linked) directly under the purpose, above "What it does"', bad.length === 0, bad.join(" ")); }
+{ // #5 Sitemap: report pages left out; robots.txt rules unchanged
+  const sm5 = readFileSync(join(DIST, "sitemap.xml"), "utf8"); const rb5 = readFileSync(join(DIST, "robots.txt"), "utf8");
+  check("t119u #5: sitemap.xml lists neither report page; robots.txt still disallows both", !/\/tools\/widow-pension-checker\/report\//.test(sm5) && !/\/tools\/lineage-matrix\/report\//.test(sm5)
+    && /^Disallow: \/tools\/widow-pension-checker\/report\/$/m.test(rb5) && /^Disallow: \/tools\/lineage-matrix\/report\/$/m.test(rb5)); }
+{ // #4 Roadmap: the record-copies section right after Step 0, every fact sourced, ending with the registrar line
+  const h = readFileSync(join(DIST, "guides/lineage-proof-roadmap/index.html"), "utf8"); const ids = [...h.matchAll(/<h2 id="([^"]+)"/g)].map((m) => m[1]);
+  const i0 = ids.indexOf("step-0-find-the-soldier-s-name"); const sec = (h.match(/<h2 id="if-your-patriot-is-already-in-dar-s-or-sar-s-database">[\s\S]*?(?=<h2 )/) || [""])[0];
+  check("t119u #4: Roadmap has 'If your patriot is already in DAR's or SAR's database' right after Step 0; its facts are sourced and it ends with the registrar line", i0 >= 0 && ids[i0 + 1] === "if-your-patriot-is-already-in-dar-s-or-sar-s-database"
+    && (sec.match(/<sup>/g) || []).length >= 4 && /Ask your chapter registrar which of your generations still need proof\.<\/p>\s*$/.test(sec), ids.slice(i0, i0 + 2).join(",")); }
+{ // #3 Worksheet: "Skip for now" on A to D; skipped answers read "Still needed", never an error
+  phase("load"); await page.goto(`${BASE}/tools/lineage-matrix/`); phase("interact");
+  await page.evaluate(() => localStorage.setItem("pi.toolB.v1", JSON.stringify({ version: 1, updated: new Date().toISOString(), generations: [{ gen: 1, cells: [] }, { gen: 2, cells: [{ id: "cskip", fact: "", docType: "", mode: "", conflict: false, citation: "" }] }] })));
+  phase("load"); await page.reload(); phase("interact");
+  const cell = '[data-cell="cskip"]';
+  const offers = await page.evaluate((c) => { const x = document.querySelector(c); return { a: !!x.querySelector('select[name=fact] option[value="__skip"]'), b: !!x.querySelector('select[name=docType] option[value="__skip"]'), c: !!x.querySelector('[data-skip="mode"]'), d: !!x.querySelector('[data-skip="citation"]'),
+    texts: [...x.querySelectorAll('option[value="__skip"]')].map((o) => o.textContent).concat([...x.querySelectorAll('[data-skip="mode"], [data-skip="citation"]')].map((i) => i.closest("label").textContent.trim())), req: x.querySelectorAll("[required]").length }; }, cell);
+  await page.selectOption(`${cell} select[name=fact]`, "__skip"); await page.selectOption(`${cell} select[name=docType]`, "__skip");
+  await page.check(`${cell} [data-skip="mode"]`); await page.check(`${cell} [data-skip="citation"]`);
+  const st = await page.evaluate((c) => { const x = document.querySelector(c); const s = JSON.parse(localStorage.getItem("pi.toolB.v1")).generations[1].cells[0];
+    return { badge: x.querySelector(".badge")?.textContent || "", notes: [...x.querySelectorAll("[data-still-needed]")].map((d) => d.textContent), color: getComputedStyle(x.querySelector("[data-still-needed]") || x).color,
+      skipped: s.skipped, kept: x.querySelector('select[name=fact]').value === "__skip" && x.querySelector('[data-skip="mode"]').checked && x.querySelector('[data-skip="citation"]').checked,
+      gap: [...document.querySelectorAll("[data-gaps] .gap-text")].map((g) => g.textContent).find((t) => /record isn't finished/.test(t)) || "", conflictItems: document.querySelectorAll("[data-gaps] li.conflict").length }; }, cell);
+  check('t119u #3: every record question (A to D) offers "Skip for now"; none is required', offers.a && offers.b && offers.c && offers.d && offers.texts.length === 4 && offers.texts.every((t) => t === "Skip for now") && offers.req === 0, JSON.stringify(offers));
+  check('t119u #3: skipping all four keeps the record as "Needs details" with four amber "Still needed (skipped for now)" notes, saved, and the gap list says "Still needed", not an error or conflict',
+    st.badge === "Needs details" && st.notes.length === 4 && st.notes.every((n) => n.startsWith("Still needed (skipped for now): ")) && st.color === "rgb(107, 69, 0)" && JSON.stringify(st.skipped) === JSON.stringify(["fact", "docType", "mode", "citation"]) && st.kept
+    && /^The record isn't finished\. Still needed/.test(st.gap) && st.conflictItems === 0 && !/error|invalid/i.test(st.gap), JSON.stringify(st));
+  phase("load"); await page.goto(`${BASE}/tools/lineage-matrix/report/`); phase("interact");
+  const rr = await page.evaluate(() => { const tr = document.querySelector("table.records tbody tr"); const t = document.querySelector("[data-report]").textContent;
+    return { cells: tr ? [...tr.children].map((td) => td.textContent) : [], err: /\berror\b|invalid/i.test(t), conflict: /Conflict Flagged/.test(t) }; });
+  check('t119u #3: the printable gap report shows each skipped answer as "Still needed" and the record as "Needs details", never an error', rr.cells.slice(0, 4).every((c) => c === "Still needed") && /Needs details/.test(rr.cells[4] || "") && !rr.err && !rr.conflict, JSON.stringify(rr));
+  await page.evaluate(() => localStorage.removeItem("pi.toolB.v1")); }
+
 // ---- Cache-busting: every script/CSS reference and every module import carries ?v=<hash> that matches the file ----
 const { createHash } = await import("node:crypto");
 const htmlRefs = pagesToCheck.flatMap((p) => [...readFileSync(join(DIST, p, "index.html"), "utf8").matchAll(/(?:src|href)="(\/assets\/[^"]+\.(?:js|css)[^"]*)"/g)].map((m) => m[1]));

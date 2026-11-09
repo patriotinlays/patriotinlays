@@ -1,8 +1,8 @@
 {
-  "ranAt": "Thu Nov 05 2026 17:32:01 GMT-0600 (Central Standard Time)",
-  "browser": "/usr/bin/google-chrome (headless) via playwright-core 1.64.1",
-  "passed": 144,
-  "total": 144,
+  "ranAt": "Mon Nov 09 2026 06:28:46 GMT-0600 (Central Standard Time)",
+  "browser": "/usr/bin/google-chrome (headless) via playwright-core 1.59.1",
+  "passed": 151,
+  "total": 151,
   "exampleReportPages": {
     "summaryPages": 2,
     "fullPages": 3,
@@ -18,7 +18,7 @@
     "sub": "Plain-English help with DAR and SAR applications, for the Daughters and the Sons of the American Revolution",
     "ai": "Written with AI assistance and reviewed by the site's owner. Each fact is tied to a quoted official source, and software checks that the quote is still there.",
     "beforeStart": true,
-    "words": 1310
+    "words": 1299
   },
   "results": [
     {
@@ -474,7 +474,7 @@
     {
       "name": "Audit 3 #3: a ticked 'Census entry' shows its kind and 'Needs details' in the report, and every counted entry is a row there",
       "ok": true,
-      "detail": "{\"g3\":{\"doc\":\"census\",\"status\":\"Needs detailsStill needed: pick which census it is (the year range).Still needed: pick whether the record says it in words or only hints at it.Still needed: say where you found the record, in a few words (for example: county courthouse, will book 3, page 12).\"},\"census\":[\"Parent–child link (ties this person to the next generation)\",\"Census entry (year range not picked yet)\",\"—\",\"—\",\"Needs details\"],\"entries\":6,\"rows\":6}"
+      "detail": "{\"g3\":{\"doc\":\"census\",\"status\":\"Needs detailsStill needed: pick which census it is (the year range).Still needed: pick whether the record says it in words or only hints at it.Still needed: say where you found the record, in a few words (for example: county courthouse, will book 3, page 12).\"},\"census\":[\"Parent–child link (ties this person to the next generation)\",\"Census entry (year range not picked yet): still needed\",\"Still needed\",\"Still needed\",\"Needs details\"],\"entries\":6,\"rows\":6}"
     },
     {
       "name": "Audit 3 #4: within a generation, the person's own records (birth, death) come before the link record, in the plan and in the records table",
@@ -559,7 +559,7 @@
     {
       "name": "Home (Nov 5 lock): subtitle names DAR and SAR; mission in flowing paragraphs (no lists) ahead of 'Ready to get started?'; purpose line, both tool names, one-sentence privacy",
       "ok": true,
-      "detail": "{\"ps\":7,\"lists\":0,\"text\":\"This site helps you organize the records that connect you to a Revolutionary War\",\"sub\":\"Plain-English help with DAR and SAR applications, for the Daughters and the Sons of the American Revolution\",\"ai\":\"Written with AI assistance and reviewed by the site's owner. Each fact is tied to a quoted official source, and software checks that the quote is still there.\",\"beforeStart\":true,\"words\":1310}"
+      "detail": "{\"ps\":7,\"lists\":0,\"text\":\"This site helps you organize the records that connect you to a Revolutionary War\",\"sub\":\"Plain-English help with DAR and SAR applications, for the Daughters and the Sons of the American Revolution\",\"ai\":\"Written with AI assistance and reviewed by the site's owner. Each fact is tied to a quoted official source, and software checks that the quote is still there.\",\"beforeStart\":true,\"words\":1299}"
     },
     {
       "name": "Home (Nov 5 lock): the exact AI line, the exact SAR line (sourced), no unsourced 'most people get stuck' / 'give up' / guarantee lines",
@@ -579,7 +579,7 @@
     {
       "name": "Roadmap: opens with 'How to join, in short' and 'Step 0: find the soldier's name' before the rest",
       "ok": true,
-      "detail": "how-to-join-in-short,step-0-find-the-soldier-s-name,how-the-generations-are-numbered"
+      "detail": "how-to-join-in-short,step-0-find-the-soldier-s-name,if-your-patriot-is-already-in-dar-s-or-sar-s-database"
     },
     {
       "name": "Roadmap: 'How to join, in short' has 4 sourced steps, the DAR chapter locator and the SAR contact finder",
@@ -732,6 +732,41 @@
       "detail": "9 page(s)"
     },
     {
+      "name": "t119u #1: home has no \"Choose a tool:\" link row; \"Ready to get started?\" keeps both big buttons",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "t119u #2: both tool pages show \"New to this? Start with the Roadmap guide.\" (linked) directly under the purpose, above \"What it does\"",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "t119u #5: sitemap.xml lists neither report page; robots.txt still disallows both",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "t119u #4: Roadmap has 'If your patriot is already in DAR's or SAR's database' right after Step 0; its facts are sourced and it ends with the registrar line",
+      "ok": true,
+      "detail": "step-0-find-the-soldier-s-name,if-your-patriot-is-already-in-dar-s-or-sar-s-database"
+    },
+    {
+      "name": "t119u #3: every record question (A to D) offers \"Skip for now\"; none is required",
+      "ok": true,
+      "detail": "{\"a\":true,\"b\":true,\"c\":true,\"d\":true,\"texts\":[\"Skip for now\",\"Skip for now\",\"Skip for now\",\"Skip for now\"],\"req\":0}"
+    },
+    {
+      "name": "t119u #3: skipping all four keeps the record as \"Needs details\" with four amber \"Still needed (skipped for now)\" notes, saved, and the gap list says \"Still needed\", not an error or conflict",
+      "ok": true,
+      "detail": "{\"badge\":\"Needs details\",\"notes\":[\"Still needed (skipped for now): pick what kind of record this is.\",\"Still needed (skipped for now): pick what this record shows (birth, death, marriage, parent–child link or where they lived).\",\"Still needed (skipped for now): pick whether the record says it in words or only hints at it.\",\"Still needed (skipped for now): say where you found the record, in a few words (for example: county courthouse, will book 3, page 12).\"],\"color\":\"rgb(107, 69, 0)\",\"skipped\":[\"fact\",\"docType\",\"mode\",\"citation\"],\"kept\":true,\"gap\":\"The record isn't finished. Still needed (skipped for now): pick what kind of record this is. Still needed (skipped for now): pick what this record shows (birth, death, marriage, parent–child link or where they lived). Still needed (skipped for now): pick whether the record says it in words or only hints at it. Still needed (skipped for now): say where you found the record, in a few words (for example: county courthouse, will book 3, page 12).\",\"conflictItems\":0}"
+    },
+    {
+      "name": "t119u #3: the printable gap report shows each skipped answer as \"Still needed\" and the record as \"Needs details\", never an error",
+      "ok": true,
+      "detail": "{\"cells\":[\"Still needed\",\"Still needed\",\"Still needed\",\"Still needed\",\"Needs details\"],\"err\":false,\"conflict\":false}"
+    },
+    {
       "name": "Cache-busting: every page's script/CSS URL and every module import is versioned with the file's content hash",
       "ok": true,
       "detail": ""
@@ -742,7 +777,7 @@
       "detail": ""
     }
   ],
-  "requestsTotal": 417,
+  "requestsTotal": 459,
   "externalRequests": 0,
   "interactionRequests": 0,
   "faviconLate": 25

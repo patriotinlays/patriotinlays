@@ -65,5 +65,8 @@ SOURCES = {
  "NARA_PENSIONS": ("https://www.archives.gov/research/military/army/pensions", "National Archives — Pensions and Bounty Land", "nara_pensions.html"),
  "FOLD3_PENSION": ("https://www.fold3.com/publication/467/us-revolutionary-war-pensions-1800-1900", "Fold3 — US Revolutionary War Pensions, 1800-1900", "fold3_pension.html"),
  "NYSL_PRECIVIL": ("https://nysl.nysed.gov/genealogy/precivil", "New York State Library — Military records before the Civil War", "nysl_precivil.html"),
+ "DAR_LIBSEARCH": ("https://www.dar.org/library/search.cfm", "DAR Library — Search Services", "dar_libsearch.html"),
+ "DAR_LINRES": ("https://www.dar.org/library/collections/dar-lineage-resources", "DAR Library — DAR Lineage Resources", "dar_linres.html"),
+ "SAR_COPY": ("https://www.sar.org/genealogical-copy-services/", "SAR — Genealogical Copy Services", "sar_copy.html"),
  "NYSL_VITREC": ("https://nysl.nysed.gov/genealogy/vitrec", "New York State Library — Vital records", "nysl_vitrec.html"),
 }

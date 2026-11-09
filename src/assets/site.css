@@ -46,7 +46,7 @@ tr:nth-child(even) td{background:var(--soft)}
 .b-none{background:#e6e9ef;color:#3b4250}
 .result{border-left:4px solid var(--navy);padding:.4rem .7rem;margin:.6rem 0;background:#fff}
 .note,.caution{color:#6b4500}
-.issue{color:#8e1b24}
+.issue{color:#6b4500} /* "Still needed" notes are to-dos, never errors (t119u #3) */
 .gaps li.conflict{color:#8e1b24;font-weight:600}
 .card{border:1px dashed var(--navy);border-radius:8px;padding:.8rem 1rem;margin:1.5rem 0;font:15px/1.5 system-ui,sans-serif;background:#fbfcfe}
 footer.site{border-top:1px solid var(--line);margin-top:2rem;padding:1rem 0 2rem;font:14px system-ui,sans-serif;color:var(--muted)}

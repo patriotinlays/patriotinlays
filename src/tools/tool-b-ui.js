@@ -2,7 +2,7 @@
 // State lives only in localStorage under "pi.toolB.v1"; no network requests are made.
 import { dateField } from "./date-ui.js";
 import { dateLabel } from "./dates.js";
-import { relationName, HAVE_ITEMS, byFactOrder, actionPlan, evaluateCell, gaps, groupGaps, filledCells, countEntries, patriotGen, LABELS, FACTS, FACT_LABELS, DOC_TYPES, MODE_HELP, genLabel, genTitle, isEmptyCell, dateWarnings, NSCDA_TERM, birthSubstitutes, NAME_CHECKLIST } from "./tool-b.js";
+import { SKIP_TEXT, STILL_NEEDED, isSkipped, setSkip, relationName, HAVE_ITEMS, byFactOrder, actionPlan, evaluateCell, gaps, groupGaps, filledCells, countEntries, patriotGen, LABELS, FACTS, FACT_LABELS, DOC_TYPES, MODE_HELP, genLabel, genTitle, isEmptyCell, dateWarnings, NSCDA_TERM, birthSubstitutes, NAME_CHECKLIST } from "./tool-b.js";
 import { SERVICE_KINDS, PATRIOT_HELP, patriotDates, hasPatriot, kindOf } from "./patriot.js";
 import { STATES, stateName, noVitalText } from "./places.js";
 import { ns, el } from "./storage.js";
@@ -37,16 +37,18 @@ const EXAMPLE = () => ({ version: 1, updated: null, example: true,
     newCell({ fact: "parentage", docType: "probate", mode: "direct", citation: "Will of John, county will book 2, page 40, names his son Thomas" })] },
 ] });
 
-function select(name, options, value, label, id) {
+function select(name, options, value, label, id, skip = null) {
   const s = el("select", { name, id }, el("option", { value: "", text: `— ${label} —` }));
   for (const [v, t] of options) s.append(el("option", { value: v, text: t, selected: v === value }));
+  // A record's questions also offer "Skip for now" (Tim t119u #3); skip = whether this question is currently skipped.
+  if (skip != null) s.append(el("option", { value: "__skip", text: SKIP_TEXT, selected: !!skip && !value, "data-skip": "" }));
   return s;
 }
 // Blank records get a plain prompt instead of a label; they are never labelled or counted.
 const statusFor = (c) => isEmptyCell(c) ? [el("div", { class: "small hint", "data-blank": "", text: "Empty record: answer A to D, or remove it." })] : statusKids(evaluateCell(c));
 const statusKids = (ev) => [el("span", { class: `badge ${labelClass(ev.label)}`, text: ev.label }),
   ev.label === LABELS.entered ? el("div", { class: "small", "data-entered-note": "", text: "You've entered evidence; a society registrar decides whether it's enough." }) : null,
-  ...ev.issues.map((i) => el("div", { class: "small issue", text: i })), ...ev.cautions.map((k) => el("div", { class: "small caution", text: k.text }))];
+  ...ev.issues.map((i) => el("div", { class: "small issue still-needed", "data-still-needed": "", text: i })), ...ev.cautions.map((k) => el("div", { class: "small caution", text: k.text }))];
 
 // "Where to look" block shared by the editor and the report. Notes carry the era- and state-specific facts.
 export function whereBlock(w, seen = null) {
@@ -171,16 +173,20 @@ function cellEditor(state, g, c, rerender, n) {
   const upd = (k, v) => { c[k] = v; save(state); rerender(); };
   const modeGroup = el("fieldset", { class: "mode" }, el("legend", { text: "C. Does the record say it in words, or only hint at it?" }),
     ...["direct", "indirect"].map((v) => el("label", { class: "choice" },
-      el("input", { type: "radio", name: `${base}-mode`, value: v, checked: c.mode === v, onchange: () => upd("mode", v) }),
-      el("span", {}, el("strong", { text: MODE_TEXT[v] }), el("span", { class: "small", text: ` ${MODE_HELP[v]}` })))));
+      el("input", { type: "radio", name: `${base}-mode`, value: v, checked: c.mode === v, onchange: () => { setSkip(c, "mode", false); upd("mode", v); } }),
+      el("span", {}, el("strong", { text: MODE_TEXT[v] }), el("span", { class: "small", text: ` ${MODE_HELP[v]}` })))),
+    el("label", { class: "choice skip" }, el("input", { type: "radio", name: `${base}-mode`, value: "__skip", "data-skip": "mode", checked: !c.mode && isSkipped(c, "mode"), onchange: () => { setSkip(c, "mode", true); save(state); rerender(); } }),
+      el("span", { text: SKIP_TEXT })));
   return el("div", { class: "cell", "data-cell": c.id },
     el("p", { class: "cell-h", text: `Record ${n}` }),
-    el("label", { for: `${base}-fact`, text: "A. What does this record show?" }), select("fact", FACTS.map((f) => [f, FACT_LABELS[f]]), c.fact, "pick one", `${base}-fact`),
-    el("label", { for: `${base}-doc`, text: "B. What kind of record is it?" }), select("docType", Object.entries(DOC_TYPES), c.docType, "pick one", `${base}-doc`),
+    el("label", { for: `${base}-fact`, text: "A. What does this record show?" }), select("fact", FACTS.map((f) => [f, FACT_LABELS[f]]), c.fact, "pick one", `${base}-fact`, isSkipped(c, "fact")),
+    el("label", { for: `${base}-doc`, text: "B. What kind of record is it?" }), select("docType", Object.entries(DOC_TYPES), c.docType, "pick one", `${base}-doc`, isSkipped(c, "docType")),
     modeGroup,
     el("label", { for: `${base}-cite`, text: "D. Where did you find it?" }),
     el("p", { class: "small hint", text: "A few words so you can find it again, e.g. \"county courthouse, will book 3, page 12\"." }),
     el("input", { id: `${base}-cite`, name: "citation", type: "text", value: c.citation, autocomplete: "off" }),
+    el("label", { class: "check skip" }, el("input", { type: "checkbox", name: "citationSkip", "data-skip": "citation", checked: !(c.citation || "").trim() && isSkipped(c, "citation"),
+      onchange: (e) => { setSkip(c, "citation", e.target.checked); save(state); rerender(); } }), ` ${SKIP_TEXT}`),
     el("label", { class: "check" }, el("input", { type: "checkbox", name: "conflict", checked: c.conflict, onchange: (e) => upd("conflict", e.target.checked) }), " This record disagrees with another record (for example, a different date)"),
     el("div", { class: "status", "aria-live": "polite" }, ...statusFor(c)),
     el("button", { type: "button", class: "link danger", onclick: () => { g.cells = g.cells.filter((x) => x !== c); save(state); rerender(); }, text: "Remove this record" }));
@@ -189,11 +195,13 @@ function bindEditorEvents(container, state, rerender) {
   container.addEventListener("change", (e) => {
     const cellEl = e.target.closest("[data-cell]"); if (!cellEl) return;
     const name = e.target.name; if (!["fact", "docType"].includes(name)) return;
-    for (const g of state.generations) for (const c of g.cells) if (c.id === cellEl.dataset.cell) { c[name] = e.target.value; save(state); rerender(); return; }
+    for (const g of state.generations) for (const c of g.cells) if (c.id === cellEl.dataset.cell) {
+      if (e.target.value === "__skip") setSkip(c, name, true); else { setSkip(c, name, false); c[name] = e.target.value; }
+      save(state); rerender(); return; }
   });
   container.addEventListener("input", (e) => {
     if (e.target.name !== "citation") return; const cellEl = e.target.closest("[data-cell]");
-    for (const g of state.generations) for (const c of g.cells) if (c.id === cellEl.dataset.cell) { c.citation = e.target.value; save(state);
+    for (const g of state.generations) for (const c of g.cells) if (c.id === cellEl.dataset.cell) { c.citation = e.target.value; if (c.citation.trim()) { setSkip(c, "citation", false); const k = cellEl.querySelector('[data-skip="citation"]'); if (k) k.checked = false; } save(state);
       cellEl.querySelector(".status").replaceChildren(...statusFor(c)); }
   });
 }
@@ -346,8 +354,8 @@ function mountReport(root) {
   const detail = kids[2];
   for (const g of s.generations) {
     const rows = byFactOrder(filledCells(g.cells)).map((c) => { const ev = evaluateCell(c);
-      return el("tr", {}, el("td", { "data-label": "What it shows", text: FACT_LABELS[c.fact] || "—" }), el("td", { "data-label": "Kind of record", text: DOC_TYPES[c.docType] || "—" }), el("td", { "data-label": "Says it in words?", text: MODE_TEXT[c.mode] || "—" }),
-        el("td", { "data-label": "Where you found it", text: c.citation || "—" }), el("td", { "data-label": "Status" }, el("span", { class: `badge ${labelClass(ev.label)}`, text: ev.label }), ...ev.cautions.map((k) => el("div", { class: "small caution", text: k.text })))); });
+      return el("tr", {}, el("td", { "data-label": "What it shows", text: FACT_LABELS[c.fact] || STILL_NEEDED }), el("td", { "data-label": "Kind of record", text: c.docType === "census" ? `${DOC_TYPES.census}: ${STILL_NEEDED.toLowerCase()}` : DOC_TYPES[c.docType] || STILL_NEEDED }), el("td", { "data-label": "Says it in words?", text: MODE_TEXT[c.mode] || STILL_NEEDED }),
+        el("td", { "data-label": "Where you found it", text: (c.citation || "").trim() || STILL_NEEDED }), el("td", { "data-label": "Status" }, el("span", { class: `badge ${labelClass(ev.label)}`, text: ev.label }), ...ev.cautions.map((k) => el("div", { class: "small caution", text: k.text })))); });
     const facts = [g.born && `born about ${g.born}`, !g.living && g.died && `died about ${g.died}`, g.state && stateName(g.state)].filter(Boolean).join(", ");
     detail.append(...[el("h3", { text: `${genTitle(g.gen)}${g.gen === pg ? " (the patriot)" : ""}${g.who ? ` — ${g.who}` : ""}${g.living ? " (living)" : ""}` }),
       facts ? el("p", { class: "small", text: facts }) : null,
