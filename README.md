@@ -249,3 +249,6 @@ Docs: https://developers.cloudflare.com/pages/how-to/web-analytics/
 - Home SAR line and glossary no longer say "often the chapter registrar" (Tim approved the lock change).
 - Widow checker storage note: plain text, no `pi.toolA` key names.
 - Worksheet: Massachusetts birth/death/marriage note from the Mass.gov State Library guide (13 vital states, 13 service states).
+
+### t126u (Nov 9, 2026)
+- Widow checker storage note starts with "Nothing is sent anywhere." again.

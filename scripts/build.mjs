@@ -100,7 +100,7 @@ const WIDOW_FULL = `<section class="tool" data-tool="widow" aria-labelledby="ta-
 <h3 class="step"><span class="num">3</span> Print or save your results</h3>
 <p><a class="button-link no-print" href="/tools/widow-pension-checker/report/">Open my printable report</a></p>
 <button type="button" class="secondary" data-clear="toolA">Delete my saved checker data</button>
-<p class="small">Your entries are saved only in this browser, and that storage isn't encrypted. On a shared or public computer, use the delete button when you're done.</p>
+<p class="small">Nothing is sent anywhere. Your entries are saved only in this browser, and that storage isn't encrypted. On a shared or public computer, use the delete button when you're done.</p>
 <noscript><p>This checker needs JavaScript. The laws it uses are listed below.</p></noscript>
 </section><script type="module" src="/assets/js/tool-a-ui.js"></script>`;
 const WIDOW_CARD = `<aside class="card" data-tool-card="widow"><strong>Widow Pension Law Checker</strong>
