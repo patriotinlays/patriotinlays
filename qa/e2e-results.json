@@ -1,8 +1,8 @@
 {
-  "ranAt": "Tue Nov 10 2026 06:23:33 GMT-0600 (Central Standard Time)",
+  "ranAt": "Tue Nov 10 2026 08:22:37 GMT-0600 (Central Standard Time)",
   "browser": "/usr/bin/google-chrome (headless) via playwright-core 1.59.1",
-  "passed": 198,
-  "total": 198,
+  "passed": 224,
+  "total": 224,
   "exampleReportPages": {
     "summaryPages": 2,
     "fullPages": 3,
@@ -21,7 +21,14 @@
     "rgb(43, 38, 34) on rgb(244, 239, 229)": 13.06,
     "rgb(19, 41, 75) on rgb(244, 239, 229)": 12.67,
     "rgb(94, 85, 75) on rgb(255, 253, 248)": 7.18,
+    "rgb(60, 70, 88) on rgb(250, 247, 240)": 8.88,
+    "rgb(19, 41, 75) on rgb(246, 240, 228)": 12.79,
+    "rgb(43, 38, 34) on rgb(246, 240, 228)": 13.19,
     "rgb(94, 85, 75) on rgb(244, 239, 229)": 6.37,
+    "rgb(94, 85, 75) on rgb(255, 247, 230)": 6.85,
+    "rgb(19, 41, 75) on rgb(255, 255, 255)": 14.52,
+    "rgb(94, 85, 75) on rgb(255, 255, 255)": 7.3,
+    "rgb(43, 38, 34) on rgb(255, 255, 255)": 14.97,
     "rgb(107, 69, 0) on rgb(255, 253, 248)": 8.34
   },
   "home": {
@@ -30,8 +37,8 @@
     "text": "This site helps you organize the records that connect you to a Revolutionary War patriot, see where your documented family line still has gaps, and find where to look for the missing proof. (A patriot here means someone who supported the cause of American independence, for example by fighting in its battles or serving in the Continental Congress.)[1]\nSomewhere in your family's past, there may be someone who stood up for American independence. Maybe they carried a musket as a soldier, or maybe they helped in another way, such as furnishing supplies or lending money.[2] If you'd like to honor that person by joining the Daughters or Sons of the American Revolution, you'll be asked to show, with records, how you are connected to them, one generation at a time.[3][4]\nThat can be harder than it sounds. The records are often in more than one place: for militia service, for example, the National Archives sends you to the archives of the state where the patriot served.[5] Even a single pension file can arrive with its papers in no particular order.[6] And nobody hands you a map of which papers count as proof, or of what to try when the one record you need seems to have vanished.\nPatriot, In Lay Terms explains the process in everyday language, the way a patient friend who has done this before might explain it at the kitchen table. The guides walk you through the kinds of records you're likely to find, what each one can show, and where to turn when something is missing. Two free tools help you lay out what you already have. The Widow Pension Law Checker shows which federal widow pension laws a couple's marriage fits and where her pension file may be. The Lineage Evidence Matrix lists, generation by generation, what is still missing in your line and where to look for it. Every fact on the site links to an official source, so you can check it yourself.\nThis site can't do the searching for you, and it won't pretend to. You'll still visit archives, courthouses and websites to find and copy the records themselves. A DAR member helps guide you through completing and submitting the application.[4] SAR's local sponsor can guide you through the application.[7] The society, not this site, reviews what you send: at DAR, all documentation is subject to review by its genealogy staff.[3] What this site does is explain what each of those steps asks for and which records can answer it.\nIt's free, there's nothing to sign up for, and what you type into the tools stays in your own browser.\nWritten with AI assistance and reviewed by the site's owner. Each fact is tied to a quoted official source, and software checks that the quote is still there.",
     "sub": "Plain-English help with DAR and SAR applications, for the Daughters and the Sons of the American Revolution",
     "ai": "Written with AI assistance and reviewed by the site's owner. Each fact is tied to a quoted official source, and software checks that the quote is still there.",
-    "beforeStart": true,
-    "words": 1414
+    "afterCards": true,
+    "words": 1475
   },
   "results": [
     {
@@ -235,7 +242,7 @@
       "detail": "{\"purpose\":\"What it's for: a to-do list of the records you still need for each generation, from you back to your patriot, and where to look for each one.\",\"start\":true,\"bodyHidden\":true,\"genVisible\":false,\"list\":4,\"step0\":true,\"ls\":[]}"
     },
     {
-      "name": "Worksheet (audit 4 proposal): 'Start my worksheet' opens the steps at the patriot step, saves a blank worksheet, and keeps the checklist tick (also shown in the patriot step)",
+      "name": "Worksheet (audit 4 proposal, t130 #2a): 'Start with just the patriot and me' opens the steps at the patriot step, saves a blank worksheet, and keeps the checklist tick (also shown in the patriot step)",
       "ok": true,
       "detail": "{\"startHidden\":true,\"bodyHidden\":false,\"focus\":\"tb-patriot\",\"saved\":true,\"tick\":true,\"patBox\":true}"
     },
@@ -262,7 +269,7 @@
     {
       "name": "Patriot step drives the plan: prove his service (North Carolina troop returns, M881), then the widow-pension step",
       "ok": true,
-      "detail": "Prove the patriot's serviceWhere to look, based on the type of service and the state served for:The National Archives holds records of Continental troops, inclu"
+      "detail": "Fill in the worksheetStart with your patriot in step 1, then add yourself as generation 1 and go back through your parent, grandparent and so on to the patriot."
     },
     {
       "name": "Widow checker auto-fills his service end from the worksheet patriot",
@@ -295,9 +302,9 @@
       "detail": "SummarySaved . Your own worksheet, not a decision: a society's genealogists review every entry.The patriot: Test, Virginia, state troops, volunteers or militia, 1777 to 1779 (generation 4). Date check"
     },
     {
-      "name": "Tool B: starts with 2 generations",
+      "name": "t130 #2a: the default start shows only 'Your patriot' and Generation 1 (you); older generations stay hidden until added; saved worksheet has 1 generation",
       "ok": true,
-      "detail": ""
+      "detail": "{\"gens\":\"1\",\"saved\":1,\"patriotOpen\":true,\"groups\":\"Your patriot|Generations\",\"g1Open\":true}"
     },
     {
       "name": "Tool B: 'How this works' says it doesn't search records and nothing leaves the device",
@@ -305,7 +312,7 @@
       "detail": ""
     },
     {
-      "name": "Tool B: generations are labelled 'Generation 1: You' and 'Generation 2: Your parent'",
+      "name": "Tool B: generation 1 is labelled 'Generation 1: You'",
       "ok": true,
       "detail": ""
     },
@@ -325,12 +332,37 @@
       "detail": "Evidence Entered — Review RequiredYou've entered evidence; a"
     },
     {
+      "name": "t130 #2b: adding an older generation opens it; the earlier one collapses with its title and name as the heading",
+      "ok": true,
+      "detail": "{\"gens\":\"1:closed,2:open\",\"h1\":\"Generation 1: You — Test Me\",\"h2\":\"Generation 2: Your parent\",\"g1FieldsVisible\":false}"
+    },
+    {
+      "name": "t130 #2b: clicking a collapsed generation's heading expands it (entries intact); clicking again collapses it",
+      "ok": true,
+      "detail": "{\"c2\":{\"open\":true,\"vis\":true,\"val\":\"Test Me\"},\"c3\":false}"
+    },
+    {
+      "name": "t130 #2b: an expanded or collapsed choice is kept while the visitor works (generation 1 stays collapsed after editing generation 2)",
+      "ok": true,
+      "detail": ""
+    },
+    {
       "name": "Tool B: 1850-70 census for parentage marked direct gets NSCDA caution, not an upgrade",
       "ok": true,
       "detail": ""
     },
     {
+      "name": "t130 #2c: each record shows questions A–D first; the 'disagrees with another record' box is under a closed 'More details' toggle",
+      "ok": true,
+      "detail": "{\"has\":true,\"open\":false,\"summary\":\"More details\",\"conflictInside\":true,\"conflictVisible\":false,\"keyFirst\":true}"
+    },
+    {
       "name": "Tool B: conflict flag changes label to 'Conflict Flagged — Review Required'",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "t130 #2c: a record flagged as disagreeing keeps its 'More details' open after the redraw",
       "ok": true,
       "detail": ""
     },
@@ -522,7 +554,7 @@
     {
       "name": "Generation picker (audit 2): an old saved 'Generation 1' shows a plain warning and the oldest generation stays the patriot",
       "ok": true,
-      "detail": "Generation 1: You | Generation 2: Your parent | Generation 3: Your grandparent | Generation 4: Your great-grandparent | Generation 5: Your 2nd-great-grandparent (the patriot)"
+      "detail": "Generation 1: You — Example: Jane (made up) | Generation 2: Your parent — Example: Robert (made up) | Generation 3: Your grandparent — Example: William (made up) | Generation 4: Your great-grandparent — Example: Thomas (made up) | Generation 5: Your 2nd-great-grandparent (the patriot) — Example: John, the patriot (made up)"
     },
     {
       "name": "Where to look: a state with no verified source says so (no invented records)",
@@ -565,14 +597,14 @@
       "detail": ""
     },
     {
-      "name": "Home (Nov 5): 'Ready to get started?' links to both tools and to the Roadmap guide",
+      "name": "Home (t130 #1, replaces 'Ready to get started?'): the start cards link to both tools and to the Roadmap guide",
       "ok": true,
       "detail": ""
     },
     {
-      "name": "Home (Nov 5 lock): subtitle names DAR and SAR; mission in flowing paragraphs (no lists) ahead of 'Ready to get started?'; purpose line, both tool names, one-sentence privacy",
+      "name": "Home (Nov 5 lock; t130 moved the paragraphs below the start cards, unchanged): subtitle names DAR and SAR; mission in flowing paragraphs (no lists) after the cards; purpose line, both tool names, one-sentence privacy",
       "ok": true,
-      "detail": "{\"ps\":7,\"lists\":0,\"text\":\"This site helps you organize the records that connect you to a Revolutionary War\",\"sub\":\"Plain-English help with DAR and SAR applications, for the Daughters and the Sons of the American Revolution\",\"ai\":\"Written with AI assistance and reviewed by the site's owner. Each fact is tied to a quoted official source, and software checks that the quote is still there.\",\"beforeStart\":true,\"words\":1414}"
+      "detail": "{\"ps\":7,\"lists\":0,\"text\":\"This site helps you organize the records that connect you to a Revolutionary War\",\"sub\":\"Plain-English help with DAR and SAR applications, for the Daughters and the Sons of the American Revolution\",\"ai\":\"Written with AI assistance and reviewed by the site's owner. Each fact is tied to a quoted official source, and software checks that the quote is still there.\",\"afterCards\":true,\"words\":1475}"
     },
     {
       "name": "Home (Nov 5 lock, SAR line updated by t125u): the exact AI line, the exact SAR line (sourced), no unsourced 'most people get stuck' / 'give up' / guarantee lines",
@@ -702,7 +734,7 @@
     {
       "name": "Worksheet (audit 4 proposal): 'No birth certificate? Try these substitutes, in order' appears, closed, at each generation with no birth record (example: 3, 4, 5), in order, with the pension-file step only for older generations, and fits 360px open",
       "ok": true,
-      "detail": "{\"gens\":\"3,4,5\",\"open\":false,\"title\":\"No birth certificate? Try these substitutes, in order\",\"g5\":\"baptism,bible,pension,age,affidavit\",\"g3\":\"baptism,bible,age,affidavit\",\"guide\":true,\"sw\":360,\"r\":327}"
+      "detail": "{\"gens\":\"3,4,5\",\"open\":false,\"title\":\"No birth certificate? Try these substitutes, in order\",\"g5\":\"baptism,bible,pension,age,affidavit\",\"g3\":\"baptism,bible,age,affidavit\",\"guide\":true,\"sw\":360,\"r\":313}"
     },
     {
       "name": "True 360px (audit 2): home, worksheet (example loaded), its report, widow checker (example loaded) and its report fit 360px with nothing off-screen",
@@ -727,7 +759,7 @@
     {
       "name": "Walkthroughs: real screenshots load with captions and alt text; quoted outputs match the captured tool results; the example family is labeled made up",
       "ok": true,
-      "detail": "[{\"src\":\"/assets/walkthroughs/widow-date-360.png?v=d2d45cee26\",\"ok\":true,\"alt\":\"The marriage date as the example fills it in: month May, year 1777, no day, and Exactly.\"},{\"src\":\"/assets/walkthroughs/widow-summary.png?v=21c4bb43ad\",\"ok\":true,\"alt\":\"The example's \\\"In short\\\" summary, exactly as the checker prints it.\"},{\"src\":\"/assets/walkthroughs/widow-law-row.png?v=a774812044\",\"ok\":true,\"alt\":\"One law row in full: the March 1855 bounty-land law, its rule, and the terms the tool can't check.\"},{\"src\":\"/assets/walkthroughs/worksheet-patriot-360.png?v=906d057d63\",\"ok\":true,\"alt\":\"The example patriot, with rough service dates. The check below says your patriot's dates fall inside DAR's period for that service, and that it isn't a ruling.\"},{\"src\":\"/assets/walkthroughs/worksheet-gaps.png?v=3fa40ff017\",\"ok\":true,\"alt\":\"The example's gap list, with the lettered \\\"Where to look\\\" advice underneath.\"}]"
+      "detail": "[{\"src\":\"/assets/walkthroughs/widow-date-360.png?v=d2d45cee26\",\"ok\":true,\"alt\":\"The marriage date as the example fills it in: month May, year 1777, no day, and Exactly.\"},{\"src\":\"/assets/walkthroughs/widow-summary.png?v=21c4bb43ad\",\"ok\":true,\"alt\":\"The example's \\\"In short\\\" summary, exactly as the checker prints it.\"},{\"src\":\"/assets/walkthroughs/widow-law-row.png?v=a774812044\",\"ok\":true,\"alt\":\"One law row in full: the March 1855 bounty-land law, its rule, and the terms the tool can't check.\"},{\"src\":\"/assets/walkthroughs/worksheet-patriot-360.png?v=3abe3ef896\",\"ok\":true,\"alt\":\"The example patriot, with rough service dates. The check below says your patriot's dates fall inside DAR's period for that service, and that it isn't a ruling.\"},{\"src\":\"/assets/walkthroughs/worksheet-gaps.png?v=61273c0756\",\"ok\":true,\"alt\":\"The example's gap list, with the lettered \\\"Where to look\\\" advice underneath.\"}]"
     },
     {
       "name": "Walkthroughs: every quoted output is a real captured result, and no bare 'Fits' verdict is shown",
@@ -745,7 +777,7 @@
       "detail": "9 page(s)"
     },
     {
-      "name": "t119u #1: home has no \"Choose a tool:\" link row; \"Ready to get started?\" keeps both big buttons",
+      "name": "t119u #1 (t130 cards): home has no \"Choose a tool:\" link row; the start cards keep both big tool buttons",
       "ok": true,
       "detail": ""
     },
@@ -795,7 +827,7 @@
       "detail": "{\"h1s\":1,\"sr\":\"Patriot, In Lay Terms: \",\"srHidden\":true,\"vis\":\"Plain-English help with DAR and SAR applications, for the Daughters and the Sons of the American Revolution\",\"visH\":143.9375,\"title\":\"Patriot, In Lay Terms: plain-English help for DAR and SAR applications | Patriot In Lay Terms\",\"rule\":\"rgb(178, 34, 52)\",\"ruleW\":\"56px\"}"
     },
     {
-      "name": "t122u #11: every visible text element on all 22 pages passes WCAG AA contrast (4.5:1, large text 3:1) — 3500 elements",
+      "name": "t122u #11: every visible text element on all 22 pages passes WCAG AA contrast (4.5:1, large text 3:1) — 3435 elements",
       "ok": true,
       "detail": ""
     },
@@ -825,7 +857,7 @@
       "detail": "{\"urls\":true,\"icons\":true}"
     },
     {
-      "name": "t124u #11 (390px): every link that leaves the site (327) opens in a new tab with rel=\"noopener noreferrer\", a small icon and \"(opens in new tab)\" for screen readers; no internal or email link does",
+      "name": "t124u #11 (390px): every link that leaves the site (324) opens in a new tab with rel=\"noopener noreferrer\", a small icon and \"(opens in new tab)\" for screen readers; no internal or email link does",
       "ok": true,
       "detail": ""
     },
@@ -855,7 +887,7 @@
       "detail": "{\"urls\":true,\"icons\":true}"
     },
     {
-      "name": "t124u #11 (1280px): every link that leaves the site (327) opens in a new tab with rel=\"noopener noreferrer\", a small icon and \"(opens in new tab)\" for screen readers; no internal or email link does",
+      "name": "t124u #11 (1280px): every link that leaves the site (324) opens in a new tab with rel=\"noopener noreferrer\", a small icon and \"(opens in new tab)\" for screen readers; no internal or email link does",
       "ok": true,
       "detail": ""
     },
@@ -975,9 +1007,9 @@
       "detail": "{\"msgs\":[\"Remove this generation and its entries? This can't be undone.\",\"Remove this generation and its entries? This can't be undone.\"],\"n0\":3,\"n1\":3,\"n2\":2}"
     },
     {
-      "name": "t127u #5 (390px): the worksheet's starting point is consistent: step 1 is your patriot, step 2 starts the family with yourself",
+      "name": "t127u #5 / t130 #2b (390px): the worksheet's starting point is consistent: step 1 is your patriot, step 2 'Generations' starts the family with yourself",
       "ok": true,
-      "detail": "2 Then your family: start with yourself, and go back one generation at a time"
+      "detail": "2 Generations"
     },
     {
       "name": "t127u #5 (1280px): \"Remove the oldest generation\" asks \"Remove this generation and its entries? This can't be undone.\"; Cancel keeps it, OK removes it",
@@ -985,9 +1017,9 @@
       "detail": "{\"msgs\":[\"Remove this generation and its entries? This can't be undone.\",\"Remove this generation and its entries? This can't be undone.\"],\"n0\":3,\"n1\":3,\"n2\":2}"
     },
     {
-      "name": "t127u #5 (1280px): the worksheet's starting point is consistent: step 1 is your patriot, step 2 starts the family with yourself",
+      "name": "t127u #5 / t130 #2b (1280px): the worksheet's starting point is consistent: step 1 is your patriot, step 2 'Generations' starts the family with yourself",
       "ok": true,
-      "detail": "2 Then your family: start with yourself, and go back one generation at a time"
+      "detail": "2 Generations"
     },
     {
       "name": "t128u #2: the FAQ's genealogist answer has Tim's exact sentence, after the sponsor line, sourced to sar.org/how-to-apply",
@@ -1015,6 +1047,111 @@
       "detail": ""
     },
     {
+      "name": "t130 #2d: an older saved worksheet loads exactly as before: storage unchanged, all 3 generations and every entry shown (newest open, flagged record's More details open)",
+      "ok": true,
+      "detail": "{\"raw\":true,\"gens\":\"1:closed,2:closed,3:open\",\"who\":\"Saved Me|Saved Parent|Saved Patriot\",\"pat\":\"Saved Patriot\",\"begin\":true,\"body\":false,\"conflictOpen\":true,\"conflict\":true,\"skip\":true,\"cite\":\"My certificate\"}"
+    },
+    {
+      "name": "t130 #2a: with saved entries, 'See a filled-in example' first asks \"Loading the example replaces your current entries. Continue?\"; Cancel changes nothing",
+      "ok": true,
+      "detail": "[\"Loading the example replaces your current entries. Continue?\"]"
+    },
+    {
+      "name": "t130 #2a: OK loads the example (5 made-up generations)",
+      "ok": true,
+      "detail": "{\"gens\":5,\"pat\":\"John (made up)\"}"
+    },
+    {
+      "name": "t130 #2a: at the top of the tool (after the purpose line and 'What it does' box), two buttons: 'Start with just the patriot and me' (Recommended) and 'See a filled-in example'",
+      "ok": true,
+      "detail": "{\"order\":\"purpose,howto,start,body\",\"b1\":\"Start with just the patriot and me\",\"b2\":\"See a filled-in example\",\"rec\":\"Recommended\",\"limitsAbove\":true}"
+    },
+    {
+      "name": "t130 #2a: on a fresh browser the example loads without a question",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "t130 #2d: 'Remove the oldest generation' still asks first (Cancel keeps it, OK removes it), and generation 1 (you) is never removed",
+      "ok": true,
+      "detail": "{\"keep\":2,\"after1\":1}"
+    },
+    {
+      "name": "t130 #2 (390px): the worksheet with collapsed generations has no horizontal overflow",
+      "ok": true,
+      "detail": "{\"sw\":390,\"iw\":390}"
+    },
+    {
+      "name": "t130 #2 (1280px): the worksheet with collapsed generations has no horizontal overflow",
+      "ok": true,
+      "detail": "{\"sw\":1280,\"iw\":1280}"
+    },
+    {
+      "name": "t130 #4: both printable reports hide the menu, footer and every button when printed",
+      "ok": true,
+      "detail": "{\"w\":[],\"m\":[]}"
+    },
+    {
+      "name": "t130 #4: the printed to-do list (What to do next) is at least 12px and in dark ink on both reports",
+      "ok": true,
+      "detail": "{\"w\":[5,15,[\"rgb(29, 36, 51)\"]],\"m\":[11,12,[\"rgb(29, 36, 51)\"]]}"
+    },
+    {
+      "name": "t130 #5 (390px): the pension-file guide shows the self-hosted M804 page (under 150 KB) with alt text, 3 numbered labels inside the image, and a caption naming the NARA file and identifier",
+      "ok": true,
+      "detail": "{\"imgBytes\":118944,\"src\":\"/assets/archives/m804-w14734-daniels-brief.jpg?v=95fa55bd19\",\"nat\":700,\"alt\":375,\"cap\":\"A real page: the pension brief from Revolutionary War Pension and Bounty Land Warrant Application File W. 14,734, Jacob Daniels, N.H., microfilm publication M804 (National Archives Identifier 54368689, image file 4156793_00373.jpg). Downloaded from the National Archives Catalog, which lists its use as unrestricted; cropped and compressed for this page.\",\"keys\":[\"Names: \\\"Dolly Foss, formerly widow of Jacob Daniels\\\".\",\"Dates: the year he died. The dates her pension was to commence and its certificate was issued are lower on the form.\",\"Service: his rank (lieutenant), his captain, his colonel, the New Hampshire line, and how long he served.\"],\"marks\":[true,true,true],\"sw\":390,\"iw\":390,\"afterList\":true}"
+    },
+    {
+      "name": "t130 #5 (1280px): the pension-file guide shows the self-hosted M804 page (under 150 KB) with alt text, 3 numbered labels inside the image, and a caption naming the NARA file and identifier",
+      "ok": true,
+      "detail": "{\"imgBytes\":118944,\"src\":\"/assets/archives/m804-w14734-daniels-brief.jpg?v=95fa55bd19\",\"nat\":700,\"alt\":375,\"cap\":\"A real page: the pension brief from Revolutionary War Pension and Bounty Land Warrant Application File W. 14,734, Jacob Daniels, N.H., microfilm publication M804 (National Archives Identifier 54368689, image file 4156793_00373.jpg). Downloaded from the National Archives Catalog, which lists its use as unrestricted; cropped and compressed for this page.\",\"keys\":[\"Names: \\\"Dolly Foss, formerly widow of Jacob Daniels\\\".\",\"Dates: the year he died. The dates her pension was to commence and its certificate was issued are lower on the form.\",\"Service: his rank (lieutenant), his captain, his colonel, the New Hampshire line, and how long he served.\"],\"marks\":[true,true,true],\"sw\":1280,\"iw\":1280,\"afterList\":true}"
+    },
+    {
+      "name": "t130 #1 (390px): under the heading and independent line, Tim's sentence, then the three start cards (stacked) with his exact titles, lines and navy buttons, then 'See how the tools work', then the longer paragraphs; the 'Ready to get started?' box is gone",
+      "ok": true,
+      "detail": "{\"order\":[0,1,2,3,4,5,6],\"cards\":[[421,16],[631,16],[861,16]],\"seeHow\":[\"See how the tools work\",\"/walkthroughs/\"],\"oldBox\":false}"
+    },
+    {
+      "name": "t130 #3 (390px): start cards have a soft warm background and navy buttons with white text",
+      "ok": true,
+      "detail": "[[\"rgb(19, 41, 75)\",\"rgb(255, 255, 255)\",\"rgb(246, 240, 228)\"],[\"rgb(19, 41, 75)\",\"rgb(255, 255, 255)\",\"rgb(246, 240, 228)\"],[\"rgb(19, 41, 75)\",\"rgb(255, 255, 255)\",\"rgb(246, 240, 228)\"]]"
+    },
+    {
+      "name": "t130 #3 (390px): home guide titles are bolder and larger than their descriptions; more space between sections",
+      "ok": true,
+      "detail": "{\"t\":[\"700\",17.28],\"d\":[\"400\",13],\"gap\":45}"
+    },
+    {
+      "name": "t130 #3 (390px): the top menu is fully visible (wraps, never hidden) in white on navy",
+      "ok": true,
+      "detail": "{\"nav\":true,\"c\":\"rgb(255, 255, 255)\",\"bg\":\"rgb(19, 41, 75)\"}"
+    },
+    {
+      "name": "t130 #1 (1280px): under the heading and independent line, Tim's sentence, then the three start cards (side by side) with his exact titles, lines and navy buttons, then 'See how the tools work', then the longer paragraphs; the 'Ready to get started?' box is gone",
+      "ok": true,
+      "detail": "{\"order\":[0,1,2,3,4,5,6],\"cards\":[[426,288],[426,528],[426,768]],\"seeHow\":[\"See how the tools work\",\"/walkthroughs/\"],\"oldBox\":false}"
+    },
+    {
+      "name": "t130 #3 (1280px): start cards have a soft warm background and navy buttons with white text",
+      "ok": true,
+      "detail": "[[\"rgb(19, 41, 75)\",\"rgb(255, 255, 255)\",\"rgb(246, 240, 228)\"],[\"rgb(19, 41, 75)\",\"rgb(255, 255, 255)\",\"rgb(246, 240, 228)\"],[\"rgb(19, 41, 75)\",\"rgb(255, 255, 255)\",\"rgb(246, 240, 228)\"]]"
+    },
+    {
+      "name": "t130 #3 (1280px): home guide titles are bolder and larger than their descriptions; more space between sections",
+      "ok": true,
+      "detail": "{\"t\":[\"700\",18.36],\"d\":[\"400\",13],\"gap\":45}"
+    },
+    {
+      "name": "t130 #3 (1280px): the top menu is fully visible (wraps, never hidden) in white on navy",
+      "ok": true,
+      "detail": "{\"nav\":true,\"c\":\"rgb(255, 255, 255)\",\"bg\":\"rgb(19, 41, 75)\"}"
+    },
+    {
+      "name": "t130: the home AI line and the locked SAR line are unchanged, word for word",
+      "ok": true,
+      "detail": ""
+    },
+    {
       "name": "Cache-busting: every page's script/CSS URL and every module import is versioned with the file's content hash",
       "ok": true,
       "detail": ""
@@ -1028,5 +1165,5 @@
   "requestsTotal": 658,
   "externalRequests": 0,
   "interactionRequests": 0,
-  "faviconLate": 24
+  "faviconLate": 25
 }

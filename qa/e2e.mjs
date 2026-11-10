@@ -33,6 +33,8 @@ page.on("console", (m) => { if (m.type() === "error") consoleErrors.push(`${page
 page.on("response", (r) => { if (r.status() >= 400) consoleErrors.push(`HTTP ${r.status()} ${r.url()}`); });
 page.on("pageerror", (e) => consoleErrors.push(`${page.url()}: ${e.message}`));
 page.on("dialog", (d) => d.accept());
+// t130 #2b: generations are collapsible; tests that type into an older generation open them first (as a visitor would).
+const openAll = (pg) => pg.evaluate(() => document.querySelectorAll("details.gen-d").forEach((d) => { d.open = true; }));
 const ls = () => page.evaluate(() => Object.fromEntries(Object.keys(localStorage).map((k) => [k, localStorage.getItem(k)])));
 const phase = (p) => { page.__phase = p; };
 // Nov 5: dates are memorable-date fields (Month / Day / Year / How sure). fillDate types a stored-format value into them.
@@ -157,14 +159,14 @@ phase("load"); await page.goto(`${BASE}/tools/lineage-matrix/`); phase("interact
 // Audit 4 proposal #2: a first visit shows the purpose line, a Start button and the "Don't know your patriot's name yet?" checklist;
 // the steps (and the generation cards) stay hidden until the visitor starts.
 { const st = await page.evaluate(() => ({ purpose: document.querySelector("[data-purpose]")?.textContent || "", start: !!document.querySelector("[data-ws-start]") && !document.querySelector("[data-ws-start]").hidden,
-    bodyHidden: document.querySelector("[data-ws-body]")?.hidden, genVisible: [...document.querySelectorAll("section.gen")].some((g) => g.offsetParent !== null),
+    bodyHidden: document.querySelector("[data-ws-body]")?.hidden, genVisible: [...document.querySelectorAll("details.gen")].some((g) => g.offsetParent !== null),
     list: [...document.querySelectorAll("[data-ws-start] [data-name-check]")].length, step0: !!document.querySelector('[data-ws-start] a[href="/guides/lineage-proof-roadmap/#step-0-find-your-patriot-s-name"]'), ls: Object.keys(localStorage).filter((k) => k.startsWith("pi.toolB")) }));
   check("Worksheet (audit 4 proposal): a first visit opens with the purpose line and a Start button; the generation cards stay hidden; nothing is saved yet", /What it's for/.test(st.purpose) && st.start && st.bodyHidden === true && !st.genVisible && st.ls.length === 0, JSON.stringify(st));
   check("Worksheet (audit 4 proposal): the start screen has the inline 'Don't know your patriot's name yet?' checklist (4 items) plus the Step 0 link", st.list === 4 && st.step0 && /Don't know your patriot's name yet\?/.test(await page.textContent("[data-ws-start]")), JSON.stringify(st));
   await page.check('[data-ws-start] [data-name-check="known"]');
   await page.click("[data-ws-begin]");
-  const after = await page.evaluate(() => ({ startHidden: document.querySelector("[data-ws-start]").hidden, bodyHidden: document.querySelector("[data-ws-body]").hidden, focus: document.activeElement?.id, saved: !!localStorage.getItem("pi.toolB.v1"), tick: JSON.parse(localStorage.getItem("pi.toolB.nameChecklist") || "{}").known, patBox: document.querySelector('[data-patriot-form] details[data-name-box] [data-name-check="known"]')?.checked }));
-  check("Worksheet (audit 4 proposal): 'Start my worksheet' opens the steps at the patriot step, saves a blank worksheet, and keeps the checklist tick (also shown in the patriot step)", after.startHidden && !after.bodyHidden && after.focus === "tb-patriot" && after.saved && after.tick === true && after.patBox === true, JSON.stringify(after));
+  const after = await page.evaluate(() => ({ startHidden: document.querySelector("[data-ws-begin-wrap]").hidden, bodyHidden: document.querySelector("[data-ws-body]").hidden, focus: document.activeElement?.id, saved: !!localStorage.getItem("pi.toolB.v1"), tick: JSON.parse(localStorage.getItem("pi.toolB.nameChecklist") || "{}").known, patBox: document.querySelector('[data-patriot-form] details[data-name-box] [data-name-check="known"]')?.checked }));
+  check("Worksheet (audit 4 proposal, t130 #2a): 'Start with just the patriot and me' opens the steps at the patriot step, saves a blank worksheet, and keeps the checklist tick (also shown in the patriot step)", after.startHidden && !after.bodyHidden && after.focus === "tb-patriot" && after.saved && after.tick === true && after.patBox === true, JSON.stringify(after));
   phase("load"); await page.reload(); phase("interact");
   check("Worksheet (audit 4 proposal): once started, a reload goes straight to the steps", !(await page.isVisible("[data-ws-begin]")) && await page.isVisible("#pat-name")); }
 check("Worksheet: step 1 is the patriot step", /Your patriot/.test(await page.textContent("#tb-patriot")) && (await page.$$("[data-patriot-form] #pat-kind option")).length >= 9);
@@ -205,31 +207,54 @@ await page.evaluate(() => localStorage.removeItem("pi.toolB.v1")); phase("load")
 await page.click("[data-ws-begin]");
 
 // ---- Tool B ----
-check("Tool B: starts with 2 generations", (await page.$$("section.gen")).length === 2);
+// t130 #2a: "Start with just the patriot and me" creates only the patriot step and generation 1 (you).
+{ const st0 = await page.evaluate(() => ({ gens: [...document.querySelectorAll("details.gen-d")].map((d) => d.dataset.gen).join(","), saved: JSON.parse(localStorage.getItem("pi.toolB.v1") || "{}").generations?.length,
+    patriotOpen: document.querySelector('details[data-group="patriot"]')?.open, groups: [...document.querySelectorAll("[data-group]")].map((g) => g.querySelector("h3")?.textContent.replace(/^\d+\s*/, "")).join("|"), g1Open: document.querySelector('details.gen-d[data-gen="1"]')?.open }));
+  check("t130 #2a: the default start shows only 'Your patriot' and Generation 1 (you); older generations stay hidden until added; saved worksheet has 1 generation", st0.gens === "1" && st0.saved === 1 && st0.patriotOpen === true && st0.g1Open === true && st0.groups === "Your patriot|Generations", JSON.stringify(st0)); }
 check("Tool B: 'How this works' says it doesn't search records and nothing leaves the device", /does not search any records/.test(await page.textContent('[data-tool="lineage-matrix"] .howto')));
-check("Tool B: generations are labelled 'Generation 1: You' and 'Generation 2: Your parent'", (await page.$$eval("section.gen h3", (hs) => hs.map((h) => h.textContent).join("|"))) === "Generation 1: You|Generation 2: Your parent");
+check("Tool B: generation 1 is labelled 'Generation 1: You'", (await page.$$eval("details.gen h3", (hs) => hs.map((h) => h.textContent).join("|"))) === "Generation 1: You");
 await page.click('[data-add-evidence="1"]'); await page.click('[data-add-evidence="1"]');
-check("Tool B: clicking 'Add a record' twice does not stack a second blank record", (await page.$$('section.gen[data-gen="1"] .cell')).length === 1);
-const blankStatus = await page.textContent('section.gen[data-gen="1"] .cell .status');
-check("Tool B (regression): a blank record shows no label at all (no 'Evidence Entered')", !/Evidence Entered/.test(blankStatus) && (await page.$$('section.gen[data-gen="1"] .cell .status .badge')).length === 0 && /Empty record/.test(blankStatus), blankStatus);
-await page.selectOption('section.gen[data-gen="1"] select[name=fact]', "birth");
-await page.selectOption('section.gen[data-gen="1"] select[name=docType]', "birth_cert_long");
-await page.check('section.gen[data-gen="1"] input[type=radio][value=direct]');
-await page.fill('section.gen[data-gen="1"] input[name=citation]', "Long-form birth certificate, state vital records office, image 1");
-txt = await page.textContent('section.gen[data-gen="1"] .cell .status');
+check("Tool B: clicking 'Add a record' twice does not stack a second blank record", (await page.$$('details.gen[data-gen="1"] .cell')).length === 1);
+const blankStatus = await page.textContent('details.gen[data-gen="1"] .cell .status');
+check("Tool B (regression): a blank record shows no label at all (no 'Evidence Entered')", !/Evidence Entered/.test(blankStatus) && (await page.$$('details.gen[data-gen="1"] .cell .status .badge')).length === 0 && /Empty record/.test(blankStatus), blankStatus);
+await page.selectOption('details.gen[data-gen="1"] select[name=fact]', "birth");
+await page.selectOption('details.gen[data-gen="1"] select[name=docType]', "birth_cert_long");
+await page.check('details.gen[data-gen="1"] input[type=radio][value=direct]');
+await page.fill('details.gen[data-gen="1"] input[name=citation]', "Long-form birth certificate, state vital records office, image 1");
+txt = await page.textContent('details.gen[data-gen="1"] .cell .status');
 check("Tool B: complete direct entry shows 'Evidence Entered — Review Required'", txt.includes("Evidence Entered — Review Required"), txt.slice(0, 60));
-await page.click('[data-add-evidence="2"]');
-await page.selectOption('section.gen[data-gen="2"] select[name=fact]', "parentage");
-await page.selectOption('section.gen[data-gen="2"] select[name=docType]', "census_1850_1870");
-await page.check('section.gen[data-gen="2"] input[type=radio][value=direct]');
-await page.fill('section.gen[data-gen="2"] input[name=citation]', "1860 census, county and page as on image");
-txt = await page.textContent('section.gen[data-gen="2"] .cell .status');
-check("Tool B: 1850-70 census for parentage marked direct gets NSCDA caution, not an upgrade", txt.includes("Evidence Entered — Review Required") && /do not state relationships/.test(txt));
-await page.check('section.gen[data-gen="2"] input[name=conflict]');
-txt = await page.textContent('section.gen[data-gen="2"] .cell .status');
-check("Tool B: conflict flag changes label to 'Conflict Flagged — Review Required'", txt.includes("Conflict Flagged — Review Required"));
+await page.fill("#who-1", "Test Me");
+// t130 #2b: "+ Add an older generation" adds generation 2, opens it, and folds generation 1 under its title and name.
 await page.click("[data-add-gen]");
-check("Tool B: add generation works", (await page.$$("section.gen")).length === 3);
+{ const c1 = await page.evaluate(() => ({ gens: [...document.querySelectorAll("details.gen-d")].map((d) => `${d.dataset.gen}:${d.open ? "open" : "closed"}`).join(","), h1: document.querySelector('details.gen-d[data-gen="1"] > summary h3')?.textContent,
+    h2: document.querySelector('details.gen-d[data-gen="2"] > summary h3')?.textContent, g1FieldsVisible: document.querySelector("#who-1")?.checkVisibility() }));
+  check("t130 #2b: adding an older generation opens it; the earlier one collapses with its title and name as the heading", c1.gens === "1:closed,2:open" && c1.h1 === "Generation 1: You — Test Me" && c1.h2 === "Generation 2: Your parent" && !c1.g1FieldsVisible, JSON.stringify(c1));
+  await page.click('details.gen-d[data-gen="1"] > summary');
+  const c2 = await page.evaluate(() => ({ open: document.querySelector('details.gen-d[data-gen="1"]').open, vis: document.querySelector("#who-1")?.checkVisibility(), val: document.querySelector("#who-1")?.value }));
+  await page.click('details.gen-d[data-gen="1"] > summary');
+  const c3 = await page.evaluate(() => document.querySelector('details.gen-d[data-gen="1"]').open);
+  check("t130 #2b: clicking a collapsed generation's heading expands it (entries intact); clicking again collapses it", c2.open && c2.vis && c2.val === "Test Me" && c3 === false, JSON.stringify({ c2, c3 })); }
+await page.click('[data-add-evidence="2"]');
+await page.selectOption('details.gen[data-gen="2"] select[name=fact]', "parentage");
+await page.selectOption('details.gen[data-gen="2"] select[name=docType]', "census_1850_1870");
+await page.check('details.gen[data-gen="2"] input[type=radio][value=direct]');
+await page.fill('details.gen[data-gen="2"] input[name=citation]', "1860 census, county and page as on image");
+{ const g1Still = await page.evaluate(() => document.querySelector('details.gen-d[data-gen="1"]').open);
+  check("t130 #2b: an expanded or collapsed choice is kept while the visitor works (generation 1 stays collapsed after editing generation 2)", g1Still === false); }
+txt = await page.textContent('details.gen[data-gen="2"] .cell .status');
+check("Tool B: 1850-70 census for parentage marked direct gets NSCDA caution, not an upgrade", txt.includes("Evidence Entered — Review Required") && /do not state relationships/.test(txt));
+// t130 #2c: key questions first; "This record disagrees with another record" sits under a closed "More details" toggle.
+{ const md = await page.evaluate(() => { const c = document.querySelector('details.gen[data-gen="2"] .cell'); const d = c.querySelector("details.more-details");
+    const order = [...c.querySelectorAll("label, summary")].map((x) => x.textContent.trim().slice(0, 2));
+    return { has: !!d, open: d?.open, summary: d?.querySelector("summary")?.textContent, conflictInside: !!d?.querySelector("input[name=conflict]"), conflictVisible: c.querySelector("input[name=conflict]")?.checkVisibility(), keyFirst: order.indexOf("A.") < order.indexOf("Mo") && order.indexOf("D.") < order.indexOf("Mo") }; });
+  check("t130 #2c: each record shows questions A–D first; the 'disagrees with another record' box is under a closed 'More details' toggle", md.has && md.open === false && md.summary === "More details" && md.conflictInside && !md.conflictVisible && md.keyFirst, JSON.stringify(md)); }
+await page.click('details.gen[data-gen="2"] .cell details.more-details > summary');
+await page.check('details.gen[data-gen="2"] input[name=conflict]');
+txt = await page.textContent('details.gen[data-gen="2"] .cell .status');
+check("Tool B: conflict flag changes label to 'Conflict Flagged — Review Required'", txt.includes("Conflict Flagged — Review Required"));
+check("t130 #2c: a record flagged as disagreeing keeps its 'More details' open after the redraw", await page.evaluate(() => document.querySelector('details.gen[data-gen="2"] .cell details.more-details').open));
+await page.click("[data-add-gen]");
+check("Tool B: add generation works", (await page.$$("details.gen")).length === 3);
 const gapsTxt = await page.textContent("[data-gaps]");
 check("Tool B: gap list shows the flagged conflict and missing items", /flagged a conflict/i.test(gapsTxt) && /no death evidence/i.test(gapsTxt), gapsTxt.slice(0, 120));
 const genOrder = await page.$$eval("[data-gaps] .gaps > li[data-gap-gen]", (lis) => lis.map((l) => l.dataset.gapGen));
@@ -244,7 +269,7 @@ const mUrls = new Set(JSON.parse(readFileSync(join(ROOT, "manifest/claims.json")
 check("Tool B: 'Where to look' links are only Source Manifest sources or this site's guides", whereHrefs.length > 0 && whereHrefs.every((h) => mUrls.has(h) || /^\/guides\/[a-z-]+\/$/.test(h)), whereHrefs.join(" "));
 await page.screenshot({ path: join(SHOTS, "desktop-tool-b.png"), fullPage: false });
 phase("load"); await page.reload(); phase("interact");
-check("Tool B: state persists after reload (localStorage)", (await page.$$("section.gen")).length === 3 && (await page.$$("section.gen .cell")).length === 2);
+check("Tool B: state persists after reload (localStorage)", (await page.$$("details.gen")).length === 3 && (await page.$$("details.gen .cell")).length === 2);
 const bText = await page.textContent('[data-tool="lineage-matrix"]'); check("Tool B: the word 'Documented' never appears in tool output", !/\bdocumented\b/i.test(bText), "");
 phase("load"); await page.goto(`${BASE}/tools/lineage-matrix/report/`); phase("interact");
 txt = await page.textContent("[data-report]");
@@ -270,7 +295,7 @@ const orderItems = await page.$$eval('[data-tool="lineage-matrix"] [data-plan] .
 const planGens = await page.$$eval('[data-tool="lineage-matrix"] [data-plan] .plan-group', (x) => x.map((e) => e.textContent));
 check("Tool B (regression): action plan groups each generation once, in order", planGens.length >= 2 && new Set(planGens).size === planGens.length && planGens.every((g, i) => i === 0 || +g.match(/\d+/)[0] > +planGens[i - 1].match(/\d+/)[0]), planGens.join(" | "));
 check("Tool B: action plan lists each missing record with a Where-to-look link, then registrar and application steps", orderItems.length >= 3 && orderItems.every(Boolean) && /Contact a local chapter's registrar/.test(planB) && /Start the application/.test(planB), `${orderItems.length} items`);
-check("Tool B: 'Load an example' fills a made-up patriot and family and shows gaps with where to look", (await page.$$("section.gen")).length === 5 && (await page.inputValue("#pat-name")).length > 0 && (await page.$$("[data-gaps] [data-where-block] a[href*='archives.gov']")).length > 0);
+check("Tool B: 'Load an example' fills a made-up patriot and family and shows gaps with where to look", (await page.$$("details.gen")).length === 5 && (await page.inputValue("#pat-name")).length > 0 && (await page.$$("[data-gaps] [data-where-block] a[href*='archives.gov']")).length > 0);
 { const nn = await page.evaluate(() => { const p = document.querySelector("[data-patriot] [data-no-name]"); return p ? { text: p.textContent, href: p.querySelector("a")?.getAttribute("href") } : null; });
   const road = readFileSync(join(DIST, "guides/lineage-proof-roadmap/index.html"), "utf8");
   check("Worksheet patriot step: 'Don't know your patriot's name yet?' links in plain words to Roadmap Step 0", nn && /^Don't know your patriot's name yet\?/.test(nn.text) && nn.href === "/guides/lineage-proof-roadmap/#step-0-find-your-patriot-s-name" && road.includes('id="step-0-find-your-patriot-s-name"'), JSON.stringify(nn)); }
@@ -317,9 +342,9 @@ check("Report: links to the definitions", (await page.$$('main a[href="/#glossar
       { gen: 5, who: "", living: false, born: "1800", died: "1870", state: "VA", cells: [cellB("parentage", "probate")] },
       { gen: 6, who: "", living: false, born: "1755", died: "1830", state: "VA", cells: [] } ] };
   phase("load"); await page.goto(`${BASE}/tools/lineage-matrix/`); await page.evaluate((d) => localStorage.setItem("pi.toolB.v1", JSON.stringify(d)), personaB);
-  await page.goto(`${BASE}/tools/lineage-matrix/`); phase("interact");
+  await page.goto(`${BASE}/tools/lineage-matrix/`); phase("interact"); await openAll(page);
   await page.check('[data-have="3"] input[data-have-item="census"]');
-  const g3 = await page.$eval('section.gen[data-gen="3"] .cell', (c) => ({ doc: c.querySelector("select[name=docType]").value, status: c.querySelector(".status").textContent }));
+  const g3 = await page.$eval('details.gen[data-gen="3"] .cell', (c) => ({ doc: c.querySelector("select[name=docType]").value, status: c.querySelector(".status").textContent }));
   // Repeated notes: Ohio's no-source note is printed in full once on the worksheet page; later mentions are one-line pointers.
   const ohio = await page.evaluate(() => ({ full: (document.querySelector("main").textContent.match(/no verified source yet on when Ohio began/g) || []).length,
     refs: [...document.querySelectorAll("[data-gaps] [data-where-ref]")].length }));
@@ -327,9 +352,9 @@ check("Report: links to the definitions", (await page.$$('main a[href="/#glossar
   // Patriot generation: a missing birth or death record has a clear way to add it.
   const addBtn = await page.$('[data-gaps] [data-add-for="6:birth"]');
   const btnText = addBtn ? await addBtn.textContent() : "";
-  await addBtn?.click(); const g6 = await page.$$eval('section.gen[data-gen="6"] .cell select[name=fact]', (s) => s.map((x) => x.value));
+  await addBtn?.click(); const g6 = await page.$$eval('details.gen[data-gen="6"] .cell select[name=fact]', (s) => s.map((x) => x.value));
   check("Audit 3 #4: the patriot's generation's 'add a birth or death record' item has a button that adds one there", /Add a birth or death record/.test(btnText) && g6.includes("birth"), `${btnText} -> ${g6}`);
-  await page.click('section.gen[data-gen="6"] [data-remove-cell]').catch(() => {});
+  await page.click('details.gen[data-gen="6"] [data-remove-cell]').catch(() => {});
   await page.evaluate(() => { const s = JSON.parse(localStorage.getItem("pi.toolB.v1")); s.generations[5].cells = []; localStorage.setItem("pi.toolB.v1", JSON.stringify(s)); });
   phase("load"); await page.goto(`${BASE}/tools/lineage-matrix/report/`); phase("interact");
   const rb = await page.evaluate(() => {
@@ -353,7 +378,7 @@ check("Report: links to the definitions", (await page.$$('main a[href="/#glossar
   await page.evaluate(() => localStorage.removeItem("pi.toolB.v1"));
   phase("load"); await page.goto(`${BASE}/tools/lineage-matrix/`); await page.click("[data-load-example]"); phase("interact");
 }
-phase("load"); await page.goto(`${BASE}/tools/lineage-matrix/`); phase("interact");
+phase("load"); await page.goto(`${BASE}/tools/lineage-matrix/`); phase("interact"); await openAll(page);
 await page.selectOption("#state-3", "TX");
 const genOpts = await page.$$eval("#pat-gen option", (os) => os.map((o) => [o.value, o.textContent]));
 check("Generation picker (audit 2): Generation 1 is not offered; the default is the oldest generation", !genOpts.some(([v]) => v === "1") && genOpts[0][0] === "" && /oldest generation I've added \(now my 2nd-great-grandfather, generation 5\)/.test(genOpts[0][1]) && genOpts.some(([v, t]) => v === "6" && t === "My 3rd-great-grandfather (generation 6)"), JSON.stringify(genOpts.slice(0, 2)));
@@ -361,7 +386,7 @@ const subst = await page.$$eval("[data-gaps] [data-where-block] a[data-substitut
 check("Birth gap (audit 2): Virginia before 1853 says there was no statewide birth recording and links the substitute-evidence guide right there", subst.some(([h, t]) => h === "/guides/substitute-evidence/" && /no statewide recording of births before 1853/.test(t)), JSON.stringify(subst).slice(0, 160));
 await page.evaluate(() => { const s = JSON.parse(localStorage.getItem("pi.toolB.v1")); s.patriot.gen = "1"; localStorage.setItem("pi.toolB.v1", JSON.stringify(s)); });
 phase("load"); await page.reload(); phase("interact");
-const heads = await page.$$eval("section.gen h3", (hs) => hs.map((h) => h.textContent));
+const heads = await page.$$eval("details.gen h3", (hs) => hs.map((h) => h.textContent));
 check("Generation picker (audit 2): an old saved 'Generation 1' shows a plain warning and the oldest generation stays the patriot", await page.isVisible("[data-gen-warn]") && /Generation 1 is you/.test(await page.textContent("[data-gen-warn]")) && !/patriot/.test(heads[0]) && /\(the patriot\)/.test(heads.at(-1)), heads.join(" | "));
 const txNote = await page.textContent("[data-gaps] [data-where-index]");
 check("Where to look: a state with no verified source says so (no invented records)", /no verified source yet on when Texas/.test(txNote), txNote.slice(0, 120));
@@ -370,14 +395,14 @@ store = await ls();
 check("Tool B clear: removes pi.toolB.* only, keeps unrelated key", !Object.keys(store).some((k) => k.startsWith("pi.toolB")) && store["other.app.key"] === "keep-me", Object.keys(store).join(","));
 // ---- Simpler worksheet: "What do you have?" checklist and plain relationship choices ----
 phase("load"); await page.goto(`${BASE}/tools/lineage-matrix/`); phase("interact");
-await page.click("[data-ws-begin]");
+await page.click("[data-ws-begin]"); await page.click("[data-add-gen]");
 await page.check('[data-have="2"] input[data-have-item="will"]');
-const willCell = await page.evaluate(() => { const c = document.querySelectorAll('section.gen[data-gen="2"] .cell'); return { n: c.length, fact: c[0]?.querySelector("select[name=fact]").value, doc: c[0]?.querySelector("select[name=docType]").value }; });
-await page.uncheck('[data-have="2"] input[data-have-item="will"]'); const afterUntick = (await page.$$('section.gen[data-gen="2"] .cell')).length;
+const willCell = await page.evaluate(() => { const c = document.querySelectorAll('details.gen[data-gen="2"] .cell'); return { n: c.length, fact: c[0]?.querySelector("select[name=fact]").value, doc: c[0]?.querySelector("select[name=docType]").value }; });
+await page.uncheck('[data-have="2"] input[data-have-item="will"]'); const afterUntick = (await page.$$('details.gen[data-gen="2"] .cell')).length;
 check("Worksheet: ticking 'Will or probate record' under 'What do you have?' adds a record with what it shows and its kind already picked; unticking removes it", willCell.n === 1 && willCell.fact === "parentage" && willCell.doc === "probate" && afterUntick === 0, JSON.stringify(willCell));
 check("Worksheet: the checklist offers birth certificate, will, census, Bible record and pension file", (await page.$$eval('[data-have="1"] input', (xs) => xs.map((x) => x.value))).join(",").includes("birth_cert,death_cert,marriage,will,census,bible,church,pension"));
 await page.selectOption("#pat-gen", "7");
-const g7 = await page.$$eval("section.gen h3", (hs) => hs.map((h) => h.textContent));
+const g7 = await page.$$eval("details.gen h3", (hs) => hs.map((h) => h.textContent));
 check("Worksheet: choosing 'My 4th-great-grandfather (generation 7)' adds the generations in between", g7.length === 7 && g7[6].startsWith("Generation 7: Your 4th-great-grandparent") && (await page.inputValue("#pat-gen")) === "7", g7.at(-1));
 await page.evaluate(() => localStorage.removeItem("pi.toolB.v1"));
 await page.evaluate(() => localStorage.setItem("pi.toolB.v1", JSON.stringify({ generations: [{ gen: 1, living: true, cells: [{ id: "a", fact: "birth", docType: "birth_cert_long", mode: "direct", conflict: false, citation: "Certificate 1" }] }, { gen: 2, cells: [] }], patriot: {} })));
@@ -392,12 +417,12 @@ phase("load"); await page.goto(`${BASE}/`); phase("interact");
 const home = await page.textContent("main");
 const gloss = await page.textContent(".glossary");
 check("Home: short glossary defines Patriot, DAR, SAR, NSCDA and lineage society, each with a source note", ["Patriot:", "DAR:", "SAR:", "NSCDA:", "Lineage society:"].every((k) => gloss.includes(k)) && (await page.$$eval(".glossary li", (lis) => lis.every((li) => li.querySelector("sup a[href^='#src-']")))) && (await page.$$("#sources + ol.sources li")).length >= 3);
-check("Home (Nov 5): 'Ready to get started?' links to both tools and to the Roadmap guide", (await page.$$('main [data-get-started] a[href="/tools/lineage-matrix/"]')).length === 1 && (await page.$$('main [data-get-started] a[href="/tools/widow-pension-checker/"]')).length === 1 && (await page.$$('main [data-get-started] a[data-start-button][href="/guides/lineage-proof-roadmap/"]')).length === 1);
+check("Home (t130 #1, replaces 'Ready to get started?'): the start cards link to both tools and to the Roadmap guide", (await page.$$('main [data-start-cards] a[href="/tools/lineage-matrix/"]')).length === 1 && (await page.$$('main [data-start-cards] a[href="/tools/widow-pension-checker/"]')).length === 1 && (await page.$$('main [data-start-cards] a[data-start-button][href="/guides/lineage-proof-roadmap/"]')).length === 1);
 const homeOrder = await page.evaluate(() => [...document.querySelectorAll("main h2")].map((h) => h.id));
 { const hm = await page.evaluate(() => { const m = document.querySelector("main [data-mission]"); return { ps: m.querySelectorAll("p").length, lists: m.querySelectorAll("ul, ol").length, text: m.textContent, sub: document.querySelector("main [data-subtitle]")?.textContent || "",
-    ai: document.querySelector("main [data-ai-line]")?.textContent.trim() || "", beforeStart: !!(m.compareDocumentPosition(document.querySelector("[data-get-started]")) & Node.DOCUMENT_POSITION_FOLLOWING), words: document.querySelector("main").innerText.split(/\s+/).length }; });
+    ai: document.querySelector("main [data-ai-line]")?.textContent.trim() || "", afterCards: !!(m.compareDocumentPosition(document.querySelector("[data-start-cards]")) & Node.DOCUMENT_POSITION_PRECEDING), words: document.querySelector("main").innerText.split(/\s+/).length }; });
   globalThis.__home = hm;
-  check("Home (Nov 5 lock): subtitle names DAR and SAR; mission in flowing paragraphs (no lists) ahead of 'Ready to get started?'; purpose line, both tool names, one-sentence privacy", /DAR/.test(hm.sub) && /SAR/.test(hm.sub) && hm.lists === 0 && hm.ps >= 6 && hm.beforeStart && homeOrder[0] === "get-started"
+  check("Home (Nov 5 lock; t130 moved the paragraphs below the start cards, unchanged): subtitle names DAR and SAR; mission in flowing paragraphs (no lists) after the cards; purpose line, both tool names, one-sentence privacy", /DAR/.test(hm.sub) && /SAR/.test(hm.sub) && hm.lists === 0 && hm.ps >= 6 && hm.afterCards && homeOrder.filter(Boolean)[0] === "guides"
     && /organize the records that connect you to a Revolutionary War patriot/.test(hm.text) && /Widow Pension Law Checker/.test(hm.text) && /Lineage Evidence Matrix/.test(hm.text) && /what you type into the tools stays in your own browser\./.test(hm.text), JSON.stringify({ ...hm, text: hm.text.slice(0, 80) }));
   check("Home (Nov 5 lock, SAR line updated by t125u): the exact AI line, the exact SAR line (sourced), no unsourced 'most people get stuck' / 'give up' / guarantee lines", hm.ai === "Written with AI assistance and reviewed by the site's owner. Each fact is tied to a quoted official source, and software checks that the quote is still there."
     && /SAR's local sponsor can guide you through the application\./.test(hm.text) && !/most people get stuck|give up|so that doesn't happen to you|make sure you walk/i.test(hm.text) && !/No person reviews/i.test(await page.textContent("main")), hm.ai); }
@@ -514,7 +539,7 @@ await narrow.close();
 check("Mobile: tool buttons are at least 44px tall", tapTargets === 0, `${tapTargets} small`);
 for (const [p, name] of [["/faq/", "m-faq"], ["/walkthroughs/", "m-walkthroughs"], ["/", "m-home"], ["/guides/substitute-evidence/", "m-guide-table"], ["/tools/widow-pension-checker/", "m-widow"], ["/tools/lineage-matrix/", "m-tool-b"]]) {
   await mp.goto(BASE + p); if (name === "m-guide-table") await mp.evaluate(() => document.querySelector(".table-wrap").scrollIntoView());
-  if (name === "m-tool-b") { await mp.click('[data-add-evidence="1"]'); await mp.evaluate(() => document.querySelector("section.gen").scrollIntoView()); }
+  if (name === "m-tool-b") { await openAll(mp); await mp.click('[data-add-evidence="1"]'); await mp.evaluate(() => document.querySelector("details.gen").scrollIntoView()); }
   await mp.screenshot({ path: join(SHOTS, `${name}.png`) });
 }
 // ---- FAQ and job-aid walkthroughs (Nov 5 second batch) ----
@@ -540,9 +565,9 @@ for (const p of ["/faq/", "/walkthroughs/"]) { await page.goto(BASE + p); await 
 // (360px overflow for the new pages is covered by pagesToCheck at 375px and by the mobile screenshots below.)
 await page.goto(`${BASE}/guides/read-pension-file/`); await page.screenshot({ path: join(SHOTS, "desktop-guide.png") });
 // ---- Polish batch t119u (Nov 9) ----
-{ // #1 Home: no "Choose a tool:" row; the two big buttons stay in "Ready to get started?"
-  const home = readFileSync(join(DIST, "index.html"), "utf8"); const gs = (home.match(/<section[^>]*data-get-started[\s\S]*?<\/section>/) || [""])[0];
-  check('t119u #1: home has no "Choose a tool:" link row; "Ready to get started?" keeps both big buttons', !/Choose a tool/.test(home) && !/home-tool-choice/.test(home)
+{ // #1 Home: no "Choose a tool:" row; the two big tool buttons now sit in the t130 start cards
+  const home = readFileSync(join(DIST, "index.html"), "utf8"); const gs = (home.match(/<section[^>]*data-start-cards[\s\S]*?<\/section>/) || [""])[0];
+  check('t119u #1 (t130 cards): home has no "Choose a tool:" link row; the start cards keep both big tool buttons', !/Choose a tool/.test(home) && !/home-tool-choice/.test(home)
     && /class="button-link" href="\/tools\/lineage-matrix\/"/.test(gs) && /class="button-link" href="\/tools\/widow-pension-checker\/"/.test(gs)); }
 { // #2 Tool pages: the Roadmap line sits right under the one-sentence purpose, above the "What it does" box
   const bad = [];
@@ -772,7 +797,7 @@ phase("load"); await page.goto(`${BASE}/`); phase("interact");
     answer = true; await pg.click("[data-remove-gen]"); await pg.waitForTimeout(150);
     const n2 = (await pg.evaluate(() => JSON.parse(localStorage.getItem("pi.toolB.v1")).generations.length));
     check(`t127u #5 (${w}px): "Remove the oldest generation" asks "Remove this generation and its entries? This can't be undone."; Cancel keeps it, OK removes it`, msgs[0] === "Remove this generation and its entries? This can't be undone." && n0 === 3 && n1 === 3 && n2 === 2, JSON.stringify({ msgs, n0, n1, n2 }));
-    check(`t127u #5 (${w}px): the worksheet's starting point is consistent: step 1 is your patriot, step 2 starts the family with yourself`, /^2 Then your family: start with yourself, and go back one generation at a time$/.test(step2) && /Start with your patriot/.test(text("tools/lineage-matrix")), step2);
+    check(`t127u #5 / t130 #2b (${w}px): the worksheet's starting point is consistent: step 1 is your patriot, step 2 'Generations' starts the family with yourself`, /^2 Generations$/.test(step2) && /Start with yourself, and go back one generation at a time\./.test(text("tools/lineage-matrix")) && /Start with your patriot/.test(text("tools/lineage-matrix")), step2);
     await c.close();
   }
   // ---- t128u ----
@@ -796,6 +821,101 @@ phase("load"); await page.goto(`${BASE}/`); phase("interact");
   check("t127u #7: every claim has a source scope tag, and the gate reports 0 society-wide wordings backed only by state, chapter-local or third-party sources", /Source scope \(rule 7\): 0 flagged/.test(gateOut) && claimsAll.every((c) => ["national", "state", "chapter-local", "third-party"].includes(c.source_scope)));
 }
 
+// ---- t130 #2: example-load confirmation and saved data unchanged (fresh browser context) ----
+{ const cx = await browser.newContext({ viewport: { width: 390, height: 844 } }); const pg = await cx.newPage();
+  pg.on("pageerror", (e) => consoleErrors.push(`t130: ${e.message}`));
+  const dialogs = []; let accept = false; pg.on("dialog", async (d) => { dialogs.push(d.message()); accept ? await d.accept() : await d.dismiss(); });
+  // An older saved worksheet (3 generations, a named patriot, records, a skipped question) must load exactly as before.
+  const saved = { version: 1, updated: "2026-11-01T12:00:00.000Z", patriot: { name: "Saved Patriot", state: "NC", unit: "", kind: "continental", start: "1776-02", end: "1779-06", gen: "3" },
+    generations: [{ gen: 1, who: "Saved Me", living: true, born: "1960", died: "", state: "NC", cells: [{ id: "s1", fact: "birth", docType: "birth_cert_long", mode: "direct", conflict: false, citation: "My certificate" }] },
+      { gen: 2, who: "Saved Parent", living: false, born: "1930", died: "2001", state: "NC", cells: [{ id: "s2", fact: "parentage", docType: "probate", mode: "", conflict: true, citation: "", skipped: ["mode"] }] },
+      { gen: 3, who: "Saved Patriot", living: false, born: "1750", died: "1820", state: "NC", cells: [] }] };
+  await pg.goto(`${BASE}/tools/lineage-matrix/`); await pg.evaluate((d) => localStorage.setItem("pi.toolB.v1", JSON.stringify(d)), saved);
+  const raw0 = await pg.evaluate(() => localStorage.getItem("pi.toolB.v1"));
+  await pg.reload();
+  const sv = await pg.evaluate(() => ({ raw: localStorage.getItem("pi.toolB.v1"), gens: [...document.querySelectorAll("details.gen-d")].map((d) => `${d.dataset.gen}:${d.open ? "open" : "closed"}`).join(","),
+    who: [1, 2, 3].map((g) => document.querySelector(`#who-${g}`)?.value).join("|"), pat: document.querySelector("#pat-name")?.value, begin: document.querySelector("[data-ws-begin-wrap]")?.hidden, body: document.querySelector("[data-ws-body]")?.hidden,
+    conflictOpen: document.querySelector('[data-cell="s2"] details.more-details')?.open, conflict: document.querySelector('[data-cell="s2"] input[name=conflict]')?.checked, skip: document.querySelector('[data-cell="s2"] input[data-skip="mode"]')?.checked, cite: document.querySelector('[data-cell="s1"] input[name=citation]')?.value }));
+  check("t130 #2d: an older saved worksheet loads exactly as before: storage unchanged, all 3 generations and every entry shown (newest open, flagged record's More details open)", sv.raw === raw0 && sv.gens === "1:closed,2:closed,3:open" && sv.who === "Saved Me|Saved Parent|Saved Patriot" && sv.pat === "Saved Patriot" && sv.begin === true && sv.body === false && sv.conflictOpen === true && sv.conflict === true && sv.skip === true && sv.cite === "My certificate", JSON.stringify({ ...sv, raw: sv.raw === raw0 }));
+  // "See a filled-in example" with saved entries asks first; Cancel keeps everything.
+  await pg.click("[data-load-example]");
+  const raw1 = await pg.evaluate(() => localStorage.getItem("pi.toolB.v1"));
+  check("t130 #2a: with saved entries, 'See a filled-in example' first asks \"Loading the example replaces your current entries. Continue?\"; Cancel changes nothing", dialogs[0] === "Loading the example replaces your current entries. Continue?" && raw1 === raw0 && (await pg.inputValue("#who-1")) === "Saved Me", JSON.stringify(dialogs));
+  accept = true; await pg.click("[data-load-example]");
+  const ex = await pg.evaluate(() => ({ gens: JSON.parse(localStorage.getItem("pi.toolB.v1")).generations.length, pat: document.querySelector("#pat-name")?.value }));
+  check("t130 #2a: OK loads the example (5 made-up generations)", dialogs.length === 2 && ex.gens === 5 && /made up/.test(ex.pat), JSON.stringify(ex));
+  // A fresh browser: the example loads without a question (nothing to replace), and the two start buttons sit at the top of the tool.
+  await pg.evaluate(() => localStorage.clear()); await pg.reload(); const n0 = dialogs.length;
+  const top = await pg.evaluate(() => { const t = document.querySelector('[data-tool="lineage-matrix"]'); const kids = [...t.children].map((k) => k.matches("[data-purpose]") ? "purpose" : k.matches(".howto") ? "howto" : k.matches("[data-ws-start]") ? "start" : k.matches("[data-ws-body]") ? "body" : "");
+    return { order: kids.filter(Boolean).join(","), b1: t.querySelector("[data-ws-begin]")?.textContent, b2: t.querySelector("[data-load-example]")?.textContent, rec: t.querySelector(".ws-rec")?.textContent, limitsAbove: !!document.querySelector("main") && document.querySelector("main").textContent.indexOf("What it does.") < document.querySelector("main").textContent.indexOf("Start with just the patriot and me") }; });
+  check("t130 #2a: at the top of the tool (after the purpose line and 'What it does' box), two buttons: 'Start with just the patriot and me' (Recommended) and 'See a filled-in example'", top.order === "purpose,howto,start,body" && top.b1 === "Start with just the patriot and me" && top.b2 === "See a filled-in example" && top.rec === "Recommended" && top.limitsAbove, JSON.stringify(top));
+  await pg.click("[data-load-example]");
+  check("t130 #2a: on a fresh browser the example loads without a question", dialogs.length === n0 && (await pg.evaluate(() => JSON.parse(localStorage.getItem("pi.toolB.v1")).generations.length)) === 5);
+  // Remove the oldest generation still asks; a single generation (you) can't be removed.
+  await pg.evaluate(() => localStorage.clear()); await pg.reload(); await pg.click("[data-ws-begin]"); await pg.click("[data-add-gen]"); accept = false; await pg.click("[data-remove-gen]");
+  const keep = await pg.evaluate(() => document.querySelectorAll("details.gen-d").length); accept = true; await pg.click("[data-remove-gen]");
+  const after1 = await pg.evaluate(() => document.querySelectorAll("details.gen-d").length); const nD = dialogs.length; await pg.click("[data-remove-gen]");
+  check("t130 #2d: 'Remove the oldest generation' still asks first (Cancel keeps it, OK removes it), and generation 1 (you) is never removed", keep === 2 && after1 === 1 && dialogs.length === nD && (await pg.evaluate(() => document.querySelectorAll("details.gen-d").length)) === 1 && dialogs.at(-1) === "Remove this generation and its entries? This can't be undone.", JSON.stringify({ keep, after1 }));
+  for (const w of [390, 1280]) { await pg.setViewportSize({ width: w, height: 900 }); await pg.evaluate(() => localStorage.clear()); await pg.reload(); await pg.click("[data-load-example]");
+    const o = await pg.evaluate(() => ({ sw: document.documentElement.scrollWidth, iw: innerWidth })); await pg.evaluate(() => document.querySelector('[data-group="generations"]').scrollIntoView()); await pg.screenshot({ path: join(SHOTS, `t130-worksheet-${w}.png`) });
+    check(`t130 #2 (${w}px): the worksheet with collapsed generations has no horizontal overflow`, o.sw <= o.iw + 1, JSON.stringify(o)); }
+  await cx.close(); }
+// ---- t130 #4: both printable reports hide the menu, footer and buttons; the to-do list prints in readable dark text ----
+{ const cx = await browser.newContext({ viewport: { width: 1280, height: 900 } }); const pg = await cx.newPage(); pg.on("dialog", (d) => d.accept());
+  await pg.goto(`${BASE}/tools/widow-pension-checker/`); await pg.click("[data-load-example]");
+  await pg.goto(`${BASE}/tools/lineage-matrix/`); await pg.click("[data-load-example]");
+  const out = {};
+  for (const [name, url] of [["widow", "/tools/widow-pension-checker/report/"], ["worksheet", "/tools/lineage-matrix/report/"]]) {
+    await pg.goto(BASE + url); await pg.emulateMedia({ media: "print" });
+    out[name] = await pg.evaluate(() => { const hidden = (e) => !e.checkVisibility();
+      const chrome = [...document.querySelectorAll("header.site, footer.site, nav, main button, main a.button-link")];
+      const items = [...document.querySelectorAll("[data-report] .plan-steps > li, [data-report] .plan-sub > li")];
+      const fs = items.map((li) => parseFloat(getComputedStyle(li).fontSize)); const col = items.map((li) => getComputedStyle(li).color);
+      return { chrome: chrome.length, shown: chrome.filter((e) => !hidden(e)).map((e) => e.tagName + (e.textContent || "").trim().slice(0, 30)), items: items.length, minFont: Math.min(...fs), colors: [...new Set(col)] }; });
+    await pg.emulateMedia({ media: "screen" }); }
+  const dark = (c) => { const m = c.match(/\d+/g).map(Number); return m[0] < 90 && m[1] < 90 && m[2] < 110; };
+  check("t130 #4: both printable reports hide the menu, footer and every button when printed", out.widow.chrome >= 3 && out.widow.shown.length === 0 && out.worksheet.chrome >= 3 && out.worksheet.shown.length === 0, JSON.stringify({ w: out.widow.shown, m: out.worksheet.shown }));
+  check("t130 #4: the printed to-do list (What to do next) is at least 12px and in dark ink on both reports", out.widow.items > 0 && out.worksheet.items > 0 && out.widow.minFont >= 12 && out.worksheet.minFont >= 12 && [...out.widow.colors, ...out.worksheet.colors].every(dark), JSON.stringify({ w: [out.widow.items, out.widow.minFont, out.widow.colors], m: [out.worksheet.items, out.worksheet.minFont, out.worksheet.colors] }));
+  await cx.close(); }
+// ---- t130 #5: real M804 page in the pension-file guide: self-hosted, under 150 KB, alt text, caption naming the NARA file, 3 labels inside the image ----
+{ const imgBytes = statSync(join(DIST, "assets/archives/m804-w14734-daniels-brief.jpg")).size;
+  for (const w of [390, 1280]) { const cx = await browser.newContext({ viewport: { width: w, height: 900 } }); const pg = await cx.newPage();
+    await pg.goto(`${BASE}/guides/read-pension-file/`); await pg.locator("figure.archive-fig").scrollIntoViewIfNeeded(); await pg.waitForFunction(() => document.querySelector("figure.archive-fig img").complete);
+    const f = await pg.evaluate(() => { const fig = document.querySelector('figure.archive-fig[data-archive-fig="m804-daniels"]'); const img = fig.querySelector("img"); const ib = img.getBoundingClientRect();
+      const marks = [...fig.querySelectorAll(".af-n")].map((m) => { const b = m.getBoundingClientRect(); return b.left >= ib.left - 1 && b.right <= ib.right + 1 && b.top >= ib.top - 1 && b.bottom <= ib.bottom + 1; });
+      return { src: img.getAttribute("src"), nat: img.naturalWidth, alt: img.alt, cap: fig.querySelector("figcaption").textContent, keys: [...fig.querySelectorAll(".af-key li")].map((l) => l.textContent), marks, sw: document.documentElement.scrollWidth, iw: innerWidth,
+        afterList: !!fig.previousElementSibling && fig.previousElementSibling.tagName === "OL" }; });
+    check(`t130 #5 (${w}px): the pension-file guide shows the self-hosted M804 page (under 150 KB) with alt text, 3 numbered labels inside the image, and a caption naming the NARA file and identifier`,
+      /^\/assets\/archives\/m804-w14734-daniels-brief\.jpg/.test(f.src) && f.nat === 700 && imgBytes < 150 * 1024 && f.alt.length > 80 && /Dolly Foss/.test(f.alt) && /W\. 14,734, Jacob Daniels, N\.H\./.test(f.cap) && /M804/.test(f.cap) && /National Archives Identifier 54368689/.test(f.cap) && /4156793_00373\.jpg/.test(f.cap)
+      && f.keys.length === 3 && /^Names/.test(f.keys[0]) && /^Dates/.test(f.keys[1]) && /^Service/.test(f.keys[2]) && f.marks.length === 3 && f.marks.every(Boolean) && f.sw <= f.iw && f.afterList, JSON.stringify({ imgBytes, ...f, alt: f.alt.length }));
+    await cx.close(); } }
+// ---- t130 #1 / #3: home start cards, spacing, guide titles, menu (390px and 1280px) ----
+{ const hH = readFileSync(join(DIST, "index.html"), "utf8");
+  for (const w of [390, 1280]) { const cx = await browser.newContext({ viewport: { width: w, height: 900 } }); const pg = await cx.newPage(); await pg.goto(`${BASE}/`);
+    const h = await pg.evaluate(() => { const main = document.querySelector("main .wrap"); const kids = [...main.children];
+      const idx = (sel) => kids.findIndex((k) => k.matches(sel));
+      const cards = [...document.querySelectorAll("[data-start-card]")].map((c) => { const r = c.getBoundingClientRect(); const a = c.querySelector("a.button-link"); const cs = getComputedStyle(a);
+        return { title: c.querySelector("h2")?.textContent, line: c.querySelector("p")?.textContent, btn: a?.textContent, href: a?.getAttribute("href"), top: Math.round(r.top), left: Math.round(r.left), bg: cs.backgroundColor, color: cs.color, cardBg: getComputedStyle(c).backgroundColor }; });
+      const gt = document.querySelector(".home-guides a.guide-title"), gd = document.querySelector(".home-guides .small");
+      const nav = document.querySelector("nav.top"); const navLinks = [...nav.querySelectorAll("a")]; const hs = getComputedStyle(document.querySelector("header.site"));
+      return { order: [idx("h1"), idx("[data-independent]"), idx("[data-home-intro]"), idx("[data-start-cards]"), idx("[data-see-how]"), idx("[data-mission]"), idx("#guides")], intro: document.querySelector("[data-home-intro]")?.textContent, cards,
+        seeHow: [document.querySelector("[data-see-how] a")?.textContent, document.querySelector("[data-see-how] a")?.getAttribute("href")], oldBox: !!document.querySelector("[data-get-started]") || /Ready to get started\?/.test(document.body.textContent),
+        guideTitle: [getComputedStyle(gt).fontWeight, parseFloat(getComputedStyle(gt).fontSize)], guideDesc: [getComputedStyle(gd).fontWeight, parseFloat(getComputedStyle(gd).fontSize)],
+        navVisible: navLinks.every((a) => a.offsetParent !== null && a.getBoundingClientRect().right <= innerWidth + 1), navColor: getComputedStyle(navLinks[0]).color, headerBg: hs.backgroundColor, sw: document.documentElement.scrollWidth,
+        gap: Math.round(document.querySelector("#guides").getBoundingClientRect().top - document.querySelector("[data-mission]").getBoundingClientRect().bottom) }; });
+    const want = [["Build your to-do list", "Enter the records you already have. The worksheet shows what's still missing for each generation and where to look.", "Open the Lineage Evidence Matrix", "/tools/lineage-matrix/"],
+      ["Check a widow's pension", "Compare a widow's marriage date and her husband's service with each federal widow pension law.", "Open the Widow Pension Law Checker", "/tools/widow-pension-checker/"],
+      ["Read the full plan", "A generation-by-generation roadmap for DAR and SAR applications.", "Open the Roadmap guide", "/guides/lineage-proof-roadmap/"]];
+    const textOk = h.cards.length === 3 && h.cards.every((c, i) => c.title === want[i][0] && c.line === want[i][1] && c.btn === want[i][2] && c.href === want[i][3]);
+    const layout = w < 760 ? h.cards.every((c, i) => i === 0 || (c.top > h.cards[i - 1].top && c.left === h.cards[0].left)) : h.cards.every((c) => c.top === h.cards[0].top) && h.cards[1].left > h.cards[0].left;
+    check(`t130 #1 (${w}px): under the heading and independent line, Tim's sentence, then the three start cards (${w < 760 ? "stacked" : "side by side"}) with his exact titles, lines and navy buttons, then 'See how the tools work', then the longer paragraphs; the 'Ready to get started?' box is gone`,
+      h.intro === "Two free tools and ten guides help you organize what you have and see what's still missing. What you type into the tools stays in your own browser." && h.order.every((x, i) => x >= 0 && (i === 0 || x > h.order[i - 1])) && textOk && layout && h.seeHow[0] === "See how the tools work" && h.seeHow[1] === "/walkthroughs/" && !h.oldBox && h.sw <= w + 1, JSON.stringify({ order: h.order, cards: h.cards.map((c) => [c.top, c.left]), seeHow: h.seeHow, oldBox: h.oldBox }));
+    check(`t130 #3 (${w}px): start cards have a soft warm background and navy buttons with white text`, h.cards.every((c) => c.bg === "rgb(19, 41, 75)" && c.color === "rgb(255, 255, 255)" && c.cardBg !== "rgba(0, 0, 0, 0)" && c.cardBg !== "rgb(255, 255, 255)"), JSON.stringify(h.cards.map((c) => [c.bg, c.color, c.cardBg])));
+    check(`t130 #3 (${w}px): home guide titles are bolder and larger than their descriptions; more space between sections`, +h.guideTitle[0] >= 700 && +h.guideTitle[0] > +h.guideDesc[0] && h.guideTitle[1] > h.guideDesc[1] && h.gap >= 40, JSON.stringify({ t: h.guideTitle, d: h.guideDesc, gap: h.gap }));
+    check(`t130 #3 (${w}px): the top menu is fully visible (wraps, never hidden) in white on navy`, h.navVisible && h.navColor === "rgb(255, 255, 255)" && h.headerBg === "rgb(19, 41, 75)", JSON.stringify({ nav: h.navVisible, c: h.navColor, bg: h.headerBg }));
+    await pg.screenshot({ path: join(SHOTS, `t130-home-${w}.png`) }); await cx.close(); }
+  const aiLine = "Written with AI assistance and reviewed by the site's owner. Each fact is tied to a quoted official source, and software checks that the quote is still there.";
+  check("t130: the home AI line and the locked SAR line are unchanged, word for word", hH.replace(/&#39;|&apos;/g, "'").includes(aiLine) && hH.replace(/&#39;|&apos;/g, "'").includes("SAR's local sponsor can guide you through the application.")); }
 // ---- Cache-busting: every script/CSS reference and every module import carries ?v=<hash> that matches the file ----
 const { createHash } = await import("node:crypto");
 const htmlRefs = pagesToCheck.flatMap((p) => [...readFileSync(join(DIST, p, "index.html"), "utf8").matchAll(/(?:src|href)="(\/assets\/[^"]+\.(?:js|css)[^"]*)"/g)].map((m) => m[1]));

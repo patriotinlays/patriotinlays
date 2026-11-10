@@ -9,7 +9,8 @@ import { ns, el } from "./storage.js";
 import { renderPlan, noteEl } from "./plan-ui.js";
 import { plural } from "./tool-a.js";
 const store = ns("pi.toolB.");
-const blank = () => ({ version: 1, generations: [newGen(1), newGen(2)], patriot: newPatriot(), updated: null });
+// t130 #2a: a new worksheet holds only the patriot and generation 1 (you); older generations are added with "+ Add an older generation".
+const blank = () => ({ version: 1, generations: [newGen(1)], patriot: newPatriot(), updated: null });
 function newGen(gen) { return { gen, who: "", living: gen === 1, born: "", died: "", state: "", cells: [] }; }
 const MAX_PICK_GEN = 13; // up to "my 10th-great-grandfather"
 const newPatriot = () => ({ name: "", state: "", unit: "", kind: "", start: "", end: "", gen: "" });
@@ -167,6 +168,8 @@ function nameChecklistEl(open = true) {
   return open ? el("div", { class: "name-check", "data-name-box": "" }, el("p", {}, el("strong", { text: "Don't know your patriot's name yet? " }), "That's where most people start. A short checklist:"), ...body)
     : el("details", { class: "name-check", "data-name-box": "" }, el("summary", { text: "Don't know your patriot's name yet? A short checklist" }), ...body);
 }
+// t130 #2c: key questions (A to D) first; the less-used "disagrees with another record" box sits under "More details".
+const moreOpen = new Set();
 function cellEditor(state, g, c, rerender, n) {
   const ev = evaluateCell(c);
   const base = `g${g.gen}-${c.id}`;
@@ -187,7 +190,8 @@ function cellEditor(state, g, c, rerender, n) {
     el("input", { id: `${base}-cite`, name: "citation", type: "text", value: c.citation, autocomplete: "off" }),
     el("label", { class: "check skip" }, el("input", { type: "checkbox", name: "citationSkip", "data-skip": "citation", checked: !(c.citation || "").trim() && isSkipped(c, "citation"),
       onchange: (e) => { setSkip(c, "citation", e.target.checked); save(state); rerender(); } }), ` ${SKIP_TEXT}`),
-    el("label", { class: "check" }, el("input", { type: "checkbox", name: "conflict", checked: c.conflict, onchange: (e) => upd("conflict", e.target.checked) }), " This record disagrees with another record (for example, a different date)"),
+    el("details", { class: "more-details", "data-more": c.id, open: c.conflict || moreOpen.has(c.id), ontoggle: (e) => { if (e.target.open) moreOpen.add(c.id); else moreOpen.delete(c.id); } }, el("summary", { text: "More details" }),
+      el("label", { class: "check" }, el("input", { type: "checkbox", name: "conflict", checked: c.conflict, onchange: (e) => upd("conflict", e.target.checked) }), " This record disagrees with another record (for example, a different date)")),
     el("div", { class: "status", "aria-live": "polite" }, ...statusFor(c)),
     el("button", { type: "button", class: "link danger", onclick: () => { g.cells = g.cells.filter((x) => x !== c); save(state); rerender(); }, text: "Remove this record" }));
 }
@@ -208,10 +212,13 @@ function bindEditorEvents(container, state, rerender) {
 function mountEditor(root) {
   // A first visit opens with the purpose line and a Start button; the steps stay hidden until the visitor starts
   // (audit 4 proposal). Saved data, an example, or a link to a step (#tb-patriot, #gen-N) opens them straight away.
+  // t130 #2a: the two start choices ("Start with just the patriot and me", recommended, and "See a filled-in example") sit at
+  // the top of the tool. Once a worksheet is saved, only the example choice stays (it asks before replacing entries).
   const fresh = store.get("v1", null) == null && !/^#(tb-patriot|gen-\d+)$/.test(location.hash);
-  const startBox = root.querySelector("[data-ws-start]"), wsBody = root.querySelector("[data-ws-body]");
-  const open = (focus = false) => { if (startBox) startBox.hidden = true; if (wsBody) wsBody.hidden = false; if (focus) { const h = root.querySelector("#tb-patriot"); h?.setAttribute("tabindex", "-1"); h?.scrollIntoView({ block: "start" }); h?.focus(); } };
-  if (fresh && startBox && wsBody) { startBox.hidden = false; wsBody.hidden = true; root.querySelector("[data-name-checklist]")?.replaceChildren(nameChecklistEl(true)); }
+  const startBox = root.querySelector("[data-ws-start]"), wsBody = root.querySelector("[data-ws-body]"), beginWrap = root.querySelector("[data-ws-begin-wrap]");
+  const open = (focus = false) => { if (beginWrap) beginWrap.hidden = true; root.querySelector("[data-name-checklist]")?.replaceChildren(); if (wsBody) wsBody.hidden = false; if (focus) { const h = root.querySelector("#tb-patriot"); h?.setAttribute("tabindex", "-1"); h?.scrollIntoView({ block: "start" }); h?.focus(); } };
+  if (fresh && startBox && wsBody) { if (beginWrap) beginWrap.hidden = false; wsBody.hidden = true; root.querySelector("[data-name-checklist]")?.replaceChildren(nameChecklistEl(true)); }
+  else if (beginWrap) beginWrap.hidden = true;
   root.querySelector("[data-ws-begin]")?.addEventListener("click", () => { save(state); open(true); });
   const state = load(); const box = root.querySelector("[data-matrix]"); const gapBox = root.querySelector("[data-gaps]");
   const patBox = root.querySelector("[data-patriot]");
@@ -227,19 +234,26 @@ function mountEditor(root) {
     root.querySelector("[data-plan]")?.replaceChildren(plan);
     root.querySelector("[data-patriot-check]")?.replaceChildren(patriotCheckEl(state.patriot, state.generations));
     const pg = patriotGen(state.generations, state.patriot);
-    box.querySelectorAll("[data-gen]").forEach((sec) => { const h = sec.querySelector("h3"); const g = +sec.dataset.gen; h.textContent = genTitle(g) + (g === pg ? " (the patriot)" : ""); });
+    box.querySelectorAll("details.gen-d[data-gen]").forEach((sec) => { const h = sec.querySelector(":scope > summary h3"); const g = state.generations.find((x) => x.gen === +sec.dataset.gen); if (h && g) h.textContent = genHeading(g, pg); });
   };
+  // t130 #2b: each generation is a collapsible section headed by its title and name; only the newest (oldest generation
+  // added) starts open. What the visitor opens or closes is kept while they work (the editor redraws often).
+  let openGens = new Set([state.generations.length]);
+  const openGen = (n) => { openGens.add(n); const d = box.querySelector(`details.gen-d[data-gen="${n}"]`); if (d) d.open = true; };
+  const genHeading = (g, pg) => `${genTitle(g.gen)}${g.gen === pg ? " (the patriot)" : ""}${g.who && g.who.trim() ? ` — ${g.who.trim()}` : ""}`;
   const rerender = () => {
     const focusId = document.activeElement?.id;
     const last = state.generations.length;
     if (patBox) patBox.replaceChildren(patriotForm(state, refresh, rerender));
-    box.replaceChildren(...state.generations.map((g) => el("section", { class: "gen", "data-gen": g.gen, id: `gen-${g.gen}` },
-      el("h3", { text: genTitle(g.gen) }),
+    const pg0 = patriotGen(state.generations, state.patriot);
+    box.replaceChildren(...state.generations.map((g) => el("details", { class: "gen gen-d", "data-gen": g.gen, id: `gen-${g.gen}`, open: openGens.has(g.gen),
+      ontoggle: (e) => { if (e.target !== e.currentTarget) return; if (e.currentTarget.open) openGens.add(g.gen); else openGens.delete(g.gen); } },
+      el("summary", {}, el("h3", { text: genHeading(g, pg0) })),
       el("p", { class: "small hint", text: g.gen === 1 ? "Generation 1 is always you, the person applying." :
         g.gen === last ? `Each generation is one step further back. Is this person the patriot? If not, press "Add an older generation" below.` :
         `The parent of the person in generation ${g.gen - 1}, in the line that leads to the patriot.` }),
       el("label", { for: `who-${g.gen}`, text: "Name (optional, stays in this browser)" }),
-      el("input", { id: `who-${g.gen}`, type: "text", value: g.who, autocomplete: "off", oninput: (e) => { g.who = e.target.value; save(state); } }),
+      el("input", { id: `who-${g.gen}`, type: "text", value: g.who, autocomplete: "off", oninput: (e) => { g.who = e.target.value; save(state); const h = box.querySelector(`details.gen-d[data-gen="${g.gen}"] > summary h3`); if (h) h.textContent = genHeading(g, patriotGen(state.generations, state.patriot)); } }),
       el("label", { class: "check" }, el("input", { type: "checkbox", id: `living-${g.gen}`, checked: g.living, onchange: (e) => { g.living = e.target.checked; save(state); rerender(); } }), " Still living (then no death record is needed)"),
       genFields(state, g, refresh), haveBox(state, g, rerender), birthSubsEl(g),
       ...g.cells.map((c, i) => cellEditor(state, g, c, rerender, i + 1)),
@@ -247,12 +261,14 @@ function mountEditor(root) {
     refresh();
     if (focusId) document.getElementById(focusId)?.focus();
   };
+  // Opening a closed generation before sending the visitor into it (add a record, a gap's "+ Add" button, #gen-N links).
+  box.addEventListener("focusin", (e) => { if (e.target.closest?.("summary")) return; const d = e.target.closest?.("details.gen-d"); if (d && !d.open) { d.open = true; openGens.add(+d.dataset.gen); } });
   // Never stack blank records: if this generation already has an empty one, send the visitor to it instead.
   const addRecord = (g) => {
     const empty = g.cells.find(isEmptyCell);
-    if (empty) { const f = document.getElementById(`g${g.gen}-${empty.id}-fact`); f?.focus(); f?.scrollIntoView({ block: "center" });
+    if (empty) { openGen(g.gen); const f = document.getElementById(`g${g.gen}-${empty.id}-fact`); f?.focus(); f?.scrollIntoView({ block: "center" });
       if (msg) msg.textContent = `Fill in the empty record for ${genLabel(g.gen).toLowerCase()} first.`; return; }
-    const c = newCell(); g.cells.push(c); save(state); rerender(); document.getElementById(`g${g.gen}-${c.id}-fact`)?.focus();
+    const c = newCell(); g.cells.push(c); save(state); openGens.add(g.gen); rerender(); document.getElementById(`g${g.gen}-${c.id}-fact`)?.focus();
     if (msg) msg.textContent = "";
   };
   bindEditorEvents(box, state, rerender);
@@ -260,26 +276,28 @@ function mountEditor(root) {
   gapBox.addEventListener("click", (e) => {
     const b = e.target.closest("[data-add-for]"); if (!b) return;
     const [gn, fact] = b.dataset.addFor.split(":"); const g = state.generations.find((x) => x.gen === +gn); if (!g) return;
-    const c = newCell({ fact }); g.cells.push(c); save(state); rerender();
+    const c = newCell({ fact }); g.cells.push(c); save(state); openGens.add(g.gen); rerender();
     const f = document.getElementById(`g${g.gen}-${c.id}-docType`) || document.getElementById(`g${g.gen}-${c.id}-fact`); f?.scrollIntoView({ block: "center" }); f?.focus();
     if (msg) msg.textContent = `Added a ${FACT_LABELS[fact]?.toLowerCase() || ""} record for ${genLabel(g.gen).toLowerCase()}. Answer the questions for it below.`;
   });
-  root.querySelector("[data-add-gen]").addEventListener("click", () => { state.generations.push(newGen(state.generations.length + 1)); save(state); rerender(); });
-  root.querySelector("[data-remove-gen]").addEventListener("click", () => { if (state.generations.length > 2 && confirm("Remove this generation and its entries? This can't be undone.")) { state.generations.pop(); save(state); rerender(); } });
+  // A new older generation opens; the ones before it fold up under their names (t130 #2b).
+  root.querySelector("[data-add-gen]").addEventListener("click", () => { state.generations.push(newGen(state.generations.length + 1)); openGens = new Set([state.generations.length]); save(state); rerender(); });
+  root.querySelector("[data-remove-gen]").addEventListener("click", () => { if (state.generations.length > 1 && confirm("Remove this generation and its entries? This can't be undone.")) { state.generations.pop(); openGens.add(state.generations.length); save(state); rerender(); } });
   root.querySelector("[data-load-example]")?.addEventListener("click", () => {
-    const hasData = state.generations.some((g) => g.cells.length || g.who) || hasPatriot(state.patriot);
-    if (hasData && !confirm("Replace what you've entered with the made-up example?")) return;
-    const ex = EXAMPLE(); state.generations = ex.generations; state.patriot = ex.patriot; save(state); open(); rerender();
+    // t130 #2a: never overwrite saved entries without asking.
+    const hasData = state.generations.some((g) => g.cells.length || (g.who || "").trim() || g.born || g.died || g.state) || hasPatriot(state.patriot);
+    if (hasData && !confirm("Loading the example replaces your current entries. Continue?")) return;
+    const ex = EXAMPLE(); state.generations = ex.generations; state.patriot = ex.patriot; openGens = new Set([ex.generations.length]); save(state); open(); rerender();
     if (msg) msg.textContent = "Example loaded: a made-up Virginia militiaman and four generations after him. Scroll down to see what's missing and where to look.";
   });
   root.querySelector("[data-clear=toolB]").addEventListener("click", () => {
     if (!confirm("Delete your saved entries? This can't be undone.")) return;
-    store.clear(); const fresh = blank(); state.generations = fresh.generations; state.patriot = fresh.patriot; rerender();
+    store.clear(); const fresh = blank(); state.generations = fresh.generations; state.patriot = fresh.patriot; openGens = new Set([1]); rerender();
     msg.textContent = "All matrix data was deleted from this browser.";
   });
   rerender();
   // The report's "Add it in the worksheet" links point to #gen-N; the sections are built by script, so scroll once they exist.
-  if (/^#gen-\d+$/.test(location.hash)) document.querySelector(location.hash)?.scrollIntoView();
+  if (/^#gen-\d+$/.test(location.hash)) { openGen(+location.hash.slice(5)); document.querySelector(location.hash)?.scrollIntoView(); }
 }
 function mountCard(root) {
   const s = store.get("v1", null); const out = root.querySelector("[data-card-status]");
@@ -334,7 +352,7 @@ export function whereIndexEl(blocks, intro, level = "h2") {
 }
 function mountReport(root) {
   const s = store.get("v1", null); const body = root.querySelector("[data-report]");
-  if (!s) { body.replaceChildren(el("p", { text: "Nothing saved in this browser yet. Open the Lineage Evidence Matrix, enter what you have (or press \"Load an example\"), then come back." }),
+  if (!s) { body.replaceChildren(el("p", { text: "Nothing saved in this browser yet. Open the Lineage Evidence Matrix, enter what you have (or press \"See a filled-in example\"), then come back." }),
     el("p", {}, el("a", { class: "button-link", href: "/tools/lineage-matrix/", text: "Go to the Lineage Evidence Matrix" }))); return; }
   const pg = patriotGen(s.generations, s.patriot);
   const { refFor, blocks } = whereIndex();

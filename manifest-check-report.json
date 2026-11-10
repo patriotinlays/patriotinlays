@@ -1,7 +1,7 @@
 {
   "live_source_check": "NOT RUN",
   "live_source_check_line": "Live-source check: NOT RUN",
-  "checkedAt": "Tue Nov 10 2026 06:23:33 GMT-0600 (Central Standard Time)",
+  "checkedAt": "Tue Nov 10 2026 08:26:41 GMT-0600 (Central Standard Time)",
   "dirs": [
     "src/content",
     "src/pages",
@@ -45,7 +45,7 @@
       "unmarked": 0
     },
     "src/content/read-pension-file.md": {
-      "units": 60,
+      "units": 61,
       "marked": 42,
       "unmarked": 0
     },
@@ -115,8 +115,8 @@
       "unmarked": 0
     },
     "src/partials/limits-matrix.md": {
-      "units": 7,
-      "marked": 1,
+      "units": 6,
+      "marked": 0,
       "unmarked": 0
     },
     "src/partials/limits-widow.md": {
@@ -141,14 +141,15 @@
     }
   },
   "sentences": 913,
-  "markedSentences": 473,
+  "markedSentences": 472,
   "manifestClaims": 400,
   "referencedClaims": 400,
   "links": "not run (use --links)",
+  "heldBack": null,
   "errors": [],
   "warnings": [],
   "last_live_source_check": {
-    "checkedAt": "Tue Nov 10 2026 06:22:01 GMT-0600 (Central Standard Time)",
+    "checkedAt": "Tue Nov 10 2026 08:25:46 GMT-0600 (Central Standard Time)",
     "result": "PASSED",
     "manifestClaims": 400,
     "errors": 0,

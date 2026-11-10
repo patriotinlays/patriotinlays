@@ -391,7 +391,6 @@
       "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
       "used_on": [
         "application-problems",
-        "faq",
         "lineage-matrix",
         "lineage-proof-roadmap",
         "partial:home",
@@ -847,7 +846,6 @@
         "faq",
         "lineage-matrix",
         "partial:home",
-        "partial:limits-matrix",
         "tool:next-steps.js",
         "tool:tool-b.js",
         "walkthroughs"
@@ -4848,6 +4846,7 @@
       "verification_status": "verified",
       "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
       "used_on": [
+        "faq",
         "partial:glossary",
         "partial:home",
         "partial:how-to-join"

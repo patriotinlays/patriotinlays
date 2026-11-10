@@ -1,0 +1,23 @@
+{
+  "image": "archives/m804-w14734-daniels-brief.jpg",
+  "width": 700,
+  "height": 881,
+  "naid": "54368689",
+  "fileUnitTitle": "Revolutionary War Pension and Bounty Land Warrant Application File W. 14,734, Jacob Daniels, N.H.",
+  "publication": "M804",
+  "seriesNaid": "300022",
+  "imageFile": "4156793_00373.jpg",
+  "objectId": "54368691",
+  "sourceUrl": "https://catalog.archives.gov/medialive/89/3686/54368689/content/23/M804-RevolutionaryWarPensionAppFiles/M804_0737/images/4156793_00373.jpg",
+  "sourceSha256": "cc56b827e3c9b74e2568ba3230fa2c83f45327819cbc389e978c214e0cc2af14",
+  "useRestriction": "Unrestricted",
+  "downloaded": "2026-11-10",
+  "edits": "Cropped to the left-hand pension brief (source pixels x 147-1015, y 32-1212 of 1952x2947), white margin added on the left for the number labels, resized to 700 px wide, grayscale JPEG quality 68.",
+  "alt": "A pension brief from a widow's pension file: a printed form filled in by hand. It names Dolly Foss, formerly widow of Jacob Daniels, gives the year he died, says he was a lieutenant in the company commanded by Captain Brewster in the regiment commanded by Colonel Long in the New Hampshire line, and gives the dates her pension was to commence and its certificate was issued.",
+  "caption": "A real page: the pension brief from Revolutionary War Pension and Bounty Land Warrant Application File W. 14,734, Jacob Daniels, N.H., microfilm publication M804 (National Archives Identifier 54368689, image file 4156793_00373.jpg). Downloaded from the National Archives Catalog, which lists its use as unrestricted; cropped and compressed for this page.",
+  "labels": [
+    { "n": 1, "x": 3.6, "y": 18.8, "text": "Names: \"Dolly Foss, formerly widow of Jacob Daniels\"." },
+    { "n": 2, "x": 3.6, "y": 30.6, "text": "Dates: the year he died. The dates her pension was to commence and its certificate was issued are lower on the form." },
+    { "n": 3, "x": 3.6, "y": 46.6, "text": "Service: his rank (lieutenant), his captain, his colonel, the New Hampshire line, and how long he served." }
+  ]
+}

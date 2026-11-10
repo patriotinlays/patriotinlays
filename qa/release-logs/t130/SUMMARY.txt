@@ -1,0 +1,9 @@
+t130 release log — Nov 10, 2026 (CST)
+Build only; preview deploy --branch preview-t130. No production deploy.
+Unit suites (npm test): plain-language 56/56, service window 36/36, lineage matrix 96/96, gate examples 29/29, source-pass rules 27/27, quote normalization 9/9, live-source status 7/7, skip for now 26/26, nysed TLS 5/5, source scope 17/17, held-back restore 10/10 (new).
+E2E: 224/224 (qa/e2e.mjs). Print: example summary 2 / full 3; persona B summary 2 / full 3.
+Offline gate: PASSED (26 pages, 913 sentences, 472 marked, 400/400 claims; rule 7: 0 flagged).
+Link check (offline): 23 HTML files, 1331 internal links, 74 external URLs; zero broken.
+Live-source check: RUN (08:22-08:25 AM CST): 400 claims, 71 sources, 68 passed live, 3 on 30-day fallback (DAR App_Help_Step_By_Step_1, DAR FAQs, DAR search_revwar: HTTP 522, last pass Nov 5 10:34:49 AM CST, 4.91 days), 0 failed, 0 HELD claims. Held back: 14 still held, 0 restored (DAR pages unreachable).
+Page weight (bytes raw / gzip, initial load): / 59165/17205 -> 64431/18319; /tools/lineage-matrix/ 245173/74507 -> 252035/76265; /guides/read-pension-file/ 72604/18727 -> 78445/20292 (+118944 for the lazy-loaded M804 image when scrolled into view).
+M804 image: NAID 54368689 (file unit "Revolutionary War Pension and Bounty Land Warrant Application File W. 14,734, Jacob Daniels, N.H."; series NAID 300022; microform M804, roll 737), image 4156793_00373.jpg (object 54368691), source sha256 cc56b827e3c9b74e2568ba3230fa2c83f45327819cbc389e978c214e0cc2af14, use restriction Unrestricted.

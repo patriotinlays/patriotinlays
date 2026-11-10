@@ -1,5 +1,5 @@
 {
-  "builtAt": "Tue Nov 10 2026 06:22:13 GMT-0600 (Central Standard Time)",
+  "builtAt": "Tue Nov 10 2026 08:26:47 GMT-0600 (Central Standard Time)",
   "guideSourcesChecked": [
     {
       "slug": "guides/application-problems",
@@ -108,8 +108,8 @@
       "description": "Organize the evidence for each generation of a DAR or SAR line in your browser, flag conflicts, and print a gap report.",
       "tool": "lineage-matrix",
       "path": "/tools/lineage-matrix/",
-      "words": 1342,
-      "claims": 59,
+      "words": 1343,
+      "claims": 58,
       "sources": 19,
       "tools": [
         "lineage-matrix"
@@ -160,7 +160,7 @@
       "description": "Find a Revolutionary War pension file, decode its envelope, and read declarations, affidavits and widow's papers in the right order.",
       "cornerstone": "3",
       "path": "/guides/read-pension-file/",
-      "words": 1054,
+      "words": 1056,
       "claims": 73,
       "sources": 17,
       "tools": [
@@ -254,7 +254,7 @@
       "slug": "faq",
       "description": "Plain-English answers about joining DAR or SAR, what a patriot is, which records count, how this site's tools work, and where your information goes.",
       "path": "/faq/",
-      "words": 928,
+      "words": 937,
       "claims": 21,
       "sources": 7,
       "tools": []
@@ -274,7 +274,7 @@
       "slug": "walkthroughs",
       "description": "Step-by-step examples of the Widow Pension Law Checker and the Lineage Evidence Matrix, using a made-up family and the tools' real results.",
       "path": "/walkthroughs/",
-      "words": 1117,
+      "words": 1127,
       "claims": 16,
       "sources": 10,
       "tools": []

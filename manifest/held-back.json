@@ -1,0 +1,233 @@
+{
+  "schema_version": 1,
+  "note": "Held-back claim uses (Tim, t128u/t129u). scripts/check-manifest.mjs --links restores an entry automatically (held -> restore text) as soon as every source in its 'sources' passes the live check with all quotes matched; then the manifest is regenerated and a rebuild is required.",
+  "entries": [
+    {
+      "id": "t128-01 tool-b birth.recent",
+      "file": "src/tools/tool-b.js",
+      "held": "claims: [\"nscda-short-form\", \"dar-baptism\"]",
+      "restore": "claims: [\"dar-lineage-sources\", \"dar-baptism\"]",
+      "claims": [
+        "dar-lineage-sources"
+      ],
+      "sources": [
+        "https://membership.dar.org/NSDAR/AppFormz/FAQs.aspx"
+      ],
+      "heldSince": "2026-11-10",
+      "why": "t128u #1: t127 new use made while the DAR page was unreachable (522) after its last pass Nov 5, 2026 10:34:49 AM CST; never read against the page.",
+      "restoreFrom": "d6edc65",
+      "status": "held"
+    },
+    {
+      "id": "t128-02 tool-b birth.older",
+      "file": "src/tools/tool-b.js",
+      "held": "claims: [\"dar-baptism\", \"dar-circa\", \"nscda-church\"]",
+      "restore": "claims: [\"dar-baptism\", \"dar-circa\", \"dar-usually-acceptable\"]",
+      "claims": [
+        "dar-usually-acceptable"
+      ],
+      "sources": [
+        "https://membership.dar.org/NSDAR/AppFormz/App_Help_Step_By_Step_1.aspx"
+      ],
+      "heldSince": "2026-11-10",
+      "why": "t128u #1: t127 new use made while the DAR page was unreachable (522) after its last pass Nov 5, 2026 10:34:49 AM CST; never read against the page.",
+      "restoreFrom": "d6edc65",
+      "status": "held"
+    },
+    {
+      "id": "t128-03 tool-b death.older",
+      "file": "src/tools/tool-b.js",
+      "held": "claims: [\"nscda-county\", \"nscda-church\", \"dar-death-post\", \"dar-death-ante\"]",
+      "restore": "claims: [\"dar-lineage-sources\", \"dar-usually-acceptable\", \"dar-death-post\", \"dar-death-ante\"]",
+      "claims": [
+        "dar-lineage-sources",
+        "dar-usually-acceptable"
+      ],
+      "sources": [
+        "https://membership.dar.org/NSDAR/AppFormz/FAQs.aspx",
+        "https://membership.dar.org/NSDAR/AppFormz/App_Help_Step_By_Step_1.aspx"
+      ],
+      "heldSince": "2026-11-10",
+      "why": "t128u #1: t127 new use made while the DAR page was unreachable (522) after its last pass Nov 5, 2026 10:34:49 AM CST; never read against the page.",
+      "restoreFrom": "d6edc65",
+      "status": "held"
+    },
+    {
+      "id": "t128-04 tool-b marriage.older",
+      "file": "src/tools/tool-b.js",
+      "held": "claims: [\"nscda-church\", \"nps-applegate-widow\"]",
+      "restore": "claims: [\"dar-usually-acceptable\", \"nps-applegate-widow\"]",
+      "claims": [
+        "dar-usually-acceptable"
+      ],
+      "sources": [
+        "https://membership.dar.org/NSDAR/AppFormz/App_Help_Step_By_Step_1.aspx"
+      ],
+      "heldSince": "2026-11-10",
+      "why": "t128u #1: t127 new use made while the DAR page was unreachable (522) after its last pass Nov 5, 2026 10:34:49 AM CST; never read against the page.",
+      "restoreFrom": "d6edc65",
+      "status": "held"
+    },
+    {
+      "id": "t128-05 tool-b parentage.recent",
+      "file": "src/tools/tool-b.js",
+      "held": "text: \"Look for a long-form birth certificate that names the parents.\", claims: [\"nscda-short-form\"]",
+      "restore": "text: \"Look for a long-form birth certificate that names the parents.\", claims: [\"dar-lineage-sources\"]",
+      "claims": [
+        "dar-lineage-sources"
+      ],
+      "sources": [
+        "https://membership.dar.org/NSDAR/AppFormz/FAQs.aspx"
+      ],
+      "heldSince": "2026-11-10",
+      "why": "t128u #1: t127 new use made while the DAR page was unreachable (522) after its last pass Nov 5, 2026 10:34:49 AM CST; never read against the page.",
+      "restoreFrom": "d6edc65",
+      "status": "held"
+    },
+    {
+      "id": "t128-06 tool-b parentage.older",
+      "file": "src/tools/tool-b.js",
+      "held": "claims: [\"nscda-county\", \"nscda-census-1850-1870\", \"nara-census-head\"]",
+      "restore": "claims: [\"dar-lineage-sources\", \"nscda-census-1850-1870\", \"nara-census-head\"]",
+      "claims": [
+        "dar-lineage-sources"
+      ],
+      "sources": [
+        "https://membership.dar.org/NSDAR/AppFormz/FAQs.aspx"
+      ],
+      "heldSince": "2026-11-10",
+      "why": "t128u #1: t127 new use made while the DAR page was unreachable (522) after its last pass Nov 5, 2026 10:34:49 AM CST; never read against the page.",
+      "restoreFrom": "d6edc65",
+      "status": "held"
+    },
+    {
+      "id": "t128-07 tool-b residence.recent",
+      "file": "src/tools/tool-b.js",
+      "held": "text: \"Census records, deeds and tax lists place a person in a county.\", claims: [\"dar-lineage-sources\", \"nscda-county\"]",
+      "restore": "text: \"Census records, deeds and court records place a person in a county.\", claims: [\"dar-lineage-sources\"]",
+      "claims": [
+        "dar-lineage-sources"
+      ],
+      "sources": [
+        "https://membership.dar.org/NSDAR/AppFormz/FAQs.aspx"
+      ],
+      "heldSince": "2026-11-10",
+      "why": "t128u #1: t127 new use made while the DAR page was unreachable (522) after its last pass Nov 5, 2026 10:34:49 AM CST; never read against the page.",
+      "restoreFrom": "d6edc65",
+      "status": "held"
+    },
+    {
+      "id": "t128-08 tool-b residence.older",
+      "file": "src/tools/tool-b.js",
+      "held": "text: \"Look at census records, deeds and tax lists for the place, and go through all the records that survive there.\", claims: [\"nscda-county\", \"nara-census-exhaust\"]",
+      "restore": "text: \"Look at census records, deeds and court records for the place, and go through all the records that survive there.\", claims: [\"dar-lineage-sources\", \"nara-census-exhaust\"]",
+      "claims": [
+        "dar-lineage-sources"
+      ],
+      "sources": [
+        "https://membership.dar.org/NSDAR/AppFormz/FAQs.aspx"
+      ],
+      "heldSince": "2026-11-10",
+      "why": "t128u #1: t127 new use made while the DAR page was unreachable (522) after its last pass Nov 5, 2026 10:34:49 AM CST; never read against the page.",
+      "restoreFrom": "d6edc65",
+      "status": "held"
+    },
+    {
+      "id": "t128-09 tool-b BIRTH_SUBSTITUTES baptism",
+      "file": "src/tools/tool-b.js",
+      "held": "claims: [\"dar-baptism\", \"nscda-church\"] }",
+      "restore": "claims: [\"dar-baptism\", \"dar-usually-acceptable\"] }",
+      "claims": [
+        "dar-usually-acceptable"
+      ],
+      "sources": [
+        "https://membership.dar.org/NSDAR/AppFormz/App_Help_Step_By_Step_1.aspx"
+      ],
+      "heldSince": "2026-11-10",
+      "why": "t128u #1: t127 new use made while the DAR page was unreachable (522) after its last pass Nov 5, 2026 10:34:49 AM CST; never read against the page.",
+      "restoreFrom": "d6edc65",
+      "status": "held"
+    },
+    {
+      "id": "t128-10 substitute-evidence church row",
+      "file": "src/content/substitute-evidence.md",
+      "held": "NSCDA's South Carolina society's standards list church birth, baptism, marriage, death and burial records [[claim:nscda-church]]",
+      "restore": "DAR says church records are usually acceptable, but each is evaluated in the context of the whole lineage [[claim:dar-usually-acceptable]]",
+      "claims": [
+        "dar-usually-acceptable"
+      ],
+      "sources": [
+        "https://membership.dar.org/NSDAR/AppFormz/App_Help_Step_By_Step_1.aspx"
+      ],
+      "heldSince": "2026-11-10",
+      "why": "t128u #1: t127 new use made while the DAR page was unreachable (522) after its last pass Nov 5, 2026 10:34:49 AM CST; never read against the page.",
+      "restoreFrom": "d6edc65",
+      "status": "held"
+    },
+    {
+      "id": "t128-11 substitute-evidence wills row",
+      "file": "src/content/substitute-evidence.md",
+      "held": "Named heirs and children; NSCDA's South Carolina society's standards list these county court records [[claim:nscda-county]]",
+      "restore": "Named heirs and children; DAR lists probate, court and land records among the most common sources used to establish lineage [[claim:dar-lineage-sources]]",
+      "claims": [
+        "dar-lineage-sources"
+      ],
+      "sources": [
+        "https://membership.dar.org/NSDAR/AppFormz/FAQs.aspx"
+      ],
+      "heldSince": "2026-11-10",
+      "why": "t128u #1: t127 new use made while the DAR page was unreachable (522) after its last pass Nov 5, 2026 10:34:49 AM CST; never read against the page.",
+      "restoreFrom": "d6edc65",
+      "status": "held"
+    },
+    {
+      "id": "t128-12 census-bridge step 5",
+      "file": "src/content/census-bridge.md",
+      "held": "NSCDA's South Carolina society's standards list wills, probate records, inventories, deeds and court orders among primary sources. [[claim:nscda-county]]",
+      "restore": "DAR lists probate, court and land records among the most common sources used to establish lineage. [[claim:dar-lineage-sources]]",
+      "claims": [
+        "dar-lineage-sources"
+      ],
+      "sources": [
+        "https://membership.dar.org/NSDAR/AppFormz/FAQs.aspx"
+      ],
+      "heldSince": "2026-11-10",
+      "why": "t128u #1: t127 new use made while the DAR page was unreachable (522) after its last pass Nov 5, 2026 10:34:49 AM CST; never read against the page.",
+      "restoreFrom": "d6edc65",
+      "status": "held"
+    },
+    {
+      "id": "t129-01 FAQ What records will I need?",
+      "file": "src/pages/faq.md",
+      "held": "DAR asks for documentation of each birth, marriage and death in your line, and of your patriot's service [[claim:dar-join-docs]], with complete birth",
+      "restore": "DAR asks for every name, date, place and relationship [[claim:dar-each-relationship]], with complete birth",
+      "claims": [
+        "dar-each-relationship"
+      ],
+      "sources": [
+        "https://membership.dar.org/NSDAR/AppFormz/App_Help_Step_By_Step_1.aspx"
+      ],
+      "heldSince": "2026-11-10",
+      "why": "t129u (Tim approved; applied t130): use added Nov 5, 2026 (6c90cdf) after the DAR page's last pass at 10:34:49 AM CST; never read against the page.",
+      "restoreFrom": "9da123a",
+      "status": "held"
+    },
+    {
+      "id": "t129-02 limits-matrix What it doesn't do",
+      "file": "src/partials/limits-matrix.md",
+      "held": "The worksheet never grades a line.\n",
+      "restore": "The worksheet never grades a line. The best label any entry can earn is \"Evidence Entered — Review Required\", because only a society's genealogists decide what is proven. [[claim:dar-review-staff]]\n",
+      "claims": [
+        "dar-review-staff"
+      ],
+      "sources": [
+        "https://membership.dar.org/NSDAR/AppFormz/App_Help_Step_By_Step_1.aspx"
+      ],
+      "heldSince": "2026-11-10",
+      "why": "t129u (Tim approved; applied t130): use added Nov 5, 2026 (6c90cdf) after the DAR page's last pass at 10:34:49 AM CST; never read against the page.",
+      "restoreFrom": "9da123a",
+      "status": "held",
+      "note": "Held text drops the label sentence too: without its claim marker the gate reads \"Review Required\" as an unmanifested rule. The same sentence, with its claim, still appears in \"Its limits\" on the same page."
+    }
+  ]
+}

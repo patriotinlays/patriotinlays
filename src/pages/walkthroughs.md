@@ -5,7 +5,7 @@ description: "Step-by-step examples of the Widow Pension Law Checker and the Lin
 ---
 # See the tools in action
 
-Sometimes the easiest way to understand a tool is to watch somebody else use it. These two walkthroughs do that, using the same example families you get when you press "Load an example" on either tool. Every name below is made up. The pictures are real captures of the tools, and every quoted result is copied from what the tools actually produced, checked each time the site is built.
+Sometimes the easiest way to understand a tool is to watch somebody else use it. These two walkthroughs do that, using the same example families you get when you press "Load an example" on the widow checker or "See a filled-in example" on the worksheet. Every name below is made up. The pictures are real captures of the tools, and every quoted result is copied from what the tools actually produced, checked each time the site is built.
 
 ## The Widow Pension Law Checker
 
@@ -37,7 +37,7 @@ The last thing to read is "What to do next". Here it starts with the one answer 
 
 ## The Lineage Evidence Matrix
 
-Now imagine the bigger job: you want to see, generation by generation, which links in your line are proven and which still need a record. Open the [worksheet](/tools/lineage-matrix/) and press "Load an example". This family is made up too: a Virginia militiaman named John, and four generations between that patriot and the person applying.
+Now imagine the bigger job: you want to see, generation by generation, which links in your line are proven and which still need a record. Open the [worksheet](/tools/lineage-matrix/) and press "See a filled-in example". This family is made up too: a Virginia militiaman named John, and four generations between that patriot and the person applying.
 
 The first step asks for your patriot's name and service. The example gives the patriot's name, Virginia, a county militia unit, and service from May 1777 to October 1779. [[claim:dar-window-core]] Below that it asks how your patriot is related to you, and it fills in the generations in between for you.
 

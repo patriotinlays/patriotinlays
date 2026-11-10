@@ -42,6 +42,8 @@ for (const f of ["logo-horizontal-white.svg", "logo-horizontal.svg", "icon.svg",
 for (const [src, dst] of [["favicon.svg", "favicon.svg"], ["favicon-32.png", "favicon-32.png"], ["favicon-16.png", "favicon-16.png"], ["apple-touch-icon-180.png", "apple-touch-icon.png"]]) {
   const b = readFileSync(join(ROOT, "src/assets", src)); writeFileSync(join(OUT, dst), b); ASSET_V.set(`/${dst}`, hash8(b)); }
 
+mkdirSync(join(OUT, "assets/archives"), { recursive: true });
+for (const f of readdirSync(join(ROOT, "src/assets/archives")).filter((f) => f.endsWith(".jpg"))) { const b = readFileSync(join(ROOT, "src/assets/archives", f)); writeFileSync(join(OUT, "assets/archives", f), b); ASSET_V.set(`/assets/archives/${f}`, hash8(b)); }
 for (const f of readdirSync(join(ROOT, "qa/walkthroughs")).filter((f) => f.endsWith(".png"))) { mkdirSync(join(OUT, "assets/walkthroughs"), { recursive: true });
   const b = readFileSync(join(ROOT, "qa/walkthroughs", f)); writeFileSync(join(OUT, "assets/walkthroughs", f), b); ASSET_V.set(`/assets/walkthroughs/${f}`, hash8(b)); }
 // t124u #1: each Sources entry: the title (the link), its last-checked date, a "Used for:" line built from the claims this page
@@ -115,15 +117,15 @@ const PATRIOT_CARD = `<aside class="card" data-tool-card="patriot"><strong>Recor
 const TOOL_B_FULL = `<section class="tool" data-tool="lineage-matrix" aria-labelledby="tb-h"><h2 id="tb-h">Use the worksheet</h2>
 <p class="purpose" data-purpose><strong>What it's for:</strong> a to-do list of the records you still need for each generation, from you back to your patriot, and where to look for each one.</p>
 <div class="howto"><p><strong>How this works.</strong> This worksheet does not search any records or databases. You type in the records you already have for each person in your line. It shows what is still missing for each generation and where to look for it. Nothing you type leaves your device; it is saved only in this browser.</p>
-<p><button type="button" class="secondary" data-load-example>Load an example</button> <span class="small">Fills in a made-up family so you can see how it works.</span></p></div>
-<div class="ws-start" data-ws-start hidden><p><button type="button" class="big" data-ws-begin>Start my worksheet</button></p><p class="small">The steps open below: the patriot first, then you and each generation back to your patriot.</p><div data-name-checklist></div></div>
+</div>
+<div class="ws-start" data-ws-start><div class="ws-choices"><p class="ws-choice" data-ws-begin-wrap><button type="button" class="big" data-ws-begin>Start with just the patriot and me</button> <span class="small ws-rec">Recommended</span></p><p class="ws-choice"><button type="button" class="secondary" data-load-example>See a filled-in example</button></p></div><div data-name-checklist></div></div>
 <div data-ws-body>
-<h3 class="step" id="tb-patriot"><span class="num">1</span> Your patriot: name and service</h3>
+<details class="ws-group" data-group="patriot" open><summary><h3 class="step" id="tb-patriot"><span class="num">1</span> Your patriot</h3></summary>
 <p class="small">Your patriot's state, type of service and rough dates shape the advice below. The worksheet checks those dates against the period DAR accepts for that type of service.</p>
-<div data-patriot></div>
-<h3 class="step"><span class="num">2</span> Then your family: start with yourself, and go back one generation at a time</h3>
-<p class="small">Generation 1 is you. Generation 2 is your parent, 3 your grandparent, and so on back to the patriot. For each person, add a rough birth year and the state, then press "Add a record" and answer A to D: A. What does this record show? B. What kind of record is it? C. Does the record say it in words, or only hint at it? D. Where did you find it?</p>
-<div data-matrix></div>
+<div data-patriot></div></details>
+<section class="ws-group" data-group="generations"><h3 class="step"><span class="num">2</span> Generations</h3>
+<p class="small">Start with yourself, and go back one generation at a time. Generation 1 is you. Generation 2 is your parent, 3 your grandparent, and so on back to the patriot. For each person, add a rough birth year and the state, then press "Add a record" and answer A to D: A. What does this record show? B. What kind of record is it? C. Does the record say it in words, or only hint at it? D. Where did you find it?</p>
+<div data-matrix></div></section>
 <h3 class="step"><span class="num">3</span> Add or remove generations</h3>
 <button type="button" class="secondary" data-add-gen>+ Add an older generation</button><button type="button" class="secondary" data-remove-gen>Remove the oldest generation</button>
 <p class="small" data-cleared aria-live="polite"></p>
@@ -151,6 +153,10 @@ function md(body, ctx) {
     // "::partial name" drops in a shared, sourced box (src/partials/name.md), e.g. "How to join, in short".
     if (l.startsWith("::partial ")) { const k = l.slice(10).trim(); out.push(`<aside class="card box-${k}" id="${k}">${md(readFileSync(join(ROOT, "src/partials", `${k}.md`), "utf8"), ctx)}</aside>`); i++; continue; }
         if (l.startsWith("::quote ")) { const [k, rest] = l.slice(8).split(/ (.+)/); out.push(quoteBlock(k, rest || "", ctx)); i++; continue; }
+  // "::archive-figure key" drops in a real archival page (src/figures/key.json) with numbered labels and a caption naming the file.
+  if (l.startsWith("::archive-figure ")) { const k = l.slice(17).trim(); const f = JSON.parse(readFileSync(join(ROOT, "src/figures", `${k}.json`), "utf8"));
+      const marks = f.labels.map((x) => `<span class="af-n" aria-hidden="true" style="left:${x.x}%;top:${x.y}%">${x.n}</span>`).join("");
+      out.push(`<figure class="archive-fig" data-archive-fig="${k}" data-naid="${f.naid}"><div class="af-wrap"><img src="/assets/${f.image}" alt="${esc(f.alt)}" width="${f.width}" height="${f.height}" loading="lazy" decoding="async">${marks}</div><ol class="af-key">${f.labels.map((x) => `<li value="${x.n}">${esc(x.text)}</li>`).join("")}</ol><figcaption>${esc(f.caption)}</figcaption></figure>`); i++; continue; }
   if (l.startsWith("::figure ")) { const m = /^::figure (\S+) (.+)$/.exec(l); 
       out.push(`<figure class="job-aid"><img src="/assets/walkthroughs/${m[1]}" alt="${esc(m[2])}"><figcaption>${esc(m[2])}</figcaption></figure>`); i++; continue; }
   if (l.startsWith("::tool ")) { const k = l.slice(7).trim(); if (!TOOLS[k]) throw new Error(`unknown tool ${k}`); out.push(TOOLS[k]); ctx.tools.add(k.replace("-full", "")); i++; continue; }
@@ -247,11 +253,15 @@ const guides = built.filter((b) => b.cornerstone).sort((a, b) => a.cornerstone -
 write("", page({ title: "Patriot, In Lay Terms: plain-English help for DAR and SAR applications", description: "Plain-English guides and free browser tools for documenting descent from a Revolutionary War patriot for a DAR or SAR application.", path: "/",
   body: `<h1 class="home-h1" data-home-h1><span class="sr-only">Patriot, In Lay Terms: </span><span class="subtitle" data-subtitle>Plain-English help with DAR and SAR applications, for the Daughters and the Sons of the American Revolution</span></h1>
 <p class="independent" data-independent>An independent guide: not affiliated with DAR, SAR or any lineage society, and it doesn't search records for you.</p>
+<p class="home-intro" data-home-intro>Two free tools and ten guides help you organize what you have and see what's still missing. What you type into the tools stays in your own browser.</p>
+<section class="start-cards" aria-label="Start here" data-start-cards>
+<div class="start-card" data-start-card="matrix"><h2 class="start-card-h">Build your to-do list</h2><p>Enter the records you already have. The worksheet shows what's still missing for each generation and where to look.</p><p class="start-card-btn"><a class="button-link" href="/tools/lineage-matrix/">Open the Lineage Evidence Matrix</a></p></div>
+<div class="start-card" data-start-card="widow"><h2 class="start-card-h">Check a widow's pension</h2><p>Compare a widow's marriage date and her husband's service with each federal widow pension law.</p><p class="start-card-btn"><a class="button-link" href="/tools/widow-pension-checker/">Open the Widow Pension Law Checker</a></p></div>
+<div class="start-card" data-start-card="roadmap"><h2 class="start-card-h">Read the full plan</h2><p>A generation-by-generation roadmap for DAR and SAR applications.</p><p class="start-card-btn"><a class="button-link" href="/guides/lineage-proof-roadmap/" data-start-button>Open the Roadmap guide</a></p></div>
+</section>
+<p class="see-how" data-see-how><a href="/walkthroughs/">See how the tools work</a></p>
 <section class="home-mission" data-mission>${HOME.body.replace(/<p>Written with AI assistance/, '<p class="ai-line" data-ai-line>Written with AI assistance')}</section>
-<section class="card start-here home-start" aria-labelledby="get-started" data-get-started><h2 id="get-started">Ready to get started?</h2>
-<p><a class="button-link" href="/tools/lineage-matrix/">Start the Lineage Evidence Matrix</a> <a class="button-link" href="/tools/widow-pension-checker/">Open the Widow Pension Law Checker</a></p>
-<p>New to all of this? <a href="/guides/lineage-proof-roadmap/" data-start-button>Begin with the Roadmap guide</a>: how to join, how to find your patriot's name, and the whole process, step by step.</p></section>
-<h2 id="guides">The guides</h2><ol class="guide-list">${guides.map((g) => `<li><a href="${g.path}">${esc(g.title)}</a><br><span class="small">${esc(g.description)}</span></li>`).join("")}</ol>
+<h2 id="guides">The guides</h2><ol class="guide-list home-guides">${guides.map((g) => `<li><a class="guide-title" href="${g.path}">${esc(g.title)}</a><br><span class="small">${esc(g.description)}</span></li>`).join("")}</ol>
 <p class="home-help">Questions? <a href="/faq/">Questions, answered simply</a> · New to the tools? <a href="/walkthroughs/">See them in action</a>, with a made-up family.</p>
 ${HOME.html}
 ${HOME.sources}<p class="small"><a href="/about/">About this site</a> · <a href="/ai-disclosure/">AI disclosure</a> · <a href="/privacy/">Privacy</a></p>` }));

@@ -11,7 +11,8 @@ import { execFileSync } from "node:child_process";
 import { tmpdir } from "node:os";
 import { norm, normJoin, stripHtml } from "./lib/normalize.mjs";
 import { decideSourceCheck, loadLastPassed, recordPass } from "./lib/source-pass.mjs";
-import { loadClaimMatches, recordClaimMatches, checkFallbackClaims } from "./lib/claim-match.mjs";
+import { loadClaimMatches, recordClaimMatches, checkFallbackClaims, saveClaimMatches } from "./lib/claim-match.mjs";
+import { loadHeldBack, saveHeldBack, restoreHeld } from "./lib/held-back.mjs";
 import { isNysedHost, nysedGet, nysedAvailable } from "./lib/nysed-tls.mjs";
 import { SCOPES, scopeFlags } from "./lib/source-scope.mjs";
 
@@ -101,6 +102,7 @@ const lastPassedStore = loadLastPassed(LAST_PASSED_PATH);
 const CLAIM_MATCH_PATH = join(ROOT, "manifest/claim-last-matched.json");
 const claimMatchStore = loadClaimMatches(CLAIM_MATCH_PATH);
 const linkReport = [];
+const passedUrls = new Set();
 if (LINKS) {
   const urls = [...new Set(manifest.claims.map((c) => c.source_url))];
   const tmp = mkdtempSync(join(tmpdir(), "manifest-"));
@@ -180,16 +182,35 @@ if (LINKS) {
       continue;
     }
     // Record and save this source's pass right away (new URLs included), so a later failure can't drop it.
-    if (hay != null) { recordPass(LAST_PASSED_PATH, lastPassedStore, u); recordClaimMatches(CLAIM_MATCH_PATH, claimMatchStore, manifest.claims.filter((c) => c.source_url === u)); }
+    if (hay != null) { recordPass(LAST_PASSED_PATH, lastPassedStore, u); recordClaimMatches(CLAIM_MATCH_PATH, claimMatchStore, manifest.claims.filter((c) => c.source_url === u)); passedUrls.add(u); }
     linkReport.push({ url: u, status, quotesFound: found, quotesMissing: missing });
   }
+}
+
+// t129u/t130: restore held-back claim uses automatically once every source they depend on passed live in this run.
+const HELD_PATH = join(ROOT, "manifest/held-back.json");
+let heldResult = null;
+if (LINKS && !args.includes("--content") && existsSync(HELD_PATH)) {
+  const reg = loadHeldBack(HELD_PATH);
+  heldResult = restoreHeld(reg, passedUrls, ROOT);
+  if (heldResult.restored.length) {
+    saveHeldBack(HELD_PATH, reg);
+    execFileSync("python3", [join(ROOT, "manifest/src/build_manifest.py")], { stdio: "inherit" });
+    // The restored claims' quotes matched their live pages in this same run; record their new uses with that match.
+    const fresh = JSON.parse(readFileSync(join(ROOT, "manifest/claims.json"), "utf8")).claims;
+    for (const r of heldResult.restored) for (const id of r.claims) { const c = fresh.find((x) => x.claim_id === id); const m = claimMatchStore.claims[id];
+      if (c && m && passedUrls.has(c.source_url)) m.used_on = [...c.used_on].sort(); }
+    saveClaimMatches(CLAIM_MATCH_PATH, claimMatchStore);
+    warnings.push(`RESTORED ${heldResult.restored.length} held-back use(s): ${heldResult.restored.map((r) => r.id).join("; ")}. Rebuild required (node scripts/build.mjs).`);
+  }
+  for (const p of heldResult.problems) errors.push(`HELD-BACK ${p.id}: ${p.reason}`);
 }
 
 // Every report states plainly whether sources were fetched live (Tim, Nov 5): "Live-source check: RUN" / "NOT RUN".
 const LIVE_STATUS = LINKS ? "RUN" : "NOT RUN";
 const LIVE_LINE = `Live-source check: ${LIVE_STATUS}`;
 const LIVE_REPORT_PATH = join(ROOT, "manifest-live-check-report.json");
-const summary = { live_source_check: LIVE_STATUS, live_source_check_line: LIVE_LINE, checkedAt: new Date().toString(), dirs, files: files.length, perFile, sentences, markedSentences: marked, manifestClaims: byId.size, referencedClaims: referenced.size, links: LINKS ? linkReport : "not run (use --links)", errors, warnings };
+const summary = { live_source_check: LIVE_STATUS, live_source_check_line: LIVE_LINE, checkedAt: new Date().toString(), dirs, files: files.length, perFile, sentences, markedSentences: marked, manifestClaims: byId.size, referencedClaims: referenced.size, links: LINKS ? linkReport : "not run (use --links)", heldBack: heldResult, errors, warnings };
 if (LINKS) {
   summary.result = errors.length ? "FAILED" : "PASSED";
   // The live run's evidence lives in its own file; a later consistency-only run never overwrites it.
@@ -205,6 +226,7 @@ if (LINKS) for (const l of linkReport) console.log(`  link ${l.status}${l.fallba
 warnings.forEach((w) => console.log("WARN  " + w));
 errors.forEach((e) => console.log("ERROR " + e));
 console.log(`Source scope (rule 7): ${scopeFlagged.length} flagged`);
+if (heldResult) console.log(`Held back: ${heldResult.waiting.length} still held (waiting on unreachable sources), ${heldResult.restored.length} restored this run`);
 console.log(errors.length ? `FAILED with ${errors.length} error(s). Unverifiable claims must be omitted.` : "PASSED: every factual claim maps to a verified manifest entry.");
 console.log(LIVE_LINE);
 process.exit(errors.length ? 1 : 0);

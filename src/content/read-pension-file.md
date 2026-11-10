@@ -52,6 +52,8 @@ A reading order that works:
 4. Read the widow's or heirs' papers, even if you descend from the veteran.
 5. Scan the rest for family-record pages, letters and payment vouchers.
 
+::archive-figure m804-daniels
+
 ## Step 4: Know which act you are reading
 
 The act behind an application decides what the applicant had to say, so it tells you what the file can contain.

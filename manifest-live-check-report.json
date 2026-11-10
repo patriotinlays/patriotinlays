@@ -1,7 +1,7 @@
 {
   "live_source_check": "RUN",
   "live_source_check_line": "Live-source check: RUN",
-  "checkedAt": "Tue Nov 10 2026 06:22:01 GMT-0600 (Central Standard Time)",
+  "checkedAt": "Tue Nov 10 2026 08:25:46 GMT-0600 (Central Standard Time)",
   "dirs": [
     "src/content",
     "src/pages",
@@ -45,7 +45,7 @@
       "unmarked": 0
     },
     "src/content/read-pension-file.md": {
-      "units": 60,
+      "units": 61,
       "marked": 42,
       "unmarked": 0
     },
@@ -115,8 +115,8 @@
       "unmarked": 0
     },
     "src/partials/limits-matrix.md": {
-      "units": 7,
-      "marked": 1,
+      "units": 6,
+      "marked": 0,
       "unmarked": 0
     },
     "src/partials/limits-widow.md": {
@@ -141,7 +141,7 @@
     }
   },
   "sentences": 913,
-  "markedSentences": 473,
+  "markedSentences": 472,
   "manifestClaims": 400,
   "referencedClaims": 400,
   "links": [
@@ -161,24 +161,7 @@
       "failureKind": "http_522",
       "claimsCoveredByEarlierMatch": 28,
       "claimsHeld": [],
-      "newUses": [
-        {
-          "claim_id": "dar-each-relationship",
-          "added": [
-            "faq"
-          ],
-          "matchedAt": "2026-11-05T16:34:49.000Z",
-          "reason": "new use(s) since its last match (2026-11-05T16:34:49.000Z): faq"
-        },
-        {
-          "claim_id": "dar-review-staff",
-          "added": [
-            "partial:limits-matrix"
-          ],
-          "matchedAt": "2026-11-05T16:34:49.000Z",
-          "reason": "new use(s) since its last match (2026-11-05T16:34:49.000Z): partial:limits-matrix"
-        }
-      ]
+      "newUses": []
     },
     {
       "url": "https://membership.dar.org/NSDAR/AppFormz/FAQs.aspx",
@@ -607,15 +590,104 @@
       "quotesMissing": 0
     }
   ],
+  "heldBack": {
+    "restored": [],
+    "waiting": [
+      {
+        "id": "t128-01 tool-b birth.recent",
+        "waitingOn": [
+          "https://membership.dar.org/NSDAR/AppFormz/FAQs.aspx"
+        ]
+      },
+      {
+        "id": "t128-02 tool-b birth.older",
+        "waitingOn": [
+          "https://membership.dar.org/NSDAR/AppFormz/App_Help_Step_By_Step_1.aspx"
+        ]
+      },
+      {
+        "id": "t128-03 tool-b death.older",
+        "waitingOn": [
+          "https://membership.dar.org/NSDAR/AppFormz/FAQs.aspx",
+          "https://membership.dar.org/NSDAR/AppFormz/App_Help_Step_By_Step_1.aspx"
+        ]
+      },
+      {
+        "id": "t128-04 tool-b marriage.older",
+        "waitingOn": [
+          "https://membership.dar.org/NSDAR/AppFormz/App_Help_Step_By_Step_1.aspx"
+        ]
+      },
+      {
+        "id": "t128-05 tool-b parentage.recent",
+        "waitingOn": [
+          "https://membership.dar.org/NSDAR/AppFormz/FAQs.aspx"
+        ]
+      },
+      {
+        "id": "t128-06 tool-b parentage.older",
+        "waitingOn": [
+          "https://membership.dar.org/NSDAR/AppFormz/FAQs.aspx"
+        ]
+      },
+      {
+        "id": "t128-07 tool-b residence.recent",
+        "waitingOn": [
+          "https://membership.dar.org/NSDAR/AppFormz/FAQs.aspx"
+        ]
+      },
+      {
+        "id": "t128-08 tool-b residence.older",
+        "waitingOn": [
+          "https://membership.dar.org/NSDAR/AppFormz/FAQs.aspx"
+        ]
+      },
+      {
+        "id": "t128-09 tool-b BIRTH_SUBSTITUTES baptism",
+        "waitingOn": [
+          "https://membership.dar.org/NSDAR/AppFormz/App_Help_Step_By_Step_1.aspx"
+        ]
+      },
+      {
+        "id": "t128-10 substitute-evidence church row",
+        "waitingOn": [
+          "https://membership.dar.org/NSDAR/AppFormz/App_Help_Step_By_Step_1.aspx"
+        ]
+      },
+      {
+        "id": "t128-11 substitute-evidence wills row",
+        "waitingOn": [
+          "https://membership.dar.org/NSDAR/AppFormz/FAQs.aspx"
+        ]
+      },
+      {
+        "id": "t128-12 census-bridge step 5",
+        "waitingOn": [
+          "https://membership.dar.org/NSDAR/AppFormz/FAQs.aspx"
+        ]
+      },
+      {
+        "id": "t129-01 FAQ What records will I need?",
+        "waitingOn": [
+          "https://membership.dar.org/NSDAR/AppFormz/App_Help_Step_By_Step_1.aspx"
+        ]
+      },
+      {
+        "id": "t129-02 limits-matrix What it doesn't do",
+        "waitingOn": [
+          "https://membership.dar.org/NSDAR/AppFormz/App_Help_Step_By_Step_1.aspx"
+        ]
+      }
+    ],
+    "problems": []
+  },
   "errors": [],
   "warnings": [
     "https://www.dar.org/national-society/accepted-revolutionary-war-service: Node fetch got 403/429; verified with curl instead",
-    "https://membership.dar.org/NSDAR/AppFormz/App_Help_Step_By_Step_1.aspx: FALLBACK: unreachable source accepted on last successful check under 30 days. URL failure=http_522; lastPassed=2026-11-05T16:34:49.000Z; ageDays=4.82. Re-check required on every run.",
-    "NEW USE dar-each-relationship: https://membership.dar.org/NSDAR/AppFormz/App_Help_Step_By_Step_1.aspx is on fallback; quote matched 2026-11-05T16:34:49.000Z but new use(s) since its last match (2026-11-05T16:34:49.000Z): faq were never read against the page. Review or hold back.",
-    "NEW USE dar-review-staff: https://membership.dar.org/NSDAR/AppFormz/App_Help_Step_By_Step_1.aspx is on fallback; quote matched 2026-11-05T16:34:49.000Z but new use(s) since its last match (2026-11-05T16:34:49.000Z): partial:limits-matrix were never read against the page. Review or hold back.",
-    "https://membership.dar.org/NSDAR/AppFormz/FAQs.aspx: FALLBACK: unreachable source accepted on last successful check under 30 days. URL failure=http_522; lastPassed=2026-11-05T16:34:49.000Z; ageDays=4.82. Re-check required on every run.",
+    "https://membership.dar.org/NSDAR/AppFormz/App_Help_Step_By_Step_1.aspx: FALLBACK: unreachable source accepted on last successful check under 30 days. URL failure=http_522; lastPassed=2026-11-05T16:34:49.000Z; ageDays=4.91. Re-check required on every run.",
+    "https://membership.dar.org/NSDAR/AppFormz/FAQs.aspx: FALLBACK: unreachable source accepted on last successful check under 30 days. URL failure=http_522; lastPassed=2026-11-05T16:34:49.000Z; ageDays=4.91. Re-check required on every run.",
     "https://blog.dar.org/2021/02/26/why-was-his-service-removed: Node fetch got 403/429; verified with curl instead",
-    "https://services.dar.org/Public/DAR_Research/search_revwar/?Tab_ID=14&Tab_ID_Sub=0&action=list: FALLBACK: unreachable source accepted on last successful check under 30 days. URL failure=http_522; lastPassed=2026-11-05T16:34:49.000Z; ageDays=4.82. Re-check required on every run.",
+    "https://services.dar.org/Public/DAR_Research/search_revwar/?Tab_ID=14&Tab_ID_Sub=0&action=list: FALLBACK: unreachable source accepted on last successful check under 30 days. URL failure=http_522; lastPassed=2026-11-05T16:34:49.000Z; ageDays=4.91. Re-check required on every run.",
     "https://www.dar.org/library/search.cfm: Node fetch got 403/429; verified with curl instead",
     "https://www.dar.org/library/collections/dar-lineage-resources: Node fetch got 403/429; verified with curl instead",
     "https://www.dar.org/discover/become-member/chapter-locator: Node fetch got 403/429; verified with curl instead",

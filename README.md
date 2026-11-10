@@ -260,6 +260,14 @@ Docs: https://developers.cloudflare.com/pages/how-to/web-analytics/
 - February 28, 1855 navy-widow law cited as ch. 126, sec. 3, 10 Stat. 616 (chapter begins at 615); 10 Stat. 701 is only the March 3, 1855 bounty-land act.
 - Worksheet: step 1 is the patriot, step 2 starts the family with yourself; removing the oldest generation asks for confirmation.
 
+### t130 (Nov 10, 2026) — usability batch
+- Home: Tim's intro sentence under the heading, three "Start here" cards (worksheet, widow checker, roadmap; stacked on phones, three across from 760px) with navy buttons, and a "See how the tools work" line. The "Ready to get started?" box is gone; the longer paragraphs follow unchanged. Guide titles in the home list are bolder/larger; more space between major sections.
+- Worksheet: "Start with just the patriot and me" (default; creates the Patriot section and Generation 1 only) and "See a filled-in example" (asks "Loading the example replaces your current entries. Continue?" when entries exist). The form is grouped into "Your patriot" and "Generations"; only the newest generation is open, older ones collapse under a heading with their name. The rarely used "disagrees with another record" box sits under "More details". Saved data format unchanged.
+- Print: both reports hide menu, footer and buttons (e2e t130 #4); page counts unchanged (example 2/3, persona B 2/3).
+- Pension-file guide: one real page from M804 (W. 14,734, Jacob Daniels, N.H., NAID 54368689, image 4156793_00373.jpg), downloaded from catalog.archives.gov, cropped and compressed to 119 KB, with alt text, caption and 3 numbered labels (`::archive-figure`, `src/figures/m804-daniels.json`).
+- Held back (t129): dar-each-relationship (FAQ) and dar-review-staff (limits box) uses reverted; all 14 held DAR uses are in `manifest/held-back.json` and restore automatically (`scripts/lib/held-back.mjs`) when every DAR page they depend on passes live in a run.
+- `qa/page-weight.mjs` measures bytes for home, worksheet and the pension guide.
+
 ### t128u (Nov 10, 2026)
 - Per-claim match records (`manifest/claim-last-matched.json`, `scripts/lib/claim-match.mjs`): every live quote match records the claim's URL, exact quote, time and the pages using it. When a source is on the 30-day fallback, a claim with no earlier match against that page (new claim, changed quote or moved source) is HELD and the gate fails; a matched claim used on a new page or tool since its match is a `NEW USE` warning. The three DAR pages unreachable since Nov 5 were seeded from the committed Nov 5 report (5cf3fab `manifest-check-report.json`, 10:34:49 AM CST: FAQs 13/13, Step-by-step 28/28, search_revwar 4/4 quotes found, 0 missing). Tests in `scripts/test-source-pass.mjs`.
 - The t127 rewordings that newly used `dar-usually-acceptable` / `dar-lineage-sources` are held back (South Carolina-attributed NSCDA wording restored) until those DAR pages are reachable again.
