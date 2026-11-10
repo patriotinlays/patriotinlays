@@ -42,5 +42,25 @@ t("lastPassAgeDays null when missing", lastPassAgeDays(null, now) == null);
   const many = ["https://s1.example/", "https://s2.example/", "https://s3.example/"]; many.forEach((u) => recordPass(f, store, u, at));
   t("every passing source in a run gets its own date", many.every((u) => onDisk()[u] === at.toISOString())); }
 
+// t128u: per-claim match records. A fallback source covers only claims whose exact quote matched that page before.
+{ const { loadClaimMatches, recordClaimMatches, checkFallbackClaims } = await import("./lib/claim-match.mjs");
+  const dir = mkdtempSync(join(tmpdir(), "claimmatch-")); const f = join(dir, "claim-last-matched.json");
+  const U = "https://dar.example/faq";
+  const old = { claim_id: "old", source_url: U, quote_excerpt: "matched words", used_on: ["census-bridge"] };
+  const store = loadClaimMatches(f);
+  recordClaimMatches(f, store, [old], new Date("2026-11-05T16:34:49.000Z"));
+  const disk = JSON.parse(readFileSync(f, "utf8")).claims.old;
+  t("a live match records quote, time and uses on disk", disk.quote === "matched words" && disk.matchedAt === "2026-11-05T16:34:49.000Z" && disk.used_on.join() === "census-bridge");
+  const r1 = checkFallbackClaims([old], loadClaimMatches(f));
+  t("fallback covers a claim matched before with the same quote and uses", r1.ok.length === 1 && r1.held.length === 0 && r1.newUses.length === 0);
+  const r2 = checkFallbackClaims([{ claim_id: "brand-new", source_url: U, quote_excerpt: "never seen", used_on: ["faq"] }], loadClaimMatches(f));
+  t("fallback HOLDS a new claim never matched against the page", r2.held.length === 1 && /never matched/.test(r2.held[0].reason) && r2.ok.length === 0);
+  const r3 = checkFallbackClaims([{ ...old, quote_excerpt: "edited words" }], loadClaimMatches(f));
+  t("fallback HOLDS a claim whose quote changed since its match", r3.held.length === 1 && /quote changed/.test(r3.held[0].reason));
+  const r4 = checkFallbackClaims([{ ...old, source_url: "https://other.example/" }], loadClaimMatches(f));
+  t("fallback HOLDS a claim moved to another source", r4.held.length === 1 && /different source/.test(r4.held[0].reason));
+  const r5 = checkFallbackClaims([{ ...old, used_on: ["census-bridge", "substitute-evidence", "tool:tool-b.js"] }], loadClaimMatches(f));
+  t("fallback reports new uses of a matched claim (warning)", r5.newUses.length === 1 && r5.newUses[0].added.join() === "substitute-evidence,tool:tool-b.js"); }
+
 console.log(`Source-pass rules: ${ok}/${ok + fail} passed.`);
 process.exit(fail ? 1 : 0);

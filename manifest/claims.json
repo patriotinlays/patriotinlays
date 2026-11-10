@@ -565,9 +565,7 @@
       "verification_status": "verified",
       "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
       "used_on": [
-        "census-bridge",
-        "substitute-evidence",
-        "tool:tool-b.js"
+        "census-bridge"
       ],
       "notes": "",
       "source_scope": "national"
@@ -1006,9 +1004,7 @@
       "verification_status": "verified",
       "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
       "used_on": [
-        "census-bridge",
         "lineage-proof-roadmap",
-        "substitute-evidence",
         "tool:tool-b.js"
       ],
       "notes": "",
@@ -2116,22 +2112,22 @@
       "source_scope": "chapter-local"
     },
     {
-      "claim_id": "ohsar-supp-sig",
-      "claim_text": "A 2023 Ohio Society SAR presentation said supplemental applications need two signatures.",
-      "source_url": "https://cincinnatisar.org/wp-content/uploads/2023/05/Presentation-How-to-Produce-Approval-Ready-Applications-and-Reduce-Turnaround-Time.pdf",
-      "source_title": "SAR presentation, OHSSAR Annual Meeting (May 5, 2023) — How to Produce Approval-Ready Applications",
+      "claim_id": "sar-checklist-supp-sig",
+      "claim_text": "SAR's application checklist asks whether the member and the State Registrar (or another designated officer) have signed a supplemental application on the back.",
+      "source_url": "https://members.sar.org/media/uploads/pages/334/wPXSPrcD0cuU.pdf",
+      "source_title": "SAR — Application Checklist",
       "source_type": "official_secondary",
       "archive_identifier": null,
-      "last_retrieved": "2026-10-31",
-      "quote_excerpt": "Supplemental apps must have two signatures",
+      "last_retrieved": "2026-11-10",
+      "quote_excerpt": "For supplemental applications, have the member and the State Registrar (or other designated officer) signed on the back?",
       "page_ref": null,
       "verification_status": "verified",
-      "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
+      "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-11-10 CT",
       "used_on": [
         "application-problems"
       ],
       "notes": "",
-      "source_scope": "chapter-local"
+      "source_scope": "national"
     },
     {
       "claim_id": "sar-checklist-signatures",
@@ -4376,6 +4372,45 @@
       "source_scope": "state"
     },
     {
+      "claim_id": "nscda-county",
+      "claim_text": "NSCDA's South Carolina society's standards list wills, probate records, inventories, deeds, court orders and tax lists as primary sources.",
+      "source_url": "https://nscdasnc.memberclicks.net/assets/membership/Standards%20of%20Proof%202025.pdf",
+      "source_title": "NSCDA South Carolina Society — Standards of Proof (2025)",
+      "source_type": "official_secondary",
+      "archive_identifier": null,
+      "last_retrieved": "2026-10-31",
+      "quote_excerpt": "Official records including wills, probate records, inventories, deeds, court orders, tax lists",
+      "page_ref": "p. 1",
+      "verification_status": "verified",
+      "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
+      "used_on": [
+        "census-bridge",
+        "substitute-evidence",
+        "tool:tool-b.js"
+      ],
+      "notes": "",
+      "source_scope": "state"
+    },
+    {
+      "claim_id": "nscda-church",
+      "claim_text": "NSCDA's South Carolina society's standards list church birth, baptism, marriage, death and burial records.",
+      "source_url": "https://nscdasnc.memberclicks.net/assets/membership/Standards%20of%20Proof%202025.pdf",
+      "source_title": "NSCDA South Carolina Society — Standards of Proof (2025)",
+      "source_type": "official_secondary",
+      "archive_identifier": null,
+      "last_retrieved": "2026-10-31",
+      "quote_excerpt": "Birth, baptism, marriage, death, or burial records.",
+      "page_ref": "p. 2",
+      "verification_status": "verified",
+      "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
+      "used_on": [
+        "substitute-evidence",
+        "tool:tool-b.js"
+      ],
+      "notes": "",
+      "source_scope": "state"
+    },
+    {
       "claim_id": "nscda-bible-title",
       "claim_text": "NSCDA's South Carolina society's standards ask for the Bible's title page with its publication date.",
       "source_url": "https://nscdasnc.memberclicks.net/assets/membership/Standards%20of%20Proof%202025.pdf",
@@ -4841,6 +4876,24 @@
         "partial:tool-terms",
         "tool:next-steps.js",
         "walkthroughs"
+      ],
+      "notes": "",
+      "source_scope": "national"
+    },
+    {
+      "claim_id": "sar-sponsor-often-registrar",
+      "claim_text": "SAR's national site says your sponsor is often the local chapter registrar.",
+      "source_url": "https://www.sar.org/how-to-apply/",
+      "source_title": "SAR — Apply in 4 Easy Steps",
+      "source_type": "official_secondary",
+      "archive_identifier": null,
+      "last_retrieved": "2026-11-10",
+      "quote_excerpt": "the next step is to find a SAR sponsor in close proximity to you (often the local SAR Chapter Registrar)",
+      "page_ref": null,
+      "verification_status": "verified",
+      "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-11-10 CT",
+      "used_on": [
+        "faq"
       ],
       "notes": "",
       "source_scope": "national"

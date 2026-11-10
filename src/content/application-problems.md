@@ -35,10 +35,10 @@ Start by assuming the problem is in the documentation, not the ancestor. DAR has
 
 ## Supplementals and replacements (SAR)
 
-Except for the signature checklist, these points come from a 2023 Ohio Society SAR presentation, not from SAR's national rules, so confirm current rules with your state registrar.
+Except for the two signature checks from SAR's application checklist, these points come from a 2023 Ohio Society SAR presentation, not from SAR's national rules, so confirm current rules with your state registrar.
 
 - {{asof:sar-checklist-signatures}} SAR's application checklist asks whether the State Registrar, State Secretary and two sponsors have signed a new-member application. [[claim:sar-checklist-signatures]]
-- A 2023 Ohio Society SAR presentation said supplemental applications need two signatures. [[claim:ohsar-supp-sig]]
+- {{asof:sar-checklist-supp-sig}} SAR's application checklist asks whether the member and the State Registrar (or another designated officer) have signed a supplemental application on the back. [[claim:sar-checklist-supp-sig]]
 - A 2023 Ohio Society SAR presentation said new-member applications get two chances to resolve problems with replacement applications. [[claim:ohsar-replacements]]
 - A 2023 Ohio Society SAR presentation said a supplemental may be replaced only once. [[claim:ohsar-supp-once]]
 - A 2023 Ohio Society SAR presentation said applications pended for three years are withdrawn. [[claim:ohsar-3yrs]]

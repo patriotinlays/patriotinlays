@@ -748,8 +748,11 @@ phase("load"); await page.goto(`${BASE}/`); phase("interact");
     && /Act of February 28, 1855, ch\. 126, sec\. 3 at 10 Stat\. 616, and Act of March 3, 1855 at 10 Stat\. 701/.test(H("guides/read-pension-file")));
   const s701 = pagesOf(/\.(html|js)$/).flatMap(([f, h]) => [...h.replace(/<[^>]+>/g, " ").matchAll(/.{0,160}10 Stat\. 701.{0,10}/g)].map((m) => [f, m[0]]));
   check(`t127u #2: every '10 Stat. 701' (${s701.length}) is the March 3, 1855 bounty-land act, never the navy-widow law`, s701.length > 0 && s701.every(([, c]) => /March( 3,)? 1855|bounty-land|Bounty-land/.test(c) && !/navy widows \(|February 28, 1855 \(/.test(c.slice(-60))), s701.filter(([, c]) => !/March|bounty/i.test(c)).map(([f]) => f).join(" "));
-  const reg = pagesOf(/\.(html|js)$/).filter(([, h]) => /often (?:the|a) (?:local )?(?:SAR )?chapter registrar/i.test(h)).map(([f]) => f);
-  check("t127u #3: 'often the chapter registrar' (any form) is gone from every built page and script, including the Patriotic Service guide and the FAQ", reg.length === 0 && /next step is finding a sponsor near you/.test(text("guides/patriotic-service")), reg.join(" "));
+  // t128u #2: Tim restored exactly one sentence in the FAQ's genealogist answer; every other form stays gone.
+  const TIM_REG = /SAR(?:'|&#39;|&apos;)s national site says your sponsor is often the local chapter registrar\./g;
+  const reg = pagesOf(/\.(html|js)$/).filter(([, h]) => /often (?:the|a) (?:local )?(?:SAR )?chapter registrar/i.test(h.replace(TIM_REG, ""))).map(([f]) => f);
+  const timRegAt = pagesOf(/\.(html|js)$/).flatMap(([f, h]) => (h.match(TIM_REG) || []).map(() => f));
+  check("t127u #3 / t128u #2: 'often the chapter registrar' (any form) is gone from every built page and script except Tim's one FAQ sentence, and Patriotic Service keeps its sponsor line", reg.length === 0 && timRegAt.length === 1 && /^faq[\\/]index\.html$/.test(timRegAt[0]) && /next step is finding a sponsor near you/.test(text("guides/patriotic-service")), reg.concat(timRegAt).join(" "));
   const ab = text("about");
   check("t127u #4: About uses the FAQ wording ('each time the site is updated, and on a regular schedule') and spells out NSCDA on first use", ab.includes("Each time the site is updated, and on a regular schedule, software checks") && !/when the site is built/i.test(ab)
     && ab.indexOf("The National Society of the Colonial Dames of America (NSCDA)") > -1 && ab.indexOf("The National Society of the Colonial Dames of America (NSCDA)") <= ab.indexOf("NSCDA") - "The National Society of the Colonial Dames of America (".length);
@@ -772,6 +775,22 @@ phase("load"); await page.goto(`${BASE}/`); phase("interact");
     check(`t127u #5 (${w}px): the worksheet's starting point is consistent: step 1 is your patriot, step 2 starts the family with yourself`, /^2 Then your family: start with yourself, and go back one generation at a time$/.test(step2) && /Start with your patriot/.test(text("tools/lineage-matrix")), step2);
     await c.close();
   }
+  // ---- t128u ----
+  const fq = text("faq"), fqH = H("faq");
+  const gen = fq.slice(fq.indexOf("Do I have to hire a genealogist?"), fq.indexOf("What does this site cost"));
+  check("t128u #2: the FAQ's genealogist answer has Tim's exact sentence, after the sponsor line, sourced to sar.org/how-to-apply",
+    gen.includes("SAR's local sponsor can guide you through the application.") && /SAR's local sponsor can guide you through the application\.\s*(?:\[?\d+\]?\s*)?SAR's national site says your sponsor is often the local chapter registrar\./.test(gen.replace(/\s+/g, " "))
+    && fqH.includes('href="https://www.sar.org/how-to-apply/"'), gen.slice(0, 400));
+  check("t128u #3: supplemental signatures come from SAR's national application checklist with an 'As of' date; the Ohio two-signatures line is gone",
+    new RegExp(`As of <span data-asof="sar-checklist-supp-sig">${longDate(lp["https://members.sar.org/media/uploads/pages/334/wPXSPrcD0cuU.pdf"])}</span>, SAR(?:'|&#39;)s application checklist asks whether the member and the State Registrar \\(or another designated officer\\) have signed a supplemental application on the back\\.`).test(apH.replace(/&apos;/g, "&#39;"))
+    && !/supplemental applications need two signatures/.test(ap) && ap.includes("Except for the two signature checks from SAR's application checklist, these points come from a 2023 Ohio Society SAR presentation"));
+  check("t128u #3: DAR record copies stay attributed to the Ohio presentation (DAR Library Lineage Resources doesn't say chapter copies are refused)",
+    ap.includes("A 2023 Ohio Society SAR presentation said only DAR record copies are considered, not chapter copies"));
+  const heldBad = pagesOf(/\.(html|js)$/).filter(([, h]) => /DAR says church records are usually acceptable|DAR lists probate, court and land records among the most common sources/.test(h)).map(([f]) => f);
+  check("t128u #1: the t127 DAR-FAQ/Step-by-step rewordings are held back (DAR pages unreachable since their Nov 5 pass); the South Carolina attributions are back",
+    heldBad.length === 0 && text("guides/substitute-evidence").includes("NSCDA's South Carolina society's standards list church birth, baptism, marriage, death and burial records")
+    && text("guides/substitute-evidence").includes("Named heirs and children; NSCDA's South Carolina society's standards list these county court records")
+    && text("guides/census-bridge").includes("NSCDA's South Carolina society's standards list wills, probate records, inventories, deeds and court orders among primary sources."), heldBad.join(" "));
   const { execFileSync: xT } = await import("node:child_process");
   const gateOut = xT("node", [join(ROOT, "scripts/check-manifest.mjs")], { encoding: "utf8" });
   check("t127u #7: every claim has a source scope tag, and the gate reports 0 society-wide wordings backed only by state, chapter-local or third-party sources", /Source scope \(rule 7\): 0 flagged/.test(gateOut) && claimsAll.every((c) => ["national", "state", "chapter-local", "third-party"].includes(c.source_scope)));

@@ -33,7 +33,7 @@ Family stories are where you start looking, not where you stop. SAR does not tak
 
 ## Do I have to hire a genealogist?
 
-No. A DAR member helps guide you through completing and submitting the application. [[claim:dar-member-guides]] SAR's local sponsor can guide you through the application. [[claim:sar-registrar-guide]] That help comes with joining. Our guides can help you prepare: what records to gather and what questions to ask.
+No. A DAR member helps guide you through completing and submitting the application. [[claim:dar-member-guides]] SAR's local sponsor can guide you through the application. [[claim:sar-registrar-guide]] SAR's national site says your sponsor is often the local chapter registrar. [[claim:sar-sponsor-often-registrar]] That help comes with joining. Our guides can help you prepare: what records to gather and what questions to ask.
 
 ## What does this site cost, and do I need an account?
 

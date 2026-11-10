@@ -1,5 +1,5 @@
 {
-  "builtAt": "Mon Nov 09 2026 17:19:54 GMT-0600 (Central Standard Time)",
+  "builtAt": "Tue Nov 10 2026 06:22:13 GMT-0600 (Central Standard Time)",
   "guideSourcesChecked": [
     {
       "slug": "guides/application-problems",
@@ -9,7 +9,7 @@
     },
     {
       "slug": "guides/bounty-land-warrants",
-      "date": "2026-11-09",
+      "date": "2026-11-10",
       "source": "https://www.sar.org/step-1/",
       "sources": 12
     },
@@ -27,7 +27,7 @@
     },
     {
       "slug": "guides/patriot-or-loyalist",
-      "date": "2026-11-09",
+      "date": "2026-11-10",
       "source": "https://blog.dar.org/2021/02/26/why-was-his-service-removed",
       "sources": 12
     },
@@ -39,7 +39,7 @@
     },
     {
       "slug": "guides/read-pension-file",
-      "date": "2026-11-09",
+      "date": "2026-11-10",
       "source": "https://www.sar.org/step-1/",
       "sources": 17
     },
@@ -51,7 +51,7 @@
     },
     {
       "slug": "guides/same-name",
-      "date": "2026-11-09",
+      "date": "2026-11-10",
       "source": "https://blog.dar.org/2021/02/26/why-was-his-service-removed",
       "sources": 14
     },
@@ -69,7 +69,7 @@
       "description": "Diagnose why a DAR or SAR application or a patriot's service was questioned, and how to fix it, from DAR guidance and a 2023 Ohio Society SAR presentation.",
       "cornerstone": "10",
       "path": "/guides/application-problems/",
-      "words": 813,
+      "words": 830,
       "claims": 58,
       "sources": 14,
       "tools": [
@@ -95,7 +95,7 @@
       "description": "Connect an ancestor named in the 1850 census to a Revolutionary-era household listed only by its head, using age brackets, pension clues and supporting records.",
       "cornerstone": "6",
       "path": "/guides/census-bridge/",
-      "words": 821,
+      "words": 822,
       "claims": 45,
       "sources": 14,
       "tools": [
@@ -199,7 +199,7 @@
       "description": "What to use when a generation has no birth record, era by era, and how lineage societies weigh substitutes.",
       "cornerstone": "2",
       "path": "/guides/substitute-evidence/",
-      "words": 930,
+      "words": 920,
       "claims": 56,
       "sources": 13,
       "tools": [
@@ -254,8 +254,8 @@
       "slug": "faq",
       "description": "Plain-English answers about joining DAR or SAR, what a patriot is, which records count, how this site's tools work, and where your information goes.",
       "path": "/faq/",
-      "words": 916,
-      "claims": 20,
+      "words": 928,
+      "claims": 21,
       "sources": 7,
       "tools": []
     },

@@ -156,24 +156,24 @@ export const GUIDES = Object.freeze({
 export const REGISTRAR = "Not sure where to order it? Ask your society's registrar.";
 export const WHERE_TO_LOOK = Object.freeze({
   birth: {
-    recent: { text: "Look for a long-form birth certificate (the kind that names the parents). No certificate? A baptism or christening record can stand in for the birth date.", claims: ["dar-lineage-sources", "dar-baptism"], links: ["darFaq"], guides: ["substitute"] },
-    older: { text: "Look for a church baptism record. An age given in a census or at death can be used to estimate a birth year.", claims: ["dar-baptism", "dar-circa", "dar-usually-acceptable"], links: ["darSteps", "naraRev", "naraCensus"], guides: ["substitute", "pension"] },
+    recent: { text: "Look for a long-form birth certificate (the kind that names the parents). No certificate? A baptism or christening record can stand in for the birth date.", claims: ["nscda-short-form", "dar-baptism"], links: ["darFaq"], guides: ["substitute"] },
+    older: { text: "Look for a church baptism record. An age given in a census or at death can be used to estimate a birth year.", claims: ["dar-baptism", "dar-circa", "nscda-church"], links: ["darSteps", "naraRev", "naraCensus"], guides: ["substitute", "pension"] },
   },
   death: {
     recent: { text: "Look for a death certificate.", claims: ["dar-lineage-sources"], links: ["darFaq"], guides: ["substitute"] },
-    older: { text: "Look for a will or probate record, or a church burial record. A will date, or a last appearance on a census or deed, can be used to estimate a death date.", claims: ["dar-lineage-sources", "dar-usually-acceptable", "dar-death-post", "dar-death-ante"], links: ["darSteps", "naraCensus"], guides: ["substitute"] },
+    older: { text: "Look for a will or probate record, or a church burial record. A will date, or a last appearance on a census or deed, can be used to estimate a death date.", claims: ["nscda-county", "nscda-church", "dar-death-post", "dar-death-ante"], links: ["darSteps", "naraCensus"], guides: ["substitute"] },
   },
   marriage: {
     recent: { text: "Look for a marriage record. NSCDA's South Carolina society's standards say a marriage license alone does not prove the marriage took place.", claims: ["dar-lineage-sources", "nscda-license"], links: ["darFaq"], guides: ["substitute"] },
-    older: { text: "Look for a church marriage record. If the husband was a Revolutionary War veteran, check his pension file: a widow's pension can be in the same file.", claims: ["dar-usually-acceptable", "nps-applegate-widow"], links: ["naraRev", "naraOrder"], guides: ["pension"] },
+    older: { text: "Look for a church marriage record. If the husband was a Revolutionary War veteran, check his pension file: a widow's pension can be in the same file.", claims: ["nscda-church", "nps-applegate-widow"], links: ["naraRev", "naraOrder"], guides: ["pension"] },
   },
   parentage: {
-    recent: { text: "Look for a long-form birth certificate that names the parents.", claims: ["dar-lineage-sources"], links: ["darFaq"], guides: ["substitute", "census"] },
-    older: { text: "Look for wills, probate records and deeds that name children. The 1790–1840 censuses name only the head of household, and NSCDA's South Carolina society's standards say the 1850–1870 censuses don't state relationships, so treat them as clues.", claims: ["dar-lineage-sources", "nscda-census-1850-1870", "nara-census-head"], links: ["naraCensus", "naraRev"], guides: ["census", "sameName"] },
+    recent: { text: "Look for a long-form birth certificate that names the parents.", claims: ["nscda-short-form"], links: ["darFaq"], guides: ["substitute", "census"] },
+    older: { text: "Look for wills, probate records and deeds that name children. The 1790–1840 censuses name only the head of household, and NSCDA's South Carolina society's standards say the 1850–1870 censuses don't state relationships, so treat them as clues.", claims: ["nscda-county", "nscda-census-1850-1870", "nara-census-head"], links: ["naraCensus", "naraRev"], guides: ["census", "sameName"] },
   },
   residence: {
-    recent: { text: "Census records, deeds and court records place a person in a county.", claims: ["dar-lineage-sources"], links: ["darFaq"], guides: ["census"] },
-    older: { text: "Look at census records, deeds and court records for the place, and go through all the records that survive there.", claims: ["dar-lineage-sources", "nara-census-exhaust"], links: ["naraCensus"], guides: ["census", "byState"] },
+    recent: { text: "Census records, deeds and tax lists place a person in a county.", claims: ["dar-lineage-sources", "nscda-county"], links: ["darFaq"], guides: ["census"] },
+    older: { text: "Look at census records, deeds and tax lists for the place, and go through all the records that survive there.", claims: ["nscda-county", "nara-census-exhaust"], links: ["naraCensus"], guides: ["census", "byState"] },
   },
 });
 // Plain term for NSCDA, shown wherever advice cites its Standards of Proof (audit 4: the report used it unexplained).
@@ -213,7 +213,7 @@ export const BIRTH_SUBSTITUTES = Object.freeze({
   title: "No birth certificate? Try these substitutes, in order",
   intro: "Our suggested order: records that give a date first, then records you can work out a year from, then papers that back them up.",
   steps: Object.freeze([
-    { id: "baptism", text: "A church baptism or christening record. DAR lets you use an infant baptism or christening date when you can't document the birth date.", claims: ["dar-baptism", "dar-usually-acceptable"] },
+    { id: "baptism", text: "A church baptism or christening record. DAR lets you use an infant baptism or christening date when you can't document the birth date.", claims: ["dar-baptism", "nscda-church"] },
     { id: "bible", text: "A family Bible page with the births written in. Copy the Bible's title page with its publication date too: NSCDA's South Carolina society's standards ask for it with Bible entries.", claims: ["m804-bible-pages", "nscda-bible-title"] },
     { id: "pension", older: true, text: "If this person was a Revolutionary War veteran, his wife or widow, or their child: his pension or bounty-land file. Some files hold family Bible pages with birth dates, and a widow's application may give her age.", claims: ["m804-bible-pages", "m804-widow-info"] },
     { id: "age", text: "An age on a census or at death, to work out the birth year. DAR marks a birth year estimated this way as \"circa\" (about).", claims: ["dar-circa"] },

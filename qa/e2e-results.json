@@ -1,8 +1,8 @@
 {
-  "ranAt": "Mon Nov 09 2026 17:21:29 GMT-0600 (Central Standard Time)",
+  "ranAt": "Tue Nov 10 2026 06:23:33 GMT-0600 (Central Standard Time)",
   "browser": "/usr/bin/google-chrome (headless) via playwright-core 1.59.1",
-  "passed": 194,
-  "total": 194,
+  "passed": 198,
+  "total": 198,
   "exampleReportPages": {
     "summaryPages": 2,
     "fullPages": 3,
@@ -795,7 +795,7 @@
       "detail": "{\"h1s\":1,\"sr\":\"Patriot, In Lay Terms: \",\"srHidden\":true,\"vis\":\"Plain-English help with DAR and SAR applications, for the Daughters and the Sons of the American Revolution\",\"visH\":143.9375,\"title\":\"Patriot, In Lay Terms: plain-English help for DAR and SAR applications | Patriot In Lay Terms\",\"rule\":\"rgb(178, 34, 52)\",\"ruleW\":\"56px\"}"
     },
     {
-      "name": "t122u #11: every visible text element on all 22 pages passes WCAG AA contrast (4.5:1, large text 3:1) — 3498 elements",
+      "name": "t122u #11: every visible text element on all 22 pages passes WCAG AA contrast (4.5:1, large text 3:1) — 3500 elements",
       "ok": true,
       "detail": ""
     },
@@ -812,7 +812,7 @@
     {
       "name": "t123u #2: each guide's 'Sources last checked' date is the oldest recorded live pass among its own listed sources (every source has a record; nothing invented)",
       "ok": true,
-      "detail": "lineage-proof-roadmap=2026-11-05 substitute-evidence=2026-11-05 read-pension-file=2026-11-09 records-by-state=2026-11-05 bounty-land-warrants=2026-11-09 census-bridge=2026-11-05 patriotic-service=2026-11-05 same-name=2026-11-09 patriot-or-loyalist=2026-11-09 application-problems=2026-11-05"
+      "detail": "lineage-proof-roadmap=2026-11-05 substitute-evidence=2026-11-05 read-pension-file=2026-11-10 records-by-state=2026-11-05 bounty-land-warrants=2026-11-10 census-bridge=2026-11-05 patriotic-service=2026-11-05 same-name=2026-11-10 patriot-or-loyalist=2026-11-10 application-problems=2026-11-05"
     },
     {
       "name": "t124u #1 (390px): every Sources entry on every page (16 pages, 286 entries) has a visible \"Used for: ...\" line of at most about 8 words, and the raw URL is hidden on screen",
@@ -955,9 +955,9 @@
       "detail": ""
     },
     {
-      "name": "t127u #3: 'often the chapter registrar' (any form) is gone from every built page and script, including the Patriotic Service guide and the FAQ",
+      "name": "t127u #3 / t128u #2: 'often the chapter registrar' (any form) is gone from every built page and script except Tim's one FAQ sentence, and Patriotic Service keeps its sponsor line",
       "ok": true,
-      "detail": ""
+      "detail": "faq/index.html"
     },
     {
       "name": "t127u #4: About uses the FAQ wording ('each time the site is updated, and on a regular schedule') and spells out NSCDA on first use",
@@ -990,6 +990,26 @@
       "detail": "2 Then your family: start with yourself, and go back one generation at a time"
     },
     {
+      "name": "t128u #2: the FAQ's genealogist answer has Tim's exact sentence, after the sponsor line, sourced to sar.org/how-to-apply",
+      "ok": true,
+      "detail": "Do I have to hire a genealogist? No. A DAR member helps guide you through completing and submitting the application.[1] SAR's local sponsor can guide you through the application.[7] SAR's national site says your sponsor is often the local chapter registrar.[7] That help comes with joining. Our guides can help you prepare: what records to gather and what questions to ask. "
+    },
+    {
+      "name": "t128u #3: supplemental signatures come from SAR's national application checklist with an 'As of' date; the Ohio two-signatures line is gone",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "t128u #3: DAR record copies stay attributed to the Ohio presentation (DAR Library Lineage Resources doesn't say chapter copies are refused)",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "t128u #1: the t127 DAR-FAQ/Step-by-step rewordings are held back (DAR pages unreachable since their Nov 5 pass); the South Carolina attributions are back",
+      "ok": true,
+      "detail": ""
+    },
+    {
       "name": "t127u #7: every claim has a source scope tag, and the gate reports 0 society-wide wordings backed only by state, chapter-local or third-party sources",
       "ok": true,
       "detail": ""
@@ -1008,5 +1028,5 @@
   "requestsTotal": 658,
   "externalRequests": 0,
   "interactionRequests": 0,
-  "faviconLate": 25
+  "faviconLate": 24
 }

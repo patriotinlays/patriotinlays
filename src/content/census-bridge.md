@@ -32,7 +32,7 @@ If your 1850 ancestor's household, or a neighbor's, held a pensioner in 1840, go
 2. Convert age to a birth range. A census age gives an estimate, which DAR marks as "circa". [[claim:dar-circa]] Keep the range wide until another record narrows it.
 3. Walk back one census at a time. In each earlier census, find heads of household in the same county whose age brackets contain your ancestor as a child of the right sex and age.
 4. Track the candidate heads forward. A real father keeps appearing with a matching child in the right bracket. A man who shows no child in the right bracket drops off your list.
-5. Test the candidates in other records. Wills, deeds, guardianships, church records and pension files are where a parent-child link gets stated. DAR lists probate, court and land records among the most common sources used to establish lineage. [[claim:dar-lineage-sources]]
+5. Test the candidates in other records. Wills, deeds, guardianships, church records and pension files are where a parent-child link gets stated. NSCDA's South Carolina society's standards list wills, probate records, inventories, deeds and court orders among primary sources. [[claim:nscda-county]]
 6. Exhaust the place. NARA's advice is to exhaust all surviving records for the place the person is known to have lived. [[claim:nara-census-exhaust]] NSCDA's South Carolina society's standards cite the genealogical proof standard: a reasonably exhaustive search. [[claim:nscda-gps]]
 7. Write down the reasoning. If no single record states the relationship, the link rests on indirect evidence, and the DAR paper application is the route for lineages that need that kind of analysis. [[claim:dar-paper-analysis]]
 

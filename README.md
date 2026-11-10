@@ -259,3 +259,9 @@ Docs: https://developers.cloudflare.com/pages/how-to/web-analytics/
 - The 2023 Ohio Society SAR presentation (chapter-local) and NSCDA's South Carolina standards (state) are attributed by name; SAR new-member signatures come from SAR's national application checklist.
 - February 28, 1855 navy-widow law cited as ch. 126, sec. 3, 10 Stat. 616 (chapter begins at 615); 10 Stat. 701 is only the March 3, 1855 bounty-land act.
 - Worksheet: step 1 is the patriot, step 2 starts the family with yourself; removing the oldest generation asks for confirmation.
+
+### t128u (Nov 10, 2026)
+- Per-claim match records (`manifest/claim-last-matched.json`, `scripts/lib/claim-match.mjs`): every live quote match records the claim's URL, exact quote, time and the pages using it. When a source is on the 30-day fallback, a claim with no earlier match against that page (new claim, changed quote or moved source) is HELD and the gate fails; a matched claim used on a new page or tool since its match is a `NEW USE` warning. The three DAR pages unreachable since Nov 5 were seeded from the committed Nov 5 report (5cf3fab `manifest-check-report.json`, 10:34:49 AM CST: FAQs 13/13, Step-by-step 28/28, search_revwar 4/4 quotes found, 0 missing). Tests in `scripts/test-source-pass.mjs`.
+- The t127 rewordings that newly used `dar-usually-acceptable` / `dar-lineage-sources` are held back (South Carolina-attributed NSCDA wording restored) until those DAR pages are reachable again.
+- FAQ "Do I have to hire a genealogist?": Tim's sentence "SAR's national site says your sponsor is often the local chapter registrar." sourced to sar.org/how-to-apply (national).
+- Application Returned: supplemental signatures now from SAR's national application checklist; DAR record copies stay attributed to the Ohio presentation.

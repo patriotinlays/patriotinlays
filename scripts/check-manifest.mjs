@@ -11,6 +11,7 @@ import { execFileSync } from "node:child_process";
 import { tmpdir } from "node:os";
 import { norm, normJoin, stripHtml } from "./lib/normalize.mjs";
 import { decideSourceCheck, loadLastPassed, recordPass } from "./lib/source-pass.mjs";
+import { loadClaimMatches, recordClaimMatches, checkFallbackClaims } from "./lib/claim-match.mjs";
 import { isNysedHost, nysedGet, nysedAvailable } from "./lib/nysed-tls.mjs";
 import { SCOPES, scopeFlags } from "./lib/source-scope.mjs";
 
@@ -97,6 +98,8 @@ for (const id of byId.keys()) if (!referenced.has(id)) warnings.push(`manifest $
 // Live source verification, with the Tim-approved 30-day unreachable fallback (see scripts/lib/source-pass.mjs).
 const LAST_PASSED_PATH = join(ROOT, "manifest/source-last-passed.json");
 const lastPassedStore = loadLastPassed(LAST_PASSED_PATH);
+const CLAIM_MATCH_PATH = join(ROOT, "manifest/claim-last-matched.json");
+const claimMatchStore = loadClaimMatches(CLAIM_MATCH_PATH);
 const linkReport = [];
 if (LINKS) {
   const urls = [...new Set(manifest.claims.map((c) => c.source_url))];
@@ -154,7 +157,11 @@ if (LINKS) {
       const d = decideSourceCheck({ status, errorMessage: fetchError, lastPassedAt: lastPassedStore.sources[u] || null });
       if (d.outcome === "fallback") {
         warnings.push(`${u}: ${d.warning}`);
-        linkReport.push({ url: u, status, quotesFound: "-", quotesMissing: "-", fallback: true, lastPassed: d.lastPassedAt, failureKind: d.failureKind });
+        // t128u: a fallback only covers claims whose exact quote really matched this page before, with no new uses since.
+        const fc = checkFallbackClaims(manifest.claims.filter((c) => c.source_url === u), claimMatchStore);
+        for (const h of fc.held) errors.push(`HELD ${h.claim_id}: ${u} is on fallback and this claim ${h.reason}. Hold it back until the source is reachable.`);
+        for (const n of fc.newUses) warnings.push(`NEW USE ${n.claim_id}: ${u} is on fallback; quote matched ${n.matchedAt} but ${n.reason} were never read against the page. Review or hold back.`);
+        linkReport.push({ url: u, status, quotesFound: "-", quotesMissing: "-", fallback: true, lastPassed: d.lastPassedAt, failureKind: d.failureKind, claimsCoveredByEarlierMatch: fc.ok.length, claimsHeld: fc.held.map((h) => h.claim_id), newUses: fc.newUses });
         continue;
       }
       errors.push(`${u}: ${d.error || (`HTTP ${status}` + (fetchError ? ` (${fetchError})` : ""))}`);
@@ -173,7 +180,7 @@ if (LINKS) {
       continue;
     }
     // Record and save this source's pass right away (new URLs included), so a later failure can't drop it.
-    if (hay != null) recordPass(LAST_PASSED_PATH, lastPassedStore, u);
+    if (hay != null) { recordPass(LAST_PASSED_PATH, lastPassedStore, u); recordClaimMatches(CLAIM_MATCH_PATH, claimMatchStore, manifest.claims.filter((c) => c.source_url === u)); }
     linkReport.push({ url: u, status, quotesFound: found, quotesMissing: missing });
   }
 }
@@ -194,7 +201,7 @@ if (LINKS) {
 if (!args.includes("--content")) writeFileSync(join(ROOT, "manifest-check-report.json"), JSON.stringify(summary, null, 2));
 console.log(LIVE_LINE);
 console.log(`Source Manifest gate: ${files.length} page(s), ${sentences} sentence(s), ${marked} with claim markers; ${byId.size} manifest claims, ${referenced.size} referenced.`);
-if (LINKS) for (const l of linkReport) console.log(`  link ${l.status}${l.fallback ? " FALLBACK" : ""}  quotes found ${l.quotesFound ?? "-"} / missing ${l.quotesMissing ?? "-"}  ${l.url}`);
+if (LINKS) for (const l of linkReport) console.log(`  link ${l.status}${l.fallback ? " FALLBACK" : ""}  quotes found ${l.quotesFound ?? "-"} / missing ${l.quotesMissing ?? "-"}${l.fallback ? `  (claims covered by earlier match ${l.claimsCoveredByEarlierMatch} / held ${l.claimsHeld.length})` : ""}  ${l.url}`);
 warnings.forEach((w) => console.log("WARN  " + w));
 errors.forEach((e) => console.log("ERROR " + e));
 console.log(`Source scope (rule 7): ${scopeFlagged.length} flagged`);
