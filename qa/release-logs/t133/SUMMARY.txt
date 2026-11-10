@@ -1,0 +1,7 @@
+t133 release log — Nov 10, 2026 (CST). Layout only, no new facts.
+1 Page-level "About this site · AI disclosure · Privacy" row removed (home page; the only page that had it).
+2 Footer under 600px: two-column grid, every link on one line; desktop footer unchanged; label "About" everywhere ("About this site" appears nowhere).
+3 "Ready to start?" box replaced by the home page's three start cards (identical markup and wording) on /about/, /ai-disclosure/, /contact/, /faq/, /privacy/, /sources/, /walkthroughs/, /404.html. None of these is a card target, so no page links to itself.
+4 Phone gap between last content and footer cut from 77-126px to 28-43px.
+Unit suites all passed (56, 36, 96, 29, 27, 9, 7, 26, 5, 17, 10). E2E 240/240. Offline gate PASSED. Link check: zero broken.
+Live-source check: RUN (finished 09:16 AM CST): 399 claims, 71 sources, 68 passed, 3 fallbacks (DAR App_Help_Step_By_Step_1, FAQs, search_revwar; 522; last pass Nov 5 10:34:49 AM CST), 0 failed, 0 blocked; 14 held, 0 restored.

@@ -197,7 +197,13 @@ function page({ title, description, path, body, noindex = false }) {
 function write(path, html) { const f = join(OUT, path, "index.html"); mkdirSync(dirname(f), { recursive: true }); writeFileSync(f, versionUrls(markExternal(html))); }
 const sitemap = []; const built = []; const guideChecked = [];
 const GUIDE_ORDER = readdirSync(join(ROOT, "src/content")).filter((x) => x.endsWith(".md")).map((f) => parseFront(readFileSync(join(ROOT, "src/content", f), "utf8")).fm).filter((fm) => fm.cornerstone);
-const START_HERE = `<aside class="card start-here"><strong>Ready to start?</strong><p><a href="/tools/widow-pension-checker/">Widow Pension Law Checker</a>: see which widow pension laws a marriage fits, and where her pension file would be kept, so you can request it. · <a href="/tools/lineage-matrix/">Lineage Evidence Matrix</a>: record the patriot and your records, and get a to-do list fitted to each person's era and state. · <a href="/guides/lineage-proof-roadmap/">The Roadmap guide</a>: the whole process, step by step.</p></aside>`;
+// Tim t130 #1: the home page "Start here" cards. Tim t133 #3: the same three cards replace the old "Ready to start?" box on every other page.
+const START_CARDS = `<section class="start-cards" aria-label="Start here" data-start-cards>
+<div class="start-card" data-start-card="matrix"><h2 class="start-card-h">Build your to-do list</h2><p>Enter the records you already have. The worksheet shows what's still missing for each generation and where to look.</p><p class="start-card-btn"><a class="button-link" href="/tools/lineage-matrix/">Open the Lineage Evidence Matrix</a></p></div>
+<div class="start-card" data-start-card="widow"><h2 class="start-card-h">Check a widow's pension</h2><p>Compare a widow's marriage date and her husband's service with each federal widow pension law.</p><p class="start-card-btn"><a class="button-link" href="/tools/widow-pension-checker/">Open the Widow Pension Law Checker</a></p></div>
+<div class="start-card" data-start-card="roadmap"><h2 class="start-card-h">Read the full plan</h2><p>A generation-by-generation roadmap for DAR and SAR applications.</p><p class="start-card-btn"><a class="button-link" href="/guides/lineage-proof-roadmap/" data-start-button>Open the Roadmap guide</a></p></div>
+</section>`;
+const START_HERE = START_CARDS.replace('class="start-cards"', 'class="start-cards start-cards-page"');
 // Every guide and tool page opens with a short, sourced definitions box (the home page's glossary, reused).
 const DEFS_MD = readFileSync(join(ROOT, "src/partials/glossary.md"), "utf8").replace(/^## .*\n/, "");
 // Tim t132 #1: collapsed by default on guides and tool pages under this title; the home page glossary stays open; print shows it expanded.
@@ -255,17 +261,13 @@ write("", page({ title: "Patriot, In Lay Terms: plain-English help for DAR and S
   body: `<h1 class="home-h1" data-home-h1><span class="sr-only">Patriot, In Lay Terms: </span><span class="subtitle" data-subtitle>Plain-English help with DAR and SAR applications, for the Daughters and the Sons of the American Revolution</span></h1>
 <p class="independent" data-independent>An independent guide: not affiliated with DAR, SAR or any lineage society, and it doesn't search records for you.</p>
 <p class="home-intro" data-home-intro>Two free tools and ten guides help you organize what you have and see what's still missing. What you type into the tools stays in your own browser.</p>
-<section class="start-cards" aria-label="Start here" data-start-cards>
-<div class="start-card" data-start-card="matrix"><h2 class="start-card-h">Build your to-do list</h2><p>Enter the records you already have. The worksheet shows what's still missing for each generation and where to look.</p><p class="start-card-btn"><a class="button-link" href="/tools/lineage-matrix/">Open the Lineage Evidence Matrix</a></p></div>
-<div class="start-card" data-start-card="widow"><h2 class="start-card-h">Check a widow's pension</h2><p>Compare a widow's marriage date and her husband's service with each federal widow pension law.</p><p class="start-card-btn"><a class="button-link" href="/tools/widow-pension-checker/">Open the Widow Pension Law Checker</a></p></div>
-<div class="start-card" data-start-card="roadmap"><h2 class="start-card-h">Read the full plan</h2><p>A generation-by-generation roadmap for DAR and SAR applications.</p><p class="start-card-btn"><a class="button-link" href="/guides/lineage-proof-roadmap/" data-start-button>Open the Roadmap guide</a></p></div>
-</section>
+${START_CARDS}
 <p class="see-how" data-see-how><a href="/walkthroughs/">See how the tools work</a></p>
 <section class="home-mission" data-mission>${HOME.body.replace(/<p>Written with AI assistance/, '<p class="ai-line" data-ai-line>Written with AI assistance')}</section>
 <h2 id="guides">The guides</h2><ol class="guide-list home-guides">${guides.map((g) => `<li><a class="guide-title" href="${g.path}">${esc(g.title)}</a><br><span class="small">${esc(g.description)}</span></li>`).join("")}</ol>
 <p class="home-help">Questions? <a href="/faq/">Questions, answered simply</a> · New to the tools? <a href="/walkthroughs/">See them in action</a>, with a made-up family.</p>
 ${HOME.html}
-${HOME.sources}<p class="small"><a href="/about/">About this site</a> · <a href="/ai-disclosure/">AI disclosure</a> · <a href="/privacy/">Privacy</a></p>` }));
+${HOME.sources}` }));
 sitemap.unshift("/");
 // Sources & methodology page
 const bySource = new Map(); for (const c of manifest.claims) { if (!bySource.has(c.source_url)) bySource.set(c.source_url, { t: c.source_title, n: 0 }); bySource.get(c.source_url).n++; }

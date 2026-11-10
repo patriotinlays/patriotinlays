@@ -260,6 +260,12 @@ Docs: https://developers.cloudflare.com/pages/how-to/web-analytics/
 - February 28, 1855 navy-widow law cited as ch. 126, sec. 3, 10 Stat. 616 (chapter begins at 615); 10 Stat. 701 is only the March 3, 1855 bounty-land act.
 - Worksheet: step 1 is the patriot, step 2 starts the family with yourself; removing the oldest generation asks for confirmation.
 
+### t133 (Nov 10, 2026)
+- Home: the page-level "About this site · AI disclosure · Privacy" row is gone (the footer has those links).
+- Footer under 600px: two-column grid, each link on one line; desktop unchanged.
+- The old "Ready to start?" box (`START_HERE`) is now the home page's three start cards (`START_CARDS`) on About, AI disclosure, Contact, FAQ, Privacy, Sources, Walkthroughs and 404.
+- Less empty space above the footer on phones.
+
 ### t132 (Nov 10, 2026)
 - Guide and tool pages: the definitions box is titled "Terms used on this page", closed by default, opens on tap, and prints expanded (`details.defs::details-content` in print CSS). The home glossary stays open.
 - Privacy: Tim's sentence replaces "The site itself collects nothing." and the Cloudflare sentence; the ads line stays.

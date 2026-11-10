@@ -1,8 +1,8 @@
 {
-  "ranAt": "Tue Nov 10 2026 08:49:27 GMT-0600 (Central Standard Time)",
+  "ranAt": "Tue Nov 10 2026 09:12:27 GMT-0600 (Central Standard Time)",
   "browser": "/usr/bin/google-chrome (headless) via playwright-core 1.59.1",
-  "passed": 230,
-  "total": 230,
+  "passed": 240,
+  "total": 240,
   "exampleReportPages": {
     "summaryPages": 2,
     "fullPages": 3,
@@ -15,15 +15,15 @@
     "rgb(255, 255, 255) on rgb(19, 41, 75)": 14.52,
     "rgb(19, 41, 75) on rgb(250, 247, 240)": 13.57,
     "rgb(43, 38, 34) on rgb(250, 247, 240)": 13.99,
-    "rgb(43, 38, 34) on rgb(255, 253, 248)": 14.72,
-    "rgb(19, 41, 75) on rgb(255, 253, 248)": 14.28,
+    "rgb(19, 41, 75) on rgb(246, 240, 228)": 12.79,
+    "rgb(43, 38, 34) on rgb(246, 240, 228)": 13.19,
     "rgb(94, 85, 75) on rgb(250, 247, 240)": 6.82,
+    "rgb(19, 41, 75) on rgb(255, 253, 248)": 14.28,
+    "rgb(43, 38, 34) on rgb(255, 253, 248)": 14.72,
     "rgb(43, 38, 34) on rgb(244, 239, 229)": 13.06,
     "rgb(19, 41, 75) on rgb(244, 239, 229)": 12.67,
     "rgb(94, 85, 75) on rgb(255, 253, 248)": 7.18,
     "rgb(60, 70, 88) on rgb(250, 247, 240)": 8.88,
-    "rgb(19, 41, 75) on rgb(246, 240, 228)": 12.79,
-    "rgb(43, 38, 34) on rgb(246, 240, 228)": 13.19,
     "rgb(94, 85, 75) on rgb(244, 239, 229)": 6.37,
     "rgb(94, 85, 75) on rgb(255, 247, 230)": 6.85,
     "rgb(19, 41, 75) on rgb(255, 255, 255)": 14.52,
@@ -38,7 +38,7 @@
     "sub": "Plain-English help with DAR and SAR applications, for the Daughters and the Sons of the American Revolution",
     "ai": "Written with AI assistance and reviewed by the site's owner. Each fact is tied to a quoted official source, and software checks that the quote is still there.",
     "afterCards": true,
-    "words": 1475
+    "words": 1467
   },
   "results": [
     {
@@ -604,7 +604,7 @@
     {
       "name": "Home (Nov 5 lock; t130 moved the paragraphs below the start cards, unchanged): subtitle names DAR and SAR; mission in flowing paragraphs (no lists) after the cards; purpose line, both tool names, one-sentence privacy",
       "ok": true,
-      "detail": "{\"ps\":7,\"lists\":0,\"text\":\"This site helps you organize the records that connect you to a Revolutionary War\",\"sub\":\"Plain-English help with DAR and SAR applications, for the Daughters and the Sons of the American Revolution\",\"ai\":\"Written with AI assistance and reviewed by the site's owner. Each fact is tied to a quoted official source, and software checks that the quote is still there.\",\"afterCards\":true,\"words\":1475}"
+      "detail": "{\"ps\":7,\"lists\":0,\"text\":\"This site helps you organize the records that connect you to a Revolutionary War\",\"sub\":\"Plain-English help with DAR and SAR applications, for the Daughters and the Sons of the American Revolution\",\"ai\":\"Written with AI assistance and reviewed by the site's owner. Each fact is tied to a quoted official source, and software checks that the quote is still there.\",\"afterCards\":true,\"words\":1467}"
     },
     {
       "name": "Home (Nov 5 lock, SAR line updated by t125u): the exact AI line, the exact SAR line (sourced), no unsourced 'most people get stuck' / 'give up' / guarantee lines",
@@ -692,7 +692,7 @@
       "detail": ""
     },
     {
-      "name": "No dead ends: About, Privacy, Contact, Sources and 404 offer a 'Ready to start?' box",
+      "name": "No dead ends (t133 #3): About, Privacy, Contact, Sources and 404 offer the three start cards",
       "ok": true,
       "detail": ""
     },
@@ -827,7 +827,7 @@
       "detail": "{\"h1s\":1,\"sr\":\"Patriot, In Lay Terms: \",\"srHidden\":true,\"vis\":\"Plain-English help with DAR and SAR applications, for the Daughters and the Sons of the American Revolution\",\"visH\":143.9375,\"title\":\"Patriot, In Lay Terms: plain-English help for DAR and SAR applications | Patriot In Lay Terms\",\"rule\":\"rgb(178, 34, 52)\",\"ruleW\":\"56px\"}"
     },
     {
-      "name": "t122u #11: every visible text element on all 22 pages passes WCAG AA contrast (4.5:1, large text 3:1) — 3433 elements",
+      "name": "t122u #11: every visible text element on all 22 pages passes WCAG AA contrast (4.5:1, large text 3:1) — 3457 elements",
       "ok": true,
       "detail": ""
     },
@@ -1135,6 +1135,56 @@
       "name": "t132 #3: Application Returned keeps the attributed non-refundable line, follows it with 'Confirm current fees with your registrar.', and '$100' and ohsar-fee are gone (page and manifest)",
       "ok": true,
       "detail": "non-refundable.[9] Confirm current fees with your registrar."
+    },
+    {
+      "name": "t133 #1/#2: no page has the page-level 'About this site · AI disclosure · Privacy' row, and 'About this site' appears nowhere",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "t133 #2: every page's footer starts with 'About' then 'AI disclosure'",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "t133 #3: no page has the old 'Ready to start?' box or its 'fits' run-on wording",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "t133 #3: the 8 pages that had 'Ready to start?' now show the home page's three cards, identical markup and wording",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "t133 #3: no card page links to itself",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "t133 #2 (390px): footer links sit in a two-column grid, each link on one line, labelled 'About' (not 'About this site'), no sideways scroll",
+      "ok": true,
+      "detail": "{\"cols\":2,\"xs\":2,\"oneLine\":true,\"n\":7,\"labels\":[\"About\",\"AI disclosure\",\"FAQ\",\"Walkthroughs\",\"Sources & Methodology\",\"Privacy\",\"Contact\"],\"gap\":43,\"sw\":390,\"iw\":390,\"nav\":\"0px\",\"cards\":3,\"stacked\":true,\"sideBySide\":false}"
+    },
+    {
+      "name": "t133 #4 (390px): the empty space between the last content and the footer is at most 48px (was 77-126px)",
+      "ok": true,
+      "detail": "{\"/about/\":43,\"/privacy/\":43,\"/guides/read-pension-file/\":28,\"/tools/lineage-matrix/\":28,\"/\":28}"
+    },
+    {
+      "name": "t133 #3 (390px): the three cards are stacked on the inner pages",
+      "ok": true,
+      "detail": "{\"cols\":2,\"xs\":2,\"oneLine\":true,\"n\":7,\"labels\":[\"About\",\"AI disclosure\",\"FAQ\",\"Walkthroughs\",\"Sources & Methodology\",\"Privacy\",\"Contact\"],\"gap\":43,\"sw\":390,\"iw\":390,\"nav\":\"0px\",\"cards\":3,\"stacked\":true,\"sideBySide\":false}"
+    },
+    {
+      "name": "t133 #2 (1280px): desktop footer unchanged: inline links (not a grid), 1rem apart, all 7 on one row, 'About' first",
+      "ok": true,
+      "detail": "{\"cols\":0,\"xs\":7,\"oneLine\":true,\"n\":7,\"labels\":[\"About\",\"AI disclosure\",\"FAQ\",\"Walkthroughs\",\"Sources & Methodology\",\"Privacy\",\"Contact\"],\"gap\":87,\"sw\":1280,\"iw\":1280,\"nav\":\"16px\",\"cards\":3,\"stacked\":false,\"sideBySide\":true}"
+    },
+    {
+      "name": "t133 #3 (1280px): the three cards sit side by side on the inner pages",
+      "ok": true,
+      "detail": "{\"cols\":0,\"xs\":7,\"oneLine\":true,\"n\":7,\"labels\":[\"About\",\"AI disclosure\",\"FAQ\",\"Walkthroughs\",\"Sources & Methodology\",\"Privacy\",\"Contact\"],\"gap\":87,\"sw\":1280,\"iw\":1280,\"nav\":\"16px\",\"cards\":3,\"stacked\":false,\"sideBySide\":true}"
     },
     {
       "name": "t130 #1 (390px): under the heading and independent line, Tim's sentence, then the three start cards (stacked) with his exact titles, lines and navy buttons, then 'See how the tools work', then the longer paragraphs; the 'Ready to get started?' box is gone",

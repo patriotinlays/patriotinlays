@@ -476,8 +476,8 @@ for (const gp of guidePaths) { const h = readFileSync(join(DIST, gp, "index.html
 check("Guides: all 10 end with 'What to do next' (both tools, chapter finder) and a next-guide link", guideBad.length === 0, guideBad.join(" "));
 const toolGuideLinks = ["/tools/widow-pension-checker/", "/tools/lineage-matrix/"].every((p) => /href="\/guides\/[a-z-]+\/"/.test(readFileSync(join(DIST, p, "index.html"), "utf8")));
 check("Tools: each tool page links to matching guides", toolGuideLinks);
-const deadEnds = ["/about/", "/privacy/", "/contact/", "/sources/"].filter((p) => !readFileSync(join(DIST, p, "index.html"), "utf8").includes('class="card start-here"'));
-check("No dead ends: About, Privacy, Contact, Sources and 404 offer a 'Ready to start?' box", deadEnds.length === 0 && readFileSync(join(DIST, "404.html"), "utf8").includes("start-here"), deadEnds.join(" "));
+const deadEnds = ["/about/", "/privacy/", "/contact/", "/sources/"].filter((p) => (readFileSync(join(DIST, p, "index.html"), "utf8").match(/data-start-card="/g) || []).length !== 3);
+check("No dead ends (t133 #3): About, Privacy, Contact, Sources and 404 offer the three start cards", deadEnds.length === 0 && (readFileSync(join(DIST, "404.html"), "utf8").match(/data-start-card="/g) || []).length === 3, deadEnds.join(" "));
 
 // ---- Network silence ----
 const external = requests.filter((r) => !r.url.startsWith(BASE));
@@ -914,6 +914,41 @@ const { readdirSync: rd132 } = await import("node:fs");
   check("t132 #2: no built page says the site 'collects nothing'", hits.length === 0, hits.join(","));
   const ap = text("guides/application-problems"); const claims = JSON.parse(readFileSync(join(ROOT, "manifest/claims.json"), "utf8")); const ids = JSON.stringify(claims);
   check("t132 #3: Application Returned keeps the attributed non-refundable line, follows it with 'Confirm current fees with your registrar.', and '$100' and ohsar-fee are gone (page and manifest)", /A 2023 Ohio Society SAR presentation said application fees are non-refundable\.\s*\S*\s*Confirm current fees with your registrar\./.test(ap) && !ap.includes("$100") && !all.some((f) => readFileSync(f, "utf8").includes("$100")) && !ids.includes('"ohsar-fee"') && ids.includes('"ohsar-nonrefundable"'), ap.match(/non-refundable.{0,80}/)?.[0]); }
+// ---- t133: no page-level About row; phone footer 2-column grid, links on one line; desktop footer unchanged; 'About' label; cards replace 'Ready to start?'; smaller phone gap ----
+{ const { readdirSync: rd133 } = await import("node:fs");
+  const all = (function walk(d) { return rd133(d, { withFileTypes: true }).flatMap((e) => e.isDirectory() ? walk(join(d, e.name)) : e.name.endsWith(".html") ? [join(d, e.name)] : []); })(DIST);
+  const rel = (f) => f.slice(DIST.length);
+  const rows = all.filter((f) => { const h = readFileSync(f, "utf8"); const main = h.slice(h.indexOf("<main"), h.indexOf("</main>")); return /About this site/.test(h) || /<a href="\/about\/">[^<]*<\/a> · <a href="\/ai-disclosure\/">/.test(main); });
+  check("t133 #1/#2: no page has the page-level 'About this site · AI disclosure · Privacy' row, and 'About this site' appears nowhere", rows.length === 0, rows.map(rel).join(","));
+  const footBad = all.filter((f) => { const h = readFileSync(f, "utf8"); return !/<footer class="site"><div class="wrap"><a href="\/about\/" data-foot-about>About<\/a><a href="\/ai-disclosure\/" data-foot-ai>AI disclosure<\/a>/.test(h) && !/noindex/.test(h.slice(0, 600)) ? true : false; });
+  check("t133 #2: every page's footer starts with 'About' then 'AI disclosure'", footBad.length === 0, footBad.map(rel).join(","));
+  const ready = all.filter((f) => /Ready to start\?|start-here|which widow pension laws a marriage fits|get a to-do list fitted to each person/.test(readFileSync(f, "utf8")));
+  check("t133 #3: no page has the old 'Ready to start?' box or its 'fits' run-on wording", ready.length === 0, ready.map(rel).join(","));
+  const homeCards = readFileSync(join(DIST, "index.html"), "utf8").match(/<section class="start-cards"[^>]*>([\s\S]*?)<\/section>/)[1];
+  const cardPages = ["about/index.html", "ai-disclosure/index.html", "contact/index.html", "faq/index.html", "privacy/index.html", "sources/index.html", "walkthroughs/index.html", "404.html"];
+  const notSame = cardPages.filter((p) => { const m = readFileSync(join(DIST, p), "utf8").match(/<section class="start-cards start-cards-page"[^>]*>([\s\S]*?)<\/section>/); return !m || m[1] !== homeCards; });
+  check(`t133 #3: the ${cardPages.length} pages that had 'Ready to start?' now show the home page's three cards, identical markup and wording`, notSame.length === 0 && (homeCards.match(/data-start-card="/g) || []).length === 3, notSame.join(","));
+  const selfLink = cardPages.filter((p) => { const h = readFileSync(join(DIST, p), "utf8"); const m = h.match(/<link rel="canonical" href="https:\/\/patriotinlays\.com([^"]*)"/); return m && /href="(\/tools\/lineage-matrix\/|\/tools\/widow-pension-checker\/|\/guides\/lineage-proof-roadmap\/)"/.test(h) && ["/tools/lineage-matrix/", "/tools/widow-pension-checker/", "/guides/lineage-proof-roadmap/"].includes(m[1]); });
+  check("t133 #3: no card page links to itself", selfLink.length === 0, selfLink.join(","));
+  for (const w of [390, 1280]) { const cx = await browser.newContext({ viewport: { width: w, height: 900 } }); const pg = await cx.newPage(); const out = {};
+    for (const p of ["/about/", "/privacy/", "/guides/read-pension-file/", "/tools/lineage-matrix/", "/"]) { await pg.goto(BASE + p);
+      out[p] = await pg.evaluate(() => { const f = document.querySelector("footer.site"); const links = [...f.querySelectorAll("a")]; const rects = links.map((a) => a.getBoundingClientRect());
+        const lineH = parseFloat(getComputedStyle(links[0]).lineHeight) || 20; const oneLine = links.every((a) => a.getClientRects().length === 1 && a.getBoundingClientRect().height < lineH * 1.6);
+        const xs = [...new Set(rects.map((r) => Math.round(r.left)))]; const m = document.querySelector("main"); let last = m;
+        while (last.lastElementChild) { let c = last.lastElementChild; while (c && c.getBoundingClientRect().height === 0) c = c.previousElementSibling; if (!c) break; last = c; }
+        const cards = document.querySelectorAll(".start-card"); const cr = [...cards].map((c) => c.getBoundingClientRect());
+        return { cols: getComputedStyle(f.querySelector(".wrap")).display === "grid" ? getComputedStyle(f.querySelector(".wrap")).gridTemplateColumns.split(" ").length : 0, xs: xs.length, oneLine, n: links.length, labels: links.map((a) => a.textContent),
+          gap: Math.round(f.getBoundingClientRect().top - last.getBoundingClientRect().bottom), sw: document.documentElement.scrollWidth, iw: innerWidth, nav: getComputedStyle(f.querySelector("a")).marginRight,
+          cards: cards.length, stacked: cr.length === 3 && cr[1].top > cr[0].bottom - 1, sideBySide: cr.length === 3 && Math.abs(cr[0].top - cr[2].top) < 2 }; }); }
+    const vals = Object.values(out);
+    if (w === 390) { await pg.goto(BASE + "/about/"); await pg.evaluate(() => scrollTo(0, document.body.scrollHeight)); await pg.screenshot({ path: join(SHOTS, `t133-about-bottom-${w}.png`) });
+      check("t133 #2 (390px): footer links sit in a two-column grid, each link on one line, labelled 'About' (not 'About this site'), no sideways scroll", vals.every((v) => v.cols === 2 && v.xs === 2 && v.oneLine && v.n === 7 && v.labels[0] === "About" && v.sw <= v.iw), JSON.stringify(out["/about/"]));
+      check("t133 #4 (390px): the empty space between the last content and the footer is at most 48px (was 77-126px)", vals.every((v) => v.gap <= 48), JSON.stringify(Object.fromEntries(Object.entries(out).map(([k, v]) => [k, v.gap]))));
+      check("t133 #3 (390px): the three cards are stacked on the inner pages", ["/about/", "/privacy/"].every((p) => out[p].cards === 3 && out[p].stacked), JSON.stringify(out["/about/"])); }
+    else { await pg.goto(BASE + "/about/"); await pg.evaluate(() => scrollTo(0, document.body.scrollHeight)); await pg.screenshot({ path: join(SHOTS, `t133-about-bottom-${w}.png`) });
+      check("t133 #2 (1280px): desktop footer unchanged: inline links (not a grid), 1rem apart, all 7 on one row, 'About' first", vals.every((v) => v.cols === 0 && v.nav === "16px" && v.n === 7 && v.labels[0] === "About" && v.oneLine), JSON.stringify(out["/about/"]));
+      check("t133 #3 (1280px): the three cards sit side by side on the inner pages", ["/about/", "/privacy/"].every((p) => out[p].cards === 3 && out[p].sideBySide), JSON.stringify(out["/about/"])); }
+    await cx.close(); } }
 // ---- t130 #1 / #3: home start cards, spacing, guide titles, menu (390px and 1280px) ----
 { const hH = readFileSync(join(DIST, "index.html"), "utf8");
   for (const w of [390, 1280]) { const cx = await browser.newContext({ viewport: { width: w, height: 900 } }); const pg = await cx.newPage(); await pg.goto(`${BASE}/`);
