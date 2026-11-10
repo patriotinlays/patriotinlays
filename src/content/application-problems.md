@@ -42,7 +42,7 @@ Except for the two signature checks from SAR's application checklist, these poin
 - A 2023 Ohio Society SAR presentation said new-member applications get two chances to resolve problems with replacement applications. [[claim:ohsar-replacements]]
 - A 2023 Ohio Society SAR presentation said a supplemental may be replaced only once. [[claim:ohsar-supp-once]]
 - A 2023 Ohio Society SAR presentation said applications pended for three years are withdrawn. [[claim:ohsar-3yrs]]
-- A 2023 Ohio Society SAR presentation said application fees are non-refundable [[claim:ohsar-nonrefundable]], and the fee it cited was $100. [[claim:ohsar-fee]]
+- A 2023 Ohio Society SAR presentation said application fees are non-refundable. [[claim:ohsar-nonrefundable]] Confirm current fees with your registrar.
 
 ## Pre-submission checklist
 

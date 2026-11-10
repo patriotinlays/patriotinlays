@@ -2092,24 +2092,6 @@
       "source_scope": "chapter-local"
     },
     {
-      "claim_id": "ohsar-fee",
-      "claim_text": "The fee cited in the 2023 Ohio Society SAR presentation was $100.",
-      "source_url": "https://cincinnatisar.org/wp-content/uploads/2023/05/Presentation-How-to-Produce-Approval-Ready-Applications-and-Reduce-Turnaround-Time.pdf",
-      "source_title": "SAR presentation, OHSSAR Annual Meeting (May 5, 2023) — How to Produce Approval-Ready Applications",
-      "source_type": "official_secondary",
-      "archive_identifier": null,
-      "last_retrieved": "2026-10-31",
-      "quote_excerpt": "which is currently $100",
-      "page_ref": null,
-      "verification_status": "verified",
-      "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
-      "used_on": [
-        "application-problems"
-      ],
-      "notes": "",
-      "source_scope": "chapter-local"
-    },
-    {
       "claim_id": "sar-checklist-supp-sig",
       "claim_text": "SAR's application checklist asks whether the member and the State Registrar (or another designated officer) have signed a supplemental application on the back.",
       "source_url": "https://members.sar.org/media/uploads/pages/334/wPXSPrcD0cuU.pdf",

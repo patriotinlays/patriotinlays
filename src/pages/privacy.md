@@ -19,9 +19,7 @@ Each tool has its own button for this. On the Widow Pension Law Checker, press "
 
 ## What the site itself collects
 
-The site itself collects nothing.
-
-The site is hosted by Cloudflare. Like any web host, it delivers each page, and it adds two small technical features: a script that hides email addresses from spam robots, and a short error report if a page fails to load.
+We don't ask for, collect or store personal information through the website. Cloudflare, which hosts the site, processes the technical information needed to deliver and protect it, and adds two small features: a script that hides email addresses from spam robots, and a short error report if a page fails to load.
 
 There are no ads at present. If advertising is ever added, this page will be updated first to describe the advertising provider, its use of cookies, and how to opt out.
 

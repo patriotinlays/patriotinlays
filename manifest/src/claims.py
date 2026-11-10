@@ -129,7 +129,6 @@ C = [
 ("ohsar-replacements", "OH_SAR", "New-member applications are allowed two chances to resolve with replacement applications.", "A 2023 Ohio Society SAR presentation said new-member applications get two replacement chances.", None),
 ("ohsar-supp-once", "OH_SAR", "Supplemental applications may only be replaced once.", "A 2023 Ohio Society SAR presentation said supplementals may be replaced once.", None),
 ("ohsar-3yrs", "OH_SAR", "After three years in pended status, those applications will be withdrawn.", "A 2023 Ohio Society SAR presentation said applications pended for three years are withdrawn.", None),
-("ohsar-fee", "OH_SAR", "which is currently $100", "The fee cited in the 2023 Ohio Society SAR presentation was $100.", None),
 ("ohsar-signatures","OH_SAR","New-member apps must have five signatures","SAR new-member applications need five signatures.",None),
 ("ohsar-supp-sig", "OH_SAR", "Supplemental apps must have two signatures", "A 2023 Ohio Society SAR presentation said supplemental applications need two signatures.", None),
 ("sar-checklist-supp-sig", "SAR_CHECKLIST", "For supplemental applications, have the member and the State Registrar (or other designated officer) signed on the back?", "SAR's application checklist asks whether the member and the State Registrar (or another designated officer) have signed a supplemental application on the back.", None),

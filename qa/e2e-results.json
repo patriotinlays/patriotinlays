@@ -1,8 +1,8 @@
 {
-  "ranAt": "Tue Nov 10 2026 08:22:37 GMT-0600 (Central Standard Time)",
+  "ranAt": "Tue Nov 10 2026 08:49:27 GMT-0600 (Central Standard Time)",
   "browser": "/usr/bin/google-chrome (headless) via playwright-core 1.59.1",
-  "passed": 224,
-  "total": 224,
+  "passed": 230,
+  "total": 230,
   "exampleReportPages": {
     "summaryPages": 2,
     "fullPages": 3,
@@ -827,7 +827,7 @@
       "detail": "{\"h1s\":1,\"sr\":\"Patriot, In Lay Terms: \",\"srHidden\":true,\"vis\":\"Plain-English help with DAR and SAR applications, for the Daughters and the Sons of the American Revolution\",\"visH\":143.9375,\"title\":\"Patriot, In Lay Terms: plain-English help for DAR and SAR applications | Patriot In Lay Terms\",\"rule\":\"rgb(178, 34, 52)\",\"ruleW\":\"56px\"}"
     },
     {
-      "name": "t122u #11: every visible text element on all 22 pages passes WCAG AA contrast (4.5:1, large text 3:1) — 3435 elements",
+      "name": "t122u #11: every visible text element on all 22 pages passes WCAG AA contrast (4.5:1, large text 3:1) — 3433 elements",
       "ok": true,
       "detail": ""
     },
@@ -927,7 +927,7 @@
       "detail": ""
     },
     {
-      "name": "t124u #3/#4: Privacy starts its 'collects' section with 'The site itself collects nothing.', has the one Cloudflare line and the ads line, and the technical note has no storage key names",
+      "name": "t124u #3/#4 / t132 #2: Privacy's 'collects' section is Tim's t132 sentence (one Cloudflare line), then the ads line, and the technical note has no storage key names",
       "ok": true,
       "detail": ""
     },
@@ -1105,6 +1105,36 @@
       "name": "t130 #5 (1280px): the pension-file guide shows the self-hosted M804 page (under 150 KB) with alt text, 3 numbered labels inside the image, and a caption naming the NARA file and identifier",
       "ok": true,
       "detail": "{\"imgBytes\":118944,\"src\":\"/assets/archives/m804-w14734-daniels-brief.jpg?v=95fa55bd19\",\"nat\":700,\"alt\":375,\"cap\":\"A real page: the pension brief from Revolutionary War Pension and Bounty Land Warrant Application File W. 14,734, Jacob Daniels, N.H., microfilm publication M804 (National Archives Identifier 54368689, image file 4156793_00373.jpg). Downloaded from the National Archives Catalog, which lists its use as unrestricted; cropped and compressed for this page.\",\"keys\":[\"Names: \\\"Dolly Foss, formerly widow of Jacob Daniels\\\".\",\"Dates: the year he died. The dates her pension was to commence and its certificate was issued are lower on the form.\",\"Service: his rank (lieutenant), his captain, his colonel, the New Hampshire line, and how long he served.\"],\"marks\":[true,true,true],\"sw\":1280,\"iw\":1280,\"afterList\":true}"
+    },
+    {
+      "name": "t132 #1: every guide and tool page (12) has exactly one closed 'Terms used on this page' glossary",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "t132 #1 (390px): glossary on a guide and a tool page is closed by default, opens on tap, prints expanded; home glossary stays open",
+      "ok": true,
+      "detail": "{\"r\":{\"/guides/read-pension-file/\":{\"closedByDefault\":true,\"opensOnTap\":true,\"printExpanded\":true,\"sum\":\"Terms used on this page\",\"fits\":true},\"/tools/lineage-matrix/\":{\"closedByDefault\":true,\"opensOnTap\":true,\"printExpanded\":true,\"sum\":\"Terms used on this page\",\"fits\":true}},\"home\":{\"inDetails\":false,\"vis\":true,\"noDefs\":true}}"
+    },
+    {
+      "name": "t132 #1 (1280px): glossary on a guide and a tool page is closed by default, opens on tap, prints expanded; home glossary stays open",
+      "ok": true,
+      "detail": "{\"r\":{\"/guides/read-pension-file/\":{\"closedByDefault\":true,\"opensOnTap\":true,\"printExpanded\":true,\"sum\":\"Terms used on this page\",\"fits\":true},\"/tools/lineage-matrix/\":{\"closedByDefault\":true,\"opensOnTap\":true,\"printExpanded\":true,\"sum\":\"Terms used on this page\",\"fits\":true}},\"home\":{\"inDetails\":false,\"vis\":true,\"noDefs\":true}}"
+    },
+    {
+      "name": "t132 #2: privacy page has Tim's exact sentence, keeps the ads line, and the old 'collects nothing' and 'Like any web host' sentences are gone",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "t132 #2: no built page says the site 'collects nothing'",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "t132 #3: Application Returned keeps the attributed non-refundable line, follows it with 'Confirm current fees with your registrar.', and '$100' and ohsar-fee are gone (page and manifest)",
+      "ok": true,
+      "detail": "non-refundable.[9] Confirm current fees with your registrar."
     },
     {
       "name": "t130 #1 (390px): under the heading and independent line, Tim's sentence, then the three start cards (stacked) with his exact titles, lines and navy buttons, then 'See how the tools work', then the longer paragraphs; the 'Ready to get started?' box is gone",

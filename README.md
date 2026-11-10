@@ -260,6 +260,11 @@ Docs: https://developers.cloudflare.com/pages/how-to/web-analytics/
 - February 28, 1855 navy-widow law cited as ch. 126, sec. 3, 10 Stat. 616 (chapter begins at 615); 10 Stat. 701 is only the March 3, 1855 bounty-land act.
 - Worksheet: step 1 is the patriot, step 2 starts the family with yourself; removing the oldest generation asks for confirmation.
 
+### t132 (Nov 10, 2026)
+- Guide and tool pages: the definitions box is titled "Terms used on this page", closed by default, opens on tap, and prints expanded (`details.defs::details-content` in print CSS). The home glossary stays open.
+- Privacy: Tim's sentence replaces "The site itself collects nothing." and the Cloudflare sentence; the ads line stays.
+- Application Returned: the $100 SAR fee claim (ohsar-fee) is removed from the page and manifest; the non-refundable line is followed by "Confirm current fees with your registrar."
+
 ### t130 (Nov 10, 2026) — usability batch
 - Home: Tim's intro sentence under the heading, three "Start here" cards (worksheet, widow checker, roadmap; stacked on phones, three across from 760px) with navy buttons, and a "See how the tools work" line. The "Ready to get started?" box is gone; the longer paragraphs follow unchanged. Guide titles in the home list are bolder/larger; more space between major sections.
 - Worksheet: "Start with just the patriot and me" (default; creates the Patriot section and Generation 1 only) and "See a filled-in example" (asks "Loading the example replaces your current entries. Continue?" when entries exist). The form is grouped into "Your patriot" and "Generations"; only the newest generation is open, older ones collapse under a heading with their name. The rarely used "disagrees with another record" box sits under "More details". Saved data format unchanged.

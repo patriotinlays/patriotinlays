@@ -200,7 +200,8 @@ const GUIDE_ORDER = readdirSync(join(ROOT, "src/content")).filter((x) => x.endsW
 const START_HERE = `<aside class="card start-here"><strong>Ready to start?</strong><p><a href="/tools/widow-pension-checker/">Widow Pension Law Checker</a>: see which widow pension laws a marriage fits, and where her pension file would be kept, so you can request it. · <a href="/tools/lineage-matrix/">Lineage Evidence Matrix</a>: record the patriot and your records, and get a to-do list fitted to each person's era and state. · <a href="/guides/lineage-proof-roadmap/">The Roadmap guide</a>: the whole process, step by step.</p></aside>`;
 // Every guide and tool page opens with a short, sourced definitions box (the home page's glossary, reused).
 const DEFS_MD = readFileSync(join(ROOT, "src/partials/glossary.md"), "utf8").replace(/^## .*\n/, "");
-const DEFS_SUMMARY = 'New here? What DAR, SAR, NSCDA, "lineage society", "patriot", "bounty land" and "Stat." mean';
+// Tim t132 #1: collapsed by default on guides and tool pages under this title; the home page glossary stays open; print shows it expanded.
+const DEFS_SUMMARY = "Terms used on this page";
 function renderFile(dir, f) {
   const raw = readFileSync(join(ROOT, dir, f), "utf8"); const { fm, body } = parseFront(raw);
   const ctx = { sources: [], tools: new Set(), claimCount: 0 };

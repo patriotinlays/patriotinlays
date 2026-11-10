@@ -125,7 +125,12 @@ details.defs ul{margin:.4rem 0 .2rem;padding-left:1.1rem}
 .used-for{margin:.1rem 0 .3rem}
 @media print{
   @page{size:Letter;margin:.5in}
-  details.defs,.report-actions,.report-actions *{display:none!important}
+  .report-actions,.report-actions *{display:none!important}
+  /* t132 #1: printed guides and tool pages show the terms box expanded */
+  details.defs::details-content{content-visibility:visible!important;display:block!important;height:auto!important}
+  details.defs{box-shadow:none;break-inside:avoid-page}
+  details.defs summary{list-style:none}
+  details.defs summary::-webkit-details-marker{display:none}
   [data-tool-report="lineage-matrix"]{font-size:9.5pt;line-height:1.3}
   [data-tool-report="lineage-matrix"] h2{font-size:12pt;margin:.5rem 0 .2rem}
   [data-tool-report="lineage-matrix"] h3{font-size:10.5pt;margin:.4rem 0 .15rem}
