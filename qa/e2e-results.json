@@ -1,5 +1,5 @@
 {
-  "ranAt": "Tue Nov 10 2026 09:12:27 GMT-0600 (Central Standard Time)",
+  "ranAt": "Tue Nov 10 2026 09:26:41 GMT-0600 (Central Standard Time)",
   "browser": "/usr/bin/google-chrome (headless) via playwright-core 1.59.1",
   "passed": 240,
   "total": 240,
@@ -1162,9 +1162,9 @@
       "detail": ""
     },
     {
-      "name": "t133 #2 (390px): footer links sit in a two-column grid, each link on one line, labelled 'About' (not 'About this site'), no sideways scroll",
+      "name": "t134 (390px): phone footer is a cluster (flex, wrap, centered, gap 4px 20px), links 15px and at least 32px tall, each on one line, labelled 'About' and 'Sources', no grid, no sideways scroll",
       "ok": true,
-      "detail": "{\"cols\":2,\"xs\":2,\"oneLine\":true,\"n\":7,\"labels\":[\"About\",\"AI disclosure\",\"FAQ\",\"Walkthroughs\",\"Sources & Methodology\",\"Privacy\",\"Contact\"],\"gap\":43,\"sw\":390,\"iw\":390,\"nav\":\"0px\",\"cards\":3,\"stacked\":true,\"sideBySide\":false}"
+      "detail": "{\"cols\":0,\"display\":\"flex\",\"wrap\":\"wrap\",\"justify\":\"center\",\"gapCss\":\"4px 20px\",\"font\":\"15px\",\"minH\":32,\"dpFont\":\"14px\",\"pFont\":\"14px\",\"xs\":7,\"oneLine\":true,\"n\":7,\"labels\":[\"About\",\"AI disclosure\",\"FAQ\",\"Walkthroughs\",\"Sources\",\"Privacy\",\"Contact\"],\"gap\":43,\"sw\":390,\"iw\":390,\"nav\":\"0px\",\"cards\":3,\"stacked\":true,\"sideBySide\":false}"
     },
     {
       "name": "t133 #4 (390px): the empty space between the last content and the footer is at most 48px (was 77-126px)",
@@ -1174,17 +1174,17 @@
     {
       "name": "t133 #3 (390px): the three cards are stacked on the inner pages",
       "ok": true,
-      "detail": "{\"cols\":2,\"xs\":2,\"oneLine\":true,\"n\":7,\"labels\":[\"About\",\"AI disclosure\",\"FAQ\",\"Walkthroughs\",\"Sources & Methodology\",\"Privacy\",\"Contact\"],\"gap\":43,\"sw\":390,\"iw\":390,\"nav\":\"0px\",\"cards\":3,\"stacked\":true,\"sideBySide\":false}"
+      "detail": "{\"cols\":0,\"display\":\"flex\",\"wrap\":\"wrap\",\"justify\":\"center\",\"gapCss\":\"4px 20px\",\"font\":\"15px\",\"minH\":32,\"dpFont\":\"14px\",\"pFont\":\"14px\",\"xs\":7,\"oneLine\":true,\"n\":7,\"labels\":[\"About\",\"AI disclosure\",\"FAQ\",\"Walkthroughs\",\"Sources\",\"Privacy\",\"Contact\"],\"gap\":43,\"sw\":390,\"iw\":390,\"nav\":\"0px\",\"cards\":3,\"stacked\":true,\"sideBySide\":false}"
     },
     {
-      "name": "t133 #2 (1280px): desktop footer unchanged: inline links (not a grid), 1rem apart, all 7 on one row, 'About' first",
+      "name": "t133 #2 / t134 (1280px): desktop footer unchanged: inline links (block layout, not grid or flex), 14px, 1rem apart, all 7 on one row, 'About' first, footer label now 'Sources', disclaimer 14px",
       "ok": true,
-      "detail": "{\"cols\":0,\"xs\":7,\"oneLine\":true,\"n\":7,\"labels\":[\"About\",\"AI disclosure\",\"FAQ\",\"Walkthroughs\",\"Sources & Methodology\",\"Privacy\",\"Contact\"],\"gap\":87,\"sw\":1280,\"iw\":1280,\"nav\":\"16px\",\"cards\":3,\"stacked\":false,\"sideBySide\":true}"
+      "detail": "{\"cols\":0,\"display\":\"block\",\"wrap\":\"nowrap\",\"justify\":\"normal\",\"gapCss\":\"normal normal\",\"font\":\"14px\",\"minH\":19,\"dpFont\":\"14px\",\"pFont\":\"14px\",\"xs\":7,\"oneLine\":true,\"n\":7,\"labels\":[\"About\",\"AI disclosure\",\"FAQ\",\"Walkthroughs\",\"Sources\",\"Privacy\",\"Contact\"],\"gap\":87,\"sw\":1280,\"iw\":1280,\"nav\":\"16px\",\"cards\":3,\"stacked\":false,\"sideBySide\":true}"
     },
     {
       "name": "t133 #3 (1280px): the three cards sit side by side on the inner pages",
       "ok": true,
-      "detail": "{\"cols\":0,\"xs\":7,\"oneLine\":true,\"n\":7,\"labels\":[\"About\",\"AI disclosure\",\"FAQ\",\"Walkthroughs\",\"Sources & Methodology\",\"Privacy\",\"Contact\"],\"gap\":87,\"sw\":1280,\"iw\":1280,\"nav\":\"16px\",\"cards\":3,\"stacked\":false,\"sideBySide\":true}"
+      "detail": "{\"cols\":0,\"display\":\"block\",\"wrap\":\"nowrap\",\"justify\":\"normal\",\"gapCss\":\"normal normal\",\"font\":\"14px\",\"minH\":19,\"dpFont\":\"14px\",\"pFont\":\"14px\",\"xs\":7,\"oneLine\":true,\"n\":7,\"labels\":[\"About\",\"AI disclosure\",\"FAQ\",\"Walkthroughs\",\"Sources\",\"Privacy\",\"Contact\"],\"gap\":87,\"sw\":1280,\"iw\":1280,\"nav\":\"16px\",\"cards\":3,\"stacked\":false,\"sideBySide\":true}"
     },
     {
       "name": "t130 #1 (390px): under the heading and independent line, Tim's sentence, then the three start cards (stacked) with his exact titles, lines and navy buttons, then 'See how the tools work', then the longer paragraphs; the 'Ready to get started?' box is gone",

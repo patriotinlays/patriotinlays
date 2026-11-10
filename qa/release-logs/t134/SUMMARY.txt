@@ -1,0 +1,4 @@
+t134 release log — Nov 10, 2026 (CST). Commit only, no deploy.
+Phone footer (<=600px): cluster (flex, wrap, center, gap 4px 20px), links 15px, 32px tall, one line; footer label "Sources" (was "Sources & Methodology"); desktop footer and disclaimer unchanged.
+Unit suites all passed; E2E 240/240; offline gate PASSED; link check zero broken.
+Live-source check: NOT RUN

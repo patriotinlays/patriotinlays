@@ -359,12 +359,12 @@ a.ext .ext-icon{display:inline-block;width:.7em;height:.7em;margin-left:.2em;ver
 @media print{.archive-fig{max-width:11cm;break-inside:avoid}.archive-fig .af-n,.archive-fig .af-key li::before{-webkit-print-color-adjust:exact;print-color-adjust:exact}}
 /* t133 #3: start cards on inner pages */
 .start-cards-page{margin:2rem 0 .5rem}
-/* t133 #2 / #4: phones: footer links in a tidy two-column grid, each on one line; less empty space above the footer */
+/* t134: phones: footer links as a cluster (Every Layout), each link one line and at least 32px tall. t133 #4: less empty space above the footer */
 @media screen and (max-width:600px){
   footer.site{margin-top:1rem;padding-top:.9rem}
-  footer.site .wrap{display:grid;grid-template-columns:1fr 1fr;gap:.6rem 1rem}
-  footer.site a{margin-right:0;white-space:nowrap;padding:.15rem 0}
-  footer.site p{grid-column:1/-1;margin:.4rem 0 0}
+  footer.site .wrap{display:flex;flex-wrap:wrap;justify-content:center;gap:4px 20px}
+  footer.site a{margin-right:0;white-space:nowrap;font-size:15px;line-height:20px;padding:6px 0}
+  footer.site p{flex-basis:100%;margin:.4rem 0 0}
   main{padding-bottom:.75rem!important}
   main .wrap>:last-child,main .wrap>:last-child>:last-child{margin-bottom:0!important}
 }
