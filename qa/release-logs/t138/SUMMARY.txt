@@ -1,0 +1,4 @@
+t138 release log — Nov 10, 2026 (CST)
+About: added "Why 'Patriot, In Lay Terms'?" (h2) + Tim's paragraph verbatim after the opening description paragraph. Gate did not flag it (no factual triggers), so no editorial marker or source entry was needed.
+Unit suites all passed; E2E 242/242; offline gate PASSED (917 sentences, 472 marked, 399/399 claims); link check zero broken.
+Live-source check: RUN (finished 2:50 PM CST): 399 claims, 71 sources, 68 passed, 3 fallbacks (DAR App_Help_Step_By_Step_1, FAQs, search_revwar; 522; last pass Nov 5 10:34:49 AM CST, 5.18 days), 0 failed, 0 blocked; 14 held, 0 restored.

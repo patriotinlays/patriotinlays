@@ -1,5 +1,5 @@
 {
-  "builtAt": "Tue Nov 10 2026 09:24:44 GMT-0600 (Central Standard Time)",
+  "builtAt": "Tue Nov 10 2026 14:45:20 GMT-0600 (Central Standard Time)",
   "guideSourcesChecked": [
     {
       "slug": "guides/application-problems",
@@ -224,7 +224,7 @@
       "slug": "about",
       "description": "What patriotinlays.com does, who it helps, what it doesn't do, and how its facts are checked.",
       "path": "/about/",
-      "words": 396,
+      "words": 474,
       "claims": 0,
       "sources": 0,
       "tools": []

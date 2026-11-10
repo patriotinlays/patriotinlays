@@ -951,6 +951,16 @@ const { readdirSync: rd132 } = await import("node:fs");
       check("t133 #2 / t134 (1280px): desktop footer unchanged: inline links (block layout, not grid or flex), 14px, 1rem apart, all 7 on one row, 'About' first, footer label now 'Sources', disclaimer 14px", vals.every((v) => v.cols === 0 && v.display === "block" && v.font === "14px" && v.nav === "16px" && v.n === 7 && v.labels[0] === "About" && v.labels.includes("Sources") && v.oneLine && v.pFont === "14px"), JSON.stringify(out["/about/"]));
       check("t133 #3 (1280px): the three cards sit side by side on the inner pages", ["/about/", "/privacy/"].every((p) => out[p].cards === 3 && out[p].sideBySide), JSON.stringify(out["/about/"])); }
     await cx.close(); } }
+// ---- t138: About page "Why 'Patriot, In Lay Terms'?" section, Tim's exact words, right after the opening description ----
+for (const w of [390, 1280]) { const cx = await browser.newContext({ viewport: { width: w, height: 900 } }); const pg = await cx.newPage(); await pg.goto(BASE + "/about/");
+  const a = await pg.evaluate(() => { const h = [...document.querySelectorAll("main h2")].find((x) => x.textContent.startsWith("Why")); const h1 = document.querySelector("main h1");
+    const intro = h1.nextElementSibling; return { h: h && h.textContent, tag: h && h.tagName, sameStyle: h && getComputedStyle(h).fontSize === getComputedStyle([...document.querySelectorAll("main h2")].find((x) => x.textContent === "What you can do here")).fontSize,
+      p: h && h.nextElementSibling.textContent, afterIntro: !!h && intro.tagName === "P" && /^Patriot In Lay Terms \(patriotinlays\.com\) helps people prove/.test(intro.textContent) && intro.nextElementSibling === h,
+      next: h && h.nextElementSibling.nextElementSibling.textContent, sw: document.documentElement.scrollWidth, iw: innerWidth }; });
+  await pg.locator("#why-patriot-in-lay-terms").scrollIntoViewIfNeeded(); await pg.screenshot({ path: join(SHOTS, `t138-about-${w}.png`) });
+  check(`t138 (${w}px): About has "Why 'Patriot, In Lay Terms'?" (h2, same style as the other About headings) right after the opening description, with Tim's paragraph word for word, followed by "What you can do here"`, a.h === "Why 'Patriot, In Lay Terms'?" && a.tag === "H2" && a.sameStyle && a.afterIntro && a.next === "What you can do here"
+    && a.p === "An inlay is a piece of wood set so deep into another that it becomes part of the grain. The patriots of the Revolution did something like that with the idea of a free country, and it's still part of the grain today. This site's job is smaller: it explains, in lay terms, how to trace your own family line back to one of them. Inlays, and lay terms: that's the name." && a.sw <= a.iw, JSON.stringify(a));
+  await cx.close(); }
 // ---- t130 #1 / #3: home start cards, spacing, guide titles, menu (390px and 1280px) ----
 { const hH = readFileSync(join(DIST, "index.html"), "utf8");
   for (const w of [390, 1280]) { const cx = await browser.newContext({ viewport: { width: w, height: 900 } }); const pg = await cx.newPage(); await pg.goto(`${BASE}/`);

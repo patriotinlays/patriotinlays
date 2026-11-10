@@ -1,8 +1,8 @@
 {
-  "ranAt": "Tue Nov 10 2026 09:26:41 GMT-0600 (Central Standard Time)",
+  "ranAt": "Tue Nov 10 2026 14:46:25 GMT-0600 (Central Standard Time)",
   "browser": "/usr/bin/google-chrome (headless) via playwright-core 1.59.1",
-  "passed": 240,
-  "total": 240,
+  "passed": 242,
+  "total": 242,
   "exampleReportPages": {
     "summaryPages": 2,
     "fullPages": 3,
@@ -827,7 +827,7 @@
       "detail": "{\"h1s\":1,\"sr\":\"Patriot, In Lay Terms: \",\"srHidden\":true,\"vis\":\"Plain-English help with DAR and SAR applications, for the Daughters and the Sons of the American Revolution\",\"visH\":143.9375,\"title\":\"Patriot, In Lay Terms: plain-English help for DAR and SAR applications | Patriot In Lay Terms\",\"rule\":\"rgb(178, 34, 52)\",\"ruleW\":\"56px\"}"
     },
     {
-      "name": "t122u #11: every visible text element on all 22 pages passes WCAG AA contrast (4.5:1, large text 3:1) — 3457 elements",
+      "name": "t122u #11: every visible text element on all 22 pages passes WCAG AA contrast (4.5:1, large text 3:1) — 3459 elements",
       "ok": true,
       "detail": ""
     },
@@ -1187,6 +1187,16 @@
       "detail": "{\"cols\":0,\"display\":\"block\",\"wrap\":\"nowrap\",\"justify\":\"normal\",\"gapCss\":\"normal normal\",\"font\":\"14px\",\"minH\":19,\"dpFont\":\"14px\",\"pFont\":\"14px\",\"xs\":7,\"oneLine\":true,\"n\":7,\"labels\":[\"About\",\"AI disclosure\",\"FAQ\",\"Walkthroughs\",\"Sources\",\"Privacy\",\"Contact\"],\"gap\":87,\"sw\":1280,\"iw\":1280,\"nav\":\"16px\",\"cards\":3,\"stacked\":false,\"sideBySide\":true}"
     },
     {
+      "name": "t138 (390px): About has \"Why 'Patriot, In Lay Terms'?\" (h2, same style as the other About headings) right after the opening description, with Tim's paragraph word for word, followed by \"What you can do here\"",
+      "ok": true,
+      "detail": "{\"h\":\"Why 'Patriot, In Lay Terms'?\",\"tag\":\"H2\",\"sameStyle\":true,\"p\":\"An inlay is a piece of wood set so deep into another that it becomes part of the grain. The patriots of the Revolution did something like that with the idea of a free country, and it's still part of the grain today. This site's job is smaller: it explains, in lay terms, how to trace your own family line back to one of them. Inlays, and lay terms: that's the name.\",\"afterIntro\":true,\"next\":\"What you can do here\",\"sw\":390,\"iw\":390}"
+    },
+    {
+      "name": "t138 (1280px): About has \"Why 'Patriot, In Lay Terms'?\" (h2, same style as the other About headings) right after the opening description, with Tim's paragraph word for word, followed by \"What you can do here\"",
+      "ok": true,
+      "detail": "{\"h\":\"Why 'Patriot, In Lay Terms'?\",\"tag\":\"H2\",\"sameStyle\":true,\"p\":\"An inlay is a piece of wood set so deep into another that it becomes part of the grain. The patriots of the Revolution did something like that with the idea of a free country, and it's still part of the grain today. This site's job is smaller: it explains, in lay terms, how to trace your own family line back to one of them. Inlays, and lay terms: that's the name.\",\"afterIntro\":true,\"next\":\"What you can do here\",\"sw\":1280,\"iw\":1280}"
+    },
+    {
       "name": "t130 #1 (390px): under the heading and independent line, Tim's sentence, then the three start cards (stacked) with his exact titles, lines and navy buttons, then 'See how the tools work', then the longer paragraphs; the 'Ready to get started?' box is gone",
       "ok": true,
       "detail": "{\"order\":[0,1,2,3,4,5,6],\"cards\":[[421,16],[631,16],[861,16]],\"seeHow\":[\"See how the tools work\",\"/walkthroughs/\"],\"oldBox\":false}"
@@ -1242,7 +1252,7 @@
       "detail": ""
     }
   ],
-  "requestsTotal": 658,
+  "requestsTotal": 659,
   "externalRequests": 0,
   "interactionRequests": 0,
   "faviconLate": 25
