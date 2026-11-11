@@ -260,6 +260,10 @@ Docs: https://developers.cloudflare.com/pages/how-to/web-analytics/
 - February 28, 1855 navy-widow law cited as ch. 126, sec. 3, 10 Stat. 616 (chapter begins at 615); 10 Stat. 701 is only the March 3, 1855 bounty-land act.
 - Worksheet: step 1 is the patriot, step 2 starts the family with yourself; removing the oldest generation asks for confirmation.
 
+### t148 (Nov 11, 2026)
+- Application Returned: the Supplementals caveat names SAR's national checklist, Genealogy Committee Policies and Application Preparation Guide; Tim's Ohio caveat sits directly above the problem table and directly above the pre-submission checklist (two copies; the sections are not adjacent).
+- Same Name: the "Right age" row uses the same two APG sentences as Application Returned; ohsar-patriot-gen is no longer used.
+
 ### t147 (Nov 11, 2026)
 - Application Returned: the Ohio replacement, supplemental-once and three-year points are replaced by SAR's national Genealogy Committee Policies (`SAR_GCP`, https://www.sar.org/app/uploads/NSSAR-Genealogy-Policy-Manual-2026-12-5.pdf, national): one replacement with another patriot ancestor (6.3002d), replacements reduced to once for all applications (change log), two-year expiry of pended applications (6.3002a), each "As of <date>, SAR's genealogy policies say ...".
 - The patriot-generation row is split into two APG sentences (residence must agree with the service; if no birth date, a proven fact showing he was living and of age). Same Name still cites the Ohio line.

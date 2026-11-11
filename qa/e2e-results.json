@@ -1,8 +1,8 @@
 {
-  "ranAt": "Wed Nov 11 2026 15:17:58 GMT-0600 (Central Standard Time)",
+  "ranAt": "Wed Nov 11 2026 15:26:15 GMT-0600 (Central Standard Time)",
   "browser": "/usr/bin/google-chrome (headless) via playwright-core 1.59.1",
-  "passed": 264,
-  "total": 264,
+  "passed": 271,
+  "total": 271,
   "exampleReportPages": {
     "summaryPages": 2,
     "fullPages": 3,
@@ -827,7 +827,7 @@
       "detail": "{\"h1s\":1,\"sr\":\"Patriot, In Lay Terms: \",\"srHidden\":true,\"vis\":\"Plain-English Help With DAR and SAR Applications, for the Daughters and the Sons of the American Revolution\",\"visH\":143.9375,\"title\":\"Patriot, In Lay Terms: Plain-English Help for DAR and SAR Applications | Patriot In Lay Terms\",\"rule\":\"rgb(178, 34, 52)\",\"ruleW\":\"56px\"}"
     },
     {
-      "name": "t122u #11: every visible text element on all 22 pages passes WCAG AA contrast (4.5:1, large text 3:1) — 3561 elements",
+      "name": "t122u #11: every visible text element on all 22 pages passes WCAG AA contrast (4.5:1, large text 3:1) — 3569 elements",
       "ok": true,
       "detail": ""
     },
@@ -847,7 +847,7 @@
       "detail": "lineage-proof-roadmap=2026-11-05 substitute-evidence=2026-11-05 read-pension-file=2026-11-11 records-by-state=2026-11-05 bounty-land-warrants=2026-11-11 census-bridge=2026-11-05 patriotic-service=2026-11-05 same-name=2026-11-11 patriot-or-loyalist=2026-11-11 application-problems=2026-11-05"
     },
     {
-      "name": "t124u #1 (390px): every Sources entry on every page (16 pages, 290 entries) has a visible \"Used for: ...\" line of at most about 8 words, and the raw URL is hidden on screen",
+      "name": "t124u #1 (390px): every Sources entry on every page (16 pages, 291 entries) has a visible \"Used for: ...\" line of at most about 8 words, and the raw URL is hidden on screen",
       "ok": true,
       "detail": ""
     },
@@ -857,7 +857,7 @@
       "detail": "{\"urls\":true,\"icons\":true}"
     },
     {
-      "name": "t124u #11 (390px): every link that leaves the site (328) opens in a new tab with rel=\"noopener noreferrer\", a small icon and \"(opens in new tab)\" for screen readers; no internal or email link does",
+      "name": "t124u #11 (390px): every link that leaves the site (329) opens in a new tab with rel=\"noopener noreferrer\", a small icon and \"(opens in new tab)\" for screen readers; no internal or email link does",
       "ok": true,
       "detail": ""
     },
@@ -877,7 +877,7 @@
       "detail": "{\"n\":15,\"ok\":true}"
     },
     {
-      "name": "t124u #1 (1280px): every Sources entry on every page (16 pages, 290 entries) has a visible \"Used for: ...\" line of at most about 8 words, and the raw URL is hidden on screen",
+      "name": "t124u #1 (1280px): every Sources entry on every page (16 pages, 291 entries) has a visible \"Used for: ...\" line of at most about 8 words, and the raw URL is hidden on screen",
       "ok": true,
       "detail": ""
     },
@@ -887,7 +887,7 @@
       "detail": "{\"urls\":true,\"icons\":true}"
     },
     {
-      "name": "t124u #11 (1280px): every link that leaves the site (328) opens in a new tab with rel=\"noopener noreferrer\", a small icon and \"(opens in new tab)\" for screen readers; no internal or email link does",
+      "name": "t124u #11 (1280px): every link that leaves the site (329) opens in a new tab with rel=\"noopener noreferrer\", a small icon and \"(opens in new tab)\" for screen readers; no internal or email link does",
       "ok": true,
       "detail": ""
     },
@@ -1272,7 +1272,7 @@
       "detail": ""
     },
     {
-      "name": "t147 #3: the Supplementals caveat is Tim's sentence word for word",
+      "name": "t147 #3 / t148 #1: the Supplementals caveat is Tim's t148 sentence word for word (the t147 one is gone)",
       "ok": true,
       "detail": ""
     },
@@ -1305,6 +1305,41 @@
       "name": "t147 #4 (1280px): the Patriotic Service 'Then' link opens Same Name, Different Man",
       "ok": true,
       "detail": ""
+    },
+    {
+      "name": "t148 #2: Tim's Ohio caveat appears exactly twice on Application Returned (two caveats: the table and the checklist are not next to each other) and nowhere else on the site",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "t148 #2: the pre-submission checklist starts right after the Ohio caveat",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "t148 #2: the problem table starts right after the Ohio caveat",
+      "ok": true,
+      "detail": "\n<p>Points attributed to the 2023 Ohio Society SAR presentation come from that talk, not SAR's national rules. Confirm current requirements with your registrar.</p>\n<div class=\"table-wrap\">"
+    },
+    {
+      "name": "t148 #1: the Supplementals section has Tim's caveat and no Ohio point",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "t148 #3: Same Name's 'Right age' row has the same two APG sentences as Application Returned (same claims, 'As of' dates), and the Ohio patriot-generation line is gone from the site",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "t148 (390px): Application Returned and Same Name fit the screen (no sideways scroll)",
+      "ok": true,
+      "detail": "{\"ap\":{\"sw\":390,\"iw\":390},\"sn\":{\"sw\":390,\"iw\":390}}"
+    },
+    {
+      "name": "t148 (1280px): Application Returned and Same Name fit the screen (no sideways scroll)",
+      "ok": true,
+      "detail": "{\"ap\":{\"sw\":1280,\"iw\":1280},\"sn\":{\"sw\":1280,\"iw\":1280}}"
     },
     {
       "name": "t130 #1 (390px): under the heading and independent line, Tim's sentence, then the three start cards (stacked) with his exact titles, lines and navy buttons, then 'See how the tools work', then the longer paragraphs; the 'Ready to get started?' box is gone",

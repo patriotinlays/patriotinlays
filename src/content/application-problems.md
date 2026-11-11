@@ -16,6 +16,8 @@ Start by assuming the problem is in the documentation, not the ancestor. DAR has
 
 ## Problem, cause and fix
 
+Points attributed to the 2023 Ohio Society SAR presentation come from that talk, not SAR's national rules. Confirm current requirements with your registrar.
+
 | Problem | Cause the society describes | Fix |
 |---|---|---|
 | Applicant birth certificate questioned | {{asof:sar-apg-bc-gender}} SAR's application guide says new applicants need a birth certificate or court order that specifies the applicant's gender as male [[claim:sar-apg-bc-gender]] | Order a long-form certificate naming both parents, including the mother's maiden name [[claim:ohsar-bc-parents]] |
@@ -41,7 +43,7 @@ Start by assuming the problem is in the documentation, not the ancestor. DAR has
 
 ## Supplementals and replacements (SAR)
 
-Except where marked as SAR's application guide, the points below come from a 2023 Ohio Society SAR presentation, not SAR's national rules.
+These points come from SAR's national application checklist, Genealogy Committee Policies and Application Preparation Guide.
 
 - {{asof:sar-checklist-signatures}} SAR's application checklist asks whether the State Registrar, State Secretary and two sponsors have signed a new-member application. [[claim:sar-checklist-signatures]]
 - {{asof:sar-checklist-supp-sig}} SAR's application checklist asks whether the member and the State Registrar (or another designated officer) have signed a supplemental application on the back. [[claim:sar-checklist-supp-sig]]
@@ -51,6 +53,8 @@ Except where marked as SAR's application guide, the points below come from a 202
 - {{asof:sar-apg-fee-nonrefundable}} SAR's application guide says an applicant's filing fee is not refundable. [[claim:sar-apg-fee-nonrefundable]] Confirm current fees with your registrar.
 
 ## Pre-submission checklist
+
+Points attributed to the 2023 Ohio Society SAR presentation come from that talk, not SAR's national rules. Confirm current requirements with your registrar.
 
 1. Fill the form from the documents, not the documents to the form. A 2023 Ohio Society SAR presentation put it in capitals: always complete an application from the documentation. [[claim:ohsar-from-docs]]
 2. Every name, date, place and relationship has a document behind it. [[claim:dar-each-relationship]]

@@ -1875,24 +1875,6 @@
       "source_scope": "chapter-local"
     },
     {
-      "claim_id": "ohsar-patriot-gen",
-      "claim_text": "A 2023 Ohio Society SAR presentation said the patriot's generation should show he was alive, of age and resident where the service was claimed.",
-      "source_url": "https://cincinnatisar.org/wp-content/uploads/2023/05/Presentation-How-to-Produce-Approval-Ready-Applications-and-Reduce-Turnaround-Time.pdf",
-      "source_title": "SAR presentation, OHSSAR Annual Meeting (May 5, 2023) — How to Produce Approval-Ready Applications",
-      "source_type": "official_secondary",
-      "archive_identifier": null,
-      "last_retrieved": "2026-10-31",
-      "quote_excerpt": "proves that the patriot was alive at the time of service, was of the right age to have performed the service being claimed, and whose residency aligns with the service claimed",
-      "page_ref": null,
-      "verification_status": "verified",
-      "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
-      "used_on": [
-        "same-name"
-      ],
-      "notes": "",
-      "source_scope": "chapter-local"
-    },
-    {
       "claim_id": "ohsar-superfluous",
       "claim_text": "A 2023 Ohio Society SAR presentation listed superfluous documentation as slowing review.",
       "source_url": "https://cincinnatisar.org/wp-content/uploads/2023/05/Presentation-How-to-Produce-Approval-Ready-Applications-and-Reduce-Turnaround-Time.pdf",
@@ -2103,7 +2085,8 @@
       "verification_status": "verified",
       "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-11-11 CT",
       "used_on": [
-        "application-problems"
+        "application-problems",
+        "same-name"
       ],
       "notes": "",
       "source_scope": "national"
@@ -2121,7 +2104,8 @@
       "verification_status": "verified",
       "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-11-11 CT",
       "used_on": [
-        "application-problems"
+        "application-problems",
+        "same-name"
       ],
       "notes": "",
       "source_scope": "national"

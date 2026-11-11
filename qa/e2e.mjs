@@ -809,7 +809,7 @@ phase("load"); await page.goto(`${BASE}/`); phase("interact");
     && fqH.includes('href="https://www.sar.org/how-to-apply/"'), gen.slice(0, 400));
   check("t128u #3: supplemental signatures come from SAR's national application checklist with an 'As of' date; the Ohio two-signatures line is gone",
     new RegExp(`As of <span data-asof="sar-checklist-supp-sig">${longDate(lp["https://members.sar.org/media/uploads/pages/334/wPXSPrcD0cuU.pdf"])}</span>, SAR(?:'|&#39;)s application checklist asks whether the member and the State Registrar \\(or another designated officer\\) have signed a supplemental application on the back\\.`).test(apH.replace(/&apos;/g, "&#39;"))
-    && !/supplemental applications need two signatures/.test(ap) && ap.includes("Except where marked as SAR's application guide, the points below come from a 2023 Ohio Society SAR presentation, not SAR's national rules."));
+    && !/supplemental applications need two signatures/.test(ap) && ap.includes("These points come from SAR's national application checklist, Genealogy Committee Policies and Application Preparation Guide."));
   // t146 #2: three Ohio points are now stated by SAR's national Application Preparation Guide and re-sourced to it, with an "As of" date.
   const apgDate = longDate(lp["https://www.sar.org/app/uploads/APG-07-June-2026.pdf"]);
   check("t146 #2 / t128u #3: DAR record copies, the birth certificate and the date format are re-sourced to SAR's national Application Preparation Guide ('SAR's application guide says', As of its last pass); the Ohio wording for them is gone",
@@ -1044,7 +1044,7 @@ for (const w of [390, 1280]) { const cx = await browser.newContext({ viewport: {
   const miss = want.filter(([id, u, t]) => !lp7[u] || !ap.includes(`As of <span data-asof="${id}">${ld7(lp7[u])}</span>, ${t}`));
   check("t147 #1/#2: Application Returned states the current SAR policy points (one replacement, replacements reduced to once, two-year expiry) and the two patriot-generation sentences, each 'As of' its source's last pass", miss.length === 0 && ap.includes(`href="${GCP}"`), miss.map((m) => m[0]).join(","));
   check("t147 #1/#2: the outdated Ohio replacement, supplemental-once, three-year and patriot-generation lines are gone from Application Returned", !/two chances to resolve|supplemental may be replaced only once|pended for three years|patriot's generation should prove/.test(apT));
-  check("t147 #3: the Supplementals caveat is Tim's sentence word for word", apT.includes("Except where marked as SAR's application guide, the points below come from a 2023 Ohio Society SAR presentation, not SAR's national rules."));
+  check("t147 #3 / t148 #1: the Supplementals caveat is Tim's t148 sentence word for word (the t147 one is gone)", apT.includes("These points come from SAR's national application checklist, Genealogy Committee Policies and Application Preparation Guide.") && !apT.includes("Except where marked as SAR's application guide"));
   const ps = H7("guides/patriotic-service"), sn = H7("guides/same-name");
   check("t147 #4: Patriotic Service's In Short 'Then' line reads Tim's text and links the Same Name guide", /<li data-in-short-line="then"><strong>Then:<\/strong> read <a href="\/guides\/same-name\/">Same Name, Different Man<\/a> to make sure each record is your patriot's\.<\/li>/.test(ps));
   check("t147 #5: Same Name's In Short says 'is your patriot's, not someone else's.'", /data-in-short-line="helps"><strong>This guide helps you:<\/strong> prove that a service record with your ancestor's name is your patriot's, not someone else's\.<\/li>/.test(sn) && !/another man's/.test(sn.slice(sn.indexOf("data-in-short"), sn.indexOf("</aside>", sn.indexOf("data-in-short")))));
@@ -1060,6 +1060,30 @@ for (const w of [390, 1280]) { const cx = await browser.newContext({ viewport: {
     await pg.click('[data-in-short-line="then"] a'); await pg.waitForURL("**/guides/same-name/");
     check(`t147 #4 (${w}px): the Patriotic Service 'Then' link opens Same Name, Different Man`, /\/guides\/same-name\/$/.test(pg.url()));
     await pg.screenshot({ path: join(REL7, `same-name-in-short-${w}.png`) });
+    await cx.close(); } }
+// ---- t148: Ohio caveat above the problem table and the pre-submission checklist; Same Name uses the two APG sentences (390px and 1280px) ----
+{ const H8 = (p) => readFileSync(join(DIST, p, "index.html"), "utf8").replace(/&#39;|&apos;/g, "'");
+  const OH8 = "Points attributed to the 2023 Ohio Society SAR presentation come from that talk, not SAR's national rules. Confirm current requirements with your registrar.";
+  const ap = H8("guides/application-problems");
+  const at = (id) => ap.indexOf(`<h2 id="${id}">`); const tbl = ap.indexOf("<table", at("problem-cause-and-fix")); const ol = ap.indexOf("<ol", at("pre-submission-checklist"));
+  const between = (a, b) => ap.slice(a, b).replace(/<\/h2>/, "").trim();
+  check("t148 #2: Tim's Ohio caveat appears exactly twice on Application Returned (two caveats: the table and the checklist are not next to each other) and nowhere else on the site", ap.split(OH8).length - 1 === 2 && ["guides/same-name", "faq", "guides/substitute-evidence"].every((p) => !H8(p).includes(OH8)));
+  check("t148 #2: the pre-submission checklist starts right after the Ohio caveat", ap.slice(ap.indexOf("</h2>", at("pre-submission-checklist")) + 5, ol).replace(/\s+/g, " ").trim() === `<p>${OH8}</p>`);
+  check("t148 #2: the problem table starts right after the Ohio caveat", ap.slice(ap.indexOf("</h2>", at("problem-cause-and-fix")) + 5, tbl).replace(/<div class="table-wrap[^>]*>/, "").replace(/\s+/g, " ").trim() === `<p>${OH8}</p>`, ap.slice(ap.indexOf("</h2>", at("problem-cause-and-fix")) + 5, tbl).slice(0, 300));
+  check("t148 #1: the Supplementals section has Tim's caveat and no Ohio point", (() => { const sec = ap.slice(at("supplementals-and-replacements-sar"), at("pre-submission-checklist")); return sec.includes("<p>These points come from SAR's national application checklist, Genealogy Committee Policies and Application Preparation Guide.</p>") && !/Ohio/.test(sec); })());
+  const sn = H8("guides/same-name"); const snT = sn.replace(/<[^>]+>/g, "");
+  const two = ["SAR's application guide says the patriot's residence during the Revolution must agree with the service being claimed.", "SAR's application guide says that if the patriot's birth date can't be found, you cite a proven fact showing he was living at the time of the service and of age for it"];
+  check("t148 #3: Same Name's 'Right age' row has the same two APG sentences as Application Returned (same claims, 'As of' dates), and the Ohio patriot-generation line is gone from the site",
+    two.every((t) => snT.includes(t) && ap.replace(/<[^>]+>/g, "").includes(t)) && /data-asof="sar-apg-patriot-residence"/.test(sn) && /data-asof="sar-apg-patriot-age"/.test(sn) && !/patriot's generation should/.test(snT) && !JSON.stringify(JSON.parse(readFileSync(join(ROOT, "manifest/claims.json"), "utf8"))).includes('"ohsar-patriot-gen"'));
+  const { mkdirSync: mk8 } = await import("node:fs"); const REL8 = join(ROOT, "qa/release-logs/t148"); mk8(REL8, { recursive: true });
+  for (const w of [390, 1280]) { const cx = await browser.newContext({ viewport: { width: w, height: 900 } }); const pg = await cx.newPage(); const r = {};
+    await pg.goto(BASE + "/guides/application-problems/"); r.ap = await pg.evaluate(() => ({ sw: document.documentElement.scrollWidth, iw: innerWidth }));
+    await pg.locator("#problem-cause-and-fix").scrollIntoViewIfNeeded(); await pg.screenshot({ path: join(REL8, `application-returned-table-caveat-${w}.png`) });
+    await pg.locator("#supplementals-and-replacements-sar").scrollIntoViewIfNeeded(); await pg.screenshot({ path: join(REL8, `application-returned-supplementals-${w}.png`) });
+    await pg.locator("#pre-submission-checklist").scrollIntoViewIfNeeded(); await pg.screenshot({ path: join(REL8, `application-returned-checklist-caveat-${w}.png`) });
+    await pg.goto(BASE + "/guides/same-name/"); r.sn = await pg.evaluate(() => ({ sw: document.documentElement.scrollWidth, iw: innerWidth }));
+    await pg.locator("text=Right age").first().scrollIntoViewIfNeeded(); await pg.screenshot({ path: join(REL8, `same-name-right-age-${w}.png`) });
+    check(`t148 (${w}px): Application Returned and Same Name fit the screen (no sideways scroll)`, Object.values(r).every((x) => x.sw <= x.iw), JSON.stringify(r));
     await cx.close(); } }
 // ---- t130 #1 / #3: home start cards, spacing, guide titles, menu (390px and 1280px) ----
 { const hH = readFileSync(join(DIST, "index.html"), "utf8");

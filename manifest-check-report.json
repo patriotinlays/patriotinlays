@@ -1,7 +1,7 @@
 {
   "live_source_check": "NOT RUN",
   "live_source_check_line": "Live-source check: NOT RUN",
-  "checkedAt": "Wed Nov 11 2026 15:17:49 GMT-0600 (Central Standard Time)",
+  "checkedAt": "Wed Nov 11 2026 15:26:05 GMT-0600 (Central Standard Time)",
   "dirs": [
     "src/content",
     "src/pages",
@@ -10,7 +10,7 @@
   "files": 26,
   "perFile": {
     "src/content/application-problems.md": {
-      "units": 45,
+      "units": 49,
       "marked": 31,
       "unmarked": 0
     },
@@ -140,18 +140,18 @@
       "unmarked": 0
     }
   },
-  "sentences": 967,
+  "sentences": 971,
   "markedSentences": 472,
-  "manifestClaims": 401,
-  "referencedClaims": 401,
+  "manifestClaims": 400,
+  "referencedClaims": 400,
   "links": "not run (use --links)",
   "heldBack": null,
   "errors": [],
   "warnings": [],
   "last_live_source_check": {
-    "checkedAt": "Wed Nov 11 2026 15:15:16 GMT-0600 (Central Standard Time)",
+    "checkedAt": "Wed Nov 11 2026 15:24:45 GMT-0600 (Central Standard Time)",
     "result": "PASSED",
-    "manifestClaims": 401,
+    "manifestClaims": 400,
     "errors": 0,
     "fallbacks": [
       "https://membership.dar.org/NSDAR/AppFormz/App_Help_Step_By_Step_1.aspx",
