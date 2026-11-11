@@ -34,10 +34,10 @@ Work through these for each candidate record. Every "no" is a reason the record 
 
 | Test | What to compare | Why it matters |
 |---|---|---|
-| Residence vs. service | Where your patriot lived and where the service was performed | A residence and service location that do not match is a standard DAR review trigger [[claim:darblog-residence]] |
+| Residence vs. service | Where your patriot lived and where the service was performed | A residence and service location that do not match is a standard DAR review trigger. [[claim:darblog-residence]] {{asof:sar-apg-patriot-residence}} SAR's application guide says the patriot's residence during the Revolution must agree with the service being claimed. [[claim:sar-apg-patriot-residence]] |
 | Distance | Towns, not just counties | DAR's example: two Middlesex County towns nearly 45 miles apart pointed to two men, not one [[claim:darblog-woburn]] |
 | Alive at the time | Death date vs. service date | DAR adds a service date for patriots who died during the war, to show the patriot was alive then [[claim:darblog-died]] |
-| Right age | Birth range vs. service | {{asof:sar-apg-patriot-residence}} SAR's application guide says the patriot's residence during the Revolution must agree with the service being claimed. [[claim:sar-apg-patriot-residence]] {{asof:sar-apg-patriot-age}} SAR's application guide says that if the patriot's birth date can't be found, you cite a proven fact showing he was living at the time of the service and of age for it [[claim:sar-apg-patriot-age]] |
+| Right age | Birth range vs. service | {{asof:sar-apg-patriot-age}} SAR's application guide says that if the patriot's birth date can't be found, you cite a proven fact showing he was living at the time of the service and of age for it [[claim:sar-apg-patriot-age]] |
 | Same household over time | Age brackets across censuses | Census brackets help track one head of household among same-name men [[claim:nara-census-ballpark]] |
 | Same place, several records | Census, deed and court order in one county | NSCDA's South Carolina society's standards say three such records in the same county MAY be enough to show one man [[claim:nscda-same-county]] |
 | Unit and officers | Names of officers and companies in each record | A pension application normally states rank, unit and period of service [[claim:m804-rank-unit]] |

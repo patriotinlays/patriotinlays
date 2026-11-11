@@ -1073,7 +1073,7 @@ for (const w of [390, 1280]) { const cx = await browser.newContext({ viewport: {
   check("t148 #1: the Supplementals section has Tim's caveat and no Ohio point", (() => { const sec = ap.slice(at("supplementals-and-replacements-sar"), at("pre-submission-checklist")); return sec.includes("<p>These points come from SAR's national application checklist, Genealogy Committee Policies and Application Preparation Guide.</p>") && !/Ohio/.test(sec); })());
   const sn = H8("guides/same-name"); const snT = sn.replace(/<[^>]+>/g, "");
   const two = ["SAR's application guide says the patriot's residence during the Revolution must agree with the service being claimed.", "SAR's application guide says that if the patriot's birth date can't be found, you cite a proven fact showing he was living at the time of the service and of age for it"];
-  check("t148 #3: Same Name's 'Right age' row has the same two APG sentences as Application Returned (same claims, 'As of' dates), and the Ohio patriot-generation line is gone from the site",
+  check("t148 #3 (t149: split across two rows): Same Name's 'Right age' row has the same two APG sentences as Application Returned (same claims, 'As of' dates), and the Ohio patriot-generation line is gone from the site",
     two.every((t) => snT.includes(t) && ap.replace(/<[^>]+>/g, "").includes(t)) && /data-asof="sar-apg-patriot-residence"/.test(sn) && /data-asof="sar-apg-patriot-age"/.test(sn) && !/patriot's generation should/.test(snT) && !JSON.stringify(JSON.parse(readFileSync(join(ROOT, "manifest/claims.json"), "utf8"))).includes('"ohsar-patriot-gen"'));
   const { mkdirSync: mk8 } = await import("node:fs"); const REL8 = join(ROOT, "qa/release-logs/t148"); mk8(REL8, { recursive: true });
   for (const w of [390, 1280]) { const cx = await browser.newContext({ viewport: { width: w, height: 900 } }); const pg = await cx.newPage(); const r = {};
@@ -1085,6 +1085,20 @@ for (const w of [390, 1280]) { const cx = await browser.newContext({ viewport: {
     await pg.locator("text=Right age").first().scrollIntoViewIfNeeded(); await pg.screenshot({ path: join(REL8, `same-name-right-age-${w}.png`) });
     check(`t148 (${w}px): Application Returned and Same Name fit the screen (no sideways scroll)`, Object.values(r).every((x) => x.sw <= x.iw), JSON.stringify(r));
     await cx.close(); } }
+// ---- t149: Same Name: the SAR residency sentence sits in "Residence vs. Service" (after DAR's point); "Right Age" keeps only the alive-and-of-age sentence ----
+{ const sn = readFileSync(join(DIST, "guides/same-name/index.html"), "utf8").replace(/&#39;|&apos;/g, "'");
+  const row = (label) => { const rows = [...sn.matchAll(/<tr>([\s\S]*?)<\/tr>/g)].map((m) => m[1]); const r = rows.find((x) => new RegExp(`^\\s*<td>${label}</td>`).test(x)); return r ? r.replace(/<[^>]+>/g, "").replace(/\[\d+\]/g, "") : ""; };
+  const res = row("Residence vs\\. Service|Residence vs\\. service"), age = row("Right Age|Right age");
+  const RES = "SAR's application guide says the patriot's residence during the Revolution must agree with the service being claimed.";
+  const AGE = "SAR's application guide says that if the patriot's birth date can't be found, you cite a proven fact showing he was living at the time of the service and of age for it";
+  check("t149: Same Name's 'Residence vs. Service' row keeps DAR's point and then has the SAR residency sentence ('As of' its date); 'Right Age' has only the alive-and-of-age sentence",
+    /A residence and service location that do not match is a standard DAR review trigger/.test(res) && res.indexOf("DAR review trigger") < res.indexOf(RES) && /As of [A-Z][a-z]+ \d{1,2}, \d{4}, SAR's application guide says the patriot's residence/.test(res)
+    && age.includes(AGE) && !age.includes(RES) && sn.split('data-asof="sar-apg-patriot-residence"').length === 2, JSON.stringify({ res: res.slice(0, 300), age: age.slice(0, 300) }));
+  const { mkdirSync: mk9 } = await import("node:fs"); const REL9 = join(ROOT, "qa/release-logs/t149"); mk9(REL9, { recursive: true });
+  for (const w of [390, 1280]) { const cx = await browser.newContext({ viewport: { width: w, height: 900 } }); const pg = await cx.newPage(); await pg.goto(BASE + "/guides/same-name/");
+    const r = await pg.evaluate(() => ({ sw: document.documentElement.scrollWidth, iw: innerWidth }));
+    await pg.locator("#the-disambiguation-checklist").scrollIntoViewIfNeeded(); await pg.screenshot({ path: join(REL9, `same-name-checklist-${w}.png`) });
+    check(`t149 (${w}px): Same Name fits the screen (no sideways scroll)`, r.sw <= r.iw, JSON.stringify(r)); await cx.close(); } }
 // ---- t130 #1 / #3: home start cards, spacing, guide titles, menu (390px and 1280px) ----
 { const hH = readFileSync(join(DIST, "index.html"), "utf8");
   for (const w of [390, 1280]) { const cx = await browser.newContext({ viewport: { width: w, height: 900 } }); const pg = await cx.newPage(); await pg.goto(`${BASE}/`);

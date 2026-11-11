@@ -1,8 +1,8 @@
 {
-  "ranAt": "Wed Nov 11 2026 15:26:15 GMT-0600 (Central Standard Time)",
+  "ranAt": "Wed Nov 11 2026 15:38:20 GMT-0600 (Central Standard Time)",
   "browser": "/usr/bin/google-chrome (headless) via playwright-core 1.59.1",
-  "passed": 271,
-  "total": 271,
+  "passed": 274,
+  "total": 274,
   "exampleReportPages": {
     "summaryPages": 2,
     "fullPages": 3,
@@ -1327,7 +1327,7 @@
       "detail": ""
     },
     {
-      "name": "t148 #3: Same Name's 'Right age' row has the same two APG sentences as Application Returned (same claims, 'As of' dates), and the Ohio patriot-generation line is gone from the site",
+      "name": "t148 #3 (t149: split across two rows): Same Name's 'Right age' row has the same two APG sentences as Application Returned (same claims, 'As of' dates), and the Ohio patriot-generation line is gone from the site",
       "ok": true,
       "detail": ""
     },
@@ -1340,6 +1340,21 @@
       "name": "t148 (1280px): Application Returned and Same Name fit the screen (no sideways scroll)",
       "ok": true,
       "detail": "{\"ap\":{\"sw\":1280,\"iw\":1280},\"sn\":{\"sw\":1280,\"iw\":1280}}"
+    },
+    {
+      "name": "t149: Same Name's 'Residence vs. Service' row keeps DAR's point and then has the SAR residency sentence ('As of' its date); 'Right Age' has only the alive-and-of-age sentence",
+      "ok": true,
+      "detail": "{\"res\":\"Residence vs. serviceWhere your patriot lived and where the service was performedA residence and service location that do not match is a standard DAR review trigger. As of November 11, 2026, SAR's application guide says the patriot's residence during the Revolution must agree with the service being \",\"age\":\"Right ageBirth range vs. serviceAs of November 11, 2026, SAR's application guide says that if the patriot's birth date can't be found, you cite a proven fact showing he was living at the time of the service and of age for it\"}"
+    },
+    {
+      "name": "t149 (390px): Same Name fits the screen (no sideways scroll)",
+      "ok": true,
+      "detail": "{\"sw\":390,\"iw\":390}"
+    },
+    {
+      "name": "t149 (1280px): Same Name fits the screen (no sideways scroll)",
+      "ok": true,
+      "detail": "{\"sw\":1280,\"iw\":1280}"
     },
     {
       "name": "t130 #1 (390px): under the heading and independent line, Tim's sentence, then the three start cards (stacked) with his exact titles, lines and navy buttons, then 'See how the tools work', then the longer paragraphs; the 'Ready to get started?' box is gone",

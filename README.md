@@ -260,6 +260,9 @@ Docs: https://developers.cloudflare.com/pages/how-to/web-analytics/
 - February 28, 1855 navy-widow law cited as ch. 126, sec. 3, 10 Stat. 616 (chapter begins at 615); 10 Stat. 701 is only the March 3, 1855 bounty-land act.
 - Worksheet: step 1 is the patriot, step 2 starts the family with yourself; removing the oldest generation asks for confirmation.
 
+### t149 (Nov 11, 2026)
+- Same Name: the SAR residency sentence moved from "Right age" to "Residence vs. service" (after DAR's point, which now ends with a period); "Right age" keeps only the alive-and-of-age sentence.
+
 ### t148 (Nov 11, 2026)
 - Application Returned: the Supplementals caveat names SAR's national checklist, Genealogy Committee Policies and Application Preparation Guide; Tim's Ohio caveat sits directly above the problem table and directly above the pre-submission checklist (two copies; the sections are not adjacent).
 - Same Name: the "Right age" row uses the same two APG sentences as Application Returned; ohsar-patriot-gen is no longer used.
