@@ -260,6 +260,9 @@ Docs: https://developers.cloudflare.com/pages/how-to/web-analytics/
 - February 28, 1855 navy-widow law cited as ch. 126, sec. 3, 10 Stat. 616 (chapter begins at 615); 10 Stat. 701 is only the March 3, 1855 bounty-land act.
 - Worksheet: step 1 is the patriot, step 2 starts the family with yourself; removing the oldest generation asks for confirmation.
 
+### t155 (Nov 11, 2026) — preview only
+- Widow Pension Law Checker and Lineage Evidence Matrix: a one-line callout immediately after the existing "New to this? Start with the Roadmap guide." pointer: "New here? Start with the Roadmap guide for the full step-by-step process.", with only "Roadmap guide" linked to `/guides/lineage-proof-roadmap/`. The existing pointer and the "Terms Used on This Page" glossary are kept. No tool logic, form fields, or other pages change.
+
 ### t154 (Nov 11, 2026)
 - A tiny deferred self-hosted script (`/assets/js/open-details.js`) on every page opens any `<details>` the URL hash points to, or that contains the hashed element (including nested ancestors), then scrolls the target into view. Same-hash in-page clicks are handled too (hashchange does not fire). Without JavaScript the page works as before. No content changes. No CSP headers were present.
 

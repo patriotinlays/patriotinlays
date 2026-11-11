@@ -1,0 +1,9 @@
+
+> patriotinlays-pilot@0.1.0 check
+> node scripts/check-manifest.mjs
+
+Live-source check: NOT RUN
+Source Manifest gate: 26 page(s), 971 sentence(s), 472 with claim markers; 400 manifest claims, 400 referenced.
+Source scope (rule 7): 0 flagged
+PASSED: every factual claim maps to a verified manifest entry.
+Live-source check: NOT RUN

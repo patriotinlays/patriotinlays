@@ -1265,6 +1265,36 @@ for (const w of [390, 1280]) { const cx = await browser.newContext({ viewport: {
       inn.defs && inn.inner && inn.vis && inn.inView, JSON.stringify(inn));
     await pg.screenshot({ path: join(REL14, `inner-anchor-open-${w}.png`) });
     await cx.close(); } }
+// ---- t155: one-line Roadmap callout on both tool pages, after the existing "New to this?" pointer ----
+{ const REL15 = join(ROOT, "qa/release-logs/t155"); mkdirSync(REL15, { recursive: true });
+  const LINE = 'New here? Start with the <a href="/guides/lineage-proof-roadmap/">Roadmap guide</a> for the full step-by-step process.';
+  const tools = ["/tools/widow-pension-checker/", "/tools/lineage-matrix/"];
+  const bad = [];
+  for (const p of tools) { const h = readFileSync(join(DIST, p, "index.html"), "utf8");
+    const ptr = h.indexOf("data-roadmap-pointer"); const call = h.indexOf("data-roadmap-callout");
+    const m = h.match(/<p class="roadmap-pointer" data-roadmap-callout>([\s\S]*?)<\/p>/);
+    if (!m || m[1] !== LINE || call < ptr || ptr < 0 || (h.match(/data-roadmap-callout/g) || []).length !== 1
+      || !h.includes("data-roadmap-pointer>New to this?")) bad.push(p + " " + (m ? m[1] : "no match")); }
+  check("t155: both tool pages have Tim's callout verbatim, right after the existing 'New to this?' pointer, linking only 'Roadmap guide'; the existing pointer is kept",
+    bad.length === 0, bad.join(" | "));
+  const others = ["about", "faq", "guides/lineage-proof-roadmap", "tools/widow-pension-checker/report", "tools/lineage-matrix/report"];
+  const leaked = others.filter((p) => readFileSync(join(DIST, p, "index.html"), "utf8").includes("data-roadmap-callout"));
+  check("t155: the Roadmap guide exists at /guides/lineage-proof-roadmap/; the callout is not on About, FAQ, the Roadmap, or the report pages",
+    existsSync(join(DIST, "guides/lineage-proof-roadmap/index.html")) && leaked.length === 0, leaked.join(","));
+  for (const w of [390, 1280]) { const cx = await browser.newContext({ viewport: { width: w, height: 900 } }); const pg = await cx.newPage();
+    for (const p of tools) { await pg.goto(BASE + p);
+      const r = await pg.evaluate(() => {
+        const c = document.querySelector("[data-roadmap-callout]"); const a = c && c.querySelector("a");
+        const ptr = document.querySelector("[data-roadmap-pointer]");
+        return { vis: !!c && c.checkVisibility(), text: c && c.textContent, href: a && a.getAttribute("href"),
+          linkText: a && a.textContent, after: !!(ptr && c && ptr.nextElementSibling === c),
+          sw: document.documentElement.scrollWidth, iw: innerWidth }; });
+      check(`t155 (${w}px) ${p}: the callout is visible, sits immediately after 'New to this?', links only 'Roadmap guide', and does not scroll sideways`,
+        r.vis && r.text === "New here? Start with the Roadmap guide for the full step-by-step process." && r.href === "/guides/lineage-proof-roadmap/" && r.linkText === "Roadmap guide" && r.after && r.sw <= r.iw, JSON.stringify(r));
+      const shot = p.replace(/\//g, "-").replace(/^-|-$/g, "");
+      await pg.locator("[data-roadmap-callout]").scrollIntoViewIfNeeded();
+      await pg.screenshot({ path: join(REL15, `${shot}-${w}.png`) }); }
+    await cx.close(); } }
 // ---- t130 #1 / #3: home start cards, spacing, guide titles, menu (390px and 1280px) ----
 { const hH = readFileSync(join(DIST, "index.html"), "utf8");
   for (const w of [390, 1280]) { const cx = await browser.newContext({ viewport: { width: w, height: 900 } }); const pg = await cx.newPage(); await pg.goto(`${BASE}/`);

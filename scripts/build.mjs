@@ -232,7 +232,8 @@ function renderFile(dir, f) {
   // Tool pages: title, purpose, limits box, tool first; glossary and long copy sit below the tool.
   // Tim t119u #2: on tool pages, one line right under the one-sentence purpose (above the "What it does" box) points beginners to the Roadmap.
   if (fm.tool) { const i = html.indexOf("</p>", html.indexOf("</h1>")); if (i < 0) throw new Error(`tool page ${f}: no purpose line`);
-    html = html.slice(0, i + 4) + '<p class="roadmap-pointer" data-roadmap-pointer>New to this? <a href="/guides/lineage-proof-roadmap/">Start with the Roadmap guide.</a></p>' + html.slice(i + 4); }
+    html = html.slice(0, i + 4) + '<p class="roadmap-pointer" data-roadmap-pointer>New to this? <a href="/guides/lineage-proof-roadmap/">Start with the Roadmap guide.</a></p>'
+      + '<p class="roadmap-pointer" data-roadmap-callout>New here? Start with the <a href="/guides/lineage-proof-roadmap/">Roadmap guide</a> for the full step-by-step process.</p>' + html.slice(i + 4); }
   if (fm.tool && defs) html = html.replace(/(<\/section><script type="module" src="\/assets\/js\/tool-[ab]-ui\.js"><\/script>)/, `$1${defs}`);
   else if (defs || inShort) html = html.replace("</h1>", `</h1>${inShort}${defs}`);
   // Guides end with a "What to do next" block (its own tool first) and a link to the next guide, so no guide is a dead end.
