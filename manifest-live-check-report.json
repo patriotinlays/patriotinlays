@@ -1,7 +1,7 @@
 {
   "live_source_check": "RUN",
   "live_source_check_line": "Live-source check: RUN",
-  "checkedAt": "Wed Nov 11 2026 15:36:44 GMT-0600 (Central Standard Time)",
+  "checkedAt": "Wed Nov 11 2026 15:52:01 GMT-0600 (Central Standard Time)",
   "dirs": [
     "src/content",
     "src/pages",
@@ -696,10 +696,10 @@
   "errors": [],
   "warnings": [
     "https://www.dar.org/national-society/accepted-revolutionary-war-service: Node fetch got 403/429; verified with curl instead",
-    "https://membership.dar.org/NSDAR/AppFormz/App_Help_Step_By_Step_1.aspx: FALLBACK: unreachable source accepted on last successful check under 30 days. URL failure=http_522; lastPassed=2026-11-05T16:34:49.000Z; ageDays=6.21. Re-check required on every run.",
-    "https://membership.dar.org/NSDAR/AppFormz/FAQs.aspx: FALLBACK: unreachable source accepted on last successful check under 30 days. URL failure=http_522; lastPassed=2026-11-05T16:34:49.000Z; ageDays=6.21. Re-check required on every run.",
+    "https://membership.dar.org/NSDAR/AppFormz/App_Help_Step_By_Step_1.aspx: FALLBACK: unreachable source accepted on last successful check under 30 days. URL failure=http_522; lastPassed=2026-11-05T16:34:49.000Z; ageDays=6.22. Re-check required on every run.",
+    "https://membership.dar.org/NSDAR/AppFormz/FAQs.aspx: FALLBACK: unreachable source accepted on last successful check under 30 days. URL failure=http_522; lastPassed=2026-11-05T16:34:49.000Z; ageDays=6.22. Re-check required on every run.",
     "https://blog.dar.org/2021/02/26/why-was-his-service-removed: Node fetch got 403/429; verified with curl instead",
-    "https://services.dar.org/Public/DAR_Research/search_revwar/?Tab_ID=14&Tab_ID_Sub=0&action=list: FALLBACK: unreachable source accepted on last successful check under 30 days. URL failure=http_522; lastPassed=2026-11-05T16:34:49.000Z; ageDays=6.21. Re-check required on every run.",
+    "https://services.dar.org/Public/DAR_Research/search_revwar/?Tab_ID=14&Tab_ID_Sub=0&action=list: FALLBACK: unreachable source accepted on last successful check under 30 days. URL failure=http_522; lastPassed=2026-11-05T16:34:49.000Z; ageDays=6.22. Re-check required on every run.",
     "https://www.dar.org/library/search.cfm: Node fetch got 403/429; verified with curl instead",
     "https://www.dar.org/library/collections/dar-lineage-resources: Node fetch got 403/429; verified with curl instead",
     "https://www.dar.org/discover/become-member/chapter-locator: Node fetch got 403/429; verified with curl instead",

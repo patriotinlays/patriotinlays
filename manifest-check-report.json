@@ -1,7 +1,7 @@
 {
-  "live_source_check": "NOT RUN",
-  "live_source_check_line": "Live-source check: NOT RUN",
-  "checkedAt": "Wed Nov 11 2026 15:38:10 GMT-0600 (Central Standard Time)",
+  "live_source_check": "RUN",
+  "live_source_check_line": "Live-source check: RUN",
+  "checkedAt": "Wed Nov 11 2026 15:52:01 GMT-0600 (Central Standard Time)",
   "dirs": [
     "src/content",
     "src/pages",
@@ -144,20 +144,570 @@
   "markedSentences": 472,
   "manifestClaims": 400,
   "referencedClaims": 400,
-  "links": "not run (use --links)",
-  "heldBack": null,
-  "errors": [],
-  "warnings": [],
-  "last_live_source_check": {
-    "checkedAt": "Wed Nov 11 2026 15:36:44 GMT-0600 (Central Standard Time)",
-    "result": "PASSED",
-    "manifestClaims": 400,
-    "errors": 0,
-    "fallbacks": [
-      "https://membership.dar.org/NSDAR/AppFormz/App_Help_Step_By_Step_1.aspx",
-      "https://membership.dar.org/NSDAR/AppFormz/FAQs.aspx",
-      "https://services.dar.org/Public/DAR_Research/search_revwar/?Tab_ID=14&Tab_ID_Sub=0&action=list"
+  "links": [
+    {
+      "url": "https://www.dar.org/national-society/accepted-revolutionary-war-service",
+      "status": 200,
+      "quotesFound": 17,
+      "quotesMissing": 0
+    },
+    {
+      "url": "https://membership.dar.org/NSDAR/AppFormz/App_Help_Step_By_Step_1.aspx",
+      "status": 522,
+      "quotesFound": "-",
+      "quotesMissing": "-",
+      "fallback": true,
+      "lastPassed": "2026-11-05T16:34:49.000Z",
+      "failureKind": "http_522",
+      "claimsCoveredByEarlierMatch": 28,
+      "claimsHeld": [],
+      "newUses": []
+    },
+    {
+      "url": "https://membership.dar.org/NSDAR/AppFormz/FAQs.aspx",
+      "status": 522,
+      "quotesFound": "-",
+      "quotesMissing": "-",
+      "fallback": true,
+      "lastPassed": "2026-11-05T16:34:49.000Z",
+      "failureKind": "http_522",
+      "claimsCoveredByEarlierMatch": 13,
+      "claimsHeld": [],
+      "newUses": []
+    },
+    {
+      "url": "https://blog.dar.org/2021/02/26/why-was-his-service-removed",
+      "status": 200,
+      "quotesFound": 14,
+      "quotesMissing": 0
+    },
+    {
+      "url": "https://services.dar.org/Public/DAR_Research/search_revwar/?Tab_ID=14&Tab_ID_Sub=0&action=list",
+      "status": 522,
+      "quotesFound": "-",
+      "quotesMissing": "-",
+      "fallback": true,
+      "lastPassed": "2026-11-05T16:34:49.000Z",
+      "failureKind": "http_522",
+      "claimsCoveredByEarlierMatch": 4,
+      "claimsHeld": [],
+      "newUses": []
+    },
+    {
+      "url": "https://www.sar.org/step-1/",
+      "status": 200,
+      "quotesFound": 13,
+      "quotesMissing": 0
+    },
+    {
+      "url": "https://www.sar.org/wp-content/uploads/2019/10/Revolutionary-Taxes-as-Evidence-of-Patriotic-Service.pdf",
+      "status": 200,
+      "quotesFound": 8,
+      "quotesMissing": 0
+    },
+    {
+      "url": "https://cincinnatisar.org/wp-content/uploads/2023/05/Presentation-How-to-Produce-Approval-Ready-Applications-and-Reduce-Turnaround-Time.pdf",
+      "status": 200,
+      "quotesFound": 6,
+      "quotesMissing": 0
+    },
+    {
+      "url": "https://www.sar.org/app/uploads/APG-07-June-2026.pdf",
+      "status": 200,
+      "quotesFound": 6,
+      "quotesMissing": 0
+    },
+    {
+      "url": "https://www.sar.org/app/uploads/NSSAR-Genealogy-Policy-Manual-2026-12-5.pdf",
+      "status": 200,
+      "quotesFound": 3,
+      "quotesMissing": 0
+    },
+    {
+      "url": "https://members.sar.org/media/uploads/pages/334/wPXSPrcD0cuU.pdf",
+      "status": 200,
+      "quotesFound": 2,
+      "quotesMissing": 0
+    },
+    {
+      "url": "https://www.archives.gov/files/research/military/army/dc/m804.pdf",
+      "status": 200,
+      "quotesFound": 40,
+      "quotesMissing": 0
+    },
+    {
+      "url": "https://www.archives.gov/files/research/military/american-revolution/service-records.pdf",
+      "status": 200,
+      "quotesFound": 14,
+      "quotesMissing": 0
+    },
+    {
+      "url": "https://www.archives.gov/research/military/genealogy",
+      "status": 200,
+      "quotesFound": 6,
+      "quotesMissing": 0
+    },
+    {
+      "url": "https://www.archives.gov/research/military/american-revolution",
+      "status": 200,
+      "quotesFound": 7,
+      "quotesMissing": 0
+    },
+    {
+      "url": "https://www.dar.org/library/search.cfm",
+      "status": 200,
+      "quotesFound": 1,
+      "quotesMissing": 0
+    },
+    {
+      "url": "https://www.dar.org/library/collections/dar-lineage-resources",
+      "status": 200,
+      "quotesFound": 2,
+      "quotesMissing": 0
+    },
+    {
+      "url": "https://www.sar.org/genealogical-copy-services/",
+      "status": 200,
+      "quotesFound": 1,
+      "quotesMissing": 0
+    },
+    {
+      "url": "https://www.archives.gov/research/census/1790-1840.html",
+      "status": 200,
+      "quotesFound": 8,
+      "quotesMissing": 0
+    },
+    {
+      "url": "https://www.archives.gov/research/catalog/catalog-bulk-downloads/revwarpensionfiles",
+      "status": 200,
+      "quotesFound": 1,
+      "quotesMissing": 0
+    },
+    {
+      "url": "https://www.archives.gov/publications/prologue/2015/summer/rev-war-pensions.html",
+      "status": 200,
+      "quotesFound": 4,
+      "quotesMissing": 0
+    },
+    {
+      "url": "https://www.nps.gov/articles/000/what-might-you-find-in-the-revolutionary-war-pension-files.htm",
+      "status": 200,
+      "quotesFound": 15,
+      "quotesMissing": 0
+    },
+    {
+      "url": "https://lva-virginia.libguides.com/bounty-claims/home",
+      "status": 200,
+      "quotesFound": 12,
+      "quotesMissing": 0
+    },
+    {
+      "url": "https://libguides.nypl.org/military-genealogy/revolutionary-war",
+      "status": 200,
+      "quotesFound": 6,
+      "quotesMissing": 0
+    },
+    {
+      "url": "https://nscdasnc.memberclicks.net/assets/membership/Standards%20of%20Proof%202025.pdf",
+      "status": 200,
+      "quotesFound": 21,
+      "quotesMissing": 0
+    },
+    {
+      "url": "https://uelac.ca/loyalist-directory/help/",
+      "status": 200,
+      "quotesFound": 7,
+      "quotesMissing": 0
+    },
+    {
+      "url": "https://www.dar.org/discover/become-member/chapter-locator",
+      "status": 200,
+      "quotesFound": 2,
+      "quotesMissing": 0
+    },
+    {
+      "url": "https://www.dar.org/discover/become-member/how-join",
+      "status": 200,
+      "quotesFound": 8,
+      "quotesMissing": 0
+    },
+    {
+      "url": "https://www.sar.org/how-to-apply/",
+      "status": 200,
+      "quotesFound": 7,
+      "quotesMissing": 0
+    },
+    {
+      "url": "https://www.sar.org/find-your-contact/",
+      "status": 200,
+      "quotesFound": 1,
+      "quotesMissing": 0
+    },
+    {
+      "url": "https://www.loc.gov/collections/united-states-statutes-at-large/about-this-collection/",
+      "status": 200,
+      "quotesFound": 3,
+      "quotesMissing": 0
+    },
+    {
+      "url": "https://www.dar.org/discover/become-member/what-dar",
+      "status": 200,
+      "quotesFound": 1,
+      "quotesMissing": 0
+    },
+    {
+      "url": "https://www.sar.org/sar-missions-and-goals/",
+      "status": 200,
+      "quotesFound": 4,
+      "quotesMissing": 0
+    },
+    {
+      "url": "https://nscda.org/about/membership/",
+      "status": 200,
+      "quotesFound": 2,
+      "quotesMissing": 0
+    },
+    {
+      "url": "https://lva-virginia.libguides.com/revolutionary-war/home",
+      "status": 200,
+      "quotesFound": 5,
+      "quotesMissing": 0
+    },
+    {
+      "url": "https://lva-virginia.libguides.com/bmd",
+      "status": 200,
+      "quotesFound": 5,
+      "quotesMissing": 0
+    },
+    {
+      "url": "https://guide.msa.maryland.gov/pages/viewer.aspx?page=military",
+      "status": 200,
+      "quotesFound": 3,
+      "quotesMissing": 0
+    },
+    {
+      "url": "https://guide.msa.maryland.gov/pages/viewer.aspx?page=birth",
+      "status": 200,
+      "quotesFound": 2,
+      "quotesMissing": 0
+    },
+    {
+      "url": "https://appx.archives.ncdcr.gov/findingaids/TRPR_Troop_Returns_Collection.html",
+      "status": 200,
+      "quotesFound": 3,
+      "quotesMissing": 0
+    },
+    {
+      "url": "https://vitalrecords.nc.gov/research.htm",
+      "status": 200,
+      "quotesFound": 6,
+      "quotesMissing": 0
+    },
+    {
+      "url": "https://nj.gov/state/archives/guides/sdea0003.pdf",
+      "status": 200,
+      "quotesFound": 2,
+      "quotesMissing": 0
+    },
+    {
+      "url": "https://www.nj.gov/state/archives/search-genealogical-collections.shtml",
+      "status": 200,
+      "quotesFound": 4,
+      "quotesMissing": 0
+    },
+    {
+      "url": "https://www.pa.gov/agencies/phmc/pa-state-archives/research-online/research-guides/revolutionary-war-overview",
+      "status": 200,
+      "quotesFound": 1,
+      "quotesMissing": 0
+    },
+    {
+      "url": "https://www.pa.gov/agencies/health/programs/vital-records/genealogy",
+      "status": 200,
+      "quotesFound": 2,
+      "quotesMissing": 0
+    },
+    {
+      "url": "https://www.pa.gov/services/phmc/request-a-birth-or-death-certificate",
+      "status": 200,
+      "quotesFound": 1,
+      "quotesMissing": 0
+    },
+    {
+      "url": "https://libguides.ctstatelibrary.org/hg/militaryrecords/revwar",
+      "status": 200,
+      "quotesFound": 2,
+      "quotesMissing": 0
+    },
+    {
+      "url": "https://scdah.sc.gov/sites/scdah/files/Documents/Research%20and%20Genealogy/Resources/Military%20Records/rvwr.pdf",
+      "status": 200,
+      "quotesFound": 2,
+      "quotesMissing": 0
+    },
+    {
+      "url": "https://scdah.sc.gov/news/2020-03/sc-birth-certificates-archives",
+      "status": 200,
+      "quotesFound": 2,
+      "quotesMissing": 0
+    },
+    {
+      "url": "https://guides.statelibrary.sc.gov/genealogy/vitalrecords",
+      "status": 200,
+      "quotesFound": 2,
+      "quotesMissing": 0
+    },
+    {
+      "url": "https://www.mass.gov/info-details/researching-massachusetts-soldiers-and-sailors",
+      "status": 200,
+      "quotesFound": 2,
+      "quotesMissing": 0
+    },
+    {
+      "url": "https://www.archives.gov/research/vital-records",
+      "status": 200,
+      "quotesFound": 2,
+      "quotesMissing": 0
+    },
+    {
+      "url": "https://tile.loc.gov/storage-services/service/ll/llsl/llsl-c24/llsl-c24.pdf",
+      "status": 200,
+      "quotesFound": 1,
+      "quotesMissing": 0
+    },
+    {
+      "url": "https://tile.loc.gov/storage-services/service/ll/llsl/llsl-c25/llsl-c25.pdf",
+      "status": 200,
+      "quotesFound": 3,
+      "quotesMissing": 0
+    },
+    {
+      "url": "https://tile.loc.gov/storage-services/service/ll/llsl/llsl-c30/llsl-c30.pdf",
+      "status": 200,
+      "quotesFound": 4,
+      "quotesMissing": 0
+    },
+    {
+      "url": "https://tile.loc.gov/storage-services/service/ll/llsl/llsl-c33/llsl-c33.pdf",
+      "status": 200,
+      "quotesFound": 8,
+      "quotesMissing": 0
+    },
+    {
+      "url": "https://tile.loc.gov/storage-services/service/ll/llsl/llsl-c45/llsl-c45.pdf",
+      "status": 200,
+      "quotesFound": 4,
+      "quotesMissing": 0
+    },
+    {
+      "url": "https://tile.loc.gov/storage-services/service/ll/llsl/llsl-c32/llsl-c32.pdf",
+      "status": 200,
+      "quotesFound": 3,
+      "quotesMissing": 0
+    },
+    {
+      "url": "https://www.archives.gov/veterans/military-service-records/pre-ww-1-records",
+      "status": 200,
+      "quotesFound": 2,
+      "quotesMissing": 0
+    },
+    {
+      "url": "https://www.georgiaarchives.org/research/bounty_land_grants/",
+      "status": 200,
+      "quotesFound": 6,
+      "quotesMissing": 0
+    },
+    {
+      "url": "https://www.nhsl.dncr.nh.gov/collections/genealogical-resources/researching-your-nh-family-history",
+      "status": 200,
+      "quotesFound": 4,
+      "quotesMissing": 0
+    },
+    {
+      "url": "https://www.sos.ri.gov/divisions/state-archives/VitalRecords",
+      "status": 200,
+      "quotesFound": 4,
+      "quotesMissing": 0
+    },
+    {
+      "url": "https://archives.delaware.gov/digital-archives/military-records-revolutionary-war-oaths-of-allegiance/",
+      "status": 200,
+      "quotesFound": 3,
+      "quotesMissing": 0
+    },
+    {
+      "url": "https://archives.delaware.gov/digital-archives/guide-to-vital-statistics-records/",
+      "status": 200,
+      "quotesFound": 5,
+      "quotesMissing": 0
+    },
+    {
+      "url": "https://sosri.access.preservica.com/uncategorized/SO_6db31295-6c55-44bb-a5af-83989afb8c81/",
+      "status": 200,
+      "quotesFound": 2,
+      "quotesMissing": 0
+    },
+    {
+      "url": "https://blog.dar.org/using-ancestor-tab-grs",
+      "status": 200,
+      "quotesFound": 2,
+      "quotesMissing": 0
+    },
+    {
+      "url": "https://www.sar.org/patriot-research-system/",
+      "status": 200,
+      "quotesFound": 2,
+      "quotesMissing": 0
+    },
+    {
+      "url": "https://www.archives.gov/citizen-archivist/missions/revolutionary-war-pension-files",
+      "status": 200,
+      "quotesFound": 1,
+      "quotesMissing": 0
+    },
+    {
+      "url": "https://www.archives.gov/research/military/army/pensions",
+      "status": 200,
+      "quotesFound": 1,
+      "quotesMissing": 0
+    },
+    {
+      "url": "https://nysl.nysed.gov/genealogy/precivil",
+      "status": 200,
+      "quotesFound": 3,
+      "quotesMissing": 0
+    },
+    {
+      "url": "https://nysl.nysed.gov/genealogy/vitrec",
+      "status": 200,
+      "quotesFound": 3,
+      "quotesMissing": 0
+    },
+    {
+      "url": "https://guides.loc.gov/connecticut-local-history-genealogy/vital-records",
+      "status": 200,
+      "quotesFound": 2,
+      "quotesMissing": 0
+    },
+    {
+      "url": "https://georgiaarchives.org/research/vital_records",
+      "status": 200,
+      "quotesFound": 3,
+      "quotesMissing": 0
+    },
+    {
+      "url": "https://www.mass.gov/guides/guide-to-genealogical-resources-in-the-state-library",
+      "status": 200,
+      "quotesFound": 1,
+      "quotesMissing": 0
+    }
+  ],
+  "heldBack": {
+    "restored": [],
+    "waiting": [
+      {
+        "id": "t128-01 tool-b birth.recent",
+        "waitingOn": [
+          "https://membership.dar.org/NSDAR/AppFormz/FAQs.aspx"
+        ]
+      },
+      {
+        "id": "t128-02 tool-b birth.older",
+        "waitingOn": [
+          "https://membership.dar.org/NSDAR/AppFormz/App_Help_Step_By_Step_1.aspx"
+        ]
+      },
+      {
+        "id": "t128-03 tool-b death.older",
+        "waitingOn": [
+          "https://membership.dar.org/NSDAR/AppFormz/FAQs.aspx",
+          "https://membership.dar.org/NSDAR/AppFormz/App_Help_Step_By_Step_1.aspx"
+        ]
+      },
+      {
+        "id": "t128-04 tool-b marriage.older",
+        "waitingOn": [
+          "https://membership.dar.org/NSDAR/AppFormz/App_Help_Step_By_Step_1.aspx"
+        ]
+      },
+      {
+        "id": "t128-05 tool-b parentage.recent",
+        "waitingOn": [
+          "https://membership.dar.org/NSDAR/AppFormz/FAQs.aspx"
+        ]
+      },
+      {
+        "id": "t128-06 tool-b parentage.older",
+        "waitingOn": [
+          "https://membership.dar.org/NSDAR/AppFormz/FAQs.aspx"
+        ]
+      },
+      {
+        "id": "t128-07 tool-b residence.recent",
+        "waitingOn": [
+          "https://membership.dar.org/NSDAR/AppFormz/FAQs.aspx"
+        ]
+      },
+      {
+        "id": "t128-08 tool-b residence.older",
+        "waitingOn": [
+          "https://membership.dar.org/NSDAR/AppFormz/FAQs.aspx"
+        ]
+      },
+      {
+        "id": "t128-09 tool-b BIRTH_SUBSTITUTES baptism",
+        "waitingOn": [
+          "https://membership.dar.org/NSDAR/AppFormz/App_Help_Step_By_Step_1.aspx"
+        ]
+      },
+      {
+        "id": "t128-10 substitute-evidence church row",
+        "waitingOn": [
+          "https://membership.dar.org/NSDAR/AppFormz/App_Help_Step_By_Step_1.aspx"
+        ]
+      },
+      {
+        "id": "t128-11 substitute-evidence wills row",
+        "waitingOn": [
+          "https://membership.dar.org/NSDAR/AppFormz/FAQs.aspx"
+        ]
+      },
+      {
+        "id": "t128-12 census-bridge step 5",
+        "waitingOn": [
+          "https://membership.dar.org/NSDAR/AppFormz/FAQs.aspx"
+        ]
+      },
+      {
+        "id": "t129-01 FAQ What records will I need?",
+        "waitingOn": [
+          "https://membership.dar.org/NSDAR/AppFormz/App_Help_Step_By_Step_1.aspx"
+        ]
+      },
+      {
+        "id": "t129-02 limits-matrix What it doesn't do",
+        "waitingOn": [
+          "https://membership.dar.org/NSDAR/AppFormz/App_Help_Step_By_Step_1.aspx"
+        ]
+      }
     ],
-    "report": "manifest-live-check-report.json"
-  }
+    "problems": []
+  },
+  "errors": [],
+  "warnings": [
+    "https://www.dar.org/national-society/accepted-revolutionary-war-service: Node fetch got 403/429; verified with curl instead",
+    "https://membership.dar.org/NSDAR/AppFormz/App_Help_Step_By_Step_1.aspx: FALLBACK: unreachable source accepted on last successful check under 30 days. URL failure=http_522; lastPassed=2026-11-05T16:34:49.000Z; ageDays=6.22. Re-check required on every run.",
+    "https://membership.dar.org/NSDAR/AppFormz/FAQs.aspx: FALLBACK: unreachable source accepted on last successful check under 30 days. URL failure=http_522; lastPassed=2026-11-05T16:34:49.000Z; ageDays=6.22. Re-check required on every run.",
+    "https://blog.dar.org/2021/02/26/why-was-his-service-removed: Node fetch got 403/429; verified with curl instead",
+    "https://services.dar.org/Public/DAR_Research/search_revwar/?Tab_ID=14&Tab_ID_Sub=0&action=list: FALLBACK: unreachable source accepted on last successful check under 30 days. URL failure=http_522; lastPassed=2026-11-05T16:34:49.000Z; ageDays=6.22. Re-check required on every run.",
+    "https://www.dar.org/library/search.cfm: Node fetch got 403/429; verified with curl instead",
+    "https://www.dar.org/library/collections/dar-lineage-resources: Node fetch got 403/429; verified with curl instead",
+    "https://www.dar.org/discover/become-member/chapter-locator: Node fetch got 403/429; verified with curl instead",
+    "https://www.dar.org/discover/become-member/how-join: Node fetch got 403/429; verified with curl instead",
+    "https://www.dar.org/discover/become-member/what-dar: Node fetch got 403/429; verified with curl instead",
+    "https://blog.dar.org/using-ancestor-tab-grs: Node fetch got 403/429; verified with curl instead",
+    "https://nysl.nysed.gov/genealogy/precivil: verified with the official GlobalSign intermediate for nysed.gov (their server omits it)",
+    "https://nysl.nysed.gov/genealogy/vitrec: verified with the official GlobalSign intermediate for nysed.gov (their server omits it)"
+  ],
+  "result": "PASSED"
 }

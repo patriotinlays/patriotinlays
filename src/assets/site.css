@@ -375,3 +375,15 @@ a.ext .ext-icon{display:inline-block;width:.7em;height:.7em;margin-left:.2em;ver
 .in-short li{margin:.2rem 0}
 .in-short li>strong{color:var(--navy)}
 @media print{.in-short{box-shadow:none;break-inside:avoid-page}}
+/* Tim t150: the home page's longer explanation is a native expand, closed by default. */
+details.home-more{border:1px solid var(--line);border-radius:8px;background:var(--card);box-shadow:var(--shadow);padding:.55rem 1rem;margin:1rem 0}
+details.home-more>summary{cursor:pointer;font:600 1rem/1.4 var(--sans);color:var(--navy);min-height:32px;display:list-item;padding:.2rem 0}
+details.home-more>summary:focus-visible{outline:3px solid var(--navy);outline-offset:3px;border-radius:4px}
+details.home-more[open]>summary{margin-bottom:.4rem}
+details.home-more>p:last-child{margin-bottom:.3rem}
+@media print{
+  details.home-more::details-content{content-visibility:visible!important;display:block!important;height:auto!important}
+  details.home-more{box-shadow:none;border:none;padding:0}
+  details.home-more>summary{list-style:none}
+  details.home-more>summary::-webkit-details-marker{display:none}
+}

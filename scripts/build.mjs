@@ -268,6 +268,16 @@ const HOME = (() => { const ctx = { sources: [], tools: new Set(), claimCount: 0
   const html = md(readFileSync(join(ROOT, "src/partials/glossary.md"), "utf8"), ctx).replace('<h2 id="words-you-ll-see-here">', '<h2 id="glossary">');
   const sources = `<h2 id="sources">Sources</h2><ol class="sources">${ctx.sources.map((u, i) => sourceItem(u, i, ctx)).join("")}</ol>`;
   return { body, html: `<div class="glossary">${html}</div>`, sources }; })();
+// Tim t150: the longer explanation (from "Somewhere in your family's past" through "What this site does is explain ...")
+// sits in a native <details>, closed by default, so a skimming visitor sees the short version first. Wording is unchanged
+// (homepage-LOCK); the purpose paragraph, the "It's free" line and the AI line stay visible.
+const HOME_MORE_SUMMARY = "Why This Site Exists";
+function homeMission(html) {
+  const start = html.indexOf("<p>Somewhere in your family"); const endP = html.indexOf("What this site does is explain");
+  const end = html.indexOf("</p>", endP) + 4;
+  if (start < 0 || endP < 0 || end < 4) throw new Error("home: could not find the longer explanation to put in the expand");
+  return html.slice(0, start) + `<details class="home-more" data-home-more><summary>${HOME_MORE_SUMMARY}</summary>\n` + html.slice(start, end) + "\n</details>" + html.slice(end);
+}
 const guides = built.filter((b) => b.cornerstone).sort((a, b) => a.cornerstone - b.cornerstone);
 write("", page({ title: "Patriot, In Lay Terms: plain-English help for DAR and SAR applications", description: "Plain-English guides and free browser tools for documenting descent from a Revolutionary War patriot for a DAR or SAR application.", path: "/",
   body: `<h1 class="home-h1" data-home-h1><span class="sr-only">Patriot, In Lay Terms: </span><span class="subtitle" data-subtitle>Plain-English help with DAR and SAR applications, for the Daughters and the Sons of the American Revolution</span></h1>
@@ -275,7 +285,7 @@ write("", page({ title: "Patriot, In Lay Terms: plain-English help for DAR and S
 <p class="home-intro" data-home-intro>Two free tools and ten guides help you organize what you have and see what's still missing. What you type into the tools stays in your own browser.</p>
 ${START_CARDS}
 <p class="see-how" data-see-how><a href="/walkthroughs/">See how the tools work</a></p>
-<section class="home-mission" data-mission>${HOME.body.replace(/<p>Written with AI assistance/, '<p class="ai-line" data-ai-line>Written with AI assistance')}</section>
+<section class="home-mission" data-mission>${homeMission(HOME.body).replace(/<p>Written with AI assistance/, '<p class="ai-line" data-ai-line>Written with AI assistance')}</section>
 <h2 id="guides">The guides</h2><ol class="guide-list home-guides">${guides.map((g) => `<li><a class="guide-title" href="${g.path}">${esc(g.title)}</a><br><span class="small">${esc(g.description)}</span></li>`).join("")}</ol>
 <p class="home-help">Questions? <a href="/faq/">Questions, Answered Simply</a> · New to the tools? <a href="/walkthroughs/">See them in action</a>, with a made-up family.</p>
 ${HOME.html}

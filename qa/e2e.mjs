@@ -1099,6 +1099,45 @@ for (const w of [390, 1280]) { const cx = await browser.newContext({ viewport: {
     const r = await pg.evaluate(() => ({ sw: document.documentElement.scrollWidth, iw: innerWidth }));
     await pg.locator("#the-disambiguation-checklist").scrollIntoViewIfNeeded(); await pg.screenshot({ path: join(REL9, `same-name-checklist-${w}.png`) });
     check(`t149 (${w}px): Same Name fits the screen (no sideways scroll)`, r.sw <= r.iw, JSON.stringify(r)); await cx.close(); } }
+// ---- t150: home page's longer explanation in a native <details> ("Why This Site Exists"), closed by default ----
+{ const hm = readFileSync(join(DIST, "index.html"), "utf8"); const md10 = readFileSync(join(ROOT, "src/partials/home.md"), "utf8");
+  const ids = [...md10.matchAll(/\[\[claim:([a-z0-9-]+)\]\]/g)].map((m) => m[1]);
+  const det = (hm.match(/<details class="home-more" data-home-more>[\s\S]*?<\/details>/g) || []);
+  const supCount = (h) => (h.match(/<sup[^>]*><a href="#src-/g) || []).length;
+  const mission = hm.slice(hm.indexOf("data-mission"), hm.indexOf("</section>", hm.indexOf("data-mission")));
+  check("t150: the home page has one 'Why This Site Exists' expand (native details, no 'open' attribute) holding the four longer paragraphs; purpose paragraph, 'It's free' line and AI line stay outside it",
+    det.length === 1 && /^<details class="home-more" data-home-more><summary>Why This Site Exists<\/summary>/.test(det[0]) && (det[0].match(/<p>/g) || []).length === 4
+    && /<p>Somewhere in your family/.test(det[0]) && /That can be harder than it sounds/.test(det[0]) && /explains the process in everyday language/.test(det[0]) && /What this site does is explain/.test(det[0])
+    && !/This site helps you organize/.test(det[0]) && /<p>This site helps you organize/.test(mission.slice(0, mission.indexOf("<details"))) && /It(?:'|&#39;)s free, there(?:'|&#39;)s nothing to sign up for/.test(mission.slice(mission.indexOf("</details>"))) && /data-ai-line>Written with AI assistance and reviewed by the site(?:'|&#39;)s owner\. Each fact is tied to a quoted official source, and software checks that the quote is still there\./.test(mission.slice(mission.indexOf("</details>"))));
+  // Adjacent markers from the same source render as one citation, so the expected count collapses those runs.
+  const srcOf = new Map(JSON.parse(readFileSync(join(ROOT, "manifest/claims.json"), "utf8")).claims.map((c) => [c.claim_id, c.source_url]));
+  const want10 = [...md10.matchAll(/(?:\[\[claim:[a-z0-9-]+\]\]\s*)+/g)].reduce((n, m) => n + [...m[0].matchAll(/\[\[claim:([a-z0-9-]+)\]\]/g)].map((x) => srcOf.get(x[1])).filter((u, i, a) => i === 0 || u !== a[i - 1]).length, 0);
+  const titles10 = [...mission.matchAll(/<sup><a href="#src-\d+" title="([^"]+)">/g)].map((m) => m[1]);
+  check(`t150: every home-page claim marker in home.md (${ids.length} markers, ${want10} citations) still renders as a citation in the home text (${supCount(mission)}; ${supCount(det[0] || "")} inside the expand), every marker's claim is in the manifest`, ids.length >= 8 && ids.every((id) => srcOf.has(id)) && supCount(mission) === want10 && titles10.length === want10, JSON.stringify({ ids: ids.length, want10, sups: supCount(mission) }));
+  const REL10 = join(ROOT, "qa/release-logs/t150"); mkdirSync(REL10, { recursive: true });
+  for (const w of [390, 1280]) { const cx = await browser.newContext({ viewport: { width: w, height: 900 } }); const pg = await cx.newPage(); await pg.goto(BASE + "/");
+    const closed = await pg.evaluate(() => { const d = document.querySelector("details[data-home-more]"); const p = d.querySelector("p"); const s = d.querySelector("summary");
+      return { open: d.open, pHidden: !p.checkVisibility(), sumVis: s.checkVisibility(), cards: [...document.querySelectorAll("main [data-start-card]")].filter((c) => c.checkVisibility()).length, hero: document.querySelector("[data-subtitle]").checkVisibility() && document.querySelector("[data-independent]").checkVisibility() && document.querySelector("[data-home-intro]").checkVisibility(),
+        purpose: [...document.querySelectorAll("[data-mission] > p")][0].textContent.startsWith("This site helps you organize") && [...document.querySelectorAll("[data-mission] > p")][0].checkVisibility(), ai: document.querySelector("[data-ai-line]").checkVisibility(), sw: document.documentElement.scrollWidth, iw: innerWidth }; });
+    check(`t150 (${w}px): closed by default: the summary shows, the long paragraphs are hidden; hero, independent line, intro, 3 cards, purpose paragraph and AI line stay visible; no sideways scroll`, !closed.open && closed.pHidden && closed.sumVis && closed.cards === 3 && closed.hero && closed.purpose && closed.ai && closed.sw <= closed.iw, JSON.stringify(closed));
+    await pg.screenshot({ path: join(REL10, `home-top-closed-${w}.png`) });
+    await pg.locator("details[data-home-more] > summary").scrollIntoViewIfNeeded(); await pg.screenshot({ path: join(REL10, `home-expand-closed-${w}.png`) });
+    // Keyboard: Tab reaches the summary, it has a visible focus style, and Enter opens it.
+    await pg.evaluate(() => document.querySelector("[data-see-how] a").focus()); let tabs = 0, onSum = false;
+    while (tabs < 15 && !onSum) { await pg.keyboard.press("Tab"); tabs++; onSum = await pg.evaluate(() => document.activeElement?.matches("details[data-home-more] > summary")); }
+    const focusStyle = await pg.evaluate(() => { const s = document.activeElement; const cs = getComputedStyle(s); return { ow: cs.outlineWidth, os: cs.outlineStyle, marker: getComputedStyle(s).display === "list-item" }; });
+    await pg.keyboard.press("Enter");
+    const opened = await pg.evaluate(() => { const d = document.querySelector("details[data-home-more]"); const ps = [...d.querySelectorAll("p")]; return { open: d.open, allVis: ps.every((p) => p.checkVisibility()), n: ps.length, sups: d.querySelectorAll("sup a[href^='#src-']").length, text: d.textContent }; });
+    check(`t150 (${w}px): keyboard: Tab reaches the summary, it shows a focus outline and a disclosure marker, and Enter opens it; all four paragraphs and their citations are then visible`, onSum && focusStyle.os !== "none" && parseFloat(focusStyle.ow) >= 2 && focusStyle.marker && opened.open && opened.allVis && opened.n === 4 && opened.sups >= 6
+      && opened.text.includes("SAR's local sponsor can guide you through the application.") && opened.text.includes("The Widow Pension Law Checker shows which federal widow pension laws"), JSON.stringify({ onSum, focusStyle, ...opened, text: undefined }));
+    await pg.locator("details[data-home-more] > summary").scrollIntoViewIfNeeded(); await pg.screenshot({ path: join(REL10, `home-expand-open-${w}.png`) }); await pg.screenshot({ path: join(REL10, `home-full-open-${w}.png`), fullPage: true });
+    // One click from a fresh load also opens it.
+    await pg.goto(BASE + "/"); await pg.click("details[data-home-more] > summary");
+    check(`t150 (${w}px): one click on 'Why This Site Exists' opens the full explanation`, await pg.evaluate(() => document.querySelector("details[data-home-more]").open && document.querySelector("details[data-home-more] p").checkVisibility()));
+    // Print shows the explanation even when closed.
+    await pg.goto(BASE + "/"); await pg.emulateMedia({ media: "print" });
+    check(`t150 (${w}px): print shows the explanation even when the expand is closed`, await pg.evaluate(() => { const d = document.querySelector("details[data-home-more]"); return !d.open && d.querySelector("p").getBoundingClientRect().height > 0; }));
+    await pg.emulateMedia({ media: "screen" }); await cx.close(); } }
 // ---- t130 #1 / #3: home start cards, spacing, guide titles, menu (390px and 1280px) ----
 { const hH = readFileSync(join(DIST, "index.html"), "utf8");
   for (const w of [390, 1280]) { const cx = await browser.newContext({ viewport: { width: w, height: 900 } }); const pg = await cx.newPage(); await pg.goto(`${BASE}/`);
