@@ -570,12 +570,14 @@ await page.goto(`${BASE}/guides/read-pension-file/`); await page.screenshot({ pa
   const home = readFileSync(join(DIST, "index.html"), "utf8"); const gs = (home.match(/<section[^>]*data-start-cards[\s\S]*?<\/section>/) || [""])[0];
   check('t119u #1 (t130 cards): home has no "Choose a tool:" link row; the start cards keep both big tool buttons', !/Choose a tool/.test(home) && !/home-tool-choice/.test(home)
     && /class="button-link" href="\/tools\/lineage-matrix\/"/.test(gs) && /class="button-link" href="\/tools\/widow-pension-checker\/"/.test(gs)); }
-{ // #2 Tool pages: the Roadmap line sits right under the one-sentence purpose, above the "What it does" box
+{ // #2 / t156: the (single) Roadmap callout sits right under the one-sentence purpose, above the "What it does" box; the t119 "New to this?" pointer is gone
+  const LINE = 'New here? Start with the <a href="/guides/lineage-proof-roadmap/">Roadmap guide</a> for the full step-by-step process.';
   const bad = [];
   for (const tp of ["/tools/widow-pension-checker/", "/tools/lineage-matrix/"]) { const h = readFileSync(join(DIST, tp, "index.html"), "utf8");
     const after = h.slice(h.indexOf("</h1>") + 5).trimStart(); const m = after.match(/^<p>[\s\S]*?<\/p>(<p class="roadmap-pointer"[^>]*>[\s\S]*?<\/p>)\s*<aside class="card box-limits/);
-    if (!m || !/New to this\? <a href="\/guides\/lineage-proof-roadmap\/">Start with the Roadmap guide\.<\/a>/.test(m[1]) || (h.match(/data-roadmap-pointer/g) || []).length !== 1) bad.push(tp); }
-  check('t119u #2: both tool pages show "New to this? Start with the Roadmap guide." (linked) directly under the purpose, above "What it does"', bad.length === 0, bad.join(" ")); }
+    if (!m || m[1] !== `<p class="roadmap-pointer" data-roadmap-callout>${LINE}</p>` || (h.match(/data-roadmap-callout/g) || []).length !== 1
+      || h.includes("data-roadmap-pointer") || h.includes("New to this?")) bad.push(tp); }
+  check('t119u #2 / t156: both tool pages show only the t155 callout ("New here? Start with the Roadmap guide for the full step-by-step process."), once, directly under the purpose, above "What it does"; the t119 "New to this?" pointer is gone', bad.length === 0, bad.join(" ")); }
 { // #5 Sitemap: report pages left out; robots.txt rules unchanged
   const sm5 = readFileSync(join(DIST, "sitemap.xml"), "utf8"); const rb5 = readFileSync(join(DIST, "robots.txt"), "utf8");
   check("t119u #5: sitemap.xml lists neither report page; robots.txt still disallows both", !/\/tools\/widow-pension-checker\/report\//.test(sm5) && !/\/tools\/lineage-matrix\/report\//.test(sm5)
@@ -1265,35 +1267,34 @@ for (const w of [390, 1280]) { const cx = await browser.newContext({ viewport: {
       inn.defs && inn.inner && inn.vis && inn.inView, JSON.stringify(inn));
     await pg.screenshot({ path: join(REL14, `inner-anchor-open-${w}.png`) });
     await cx.close(); } }
-// ---- t155: one-line Roadmap callout on both tool pages, after the existing "New to this?" pointer ----
-{ const REL15 = join(ROOT, "qa/release-logs/t155"); mkdirSync(REL15, { recursive: true });
+// ---- t156: only the t155 Roadmap callout remains on both tool pages; the t119 "New to this?" pointer is gone ----
+{ const REL16 = join(ROOT, "qa/release-logs/t156"); mkdirSync(REL16, { recursive: true });
   const LINE = 'New here? Start with the <a href="/guides/lineage-proof-roadmap/">Roadmap guide</a> for the full step-by-step process.';
   const tools = ["/tools/widow-pension-checker/", "/tools/lineage-matrix/"];
   const bad = [];
   for (const p of tools) { const h = readFileSync(join(DIST, p, "index.html"), "utf8");
-    const ptr = h.indexOf("data-roadmap-pointer"); const call = h.indexOf("data-roadmap-callout");
-    const m = h.match(/<p class="roadmap-pointer" data-roadmap-callout>([\s\S]*?)<\/p>/);
-    if (!m || m[1] !== LINE || call < ptr || ptr < 0 || (h.match(/data-roadmap-callout/g) || []).length !== 1
-      || !h.includes("data-roadmap-pointer>New to this?")) bad.push(p + " " + (m ? m[1] : "no match")); }
-  check("t155: both tool pages have Tim's callout verbatim, right after the existing 'New to this?' pointer, linking only 'Roadmap guide'; the existing pointer is kept",
+    const m = [...h.matchAll(/<p class="roadmap-pointer"[^>]*>([\s\S]*?)<\/p>/g)];
+    if (m.length !== 1 || m[0][1] !== LINE || (h.match(/data-roadmap-callout/g) || []).length !== 1
+      || h.includes("data-roadmap-pointer") || h.includes("New to this?")) bad.push(p + " count=" + m.length + " " + (m[0] ? m[0][1] : "no match")); }
+  check("t156: both tool pages have the t155 callout verbatim once, linking only 'Roadmap guide'; the t119 'New to this?' pointer is gone",
     bad.length === 0, bad.join(" | "));
   const others = ["about", "faq", "guides/lineage-proof-roadmap", "tools/widow-pension-checker/report", "tools/lineage-matrix/report"];
-  const leaked = others.filter((p) => readFileSync(join(DIST, p, "index.html"), "utf8").includes("data-roadmap-callout"));
-  check("t155: the Roadmap guide exists at /guides/lineage-proof-roadmap/; the callout is not on About, FAQ, the Roadmap, or the report pages",
-    existsSync(join(DIST, "guides/lineage-proof-roadmap/index.html")) && leaked.length === 0, leaked.join(","));
+  const leaked = others.filter((p) => { const h = readFileSync(join(DIST, p, "index.html"), "utf8"); return h.includes("data-roadmap-callout") || h.includes("New to this?"); });
+  check("t156: the callout is not on About, FAQ, the Roadmap, or the report pages, and those pages also lack the old 'New to this?' pointer",
+    leaked.length === 0, leaked.join(","));
   for (const w of [390, 1280]) { const cx = await browser.newContext({ viewport: { width: w, height: 900 } }); const pg = await cx.newPage();
     for (const p of tools) { await pg.goto(BASE + p);
       const r = await pg.evaluate(() => {
         const c = document.querySelector("[data-roadmap-callout]"); const a = c && c.querySelector("a");
-        const ptr = document.querySelector("[data-roadmap-pointer]");
+        const all = [...document.querySelectorAll("[data-roadmap-callout], [data-roadmap-pointer]")];
         return { vis: !!c && c.checkVisibility(), text: c && c.textContent, href: a && a.getAttribute("href"),
-          linkText: a && a.textContent, after: !!(ptr && c && ptr.nextElementSibling === c),
+          linkText: a && a.textContent, n: all.length, old: !!document.body.innerText.includes("New to this?"),
           sw: document.documentElement.scrollWidth, iw: innerWidth }; });
-      check(`t155 (${w}px) ${p}: the callout is visible, sits immediately after 'New to this?', links only 'Roadmap guide', and does not scroll sideways`,
-        r.vis && r.text === "New here? Start with the Roadmap guide for the full step-by-step process." && r.href === "/guides/lineage-proof-roadmap/" && r.linkText === "Roadmap guide" && r.after && r.sw <= r.iw, JSON.stringify(r));
+      check(`t156 (${w}px) ${p}: the callout is visible once, the old 'New to this?' line is gone, only 'Roadmap guide' is linked, and the page does not scroll sideways`,
+        r.vis && r.n === 1 && !r.old && r.text === "New here? Start with the Roadmap guide for the full step-by-step process." && r.href === "/guides/lineage-proof-roadmap/" && r.linkText === "Roadmap guide" && r.sw <= r.iw, JSON.stringify(r));
       const shot = p.replace(/\//g, "-").replace(/^-|-$/g, "");
       await pg.locator("[data-roadmap-callout]").scrollIntoViewIfNeeded();
-      await pg.screenshot({ path: join(REL15, `${shot}-${w}.png`) }); }
+      await pg.screenshot({ path: join(REL16, `${shot}-${w}.png`) }); }
     await cx.close(); } }
 // ---- t130 #1 / #3: home start cards, spacing, guide titles, menu (390px and 1280px) ----
 { const hH = readFileSync(join(DIST, "index.html"), "utf8");

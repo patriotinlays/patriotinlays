@@ -1,5 +1,5 @@
 {
-  "ranAt": "Wed Nov 11 2026 17:00:49 GMT-0600 (Central Standard Time)",
+  "ranAt": "Wed Nov 11 2026 17:23:56 GMT-0600 (Central Standard Time)",
   "browser": "/usr/bin/google-chrome (headless) via playwright-core 1.59.1",
   "passed": 318,
   "total": 318,
@@ -782,7 +782,7 @@
       "detail": ""
     },
     {
-      "name": "t119u #2: both tool pages show \"New to this? Start with the Roadmap guide.\" (linked) directly under the purpose, above \"What it does\"",
+      "name": "t119u #2 / t156: both tool pages show only the t155 callout (\"New here? Start with the Roadmap guide for the full step-by-step process.\"), once, directly under the purpose, above \"What it does\"; the t119 \"New to this?\" pointer is gone",
       "ok": true,
       "detail": ""
     },
@@ -827,7 +827,7 @@
       "detail": "{\"h1s\":1,\"sr\":\"Patriot, In Lay Terms: \",\"srHidden\":true,\"vis\":\"Plain-English Help With DAR and SAR Applications, for the Daughters and the Sons of the American Revolution\",\"visH\":143.9375,\"title\":\"Patriot, In Lay Terms: Plain-English Help for DAR and SAR Applications | Patriot In Lay Terms\",\"rule\":\"rgb(178, 34, 52)\",\"ruleW\":\"56px\"}"
     },
     {
-      "name": "t122u #11: every visible text element on all 22 pages passes WCAG AA contrast (4.5:1, large text 3:1) — 3575 elements",
+      "name": "t122u #11: every visible text element on all 22 pages passes WCAG AA contrast (4.5:1, large text 3:1) — 3571 elements",
       "ok": true,
       "detail": ""
     },
@@ -1547,34 +1547,34 @@
       "detail": "{\"defs\":true,\"inner\":true,\"vis\":true,\"inView\":true}"
     },
     {
-      "name": "t155: both tool pages have Tim's callout verbatim, right after the existing 'New to this?' pointer, linking only 'Roadmap guide'; the existing pointer is kept",
+      "name": "t156: both tool pages have the t155 callout verbatim once, linking only 'Roadmap guide'; the t119 'New to this?' pointer is gone",
       "ok": true,
       "detail": ""
     },
     {
-      "name": "t155: the Roadmap guide exists at /guides/lineage-proof-roadmap/; the callout is not on About, FAQ, the Roadmap, or the report pages",
+      "name": "t156: the callout is not on About, FAQ, the Roadmap, or the report pages, and those pages also lack the old 'New to this?' pointer",
       "ok": true,
       "detail": ""
     },
     {
-      "name": "t155 (390px) /tools/widow-pension-checker/: the callout is visible, sits immediately after 'New to this?', links only 'Roadmap guide', and does not scroll sideways",
+      "name": "t156 (390px) /tools/widow-pension-checker/: the callout is visible once, the old 'New to this?' line is gone, only 'Roadmap guide' is linked, and the page does not scroll sideways",
       "ok": true,
-      "detail": "{\"vis\":true,\"text\":\"New here? Start with the Roadmap guide for the full step-by-step process.\",\"href\":\"/guides/lineage-proof-roadmap/\",\"linkText\":\"Roadmap guide\",\"after\":true,\"sw\":390,\"iw\":390}"
+      "detail": "{\"vis\":true,\"text\":\"New here? Start with the Roadmap guide for the full step-by-step process.\",\"href\":\"/guides/lineage-proof-roadmap/\",\"linkText\":\"Roadmap guide\",\"n\":1,\"old\":false,\"sw\":390,\"iw\":390}"
     },
     {
-      "name": "t155 (390px) /tools/lineage-matrix/: the callout is visible, sits immediately after 'New to this?', links only 'Roadmap guide', and does not scroll sideways",
+      "name": "t156 (390px) /tools/lineage-matrix/: the callout is visible once, the old 'New to this?' line is gone, only 'Roadmap guide' is linked, and the page does not scroll sideways",
       "ok": true,
-      "detail": "{\"vis\":true,\"text\":\"New here? Start with the Roadmap guide for the full step-by-step process.\",\"href\":\"/guides/lineage-proof-roadmap/\",\"linkText\":\"Roadmap guide\",\"after\":true,\"sw\":390,\"iw\":390}"
+      "detail": "{\"vis\":true,\"text\":\"New here? Start with the Roadmap guide for the full step-by-step process.\",\"href\":\"/guides/lineage-proof-roadmap/\",\"linkText\":\"Roadmap guide\",\"n\":1,\"old\":false,\"sw\":390,\"iw\":390}"
     },
     {
-      "name": "t155 (1280px) /tools/widow-pension-checker/: the callout is visible, sits immediately after 'New to this?', links only 'Roadmap guide', and does not scroll sideways",
+      "name": "t156 (1280px) /tools/widow-pension-checker/: the callout is visible once, the old 'New to this?' line is gone, only 'Roadmap guide' is linked, and the page does not scroll sideways",
       "ok": true,
-      "detail": "{\"vis\":true,\"text\":\"New here? Start with the Roadmap guide for the full step-by-step process.\",\"href\":\"/guides/lineage-proof-roadmap/\",\"linkText\":\"Roadmap guide\",\"after\":true,\"sw\":1280,\"iw\":1280}"
+      "detail": "{\"vis\":true,\"text\":\"New here? Start with the Roadmap guide for the full step-by-step process.\",\"href\":\"/guides/lineage-proof-roadmap/\",\"linkText\":\"Roadmap guide\",\"n\":1,\"old\":false,\"sw\":1280,\"iw\":1280}"
     },
     {
-      "name": "t155 (1280px) /tools/lineage-matrix/: the callout is visible, sits immediately after 'New to this?', links only 'Roadmap guide', and does not scroll sideways",
+      "name": "t156 (1280px) /tools/lineage-matrix/: the callout is visible once, the old 'New to this?' line is gone, only 'Roadmap guide' is linked, and the page does not scroll sideways",
       "ok": true,
-      "detail": "{\"vis\":true,\"text\":\"New here? Start with the Roadmap guide for the full step-by-step process.\",\"href\":\"/guides/lineage-proof-roadmap/\",\"linkText\":\"Roadmap guide\",\"after\":true,\"sw\":1280,\"iw\":1280}"
+      "detail": "{\"vis\":true,\"text\":\"New here? Start with the Roadmap guide for the full step-by-step process.\",\"href\":\"/guides/lineage-proof-roadmap/\",\"linkText\":\"Roadmap guide\",\"n\":1,\"old\":false,\"sw\":1280,\"iw\":1280}"
     },
     {
       "name": "t130 #1 (390px): under the heading and independent line, Tim's sentence, then the three start cards (stacked) with his exact titles, lines and navy buttons, then 'See how the tools work', then the longer paragraphs; the 'Ready to get started?' box is gone",
@@ -1632,7 +1632,7 @@
       "detail": ""
     }
   ],
-  "requestsTotal": 720,
+  "requestsTotal": 721,
   "externalRequests": 0,
   "interactionRequests": 0,
   "faviconLate": 25
