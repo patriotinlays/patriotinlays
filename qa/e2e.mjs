@@ -1178,8 +1178,8 @@ for (const w of [390, 1280]) { const cx = await browser.newContext({ viewport: {
     await pg.goto(BASE + "/#glossary");
     const hash = await pg.evaluate(() => { const d = document.querySelector("[data-home-glossary]"); const r = d.getBoundingClientRect();
       return { id: d.id, inView: r.top < innerHeight && r.bottom > 0, open: d.open, sumVis: d.querySelector("summary").checkVisibility() }; });
-    check(`t152 #1 (${w}px): a /#glossary link lands on the glossary expand (the summary is in view); opening on hash is not done, because that would need JavaScript`,
-      hash.id === "glossary" && hash.inView && hash.sumVis && hash.open === false, JSON.stringify(hash));
+    check(`t152 #1 / t154 (${w}px): a /#glossary link lands on the glossary expand (the summary is in view) and opens it`,
+      hash.id === "glossary" && hash.inView && hash.sumVis && hash.open === true, JSON.stringify(hash));
     // Matrix note + no note on widow; layout: no sideways scroll on key pages.
     const layout = {};
     for (const p of pages12) { await pg.goto(BASE + p);
@@ -1201,6 +1201,69 @@ for (const w of [390, 1280]) { const cx = await browser.newContext({ viewport: {
     await pg.goto(BASE + "/guides/application-problems/"); await pg.locator("#problem-cause-and-fix").scrollIntoViewIfNeeded();
     await pg.screenshot({ path: join(REL12, `guide-table-${w}.png`) });
     await pg.goto(BASE + "/tools/widow-pension-checker/"); await pg.screenshot({ path: join(REL12, `widow-top-${w}.png`) });
+    await cx.close(); } }
+// ---- t154: URL hash opens the target <details> (and ancestor details), site-wide ----
+{ const REL14 = join(ROOT, "qa/release-logs/t154"); mkdirSync(REL14, { recursive: true });
+  const { readdirSync: rd154 } = await import("node:fs");
+  const walk154 = (d) => rd154(d, { withFileTypes: true }).flatMap((e) => e.isDirectory() ? walk154(join(d, e.name)) : e.name.endsWith(".html") ? [join(d, e.name)] : []);
+  const htmls = walk154(DIST);
+  const missing = htmls.filter((f) => !/<script src="\/assets\/js\/open-details\.js\?v=[a-f0-9]+" defer><\/script>/.test(readFileSync(f, "utf8")));
+  check("t154: every built page includes the deferred self-hosted open-details script (cache-busted)", missing.length === 0 && htmls.length >= 20, missing.map((f) => f.slice(DIST.length)).join(","));
+  for (const w of [390, 1280]) { const cx = await browser.newContext({ viewport: { width: w, height: 900 } }); const pg = await cx.newPage();
+    // No hash: nothing opens.
+    await pg.goto(BASE + "/");
+    const noHash = await pg.evaluate(() => ({
+      why: document.querySelector("[data-home-more]")?.open,
+      gloss: document.querySelector("[data-home-glossary]")?.open,
+      anyOpen: [...document.querySelectorAll("details")].some((d) => d.open),
+    }));
+    await pg.goto(BASE + "/guides/same-name/");
+    const noHashG = await pg.evaluate(() => ({ defs: document.querySelector("details.defs")?.open }));
+    check(`t154 (${w}px): without a hash, home expands and the guide glossary stay closed`,
+      noHash.why === false && noHash.gloss === false && noHash.anyOpen === false && noHashG.defs === false, JSON.stringify({ noHash, noHashG }));
+    // /#glossary opens the home glossary on arrival.
+    await pg.goto(BASE + "/#glossary");
+    const g = await pg.evaluate(() => { const d = document.querySelector("[data-home-glossary]"); const r = d.getBoundingClientRect();
+      const lis = [...d.querySelectorAll(".glossary li")];
+      return { open: d.open, id: d.id, inView: r.top < innerHeight && r.bottom > 0, vis: lis.every((li) => li.checkVisibility()), n: lis.length, why: document.querySelector("[data-home-more]").open, sw: document.documentElement.scrollWidth, iw: innerWidth }; });
+    check(`t154 (${w}px): arriving at /#glossary opens the glossary; the terms are visible and in view; 'Why This Site Exists' stays closed`,
+      g.open && g.id === "glossary" && g.inView && g.vis && g.n >= 7 && g.why === false && g.sw <= g.iw, JSON.stringify(g));
+    await pg.screenshot({ path: join(REL14, `glossary-hash-open-${w}.png`) });
+    // Hashchange: start with no hash, then set #glossary.
+    await pg.goto(BASE + "/");
+    await pg.evaluate(() => { location.hash = "glossary"; });
+    await pg.waitForFunction(() => document.querySelector("[data-home-glossary]")?.open === true);
+    const hc = await pg.evaluate(() => document.querySelector("[data-home-glossary]").open);
+    check(`t154 (${w}px): setting location.hash to #glossary (hashchange) opens the glossary`, hc === true);
+    // Same-hash click: close it, click a #glossary link already matching the current hash.
+    await pg.evaluate(() => { document.querySelector("[data-home-glossary]").open = false; });
+    const same = await pg.evaluate(() => location.hash);
+    await pg.evaluate(() => {
+      const a = document.createElement("a"); a.href = "#glossary"; a.textContent = "jump"; a.setAttribute("data-t154-same", "");
+      document.querySelector("main").appendChild(a);
+    });
+    await pg.click("[data-t154-same]");
+    await pg.waitForFunction(() => document.querySelector("[data-home-glossary]")?.open === true);
+    check(`t154 (${w}px): clicking an in-page #glossary link when that hash is already current re-opens the glossary`,
+      await pg.evaluate(() => document.querySelector("[data-home-glossary]").open) === true, same);
+    // An anchor inside a closed details (including a nested ancestor) opens every enclosing details.
+    await pg.goto(BASE + "/guides/same-name/");
+    await pg.evaluate(() => {
+      const defs = document.querySelector("details.defs");
+      const inner = document.createElement("details"); inner.setAttribute("data-t154-inner", "");
+      const sum = document.createElement("summary"); sum.textContent = "Inner";
+      const p = document.createElement("p"); p.id = "t154-inside"; p.textContent = "inside a nested details";
+      inner.append(sum, p); defs.appendChild(inner);
+    });
+    await pg.evaluate(() => { location.hash = "t154-inside"; });
+    await pg.waitForFunction(() => document.getElementById("t154-inside") && document.querySelector("details.defs")?.open && document.querySelector("[data-t154-inner]")?.open);
+    const inn = await pg.evaluate(() => {
+      const p = document.getElementById("t154-inside"); const r = p.getBoundingClientRect();
+      return { defs: document.querySelector("details.defs").open, inner: document.querySelector("[data-t154-inner]").open, vis: p.checkVisibility(), inView: r.top < innerHeight && r.bottom > 0 };
+    });
+    check(`t154 (${w}px): a hash pointing inside a nested closed details opens it and every ancestor details, and scrolls the target into view`,
+      inn.defs && inn.inner && inn.vis && inn.inView, JSON.stringify(inn));
+    await pg.screenshot({ path: join(REL14, `inner-anchor-open-${w}.png`) });
     await cx.close(); } }
 // ---- t130 #1 / #3: home start cards, spacing, guide titles, menu (390px and 1280px) ----
 { const hH = readFileSync(join(DIST, "index.html"), "utf8");

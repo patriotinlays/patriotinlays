@@ -37,6 +37,9 @@ function versionModule(f, seen = new Set()) {
 }
 for (const f of toolSrc.keys()) versionModule(f);
 const css = readFileSync(join(ROOT, "src/assets/site.css"), "utf8"); writeFileSync(join(OUT, "assets/site.css"), css); ASSET_V.set("/assets/site.css", hash8(css));
+// Tim t154: a tiny deferred script, on every page, that opens a <details> when the URL hash points to it or to something inside it.
+const openDetails = readFileSync(join(ROOT, "src/assets/js/open-details.js"), "utf8");
+writeFileSync(join(OUT, "assets/js/open-details.js"), openDetails); ASSET_V.set("/assets/js/open-details.js", hash8(openDetails));
 const versionUrls = (html) => html.replace(/(src|href|content)="((?:https:\/\/patriotinlays\.com)?)(\/(?:assets\/[^"?#]+|favicon[^"?#\/]*|apple-touch-icon\.png)\.?(?:js|css|svg|png)?)"/g, (m, a, host, u) => ASSET_V.has(u) ? `${a}="${host}${u}?v=${ASSET_V.get(u)}"` : m);
 // Logo and icons (sources and rebuild scripts in tools/logo/). Images get the same ?v=<hash> cache-busting as CSS/JS.
 for (const f of ["logo-horizontal-white.svg", "logo-horizontal.svg", "icon.svg", "og-image.png"]) { const b = readFileSync(join(ROOT, "src/assets", f)); writeFileSync(join(OUT, "assets", f), b); ASSET_V.set(`/assets/${f}`, hash8(b)); }
@@ -196,7 +199,7 @@ function page({ title, description, path, body, noindex = false }) {
 <link rel="canonical" href="${SITE}${path}">${noindex ? '<meta name="robots" content="noindex">' : ""}
 <link rel="icon" href="/favicon.svg" type="image/svg+xml"><link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32"><link rel="icon" href="/favicon-16.png" type="image/png" sizes="16x16"><link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180"><meta name="theme-color" content="#13294b">
 <meta property="og:type" content="website"><meta property="og:site_name" content="Patriot, In Lay Terms"><meta property="og:title" content="${esc(title)}"><meta property="og:description" content="${esc(description || "")}"><meta property="og:url" content="${SITE}${path}"><meta property="og:image" content="${SITE}/assets/og-image.png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:alt" content="Patriot, In Lay Terms logo: an open book"><meta name="twitter:card" content="summary_large_image">
-<link rel="stylesheet" href="/assets/site.css"></head><body>${NAV}<main><div class="wrap">${body}</div></main>${FOOT}</body></html>`;
+<link rel="stylesheet" href="/assets/site.css"></head><body>${NAV}<main><div class="wrap">${body}</div></main>${FOOT}<script src="/assets/js/open-details.js" defer></script></body></html>`;
 }
 function write(path, html) { const f = join(OUT, path, "index.html"); mkdirSync(dirname(f), { recursive: true }); writeFileSync(f, versionUrls(markExternal(html))); }
 const sitemap = []; const built = []; const guideChecked = [];

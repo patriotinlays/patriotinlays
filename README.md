@@ -260,6 +260,9 @@ Docs: https://developers.cloudflare.com/pages/how-to/web-analytics/
 - February 28, 1855 navy-widow law cited as ch. 126, sec. 3, 10 Stat. 616 (chapter begins at 615); 10 Stat. 701 is only the March 3, 1855 bounty-land act.
 - Worksheet: step 1 is the patriot, step 2 starts the family with yourself; removing the oldest generation asks for confirmation.
 
+### t154 (Nov 11, 2026)
+- A tiny deferred self-hosted script (`/assets/js/open-details.js`) on every page opens any `<details>` the URL hash points to, or that contains the hashed element (including nested ancestors), then scrolls the target into view. Same-hash in-page clicks are handled too (hashchange does not fire). Without JavaScript the page works as before. No content changes. No CSP headers were present.
+
 ### t152 (Nov 11, 2026) — preview only
 - Home: the "Words You'll See Here" glossary is a second native `<details class="home-more">`, closed by default, same pattern as "Why This Site Exists". `id="glossary"` is on the details so `/#glossary` still lands there (opening on hash would need JavaScript, which we don't add). Content and citations unchanged. Print shows it open.
 - Lineage Evidence Matrix only: a visible start note, "You can skip any field for now and come back later. Rough dates and states are enough to start.", above the start buttons. Form fields and tool logic unchanged.

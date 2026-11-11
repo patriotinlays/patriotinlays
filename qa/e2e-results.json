@@ -1,8 +1,8 @@
 {
-  "ranAt": "Wed Nov 11 2026 16:14:04 GMT-0600 (Central Standard Time)",
+  "ranAt": "Wed Nov 11 2026 16:53:43 GMT-0600 (Central Standard Time)",
   "browser": "/usr/bin/google-chrome (headless) via playwright-core 1.59.1",
-  "passed": 301,
-  "total": 301,
+  "passed": 312,
+  "total": 312,
   "exampleReportPages": {
     "summaryPages": 2,
     "fullPages": 3,
@@ -1437,9 +1437,9 @@
       "detail": ""
     },
     {
-      "name": "t152 #1 (390px): a /#glossary link lands on the glossary expand (the summary is in view); opening on hash is not done, because that would need JavaScript",
+      "name": "t152 #1 / t154 (390px): a /#glossary link lands on the glossary expand (the summary is in view) and opens it",
       "ok": true,
-      "detail": "{\"id\":\"glossary\",\"inView\":true,\"open\":false,\"sumVis\":true}"
+      "detail": "{\"id\":\"glossary\",\"inView\":true,\"open\":true,\"sumVis\":true}"
     },
     {
       "name": "t152 #2 (390px): the matrix start note is visible, not inside a label, sits after the worksheet heading and above the start buttons",
@@ -1472,9 +1472,9 @@
       "detail": ""
     },
     {
-      "name": "t152 #1 (1280px): a /#glossary link lands on the glossary expand (the summary is in view); opening on hash is not done, because that would need JavaScript",
+      "name": "t152 #1 / t154 (1280px): a /#glossary link lands on the glossary expand (the summary is in view) and opens it",
       "ok": true,
-      "detail": "{\"id\":\"glossary\",\"inView\":true,\"open\":false,\"sumVis\":true}"
+      "detail": "{\"id\":\"glossary\",\"inView\":true,\"open\":true,\"sumVis\":true}"
     },
     {
       "name": "t152 #2 (1280px): the matrix start note is visible, not inside a label, sits after the worksheet heading and above the start buttons",
@@ -1490,6 +1490,61 @@
       "name": "t152 #3 (1280px): no page develops horizontal scroll; at 1280px the main wrap is 44rem",
       "ok": true,
       "detail": "{\"/\":{\"sw\":1280,\"iw\":1280,\"wrap\":\"704px\",\"lh\":\"28.9px\",\"fs\":\"17px\"},\"/tools/lineage-matrix/\":{\"sw\":1280,\"iw\":1280,\"wrap\":\"704px\",\"lh\":\"28.9px\",\"fs\":\"17px\"},\"/tools/widow-pension-checker/\":{\"sw\":1280,\"iw\":1280,\"wrap\":\"704px\",\"lh\":\"28.9px\",\"fs\":\"17px\"},\"/guides/application-problems/\":{\"sw\":1280,\"iw\":1280,\"wrap\":\"704px\",\"lh\":\"28.9px\",\"fs\":\"17px\"},\"/guides/same-name/\":{\"sw\":1280,\"iw\":1280,\"wrap\":\"704px\",\"lh\":\"28.9px\",\"fs\":\"17px\"},\"/about/\":{\"sw\":1280,\"iw\":1280,\"wrap\":\"704px\",\"lh\":\"28.9px\",\"fs\":\"17px\"},\"/faq/\":{\"sw\":1280,\"iw\":1280,\"wrap\":\"704px\",\"lh\":\"28.9px\",\"fs\":\"17px\"}}"
+    },
+    {
+      "name": "t154: every built page includes the deferred self-hosted open-details script (cache-busted)",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "t154 (390px): without a hash, home expands and the guide glossary stay closed",
+      "ok": true,
+      "detail": "{\"noHash\":{\"why\":false,\"gloss\":false,\"anyOpen\":false},\"noHashG\":{\"defs\":false}}"
+    },
+    {
+      "name": "t154 (390px): arriving at /#glossary opens the glossary; the terms are visible and in view; 'Why This Site Exists' stays closed",
+      "ok": true,
+      "detail": "{\"open\":true,\"id\":\"glossary\",\"inView\":true,\"vis\":true,\"n\":8,\"why\":false,\"sw\":390,\"iw\":390}"
+    },
+    {
+      "name": "t154 (390px): setting location.hash to #glossary (hashchange) opens the glossary",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "t154 (390px): clicking an in-page #glossary link when that hash is already current re-opens the glossary",
+      "ok": true,
+      "detail": "#glossary"
+    },
+    {
+      "name": "t154 (390px): a hash pointing inside a nested closed details opens it and every ancestor details, and scrolls the target into view",
+      "ok": true,
+      "detail": "{\"defs\":true,\"inner\":true,\"vis\":true,\"inView\":true}"
+    },
+    {
+      "name": "t154 (1280px): without a hash, home expands and the guide glossary stay closed",
+      "ok": true,
+      "detail": "{\"noHash\":{\"why\":false,\"gloss\":false,\"anyOpen\":false},\"noHashG\":{\"defs\":false}}"
+    },
+    {
+      "name": "t154 (1280px): arriving at /#glossary opens the glossary; the terms are visible and in view; 'Why This Site Exists' stays closed",
+      "ok": true,
+      "detail": "{\"open\":true,\"id\":\"glossary\",\"inView\":true,\"vis\":true,\"n\":8,\"why\":false,\"sw\":1280,\"iw\":1280}"
+    },
+    {
+      "name": "t154 (1280px): setting location.hash to #glossary (hashchange) opens the glossary",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "t154 (1280px): clicking an in-page #glossary link when that hash is already current re-opens the glossary",
+      "ok": true,
+      "detail": "#glossary"
+    },
+    {
+      "name": "t154 (1280px): a hash pointing inside a nested closed details opens it and every ancestor details, and scrolls the target into view",
+      "ok": true,
+      "detail": "{\"defs\":true,\"inner\":true,\"vis\":true,\"inView\":true}"
     },
     {
       "name": "t130 #1 (390px): under the heading and independent line, Tim's sentence, then the three start cards (stacked) with his exact titles, lines and navy buttons, then 'See how the tools work', then the longer paragraphs; the 'Ready to get started?' box is gone",
@@ -1547,7 +1602,7 @@
       "detail": ""
     }
   ],
-  "requestsTotal": 658,
+  "requestsTotal": 721,
   "externalRequests": 0,
   "interactionRequests": 0,
   "faviconLate": 25
