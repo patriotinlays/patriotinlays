@@ -1838,24 +1838,6 @@
       "source_scope": "national"
     },
     {
-      "claim_id": "ohsar-bc",
-      "claim_text": "A 2023 Ohio Society SAR presentation listed a missing applicant birth certificate, or one without gender, as a pend reason.",
-      "source_url": "https://cincinnatisar.org/wp-content/uploads/2023/05/Presentation-How-to-Produce-Approval-Ready-Applications-and-Reduce-Turnaround-Time.pdf",
-      "source_title": "SAR presentation, OHSSAR Annual Meeting (May 5, 2023) — How to Produce Approval-Ready Applications",
-      "source_type": "official_secondary",
-      "archive_identifier": null,
-      "last_retrieved": "2026-10-31",
-      "quote_excerpt": "Missing birth certificate for applicant, or it does not indicate gender.",
-      "page_ref": null,
-      "verification_status": "verified",
-      "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
-      "used_on": [
-        "application-problems"
-      ],
-      "notes": "",
-      "source_scope": "chapter-local"
-    },
-    {
       "claim_id": "ohsar-bc-parents",
       "claim_text": "A 2023 Ohio Society SAR presentation said the applicant's birth certificate should name both parents, including the mother's maiden name.",
       "source_url": "https://cincinnatisar.org/wp-content/uploads/2023/05/Presentation-How-to-Produce-Approval-Ready-Applications-and-Reduce-Turnaround-Time.pdf",
@@ -1864,42 +1846,6 @@
       "archive_identifier": null,
       "last_retrieved": "2026-10-31",
       "quote_excerpt": "It should also include names of both parents, including mother’s maiden name",
-      "page_ref": null,
-      "verification_status": "verified",
-      "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
-      "used_on": [
-        "application-problems"
-      ],
-      "notes": "",
-      "source_scope": "chapter-local"
-    },
-    {
-      "claim_id": "ohsar-date-format",
-      "claim_text": "A 2023 Ohio Society SAR presentation said lineage dates use the 01 Jan 2023 format.",
-      "source_url": "https://cincinnatisar.org/wp-content/uploads/2023/05/Presentation-How-to-Produce-Approval-Ready-Applications-and-Reduce-Turnaround-Time.pdf",
-      "source_title": "SAR presentation, OHSSAR Annual Meeting (May 5, 2023) — How to Produce Approval-Ready Applications",
-      "source_type": "official_secondary",
-      "archive_identifier": null,
-      "last_retrieved": "2026-10-31",
-      "quote_excerpt": "All dates must be entered as follows: 01 Jan 2023",
-      "page_ref": null,
-      "verification_status": "verified",
-      "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
-      "used_on": [
-        "application-problems"
-      ],
-      "notes": "",
-      "source_scope": "chapter-local"
-    },
-    {
-      "claim_id": "ohsar-record-copies",
-      "claim_text": "A 2023 Ohio Society SAR presentation said only DAR record copies are considered, not chapter copies.",
-      "source_url": "https://cincinnatisar.org/wp-content/uploads/2023/05/Presentation-How-to-Produce-Approval-Ready-Applications-and-Reduce-Turnaround-Time.pdf",
-      "source_title": "SAR presentation, OHSSAR Annual Meeting (May 5, 2023) — How to Produce Approval-Ready Applications",
-      "source_type": "official_secondary",
-      "archive_identifier": null,
-      "last_retrieved": "2026-10-31",
-      "quote_excerpt": "Only DAR record copies are considered; chapter copies are not.",
       "page_ref": null,
       "verification_status": "verified",
       "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
@@ -2020,24 +1966,6 @@
       "source_scope": "chapter-local"
     },
     {
-      "claim_id": "ohsar-nonrefundable",
-      "claim_text": "A 2023 Ohio Society SAR presentation said application fees are non-refundable.",
-      "source_url": "https://cincinnatisar.org/wp-content/uploads/2023/05/Presentation-How-to-Produce-Approval-Ready-Applications-and-Reduce-Turnaround-Time.pdf",
-      "source_title": "SAR presentation, OHSSAR Annual Meeting (May 5, 2023) — How to Produce Approval-Ready Applications",
-      "source_type": "official_secondary",
-      "archive_identifier": null,
-      "last_retrieved": "2026-10-31",
-      "quote_excerpt": "Application fees are non-refundable.",
-      "page_ref": null,
-      "verification_status": "verified",
-      "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
-      "used_on": [
-        "application-problems"
-      ],
-      "notes": "",
-      "source_scope": "chapter-local"
-    },
-    {
       "claim_id": "ohsar-replacements",
       "claim_text": "A 2023 Ohio Society SAR presentation said new-member applications get two replacement chances.",
       "source_url": "https://cincinnatisar.org/wp-content/uploads/2023/05/Presentation-How-to-Produce-Approval-Ready-Applications-and-Reduce-Turnaround-Time.pdf",
@@ -2090,6 +2018,78 @@
       ],
       "notes": "",
       "source_scope": "chapter-local"
+    },
+    {
+      "claim_id": "sar-apg-bc-gender",
+      "claim_text": "SAR's application guide says new applicants need a birth certificate or court order that specifies the applicant's gender as male.",
+      "source_url": "https://www.sar.org/app/uploads/APG-07-June-2026.pdf",
+      "source_title": "SAR — Application Preparation Guide (NSSAR Genealogy Committee, 07 June 2026)",
+      "source_type": "official_secondary",
+      "archive_identifier": null,
+      "last_retrieved": "2026-11-11",
+      "quote_excerpt": "Birth certificate or court order is required for all new applicants that specifies his gender as male.",
+      "page_ref": "Appendix B, item 3",
+      "verification_status": "verified",
+      "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-11-11 CT",
+      "used_on": [
+        "application-problems"
+      ],
+      "notes": "",
+      "source_scope": "national"
+    },
+    {
+      "claim_id": "sar-apg-date-format",
+      "claim_text": "SAR's application guide says all dates must be entered in the format 01 Jan 1900.",
+      "source_url": "https://www.sar.org/app/uploads/APG-07-June-2026.pdf",
+      "source_title": "SAR — Application Preparation Guide (NSSAR Genealogy Committee, 07 June 2026)",
+      "source_type": "official_secondary",
+      "archive_identifier": null,
+      "last_retrieved": "2026-11-11",
+      "quote_excerpt": "All dates must be entered using the format “01 Jan 1900,” using only the first three letters of each month",
+      "page_ref": "Appendix B, item 4",
+      "verification_status": "verified",
+      "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-11-11 CT",
+      "used_on": [
+        "application-problems"
+      ],
+      "notes": "",
+      "source_scope": "national"
+    },
+    {
+      "claim_id": "sar-apg-record-copy",
+      "claim_text": "SAR's application guide says a DAR application used as proof must be an official DAR record copy, not a chapter copy.",
+      "source_url": "https://www.sar.org/app/uploads/APG-07-June-2026.pdf",
+      "source_title": "SAR — Application Preparation Guide (NSSAR Genealogy Committee, 07 June 2026)",
+      "source_type": "official_secondary",
+      "archive_identifier": null,
+      "last_retrieved": "2026-11-11",
+      "quote_excerpt": "If using a DAR application as proof, it must: (1) be an official DAR record copy (not a chapter copy)",
+      "page_ref": "Appendix B, item 5",
+      "verification_status": "verified",
+      "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-11-11 CT",
+      "used_on": [
+        "application-problems"
+      ],
+      "notes": "",
+      "source_scope": "national"
+    },
+    {
+      "claim_id": "sar-apg-fee-nonrefundable",
+      "claim_text": "SAR's application guide says an applicant's filing fee is not refundable.",
+      "source_url": "https://www.sar.org/app/uploads/APG-07-June-2026.pdf",
+      "source_title": "SAR — Application Preparation Guide (NSSAR Genealogy Committee, 07 June 2026)",
+      "source_type": "official_secondary",
+      "archive_identifier": null,
+      "last_retrieved": "2026-11-11",
+      "quote_excerpt": "Moreover, his filing fee is not refundable.",
+      "page_ref": "p. 6",
+      "verification_status": "verified",
+      "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-11-11 CT",
+      "used_on": [
+        "application-problems"
+      ],
+      "notes": "",
+      "source_scope": "national"
     },
     {
       "claim_id": "sar-checklist-supp-sig",

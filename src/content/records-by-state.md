@@ -6,6 +6,12 @@ cornerstone: 4
 ---
 # Revolutionary War Records by State: Where Each Kind of Service Was Recorded
 
+::in-short
+This guide helps you: search for your ancestor's service records in the right repository.
+Start by: identifying the type of service: Continental Army, state troops, militia, navy, or civil and patriotic service.
+Then: record your patriot's service in the worksheet's [patriot step](/tools/lineage-matrix/#tb-patriot).
+::end
+
 The most common dead end in Revolutionary War research is searching the right name in the wrong repository. Where a record sits depends mostly on who the ancestor served for. This guide gives you a decision procedure first and a list of starting points second.
 
 ## The one rule that decides most searches

@@ -368,3 +368,10 @@ a.ext .ext-icon{display:inline-block;width:.7em;height:.7em;margin-left:.2em;ver
   main{padding-bottom:.75rem!important}
   main .wrap>:last-child,main .wrap>:last-child>:last-child{margin-bottom:0!important}
 }
+/* Tim t146 #3: the "In Short" box at the top of each guide (under the title, before the glossary). */
+.in-short{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--navy);border-radius:8px;box-shadow:var(--shadow);padding:.7rem 1rem;margin:.9rem 0 .6rem;font:15px/1.5 var(--sans)}
+.in-short-h{font-family:var(--sans);font-size:1rem;font-weight:700;color:var(--navy);margin:0 0 .3rem;letter-spacing:0}
+.in-short ul{list-style:none;margin:0;padding:0}
+.in-short li{margin:.2rem 0}
+.in-short li>strong{color:var(--navy)}
+@media print{.in-short{box-shadow:none;break-inside:avoid-page}}

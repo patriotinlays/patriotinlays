@@ -6,6 +6,12 @@ cornerstone: 2
 ---
 # No Birth Certificate? Substitute Evidence That Can Prove Each Generation
 
+::in-short
+This guide helps you: prove each generation without a birth certificate, using substitute records sorted by era.
+Start by: dealing with any missing record in the three most recent generations, then the older links.
+Then: enter each substitute in the [Lineage Evidence Matrix](/tools/lineage-matrix/) and flag any record that disagrees.
+::end
+
 Most ancestors who matter for a Revolutionary War line were born long before birth certificates existed. The gap is normal. What changes is how you prove the two things every generation needs: that the person existed with a date and place, and who the parents were. This guide sorts substitute records by era and by what they can and cannot show.
 
 ## First, know what the gap actually is
@@ -62,6 +68,6 @@ A death estimated from a probate date is marked "ante", meaning before. [[claim:
 
 If one biological parent is unknown and your line runs through the known parent, DAR lets the fields for the unknown person stay blank. [[claim:dar-unknown-parent]]
 
-Related guides: [The Patriot Lineage Proof Roadmap](/guides/lineage-proof-roadmap/), [Census bridge guide](/guides/census-bridge/), [Same Name, Different Man](/guides/same-name/).
+Related guides: [The Patriot Lineage Proof Roadmap](/guides/lineage-proof-roadmap/), [Census Bridge Guide](/guides/census-bridge/), [Same Name, Different Man](/guides/same-name/).
 
 ::tool lineage-matrix

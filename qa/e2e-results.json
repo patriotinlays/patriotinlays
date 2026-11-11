@@ -1,8 +1,8 @@
 {
-  "ranAt": "Tue Nov 10 2026 14:46:25 GMT-0600 (Central Standard Time)",
+  "ranAt": "Wed Nov 11 2026 15:04:57 GMT-0600 (Central Standard Time)",
   "browser": "/usr/bin/google-chrome (headless) via playwright-core 1.59.1",
-  "passed": 242,
-  "total": 242,
+  "passed": 255,
+  "total": 255,
   "exampleReportPages": {
     "summaryPages": 2,
     "fullPages": 3,
@@ -35,7 +35,7 @@
     "ps": 7,
     "lists": 0,
     "text": "This site helps you organize the records that connect you to a Revolutionary War patriot, see where your documented family line still has gaps, and find where to look for the missing proof. (A patriot here means someone who supported the cause of American independence, for example by fighting in its battles or serving in the Continental Congress.)[1]\nSomewhere in your family's past, there may be someone who stood up for American independence. Maybe they carried a musket as a soldier, or maybe they helped in another way, such as furnishing supplies or lending money.[2] If you'd like to honor that person by joining the Daughters or Sons of the American Revolution, you'll be asked to show, with records, how you are connected to them, one generation at a time.[3][4]\nThat can be harder than it sounds. The records are often in more than one place: for militia service, for example, the National Archives sends you to the archives of the state where the patriot served.[5] Even a single pension file can arrive with its papers in no particular order.[6] And nobody hands you a map of which papers count as proof, or of what to try when the one record you need seems to have vanished.\nPatriot, In Lay Terms explains the process in everyday language, the way a patient friend who has done this before might explain it at the kitchen table. The guides walk you through the kinds of records you're likely to find, what each one can show, and where to turn when something is missing. Two free tools help you lay out what you already have. The Widow Pension Law Checker shows which federal widow pension laws a couple's marriage fits and where her pension file may be. The Lineage Evidence Matrix lists, generation by generation, what is still missing in your line and where to look for it. Every fact on the site links to an official source, so you can check it yourself.\nThis site can't do the searching for you, and it won't pretend to. You'll still visit archives, courthouses and websites to find and copy the records themselves. A DAR member helps guide you through completing and submitting the application.[4] SAR's local sponsor can guide you through the application.[7] The society, not this site, reviews what you send: at DAR, all documentation is subject to review by its genealogy staff.[3] What this site does is explain what each of those steps asks for and which records can answer it.\nIt's free, there's nothing to sign up for, and what you type into the tools stays in your own browser.\nWritten with AI assistance and reviewed by the site's owner. Each fact is tied to a quoted official source, and software checks that the quote is still there.",
-    "sub": "Plain-English help with DAR and SAR applications, for the Daughters and the Sons of the American Revolution",
+    "sub": "Plain-English Help With DAR and SAR Applications, for the Daughters and the Sons of the American Revolution",
     "ai": "Written with AI assistance and reviewed by the site's owner. Each fact is tied to a quoted official source, and software checks that the quote is still there.",
     "afterCards": true,
     "words": 1467
@@ -304,7 +304,7 @@
     {
       "name": "t130 #2a: the default start shows only 'Your patriot' and Generation 1 (you); older generations stay hidden until added; saved worksheet has 1 generation",
       "ok": true,
-      "detail": "{\"gens\":\"1\",\"saved\":1,\"patriotOpen\":true,\"groups\":\"Your patriot|Generations\",\"g1Open\":true}"
+      "detail": "{\"gens\":\"1\",\"saved\":1,\"patriotOpen\":true,\"groups\":\"Your Patriot|Generations\",\"g1Open\":true}"
     },
     {
       "name": "Tool B: 'How this works' says it doesn't search records and nothing leaves the device",
@@ -474,7 +474,7 @@
     {
       "name": "Report: opens with a one-page summary (patriot, where you are, what to do next) before 'Where to look' and the records",
       "ok": true,
-      "detail": "Summary | Where to look | The patriot, in full | Your records, generation by generation"
+      "detail": "Summary | Where to Look | The Patriot, in Full | Your Records, Generation by Generation"
     },
     {
       "name": "Report (audit 4 #5): where advice cites NSCDA, the report explains it once (The National Society of the Colonial Dames of America)",
@@ -559,7 +559,7 @@
     {
       "name": "Where to look: a state with no verified source says so (no invented records)",
       "ok": true,
-      "detail": "Where to lookEach piece of advice appears once. The letters above and in \"What to do next\" point here. Not sure where to"
+      "detail": "Where to LookEach piece of advice appears once. The letters above and in \"What to do next\" point here. Not sure where to"
     },
     {
       "name": "Tool B clear: removes pi.toolB.* only, keeps unrelated key",
@@ -604,7 +604,7 @@
     {
       "name": "Home (Nov 5 lock; t130 moved the paragraphs below the start cards, unchanged): subtitle names DAR and SAR; mission in flowing paragraphs (no lists) after the cards; purpose line, both tool names, one-sentence privacy",
       "ok": true,
-      "detail": "{\"ps\":7,\"lists\":0,\"text\":\"This site helps you organize the records that connect you to a Revolutionary War\",\"sub\":\"Plain-English help with DAR and SAR applications, for the Daughters and the Sons of the American Revolution\",\"ai\":\"Written with AI assistance and reviewed by the site's owner. Each fact is tied to a quoted official source, and software checks that the quote is still there.\",\"afterCards\":true,\"words\":1467}"
+      "detail": "{\"ps\":7,\"lists\":0,\"text\":\"This site helps you organize the records that connect you to a Revolutionary War\",\"sub\":\"Plain-English Help With DAR and SAR Applications, for the Daughters and the Sons of the American Revolution\",\"ai\":\"Written with AI assistance and reviewed by the site's owner. Each fact is tied to a quoted official source, and software checks that the quote is still there.\",\"afterCards\":true,\"words\":1467}"
     },
     {
       "name": "Home (Nov 5 lock, SAR line updated by t125u): the exact AI line, the exact SAR line (sourced), no unsourced 'most people get stuck' / 'give up' / guarantee lines",
@@ -619,7 +619,7 @@
     {
       "name": "Navigation: 'Start here' (the Roadmap) comes first, then the widow-pension check",
       "ok": true,
-      "detail": "Start here | Widow pension check | Worksheet | Guides | FAQ | About"
+      "detail": "Start Here | Widow Pension Check | Worksheet | Guides | FAQ | About"
     },
     {
       "name": "Roadmap: opens with 'How to join, in short' and 'Step 0: find your patriot's name' before the rest",
@@ -824,10 +824,10 @@
     {
       "name": "t122u #9/#8: the home page's one visible heading is the tagline; the site name is in the h1 for screen readers and in the title; a short red rule sits under it",
       "ok": true,
-      "detail": "{\"h1s\":1,\"sr\":\"Patriot, In Lay Terms: \",\"srHidden\":true,\"vis\":\"Plain-English help with DAR and SAR applications, for the Daughters and the Sons of the American Revolution\",\"visH\":143.9375,\"title\":\"Patriot, In Lay Terms: plain-English help for DAR and SAR applications | Patriot In Lay Terms\",\"rule\":\"rgb(178, 34, 52)\",\"ruleW\":\"56px\"}"
+      "detail": "{\"h1s\":1,\"sr\":\"Patriot, In Lay Terms: \",\"srHidden\":true,\"vis\":\"Plain-English Help With DAR and SAR Applications, for the Daughters and the Sons of the American Revolution\",\"visH\":143.9375,\"title\":\"Patriot, In Lay Terms: Plain-English Help for DAR and SAR Applications | Patriot In Lay Terms\",\"rule\":\"rgb(178, 34, 52)\",\"ruleW\":\"56px\"}"
     },
     {
-      "name": "t122u #11: every visible text element on all 22 pages passes WCAG AA contrast (4.5:1, large text 3:1) — 3459 elements",
+      "name": "t122u #11: every visible text element on all 22 pages passes WCAG AA contrast (4.5:1, large text 3:1) — 3549 elements",
       "ok": true,
       "detail": ""
     },
@@ -844,10 +844,10 @@
     {
       "name": "t123u #2: each guide's 'Sources last checked' date is the oldest recorded live pass among its own listed sources (every source has a record; nothing invented)",
       "ok": true,
-      "detail": "lineage-proof-roadmap=2026-11-05 substitute-evidence=2026-11-05 read-pension-file=2026-11-10 records-by-state=2026-11-05 bounty-land-warrants=2026-11-10 census-bridge=2026-11-05 patriotic-service=2026-11-05 same-name=2026-11-10 patriot-or-loyalist=2026-11-10 application-problems=2026-11-05"
+      "detail": "lineage-proof-roadmap=2026-11-05 substitute-evidence=2026-11-05 read-pension-file=2026-11-11 records-by-state=2026-11-05 bounty-land-warrants=2026-11-11 census-bridge=2026-11-05 patriotic-service=2026-11-05 same-name=2026-11-11 patriot-or-loyalist=2026-11-11 application-problems=2026-11-05"
     },
     {
-      "name": "t124u #1 (390px): every Sources entry on every page (16 pages, 286 entries) has a visible \"Used for: ...\" line of at most about 8 words, and the raw URL is hidden on screen",
+      "name": "t124u #1 (390px): every Sources entry on every page (16 pages, 288 entries) has a visible \"Used for: ...\" line of at most about 8 words, and the raw URL is hidden on screen",
       "ok": true,
       "detail": ""
     },
@@ -857,7 +857,7 @@
       "detail": "{\"urls\":true,\"icons\":true}"
     },
     {
-      "name": "t124u #11 (390px): every link that leaves the site (324) opens in a new tab with rel=\"noopener noreferrer\", a small icon and \"(opens in new tab)\" for screen readers; no internal or email link does",
+      "name": "t124u #11 (390px): every link that leaves the site (326) opens in a new tab with rel=\"noopener noreferrer\", a small icon and \"(opens in new tab)\" for screen readers; no internal or email link does",
       "ok": true,
       "detail": ""
     },
@@ -877,7 +877,7 @@
       "detail": "{\"n\":15,\"ok\":true}"
     },
     {
-      "name": "t124u #1 (1280px): every Sources entry on every page (16 pages, 286 entries) has a visible \"Used for: ...\" line of at most about 8 words, and the raw URL is hidden on screen",
+      "name": "t124u #1 (1280px): every Sources entry on every page (16 pages, 288 entries) has a visible \"Used for: ...\" line of at most about 8 words, and the raw URL is hidden on screen",
       "ok": true,
       "detail": ""
     },
@@ -887,7 +887,7 @@
       "detail": "{\"urls\":true,\"icons\":true}"
     },
     {
-      "name": "t124u #11 (1280px): every link that leaves the site (324) opens in a new tab with rel=\"noopener noreferrer\", a small icon and \"(opens in new tab)\" for screen readers; no internal or email link does",
+      "name": "t124u #11 (1280px): every link that leaves the site (326) opens in a new tab with rel=\"noopener noreferrer\", a small icon and \"(opens in new tab)\" for screen readers; no internal or email link does",
       "ok": true,
       "detail": ""
     },
@@ -1024,7 +1024,7 @@
     {
       "name": "t128u #2: the FAQ's genealogist answer has Tim's exact sentence, after the sponsor line, sourced to sar.org/how-to-apply",
       "ok": true,
-      "detail": "Do I have to hire a genealogist? No. A DAR member helps guide you through completing and submitting the application.[1] SAR's local sponsor can guide you through the application.[7] SAR's national site says your sponsor is often the local chapter registrar.[7] That help comes with joining. Our guides can help you prepare: what records to gather and what questions to ask. "
+      "detail": "Do I Have to Hire a Genealogist? No. A DAR member helps guide you through completing and submitting the application.[1] SAR's local sponsor can guide you through the application.[7] SAR's national site says your sponsor is often the local chapter registrar.[7] That help comes with joining. Our guides can help you prepare: what records to gather and what questions to ask. What Does This Site Cost, "
     },
     {
       "name": "t128u #3: supplemental signatures come from SAR's national application checklist with an 'As of' date; the Ohio two-signatures line is gone",
@@ -1032,9 +1032,9 @@
       "detail": ""
     },
     {
-      "name": "t128u #3: DAR record copies stay attributed to the Ohio presentation (DAR Library Lineage Resources doesn't say chapter copies are refused)",
+      "name": "t146 #2 / t128u #3: DAR record copies, the birth certificate and the date format are re-sourced to SAR's national Application Preparation Guide ('SAR's application guide says', As of its last pass); the Ohio wording for them is gone",
       "ok": true,
-      "detail": ""
+      "detail": "November 11, 2026"
     },
     {
       "name": "t128u #1: the t127 DAR-FAQ/Step-by-step rewordings are held back (DAR pages unreachable since their Nov 5 pass); the South Carolina attributions are back",
@@ -1114,12 +1114,12 @@
     {
       "name": "t132 #1 (390px): glossary on a guide and a tool page is closed by default, opens on tap, prints expanded; home glossary stays open",
       "ok": true,
-      "detail": "{\"r\":{\"/guides/read-pension-file/\":{\"closedByDefault\":true,\"opensOnTap\":true,\"printExpanded\":true,\"sum\":\"Terms used on this page\",\"fits\":true},\"/tools/lineage-matrix/\":{\"closedByDefault\":true,\"opensOnTap\":true,\"printExpanded\":true,\"sum\":\"Terms used on this page\",\"fits\":true}},\"home\":{\"inDetails\":false,\"vis\":true,\"noDefs\":true}}"
+      "detail": "{\"r\":{\"/guides/read-pension-file/\":{\"closedByDefault\":true,\"opensOnTap\":true,\"printExpanded\":true,\"sum\":\"Terms Used on This Page\",\"fits\":true},\"/tools/lineage-matrix/\":{\"closedByDefault\":true,\"opensOnTap\":true,\"printExpanded\":true,\"sum\":\"Terms Used on This Page\",\"fits\":true}},\"home\":{\"inDetails\":false,\"vis\":true,\"noDefs\":true}}"
     },
     {
       "name": "t132 #1 (1280px): glossary on a guide and a tool page is closed by default, opens on tap, prints expanded; home glossary stays open",
       "ok": true,
-      "detail": "{\"r\":{\"/guides/read-pension-file/\":{\"closedByDefault\":true,\"opensOnTap\":true,\"printExpanded\":true,\"sum\":\"Terms used on this page\",\"fits\":true},\"/tools/lineage-matrix/\":{\"closedByDefault\":true,\"opensOnTap\":true,\"printExpanded\":true,\"sum\":\"Terms used on this page\",\"fits\":true}},\"home\":{\"inDetails\":false,\"vis\":true,\"noDefs\":true}}"
+      "detail": "{\"r\":{\"/guides/read-pension-file/\":{\"closedByDefault\":true,\"opensOnTap\":true,\"printExpanded\":true,\"sum\":\"Terms Used on This Page\",\"fits\":true},\"/tools/lineage-matrix/\":{\"closedByDefault\":true,\"opensOnTap\":true,\"printExpanded\":true,\"sum\":\"Terms Used on This Page\",\"fits\":true}},\"home\":{\"inDetails\":false,\"vis\":true,\"noDefs\":true}}"
     },
     {
       "name": "t132 #2: privacy page has Tim's exact sentence, keeps the ads line, and the old 'collects nothing' and 'Like any web host' sentences are gone",
@@ -1132,9 +1132,9 @@
       "detail": ""
     },
     {
-      "name": "t132 #3: Application Returned keeps the attributed non-refundable line, follows it with 'Confirm current fees with your registrar.', and '$100' and ohsar-fee are gone (page and manifest)",
+      "name": "t132 #3 / t146 #2: Application Returned's non-refundable line now cites SAR's application guide (re-sourced from the Ohio talk), followed by 'Confirm current fees with your registrar.'; '$100', ohsar-fee and ohsar-nonrefundable are gone (page and manifest)",
       "ok": true,
-      "detail": "non-refundable.[9] Confirm current fees with your registrar."
+      "detail": "not refundable.[9] Confirm current fees with your registrar."
     },
     {
       "name": "t133 #1/#2: no page has the page-level 'About this site · AI disclosure · Privacy' row, and 'About this site' appears nowhere",
@@ -1164,7 +1164,7 @@
     {
       "name": "t134 (390px): phone footer is a cluster (flex, wrap, centered, gap 4px 20px), links 15px and at least 32px tall, each on one line, labelled 'About' and 'Sources', no grid, no sideways scroll",
       "ok": true,
-      "detail": "{\"cols\":0,\"display\":\"flex\",\"wrap\":\"wrap\",\"justify\":\"center\",\"gapCss\":\"4px 20px\",\"font\":\"15px\",\"minH\":32,\"dpFont\":\"14px\",\"pFont\":\"14px\",\"xs\":7,\"oneLine\":true,\"n\":7,\"labels\":[\"About\",\"AI disclosure\",\"FAQ\",\"Walkthroughs\",\"Sources\",\"Privacy\",\"Contact\"],\"gap\":43,\"sw\":390,\"iw\":390,\"nav\":\"0px\",\"cards\":3,\"stacked\":true,\"sideBySide\":false}"
+      "detail": "{\"cols\":0,\"display\":\"flex\",\"wrap\":\"wrap\",\"justify\":\"center\",\"gapCss\":\"4px 20px\",\"font\":\"15px\",\"minH\":32,\"dpFont\":\"14px\",\"pFont\":\"14px\",\"xs\":7,\"oneLine\":true,\"n\":7,\"labels\":[\"About\",\"AI Disclosure\",\"FAQ\",\"Walkthroughs\",\"Sources\",\"Privacy\",\"Contact\"],\"gap\":43,\"sw\":390,\"iw\":390,\"nav\":\"0px\",\"cards\":3,\"stacked\":true,\"sideBySide\":false}"
     },
     {
       "name": "t133 #4 (390px): the empty space between the last content and the footer is at most 48px (was 77-126px)",
@@ -1174,27 +1174,92 @@
     {
       "name": "t133 #3 (390px): the three cards are stacked on the inner pages",
       "ok": true,
-      "detail": "{\"cols\":0,\"display\":\"flex\",\"wrap\":\"wrap\",\"justify\":\"center\",\"gapCss\":\"4px 20px\",\"font\":\"15px\",\"minH\":32,\"dpFont\":\"14px\",\"pFont\":\"14px\",\"xs\":7,\"oneLine\":true,\"n\":7,\"labels\":[\"About\",\"AI disclosure\",\"FAQ\",\"Walkthroughs\",\"Sources\",\"Privacy\",\"Contact\"],\"gap\":43,\"sw\":390,\"iw\":390,\"nav\":\"0px\",\"cards\":3,\"stacked\":true,\"sideBySide\":false}"
+      "detail": "{\"cols\":0,\"display\":\"flex\",\"wrap\":\"wrap\",\"justify\":\"center\",\"gapCss\":\"4px 20px\",\"font\":\"15px\",\"minH\":32,\"dpFont\":\"14px\",\"pFont\":\"14px\",\"xs\":7,\"oneLine\":true,\"n\":7,\"labels\":[\"About\",\"AI Disclosure\",\"FAQ\",\"Walkthroughs\",\"Sources\",\"Privacy\",\"Contact\"],\"gap\":43,\"sw\":390,\"iw\":390,\"nav\":\"0px\",\"cards\":3,\"stacked\":true,\"sideBySide\":false}"
     },
     {
       "name": "t133 #2 / t134 (1280px): desktop footer unchanged: inline links (block layout, not grid or flex), 14px, 1rem apart, all 7 on one row, 'About' first, footer label now 'Sources', disclaimer 14px",
       "ok": true,
-      "detail": "{\"cols\":0,\"display\":\"block\",\"wrap\":\"nowrap\",\"justify\":\"normal\",\"gapCss\":\"normal normal\",\"font\":\"14px\",\"minH\":19,\"dpFont\":\"14px\",\"pFont\":\"14px\",\"xs\":7,\"oneLine\":true,\"n\":7,\"labels\":[\"About\",\"AI disclosure\",\"FAQ\",\"Walkthroughs\",\"Sources\",\"Privacy\",\"Contact\"],\"gap\":87,\"sw\":1280,\"iw\":1280,\"nav\":\"16px\",\"cards\":3,\"stacked\":false,\"sideBySide\":true}"
+      "detail": "{\"cols\":0,\"display\":\"block\",\"wrap\":\"nowrap\",\"justify\":\"normal\",\"gapCss\":\"normal normal\",\"font\":\"14px\",\"minH\":19,\"dpFont\":\"14px\",\"pFont\":\"14px\",\"xs\":7,\"oneLine\":true,\"n\":7,\"labels\":[\"About\",\"AI Disclosure\",\"FAQ\",\"Walkthroughs\",\"Sources\",\"Privacy\",\"Contact\"],\"gap\":87,\"sw\":1280,\"iw\":1280,\"nav\":\"16px\",\"cards\":3,\"stacked\":false,\"sideBySide\":true}"
     },
     {
       "name": "t133 #3 (1280px): the three cards sit side by side on the inner pages",
       "ok": true,
-      "detail": "{\"cols\":0,\"display\":\"block\",\"wrap\":\"nowrap\",\"justify\":\"normal\",\"gapCss\":\"normal normal\",\"font\":\"14px\",\"minH\":19,\"dpFont\":\"14px\",\"pFont\":\"14px\",\"xs\":7,\"oneLine\":true,\"n\":7,\"labels\":[\"About\",\"AI disclosure\",\"FAQ\",\"Walkthroughs\",\"Sources\",\"Privacy\",\"Contact\"],\"gap\":87,\"sw\":1280,\"iw\":1280,\"nav\":\"16px\",\"cards\":3,\"stacked\":false,\"sideBySide\":true}"
+      "detail": "{\"cols\":0,\"display\":\"block\",\"wrap\":\"nowrap\",\"justify\":\"normal\",\"gapCss\":\"normal normal\",\"font\":\"14px\",\"minH\":19,\"dpFont\":\"14px\",\"pFont\":\"14px\",\"xs\":7,\"oneLine\":true,\"n\":7,\"labels\":[\"About\",\"AI Disclosure\",\"FAQ\",\"Walkthroughs\",\"Sources\",\"Privacy\",\"Contact\"],\"gap\":87,\"sw\":1280,\"iw\":1280,\"nav\":\"16px\",\"cards\":3,\"stacked\":false,\"sideBySide\":true}"
     },
     {
       "name": "t138 (390px): About has \"Why 'Patriot, In Lay Terms'?\" (h2, same style as the other About headings) right after the opening description, with Tim's paragraph word for word, followed by \"What you can do here\"",
       "ok": true,
-      "detail": "{\"h\":\"Why 'Patriot, In Lay Terms'?\",\"tag\":\"H2\",\"sameStyle\":true,\"p\":\"An inlay is a piece of wood set so deep into another that it becomes part of the grain. The patriots of the Revolution did something like that with the idea of a free country, and it's still part of the grain today. This site's job is smaller: it explains, in lay terms, how to trace your own family line back to one of them. Inlays, and lay terms: that's the name.\",\"afterIntro\":true,\"next\":\"What you can do here\",\"sw\":390,\"iw\":390}"
+      "detail": "{\"h\":\"Why 'Patriot, In Lay Terms'?\",\"tag\":\"H2\",\"sameStyle\":true,\"p\":\"An inlay is a piece of wood set so deep into another that it becomes part of the grain. The patriots of the Revolution did something like that with the idea of a free country, and it's still part of the grain today. This site's job is smaller: it explains, in lay terms, how to trace your own family line back to one of them. Inlays, and lay terms: that's the name.\",\"afterIntro\":true,\"next\":\"What You Can Do Here\",\"sw\":390,\"iw\":390}"
     },
     {
       "name": "t138 (1280px): About has \"Why 'Patriot, In Lay Terms'?\" (h2, same style as the other About headings) right after the opening description, with Tim's paragraph word for word, followed by \"What you can do here\"",
       "ok": true,
-      "detail": "{\"h\":\"Why 'Patriot, In Lay Terms'?\",\"tag\":\"H2\",\"sameStyle\":true,\"p\":\"An inlay is a piece of wood set so deep into another that it becomes part of the grain. The patriots of the Revolution did something like that with the idea of a free country, and it's still part of the grain today. This site's job is smaller: it explains, in lay terms, how to trace your own family line back to one of them. Inlays, and lay terms: that's the name.\",\"afterIntro\":true,\"next\":\"What you can do here\",\"sw\":1280,\"iw\":1280}"
+      "detail": "{\"h\":\"Why 'Patriot, In Lay Terms'?\",\"tag\":\"H2\",\"sameStyle\":true,\"p\":\"An inlay is a piece of wood set so deep into another that it becomes part of the grain. The patriots of the Revolution did something like that with the idea of a free country, and it's still part of the grain today. This site's job is smaller: it explains, in lay terms, how to trace your own family line back to one of them. Inlays, and lay terms: that's the name.\",\"afterIntro\":true,\"next\":\"What You Can Do Here\",\"sw\":1280,\"iw\":1280}"
+    },
+    {
+      "name": "t146 #3: all 10 guides have one 'In Short' box right under the title and right before the glossary, with 'This guide helps you / Start by / Then' lines of about 20 words or fewer",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "t146 #3: every In Short 'Then' line links to a tool or guide page that exists (and its #anchor, if any)",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "t146 #4: every heading on every page (h1–h6), every page <title> (matching its h1) and the menu labels are in Title Case",
+      "ok": true,
+      "detail": "Start Here|Widow Pension Check|Worksheet|Guides|FAQ|About || About|AI Disclosure|FAQ|Walkthroughs|Sources|Privacy|Contact"
+    },
+    {
+      "name": "t146 #4: named titles: 'Words You'll See Here', 'Terms Used on This Page', 'The Guides', 'Questions, Answered Simply', home card titles, 'In Short'",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "t146 #4: body text, buttons and quoted text keep their case (home buttons, the AI disclosure sentence, Tim's About heading)",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "t146 #1a: no page has a page-level 'About · AI disclosure · Privacy' row",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "t146 #1c: the inner pages show the home page's three cards (same titles, wording and buttons) and no 'Ready to start?' box remains",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "t146 #1b (390px): footer links never break across lines (7 links, no sideways scroll)",
+      "ok": true,
+      "detail": "{\"/\":{\"wrapped\":[],\"n\":7,\"sw\":390,\"iw\":390},\"/about/\":{\"wrapped\":[],\"n\":7,\"sw\":390,\"iw\":390},\"/guides/application-problems/\":{\"wrapped\":[],\"n\":7,\"sw\":390,\"iw\":390},\"/tools/lineage-matrix/\":{\"wrapped\":[],\"n\":7,\"sw\":390,\"iw\":390}}"
+    },
+    {
+      "name": "t146 #3 (390px): the In Short box shows under the guide title and above the glossary, inside the page width",
+      "ok": true,
+      "detail": "{\"vis\":true,\"below\":true,\"beforeDefs\":true,\"fits\":true,\"sw\":390,\"iw\":390,\"title\":\"In Short\"}"
+    },
+    {
+      "name": "t146 #3 (390px): clicking the In Short 'Then' link opens the matching tool",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "t146 #1b (1280px): footer links never break across lines (7 links, no sideways scroll)",
+      "ok": true,
+      "detail": "{\"/\":{\"wrapped\":[],\"n\":7,\"sw\":1280,\"iw\":1280},\"/about/\":{\"wrapped\":[],\"n\":7,\"sw\":1280,\"iw\":1280},\"/guides/application-problems/\":{\"wrapped\":[],\"n\":7,\"sw\":1280,\"iw\":1280},\"/tools/lineage-matrix/\":{\"wrapped\":[],\"n\":7,\"sw\":1280,\"iw\":1280}}"
+    },
+    {
+      "name": "t146 #3 (1280px): the In Short box shows under the guide title and above the glossary, inside the page width",
+      "ok": true,
+      "detail": "{\"vis\":true,\"below\":true,\"beforeDefs\":true,\"fits\":true,\"sw\":1280,\"iw\":1280,\"title\":\"In Short\"}"
+    },
+    {
+      "name": "t146 #3 (1280px): clicking the In Short 'Then' link opens the matching tool",
+      "ok": true,
+      "detail": ""
     },
     {
       "name": "t130 #1 (390px): under the heading and independent line, Tim's sentence, then the three start cards (stacked) with his exact titles, lines and navy buttons, then 'See how the tools work', then the longer paragraphs; the 'Ready to get started?' box is gone",

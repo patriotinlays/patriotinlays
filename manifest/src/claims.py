@@ -131,6 +131,11 @@ C = [
 ("ohsar-3yrs", "OH_SAR", "After three years in pended status, those applications will be withdrawn.", "A 2023 Ohio Society SAR presentation said applications pended for three years are withdrawn.", None),
 ("ohsar-signatures","OH_SAR","New-member apps must have five signatures","SAR new-member applications need five signatures.",None),
 ("ohsar-supp-sig", "OH_SAR", "Supplemental apps must have two signatures", "A 2023 Ohio Society SAR presentation said supplemental applications need two signatures.", None),
+# t146: three points the page took from the 2023 Ohio presentation, re-sourced to SAR's national Application Preparation Guide (Appendix B).
+("sar-apg-bc-gender", "SAR_APG", "Birth certificate or court order is required for all new applicants that specifies his gender as male.", "SAR's application guide says new applicants need a birth certificate or court order that specifies the applicant's gender as male.", "Appendix B, item 3"),
+("sar-apg-date-format", "SAR_APG", "All dates must be entered using the format “01 Jan 1900,” using only the first three letters of each month", "SAR's application guide says all dates must be entered in the format 01 Jan 1900.", "Appendix B, item 4"),
+("sar-apg-record-copy", "SAR_APG", "If using a DAR application as proof, it must: (1) be an official DAR record copy (not a chapter copy)", "SAR's application guide says a DAR application used as proof must be an official DAR record copy, not a chapter copy.", "Appendix B, item 5"),
+("sar-apg-fee-nonrefundable", "SAR_APG", "Moreover, his filing fee is not refundable.", "SAR's application guide says an applicant's filing fee is not refundable.", "p. 6"),
 ("sar-checklist-supp-sig", "SAR_CHECKLIST", "For supplemental applications, have the member and the State Registrar (or other designated officer) signed on the back?", "SAR's application checklist asks whether the member and the State Registrar (or another designated officer) have signed a supplemental application on the back.", None),
 ("sar-checklist-signatures", "SAR_CHECKLIST", "For new-member applications, have the State Registrar, State Secretary, and two Sponsors signed the application?", "SAR's application checklist asks whether the State Registrar, State Secretary and two sponsors have signed a new-member application.", None),
 # ---- NARA M804 ----

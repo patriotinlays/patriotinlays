@@ -31,7 +31,7 @@ export function renderPlan(steps, { printable = true, heading = true, whereRef =
   const btn = printable ? el("button", { type: "button", class: "big", "data-print-plan": "", onclick: () => {
     document.body.classList.add("print-plan"); const done = () => { document.body.classList.remove("print-plan"); window.removeEventListener("afterprint", done); };
     window.addEventListener("afterprint", done); window.print(); setTimeout(done, 1000); }, text: "Save as PDF or print this plan" }) : null;
-  return el("div", { class: "plan" }, heading ? el("h2", { class: "plan-h", text: "What to do next" }) : null,
+  return el("div", { class: "plan" }, heading ? el("h2", { class: "plan-h", text: "What to Do Next" }) : null,
     tip ? el("p", { class: "small", text: "Your plan, built from what you entered. To save it, press the button below and choose \"Save as PDF\" in the print window." }) : null, ol, btn);
 }
 export { whereDiv };

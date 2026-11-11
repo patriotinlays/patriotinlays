@@ -11,6 +11,7 @@ import { join, dirname } from "node:path";
 import { sourceLabel, SOURCE_TOPICS } from "./lib/source-labels.mjs";
 import { asofAllowed } from "./lib/source-scope.mjs";
 import { createHash } from "node:crypto";
+import { titleCase, titleCaseHeadings, titleCaseInner } from "./lib/title-case.mjs";
 const ROOT = new URL("..", import.meta.url).pathname;
 const OUT = join(ROOT, "dist");
 const SITE = "https://patriotinlays.com";
@@ -111,7 +112,7 @@ const WIDOW_FULL = `<section class="tool" data-tool="widow" aria-labelledby="ta-
 const WIDOW_CARD = `<aside class="card" data-tool-card="widow"><strong>Widow Pension Law Checker</strong>
 <p>Type a widow's marriage date and what you know about her husband's service. See which federal widow pension and bounty-land laws (1836 to 1878) fit, and where to look for her pension file. Free; nothing leaves your browser.</p>
 <p><a href="/tools/widow-pension-checker/">Open the checker</a></p></aside>`;
-const PATRIOT_CARD = `<aside class="card" data-tool-card="patriot"><strong>Record your patriot's service</strong>
+const PATRIOT_CARD = `<aside class="card" data-tool-card="patriot"><strong>Record Your Patriot's Service</strong>
 <p>The free worksheet's patriot step asks for your patriot's state, unit, type of service and rough dates. It checks the dates against the period DAR accepts for that type of service and points you to the records for that state.</p>
 <p><a href="/tools/lineage-matrix/#tb-patriot">Open the patriot step</a> · <a href="/tools/widow-pension-checker/">Widow Pension Law Checker</a></p></aside>`;
 const TOOL_B_FULL = `<section class="tool" data-tool="lineage-matrix" aria-labelledby="tb-h"><h2 id="tb-h">Use the worksheet</h2>
@@ -184,9 +185,11 @@ function quoteBlock(key, text, ctx) {
   if (!walkthrough.texts.some((t) => t === text)) throw new Error(`walkthrough quote not produced by the tools: ${text.slice(0, 90)}`);
   return `<blockquote class="tool-output" data-tool-output="${esc(key)}"><p>${html}</p></blockquote>`;
 }
-const NAV = `<header class="site"><div class="wrap"><a class="brand" href="/" aria-label="Patriot, In Lay Terms: home"><img class="logo" src="/assets/logo-horizontal-white.svg" alt="Patriot, In Lay Terms" width="161" height="44"></a><nav class="top" aria-label="Main"><a href="/guides/lineage-proof-roadmap/">Start here</a><a href="/tools/widow-pension-checker/">Widow pension check</a><a href="/tools/lineage-matrix/">Worksheet</a><a href="/#guides">Guides</a><a href="/faq/">FAQ</a><a href="/about/">About</a></nav></div></header>`;
-const FOOT = `<footer class="site"><div class="wrap"><a href="/about/" data-foot-about>About</a><a href="/ai-disclosure/" data-foot-ai>AI disclosure</a><a href="/faq/">FAQ</a><a href="/walkthroughs/">Walkthroughs</a><a href="/sources/">Sources</a><a href="/privacy/">Privacy</a><a href="/contact/">Contact</a><p>Not affiliated with DAR, SAR, NSCDA or the National Archives. Not legal or professional genealogical advice.</p></div></footer>`;
+const NAV = `<header class="site"><div class="wrap"><a class="brand" href="/" aria-label="Patriot, In Lay Terms: home"><img class="logo" src="/assets/logo-horizontal-white.svg" alt="Patriot, In Lay Terms" width="161" height="44"></a><nav class="top" aria-label="Main"><a href="/guides/lineage-proof-roadmap/">Start Here</a><a href="/tools/widow-pension-checker/">Widow Pension Check</a><a href="/tools/lineage-matrix/">Worksheet</a><a href="/#guides">Guides</a><a href="/faq/">FAQ</a><a href="/about/">About</a></nav></div></header>`;
+const FOOT = `<footer class="site"><div class="wrap"><a href="/about/" data-foot-about>About</a><a href="/ai-disclosure/" data-foot-ai>AI Disclosure</a><a href="/faq/">FAQ</a><a href="/walkthroughs/">Walkthroughs</a><a href="/sources/">Sources</a><a href="/privacy/">Privacy</a><a href="/contact/">Contact</a><p>Not affiliated with DAR, SAR, NSCDA or the National Archives. Not legal or professional genealogical advice.</p></div></footer>`;
 function page({ title, description, path, body, noindex = false }) {
+  // Tim t146 #4: Title Case for the page <title> (and og:title) and every heading on the page.
+  title = titleCase(title); body = titleCaseHeadings(body);
   return `<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>${esc(title)} | Patriot In Lay Terms</title><meta name="description" content="${esc(description || "")}">
 <link rel="canonical" href="${SITE}${path}">${noindex ? '<meta name="robots" content="noindex">' : ""}
@@ -207,24 +210,33 @@ const START_HERE = START_CARDS.replace('class="start-cards"', 'class="start-card
 // Every guide and tool page opens with a short, sourced definitions box (the home page's glossary, reused).
 const DEFS_MD = readFileSync(join(ROOT, "src/partials/glossary.md"), "utf8").replace(/^## .*\n/, "");
 // Tim t132 #1: collapsed by default on guides and tool pages under this title; the home page glossary stays open; print shows it expanded.
-const DEFS_SUMMARY = "Terms used on this page";
+const DEFS_SUMMARY = "Terms Used on This Page";
 function renderFile(dir, f) {
-  const raw = readFileSync(join(ROOT, dir, f), "utf8"); const { fm, body } = parseFront(raw);
+  const raw = readFileSync(join(ROOT, dir, f), "utf8"); let { fm, body } = parseFront(raw);
+  // Tim t146 #3: each guide opens with a small "In Short" box (under the title, before the glossary): what the guide helps
+  // you do, where to start, and a link to the matching tool or the next guide. Written only from the guide's own text.
+  const IS = /^::in-short\n([\s\S]*?)\n::end\n/m; const isM = body.match(IS); let inShortLines = null;
+  if (isM) { body = body.replace(IS, ""); inShortLines = isM[1].split("\n").filter((l) => l.trim()); }
+  if (fm.cornerstone && (!inShortLines || inShortLines.length !== 3)) throw new Error(`${f}: guides need an ::in-short box with three lines`);
   const ctx = { sources: [], tools: new Set(), claimCount: 0 };
   const defs = dir === "src/content" ? `<details class="defs" data-defs><summary>${esc(DEFS_SUMMARY)}</summary>${md(DEFS_MD, ctx)}<p class="small"><a href="/#glossary">The same definitions on the home page</a></p></details>` : "";
   let html = md(body, ctx);
+  const IS_KEYS = { "This guide helps you": "helps", "Start by": "start", "Then": "then" };
+  const inShort = inShortLines ? `<aside class="in-short" data-in-short aria-labelledby="in-short-h"><h2 class="in-short-h" id="in-short-h">In Short</h2><ul>${inShortLines.map((l) => {
+    const m = l.match(/^(This guide helps you|Start by|Then): (.+)$/); if (!m) throw new Error(`${f}: bad In Short line: ${l}`);
+    return `<li data-in-short-line="${IS_KEYS[m[1]]}"><strong>${m[1]}:</strong> ${inline(m[2], ctx)}</li>`; }).join("")}</ul></aside>` : "";
   // Tool pages: title, purpose, limits box, tool first; glossary and long copy sit below the tool.
   // Tim t119u #2: on tool pages, one line right under the one-sentence purpose (above the "What it does" box) points beginners to the Roadmap.
   if (fm.tool) { const i = html.indexOf("</p>", html.indexOf("</h1>")); if (i < 0) throw new Error(`tool page ${f}: no purpose line`);
     html = html.slice(0, i + 4) + '<p class="roadmap-pointer" data-roadmap-pointer>New to this? <a href="/guides/lineage-proof-roadmap/">Start with the Roadmap guide.</a></p>' + html.slice(i + 4); }
   if (fm.tool && defs) html = html.replace(/(<\/section><script type="module" src="\/assets\/js\/tool-[ab]-ui\.js"><\/script>)/, `$1${defs}`);
-  else if (defs) html = html.replace("</h1>", `</h1>${defs}`);
+  else if (defs || inShort) html = html.replace("</h1>", `</h1>${inShort}${defs}`);
   // Guides end with a "What to do next" block (its own tool first) and a link to the next guide, so no guide is a dead end.
   if (fm.cornerstone) {
     const own = [...ctx.tools][0] === "widow" ? "widow" : "lineage";
     html += "\n" + md(readFileSync(join(ROOT, "src/partials", `next-steps-${own}.md`), "utf8"), ctx);
     const next = GUIDE_ORDER.find((g) => +g.cornerstone === +fm.cornerstone + 1);
-    html += `<p class="next-guide">${next ? `Next guide: <a href="/${next.slug}/">${esc(next.title)}</a> · ` : ""}<a href="/#guides">All 10 guides</a> · <a href="/faq/">FAQ</a></p>`;
+    html += `<p class="next-guide">${next ? `Next guide: <a href="/${next.slug}/">${esc(next.title)}</a> · ` : ""}<a href="/#guides">All 10 Guides</a> · <a href="/faq/">FAQ</a></p>`;
   }
   // t124u #9: the Roadmap's Step 0 heading was renamed; keep the old anchor working for saved links.
   html = html.replace('<h2 id="step-0-find-your-patriot-s-name">', '<span id="step-0-find-the-soldier-s-name" aria-hidden="true"></span><h2 id="step-0-find-your-patriot-s-name">');
@@ -265,7 +277,7 @@ ${START_CARDS}
 <p class="see-how" data-see-how><a href="/walkthroughs/">See how the tools work</a></p>
 <section class="home-mission" data-mission>${HOME.body.replace(/<p>Written with AI assistance/, '<p class="ai-line" data-ai-line>Written with AI assistance')}</section>
 <h2 id="guides">The guides</h2><ol class="guide-list home-guides">${guides.map((g) => `<li><a class="guide-title" href="${g.path}">${esc(g.title)}</a><br><span class="small">${esc(g.description)}</span></li>`).join("")}</ol>
-<p class="home-help">Questions? <a href="/faq/">Questions, answered simply</a> · New to the tools? <a href="/walkthroughs/">See them in action</a>, with a made-up family.</p>
+<p class="home-help">Questions? <a href="/faq/">Questions, Answered Simply</a> · New to the tools? <a href="/walkthroughs/">See them in action</a>, with a made-up family.</p>
 ${HOME.html}
 ${HOME.sources}` }));
 sitemap.unshift("/");
@@ -276,11 +288,11 @@ write("sources", page({ title: "Sources & Methodology", description: "How every 
 <p>Written with AI assistance and reviewed by the site's owner. See the <a href="/ai-disclosure/">AI disclosure</a>.</p><h2>Sources in the manifest</h2><ol class="sources">${[...bySource].map(([u, v]) => `<li><a href="${esc(u)}">${esc(v.t)}</a> (${v.n} ${v.n === 1 ? "claim" : "claims"}). <span class="source-use" data-source-use>Used for: ${esc(SOURCE_TOPICS[u].def)}.</span> <span class="url">${esc(u)}</span></li>`).join("")}</ol><p class="small">Manifest: ${manifest.claims.length} verified claims, last retrieved ${BUILD_DATE}.</p>${START_HERE}` }));
 sitemap.push("/sources/");
 // Report pages (noindex; render from localStorage only)
-write("tools/widow-pension-checker/report", page({ title: "Widow Pension Law Checker — your report", description: "Printable report of your last widow-pension check, rendered from this browser only.", path: "/tools/widow-pension-checker/report/", noindex: true,
+write("tools/widow-pension-checker/report", page({ title: "Widow Pension Law Checker: Your Report", description: "Printable report of your last widow-pension check, rendered from this browser only.", path: "/tools/widow-pension-checker/report/", noindex: true,
   body: `<h1>Widow Pension Law Checker: your report</h1><p>The dates you checked and what the published pension laws say about them. <a class="small" href="/#glossary">New here? What DAR, SAR, "bounty land" and "Stat." mean</a></p><section class="tool" data-tool-report="widow"><div data-report><p>Loading your saved check…</p></div><button type="button" data-print>Print this report</button><button type="button" class="secondary" data-clear="toolA">Delete my saved checker data</button><div data-out="report" aria-live="polite"></div></section><p class="small">This report is built in your browser from what you typed on this device. Nothing is uploaded. It compares dates with published laws; it is not a decision about membership or a pension.</p><p><a href="/tools/widow-pension-checker/">Back to the checker</a></p><script type="module" src="/assets/js/tool-a-ui.js"></script>` }));
-write("tools/lineage-matrix/report", page({ title: "Lineage Evidence Matrix — your report", description: "Printable gap report rendered from this browser only.", path: "/tools/lineage-matrix/report/", noindex: true,
+write("tools/lineage-matrix/report", page({ title: "Lineage Evidence Matrix: Your Report", description: "Printable gap report rendered from this browser only.", path: "/tools/lineage-matrix/report/", noindex: true,
   body: `<h1>Lineage Evidence Matrix: your report</h1><p>What's still missing in your line, where to look for it, and the records you've entered. <a class="small" href="/#glossary">New here? What DAR, SAR, NSCDA, "lineage society" and "patriot" mean</a></p><section class="tool" data-tool-report="lineage-matrix"><p class="report-actions"><button type="button" class="big" data-save-pdf>Save as PDF</button> <span class="small" data-page-claim data-summary-pages="2" data-full-pages="3">Saves the summary and "Where to look": in the print window, choose "Save as PDF". The made-up example takes 2 Letter pages this way. Ctrl+P (your browser's own Print) and the "Print the full report" button print every record as well: 3 pages for the example. A longer family line prints longer.</span></p><div data-report><p>Loading your saved matrix…</p></div><button type="button" data-print>Print the full report (with every record)</button><button type="button" class="secondary" data-clear="toolB">Delete all my worksheet data</button></section><p class="small">Built in your browser from what you typed on this device. Nothing is uploaded. Every label means "still needs review": only a society's genealogists decide what is proven.</p><p class="no-print"><a href="/tools/lineage-matrix/">Back to the matrix</a></p><script type="module" src="/assets/js/tool-b-ui.js"></script>` }));
-writeFileSync(join(OUT, "404.html"), versionUrls(page({ title: "Page not found", path: "/404.html", noindex: true, body: `<h1>Page not found</h1><p>That page doesn't exist. <a href="/">Go to the home page</a>.</p>${START_HERE}` })));
+writeFileSync(join(OUT, "404.html"), versionUrls(page({ title: "Page Not Found", path: "/404.html", noindex: true, body: `<h1>Page not found</h1><p>That page doesn't exist. <a href="/">Go to the home page</a>.</p>${START_HERE}` })));
 writeFileSync(join(OUT, "sitemap.xml"), `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${sitemap.filter((p) => !p.includes("/contact/") || true).map((p) => `  <url><loc>${SITE}${p}</loc><lastmod>${BUILD_DATE}</lastmod></url>`).join("\n")}\n</urlset>\n`);
 writeFileSync(join(OUT, "robots.txt"), `User-agent: *\nDisallow: /tools/widow-pension-checker/report/\nDisallow: /tools/lineage-matrix/report/\nSitemap: ${SITE}/sitemap.xml\n`);
 // The standalone service-date checker was folded into the worksheet's patriot step; old URLs redirect (Cloudflare Pages _redirects).

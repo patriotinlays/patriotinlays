@@ -6,6 +6,12 @@ cornerstone: 3
 ---
 # How to Read a Revolutionary War Pension File, Page by Page
 
+::in-short
+This guide helps you: find a pension file, decode its envelope and read its papers in the right order.
+Start by: reading the selected records and any summary card or jacket first.
+Then: test the file's marriage and service dates in the [Widow Pension Law Checker](/tools/widow-pension-checker/).
+::end
+
 A pension file is often the single richest record for a Revolutionary War ancestor: service, residence, age, sometimes a marriage or a page torn from a family Bible. It is also confusing on first contact, because the papers are not in a logical order and the envelope uses a shorthand that few people explain. This guide walks through one file from the outside in.
 
 ## Step 1: Find the file

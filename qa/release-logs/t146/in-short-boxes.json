@@ -1,0 +1,52 @@
+{
+  "lineage-proof-roadmap": [
+    "This guide helps you: plan the chain of generations from you back to your patriot before you start filling in forms.",
+    "Start by: writing the chain first: every generation from you back to the patriot, names only.",
+    "Then: build an evidence grid for each generation in the Lineage Evidence Matrix."
+  ],
+  "substitute-evidence": [
+    "This guide helps you: prove each generation without a birth certificate, using substitute records sorted by era.",
+    "Start by: dealing with any missing record in the three most recent generations, then the older links.",
+    "Then: enter each substitute in the Lineage Evidence Matrix and flag any record that disagrees."
+  ],
+  "read-pension-file": [
+    "This guide helps you: find a pension file, decode its envelope and read its papers in the right order.",
+    "Start by: reading the selected records and any summary card or jacket first.",
+    "Then: test the file's marriage and service dates in the Widow Pension Law Checker."
+  ],
+  "records-by-state": [
+    "This guide helps you: search for your ancestor's service records in the right repository.",
+    "Start by: identifying the type of service: Continental Army, state troops, militia, navy, or civil and patriotic service.",
+    "Then: record your patriot's service in the worksheet's patriot step."
+  ],
+  "bounty-land-warrants": [
+    "This guide helps you: sort out what a bounty-land file shows about service and family, and where it misleads.",
+    "Start by: checking the proof-value table to see what the file can and cannot show.",
+    "Then: log any mismatch between the land and the family's home in the Lineage Evidence Matrix."
+  ],
+  "census-bridge": [
+    "This guide helps you: work across the gap between a mid-1800s census and earlier censuses that name only the household head.",
+    "Start by: fixing the anchor: your ancestor's earliest census entry that lists every household member by name.",
+    "Then: record your estimates as indirect evidence in the Lineage Evidence Matrix."
+  ],
+  "patriotic-service": [
+    "This guide helps you: prove service off the battlefield: committees, oaths, petitions, town office, supply taxes or furnished goods.",
+    "Start by: naming the service type and checking its window in the worksheet's patriot step.",
+    "Then: test your patriot's service dates in the worksheet's patriot step."
+  ],
+  "same-name": [
+    "This guide helps you: prove that a service record with your ancestor's name is his, not another man's.",
+    "Start by: searching every spelling, then opening every same-name file for the state, not just the first.",
+    "Then: use the conflict flag in the Lineage Evidence Matrix for records that disagree."
+  ],
+  "patriot-or-loyalist": [
+    "This guide helps you: test both sides of the record before you rely on a patriot claim.",
+    "Start by: building the patriot timeline: every dated act of service, with its source and place.",
+    "Then: enter each pro- and anti-independence record in the Lineage Evidence Matrix and flag conflicts."
+  ],
+  "application-problems": [
+    "This guide helps you: find why a DAR or SAR application was questioned, and how to fix it.",
+    "Start by: assuming the problem is in the documentation, not the ancestor.",
+    "Then: run the Lineage Evidence Matrix report and clear every gap and conflict it lists."
+  ]
+}

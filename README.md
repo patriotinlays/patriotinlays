@@ -260,6 +260,12 @@ Docs: https://developers.cloudflare.com/pages/how-to/web-analytics/
 - February 28, 1855 navy-widow law cited as ch. 126, sec. 3, 10 Stat. 616 (chapter begins at 615); 10 Stat. 701 is only the March 3, 1855 bounty-land act.
 - Worksheet: step 1 is the patriot, step 2 starts the family with yourself; removing the oldest generation asks for confirmation.
 
+### t146 (Nov 11, 2026)
+- Application Returned: three points that came from the 2023 Ohio presentation (applicant birth certificate showing gender, the 01 Jan 1900 date format, DAR record copies only) now cite SAR's national Application Preparation Guide (`SAR_APG`, https://www.sar.org/app/uploads/APG-07-June-2026.pdf, scope national) as "As of <date>, SAR's application guide says ...". The other Ohio points stay attributed to the presentation. APG-1.pdf is a 404; sar.org/nssar-genealogy-policies-materials/ links the 07 June 2026 edition.
+- Each of the 10 guides opens with an "In Short" box (under the title, before the glossary): `::in-short` ... `::end` in the guide's Markdown, three lines "This guide helps you:", "Start by:", "Then:" (Then links to the matching tool or the next guide). The build stops if a guide lacks it.
+- Title Case for every heading, page `<title>`, menu label and named section link, applied at build time by `scripts/lib/title-case.mjs` (Tim's minor-word list; hyphen parts capitalized; "Patriot, In Lay Terms" kept). Static headings in tool scripts are written in Title Case. Body text, buttons, form labels, tool results and quotes are unchanged. Heading ids are unchanged.
+- Housekeeping item 1 (row, phone footer, cards, phone gap) was already live from t133/t134; the phone footer stays the t134 cluster.
+
 ### t133 (Nov 10, 2026)
 - Home: the page-level "About this site · AI disclosure · Privacy" row is gone (the footer has those links).
 - Footer under 600px: two-column grid, each link on one line; desktop unchanged.

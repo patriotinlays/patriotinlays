@@ -6,6 +6,12 @@ cornerstone: 7
 ---
 # Patriotic Service Without a Musket: Proving Supply Taxes, Oaths, Petitions and Civil Office
 
+::in-short
+This guide helps you: prove service off the battlefield: committees, oaths, petitions, town office, supply taxes or furnished goods.
+Start by: naming the service type and checking its window in the worksheet's patriot step.
+Then: test your patriot's service dates in the worksheet's [patriot step](/tools/lineage-matrix/#tb-patriot).
+::end
+
 Many patriots never carried a musket. They sat on committees, swore oaths, signed petitions, held town office, paid supply taxes or furnished goods. Lineage societies count much of this, but each type has its own evidence and, in a few cases, its own dates.
 
 ## The date windows

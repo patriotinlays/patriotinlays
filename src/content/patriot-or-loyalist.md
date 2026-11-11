@@ -6,6 +6,12 @@ cornerstone: 9
 ---
 # Patriot or Loyalist? How to Determine Which Side Your Ancestor Took
 
+::in-short
+This guide helps you: test both sides of the record before you rely on a patriot claim.
+Start by: building the patriot timeline: every dated act of service, with its source and place.
+Then: enter each pro- and anti-independence record in the [Lineage Evidence Matrix](/tools/lineage-matrix/) and flag conflicts.
+::end
+
 Families changed sides, neighbors split, and some people tried to stay out of it altogether. A lineage society cares about which side your ancestor ended up on, not only about one act of service. This guide shows how to test both sides of the record before you rely on a patriot claim.
 
 ## Why it matters for an application

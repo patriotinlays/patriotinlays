@@ -6,6 +6,12 @@ cornerstone: 8
 ---
 # Same Name, Different Man: Separating Patriots Who Share a Name
 
+::in-short
+This guide helps you: prove that a service record with your ancestor's name is his, not another man's.
+Start by: searching every spelling, then opening every same-name file for the state, not just the first.
+Then: use the conflict flag in the [Lineage Evidence Matrix](/tools/lineage-matrix/) for records that disagree.
+::end
+
 Finding a service record with your ancestor's name is the start of the work, not the end. Common names repeat across towns and counties, cousins were named for the same grandfather, and record-keepers spelled freely. Lineage reviewers check this, so plan to prove it before you submit.
 
 ## How often this goes wrong

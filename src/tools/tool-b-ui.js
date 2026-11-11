@@ -342,7 +342,7 @@ const whereRefEl = (letters) => letters?.length ? el("div", { class: "where-ref"
 // The lettered "Where to look" index, shared by the worksheet page and the report.
 export function whereIndexEl(blocks, intro, level = "h2") {
   return el("section", { class: "report-where", "data-where-index": "" },
-    el(level, { text: "Where to look" }),
+    el(level, { text: "Where to Look" }),
     el("p", { class: "small", text: `${intro} Not sure where to order a record? Ask your society's registrar.` }),
     blocks.some((b) => /NSCDA/.test(b.text || "")) ? el("p", { class: "small term", "data-nscda-term": "" }, el("strong", { text: "NSCDA: " }), NSCDA_TERM.text.replace(/^NSCDA is /, "")) : null,
     ...blocks.map((b) => el("div", { class: "where-block", id: `where-${b.letter}`, "data-where-block": b.letter },
@@ -366,9 +366,9 @@ function mountReport(root) {
     el("p", { class: "small", text: `Saved ${s.updated ? new Date(s.updated).toLocaleString() : ""}. Your own worksheet, not a decision: a society's genealogists review every entry.` }),
     el("p", {}, el("strong", { text: "The patriot: " }), patLine),
     el("p", {}, el("strong", { text: "Where you are: " }), `${plural(s.generations.length, "generation")}, ${plural(n, "evidence entry", "evidence entries")}, ${plural(missing, "thing")} still missing or flagged.`),
-    el("h3", { text: "What to do next" }), plan);
+    el("h3", { text: "What to Do Next" }), plan);
   const where = whereIndexEl(blocks, "Each piece of advice appears once. The letters in the to-do list above point here.");
-  const kids = [summary, where, el("section", { class: "report-detail" }, el("h2", { text: "The patriot, in full" }), hasPatriot(s.patriot) ? patriotSummary(s.patriot, s.generations) : el("p", { class: "small", text: "Not filled in yet." }), el("h2", { text: "Your records, generation by generation" }))];
+  const kids = [summary, where, el("section", { class: "report-detail" }, el("h2", { text: "The Patriot, in Full" }), hasPatriot(s.patriot) ? patriotSummary(s.patriot, s.generations) : el("p", { class: "small", text: "Not filled in yet." }), el("h2", { text: "Your Records, Generation by Generation" }))];
   const detail = kids[2];
   for (const g of s.generations) {
     const rows = byFactOrder(filledCells(g.cells)).map((c) => { const ev = evaluateCell(c);

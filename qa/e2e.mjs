@@ -136,7 +136,7 @@ check("Widow checker: saved under namespaced keys only", Object.keys(store).filt
 await page.screenshot({ path: join(SHOTS, "desktop-widow.png"), fullPage: false });
 phase("load"); await page.goto(`${BASE}/tools/widow-pension-checker/report/`); phase("interact");
 txt = await page.textContent("[data-report]");
-check("Widow report renders saved results from localStorage", /Widow pension/.test(txt) && /1836/.test(txt), txt.slice(0, 80));
+check("Widow report renders saved results from localStorage", /Widow pension/i.test(txt) && /1836/.test(txt), txt.slice(0, 80));
 check("Widow report: 'What to do next' plan with a 'Print or save this plan' button", /What to do next/.test(txt) && /Contact a local chapter's registrar/.test(txt) && (await page.$$("[data-report] [data-print-plan]")).length === 1);
 await page.emulateMedia({ media: "print" });
 const printHidden = await page.$$eval("header.site, footer.site, .tool button", (els) => els.every((e) => getComputedStyle(e).display === "none"));
@@ -169,7 +169,7 @@ phase("load"); await page.goto(`${BASE}/tools/lineage-matrix/`); phase("interact
   check("Worksheet (audit 4 proposal, t130 #2a): 'Start with just the patriot and me' opens the steps at the patriot step, saves a blank worksheet, and keeps the checklist tick (also shown in the patriot step)", after.startHidden && !after.bodyHidden && after.focus === "tb-patriot" && after.saved && after.tick === true && after.patBox === true, JSON.stringify(after));
   phase("load"); await page.reload(); phase("interact");
   check("Worksheet (audit 4 proposal): once started, a reload goes straight to the steps", !(await page.isVisible("[data-ws-begin]")) && await page.isVisible("#pat-name")); }
-check("Worksheet: step 1 is the patriot step", /Your patriot/.test(await page.textContent("#tb-patriot")) && (await page.$$("[data-patriot-form] #pat-kind option")).length >= 9);
+check("Worksheet: step 1 is the patriot step", /Your Patriot/.test(await page.textContent("#tb-patriot")) && (await page.$$("[data-patriot-form] #pat-kind option")).length >= 9);
 await page.fill("#pat-name", "Test Patriot"); await page.selectOption("#pat-state", "NC"); await page.selectOption("#pat-kind", "continental"); await fillDate(page, "pat-start", "1776-02"); await fillDate(page, "pat-end", "1779-06");
 txt = await page.textContent("[data-patriot-check]");
 check("Patriot step: dates checked against DAR's period for that type of service (not a ruling), linking the widow checker", /Dates fit DAR's period/.test(txt) && /not a ruling/.test(txt) && (await page.$$('[data-patriot-check] a[href="/tools/widow-pension-checker/?from=worksheet"]')).length === 1, txt.slice(0, 120));
@@ -210,7 +210,7 @@ await page.click("[data-ws-begin]");
 // t130 #2a: "Start with just the patriot and me" creates only the patriot step and generation 1 (you).
 { const st0 = await page.evaluate(() => ({ gens: [...document.querySelectorAll("details.gen-d")].map((d) => d.dataset.gen).join(","), saved: JSON.parse(localStorage.getItem("pi.toolB.v1") || "{}").generations?.length,
     patriotOpen: document.querySelector('details[data-group="patriot"]')?.open, groups: [...document.querySelectorAll("[data-group]")].map((g) => g.querySelector("h3")?.textContent.replace(/^\d+\s*/, "")).join("|"), g1Open: document.querySelector('details.gen-d[data-gen="1"]')?.open }));
-  check("t130 #2a: the default start shows only 'Your patriot' and Generation 1 (you); older generations stay hidden until added; saved worksheet has 1 generation", st0.gens === "1" && st0.saved === 1 && st0.patriotOpen === true && st0.g1Open === true && st0.groups === "Your patriot|Generations", JSON.stringify(st0)); }
+  check("t130 #2a: the default start shows only 'Your patriot' and Generation 1 (you); older generations stay hidden until added; saved worksheet has 1 generation", st0.gens === "1" && st0.saved === 1 && st0.patriotOpen === true && st0.g1Open === true && st0.groups === "Your Patriot|Generations", JSON.stringify(st0)); }
 check("Tool B: 'How this works' says it doesn't search records and nothing leaves the device", /does not search any records/.test(await page.textContent('[data-tool="lineage-matrix"] .howto')));
 check("Tool B: generation 1 is labelled 'Generation 1: You'", (await page.$$eval("details.gen h3", (hs) => hs.map((h) => h.textContent).join("|"))) === "Generation 1: You");
 await page.click('[data-add-evidence="1"]'); await page.click('[data-add-evidence="1"]');
@@ -275,7 +275,7 @@ phase("load"); await page.goto(`${BASE}/tools/lineage-matrix/report/`); phase("i
 txt = await page.textContent("[data-report]");
 check("Tool B report page renders generations, labels and gaps", /Generation 1: You/.test(txt) && /Conflict Flagged/.test(txt) && /still missing/.test(txt));
 const planRep = await page.textContent("[data-report] .plan");
-check("Tool B report: numbered action plan (records with where-to-look letters, registrar, start application) + Save as PDF", /What to do next/.test(txt) && /Records to find or fix, generation by generation/.test(planRep) && /registrar/.test(planRep) && /Start the application/.test(planRep) && (await page.$$("[data-save-pdf]")).length === 1);
+check("Tool B report: numbered action plan (records with where-to-look letters, registrar, start application) + Save as PDF", /What to Do Next/.test(txt) && /Records to find or fix, generation by generation/.test(planRep) && /registrar/.test(planRep) && /Start the application/.test(planRep) && (await page.$$("[data-save-pdf]")).length === 1);
 check("Tool B report: every gap points to a 'Where to look' block", (await page.$$("[data-report] .plan-sub > li [data-where-ref]")).length === (await page.$$("[data-report] .plan-sub > li")).length && (await page.$$("[data-report] .plan-sub > li")).length > 0 && /Where to look/.test(txt));
 phase("load"); await page.goto(`${BASE}/guides/same-name/`); phase("interact");
 txt = await page.textContent("[data-card-status]");
@@ -311,7 +311,7 @@ const rep = await page.evaluate(() => { const r = document.querySelector("[data-
   const refs = [...r.querySelectorAll("[data-where-ref] a")].map((a) => a.getAttribute("href").slice(7));
   return { first: r.firstElementChild?.dataset.summary !== undefined, h2: [...r.querySelectorAll("h2")].map((h) => h.textContent), blocks: texts.length, unique: new Set(texts).size, refs, letters: blocks.map((b) => b.dataset.whereBlock),
     fullWhere: r.querySelectorAll(".where").length, censusDup: texts.filter((t) => /^Censuses in their lifetime/.test(t)).length, save: !!document.querySelector("[data-save-pdf]") && document.querySelector("[data-save-pdf]").offsetParent !== null }; });
-check("Report: opens with a one-page summary (patriot, where you are, what to do next) before 'Where to look' and the records", rep.first && rep.h2[0] === "Summary" && rep.h2[1] === "Where to look" && /The patriot: John \(made up\)/.test(await page.textContent("[data-summary]")), rep.h2.join(" | "));
+check("Report: opens with a one-page summary (patriot, where you are, what to do next) before 'Where to look' and the records", rep.first && rep.h2[0] === "Summary" && rep.h2[1] === "Where to Look" && /The patriot: John \(made up\)/.test(await page.textContent("[data-summary]")), rep.h2.join(" | "));
 { const ns = await page.evaluate(() => { const r = document.querySelector("[data-report]"); return { uses: /NSCDA/.test(r.textContent), terms: r.querySelectorAll("[data-nscda-term]").length, text: r.querySelector("[data-nscda-term]")?.textContent || "" }; });
   check("Report (audit 4 #5): where advice cites NSCDA, the report explains it once (The National Society of the Colonial Dames of America)", ns.uses && ns.terms === 1 && /Colonial Dames of America/.test(ns.text), JSON.stringify(ns).slice(0, 200)); }
 check("Report: each 'Where to look' block appears once, and every to-do points to it by letter", rep.blocks > 0 && rep.unique === rep.blocks && rep.fullWhere === 0 && rep.refs.length > 0 && rep.refs.every((L) => rep.letters.includes(L)) && rep.letters.every((L) => rep.refs.includes(L)), JSON.stringify({ blocks: rep.blocks, unique: rep.unique, refs: rep.refs.length }));
@@ -429,10 +429,10 @@ const homeOrder = await page.evaluate(() => [...document.querySelectorAll("main 
 const firstLinks = await page.$$eval("main a", (as) => as.map((a) => a.getAttribute("href")).filter((h) => !h.startsWith("#src-")).slice(0, 3));
 check("Home: the first links (after source notes) are the worksheet, the widow checker and the Roadmap guide", firstLinks[0] === "/tools/lineage-matrix/" && firstLinks[1] === "/tools/widow-pension-checker/" && firstLinks[2] === "/guides/lineage-proof-roadmap/", firstLinks.join(" "));
 const navLinks = await page.$$eval("header.site nav a", (as) => as.map((a) => [a.getAttribute("href"), a.textContent]));
-check("Navigation: 'Start here' (the Roadmap) comes first, then the widow-pension check", navLinks[0][0] === "/guides/lineage-proof-roadmap/" && navLinks[0][1] === "Start here" && navLinks[1][0] === "/tools/widow-pension-checker/", navLinks.map((x) => x[1]).join(" | "));
+check("Navigation: 'Start here' (the Roadmap) comes first, then the widow-pension check", navLinks[0][0] === "/guides/lineage-proof-roadmap/" && navLinks[0][1] === "Start Here" && navLinks[1][0] === "/tools/widow-pension-checker/", navLinks.map((x) => x[1]).join(" | "));
 // The beginner's three clicks: the big button -> Roadmap, whose top has "How to join" and "Step 0"
 phase("load"); await page.click("main [data-start-button]"); await page.waitForURL("**/guides/lineage-proof-roadmap/"); phase("interact");
-const rmOrder = await page.evaluate(() => [...document.querySelectorAll("main h2")].slice(0, 3).map((h) => h.id));
+const rmOrder = await page.evaluate(() => [...document.querySelectorAll("main h2:not(.in-short-h)")].slice(0, 3).map((h) => h.id));
 check("Roadmap: opens with 'How to join, in short' and 'Step 0: find your patriot's name' before the rest", rmOrder[0] === "how-to-join-in-short" && rmOrder[1] === "step-0-find-your-patriot-s-name", rmOrder.join(","));
 const joinItems = await page.$$eval("#how-to-join ol > li", (lis) => lis.map((li) => ({ t: li.textContent, sup: li.querySelectorAll("sup a").length })));
 check("Roadmap: 'How to join, in short' has 4 sourced steps, the DAR chapter locator and the SAR contact finder", joinItems.length === 4 && joinItems.every((x) => x.sup > 0) && (await page.$$('#how-to-join a[href="https://www.dar.org/discover/become-member/chapter-locator"]')).length === 1 && (await page.$$('#how-to-join a[href="https://www.sar.org/find-your-contact/"]')).length === 1);
@@ -445,8 +445,9 @@ const defsBad = [];
 for (const gp of ["/guides/lineage-proof-roadmap/", "/guides/substitute-evidence/", "/guides/read-pension-file/", "/guides/records-by-state/", "/guides/bounty-land-warrants/", "/guides/census-bridge/", "/guides/patriotic-service/", "/guides/same-name/", "/guides/patriot-or-loyalist/", "/guides/application-problems/", "/tools/widow-pension-checker/", "/tools/lineage-matrix/"]) {
   const h = readFileSync(join(DIST, gp, "index.html"), "utf8"); const d = (h.match(/<details class="defs"[\s\S]*?<\/details>/) || [""])[0];
   const isTool = gp.startsWith("/tools/");
-  // Guides: defs sit right under the title. Tool pages: title, purpose, limits, then tool; glossary sits below the tool.
-  const posOk = isTool ? (d && h.indexOf(d) > h.indexOf("data-tool=")) : (d && h.indexOf(d) <= h.indexOf("</h1>") + 6);
+  // Guides: defs sit right under the title (t146: after the "In Short" box). Tool pages: title, purpose, limits, then tool; glossary sits below the tool.
+  const isEnd = h.indexOf("</aside>", h.indexOf("data-in-short")) + 8;
+  const posOk = isTool ? (d && h.indexOf(d) > h.indexOf("data-tool=")) : (d && h.indexOf("data-in-short") > h.indexOf("</h1>") && h.indexOf(d) === isEnd && h.slice(h.indexOf("</h1>") + 5, h.indexOf("data-in-short")).trim() === '<aside class="in-short"');
   if (!d || !posOk || !glossTerms.every((k) => d.includes(`<strong>${k}</strong>`)) || !/<sup><a href="#src-/.test(d) || !d.includes('href="/#glossary"')) defsBad.push(gp); }
 check("Definitions box (DAR, SAR, NSCDA, lineage society, patriot, bounty land, Stat.) on all 10 guides (under title) and both tools (below the tool), sourced", defsBad.length === 0, defsBad.join(" "));
 { // Audit 3 #7: plain terms
@@ -614,7 +615,7 @@ await page.goto(`${BASE}/guides/read-pension-file/`); await page.screenshot({ pa
 phase("load"); await page.goto(`${BASE}/`); phase("interact");
 { const h = await page.evaluate(() => { const h1 = document.querySelector("main h1"); const sr = h1.querySelector(".sr-only"); const vis = h1.querySelector("[data-subtitle]");
     return { h1s: document.querySelectorAll("main h1").length, sr: sr?.textContent || "", srHidden: sr ? sr.getBoundingClientRect().width <= 1 : false, vis: vis?.textContent || "", visH: vis ? vis.getBoundingClientRect().height : 0, title: document.title, rule: getComputedStyle(h1, "::after").backgroundColor, ruleW: getComputedStyle(h1, "::after").width }; });
-  check("t122u #9/#8: the home page's one visible heading is the tagline; the site name is in the h1 for screen readers and in the title; a short red rule sits under it", h.h1s === 1 && /^Patriot, In Lay Terms/.test(h.sr) && h.srHidden && /^Plain-English help with DAR and SAR applications/.test(h.vis) && h.visH > 20 && /Patriot, In Lay Terms/.test(h.title) && h.rule === "rgb(178, 34, 52)" && parseFloat(h.ruleW) <= 80, JSON.stringify(h)); }
+  check("t122u #9/#8: the home page's one visible heading is the tagline; the site name is in the h1 for screen readers and in the title; a short red rule sits under it", h.h1s === 1 && /^Patriot, In Lay Terms/.test(h.sr) && h.srHidden && /^Plain-English Help With DAR and SAR Applications/.test(h.vis) && h.visH > 20 && /Patriot, In Lay Terms/.test(h.title) && h.rule === "rgb(178, 34, 52)" && parseFloat(h.ruleW) <= 80, JSON.stringify(h)); }
 { const pages = htmlFiles.map((f) => "/" + f.slice(DIST.length + 1).replace(/index\.html$/, "")).filter((u) => !u.endsWith("404.html"));
   const fails = []; let checked = 0; const mins = {};
   for (const u of pages) {
@@ -685,7 +686,7 @@ phase("load"); await page.goto(`${BASE}/`); phase("interact");
       for (const it of x.items) { r.items++; const words = it.use.replace(/^Used for: /, "").replace(/\.$/, "").split(/\s+/).length;
         if (!/^Used for: .+\.$/.test(it.use) || words > 9 || !it.useShown || !it.urlHidden) r.badItems.push(`${u}: ${JSON.stringify(it)}`); }
       for (const e of x.ext) { r.ext++; if (e.target !== "_blank" || e.rel !== "noopener noreferrer" || !e.icon || !e.sr) r.badExt.push(`${u} ${e.href}`); }
-      r.internalTargets.push(...x.internal.map((h) => `${u} ${h}`)); if (x.overflow) r.overflow.push(u); if (x.foot !== "About=/about/,AI disclosure=/ai-disclosure/") r.footer.push(`${u}: ${x.foot}`);
+      r.internalTargets.push(...x.internal.map((h) => `${u} ${h}`)); if (x.overflow) r.overflow.push(u); if (x.foot !== "About=/about/,AI Disclosure=/ai-disclosure/") r.footer.push(`${u}: ${x.foot}`);
     }
     // Print: the raw URL shows under each source; the new-tab icon and its screen-reader text do not.
     await pg.goto(`${BASE}/guides/lineage-proof-roadmap/`); await pg.emulateMedia({ media: "print" });
@@ -716,7 +717,7 @@ phase("load"); await page.goto(`${BASE}/`); phase("interact");
   }
   const H = (p) => readFileSync(join(DIST, p, "index.html"), "utf8"); const text = (p) => H(p).replace(/<script[\s\S]*?<\/script>/g, "").replace(/<[^>]+>/g, "").replace(/&#39;|&apos;/g, "'").replace(/&amp;/g, "&").replace(/&quot;/g, '"');
   const AI = "Written with AI assistance and reviewed by the site's owner. Each fact is tied to a quoted official source, and software checks that the quote is still there. The owner supervises the project, decides what goes on the site and reads the pages; the source check is what holds every fact to its quote.";
-  check("t124u #2: a separate AI disclosure page carries the AI text unchanged; About no longer has it; guide top lines and the Sources page point to the AI disclosure", /<h1>AI disclosure<\/h1>/.test(H("ai-disclosure")) && text("ai-disclosure").includes(AI) && !/How AI is used/.test(H("about")) && !text("about").includes("The owner supervises the project")
+  check("t124u #2: a separate AI disclosure page carries the AI text unchanged; About no longer has it; guide top lines and the Sources page point to the AI disclosure", /<h1>AI Disclosure<\/h1>/.test(H("ai-disclosure")) && text("ai-disclosure").includes(AI) && !/How AI is used/i.test(H("about")) && !text("about").includes("The owner supervises the project")
     && /Sources last checked [^<]*· Written with AI; every fact is tied to a quoted official source \(<a href="\/ai-disclosure\/">how this works<\/a>\)/.test(H("guides/census-bridge")) && /See the <a href="\/ai-disclosure\/">AI disclosure<\/a>/.test(H("sources")) && !/About &amp; AI disclosure/.test(H("")));
   // ---- t125u ----
   check("t125u #2: 'often the chapter registrar' is gone from the home SAR line and the glossary (and every built page)", text("").includes("SAR's local sponsor can guide you through the application.") && !rd0(DIST, { recursive: true }).filter((f) => f.endsWith(".html")).some((f) => /often the chapter registrar/i.test(readFileSync(join(DIST, f), "utf8")))
@@ -724,20 +725,20 @@ phase("load"); await page.goto(`${BASE}/`); phase("interact");
   check("t125u #1: About says the quote check runs each time the site is updated, and on a regular schedule (FAQ wording); 'when the site is built' is gone", text("about").includes("Each time the site is updated, and on a regular schedule, software checks that each quoted passage still appears in its source.") && !/when the site is built/i.test(text("about")));
   check("t125u #3 / t126u: the widow checker's storage note is Tim's text, preceded by 'Nothing is sent anywhere.' in the same paragraph, with no 'pi.toolA' key names", /<p class="small">Nothing is sent anywhere\. Your entries are saved only in this browser, and that storage isn't encrypted\. On a shared or public computer, use the delete button when you're done\.<\/p>/.test(H("tools/widow-pension-checker").replace(/&#39;|&apos;/g, "'")) && text("tools/widow-pension-checker").includes("Nothing is sent anywhere. Your entries are saved only in this browser, and that storage isn't encrypted. On a shared or public computer, use the delete button when you're done.") && !/pi\.tool/.test(text("tools/widow-pension-checker")));
   const priv = text("privacy");
-  check("t124u #3/#4 / t132 #2: Privacy's 'collects' section is Tim's t132 sentence (one Cloudflare line), then the ads line, and the technical note has no storage key names", /What the site itself collects\s*We don't ask for, collect or store personal information through the website\. Cloudflare, which hosts the site, processes the technical information needed to deliver and protect it, and adds two small features: a script that hides email addresses from spam robots, and a short error report if a page fails to load\.\s*There are no ads at present\./.test(priv)
+  check("t124u #3/#4 / t132 #2: Privacy's 'collects' section is Tim's t132 sentence (one Cloudflare line), then the ads line, and the technical note has no storage key names", /What the Site Itself Collects\s*We don't ask for, collect or store personal information through the website\. Cloudflare, which hosts the site, processes the technical information needed to deliver and protect it, and adds two small features: a script that hides email addresses from spam robots, and a short error report if a page fails to load\.\s*There are no ads at present\./.test(priv)
     && !/pi\.tool/.test(priv) && priv.includes("Your entries are saved only in this browser, and that storage isn't encrypted. On a shared or public computer, use the delete button when you're done.") && !/network-error report|Cloudflare's servers deliver/.test(priv));
   const faq = text("faq");
-  check("t124u #5/#6/#7: the FAQ's genealogist answer, trust answer and intro use Tim's wording", faq.includes("That help comes with joining. Our guides can help you prepare: what records to gather and what questions to ask.") && !/often the chapter registrar/.test(faq.slice(faq.indexOf("Do I have to hire"), faq.indexOf("What does this site cost")))
+  check("t124u #5/#6/#7: the FAQ's genealogist answer, trust answer and intro use Tim's wording", faq.includes("That help comes with joining. Our guides can help you prepare: what records to gather and what questions to ask.") && !/often the chapter registrar/.test(faq.slice(faq.indexOf("Do I Have to Hire"), faq.indexOf("What does this site cost")))
     && faq.includes("Every factual statement is tied to a quoted passage from an official or institutional source. Each time the site is updated, and on a regular schedule, software checks that every quote still appears on its source page. Any statement that can't be matched is removed. Each page lists its sources at the bottom with the date each was last checked, and the Sources & Methodology page explains the method. The site is written with AI assistance and reviewed by its owner.")
     && faq.includes("If your question isn't here, a DAR or SAR chapter registrar is the best person to ask. To report a mistake on this site, use the Contact page."));
   const corr = "Each correction is checked against the cited source before the page is updated. Every suggestion is read, though not every one can be added.";
-  check("t124u #8: About and Contact both have 'Corrections and suggestions' with the same wording", /<h2 id="corrections-and-suggestions">Corrections and suggestions<\/h2>/.test(H("about")) && /<h2 id="corrections-and-suggestions">Corrections and suggestions<\/h2>/.test(H("contact"))
+  check("t124u #8: About and Contact both have 'Corrections and suggestions' with the same wording", /<h2 id="corrections-and-suggestions">Corrections and Suggestions<\/h2>/.test(H("about")) && /<h2 id="corrections-and-suggestions">Corrections and Suggestions<\/h2>/.test(H("contact"))
     && text("about").includes(`If you find an error, or have an idea for a tool or guide that would help, please tell us through the Contact page. ${corr}`) && text("contact").includes(corr));
   const rm = H("guides/lineage-proof-roadmap"); const asof = [...rm.matchAll(/As of <span data-asof="([a-z0-9-]+)">([^<]+)<\/span>, (DAR|SAR) says/g)];
   const prac = (rm.match(/<h2 id="practical-details-people-miss">[\s\S]*?<\/p>/) || [""])[0];
   check("t124u #10: dated rules start 'As of <date>, DAR says' with the date of that source's last recorded pass (Roadmap 'Practical details' and the application guide)", (prac.match(/As of <span data-asof/g) || []).length === 4
     && [...asof, ...H("guides/application-problems").matchAll(/As of <span data-asof="([a-z0-9-]+)">([^<]+)<\/span>, (DAR|SAR) says/g)].every((m) => m[2] === longDate(lp[claimsById.get(m[1]).source_url])) && asof.length >= 6);
-  check("t124u #9: Roadmap Step 0 reads 'Step 0: find your patriot's name' and 'If you don't know your patriot's name yet'; the old #step-0 link still lands there", /<h2 id="step-0-find-your-patriot-s-name">Step 0: find your patriot&#39;s name<\/h2>|<h2 id="step-0-find-your-patriot-s-name">Step 0: find your patriot's name<\/h2>/.test(rm)
+  check("t124u #9: Roadmap Step 0 reads 'Step 0: find your patriot's name' and 'If you don't know your patriot's name yet'; the old #step-0 link still lands there", /<h2 id="step-0-find-your-patriot-s-name">Step 0: Find Your Patriot&#39;s Name<\/h2>|<h2 id="step-0-find-your-patriot-s-name">Step 0: Find Your Patriot's Name<\/h2>/.test(rm)
     && text("guides/lineage-proof-roadmap").includes("If you don't know your patriot's name yet, start here.") && rm.includes('id="step-0-find-the-soldier-s-name"') && !/find the soldier/.test(H("")));
 }
 
@@ -752,7 +753,7 @@ phase("load"); await page.goto(`${BASE}/`); phase("interact");
   const pagesOf = (re) => rdT(DIST, { recursive: true }).filter((f) => re.test(f)).map((f) => [f, readFileSync(join(DIST, f), "utf8")]);
   const ap = text("guides/application-problems"), apH = H("guides/application-problems");
   const BAD = /\b(?:SAR|NSCDA)(?:'s)? (?:says|wants|lists|treats|notes|states|considers|rejects|advises|asks for|cites)\b|\bSAR:(?! the National)|\bNSCDA:(?! The National)|SAR presenters|under NSCDA rules|Listed by NSCDA|SAR's guidance|NSCDA's own example|NSCDA Standards of Proof\)/;
-  const ohSentences = ["A 2023 Ohio Society SAR presentation said dates go in the form 01 Jan 2023", "A 2023 Ohio Society SAR presentation said applications pended for three years are withdrawn.", "A 2023 Ohio Society SAR presentation put it in capitals: always complete an application from the documentation.", "A 2023 Ohio Society SAR presentation said a correctly prepared application can be reviewed at National in as little as 30 minutes."];
+  const ohSentences = ["A 2023 Ohio Society SAR presentation said applications pended for three years are withdrawn.", "A 2023 Ohio Society SAR presentation put it in capitals: always complete an application from the documentation.", "A 2023 Ohio Society SAR presentation said a correctly prepared application can be reviewed at National in as little as 30 minutes."];
   check("t127u #1: Application Returned attributes the Ohio points to 'A 2023 Ohio Society SAR presentation', never 'SAR says' or 'SAR:', and none of them carries an 'As of' date",
     ohSentences.every((x) => ap.includes(x)) && !/\bSAR says\b|SAR: (?!the National)/.test(ap) && ![...apH.matchAll(/data-asof="([a-z0-9-]+)"/g)].some((m) => m[1].startsWith("ohsar-")), ohSentences.filter((x) => !ap.includes(x)).join(" | "));
   check("t127u #1: SAR signatures come from SAR's national application checklist (members.sar.org), with an 'As of' date from its last pass",
@@ -760,7 +761,7 @@ phase("load"); await page.goto(`${BASE}/`); phase("interact");
     && apH.includes('href="https://members.sar.org/media/uploads/pages/334/wPXSPrcD0cuU.pdf"') && !/five signatures/.test(ap));
   const se = H("guides/substitute-evidence");
   check("t127u #1: Substitute Evidence opens its matrix with Tim's sentence, and the source is renamed 'NSCDA South Carolina Society — Standards of Proof (2025)'",
-    /<h2 id="era-by-era-substitute-matrix">Era-by-era substitute matrix<\/h2>\s*<p>Many examples below come from one state society(?:'|&#39;)s standards \(NSCDA in South Carolina\)\. DAR and SAR apply their own standards, so ask your registrar\.<\/p>\s*(<div class="table-wrap[^>]*>)?\s*<table/.test(se.replace(/&apos;/g, "&#39;"))
+    /<h2 id="era-by-era-substitute-matrix">Era-by-Era Substitute Matrix<\/h2>\s*<p>Many examples below come from one state society(?:'|&#39;)s standards \(NSCDA in South Carolina\)\. DAR and SAR apply their own standards, so ask your registrar\.<\/p>\s*(<div class="table-wrap[^>]*>)?\s*<table/.test(se.replace(/&apos;/g, "&#39;"))
     && se.includes("NSCDA South Carolina Society — Standards of Proof (2025)") && !/NSCDA \(South Carolina\) — Standards of Proof \(rev/.test(se));
   const affected = ["guides/application-problems", "guides/same-name", "guides/substitute-evidence", "guides/census-bridge", "tools/lineage-matrix"];
   const bad = affected.filter((p) => BAD.test(text(p)));
@@ -802,15 +803,18 @@ phase("load"); await page.goto(`${BASE}/`); phase("interact");
   }
   // ---- t128u ----
   const fq = text("faq"), fqH = H("faq");
-  const gen = fq.slice(fq.indexOf("Do I have to hire a genealogist?"), fq.indexOf("What does this site cost"));
+  const gen = fq.slice(fq.indexOf("Do I Have to Hire a Genealogist?"), fq.indexOf("What does this site cost"));
   check("t128u #2: the FAQ's genealogist answer has Tim's exact sentence, after the sponsor line, sourced to sar.org/how-to-apply",
     gen.includes("SAR's local sponsor can guide you through the application.") && /SAR's local sponsor can guide you through the application\.\s*(?:\[?\d+\]?\s*)?SAR's national site says your sponsor is often the local chapter registrar\./.test(gen.replace(/\s+/g, " "))
     && fqH.includes('href="https://www.sar.org/how-to-apply/"'), gen.slice(0, 400));
   check("t128u #3: supplemental signatures come from SAR's national application checklist with an 'As of' date; the Ohio two-signatures line is gone",
     new RegExp(`As of <span data-asof="sar-checklist-supp-sig">${longDate(lp["https://members.sar.org/media/uploads/pages/334/wPXSPrcD0cuU.pdf"])}</span>, SAR(?:'|&#39;)s application checklist asks whether the member and the State Registrar \\(or another designated officer\\) have signed a supplemental application on the back\\.`).test(apH.replace(/&apos;/g, "&#39;"))
-    && !/supplemental applications need two signatures/.test(ap) && ap.includes("Except for the two signature checks from SAR's application checklist, these points come from a 2023 Ohio Society SAR presentation"));
-  check("t128u #3: DAR record copies stay attributed to the Ohio presentation (DAR Library Lineage Resources doesn't say chapter copies are refused)",
-    ap.includes("A 2023 Ohio Society SAR presentation said only DAR record copies are considered, not chapter copies"));
+    && !/supplemental applications need two signatures/.test(ap) && ap.includes("Except for the two signature checks from SAR's application checklist and the fee point from SAR's application guide, these points come from a 2023 Ohio Society SAR presentation"));
+  // t146 #2: three Ohio points are now stated by SAR's national Application Preparation Guide and re-sourced to it, with an "As of" date.
+  const apgDate = longDate(lp["https://www.sar.org/app/uploads/APG-07-June-2026.pdf"]);
+  check("t146 #2 / t128u #3: DAR record copies, the birth certificate and the date format are re-sourced to SAR's national Application Preparation Guide ('SAR's application guide says', As of its last pass); the Ohio wording for them is gone",
+    !!apgDate && [["sar-apg-fee-nonrefundable", "an applicant(?:'|&#39;)s filing fee is not refundable"], ["sar-apg-record-copy", "a DAR application used as proof must be an official DAR record copy, not a chapter copy"], ["sar-apg-bc-gender", "new applicants need a birth certificate or court order that specifies the applicant(?:'|&#39;)s gender as male"], ["sar-apg-date-format", "all dates must be entered in the format 01 Jan 1900"]].every(([id, t]) => new RegExp(`As of <span data-asof="${id}">${apgDate}</span>, SAR(?:'|&#39;)s application guide says ${t}`).test(apH.replace(/&apos;/g, "&#39;")))
+    && apH.includes('href="https://www.sar.org/app/uploads/APG-07-June-2026.pdf"') && !/Ohio Society SAR presentation said (only DAR record copies|dates go in the form|a missing applicant birth certificate)/.test(ap), apgDate);
   const heldBad = pagesOf(/\.(html|js)$/).filter(([, h]) => /DAR says church records are usually acceptable|DAR lists probate, court and land records among the most common sources/.test(h)).map(([f]) => f);
   check("t128u #1: the t127 DAR-FAQ/Step-by-step rewordings are held back (DAR pages unreachable since their Nov 5 pass); the South Carolina attributions are back",
     heldBad.length === 0 && text("guides/substitute-evidence").includes("NSCDA's South Carolina society's standards list church birth, baptism, marriage, death and burial records")
@@ -893,7 +897,7 @@ const { readdirSync: rd132 } = await import("node:fs");
 // ---- t132 #1: guide and tool pages: glossary collapsed under "Terms used on this page" (opens on tap, expanded in print); home glossary open ----
 { const pages = rd132(join(DIST, "guides")).map((g) => `/guides/${g}/`).concat(["/tools/widow-pension-checker/", "/tools/lineage-matrix/"]);
   const bad = pages.filter((p) => { const h = readFileSync(join(DIST, p, "index.html"), "utf8"); const m = h.match(/<details class="defs" data-defs>(<summary>[^<]*<\/summary>)/g) || [];
-    return m.length !== 1 || !m[0].includes("<summary>Terms used on this page</summary>"); });
+    return m.length !== 1 || !m[0].includes("<summary>Terms Used on This Page</summary>"); });
   check(`t132 #1: every guide and tool page (${pages.length}) has exactly one closed 'Terms used on this page' glossary`, pages.length >= 12 && bad.length === 0, bad.join(","));
   for (const w of [390, 1280]) { const cx = await browser.newContext({ viewport: { width: w, height: 900 } }); const pg = await cx.newPage(); const r = {};
     for (const p of ["/guides/read-pension-file/", "/tools/lineage-matrix/"]) { await pg.goto(BASE + p);
@@ -903,7 +907,7 @@ const { readdirSync: rd132 } = await import("node:fs");
       r[p] = { closedByDefault: !a.open && !a.termVis, opensOnTap: b.open && b.termVis, printExpanded: !c.open && c.termVis, sum: a.sum, fits: a.sw <= a.iw && b.sw <= b.iw }; }
     await pg.goto(BASE + "/"); const home = await pg.evaluate(() => { const g = document.querySelector(".glossary"); return { inDetails: !!g.closest("details"), vis: g.querySelector("li").checkVisibility(), noDefs: !document.querySelector("details.defs") }; });
     if (w === 390) { await pg.goto(BASE + "/guides/read-pension-file/"); await pg.click("details.defs > summary"); await pg.locator("details.defs").screenshot({ path: join(SHOTS, `t132-terms-${w}.png`) }); }
-    check(`t132 #1 (${w}px): glossary on a guide and a tool page is closed by default, opens on tap, prints expanded; home glossary stays open`, Object.values(r).every((x) => x.closedByDefault && x.opensOnTap && x.printExpanded && x.sum === "Terms used on this page" && x.fits) && !home.inDetails && home.vis && home.noDefs, JSON.stringify({ r, home }));
+    check(`t132 #1 (${w}px): glossary on a guide and a tool page is closed by default, opens on tap, prints expanded; home glossary stays open`, Object.values(r).every((x) => x.closedByDefault && x.opensOnTap && x.printExpanded && x.sum === "Terms Used on This Page" && x.fits) && !home.inDetails && home.vis && home.noDefs, JSON.stringify({ r, home }));
     await cx.close(); } }
 // ---- t132 #2 / #3: privacy wording; no "collects nothing" anywhere; $100 SAR fee claim gone ----
 { const all = (function walk(d) { return rd132(d, { withFileTypes: true }).flatMap((e) => e.isDirectory() ? walk(join(d, e.name)) : e.name.endsWith(".html") ? [join(d, e.name)] : []); })(DIST);
@@ -913,14 +917,14 @@ const { readdirSync: rd132 } = await import("node:fs");
   const hits = all.filter((f) => /collects? nothing|collect nothing|nothing is collected/i.test(readFileSync(f, "utf8")));
   check("t132 #2: no built page says the site 'collects nothing'", hits.length === 0, hits.join(","));
   const ap = text("guides/application-problems"); const claims = JSON.parse(readFileSync(join(ROOT, "manifest/claims.json"), "utf8")); const ids = JSON.stringify(claims);
-  check("t132 #3: Application Returned keeps the attributed non-refundable line, follows it with 'Confirm current fees with your registrar.', and '$100' and ohsar-fee are gone (page and manifest)", /A 2023 Ohio Society SAR presentation said application fees are non-refundable\.\s*\S*\s*Confirm current fees with your registrar\./.test(ap) && !ap.includes("$100") && !all.some((f) => readFileSync(f, "utf8").includes("$100")) && !ids.includes('"ohsar-fee"') && ids.includes('"ohsar-nonrefundable"'), ap.match(/non-refundable.{0,80}/)?.[0]); }
+  check("t132 #3 / t146 #2: Application Returned's non-refundable line now cites SAR's application guide (re-sourced from the Ohio talk), followed by 'Confirm current fees with your registrar.'; '$100', ohsar-fee and ohsar-nonrefundable are gone (page and manifest)", /SAR's application guide says an applicant's filing fee is not refundable\.\s*\S*\s*Confirm current fees with your registrar\./.test(ap) && !ap.includes("$100") && !all.some((f) => readFileSync(f, "utf8").includes("$100")) && !ids.includes('"ohsar-fee"') && !ids.includes('"ohsar-nonrefundable"') && ids.includes('"sar-apg-fee-nonrefundable"'), ap.match(/not refundable.{0,80}/)?.[0]); }
 // ---- t133: no page-level About row; phone footer 2-column grid, links on one line; desktop footer unchanged; 'About' label; cards replace 'Ready to start?'; smaller phone gap ----
 { const { readdirSync: rd133 } = await import("node:fs");
   const all = (function walk(d) { return rd133(d, { withFileTypes: true }).flatMap((e) => e.isDirectory() ? walk(join(d, e.name)) : e.name.endsWith(".html") ? [join(d, e.name)] : []); })(DIST);
   const rel = (f) => f.slice(DIST.length);
   const rows = all.filter((f) => { const h = readFileSync(f, "utf8"); const main = h.slice(h.indexOf("<main"), h.indexOf("</main>")); return /About this site/.test(h) || /<a href="\/about\/">[^<]*<\/a> · <a href="\/ai-disclosure\/">/.test(main); });
   check("t133 #1/#2: no page has the page-level 'About this site · AI disclosure · Privacy' row, and 'About this site' appears nowhere", rows.length === 0, rows.map(rel).join(","));
-  const footBad = all.filter((f) => { const h = readFileSync(f, "utf8"); return !/<footer class="site"><div class="wrap"><a href="\/about\/" data-foot-about>About<\/a><a href="\/ai-disclosure\/" data-foot-ai>AI disclosure<\/a>/.test(h) && !/noindex/.test(h.slice(0, 600)) ? true : false; });
+  const footBad = all.filter((f) => { const h = readFileSync(f, "utf8"); return !/<footer class="site"><div class="wrap"><a href="\/about\/" data-foot-about>About<\/a><a href="\/ai-disclosure\/" data-foot-ai>AI Disclosure<\/a>/.test(h) && !/noindex/.test(h.slice(0, 600)) ? true : false; });
   check("t133 #2: every page's footer starts with 'About' then 'AI disclosure'", footBad.length === 0, footBad.map(rel).join(","));
   const ready = all.filter((f) => /Ready to start\?|start-here|which widow pension laws a marriage fits|get a to-do list fitted to each person/.test(readFileSync(f, "utf8")));
   check("t133 #3: no page has the old 'Ready to start?' box or its 'fits' run-on wording", ready.length === 0, ready.map(rel).join(","));
@@ -954,13 +958,78 @@ const { readdirSync: rd132 } = await import("node:fs");
 // ---- t138: About page "Why 'Patriot, In Lay Terms'?" section, Tim's exact words, right after the opening description ----
 for (const w of [390, 1280]) { const cx = await browser.newContext({ viewport: { width: w, height: 900 } }); const pg = await cx.newPage(); await pg.goto(BASE + "/about/");
   const a = await pg.evaluate(() => { const h = [...document.querySelectorAll("main h2")].find((x) => x.textContent.startsWith("Why")); const h1 = document.querySelector("main h1");
-    const intro = h1.nextElementSibling; return { h: h && h.textContent, tag: h && h.tagName, sameStyle: h && getComputedStyle(h).fontSize === getComputedStyle([...document.querySelectorAll("main h2")].find((x) => x.textContent === "What you can do here")).fontSize,
+    const intro = h1.nextElementSibling; return { h: h && h.textContent, tag: h && h.tagName, sameStyle: h && getComputedStyle(h).fontSize === getComputedStyle([...document.querySelectorAll("main h2")].find((x) => x.textContent === "What You Can Do Here")).fontSize,
       p: h && h.nextElementSibling.textContent, afterIntro: !!h && intro.tagName === "P" && /^Patriot In Lay Terms \(patriotinlays\.com\) helps people prove/.test(intro.textContent) && intro.nextElementSibling === h,
       next: h && h.nextElementSibling.nextElementSibling.textContent, sw: document.documentElement.scrollWidth, iw: innerWidth }; });
   await pg.locator("#why-patriot-in-lay-terms").scrollIntoViewIfNeeded(); await pg.screenshot({ path: join(SHOTS, `t138-about-${w}.png`) });
-  check(`t138 (${w}px): About has "Why 'Patriot, In Lay Terms'?" (h2, same style as the other About headings) right after the opening description, with Tim's paragraph word for word, followed by "What you can do here"`, a.h === "Why 'Patriot, In Lay Terms'?" && a.tag === "H2" && a.sameStyle && a.afterIntro && a.next === "What you can do here"
+  check(`t138 (${w}px): About has "Why 'Patriot, In Lay Terms'?" (h2, same style as the other About headings) right after the opening description, with Tim's paragraph word for word, followed by "What you can do here"`, a.h === "Why 'Patriot, In Lay Terms'?" && a.tag === "H2" && a.sameStyle && a.afterIntro && a.next === "What You Can Do Here"
     && a.p === "An inlay is a piece of wood set so deep into another that it becomes part of the grain. The patriots of the Revolution did something like that with the idea of a free country, and it's still part of the grain today. This site's job is smaller: it explains, in lay terms, how to trace your own family line back to one of them. Inlays, and lay terms: that's the name." && a.sw <= a.iw, JSON.stringify(a));
   await cx.close(); }
+// ---- t146: In Short boxes, Title Case headings, housekeeping re-checks, release screenshots (390px and 1280px) ----
+{ const { readdirSync: rd146 } = await import("node:fs"); const { titleCase: tc146 } = await import("../scripts/lib/title-case.mjs");
+  const REL = join(ROOT, "qa/release-logs/t146"); mkdirSync(REL, { recursive: true });
+  const walk146 = (d) => rd146(d, { withFileTypes: true }).flatMap((e) => e.isDirectory() ? walk146(join(d, e.name)) : e.name.endsWith(".html") ? [join(d, e.name)] : []);
+  const files = walk146(DIST); const rel = (f) => f.slice(DIST.length);
+  const txt146 = (s) => s.replace(/<[^>]+>/g, "").replace(/&#39;|&apos;/g, "'").replace(/&amp;/g, "&").replace(/&quot;/g, '"').trim();
+  const GUIDES = ["lineage-proof-roadmap", "substitute-evidence", "read-pension-file", "records-by-state", "bounty-land-warrants", "census-bridge", "patriotic-service", "same-name", "patriot-or-loyalist", "application-problems"];
+  // #3: one "In Short" box on each guide, under the title and before the glossary, three labelled lines, a working Then-link.
+  const isBad = []; const linkBad = []; const boxes = {};
+  for (const g of GUIDES) { const h = readFileSync(join(DIST, "guides", g, "index.html"), "utf8");
+    const box = (h.match(/<aside class="in-short"[\s\S]*?<\/aside>/g) || []); const b = box[0] || "";
+    const lines = [...b.matchAll(/<li data-in-short-line="([a-z]+)"><strong>([^<]+)<\/strong>([\s\S]*?)<\/li>/g)].map((m) => ({ k: m[1], label: m[2], text: txt146(m[3]) }));
+    const ok = box.length === 1 && /<h2 class="in-short-h" id="in-short-h">In Short<\/h2>/.test(b) && h.indexOf(b) === h.indexOf("</h1>") + 5 && h.indexOf('<details class="defs"') === h.indexOf(b) + b.length
+      && lines.map((l) => l.label).join("|") === "This guide helps you:|Start by:|Then:" && lines.every((l) => l.text.split(/\s+/).length <= 22);
+    if (!ok) isBad.push(g); boxes[g] = lines.map((l) => `${l.label} ${l.text}`);
+    const thenA = [...(b.match(/data-in-short-line="then">[\s\S]*?<\/li>/) || [""])[0].matchAll(/href="([^"]+)"/g)].map((m) => m[1]);
+    if (!thenA.length) linkBad.push(`${g}: no link`);
+    for (const u of thenA) { const [path, hash] = u.split("#"); const f = join(DIST, path, "index.html");
+      if (!/^\/(tools|guides)\//.test(path) || !existsSync(f)) linkBad.push(`${g}: ${u}`); else if (hash && !readFileSync(f, "utf8").includes(`id="${hash}"`)) linkBad.push(`${g}: ${u} (no #${hash})`); } }
+  writeFileSync(join(REL, "in-short-boxes.json"), JSON.stringify(boxes, null, 2));
+  check("t146 #3: all 10 guides have one 'In Short' box right under the title and right before the glossary, with 'This guide helps you / Start by / Then' lines of about 20 words or fewer", isBad.length === 0, isBad.join(","));
+  check("t146 #3: every In Short 'Then' line links to a tool or guide page that exists (and its #anchor, if any)", linkBad.length === 0, linkBad.join(" | "));
+  // #4: Title Case for every heading in the built pages, page titles, the menu and the named section links.
+  const tcBad = [];
+  for (const f of files) { const h = readFileSync(f, "utf8");
+    for (const m of h.matchAll(/<(h[1-6])\b[^>]*>([\s\S]*?)<\/\1>/g)) { const t = txt146(m[2]); if (t !== tc146(t)) tcBad.push(`${rel(f)}: ${t}`); }
+    const title = txt146((h.match(/<title>([\s\S]*?)<\/title>/) || ["", ""])[1]).replace(/ \| Patriot In Lay Terms$/, ""); if (title !== tc146(title)) tcBad.push(`${rel(f)} <title>: ${title}`);
+    const h1 = txt146((h.match(/<h1\b[^>]*>([\s\S]*?)<\/h1>/) || ["", ""])[1]);
+    if (!/^\/index\.html$/.test(rel(f)) && title !== h1) tcBad.push(`${rel(f)}: <title> "${title}" != h1 "${h1}"`); }
+  const home = readFileSync(join(DIST, "index.html"), "utf8");
+  const nav = [...home.match(/<nav class="top"[\s\S]*?<\/nav>/)[0].matchAll(/>([^<]+)<\/a>/g)].map((m) => m[1]);
+  const foot = [...home.match(/<footer class="site">[\s\S]*?<\/footer>/)[0].matchAll(/<a [^>]*>([^<]+)<\/a>/g)].map((m) => m[1]);
+  check("t146 #4: every heading on every page (h1–h6), every page <title> (matching its h1) and the menu labels are in Title Case", tcBad.length === 0 && nav.join("|") === "Start Here|Widow Pension Check|Worksheet|Guides|FAQ|About" && foot.every((x) => x === tc146(x)), [...tcBad.slice(0, 6), nav.join("|"), foot.join("|")].join(" || "));
+  check("t146 #4: named titles: 'Words You'll See Here', 'Terms Used on This Page', 'The Guides', 'Questions, Answered Simply', home card titles, 'In Short'", /<h2 id="glossary">Words You(?:'|&#39;)ll See Here<\/h2>/.test(home) && /<h2 id="guides">The Guides<\/h2>/.test(home) && home.includes('<a href="/faq/">Questions, Answered Simply</a>')
+    && ["Build Your To-Do List", "Check a Widow(?:'|&#39;)s Pension", "Read the Full Plan"].every((t) => new RegExp(`<h2 class="start-card-h">${t}</h2>`).test(home)) && readFileSync(join(DIST, "guides/same-name/index.html"), "utf8").includes("<summary>Terms Used on This Page</summary>"));
+  check("t146 #4: body text, buttons and quoted text keep their case (home buttons, the AI disclosure sentence, Tim's About heading)", home.includes(">Open the Lineage Evidence Matrix</a>") && home.includes(">See how the tools work</a>") && readFileSync(join(DIST, "ai-disclosure/index.html"), "utf8").replace(/&#39;/g, "'").includes("Written with AI assistance and reviewed by the site's owner. Each fact is tied to a quoted official source, and software checks that the quote is still there.") && /Why (?:'|&#39;)Patriot, In Lay Terms(?:'|&#39;)\?/.test(readFileSync(join(DIST, "about/index.html"), "utf8")));
+  // #1 housekeeping, re-checked: no page-level About/AI/Privacy row; home cards on every inner page instead of "Ready to start?".
+  const rowBad = files.filter((f) => { const h = readFileSync(f, "utf8"); const main = h.slice(h.indexOf("<main"), h.indexOf("</main>")); return /About this site/.test(h) || /<a href="\/about\/">[^<]*<\/a>\s*·\s*<a href="\/ai-disclosure\/">/.test(main) || /<a href="\/ai-disclosure\/">[^<]*<\/a>\s*·\s*<a href="\/privacy\/">/.test(main); });
+  check("t146 #1a: no page has a page-level 'About · AI disclosure · Privacy' row", rowBad.length === 0, rowBad.map(rel).join(","));
+  const cardsHome = home.match(/<section class="start-cards"[\s\S]*?<\/section>/)[0];
+  const inner = ["about", "faq", "privacy", "contact", "ai-disclosure", "walkthroughs"].map((p) => [p, readFileSync(join(DIST, p, "index.html"), "utf8")]);
+  const cardBad = inner.filter(([, h]) => { const c = (h.match(/<section class="start-cards start-cards-page"[\s\S]*?<\/section>/) || [""])[0]; return c.replace(' start-cards-page', "") !== cardsHome; }).map(([p]) => p);
+  const readyBad = files.filter((f) => /Ready to (get )?start/i.test(readFileSync(f, "utf8").replace(/<!--[\s\S]*?-->/g, ""))).map(rel);
+  check("t146 #1c: the inner pages show the home page's three cards (same titles, wording and buttons) and no 'Ready to start?' box remains", cardBad.length === 0 && readyBad.length === 0, [...cardBad, ...readyBad].join(","));
+  for (const w of [390, 1280]) { const cx = await browser.newContext({ viewport: { width: w, height: 900 } }); const pg = await cx.newPage();
+    // Footer: no link wraps onto two lines; nothing scrolls sideways.
+    const footRes = {};
+    for (const p of ["/", "/about/", "/guides/application-problems/", "/tools/lineage-matrix/"]) { await pg.goto(BASE + p);
+      footRes[p] = await pg.evaluate(() => { const as = [...document.querySelectorAll("footer.site a")];
+        return { wrapped: as.filter((a) => { const r = document.createRange(); r.selectNodeContents(a); return [...r.getClientRects()].filter((x) => x.width > 0).length > 1; }).map((a) => a.textContent), n: as.length, sw: document.documentElement.scrollWidth, iw: innerWidth }; }); }
+    check(`t146 #1b (${w}px): footer links never break across lines (7 links, no sideways scroll)`, Object.values(footRes).every((r) => r.wrapped.length === 0 && r.n === 7 && r.sw <= r.iw), JSON.stringify(footRes));
+    // In Short box: visible under the title, before the closed glossary, inside the page width; the Then-link works.
+    await pg.goto(BASE + "/guides/read-pension-file/");
+    const isv = await pg.evaluate(() => { const b = document.querySelector("[data-in-short]"); const h1 = document.querySelector("main h1"); const d = document.querySelector("details.defs"); const r = b.getBoundingClientRect();
+      return { vis: b.checkVisibility(), below: r.top >= h1.getBoundingClientRect().bottom, beforeDefs: d.getBoundingClientRect().top >= r.bottom, fits: r.right <= innerWidth && r.left >= 0, sw: document.documentElement.scrollWidth, iw: innerWidth, title: b.querySelector("h2").textContent }; });
+    check(`t146 #3 (${w}px): the In Short box shows under the guide title and above the glossary, inside the page width`, isv.vis && isv.below && isv.beforeDefs && isv.fits && isv.sw <= isv.iw && isv.title === "In Short", JSON.stringify(isv));
+    await pg.screenshot({ path: join(REL, `guide-read-pension-file-top-${w}.png`) });
+    await pg.click('[data-in-short-line="then"] a'); await pg.waitForURL("**/tools/widow-pension-checker/");
+    check(`t146 #3 (${w}px): clicking the In Short 'Then' link opens the matching tool`, /\/tools\/widow-pension-checker\/$/.test(pg.url()));
+    await pg.goto(BASE + "/"); await pg.screenshot({ path: join(REL, `home-top-${w}.png`) }); await pg.screenshot({ path: join(REL, `home-full-${w}.png`), fullPage: true });
+    await pg.goto(BASE + "/guides/application-problems/"); await pg.screenshot({ path: join(REL, `application-returned-top-${w}.png`) });
+    await pg.locator("#problem-cause-and-fix").scrollIntoViewIfNeeded(); await pg.screenshot({ path: join(REL, `application-returned-table-${w}.png`) });
+    await pg.evaluate(() => scrollTo(0, document.body.scrollHeight)); await pg.screenshot({ path: join(REL, `footer-application-returned-${w}.png`) });
+    await pg.goto(BASE + "/about/"); await pg.evaluate(() => scrollTo(0, document.body.scrollHeight)); await pg.screenshot({ path: join(REL, `footer-about-${w}.png`) });
+    await cx.close(); } }
 // ---- t130 #1 / #3: home start cards, spacing, guide titles, menu (390px and 1280px) ----
 { const hH = readFileSync(join(DIST, "index.html"), "utf8");
   for (const w of [390, 1280]) { const cx = await browser.newContext({ viewport: { width: w, height: 900 } }); const pg = await cx.newPage(); await pg.goto(`${BASE}/`);
@@ -975,9 +1044,9 @@ for (const w of [390, 1280]) { const cx = await browser.newContext({ viewport: {
         guideTitle: [getComputedStyle(gt).fontWeight, parseFloat(getComputedStyle(gt).fontSize)], guideDesc: [getComputedStyle(gd).fontWeight, parseFloat(getComputedStyle(gd).fontSize)],
         navVisible: navLinks.every((a) => a.offsetParent !== null && a.getBoundingClientRect().right <= innerWidth + 1), navColor: getComputedStyle(navLinks[0]).color, headerBg: hs.backgroundColor, sw: document.documentElement.scrollWidth,
         gap: Math.round(document.querySelector("#guides").getBoundingClientRect().top - document.querySelector("[data-mission]").getBoundingClientRect().bottom) }; });
-    const want = [["Build your to-do list", "Enter the records you already have. The worksheet shows what's still missing for each generation and where to look.", "Open the Lineage Evidence Matrix", "/tools/lineage-matrix/"],
-      ["Check a widow's pension", "Compare a widow's marriage date and her husband's service with each federal widow pension law.", "Open the Widow Pension Law Checker", "/tools/widow-pension-checker/"],
-      ["Read the full plan", "A generation-by-generation roadmap for DAR and SAR applications.", "Open the Roadmap guide", "/guides/lineage-proof-roadmap/"]];
+    const want = [["Build Your To-Do List", "Enter the records you already have. The worksheet shows what's still missing for each generation and where to look.", "Open the Lineage Evidence Matrix", "/tools/lineage-matrix/"],
+      ["Check a Widow's Pension", "Compare a widow's marriage date and her husband's service with each federal widow pension law.", "Open the Widow Pension Law Checker", "/tools/widow-pension-checker/"],
+      ["Read the Full Plan", "A generation-by-generation roadmap for DAR and SAR applications.", "Open the Roadmap guide", "/guides/lineage-proof-roadmap/"]];
     const textOk = h.cards.length === 3 && h.cards.every((c, i) => c.title === want[i][0] && c.line === want[i][1] && c.btn === want[i][2] && c.href === want[i][3]);
     const layout = w < 760 ? h.cards.every((c, i) => i === 0 || (c.top > h.cards[i - 1].top && c.left === h.cards[0].left)) : h.cards.every((c) => c.top === h.cards[0].top) && h.cards[1].left > h.cards[0].left;
     check(`t130 #1 (${w}px): under the heading and independent line, Tim's sentence, then the three start cards (${w < 760 ? "stacked" : "side by side"}) with his exact titles, lines and navy buttons, then 'See how the tools work', then the longer paragraphs; the 'Ready to get started?' box is gone`,

@@ -27,6 +27,8 @@ export const SOURCE_TOPICS = {
   "https://cincinnatisar.org/wp-content/uploads/2023/05/Presentation-How-to-Produce-Approval-Ready-Applications-and-Reduce-Turnaround-Time.pdf": R("SAR application problems (2023 Ohio talk)",
     [/^ohsar-(fee|nonrefundable)$/, "SAR fees (2023 Ohio talk)"], [/^ohsar-30min$/, "SAR review time (2023 Ohio talk)"],
     [/^ohsar-(supp-sig|replacements|supp-once|3yrs)$/, "SAR replacement rules (2023 Ohio talk)"], [/^ohsar-date-format$/, "SAR date format (2023 Ohio talk)"], [/./, "SAR application problems (2023 Ohio talk)"]),
+  "https://www.sar.org/app/uploads/APG-07-June-2026.pdf": R("SAR application rules",
+    [/^sar-apg-date-format$/, "SAR date format"], [/^sar-apg-bc-gender$/, "the applicant's birth certificate"], [/^sar-apg-record-copy$/, "DAR papers used as SAR proof"], [/^sar-apg-fee/, "SAR fees"]),
   "https://www.archives.gov/files/research/military/army/dc/m804.pdf": R("pension and bounty-land files",
     [/^nara-act-/, "the federal pension laws"], [/^(m804-bl-|m804-1856|m804-sold|m804-blwt|nara-bounty-1855)/, "bounty-land warrants"],
     [/^m805-/, "the M805 microfilm"], [/^m804-(s|w|r-latest|r-approved|former-widow|dis|55|star)$/, "pension file numbers"], [/./, "what pension files contain"]),

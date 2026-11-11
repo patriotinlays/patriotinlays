@@ -6,6 +6,12 @@ cornerstone: 6
 ---
 # From the 1850 Census Back to 1776: Bridging the Unnamed-Household Gap
 
+::in-short
+This guide helps you: work across the gap between a mid-1800s census and earlier censuses that name only the household head.
+Start by: fixing the anchor: your ancestor's earliest census entry that lists every household member by name.
+Then: record your estimates as indirect evidence in the [Lineage Evidence Matrix](/tools/lineage-matrix/).
+::end
+
 Lines to a Revolutionary War patriot very often stall at the same place: you can find your ancestor by name as an adult in a mid-1800s census, but the earlier censuses list only the head of the household. This guide gives a step-by-step plan for working across that gap, using what each census actually recorded.
 
 ## What each census can and cannot do for you

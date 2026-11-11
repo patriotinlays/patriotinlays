@@ -6,6 +6,12 @@ cornerstone: 1
 ---
 # The Patriot Lineage Proof Roadmap: Proving Every Generation for DAR or SAR
 
+::in-short
+This guide helps you: plan the chain of generations from you back to your patriot before you start filling in forms.
+Start by: writing the chain first: every generation from you back to the patriot, names only.
+Then: build an evidence grid for each generation in the [Lineage Evidence Matrix](/tools/lineage-matrix/).
+::end
+
 A lineage application is a chain. Each link is one generation, and each link holds only if the documents behind it hold. This roadmap shows how to plan that chain before you start filling in forms, using the published rules of the two largest Revolutionary War lineage societies. It is a planning aid, not a ruling: only the society's genealogists decide whether a line is approved.
 
 ::partial how-to-join
