@@ -260,6 +260,11 @@ Docs: https://developers.cloudflare.com/pages/how-to/web-analytics/
 - February 28, 1855 navy-widow law cited as ch. 126, sec. 3, 10 Stat. 616 (chapter begins at 615); 10 Stat. 701 is only the March 3, 1855 bounty-land act.
 - Worksheet: step 1 is the patriot, step 2 starts the family with yourself; removing the oldest generation asks for confirmation.
 
+### t152 (Nov 11, 2026) — preview only
+- Home: the "Words You'll See Here" glossary is a second native `<details class="home-more">`, closed by default, same pattern as "Why This Site Exists". `id="glossary"` is on the details so `/#glossary` still lands there (opening on hash would need JavaScript, which we don't add). Content and citations unchanged. Print shows it open.
+- Lineage Evidence Matrix only: a visible start note, "You can skip any field for now and come back later. Rough dates and states are enough to start.", above the start buttons. Form fields and tool logic unchanged.
+- Typography (screen only): `.wrap` max-width 46rem → 44rem; body line-height 1.65 → 1.7. Print keeps 46rem and 1.6 so report page counts are unchanged. No font-family or color changes.
+
 ### t150 (Nov 11, 2026) — preview only
 - Home: the four longer paragraphs (from "Somewhere in your family's past" through "What this site does is explain ...") sit in a native `<details class="home-more">` titled "Why This Site Exists", closed by default; wording unchanged (homepage-LOCK). The purpose paragraph, "It's free ..." line and AI line stay visible; glossary and sources unchanged. Print shows the paragraphs. Only the home page and site.css change.
 

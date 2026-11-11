@@ -907,7 +907,7 @@ const { readdirSync: rd132 } = await import("node:fs");
       r[p] = { closedByDefault: !a.open && !a.termVis, opensOnTap: b.open && b.termVis, printExpanded: !c.open && c.termVis, sum: a.sum, fits: a.sw <= a.iw && b.sw <= b.iw }; }
     await pg.goto(BASE + "/"); const home = await pg.evaluate(() => { const g = document.querySelector(".glossary"); return { inDetails: !!g.closest("details"), vis: g.querySelector("li").checkVisibility(), noDefs: !document.querySelector("details.defs") }; });
     if (w === 390) { await pg.goto(BASE + "/guides/read-pension-file/"); await pg.click("details.defs > summary"); await pg.locator("details.defs").screenshot({ path: join(SHOTS, `t132-terms-${w}.png`) }); }
-    check(`t132 #1 (${w}px): glossary on a guide and a tool page is closed by default, opens on tap, prints expanded; home glossary stays open`, Object.values(r).every((x) => x.closedByDefault && x.opensOnTap && x.printExpanded && x.sum === "Terms Used on This Page" && x.fits) && !home.inDetails && home.vis && home.noDefs, JSON.stringify({ r, home }));
+    check(`t132 #1 (${w}px): glossary on a guide and a tool page is closed by default, opens on tap, prints expanded; home has no 'Terms Used on This Page' box (its glossary is the t152 expand, tested there)`, Object.values(r).every((x) => x.closedByDefault && x.opensOnTap && x.printExpanded && x.sum === "Terms Used on This Page" && x.fits) && home.inDetails && !home.vis && home.noDefs, JSON.stringify({ r, home }));
     await cx.close(); } }
 // ---- t132 #2 / #3: privacy wording; no "collects nothing" anywhere; $100 SAR fee claim gone ----
 { const all = (function walk(d) { return rd132(d, { withFileTypes: true }).flatMap((e) => e.isDirectory() ? walk(join(d, e.name)) : e.name.endsWith(".html") ? [join(d, e.name)] : []); })(DIST);
@@ -998,7 +998,7 @@ for (const w of [390, 1280]) { const cx = await browser.newContext({ viewport: {
   const nav = [...home.match(/<nav class="top"[\s\S]*?<\/nav>/)[0].matchAll(/>([^<]+)<\/a>/g)].map((m) => m[1]);
   const foot = [...home.match(/<footer class="site">[\s\S]*?<\/footer>/)[0].matchAll(/<a [^>]*>([^<]+)<\/a>/g)].map((m) => m[1]);
   check("t146 #4: every heading on every page (h1–h6), every page <title> (matching its h1) and the menu labels are in Title Case", tcBad.length === 0 && nav.join("|") === "Start Here|Widow Pension Check|Worksheet|Guides|FAQ|About" && foot.every((x) => x === tc146(x)), [...tcBad.slice(0, 6), nav.join("|"), foot.join("|")].join(" || "));
-  check("t146 #4: named titles: 'Words You'll See Here', 'Terms Used on This Page', 'The Guides', 'Questions, Answered Simply', home card titles, 'In Short'", /<h2 id="glossary">Words You(?:'|&#39;)ll See Here<\/h2>/.test(home) && /<h2 id="guides">The Guides<\/h2>/.test(home) && home.includes('<a href="/faq/">Questions, Answered Simply</a>')
+  check("t146 #4: named titles: 'Words You'll See Here', 'Terms Used on This Page', 'The Guides', 'Questions, Answered Simply', home card titles, 'In Short'", /<details class="home-more" data-home-glossary id="glossary"><summary>Words You(?:'|&#39;)ll See Here<\/summary>/.test(home) && /<h2 id="guides">The Guides<\/h2>/.test(home) && home.includes('<a href="/faq/">Questions, Answered Simply</a>')
     && ["Build Your To-Do List", "Check a Widow(?:'|&#39;)s Pension", "Read the Full Plan"].every((t) => new RegExp(`<h2 class="start-card-h">${t}</h2>`).test(home)) && readFileSync(join(DIST, "guides/same-name/index.html"), "utf8").includes("<summary>Terms Used on This Page</summary>"));
   check("t146 #4: body text, buttons and quoted text keep their case (home buttons, the AI disclosure sentence, Tim's About heading)", home.includes(">Open the Lineage Evidence Matrix</a>") && home.includes(">See how the tools work</a>") && readFileSync(join(DIST, "ai-disclosure/index.html"), "utf8").replace(/&#39;/g, "'").includes("Written with AI assistance and reviewed by the site's owner. Each fact is tied to a quoted official source, and software checks that the quote is still there.") && /Why (?:'|&#39;)Patriot, In Lay Terms(?:'|&#39;)\?/.test(readFileSync(join(DIST, "about/index.html"), "utf8")));
   // #1 housekeeping, re-checked: no page-level About/AI/Privacy row; home cards on every inner page instead of "Ready to start?".
@@ -1138,6 +1138,70 @@ for (const w of [390, 1280]) { const cx = await browser.newContext({ viewport: {
     await pg.goto(BASE + "/"); await pg.emulateMedia({ media: "print" });
     check(`t150 (${w}px): print shows the explanation even when the expand is closed`, await pg.evaluate(() => { const d = document.querySelector("details[data-home-more]"); return !d.open && d.querySelector("p").getBoundingClientRect().height > 0; }));
     await pg.emulateMedia({ media: "screen" }); await cx.close(); } }
+// ---- t152: home glossary expand; Lineage Evidence Matrix start note; wrap 44rem and body line-height 1.7 ----
+{ const hm = readFileSync(join(DIST, "index.html"), "utf8");
+  const gloss = (hm.match(/<details class="home-more" data-home-glossary id="glossary">[\s\S]*?<\/details>/) || [""])[0];
+  const terms = ["Patriot:", "DAR:", "SAR:", "NSCDA:", "Lineage society:", "Bounty land:", "Stat.:"];
+  check("t152 #1: the home glossary is one native 'Words You'll See Here' expand (closed, id=glossary for in-page links), with every term and its citations unchanged",
+    /^<details class="home-more" data-home-glossary id="glossary"><summary>Words You'll See Here<\/summary>/.test(gloss.replace(/&#39;/g, "'")) && !/\sopen[\s>]/.test(gloss.slice(0, 80))
+    && terms.every((t) => gloss.includes(`<strong>${t}</strong>`)) && (gloss.match(/<sup><a href="#src-/g) || []).length >= 10 && !/<h2[\s>]/.test(gloss));
+  const mx = readFileSync(join(DIST, "tools/lineage-matrix/index.html"), "utf8");
+  const wd = readFileSync(join(DIST, "tools/widow-pension-checker/index.html"), "utf8");
+  const NOTE = "You can skip any field for now and come back later. Rough dates and states are enough to start.";
+  const notePos = mx.indexOf('data-form-note'); const formPos = mx.indexOf('data-ws-start'); const h2Pos = mx.indexOf('id="tb-h"');
+  check("t152 #2: the Lineage Evidence Matrix page has Tim's start note verbatim, visible near the start of the form (after the heading, before the start buttons); the widow checker is unchanged",
+    mx.includes(`<p class="form-note" data-form-note>${NOTE}</p>`) && notePos > h2Pos && notePos < formPos && !wd.includes("data-form-note") && !wd.includes(NOTE));
+  const css = readFileSync(join(DIST, "assets/site.css"), "utf8");
+  check("t152 #3: main wrap max-width is 44rem (was 46rem) and the screen body line-height is 1.7 (was 1.65); font-family and colors are unchanged",
+    /\.wrap\{max-width:46rem;/.test(css) && /@media screen\{\.wrap\{max-width:44rem\}\}/.test(css) && /@media screen\{[\s\S]*?body\{font-family:var\(--serif\);line-height:1\.7;/.test(css)
+    && /--serif:"Iowan Old Style"/.test(css) && /--navy:#13294b/.test(css) && /--red:#b22234/.test(css));
+  const REL12 = join(ROOT, "qa/release-logs/t152"); mkdirSync(REL12, { recursive: true });
+  const pages12 = ["/", "/tools/lineage-matrix/", "/tools/widow-pension-checker/", "/guides/application-problems/", "/guides/same-name/", "/about/", "/faq/"];
+  for (const w of [390, 1280]) { const cx = await browser.newContext({ viewport: { width: w, height: 900 } }); const pg = await cx.newPage();
+    // Glossary: closed, one click / Enter opens, print shows it, #glossary lands on it.
+    await pg.goto(BASE + "/");
+    const closed = await pg.evaluate(() => { const d = document.querySelector("[data-home-glossary]"); const li = d.querySelector("li");
+      return { open: d.open, id: d.id, sum: d.querySelector("summary").textContent, liHidden: !li.checkVisibility(), sumVis: d.querySelector("summary").checkVisibility(), sw: document.documentElement.scrollWidth, iw: innerWidth }; });
+    check(`t152 #1 (${w}px): home glossary is closed by default, the summary shows, the terms are hidden, id is 'glossary', no sideways scroll`,
+      !closed.open && closed.id === "glossary" && closed.sum === "Words You'll See Here" && closed.liHidden && closed.sumVis && closed.sw <= closed.iw, JSON.stringify(closed));
+    await pg.locator("[data-home-glossary] > summary").scrollIntoViewIfNeeded();
+    await pg.screenshot({ path: join(REL12, `home-glossary-closed-${w}.png`) });
+    await pg.click("[data-home-glossary] > summary");
+    const opened = await pg.evaluate(() => { const d = document.querySelector("[data-home-glossary]");
+      return { open: d.open, vis: [...d.querySelectorAll(".glossary li")].every((li) => li.checkVisibility()), n: d.querySelectorAll(".glossary li").length, sups: d.querySelectorAll("sup a[href^='#src-']").length }; });
+    check(`t152 #1 (${w}px): one click on 'Words You'll See Here' opens the glossary; every term and its citations are then visible`,
+      opened.open && opened.vis && opened.n >= 7 && opened.sups >= 10, JSON.stringify(opened));
+    await pg.screenshot({ path: join(REL12, `home-glossary-open-${w}.png`) });
+    await pg.goto(BASE + "/"); await pg.emulateMedia({ media: "print" });
+    check(`t152 #1 (${w}px): print shows the glossary even when the expand is closed`, await pg.evaluate(() => { const d = document.querySelector("[data-home-glossary]"); return !d.open && d.querySelector("li").getBoundingClientRect().height > 0; }));
+    await pg.emulateMedia({ media: "screen" });
+    await pg.goto(BASE + "/#glossary");
+    const hash = await pg.evaluate(() => { const d = document.querySelector("[data-home-glossary]"); const r = d.getBoundingClientRect();
+      return { id: d.id, inView: r.top < innerHeight && r.bottom > 0, open: d.open, sumVis: d.querySelector("summary").checkVisibility() }; });
+    check(`t152 #1 (${w}px): a /#glossary link lands on the glossary expand (the summary is in view); opening on hash is not done, because that would need JavaScript`,
+      hash.id === "glossary" && hash.inView && hash.sumVis && hash.open === false, JSON.stringify(hash));
+    // Matrix note + no note on widow; layout: no sideways scroll on key pages.
+    const layout = {};
+    for (const p of pages12) { await pg.goto(BASE + p);
+      layout[p] = await pg.evaluate(() => ({ sw: document.documentElement.scrollWidth, iw: innerWidth, wrap: getComputedStyle(document.querySelector("main .wrap")).maxWidth, lh: getComputedStyle(document.body).lineHeight, fs: getComputedStyle(document.body).fontSize })); }
+    await pg.goto(BASE + "/tools/lineage-matrix/");
+    const note = await pg.evaluate(() => { const n = document.querySelector("[data-form-note]"); const start = document.querySelector("[data-ws-start]");
+      const nr = n.getBoundingClientRect(), sr = start.getBoundingClientRect(), hr = document.querySelector("#tb-h").getBoundingClientRect();
+      return { vis: n.checkVisibility(), text: n.textContent, above: nr.bottom <= sr.top + 1, belowH: nr.top >= hr.bottom - 1, notLabel: n.tagName === "P" && !n.closest("label") }; });
+    check(`t152 #2 (${w}px): the matrix start note is visible, not inside a label, sits after the worksheet heading and above the start buttons`,
+      note.vis && note.text === "You can skip any field for now and come back later. Rough dates and states are enough to start." && note.above && note.belowH && note.notLabel, JSON.stringify(note));
+    await pg.locator("[data-form-note]").scrollIntoViewIfNeeded();
+    await pg.screenshot({ path: join(REL12, `matrix-note-${w}.png`) });
+    await pg.goto(BASE + "/tools/widow-pension-checker/");
+    check(`t152 #2 (${w}px): the widow checker has no start note`, await pg.evaluate(() => !document.querySelector("[data-form-note]")));
+    const wrapPx = 44 * 16;
+    const cssOk = Object.values(layout).every((x) => x.sw <= x.iw && (w === 1280 ? Math.abs(parseFloat(x.wrap) - wrapPx) < 2 : true));
+    check(`t152 #3 (${w}px): no page develops horizontal scroll; at 1280px the main wrap is 44rem`, cssOk, JSON.stringify(layout));
+    await pg.goto(BASE + "/"); await pg.screenshot({ path: join(REL12, `home-top-${w}.png`) });
+    await pg.goto(BASE + "/guides/application-problems/"); await pg.locator("#problem-cause-and-fix").scrollIntoViewIfNeeded();
+    await pg.screenshot({ path: join(REL12, `guide-table-${w}.png`) });
+    await pg.goto(BASE + "/tools/widow-pension-checker/"); await pg.screenshot({ path: join(REL12, `widow-top-${w}.png`) });
+    await cx.close(); } }
 // ---- t130 #1 / #3: home start cards, spacing, guide titles, menu (390px and 1280px) ----
 { const hH = readFileSync(join(DIST, "index.html"), "utf8");
   for (const w of [390, 1280]) { const cx = await browser.newContext({ viewport: { width: w, height: 900 } }); const pg = await cx.newPage(); await pg.goto(`${BASE}/`);

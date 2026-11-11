@@ -4,6 +4,7 @@ html{-webkit-text-size-adjust:100%}
 body{margin:0;font:17px/1.6 Georgia,"Times New Roman",serif;color:var(--ink);background:var(--bg)}
 a{color:#1a4f9c}
 .wrap{max-width:46rem;margin:0 auto;padding:0 1rem}
+@media screen{.wrap{max-width:44rem}}
 header.site{border-bottom:3px solid var(--red);background:var(--navy)}
 header.site .wrap{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:.5rem;padding:.6rem 1rem}
 header.site a{color:#fff;text-decoration:none}
@@ -247,10 +248,10 @@ blockquote.tool-output p{margin:0}
   --serif:"Iowan Old Style","Charter","Palatino Linotype","Palatino","Book Antiqua",Georgia,serif;
   --sans:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
   --shadow:0 1px 2px rgba(60,44,24,.05),0 2px 8px rgba(60,44,24,.05)}
-body{font-family:var(--serif);line-height:1.65;color:var(--ink);background:var(--bg)}
+body{font-family:var(--serif);line-height:1.7;color:var(--ink);background:var(--bg)}
 h1,h2,h3{font-family:var(--serif);color:var(--navy)}
 /* Text column about 66 characters on large screens, centered (29.5rem measures ~66 characters at 17px in a Palatino-class
-   serif). The tools, tables and figures keep their earlier 46rem width, centered like plates in a booklet. Phones unchanged. */
+   serif). The tools, tables and figures use the main wrap (44rem as of t152), centered like plates in a booklet. Phones unchanged. */
 @media (min-width:600px){
   main .wrap>:not(section.tool):not(.table-wrap):not(.plan):not(figure.job-aid):not(.start-cards){max-width:29.5rem;margin-left:auto;margin-right:auto}
 }
@@ -387,3 +388,6 @@ details.home-more>p:last-child{margin-bottom:.3rem}
   details.home-more>summary{list-style:none}
   details.home-more>summary::-webkit-details-marker{display:none}
 }
+
+/* Tim t152 #2: a short start note on the Lineage Evidence Matrix form only. */
+.form-note{font:16px/1.5 var(--sans);color:var(--navy);background:var(--soft);border-left:4px solid var(--navy);border-radius:6px;padding:.55rem .8rem;margin:.8rem 0}

@@ -1,8 +1,8 @@
 {
-  "ranAt": "Wed Nov 11 2026 15:48:49 GMT-0600 (Central Standard Time)",
+  "ranAt": "Wed Nov 11 2026 16:14:04 GMT-0600 (Central Standard Time)",
   "browser": "/usr/bin/google-chrome (headless) via playwright-core 1.59.1",
-  "passed": 284,
-  "total": 284,
+  "passed": 301,
+  "total": 301,
   "exampleReportPages": {
     "summaryPages": 2,
     "fullPages": 3,
@@ -38,7 +38,7 @@
     "sub": "Plain-English Help With DAR and SAR Applications, for the Daughters and the Sons of the American Revolution",
     "ai": "Written with AI assistance and reviewed by the site's owner. Each fact is tied to a quoted official source, and software checks that the quote is still there.",
     "afterCards": true,
-    "words": 1111
+    "words": 865
   },
   "results": [
     {
@@ -604,7 +604,7 @@
     {
       "name": "Home (Nov 5 lock; t130 moved the paragraphs below the start cards, unchanged): subtitle names DAR and SAR; mission in flowing paragraphs (no lists) after the cards; purpose line, both tool names, one-sentence privacy",
       "ok": true,
-      "detail": "{\"ps\":7,\"lists\":0,\"text\":\"This site helps you organize the records that connect you to a Revolutionary War\",\"sub\":\"Plain-English Help With DAR and SAR Applications, for the Daughters and the Sons of the American Revolution\",\"ai\":\"Written with AI assistance and reviewed by the site's owner. Each fact is tied to a quoted official source, and software checks that the quote is still there.\",\"afterCards\":true,\"words\":1111}"
+      "detail": "{\"ps\":7,\"lists\":0,\"text\":\"This site helps you organize the records that connect you to a Revolutionary War\",\"sub\":\"Plain-English Help With DAR and SAR Applications, for the Daughters and the Sons of the American Revolution\",\"ai\":\"Written with AI assistance and reviewed by the site's owner. Each fact is tied to a quoted official source, and software checks that the quote is still there.\",\"afterCards\":true,\"words\":865}"
     },
     {
       "name": "Home (Nov 5 lock, SAR line updated by t125u): the exact AI line, the exact SAR line (sourced), no unsourced 'most people get stuck' / 'give up' / guarantee lines",
@@ -827,7 +827,7 @@
       "detail": "{\"h1s\":1,\"sr\":\"Patriot, In Lay Terms: \",\"srHidden\":true,\"vis\":\"Plain-English Help With DAR and SAR Applications, for the Daughters and the Sons of the American Revolution\",\"visH\":143.9375,\"title\":\"Patriot, In Lay Terms: Plain-English Help for DAR and SAR Applications | Patriot In Lay Terms\",\"rule\":\"rgb(178, 34, 52)\",\"ruleW\":\"56px\"}"
     },
     {
-      "name": "t122u #11: every visible text element on all 22 pages passes WCAG AA contrast (4.5:1, large text 3:1) — 3570 elements",
+      "name": "t122u #11: every visible text element on all 22 pages passes WCAG AA contrast (4.5:1, large text 3:1) — 3571 elements",
       "ok": true,
       "detail": ""
     },
@@ -1112,14 +1112,14 @@
       "detail": ""
     },
     {
-      "name": "t132 #1 (390px): glossary on a guide and a tool page is closed by default, opens on tap, prints expanded; home glossary stays open",
+      "name": "t132 #1 (390px): glossary on a guide and a tool page is closed by default, opens on tap, prints expanded; home has no 'Terms Used on This Page' box (its glossary is the t152 expand, tested there)",
       "ok": true,
-      "detail": "{\"r\":{\"/guides/read-pension-file/\":{\"closedByDefault\":true,\"opensOnTap\":true,\"printExpanded\":true,\"sum\":\"Terms Used on This Page\",\"fits\":true},\"/tools/lineage-matrix/\":{\"closedByDefault\":true,\"opensOnTap\":true,\"printExpanded\":true,\"sum\":\"Terms Used on This Page\",\"fits\":true}},\"home\":{\"inDetails\":false,\"vis\":true,\"noDefs\":true}}"
+      "detail": "{\"r\":{\"/guides/read-pension-file/\":{\"closedByDefault\":true,\"opensOnTap\":true,\"printExpanded\":true,\"sum\":\"Terms Used on This Page\",\"fits\":true},\"/tools/lineage-matrix/\":{\"closedByDefault\":true,\"opensOnTap\":true,\"printExpanded\":true,\"sum\":\"Terms Used on This Page\",\"fits\":true}},\"home\":{\"inDetails\":true,\"vis\":false,\"noDefs\":true}}"
     },
     {
-      "name": "t132 #1 (1280px): glossary on a guide and a tool page is closed by default, opens on tap, prints expanded; home glossary stays open",
+      "name": "t132 #1 (1280px): glossary on a guide and a tool page is closed by default, opens on tap, prints expanded; home has no 'Terms Used on This Page' box (its glossary is the t152 expand, tested there)",
       "ok": true,
-      "detail": "{\"r\":{\"/guides/read-pension-file/\":{\"closedByDefault\":true,\"opensOnTap\":true,\"printExpanded\":true,\"sum\":\"Terms Used on This Page\",\"fits\":true},\"/tools/lineage-matrix/\":{\"closedByDefault\":true,\"opensOnTap\":true,\"printExpanded\":true,\"sum\":\"Terms Used on This Page\",\"fits\":true}},\"home\":{\"inDetails\":false,\"vis\":true,\"noDefs\":true}}"
+      "detail": "{\"r\":{\"/guides/read-pension-file/\":{\"closedByDefault\":true,\"opensOnTap\":true,\"printExpanded\":true,\"sum\":\"Terms Used on This Page\",\"fits\":true},\"/tools/lineage-matrix/\":{\"closedByDefault\":true,\"opensOnTap\":true,\"printExpanded\":true,\"sum\":\"Terms Used on This Page\",\"fits\":true}},\"home\":{\"inDetails\":true,\"vis\":false,\"noDefs\":true}}"
     },
     {
       "name": "t132 #2: privacy page has Tim's exact sentence, keeps the ads line, and the old 'collects nothing' and 'Like any web host' sentences are gone",
@@ -1407,9 +1407,94 @@
       "detail": ""
     },
     {
+      "name": "t152 #1: the home glossary is one native 'Words You'll See Here' expand (closed, id=glossary for in-page links), with every term and its citations unchanged",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "t152 #2: the Lineage Evidence Matrix page has Tim's start note verbatim, visible near the start of the form (after the heading, before the start buttons); the widow checker is unchanged",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "t152 #3: main wrap max-width is 44rem (was 46rem) and the screen body line-height is 1.7 (was 1.65); font-family and colors are unchanged",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "t152 #1 (390px): home glossary is closed by default, the summary shows, the terms are hidden, id is 'glossary', no sideways scroll",
+      "ok": true,
+      "detail": "{\"open\":false,\"id\":\"glossary\",\"sum\":\"Words You'll See Here\",\"liHidden\":true,\"sumVis\":true,\"sw\":390,\"iw\":390}"
+    },
+    {
+      "name": "t152 #1 (390px): one click on 'Words You'll See Here' opens the glossary; every term and its citations are then visible",
+      "ok": true,
+      "detail": "{\"open\":true,\"vis\":true,\"n\":8,\"sups\":12}"
+    },
+    {
+      "name": "t152 #1 (390px): print shows the glossary even when the expand is closed",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "t152 #1 (390px): a /#glossary link lands on the glossary expand (the summary is in view); opening on hash is not done, because that would need JavaScript",
+      "ok": true,
+      "detail": "{\"id\":\"glossary\",\"inView\":true,\"open\":false,\"sumVis\":true}"
+    },
+    {
+      "name": "t152 #2 (390px): the matrix start note is visible, not inside a label, sits after the worksheet heading and above the start buttons",
+      "ok": true,
+      "detail": "{\"vis\":true,\"text\":\"You can skip any field for now and come back later. Rough dates and states are enough to start.\",\"above\":true,\"belowH\":true,\"notLabel\":true}"
+    },
+    {
+      "name": "t152 #2 (390px): the widow checker has no start note",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "t152 #3 (390px): no page develops horizontal scroll; at 1280px the main wrap is 44rem",
+      "ok": true,
+      "detail": "{\"/\":{\"sw\":390,\"iw\":390,\"wrap\":\"704px\",\"lh\":\"27.2px\",\"fs\":\"16px\"},\"/tools/lineage-matrix/\":{\"sw\":390,\"iw\":390,\"wrap\":\"704px\",\"lh\":\"27.2px\",\"fs\":\"16px\"},\"/tools/widow-pension-checker/\":{\"sw\":390,\"iw\":390,\"wrap\":\"704px\",\"lh\":\"27.2px\",\"fs\":\"16px\"},\"/guides/application-problems/\":{\"sw\":390,\"iw\":390,\"wrap\":\"704px\",\"lh\":\"27.2px\",\"fs\":\"16px\"},\"/guides/same-name/\":{\"sw\":390,\"iw\":390,\"wrap\":\"704px\",\"lh\":\"27.2px\",\"fs\":\"16px\"},\"/about/\":{\"sw\":390,\"iw\":390,\"wrap\":\"704px\",\"lh\":\"27.2px\",\"fs\":\"16px\"},\"/faq/\":{\"sw\":390,\"iw\":390,\"wrap\":\"704px\",\"lh\":\"27.2px\",\"fs\":\"16px\"}}"
+    },
+    {
+      "name": "t152 #1 (1280px): home glossary is closed by default, the summary shows, the terms are hidden, id is 'glossary', no sideways scroll",
+      "ok": true,
+      "detail": "{\"open\":false,\"id\":\"glossary\",\"sum\":\"Words You'll See Here\",\"liHidden\":true,\"sumVis\":true,\"sw\":1280,\"iw\":1280}"
+    },
+    {
+      "name": "t152 #1 (1280px): one click on 'Words You'll See Here' opens the glossary; every term and its citations are then visible",
+      "ok": true,
+      "detail": "{\"open\":true,\"vis\":true,\"n\":8,\"sups\":12}"
+    },
+    {
+      "name": "t152 #1 (1280px): print shows the glossary even when the expand is closed",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "t152 #1 (1280px): a /#glossary link lands on the glossary expand (the summary is in view); opening on hash is not done, because that would need JavaScript",
+      "ok": true,
+      "detail": "{\"id\":\"glossary\",\"inView\":true,\"open\":false,\"sumVis\":true}"
+    },
+    {
+      "name": "t152 #2 (1280px): the matrix start note is visible, not inside a label, sits after the worksheet heading and above the start buttons",
+      "ok": true,
+      "detail": "{\"vis\":true,\"text\":\"You can skip any field for now and come back later. Rough dates and states are enough to start.\",\"above\":true,\"belowH\":true,\"notLabel\":true}"
+    },
+    {
+      "name": "t152 #2 (1280px): the widow checker has no start note",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "t152 #3 (1280px): no page develops horizontal scroll; at 1280px the main wrap is 44rem",
+      "ok": true,
+      "detail": "{\"/\":{\"sw\":1280,\"iw\":1280,\"wrap\":\"704px\",\"lh\":\"28.9px\",\"fs\":\"17px\"},\"/tools/lineage-matrix/\":{\"sw\":1280,\"iw\":1280,\"wrap\":\"704px\",\"lh\":\"28.9px\",\"fs\":\"17px\"},\"/tools/widow-pension-checker/\":{\"sw\":1280,\"iw\":1280,\"wrap\":\"704px\",\"lh\":\"28.9px\",\"fs\":\"17px\"},\"/guides/application-problems/\":{\"sw\":1280,\"iw\":1280,\"wrap\":\"704px\",\"lh\":\"28.9px\",\"fs\":\"17px\"},\"/guides/same-name/\":{\"sw\":1280,\"iw\":1280,\"wrap\":\"704px\",\"lh\":\"28.9px\",\"fs\":\"17px\"},\"/about/\":{\"sw\":1280,\"iw\":1280,\"wrap\":\"704px\",\"lh\":\"28.9px\",\"fs\":\"17px\"},\"/faq/\":{\"sw\":1280,\"iw\":1280,\"wrap\":\"704px\",\"lh\":\"28.9px\",\"fs\":\"17px\"}}"
+    },
+    {
       "name": "t130 #1 (390px): under the heading and independent line, Tim's sentence, then the three start cards (stacked) with his exact titles, lines and navy buttons, then 'See how the tools work', then the longer paragraphs; the 'Ready to get started?' box is gone",
       "ok": true,
-      "detail": "{\"order\":[0,1,2,3,4,5,6],\"cards\":[[421,16],[631,16],[861,16]],\"seeHow\":[\"See how the tools work\",\"/walkthroughs/\"],\"oldBox\":false}"
+      "detail": "{\"order\":[0,1,2,3,4,5,6],\"cards\":[[424,16],[634,16],[863,16]],\"seeHow\":[\"See how the tools work\",\"/walkthroughs/\"],\"oldBox\":false}"
     },
     {
       "name": "t130 #3 (390px): start cards have a soft warm background and navy buttons with white text",
@@ -1429,7 +1514,7 @@
     {
       "name": "t130 #1 (1280px): under the heading and independent line, Tim's sentence, then the three start cards (side by side) with his exact titles, lines and navy buttons, then 'See how the tools work', then the longer paragraphs; the 'Ready to get started?' box is gone",
       "ok": true,
-      "detail": "{\"order\":[0,1,2,3,4,5,6],\"cards\":[[426,288],[426,528],[426,768]],\"seeHow\":[\"See how the tools work\",\"/walkthroughs/\"],\"oldBox\":false}"
+      "detail": "{\"order\":[0,1,2,3,4,5,6],\"cards\":[[429,304],[429,533],[429,763]],\"seeHow\":[\"See how the tools work\",\"/walkthroughs/\"],\"oldBox\":false}"
     },
     {
       "name": "t130 #3 (1280px): start cards have a soft warm background and navy buttons with white text",

@@ -119,6 +119,7 @@ const TOOL_B_FULL = `<section class="tool" data-tool="lineage-matrix" aria-label
 <p class="purpose" data-purpose><strong>What it's for:</strong> a to-do list of the records you still need for each generation, from you back to your patriot, and where to look for each one.</p>
 <div class="howto"><p><strong>How this works.</strong> This worksheet does not search any records or databases. You type in the records you already have for each person in your line. It shows what is still missing for each generation and where to look for it. Nothing you type leaves your device; it is saved only in this browser.</p>
 </div>
+<p class="form-note" data-form-note>You can skip any field for now and come back later. Rough dates and states are enough to start.</p>
 <div class="ws-start" data-ws-start><div class="ws-choices"><p class="ws-choice" data-ws-begin-wrap><button type="button" class="big" data-ws-begin>Start with just the patriot and me</button> <span class="small ws-rec">Recommended</span></p><p class="ws-choice"><button type="button" class="secondary" data-load-example>See a filled-in example</button></p></div><div data-name-checklist></div></div>
 <div data-ws-body>
 <details class="ws-group" data-group="patriot" open><summary><h3 class="step" id="tb-patriot"><span class="num">1</span> Your patriot</h3></summary>
@@ -265,9 +266,11 @@ for (const f of readdirSync(join(ROOT, "src/pages")).filter((x) => x.endsWith(".
 // "How to join, in short" box live on in the Roadmap guide, which opens with both.
 const HOME = (() => { const ctx = { sources: [], tools: new Set(), claimCount: 0 };
   const body = md(readFileSync(join(ROOT, "src/partials/home.md"), "utf8"), ctx);
-  const html = md(readFileSync(join(ROOT, "src/partials/glossary.md"), "utf8"), ctx).replace('<h2 id="words-you-ll-see-here">', '<h2 id="glossary">');
+  const html = md(readFileSync(join(ROOT, "src/partials/glossary.md"), "utf8"), ctx).replace(/<h2 id="words-you-ll-see-here">[\s\S]*?<\/h2>\s*/, "");
   const sources = `<h2 id="sources">Sources</h2><ol class="sources">${ctx.sources.map((u, i) => sourceItem(u, i, ctx)).join("")}</ol>`;
-  return { body, html: `<div class="glossary">${html}</div>`, sources }; })();
+  // Tim t152 #1: the home glossary is a second native expand, closed by default, same pattern as "Why This Site Exists".
+  // id="glossary" stays on the details so in-page links (/#glossary) still land on it; opening on hash needs JS, which we don't add.
+  return { body, html: `<details class="home-more" data-home-glossary id="glossary"><summary>Words You'll See Here</summary><div class="glossary">${html}</div></details>`, sources }; })();
 // Tim t150: the longer explanation (from "Somewhere in your family's past" through "What this site does is explain ...")
 // sits in a native <details>, closed by default, so a skimming visitor sees the short version first. Wording is unchanged
 // (homepage-LOCK); the purpose paragraph, the "It's free" line and the AI line stay visible.
