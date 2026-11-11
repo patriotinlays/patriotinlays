@@ -1,8 +1,8 @@
 {
-  "ranAt": "Wed Nov 11 2026 15:04:57 GMT-0600 (Central Standard Time)",
+  "ranAt": "Wed Nov 11 2026 15:17:58 GMT-0600 (Central Standard Time)",
   "browser": "/usr/bin/google-chrome (headless) via playwright-core 1.59.1",
-  "passed": 255,
-  "total": 255,
+  "passed": 264,
+  "total": 264,
   "exampleReportPages": {
     "summaryPages": 2,
     "fullPages": 3,
@@ -827,7 +827,7 @@
       "detail": "{\"h1s\":1,\"sr\":\"Patriot, In Lay Terms: \",\"srHidden\":true,\"vis\":\"Plain-English Help With DAR and SAR Applications, for the Daughters and the Sons of the American Revolution\",\"visH\":143.9375,\"title\":\"Patriot, In Lay Terms: Plain-English Help for DAR and SAR Applications | Patriot In Lay Terms\",\"rule\":\"rgb(178, 34, 52)\",\"ruleW\":\"56px\"}"
     },
     {
-      "name": "t122u #11: every visible text element on all 22 pages passes WCAG AA contrast (4.5:1, large text 3:1) — 3549 elements",
+      "name": "t122u #11: every visible text element on all 22 pages passes WCAG AA contrast (4.5:1, large text 3:1) — 3561 elements",
       "ok": true,
       "detail": ""
     },
@@ -847,7 +847,7 @@
       "detail": "lineage-proof-roadmap=2026-11-05 substitute-evidence=2026-11-05 read-pension-file=2026-11-11 records-by-state=2026-11-05 bounty-land-warrants=2026-11-11 census-bridge=2026-11-05 patriotic-service=2026-11-05 same-name=2026-11-11 patriot-or-loyalist=2026-11-11 application-problems=2026-11-05"
     },
     {
-      "name": "t124u #1 (390px): every Sources entry on every page (16 pages, 288 entries) has a visible \"Used for: ...\" line of at most about 8 words, and the raw URL is hidden on screen",
+      "name": "t124u #1 (390px): every Sources entry on every page (16 pages, 290 entries) has a visible \"Used for: ...\" line of at most about 8 words, and the raw URL is hidden on screen",
       "ok": true,
       "detail": ""
     },
@@ -857,7 +857,7 @@
       "detail": "{\"urls\":true,\"icons\":true}"
     },
     {
-      "name": "t124u #11 (390px): every link that leaves the site (326) opens in a new tab with rel=\"noopener noreferrer\", a small icon and \"(opens in new tab)\" for screen readers; no internal or email link does",
+      "name": "t124u #11 (390px): every link that leaves the site (328) opens in a new tab with rel=\"noopener noreferrer\", a small icon and \"(opens in new tab)\" for screen readers; no internal or email link does",
       "ok": true,
       "detail": ""
     },
@@ -877,7 +877,7 @@
       "detail": "{\"n\":15,\"ok\":true}"
     },
     {
-      "name": "t124u #1 (1280px): every Sources entry on every page (16 pages, 288 entries) has a visible \"Used for: ...\" line of at most about 8 words, and the raw URL is hidden on screen",
+      "name": "t124u #1 (1280px): every Sources entry on every page (16 pages, 290 entries) has a visible \"Used for: ...\" line of at most about 8 words, and the raw URL is hidden on screen",
       "ok": true,
       "detail": ""
     },
@@ -887,7 +887,7 @@
       "detail": "{\"urls\":true,\"icons\":true}"
     },
     {
-      "name": "t124u #11 (1280px): every link that leaves the site (326) opens in a new tab with rel=\"noopener noreferrer\", a small icon and \"(opens in new tab)\" for screen readers; no internal or email link does",
+      "name": "t124u #11 (1280px): every link that leaves the site (328) opens in a new tab with rel=\"noopener noreferrer\", a small icon and \"(opens in new tab)\" for screen readers; no internal or email link does",
       "ok": true,
       "detail": ""
     },
@@ -1262,6 +1262,51 @@
       "detail": ""
     },
     {
+      "name": "t147 #1/#2: Application Returned states the current SAR policy points (one replacement, replacements reduced to once, two-year expiry) and the two patriot-generation sentences, each 'As of' its source's last pass",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "t147 #1/#2: the outdated Ohio replacement, supplemental-once, three-year and patriot-generation lines are gone from Application Returned",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "t147 #3: the Supplementals caveat is Tim's sentence word for word",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "t147 #4: Patriotic Service's In Short 'Then' line reads Tim's text and links the Same Name guide",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "t147 #5: Same Name's In Short says 'is your patriot's, not someone else's.'",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "t147 (390px): the changed pages fit the screen (no sideways scroll; In Short box inside the page)",
+      "ok": true,
+      "detail": "{\"/guides/application-problems/\":{\"sw\":390,\"iw\":390,\"box\":true},\"/guides/patriotic-service/\":{\"sw\":390,\"iw\":390,\"box\":true},\"/guides/same-name/\":{\"sw\":390,\"iw\":390,\"box\":true}}"
+    },
+    {
+      "name": "t147 #4 (390px): the Patriotic Service 'Then' link opens Same Name, Different Man",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "t147 (1280px): the changed pages fit the screen (no sideways scroll; In Short box inside the page)",
+      "ok": true,
+      "detail": "{\"/guides/application-problems/\":{\"sw\":1280,\"iw\":1280,\"box\":true},\"/guides/patriotic-service/\":{\"sw\":1280,\"iw\":1280,\"box\":true},\"/guides/same-name/\":{\"sw\":1280,\"iw\":1280,\"box\":true}}"
+    },
+    {
+      "name": "t147 #4 (1280px): the Patriotic Service 'Then' link opens Same Name, Different Man",
+      "ok": true,
+      "detail": ""
+    },
+    {
       "name": "t130 #1 (390px): under the heading and independent line, Tim's sentence, then the three start cards (stacked) with his exact titles, lines and navy buttons, then 'See how the tools work', then the longer paragraphs; the 'Ready to get started?' box is gone",
       "ok": true,
       "detail": "{\"order\":[0,1,2,3,4,5,6],\"cards\":[[421,16],[631,16],[861,16]],\"seeHow\":[\"See how the tools work\",\"/walkthroughs/\"],\"oldBox\":false}"
@@ -1317,7 +1362,7 @@
       "detail": ""
     }
   ],
-  "requestsTotal": 659,
+  "requestsTotal": 658,
   "externalRequests": 0,
   "interactionRequests": 0,
   "faviconLate": 25

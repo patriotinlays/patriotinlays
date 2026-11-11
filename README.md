@@ -260,6 +260,11 @@ Docs: https://developers.cloudflare.com/pages/how-to/web-analytics/
 - February 28, 1855 navy-widow law cited as ch. 126, sec. 3, 10 Stat. 616 (chapter begins at 615); 10 Stat. 701 is only the March 3, 1855 bounty-land act.
 - Worksheet: step 1 is the patriot, step 2 starts the family with yourself; removing the oldest generation asks for confirmation.
 
+### t147 (Nov 11, 2026)
+- Application Returned: the Ohio replacement, supplemental-once and three-year points are replaced by SAR's national Genealogy Committee Policies (`SAR_GCP`, https://www.sar.org/app/uploads/NSSAR-Genealogy-Policy-Manual-2026-12-5.pdf, national): one replacement with another patriot ancestor (6.3002d), replacements reduced to once for all applications (change log), two-year expiry of pended applications (6.3002a), each "As of <date>, SAR's genealogy policies say ...".
+- The patriot-generation row is split into two APG sentences (residence must agree with the service; if no birth date, a proven fact showing he was living and of age). Same Name still cites the Ohio line.
+- Supplementals caveat is Tim's sentence. In Short: Patriotic Service's Then links Same Name, Different Man; Same Name says "is your patriot's, not someone else's."
+
 ### t146 (Nov 11, 2026)
 - Application Returned: three points that came from the 2023 Ohio presentation (applicant birth certificate showing gender, the 01 Jan 1900 date format, DAR record copies only) now cite SAR's national Application Preparation Guide (`SAR_APG`, https://www.sar.org/app/uploads/APG-07-June-2026.pdf, scope national) as "As of <date>, SAR's application guide says ...". The other Ohio points stay attributed to the presentation. APG-1.pdf is a 404; sar.org/nssar-genealogy-policies-materials/ links the 07 June 2026 edition.
 - Each of the 10 guides opens with an "In Short" box (under the title, before the glossary): `::in-short` ... `::end` in the guide's Markdown, three lines "This guide helps you:", "Start by:", "Then:" (Then links to the matching tool or the next guide). The build stops if a guide lacks it.

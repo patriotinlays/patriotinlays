@@ -753,7 +753,7 @@ phase("load"); await page.goto(`${BASE}/`); phase("interact");
   const pagesOf = (re) => rdT(DIST, { recursive: true }).filter((f) => re.test(f)).map((f) => [f, readFileSync(join(DIST, f), "utf8")]);
   const ap = text("guides/application-problems"), apH = H("guides/application-problems");
   const BAD = /\b(?:SAR|NSCDA)(?:'s)? (?:says|wants|lists|treats|notes|states|considers|rejects|advises|asks for|cites)\b|\bSAR:(?! the National)|\bNSCDA:(?! The National)|SAR presenters|under NSCDA rules|Listed by NSCDA|SAR's guidance|NSCDA's own example|NSCDA Standards of Proof\)/;
-  const ohSentences = ["A 2023 Ohio Society SAR presentation said applications pended for three years are withdrawn.", "A 2023 Ohio Society SAR presentation put it in capitals: always complete an application from the documentation.", "A 2023 Ohio Society SAR presentation said a correctly prepared application can be reviewed at National in as little as 30 minutes."];
+  const ohSentences = ["A 2023 Ohio Society SAR presentation put it in capitals: always complete an application from the documentation.", "A 2023 Ohio Society SAR presentation said a correctly prepared application can be reviewed at National in as little as 30 minutes."];
   check("t127u #1: Application Returned attributes the Ohio points to 'A 2023 Ohio Society SAR presentation', never 'SAR says' or 'SAR:', and none of them carries an 'As of' date",
     ohSentences.every((x) => ap.includes(x)) && !/\bSAR says\b|SAR: (?!the National)/.test(ap) && ![...apH.matchAll(/data-asof="([a-z0-9-]+)"/g)].some((m) => m[1].startsWith("ohsar-")), ohSentences.filter((x) => !ap.includes(x)).join(" | "));
   check("t127u #1: SAR signatures come from SAR's national application checklist (members.sar.org), with an 'As of' date from its last pass",
@@ -809,7 +809,7 @@ phase("load"); await page.goto(`${BASE}/`); phase("interact");
     && fqH.includes('href="https://www.sar.org/how-to-apply/"'), gen.slice(0, 400));
   check("t128u #3: supplemental signatures come from SAR's national application checklist with an 'As of' date; the Ohio two-signatures line is gone",
     new RegExp(`As of <span data-asof="sar-checklist-supp-sig">${longDate(lp["https://members.sar.org/media/uploads/pages/334/wPXSPrcD0cuU.pdf"])}</span>, SAR(?:'|&#39;)s application checklist asks whether the member and the State Registrar \\(or another designated officer\\) have signed a supplemental application on the back\\.`).test(apH.replace(/&apos;/g, "&#39;"))
-    && !/supplemental applications need two signatures/.test(ap) && ap.includes("Except for the two signature checks from SAR's application checklist and the fee point from SAR's application guide, these points come from a 2023 Ohio Society SAR presentation"));
+    && !/supplemental applications need two signatures/.test(ap) && ap.includes("Except where marked as SAR's application guide, the points below come from a 2023 Ohio Society SAR presentation, not SAR's national rules."));
   // t146 #2: three Ohio points are now stated by SAR's national Application Preparation Guide and re-sourced to it, with an "As of" date.
   const apgDate = longDate(lp["https://www.sar.org/app/uploads/APG-07-June-2026.pdf"]);
   check("t146 #2 / t128u #3: DAR record copies, the birth certificate and the date format are re-sourced to SAR's national Application Preparation Guide ('SAR's application guide says', As of its last pass); the Ohio wording for them is gone",
@@ -1029,6 +1029,37 @@ for (const w of [390, 1280]) { const cx = await browser.newContext({ viewport: {
     await pg.locator("#problem-cause-and-fix").scrollIntoViewIfNeeded(); await pg.screenshot({ path: join(REL, `application-returned-table-${w}.png`) });
     await pg.evaluate(() => scrollTo(0, document.body.scrollHeight)); await pg.screenshot({ path: join(REL, `footer-application-returned-${w}.png`) });
     await pg.goto(BASE + "/about/"); await pg.evaluate(() => scrollTo(0, document.body.scrollHeight)); await pg.screenshot({ path: join(REL, `footer-about-${w}.png`) });
+    await cx.close(); } }
+// ---- t147: SAR policy re-sourcing, patriot-generation split, Tim's caveat, two In Short edits (390px and 1280px) ----
+{ const H7 = (p) => readFileSync(join(DIST, p, "index.html"), "utf8").replace(/&#39;|&apos;/g, "'");
+  const lp7 = JSON.parse(readFileSync(join(ROOT, "manifest/source-last-passed.json"), "utf8")).sources; const MON7 = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+  const ld7 = (t) => { const d = new Date(t); return `${MON7[d.getUTCMonth()]} ${d.getUTCDate()}, ${d.getUTCFullYear()}`; };
+  const GCP = "https://www.sar.org/app/uploads/NSSAR-Genealogy-Policy-Manual-2026-12-5.pdf", APG = "https://www.sar.org/app/uploads/APG-07-June-2026.pdf";
+  const ap = H7("guides/application-problems"); const apT = ap.replace(/<[^>]+>/g, "");
+  const want = [["sar-gcp-replace-once", GCP, "SAR's genealogy policies say an applicant may replace a pended application with another patriot ancestor one time without paying an additional fee."],
+    ["sar-gcp-replacements-all-once", GCP, "SAR's genealogy policies say replacements were reduced to once for all applications."],
+    ["sar-gcp-pended-two-years", GCP, "SAR's genealogy policies say pended applications stay on file for two years from the date they were pended, then expire and are no longer considered."],
+    ["sar-apg-patriot-residence", APG, "SAR's application guide says the patriot's residence during the Revolution must agree with the service being claimed."],
+    ["sar-apg-patriot-age", APG, "SAR's application guide says that if the patriot's birth date can't be found, you cite a proven fact showing he was living at the time of the service and of age for it"]];
+  const miss = want.filter(([id, u, t]) => !lp7[u] || !ap.includes(`As of <span data-asof="${id}">${ld7(lp7[u])}</span>, ${t}`));
+  check("t147 #1/#2: Application Returned states the current SAR policy points (one replacement, replacements reduced to once, two-year expiry) and the two patriot-generation sentences, each 'As of' its source's last pass", miss.length === 0 && ap.includes(`href="${GCP}"`), miss.map((m) => m[0]).join(","));
+  check("t147 #1/#2: the outdated Ohio replacement, supplemental-once, three-year and patriot-generation lines are gone from Application Returned", !/two chances to resolve|supplemental may be replaced only once|pended for three years|patriot's generation should prove/.test(apT));
+  check("t147 #3: the Supplementals caveat is Tim's sentence word for word", apT.includes("Except where marked as SAR's application guide, the points below come from a 2023 Ohio Society SAR presentation, not SAR's national rules."));
+  const ps = H7("guides/patriotic-service"), sn = H7("guides/same-name");
+  check("t147 #4: Patriotic Service's In Short 'Then' line reads Tim's text and links the Same Name guide", /<li data-in-short-line="then"><strong>Then:<\/strong> read <a href="\/guides\/same-name\/">Same Name, Different Man<\/a> to make sure each record is your patriot's\.<\/li>/.test(ps));
+  check("t147 #5: Same Name's In Short says 'is your patriot's, not someone else's.'", /data-in-short-line="helps"><strong>This guide helps you:<\/strong> prove that a service record with your ancestor's name is your patriot's, not someone else's\.<\/li>/.test(sn) && !/another man's/.test(sn.slice(sn.indexOf("data-in-short"), sn.indexOf("</aside>", sn.indexOf("data-in-short")))));
+  const { mkdirSync: mk7 } = await import("node:fs"); const REL7 = join(ROOT, "qa/release-logs/t147"); mk7(REL7, { recursive: true });
+  for (const w of [390, 1280]) { const cx = await browser.newContext({ viewport: { width: w, height: 900 } }); const pg = await cx.newPage();
+    const r = {};
+    for (const p of ["/guides/application-problems/", "/guides/patriotic-service/", "/guides/same-name/"]) { await pg.goto(BASE + p);
+      r[p] = await pg.evaluate(() => ({ sw: document.documentElement.scrollWidth, iw: innerWidth, box: document.querySelector("[data-in-short]").getBoundingClientRect().right <= innerWidth })); }
+    check(`t147 (${w}px): the changed pages fit the screen (no sideways scroll; In Short box inside the page)`, Object.values(r).every((x) => x.sw <= x.iw && x.box), JSON.stringify(r));
+    await pg.goto(BASE + "/guides/application-problems/"); await pg.locator("#supplementals-and-replacements-sar").scrollIntoViewIfNeeded(); await pg.screenshot({ path: join(REL7, `application-returned-supplementals-${w}.png`) });
+    await pg.locator("#problem-cause-and-fix").scrollIntoViewIfNeeded(); await pg.screenshot({ path: join(REL7, `application-returned-table-${w}.png`) });
+    await pg.goto(BASE + "/guides/patriotic-service/"); await pg.screenshot({ path: join(REL7, `patriotic-service-in-short-${w}.png`) });
+    await pg.click('[data-in-short-line="then"] a'); await pg.waitForURL("**/guides/same-name/");
+    check(`t147 #4 (${w}px): the Patriotic Service 'Then' link opens Same Name, Different Man`, /\/guides\/same-name\/$/.test(pg.url()));
+    await pg.screenshot({ path: join(REL7, `same-name-in-short-${w}.png`) });
     await cx.close(); } }
 // ---- t130 #1 / #3: home start cards, spacing, guide titles, menu (390px and 1280px) ----
 { const hH = readFileSync(join(DIST, "index.html"), "utf8");

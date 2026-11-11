@@ -7,7 +7,7 @@ cornerstone: 8
 # Same Name, Different Man: Separating Patriots Who Share a Name
 
 ::in-short
-This guide helps you: prove that a service record with your ancestor's name is his, not another man's.
+This guide helps you: prove that a service record with your ancestor's name is your patriot's, not someone else's.
 Start by: searching every spelling, then opening every same-name file for the state, not just the first.
 Then: use the conflict flag in the [Lineage Evidence Matrix](/tools/lineage-matrix/) for records that disagree.
 ::end

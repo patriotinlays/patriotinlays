@@ -9,7 +9,7 @@ cornerstone: 7
 ::in-short
 This guide helps you: prove service off the battlefield: committees, oaths, petitions, town office, supply taxes or furnished goods.
 Start by: naming the service type and checking its window in the worksheet's patriot step.
-Then: test your patriot's service dates in the worksheet's [patriot step](/tools/lineage-matrix/#tb-patriot).
+Then: read [Same Name, Different Man](/guides/same-name/) to make sure each record is your patriot's.
 ::end
 
 Many patriots never carried a musket. They sat on committees, swore oaths, signed petitions, held town office, paid supply taxes or furnished goods. Lineage societies count much of this, but each type has its own evidence and, in a few cases, its own dates.

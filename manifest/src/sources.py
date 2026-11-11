@@ -74,6 +74,8 @@ SOURCES = {
  "SAR_CHECKLIST": ("https://members.sar.org/media/uploads/pages/334/wPXSPrcD0cuU.pdf", "SAR — Application Checklist", "sar_checklist.pdf"),
  # t146: SAR's national Application Preparation Guide (NSSAR Genealogy Committee). APG-1.pdf named in the batch is a 404;
  # sar.org/nssar-genealogy-policies-materials/ links this current edition.
+ # t147: SAR's national Genealogy Committee Policies (linked as "Web Link" on sar.org/nssar-genealogy-policies-materials/).
+ "SAR_GCP": ("https://www.sar.org/app/uploads/NSSAR-Genealogy-Policy-Manual-2026-12-5.pdf", "SAR — Genealogy Committee Policies (NSSAR, reflects changes through 12 May 2026)", "sar_gcp.pdf"),
  "SAR_APG": ("https://www.sar.org/app/uploads/APG-07-June-2026.pdf", "SAR — Application Preparation Guide (NSSAR Genealogy Committee, 07 June 2026)", "sar_apg.pdf"),
  "MA_SL_GEN": ("https://www.mass.gov/guides/guide-to-genealogical-resources-in-the-state-library", "Mass.gov (State Library of Massachusetts) — Guide to Genealogical Resources in the State Library", "ma_sl_gen.html"),
 }
@@ -87,7 +89,7 @@ SOURCES = {
 # The "As of [date]," prefix is only allowed for national and state sources.
 SCOPE = {k: "national" for k in ["DAR_SVC","DAR_STEP","DAR_FAQ","DAR_BLOG","DAR_PRP","SAR1","SAR_TAX","M804","NARA_SVC","NARA_GEN","NARA_AMREV","NARA_CENSUS","NARA_BULK",
     "PROLOGUE","NPS","DAR_LOCATOR","DAR_JOIN","SAR_APPLY","LOC_STAT","SAR_CONTACT","DAR_WHAT","SAR_ABOUT","NSCDA_MEM","NARA_VITAL","LOC_C24","LOC_C25","LOC_C30","LOC_C32",
-    "LOC_C33","LOC_C45","NARA_ORDER","DAR_ANCESTOR","SAR_PRS","NARA_MISSION","NARA_PENSIONS","DAR_LIBSEARCH","DAR_LINRES","SAR_COPY","LOC_CT_VITAL","SAR_CHECKLIST","SAR_APG"]}
+    "LOC_C33","LOC_C45","NARA_ORDER","DAR_ANCESTOR","SAR_PRS","NARA_MISSION","NARA_PENSIONS","DAR_LIBSEARCH","DAR_LINRES","SAR_COPY","LOC_CT_VITAL","SAR_CHECKLIST","SAR_APG","SAR_GCP"]}
 SCOPE.update({k: "state" for k in ["LVA","LVA_REV","LVA_BMD","MSA_MIL","MSA_BIRTH","NC_TRPR","NC_VR","NJ_MIL","NJ_GEN","PA_REV","PA_DOH","PA_ARCH_VR","CT_REV","SC_REV",
     "SC_BIRTH","SC_SL_VR","MA_MIL","MA_SL_GEN","GA_BOUNTY","GA_VITAL","NH_FAM","RI_PRES","RI_VITAL","DE_OATH","DE_VITAL","NYSL_PRECIVIL","NYSL_VITREC",
     # NSCDA's South Carolina society: one state society's official standards, not NSCDA's national rules.

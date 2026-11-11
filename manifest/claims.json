@@ -1887,7 +1887,6 @@
       "verification_status": "verified",
       "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
       "used_on": [
-        "application-problems",
         "same-name"
       ],
       "notes": "",
@@ -1966,60 +1965,6 @@
       "source_scope": "chapter-local"
     },
     {
-      "claim_id": "ohsar-replacements",
-      "claim_text": "A 2023 Ohio Society SAR presentation said new-member applications get two replacement chances.",
-      "source_url": "https://cincinnatisar.org/wp-content/uploads/2023/05/Presentation-How-to-Produce-Approval-Ready-Applications-and-Reduce-Turnaround-Time.pdf",
-      "source_title": "SAR presentation, OHSSAR Annual Meeting (May 5, 2023) — How to Produce Approval-Ready Applications",
-      "source_type": "official_secondary",
-      "archive_identifier": null,
-      "last_retrieved": "2026-10-31",
-      "quote_excerpt": "New-member applications are allowed two chances to resolve with replacement applications.",
-      "page_ref": null,
-      "verification_status": "verified",
-      "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
-      "used_on": [
-        "application-problems"
-      ],
-      "notes": "",
-      "source_scope": "chapter-local"
-    },
-    {
-      "claim_id": "ohsar-supp-once",
-      "claim_text": "A 2023 Ohio Society SAR presentation said supplementals may be replaced once.",
-      "source_url": "https://cincinnatisar.org/wp-content/uploads/2023/05/Presentation-How-to-Produce-Approval-Ready-Applications-and-Reduce-Turnaround-Time.pdf",
-      "source_title": "SAR presentation, OHSSAR Annual Meeting (May 5, 2023) — How to Produce Approval-Ready Applications",
-      "source_type": "official_secondary",
-      "archive_identifier": null,
-      "last_retrieved": "2026-10-31",
-      "quote_excerpt": "Supplemental applications may only be replaced once.",
-      "page_ref": null,
-      "verification_status": "verified",
-      "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
-      "used_on": [
-        "application-problems"
-      ],
-      "notes": "",
-      "source_scope": "chapter-local"
-    },
-    {
-      "claim_id": "ohsar-3yrs",
-      "claim_text": "A 2023 Ohio Society SAR presentation said applications pended for three years are withdrawn.",
-      "source_url": "https://cincinnatisar.org/wp-content/uploads/2023/05/Presentation-How-to-Produce-Approval-Ready-Applications-and-Reduce-Turnaround-Time.pdf",
-      "source_title": "SAR presentation, OHSSAR Annual Meeting (May 5, 2023) — How to Produce Approval-Ready Applications",
-      "source_type": "official_secondary",
-      "archive_identifier": null,
-      "last_retrieved": "2026-10-31",
-      "quote_excerpt": "After three years in pended status, those applications will be withdrawn.",
-      "page_ref": null,
-      "verification_status": "verified",
-      "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
-      "used_on": [
-        "application-problems"
-      ],
-      "notes": "",
-      "source_scope": "chapter-local"
-    },
-    {
       "claim_id": "sar-apg-bc-gender",
       "claim_text": "SAR's application guide says new applicants need a birth certificate or court order that specifies the applicant's gender as male.",
       "source_url": "https://www.sar.org/app/uploads/APG-07-June-2026.pdf",
@@ -2083,6 +2028,96 @@
       "last_retrieved": "2026-11-11",
       "quote_excerpt": "Moreover, his filing fee is not refundable.",
       "page_ref": "p. 6",
+      "verification_status": "verified",
+      "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-11-11 CT",
+      "used_on": [
+        "application-problems"
+      ],
+      "notes": "",
+      "source_scope": "national"
+    },
+    {
+      "claim_id": "sar-gcp-replace-once",
+      "claim_text": "SAR's genealogy policies say an applicant may replace a pended application with another patriot ancestor one time without paying an additional fee.",
+      "source_url": "https://www.sar.org/app/uploads/NSSAR-Genealogy-Policy-Manual-2026-12-5.pdf",
+      "source_title": "SAR — Genealogy Committee Policies (NSSAR, reflects changes through 12 May 2026)",
+      "source_type": "official_secondary",
+      "archive_identifier": null,
+      "last_retrieved": "2026-11-11",
+      "quote_excerpt": "An applicant has the right to replace a pended application with another patriot ancestor one time without the payment of an additional fee.",
+      "page_ref": "Policy 6.3002d, p. 24",
+      "verification_status": "verified",
+      "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-11-11 CT",
+      "used_on": [
+        "application-problems"
+      ],
+      "notes": "",
+      "source_scope": "national"
+    },
+    {
+      "claim_id": "sar-gcp-replacements-all-once",
+      "claim_text": "SAR's genealogy policies say replacements were reduced to once for all applications.",
+      "source_url": "https://www.sar.org/app/uploads/NSSAR-Genealogy-Policy-Manual-2026-12-5.pdf",
+      "source_title": "SAR — Genealogy Committee Policies (NSSAR, reflects changes through 12 May 2026)",
+      "source_type": "official_secondary",
+      "archive_identifier": null,
+      "last_retrieved": "2026-11-11",
+      "quote_excerpt": "Reduced replacements for all applications to once",
+      "page_ref": "Policy change log, p. 29",
+      "verification_status": "verified",
+      "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-11-11 CT",
+      "used_on": [
+        "application-problems"
+      ],
+      "notes": "",
+      "source_scope": "national"
+    },
+    {
+      "claim_id": "sar-gcp-pended-two-years",
+      "claim_text": "SAR's genealogy policies say pended applications stay on file for two years from the date they were pended, then expire and are no longer considered.",
+      "source_url": "https://www.sar.org/app/uploads/NSSAR-Genealogy-Policy-Manual-2026-12-5.pdf",
+      "source_title": "SAR — Genealogy Committee Policies (NSSAR, reflects changes through 12 May 2026)",
+      "source_type": "official_secondary",
+      "archive_identifier": null,
+      "last_retrieved": "2026-11-11",
+      "quote_excerpt": "Pended applications will remain on file for two years from the date the application was pended, at which time they will expire and will no longer be considered.",
+      "page_ref": "Policy 6.3002a, p. 24",
+      "verification_status": "verified",
+      "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-11-11 CT",
+      "used_on": [
+        "application-problems"
+      ],
+      "notes": "",
+      "source_scope": "national"
+    },
+    {
+      "claim_id": "sar-apg-patriot-residence",
+      "claim_text": "SAR's application guide says the patriot's residence during the Revolution must agree with the service being claimed.",
+      "source_url": "https://www.sar.org/app/uploads/APG-07-June-2026.pdf",
+      "source_title": "SAR — Application Preparation Guide (NSSAR Genealogy Committee, 07 June 2026)",
+      "source_type": "official_secondary",
+      "archive_identifier": null,
+      "last_retrieved": "2026-11-11",
+      "quote_excerpt": "The residency of the patriot during the time of the Revolution must agree with the service being claimed.",
+      "page_ref": "Appendix B, C.2",
+      "verification_status": "verified",
+      "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-11-11 CT",
+      "used_on": [
+        "application-problems"
+      ],
+      "notes": "",
+      "source_scope": "national"
+    },
+    {
+      "claim_id": "sar-apg-patriot-age",
+      "claim_text": "SAR's application guide says that if the patriot's birth date can't be found, you cite a proven fact showing he was living at the time of the service and of age for it.",
+      "source_url": "https://www.sar.org/app/uploads/APG-07-June-2026.pdf",
+      "source_title": "SAR — Application Preparation Guide (NSSAR Genealogy Committee, 07 June 2026)",
+      "source_type": "official_secondary",
+      "archive_identifier": null,
+      "last_retrieved": "2026-11-11",
+      "quote_excerpt": "If it is impossible or impractical to ascertain the date of birth, cite some fact with proof, to show the ancestor was living at the time of the claimed service and of age for the service claimed.",
+      "page_ref": "p. 18",
       "verification_status": "verified",
       "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-11-11 CT",
       "used_on": [
