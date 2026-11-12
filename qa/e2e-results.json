@@ -1,8 +1,8 @@
 {
-  "ranAt": "Wed Nov 11 2026 22:12:39 GMT-0600 (Central Standard Time)",
+  "ranAt": "Wed Nov 11 2026 22:45:36 GMT-0600 (Central Standard Time)",
   "browser": "/usr/bin/google-chrome (headless) via playwright-core 1.59.1",
-  "passed": 325,
-  "total": 325,
+  "passed": 328,
+  "total": 328,
   "exampleReportPages": {
     "summaryPages": 2,
     "fullPages": 3,
@@ -844,7 +844,7 @@
     {
       "name": "t123u #2: each guide's 'Sources last checked' date is the oldest recorded live pass among its own listed sources (every source has a record; nothing invented)",
       "ok": true,
-      "detail": "lineage-proof-roadmap=2026-11-05 substitute-evidence=2026-11-05 read-pension-file=2026-11-12 records-by-state=2026-11-05 bounty-land-warrants=2026-11-12 census-bridge=2026-11-05 patriotic-service=2026-11-05 same-name=2026-11-12 patriot-or-loyalist=2026-11-12 application-problems=2026-11-05"
+      "detail": "lineage-proof-roadmap=2026-11-05 substitute-evidence=2026-11-05 read-pension-file=2026-11-11 records-by-state=2026-11-05 bounty-land-warrants=2026-11-11 census-bridge=2026-11-05 patriotic-service=2026-11-05 same-name=2026-11-11 patriot-or-loyalist=2026-11-11 application-problems=2026-11-05"
     },
     {
       "name": "t124u #1 (390px): every Sources entry on every page (16 pages, 291 entries) has a visible \"Used for: ...\" line of at most about 8 words, and the raw URL is hidden on screen",
@@ -1034,7 +1034,7 @@
     {
       "name": "t146 #2 / t128u #3: DAR record copies, the birth certificate and the date format are re-sourced to SAR's national Application Preparation Guide ('SAR's application guide says', As of its last pass); the Ohio wording for them is gone",
       "ok": true,
-      "detail": "November 12, 2026"
+      "detail": "November 11, 2026"
     },
     {
       "name": "t128u #1: the t127 DAR-FAQ/Step-by-step rewordings are held back (DAR pages unreachable since their Nov 5 pass); the South Carolina attributions are back",
@@ -1344,7 +1344,7 @@
     {
       "name": "t149: Same Name's 'Residence vs. Service' row keeps DAR's point and then has the SAR residency sentence ('As of' its date); 'Right Age' has only the alive-and-of-age sentence",
       "ok": true,
-      "detail": "{\"res\":\"Residence vs. serviceWhere your patriot lived and where the service was performedA residence and service location that do not match is a standard DAR review trigger. As of November 12, 2026, SAR's application guide says the patriot's residence during the Revolution must agree with the service being \",\"age\":\"Right ageBirth range vs. serviceAs of November 12, 2026, SAR's application guide says that if the patriot's birth date can't be found, you cite a proven fact showing he was living at the time of the service and of age for it\"}"
+      "detail": "{\"res\":\"Residence vs. serviceWhere your patriot lived and where the service was performedA residence and service location that do not match is a standard DAR review trigger. As of November 11, 2026, SAR's application guide says the patriot's residence during the Revolution must agree with the service being \",\"age\":\"Right ageBirth range vs. serviceAs of November 11, 2026, SAR's application guide says that if the patriot's birth date can't be found, you cite a proven fact showing he was living at the time of the service and of age for it\"}"
     },
     {
       "name": "t149 (390px): Same Name fits the screen (no sideways scroll)",
@@ -1575,6 +1575,21 @@
       "name": "t156 (1280px) /tools/lineage-matrix/: the callout is visible once, the old 'New to this?' line is gone, only 'Roadmap guide' is linked, and the page does not scroll sideways",
       "ok": true,
       "detail": "{\"vis\":true,\"text\":\"New here? Start with the Roadmap guide for the full step-by-step process.\",\"href\":\"/guides/lineage-proof-roadmap/\",\"linkText\":\"Roadmap guide\",\"n\":1,\"old\":false,\"sw\":1280,\"iw\":1280}"
+    },
+    {
+      "name": "t158: Same Name meta, og:description and twitter:description use 'not to someone else with the same name'",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "t158: Application Problems meta, og:description and twitter:description end with 'from DAR guidance and SAR's national application rules.'",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "t158: 'Sources last checked' and 'As of' on Same Name and Application Returned are America/Chicago dates of the recorded last-passed instants",
+      "ok": true,
+      "detail": ""
     },
     {
       "name": "t157: every page has a unique meta description, 120–155 characters, matching the t157 list and used for og:description and twitter:description",

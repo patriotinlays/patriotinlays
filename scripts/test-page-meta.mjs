@@ -1,6 +1,7 @@
 // t157: unique 120–155 character meta descriptions; title suffix policy; sitemap lastmod from git content history.
 import { META_DESCRIPTIONS, META_MIN, META_MAX, TITLE_SUFFIX, TITLE_BUDGET, withSuffixIfFits, validateMeta, metaFor } from "./lib/page-meta.mjs";
 import { allPageLastmods, chicagoDate, lastmodFor } from "./lib/page-lastmod.mjs";
+import { chicagoLongDate, chicagoISO } from "./lib/chicago-date.mjs";
 import { existsSync, readFileSync } from "node:fs";
 import { join } from "node:path";
 
@@ -49,6 +50,20 @@ t("both tool pages lastmod on 2026-11-11 (t156 callout, a visible body change in
 
 t("chicagoDate converts a UTC instant to the America/Chicago calendar date",
   chicagoDate("2026-11-11T05:30:00.000Z") === "2026-11-10" && chicagoDate("2026-11-11T06:30:00.000Z") === "2026-11-11");
+
+t("t158: Same Name description uses 'not to someone else with the same name' and stays 120–155",
+  /not to someone else with the same name\.$/.test(META_DESCRIPTIONS["/guides/same-name/"])
+  && META_DESCRIPTIONS["/guides/same-name/"].length >= META_MIN && META_DESCRIPTIONS["/guides/same-name/"].length <= META_MAX
+  && !/another man of the same name/.test(META_DESCRIPTIONS["/guides/same-name/"]));
+t("t158: Application Problems description ends exactly with \"from DAR guidance and SAR's national application rules.\" and stays 120–155",
+  META_DESCRIPTIONS["/guides/application-problems/"].endsWith("from DAR guidance and SAR's national application rules.")
+  && META_DESCRIPTIONS["/guides/application-problems/"].length >= META_MIN && META_DESCRIPTIONS["/guides/application-problems/"].length <= META_MAX);
+
+t("t158: a live-check instant after 6 PM Central (2026-11-12T04:10:43Z) displays as 2026-11-11 / November 11, 2026, and is recorded with a Central offset",
+  chicagoDate("2026-11-12T04:10:43.461Z") === "2026-11-11"
+  && chicagoLongDate("2026-11-12T04:10:43.461Z") === "November 11, 2026"
+  && chicagoISO(new Date("2026-11-12T04:10:43.461Z")) === "2026-11-11T22:10:43.461-06:00"
+  && Date.parse(chicagoISO(new Date("2026-11-12T04:10:43.461Z"))) === Date.parse("2026-11-12T04:10:43.461Z"));
 
 console.log(`t157 page-meta: ${ok}/${ok + fail} passed.`);
 process.exit(fail ? 1 : 0);

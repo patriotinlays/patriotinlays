@@ -1,4 +1,5 @@
 // 30-day unreachable-source fallback for the live Source Manifest check.
+import { chicagoISO } from "./chicago-date.mjs";
 // Live check first. Quote mismatches, 404/410, never-passed, and last-pass ≥ 30 days always block.
 // Fallback (loud warning, re-check every run) only for 403, any 5xx, timeouts, and certificate errors.
 export const FALLBACK_MAX_DAYS = 30;
@@ -62,11 +63,12 @@ export function loadLastPassed(path) {
 }
 export function saveLastPassed(path, store) {
   const tmp = `${path}.tmp-${process.pid}`;
-  _wf(tmp, JSON.stringify({ schema_version: 1, note: store.note || "Per-source last successful live quote check (ISO 8601 UTC).", sources: store.sources }, null, 2) + "\n");
+  _wf(tmp, JSON.stringify({ schema_version: 1, note: "Per-source last successful live quote check (ISO 8601, America/Chicago offset).", sources: store.sources }, null, 2) + "\n");
   _mv(tmp, path);
 }
 export function recordPass(path, store, url, at = new Date()) {
-  store.sources[url] = at.toISOString();
+  // t158: record the instant with an America/Chicago offset, not a UTC "Z" suffix.
+  store.sources[url] = chicagoISO(at);
   saveLastPassed(path, store);
   return store.sources[url];
 }

@@ -1,4 +1,5 @@
 import { classifyFailure, decideSourceCheck, lastPassAgeDays, FALLBACK_MAX_DAYS, loadLastPassed, recordPass } from "./lib/source-pass.mjs";
+import { chicagoISO } from "./lib/chicago-date.mjs";
 import { mkdtempSync, readFileSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import { tmpdir } from "node:os";
@@ -33,14 +34,14 @@ t("lastPassAgeDays null when missing", lastPassAgeDays(null, now) == null);
   const at = new Date("2026-11-05T22:00:00.000Z");
   recordPass(f, store, "https://new.example/never-seen", at);
   const onDisk = () => JSON.parse(readFileSync(f, "utf8")).sources;
-  t("a new URL's pass is saved to disk immediately", onDisk()["https://new.example/never-seen"] === at.toISOString());
+  t("a new URL's pass is saved to disk immediately", onDisk()["https://new.example/never-seen"] === chicagoISO(at));
   t("existing entries are kept when a new one is recorded", onDisk()["https://old.example/a"] === "2026-11-01T00:00:00.000Z");
   // A later source fails (block): nothing is written for it, and the earlier pass is still on disk.
   const later = decideSourceCheck({ status: 403, lastPassedAt: store.sources["https://later.example/x"] || null, now: at });
-  t("a later failing source doesn't erase earlier passes", later.outcome === "block" && onDisk()["https://new.example/never-seen"] === at.toISOString() && !("https://later.example/x" in onDisk()));
+  t("a later failing source doesn't erase earlier passes", later.outcome === "block" && onDisk()["https://new.example/never-seen"] === chicagoISO(at) && !("https://later.example/x" in onDisk()));
   t("a source recorded earlier in the run is fallback-eligible right after (403 within 30 days)", decideSourceCheck({ status: 403, lastPassedAt: loadLastPassed(f).sources["https://new.example/never-seen"], now: at }).outcome === "fallback");
   const many = ["https://s1.example/", "https://s2.example/", "https://s3.example/"]; many.forEach((u) => recordPass(f, store, u, at));
-  t("every passing source in a run gets its own date", many.every((u) => onDisk()[u] === at.toISOString())); }
+  t("every passing source in a run gets its own date", many.every((u) => onDisk()[u] === chicagoISO(at))); }
 
 // t128u: per-claim match records. A fallback source covers only claims whose exact quote matched that page before.
 { const { loadClaimMatches, recordClaimMatches, checkFallbackClaims } = await import("./lib/claim-match.mjs");

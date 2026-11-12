@@ -16,19 +16,12 @@
 import { execFileSync } from "node:child_process";
 import { readFileSync, existsSync, readdirSync } from "node:fs";
 import { join } from "node:path";
+import { chicagoDate } from "./chicago-date.mjs";
 
 const ROOT = new URL("../..", import.meta.url).pathname;
 
 function git(args, opts = {}) {
   return execFileSync("git", args, { cwd: ROOT, encoding: "utf8", maxBuffer: 20 * 1024 * 1024, stdio: ["ignore", "pipe", "pipe"], ...opts });
-}
-
-export function chicagoDate(iso) {
-  const d = new Date(iso);
-  if (Number.isNaN(d.getTime())) throw new Error(`bad date: ${iso}`);
-  const parts = new Intl.DateTimeFormat("en-CA", { timeZone: "America/Chicago", year: "numeric", month: "2-digit", day: "2-digit" }).formatToParts(d);
-  const g = (t) => parts.find((p) => p.type === t).value;
-  return `${g("year")}-${g("month")}-${g("day")}`;
 }
 
 function parseFront(raw) {
@@ -226,3 +219,5 @@ export function lastmodFor(path) {
 }
 
 export { pageSourceMap }; // for tests
+
+export { chicagoDate } from "./chicago-date.mjs";

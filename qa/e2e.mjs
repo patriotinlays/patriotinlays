@@ -8,6 +8,7 @@ import { createServer } from "node:http";
 import { readFileSync, existsSync, statSync, mkdirSync, writeFileSync } from "node:fs";
 import { join, extname } from "node:path";
 import { createRequire } from "node:module";
+import { chicagoDate, chicagoLongDate } from "../scripts/lib/chicago-date.mjs";
 const require = createRequire(import.meta.url);
 let chromium;
 try { ({ chromium } = require("playwright-core")); }
@@ -661,15 +662,14 @@ phase("load"); await page.goto(`${BASE}/`); phase("interact");
   for (const g of ["lineage-proof-roadmap", "substitute-evidence", "read-pension-file", "records-by-state", "bounty-land-warrants", "census-bridge", "patriotic-service", "same-name", "patriot-or-loyalist", "application-problems"]) {
     const h = readFileSync(join(DIST, "guides", g, "index.html"), "utf8"); const shown = (h.match(/Sources last checked (\d{4}-\d{2}-\d{2})/) || [])[1];
     const srcs = [...(h.match(/<h2 id="sources">Sources<\/h2><ol class="sources">([\s\S]*?)<\/ol>/) || ["", ""])[1].matchAll(/<span class="url">([^<]+)<\/span>/g)].map((m) => m[1].replace(/&amp;/g, "&"));
-    const missing = srcs.filter((u) => !lp[u]); const oldest = srcs.map((u) => lp[u]).filter(Boolean).sort()[0]; const want = oldest ? new Date(oldest).toISOString().slice(0, 10) : null;
+    const missing = srcs.filter((u) => !lp[u]); const oldest = srcs.map((u) => lp[u]).filter(Boolean).sort((a, b) => Date.parse(a) - Date.parse(b))[0]; const want = oldest ? chicagoDate(oldest) : null;
     seen.push(`${g}=${shown}`); if (!shown || !srcs.length || missing.length || shown !== want) bad.push(`${g}: shown ${shown}, oldest ${want}, missing ${missing.join(" ")}`); }
   check("t123u #2: each guide's 'Sources last checked' date is the oldest recorded live pass among its own listed sources (every source has a record; nothing invented)", bad.length === 0, bad.join(" | ") || seen.join(" ")); }
 
 // ---- t124u (Nov 9): sources labels, AI disclosure page, privacy/FAQ/corrections copy, external links, dated rules, CT/GA/MA guidance ----
 { const staticPages = htmlFiles.map((f) => "/" + f.slice(DIST.length + 1).replace(/index\.html$/, "")).filter((u) => !u.endsWith("404.html"));
   const lp = JSON.parse(readFileSync(join(ROOT, "manifest/source-last-passed.json"), "utf8")).sources;
-  const MONTHS = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-  const longDate = (t) => { const d = new Date(t); return `${MONTHS[d.getUTCMonth()]} ${d.getUTCDate()}, ${d.getUTCFullYear()}`; };
+  const longDate = (t) => chicagoLongDate(t);
   const claimsById = new Map(JSON.parse(readFileSync(join(ROOT, "manifest/claims.json"), "utf8")).claims.map((c) => [c.claim_id, c]));
   const res = {};
   for (const w of [390, 1280]) {
@@ -747,8 +747,7 @@ phase("load"); await page.goto(`${BASE}/`); phase("interact");
 // ---- t127u: audit fixes (attribution, 1855 navy act, registrar phrase, About, worksheet start/confirm, Virginia scope, rule 7) ----
 {
   const lp = JSON.parse(readFileSync(join(ROOT, "manifest/source-last-passed.json"), "utf8")).sources;
-  const MONTHS = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-  const longDate = (t) => { const d = new Date(t); return `${MONTHS[d.getUTCMonth()]} ${d.getUTCDate()}, ${d.getUTCFullYear()}`; };
+  const longDate = (t) => chicagoLongDate(t);
   const claimsAll = JSON.parse(readFileSync(join(ROOT, "manifest/claims.json"), "utf8")).claims;
   const H = (p) => readFileSync(join(DIST, p, "index.html"), "utf8"); const text = (p) => H(p).replace(/<script[\s\S]*?<\/script>/g, "").replace(/<[^>]+>/g, "").replace(/&#39;|&apos;/g, "'").replace(/&amp;/g, "&").replace(/&quot;/g, '"').replace(/\s+/g, " ");
   const { readdirSync: rdT } = await import("node:fs");
@@ -1034,8 +1033,7 @@ for (const w of [390, 1280]) { const cx = await browser.newContext({ viewport: {
     await cx.close(); } }
 // ---- t147: SAR policy re-sourcing, patriot-generation split, Tim's caveat, two In Short edits (390px and 1280px) ----
 { const H7 = (p) => readFileSync(join(DIST, p, "index.html"), "utf8").replace(/&#39;|&apos;/g, "'");
-  const lp7 = JSON.parse(readFileSync(join(ROOT, "manifest/source-last-passed.json"), "utf8")).sources; const MON7 = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-  const ld7 = (t) => { const d = new Date(t); return `${MON7[d.getUTCMonth()]} ${d.getUTCDate()}, ${d.getUTCFullYear()}`; };
+  const lp7 = JSON.parse(readFileSync(join(ROOT, "manifest/source-last-passed.json"), "utf8")).sources; const ld7 = (t) => chicagoLongDate(t);
   const GCP = "https://www.sar.org/app/uploads/NSSAR-Genealogy-Policy-Manual-2026-12-5.pdf", APG = "https://www.sar.org/app/uploads/APG-07-June-2026.pdf";
   const ap = H7("guides/application-problems"); const apT = ap.replace(/<[^>]+>/g, "");
   const want = [["sar-gcp-replace-once", GCP, "SAR's genealogy policies say an applicant may replace a pended application with another patriot ancestor one time without paying an additional fee."],
@@ -1296,6 +1294,35 @@ for (const w of [390, 1280]) { const cx = await browser.newContext({ viewport: {
       await pg.locator("[data-roadmap-callout]").scrollIntoViewIfNeeded();
       await pg.screenshot({ path: join(REL16, `${shot}-${w}.png`) }); }
     await cx.close(); } }
+// ---- t158: two description wording fixes; last-checked dates in America/Chicago ----
+{ const { META_DESCRIPTIONS } = await import(new URL("../scripts/lib/page-meta.mjs", import.meta.url));
+  const sn = META_DESCRIPTIONS["/guides/same-name/"], ap = META_DESCRIPTIONS["/guides/application-problems/"];
+  const H = (p) => readFileSync(join(DIST, p, "index.html"), "utf8");
+  const same = H("guides/same-name"), app = H("guides/application-problems");
+  const hasAll = (h, d) => h.includes(`<meta name="description" content="${d}">`)
+    && h.includes(`<meta property="og:description" content="${d}">`)
+    && h.includes(`<meta name="twitter:description" content="${d}">`);
+  check("t158: Same Name meta, og:description and twitter:description use 'not to someone else with the same name'",
+    /not to someone else with the same name\.$/.test(sn) && !/another man/.test(sn) && hasAll(same, sn));
+  check("t158: Application Problems meta, og:description and twitter:description end with 'from DAR guidance and SAR's national application rules.'",
+    ap.endsWith("from DAR guidance and SAR's national application rules.") && hasAll(app, ap));
+  const lp = JSON.parse(readFileSync(join(ROOT, "manifest/source-last-passed.json"), "utf8")).sources;
+  const claimsById = new Map(JSON.parse(readFileSync(join(ROOT, "manifest/claims.json"), "utf8")).claims.map((c) => [c.claim_id, c]));
+  const asofBad = [];
+  for (const [file, html] of [["same-name", same], ["application-problems", app]]) {
+    for (const m of html.matchAll(/As of <span data-asof="([^"]+)">([^<]+)<\/span>/g)) {
+      const url = claimsById.get(m[1])?.source_url; const want = url && lp[url] ? chicagoLongDate(lp[url]) : null;
+      if (m[2] !== want) asofBad.push(`${file} ${m[1]}: shown ${m[2]}, want ${want}`);
+    }
+    const shown = (html.match(/Sources last checked (\d{4}-\d{2}-\d{2})/) || [])[1];
+    const urls = [...(html.match(/<h2 id="sources">Sources<\/h2><ol class="sources">([\s\S]*?)<\/ol>/) || ["", ""])[1].matchAll(/<span class="url">([^<]+)<\/span>/g)].map((x) => x[1].replace(/&amp;/g, "&"));
+    const oldest = urls.map((u) => lp[u]).filter(Boolean).sort((a, b) => Date.parse(a) - Date.parse(b))[0];
+    const want = oldest ? chicagoDate(oldest) : null;
+    if (shown !== want) asofBad.push(`${file} sources-last-checked: shown ${shown}, want ${want}`);
+  }
+  check("t158: 'Sources last checked' and 'As of' on Same Name and Application Returned are America/Chicago dates of the recorded last-passed instants",
+    asofBad.length === 0, asofBad.join(" | "));
+}
 // ---- t157: unique meta descriptions, title suffix policy, sitemap lastmod, complete OG/Twitter tags; nothing visible changed ----
 { const REL17 = join(ROOT, "qa/release-logs/t157"); mkdirSync(REL17, { recursive: true });
   const { META_DESCRIPTIONS, META_MIN, META_MAX, TITLE_SUFFIX, TITLE_BUDGET, withSuffixIfFits } = await import(new URL("../scripts/lib/page-meta.mjs", import.meta.url));

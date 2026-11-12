@@ -3,10 +3,9 @@
 // sources page, tool report pages, sitemap.xml, robots.txt and 404.html.
 import { readFileSync, writeFileSync, mkdirSync, readdirSync, copyFileSync, rmSync } from "node:fs";
 const LAST_PASSED = (() => { try { return JSON.parse(readFileSync(new URL("../manifest/source-last-passed.json", import.meta.url), "utf8")).sources || {}; } catch { return {}; } })();
-const MONTHS = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-// The same UTC calendar date the "Last checked" lines show, written out (e.g. "November 9, 2026").
-const longDate = (t) => { const d = new Date(t); return `${MONTHS[d.getUTCMonth()]} ${d.getUTCDate()}, ${d.getUTCFullYear()}`; };
-const lastChecked = (u, fallback) => { const t = LAST_PASSED[u]; return t && !Number.isNaN(Date.parse(t)) ? new Date(t).toISOString().slice(0, 10) : fallback; };
+// t158: "Last checked", "As of" and "Sources last checked" are America/Chicago calendar dates, not UTC.
+const longDate = (t) => chicagoLongDate(t);
+const lastChecked = (u, fallback) => { const t = LAST_PASSED[u]; return t && !Number.isNaN(Date.parse(t)) ? chicagoDate(t) : fallback; };
 import { join, dirname } from "node:path";
 import { sourceLabel, SOURCE_TOPICS } from "./lib/source-labels.mjs";
 import { asofAllowed } from "./lib/source-scope.mjs";
@@ -14,6 +13,7 @@ import { createHash } from "node:crypto";
 import { titleCase, titleCaseHeadings, titleCaseInner } from "./lib/title-case.mjs";
 import { metaFor, withSuffixIfFits } from "./lib/page-meta.mjs";
 import { lastmodFor } from "./lib/page-lastmod.mjs";
+import { chicagoDate, chicagoLongDate } from "./lib/chicago-date.mjs";
 const ROOT = new URL("..", import.meta.url).pathname;
 const OUT = join(ROOT, "dist");
 const SITE = "https://patriotinlays.com";
