@@ -425,7 +425,7 @@ const homeOrder = await page.evaluate(() => [...document.querySelectorAll("main 
   globalThis.__home = hm;
   check("Home (Nov 5 lock; t130 moved the paragraphs below the start cards, unchanged): subtitle names DAR and SAR; mission in flowing paragraphs (no lists) after the cards; purpose line, both tool names, one-sentence privacy", /DAR/.test(hm.sub) && /SAR/.test(hm.sub) && hm.lists === 0 && hm.ps >= 6 && hm.afterCards && homeOrder.filter(Boolean)[0] === "guides"
     && /organize the records that connect you to a Revolutionary War patriot/.test(hm.text) && /Widow Pension Law Checker/.test(hm.text) && /Lineage Evidence Matrix/.test(hm.text) && /what you type into the tools stays in your own browser\./.test(hm.text), JSON.stringify({ ...hm, text: hm.text.slice(0, 80) }));
-  check("Home (Nov 5 lock, SAR line updated by t125u): the exact AI line, the exact SAR line (sourced), no unsourced 'most people get stuck' / 'give up' / guarantee lines", hm.ai === "Written with AI assistance and reviewed by the site's owner. Each fact is tied to a quoted official source, and software checks that the quote is still there."
+  check("Home (Nov 5 lock, SAR line updated by t125u): the exact AI line, the exact SAR line (sourced), no unsourced 'most people get stuck' / 'give up' / guarantee lines", hm.ai === "Written with AI assistance and reviewed by the site's owner. Each fact is tied to a quoted official or institutional source, and software checks that the quote is still there."
     && /SAR's local sponsor can guide you through the application\./.test(hm.text) && !/most people get stuck|give up|so that doesn't happen to you|make sure you walk/i.test(hm.text) && !/No person reviews/i.test(await page.textContent("main")), hm.ai); }
 const firstLinks = await page.$$eval("main a", (as) => as.map((a) => a.getAttribute("href")).filter((h) => !h.startsWith("#src-")).slice(0, 3));
 check("Home: the first links (after source notes) are the worksheet, the widow checker and the Roadmap guide", firstLinks[0] === "/tools/lineage-matrix/" && firstLinks[1] === "/tools/widow-pension-checker/" && firstLinks[2] === "/guides/lineage-proof-roadmap/", firstLinks.join(" "));
@@ -618,7 +618,7 @@ await page.goto(`${BASE}/guides/read-pension-file/`); await page.screenshot({ pa
 phase("load"); await page.goto(`${BASE}/`); phase("interact");
 { const h = await page.evaluate(() => { const h1 = document.querySelector("main h1"); const sr = h1.querySelector(".sr-only"); const vis = h1.querySelector("[data-subtitle]");
     return { h1s: document.querySelectorAll("main h1").length, sr: sr?.textContent || "", srHidden: sr ? sr.getBoundingClientRect().width <= 1 : false, vis: vis?.textContent || "", visH: vis ? vis.getBoundingClientRect().height : 0, title: document.title, rule: getComputedStyle(h1, "::after").backgroundColor, ruleW: getComputedStyle(h1, "::after").width }; });
-  check("t122u #9/#8: the home page's one visible heading is the tagline; the site name is in the h1 for screen readers and in the title; a short red rule sits under it", h.h1s === 1 && /^Patriot, In Lay Terms/.test(h.sr) && h.srHidden && /^Plain-English Help With DAR and SAR Applications/.test(h.vis) && h.visH > 20 && /Patriot, In Lay Terms/.test(h.title) && h.rule === "rgb(178, 34, 52)" && parseFloat(h.ruleW) <= 80, JSON.stringify(h)); }
+  check("t122u #9/#8: the home page's one visible heading is the tagline; the site name is in the h1 for screen readers and in the title; a short red rule sits under it", h.h1s === 1 && /^Patriot, In Lay Terms/.test(h.sr) && h.srHidden && /^Plain-English Help With DAR And SAR Applications, For The Daughters And The Sons Of The American Revolution$/.test(h.vis) && h.visH > 20 && /Patriot, In Lay Terms/.test(h.title) && h.rule === "rgb(178, 34, 52)" && parseFloat(h.ruleW) <= 80, JSON.stringify(h)); }
 { const pages = htmlFiles.map((f) => "/" + f.slice(DIST.length + 1).replace(/index\.html$/, "")).filter((u) => !u.endsWith("404.html"));
   const fails = []; let checked = 0; const mins = {};
   for (const u of pages) {
@@ -718,23 +718,23 @@ phase("load"); await page.goto(`${BASE}/`); phase("interact");
       JSON.stringify({ n: r.tool.n, ok: r.tool.ok }));
   }
   const H = (p) => readFileSync(join(DIST, p, "index.html"), "utf8"); const text = (p) => H(p).replace(/<script[\s\S]*?<\/script>/g, "").replace(/<[^>]+>/g, "").replace(/&#39;|&apos;/g, "'").replace(/&amp;/g, "&").replace(/&quot;/g, '"');
-  const AI = "Written with AI assistance and reviewed by the site's owner. Each fact is tied to a quoted official source, and software checks that the quote is still there. The owner supervises the project, decides what goes on the site and reads the pages; the source check is what holds every fact to its quote.";
+  const AI = "Written with AI assistance and reviewed by the site's owner. Each fact is tied to a quoted official or institutional source, and software checks that the quote is still there. The owner supervises the project, decides what goes on the site and reads the pages; the source check is what holds every fact to its quote.";
   check("t124u #2: a separate AI disclosure page carries the AI text unchanged; About no longer has it; guide top lines and the Sources page point to the AI disclosure", /<h1>AI Disclosure<\/h1>/.test(H("ai-disclosure")) && text("ai-disclosure").includes(AI) && !/How AI is used/i.test(H("about")) && !text("about").includes("The owner supervises the project")
-    && /Sources last checked [^<]*· Written with AI; every fact is tied to a quoted official source \(<a href="\/ai-disclosure\/">how this works<\/a>\)/.test(H("guides/census-bridge")) && /See the <a href="\/ai-disclosure\/">AI disclosure<\/a>/.test(H("sources")) && !/About &amp; AI disclosure/.test(H("")));
+    && /Sources last checked [^<]*· Written with AI; every fact is tied to a quoted official or institutional source \(<a href="\/ai-disclosure\/">how this works<\/a>\)/.test(H("guides/census-bridge")) && /See the <a href="\/ai-disclosure\/">AI disclosure<\/a>/.test(H("sources")) && !/About &amp; AI disclosure/.test(H("")));
   // ---- t125u ----
   check("t125u #2: 'often the chapter registrar' is gone from the home SAR line and the glossary (and every built page)", text("").includes("SAR's local sponsor can guide you through the application.") && !rd0(DIST, { recursive: true }).filter((f) => f.endsWith(".html")).some((f) => /often the chapter registrar/i.test(readFileSync(join(DIST, f), "utf8")))
     && /At SAR, your local contact guides you through the application and can review what you've gathered, and the chapter registrar receives the finished application to begin processing\./.test(text("")));
   check("t125u #1: About says the quote check runs each time the site is updated, and on a regular schedule (FAQ wording); 'when the site is built' is gone", text("about").includes("Each time the site is updated, and on a regular schedule, software checks that each quoted passage still appears in its source.") && !/when the site is built/i.test(text("about")));
   check("t125u #3 / t126u: the widow checker's storage note is Tim's text, preceded by 'Nothing is sent anywhere.' in the same paragraph, with no 'pi.toolA' key names", /<p class="small">Nothing is sent anywhere\. Your entries are saved only in this browser, and that storage isn't encrypted\. On a shared or public computer, use the delete button when you're done\.<\/p>/.test(H("tools/widow-pension-checker").replace(/&#39;|&apos;/g, "'")) && text("tools/widow-pension-checker").includes("Nothing is sent anywhere. Your entries are saved only in this browser, and that storage isn't encrypted. On a shared or public computer, use the delete button when you're done.") && !/pi\.tool/.test(text("tools/widow-pension-checker")));
   const priv = text("privacy");
-  check("t124u #3/#4 / t132 #2: Privacy's 'collects' section is Tim's t132 sentence (one Cloudflare line), then the ads line, and the technical note has no storage key names", /What the Site Itself Collects\s*We don't ask for, collect or store personal information through the website\. Cloudflare, which hosts the site, processes the technical information needed to deliver and protect it, and adds two small features: a script that hides email addresses from spam robots, and a short error report if a page fails to load\.\s*There are no ads at present\./.test(priv)
+  check("t124u #3/#4 / t132 #2: Privacy's 'collects' section is Tim's t132 sentence (one Cloudflare line), then the ads line, and the technical note has no storage key names", /What The Site Itself Collects\s*We don't ask for, collect or store personal information through the website\. Cloudflare, which hosts the site, processes the technical information needed to deliver and protect it, and adds two small features: a script that hides email addresses from spam robots, and a short error report if a page fails to load\.\s*There are no ads at present\./.test(priv)
     && !/pi\.tool/.test(priv) && priv.includes("Your entries are saved only in this browser, and that storage isn't encrypted. On a shared or public computer, use the delete button when you're done.") && !/network-error report|Cloudflare's servers deliver/.test(priv));
   const faq = text("faq");
-  check("t124u #5/#6/#7: the FAQ's genealogist answer, trust answer and intro use Tim's wording", faq.includes("That help comes with joining. Our guides can help you prepare: what records to gather and what questions to ask.") && !/often the chapter registrar/.test(faq.slice(faq.indexOf("Do I Have to Hire"), faq.indexOf("What does this site cost")))
+  check("t124u #5/#6/#7: the FAQ's genealogist answer, trust answer and intro use Tim's wording", faq.includes("That help comes with joining. Our guides can help you prepare: what records to gather and what questions to ask.") && !/often the chapter registrar/.test(faq.slice(faq.indexOf("Do I Have To Hire"), faq.indexOf("What Does This Site Cost")))
     && faq.includes("Every factual statement is tied to a quoted passage from an official or institutional source. Each time the site is updated, and on a regular schedule, software checks that every quote still appears on its source page. Any statement that can't be matched is removed. Each page lists its sources at the bottom with the date each was last checked, and the Sources & Methodology page explains the method. The site is written with AI assistance and reviewed by its owner.")
     && faq.includes("If your question isn't here, a DAR or SAR chapter registrar is the best person to ask. To report a mistake on this site, use the Contact page."));
   const corr = "Each correction is checked against the cited source before the page is updated. Every suggestion is read, though not every one can be added.";
-  check("t124u #8: About and Contact both have 'Corrections and suggestions' with the same wording", /<h2 id="corrections-and-suggestions">Corrections and Suggestions<\/h2>/.test(H("about")) && /<h2 id="corrections-and-suggestions">Corrections and Suggestions<\/h2>/.test(H("contact"))
+  check("t124u #8: About and Contact both have 'Corrections and suggestions' with the same wording", /<h2 id="corrections-and-suggestions">Corrections And Suggestions<\/h2>/.test(H("about")) && /<h2 id="corrections-and-suggestions">Corrections And Suggestions<\/h2>/.test(H("contact"))
     && text("about").includes(`If you find an error, or have an idea for a tool or guide that would help, please tell us through the Contact page. ${corr}`) && text("contact").includes(corr));
   const rm = H("guides/lineage-proof-roadmap"); const asof = [...rm.matchAll(/As of <span data-asof="([a-z0-9-]+)">([^<]+)<\/span>, (DAR|SAR) says/g)];
   const prac = (rm.match(/<h2 id="practical-details-people-miss">[\s\S]*?<\/p>/) || [""])[0];
@@ -762,7 +762,7 @@ phase("load"); await page.goto(`${BASE}/`); phase("interact");
     && apH.includes('href="https://members.sar.org/media/uploads/pages/334/wPXSPrcD0cuU.pdf"') && !/five signatures/.test(ap));
   const se = H("guides/substitute-evidence");
   check("t127u #1: Substitute Evidence opens its matrix with Tim's sentence, and the source is renamed 'NSCDA South Carolina Society — Standards of Proof (2025)'",
-    /<h2 id="era-by-era-substitute-matrix">Era-by-Era Substitute Matrix<\/h2>\s*<p>Many examples below come from one state society(?:'|&#39;)s standards \(NSCDA in South Carolina\)\. DAR and SAR apply their own standards, so ask your registrar\.<\/p>\s*(<div class="table-wrap[^>]*>)?\s*<table/.test(se.replace(/&apos;/g, "&#39;"))
+    /<h2 id="era-by-era-substitute-matrix">Era-By-Era Substitute Matrix<\/h2>\s*<p>Many examples below come from one state society(?:'|&#39;)s standards \(NSCDA in South Carolina\)\. DAR and SAR apply their own standards, so ask your registrar\.<\/p>\s*(<div class="table-wrap[^>]*>)?\s*<table/.test(se.replace(/&apos;/g, "&#39;"))
     && se.includes("NSCDA South Carolina Society — Standards of Proof (2025)") && !/NSCDA \(South Carolina\) — Standards of Proof \(rev/.test(se));
   const affected = ["guides/application-problems", "guides/same-name", "guides/substitute-evidence", "guides/census-bridge", "tools/lineage-matrix"];
   const bad = affected.filter((p) => BAD.test(text(p)));
@@ -804,7 +804,7 @@ phase("load"); await page.goto(`${BASE}/`); phase("interact");
   }
   // ---- t128u ----
   const fq = text("faq"), fqH = H("faq");
-  const gen = fq.slice(fq.indexOf("Do I Have to Hire a Genealogist?"), fq.indexOf("What does this site cost"));
+  const gen = fq.slice(fq.indexOf("Do I Have To Hire A Genealogist?"), fq.indexOf("What Does This Site Cost"));
   check("t128u #2: the FAQ's genealogist answer has Tim's exact sentence, after the sponsor line, sourced to sar.org/how-to-apply",
     gen.includes("SAR's local sponsor can guide you through the application.") && /SAR's local sponsor can guide you through the application\.\s*(?:\[?\d+\]?\s*)?SAR's national site says your sponsor is often the local chapter registrar\./.test(gen.replace(/\s+/g, " "))
     && fqH.includes('href="https://www.sar.org/how-to-apply/"'), gen.slice(0, 400));
@@ -814,7 +814,7 @@ phase("load"); await page.goto(`${BASE}/`); phase("interact");
   // t146 #2: three Ohio points are now stated by SAR's national Application Preparation Guide and re-sourced to it, with an "As of" date.
   const apgDate = longDate(lp["https://www.sar.org/app/uploads/APG-07-June-2026.pdf"]);
   check("t146 #2 / t128u #3: DAR record copies, the birth certificate and the date format are re-sourced to SAR's national Application Preparation Guide ('SAR's application guide says', As of its last pass); the Ohio wording for them is gone",
-    !!apgDate && [["sar-apg-fee-nonrefundable", "an applicant(?:'|&#39;)s filing fee is not refundable"], ["sar-apg-record-copy", "a DAR application used as proof must be an official DAR record copy, not a chapter copy"], ["sar-apg-bc-gender", "new applicants need a birth certificate or court order that specifies the applicant(?:'|&#39;)s gender as male"], ["sar-apg-date-format", "all dates must be entered in the format 01 Jan 1900"]].every(([id, t]) => new RegExp(`As of <span data-asof="${id}">${apgDate}</span>, SAR(?:'|&#39;)s application guide says ${t}`).test(apH.replace(/&apos;/g, "&#39;")))
+    !!apgDate && [["sar-apg-fee-nonrefundable", "an applicant(?:'|&#39;)s filing fee is not refundable"], ["sar-apg-record-copy", "a DAR application used as proof must be an official DAR record copy, not a chapter copy"], ["sar-apg-bc-gender", '"Birth certificate or court order is required for all new applicants that specifies his gender as male."'], ["sar-apg-date-format", "all dates must be entered in the format 01 Jan 1900"]].every(([id, t]) => new RegExp(`As of <span data-asof="${id}">${apgDate}</span>, SAR(?:'|&#39;)s application guide says ${t}`).test(apH.replace(/&apos;/g, "&#39;").replace(/&quot;/g, '"')))
     && apH.includes('href="https://www.sar.org/app/uploads/APG-07-June-2026.pdf"') && !/Ohio Society SAR presentation said (only DAR record copies|dates go in the form|a missing applicant birth certificate)/.test(ap), apgDate);
   const heldBad = pagesOf(/\.(html|js)$/).filter(([, h]) => /DAR says church records are usually acceptable|DAR lists probate, court and land records among the most common sources/.test(h)).map(([f]) => f);
   check("t128u #1: the t127 DAR-FAQ/Step-by-step rewordings are held back (DAR pages unreachable since their Nov 5 pass); the South Carolina attributions are back",
@@ -898,7 +898,7 @@ const { readdirSync: rd132 } = await import("node:fs");
 // ---- t132 #1: guide and tool pages: glossary collapsed under "Terms used on this page" (opens on tap, expanded in print); home glossary open ----
 { const pages = rd132(join(DIST, "guides")).map((g) => `/guides/${g}/`).concat(["/tools/widow-pension-checker/", "/tools/lineage-matrix/"]);
   const bad = pages.filter((p) => { const h = readFileSync(join(DIST, p, "index.html"), "utf8"); const m = h.match(/<details class="defs" data-defs>(<summary>[^<]*<\/summary>)/g) || [];
-    return m.length !== 1 || !m[0].includes("<summary>Terms Used on This Page</summary>"); });
+    return m.length !== 1 || !m[0].includes("<summary>Terms Used On This Page</summary>"); });
   check(`t132 #1: every guide and tool page (${pages.length}) has exactly one closed 'Terms used on this page' glossary`, pages.length >= 12 && bad.length === 0, bad.join(","));
   for (const w of [390, 1280]) { const cx = await browser.newContext({ viewport: { width: w, height: 900 } }); const pg = await cx.newPage(); const r = {};
     for (const p of ["/guides/read-pension-file/", "/tools/lineage-matrix/"]) { await pg.goto(BASE + p);
@@ -908,7 +908,7 @@ const { readdirSync: rd132 } = await import("node:fs");
       r[p] = { closedByDefault: !a.open && !a.termVis, opensOnTap: b.open && b.termVis, printExpanded: !c.open && c.termVis, sum: a.sum, fits: a.sw <= a.iw && b.sw <= b.iw }; }
     await pg.goto(BASE + "/"); const home = await pg.evaluate(() => { const g = document.querySelector(".glossary"); return { inDetails: !!g.closest("details"), vis: g.querySelector("li").checkVisibility(), noDefs: !document.querySelector("details.defs") }; });
     if (w === 390) { await pg.goto(BASE + "/guides/read-pension-file/"); await pg.click("details.defs > summary"); await pg.locator("details.defs").screenshot({ path: join(SHOTS, `t132-terms-${w}.png`) }); }
-    check(`t132 #1 (${w}px): glossary on a guide and a tool page is closed by default, opens on tap, prints expanded; home has no 'Terms Used on This Page' box (its glossary is the t152 expand, tested there)`, Object.values(r).every((x) => x.closedByDefault && x.opensOnTap && x.printExpanded && x.sum === "Terms Used on This Page" && x.fits) && home.inDetails && !home.vis && home.noDefs, JSON.stringify({ r, home }));
+    check(`t132 #1 (${w}px): glossary on a guide and a tool page is closed by default, opens on tap, prints expanded; home has no 'Terms Used On This Page' box (its glossary is the t152 expand, tested there)`, Object.values(r).every((x) => x.closedByDefault && x.opensOnTap && x.printExpanded && x.sum === "Terms Used On This Page" && x.fits) && home.inDetails && !home.vis && home.noDefs, JSON.stringify({ r, home }));
     await cx.close(); } }
 // ---- t132 #2 / #3: privacy wording; no "collects nothing" anywhere; $100 SAR fee claim gone ----
 { const all = (function walk(d) { return rd132(d, { withFileTypes: true }).flatMap((e) => e.isDirectory() ? walk(join(d, e.name)) : e.name.endsWith(".html") ? [join(d, e.name)] : []); })(DIST);
@@ -999,9 +999,9 @@ for (const w of [390, 1280]) { const cx = await browser.newContext({ viewport: {
   const nav = [...home.match(/<nav class="top"[\s\S]*?<\/nav>/)[0].matchAll(/>([^<]+)<\/a>/g)].map((m) => m[1]);
   const foot = [...home.match(/<footer class="site">[\s\S]*?<\/footer>/)[0].matchAll(/<a [^>]*>([^<]+)<\/a>/g)].map((m) => m[1]);
   check("t146 #4: every heading on every page (h1–h6), every page <title> (matching its h1) and the menu labels are in Title Case", tcBad.length === 0 && nav.join("|") === "Start Here|Widow Pension Check|Worksheet|Guides|FAQ|About" && foot.every((x) => x === tc146(x)), [...tcBad.slice(0, 6), nav.join("|"), foot.join("|")].join(" || "));
-  check("t146 #4: named titles: 'Words You'll See Here', 'Terms Used on This Page', 'The Guides', 'Questions, Answered Simply', home card titles, 'In Short'", /<details class="home-more" data-home-glossary id="glossary"><summary>Words You(?:'|&#39;)ll See Here<\/summary>/.test(home) && /<h2 id="guides">The Guides<\/h2>/.test(home) && home.includes('<a href="/faq/">Questions, Answered Simply</a>')
-    && ["Build Your To-Do List", "Check a Widow(?:'|&#39;)s Pension", "Read the Full Plan"].every((t) => new RegExp(`<h2 class="start-card-h">${t}</h2>`).test(home)) && readFileSync(join(DIST, "guides/same-name/index.html"), "utf8").includes("<summary>Terms Used on This Page</summary>"));
-  check("t146 #4: body text, buttons and quoted text keep their case (home buttons, the AI disclosure sentence, Tim's About heading)", home.includes(">Open the Lineage Evidence Matrix</a>") && home.includes(">See how the tools work</a>") && readFileSync(join(DIST, "ai-disclosure/index.html"), "utf8").replace(/&#39;/g, "'").includes("Written with AI assistance and reviewed by the site's owner. Each fact is tied to a quoted official source, and software checks that the quote is still there.") && /Why (?:'|&#39;)Patriot, In Lay Terms(?:'|&#39;)\?/.test(readFileSync(join(DIST, "about/index.html"), "utf8")));
+  check("t146 #4: named titles: 'Words You'll See Here', 'Terms Used On This Page', 'The Guides', 'Questions, Answered Simply', home card titles, 'In Short'", /<details class="home-more" data-home-glossary id="glossary"><summary>Words You(?:'|&#39;)ll See Here<\/summary>/.test(home) && /<h2 id="guides">The Guides<\/h2>/.test(home) && home.includes('<a href="/faq/">Questions, Answered Simply</a>')
+    && ["Build Your To-Do List", "Check A Widow(?:'|&#39;)s Pension", "Read The Full Plan"].every((t) => new RegExp(`<h2 class="start-card-h">${t}</h2>`).test(home)) && readFileSync(join(DIST, "guides/same-name/index.html"), "utf8").includes("<summary>Terms Used On This Page</summary>"));
+  check("t146 #4 / t163 #4: named section link is 'See How The Tools Work'; buttons, body and the site name keep their case", home.includes(">Open the Lineage Evidence Matrix</a>") && home.includes(">Open the Roadmap guide</a>") && home.includes(">See How The Tools Work</a>") && /Why (?:'|&#39;)Patriot, In Lay Terms(?:'|&#39;)\?/.test(readFileSync(join(DIST, "about/index.html"), "utf8")));
   // #1 housekeeping, re-checked: no page-level About/AI/Privacy row; home cards on every inner page instead of "Ready to start?".
   const rowBad = files.filter((f) => { const h = readFileSync(f, "utf8"); const main = h.slice(h.indexOf("<main"), h.indexOf("</main>")); return /About this site/.test(h) || /<a href="\/about\/">[^<]*<\/a>\s*·\s*<a href="\/ai-disclosure\/">/.test(main) || /<a href="\/ai-disclosure\/">[^<]*<\/a>\s*·\s*<a href="\/privacy\/">/.test(main); });
   check("t146 #1a: no page has a page-level 'About · AI disclosure · Privacy' row", rowBad.length === 0, rowBad.map(rel).join(","));
@@ -1108,7 +1108,7 @@ for (const w of [390, 1280]) { const cx = await browser.newContext({ viewport: {
   check("t150: the home page has one 'Why This Site Exists' expand (native details, no 'open' attribute) holding the four longer paragraphs; purpose paragraph, 'It's free' line and AI line stay outside it",
     det.length === 1 && /^<details class="home-more" data-home-more><summary>Why This Site Exists<\/summary>/.test(det[0]) && (det[0].match(/<p>/g) || []).length === 4
     && /<p>Somewhere in your family/.test(det[0]) && /That can be harder than it sounds/.test(det[0]) && /explains the process in everyday language/.test(det[0]) && /What this site does is explain/.test(det[0])
-    && !/This site helps you organize/.test(det[0]) && /<p>This site helps you organize/.test(mission.slice(0, mission.indexOf("<details"))) && /It(?:'|&#39;)s free, there(?:'|&#39;)s nothing to sign up for/.test(mission.slice(mission.indexOf("</details>"))) && /data-ai-line>Written with AI assistance and reviewed by the site(?:'|&#39;)s owner\. Each fact is tied to a quoted official source, and software checks that the quote is still there\./.test(mission.slice(mission.indexOf("</details>"))));
+    && !/This site helps you organize/.test(det[0]) && /<p>This site helps you organize/.test(mission.slice(0, mission.indexOf("<details"))) && /It(?:'|&#39;)s free, there(?:'|&#39;)s nothing to sign up for/.test(mission.slice(mission.indexOf("</details>"))) && /data-ai-line>Written with AI assistance and reviewed by the site(?:'|&#39;)s owner\. Each fact is tied to a quoted official or institutional source, and software checks that the quote is still there\./.test(mission.slice(mission.indexOf("</details>"))));
   // Adjacent markers from the same source render as one citation, so the expected count collapses those runs.
   const srcOf = new Map(JSON.parse(readFileSync(join(ROOT, "manifest/claims.json"), "utf8")).claims.map((c) => [c.claim_id, c.source_url]));
   const want10 = [...md10.matchAll(/(?:\[\[claim:[a-z0-9-]+\]\]\s*)+/g)].reduce((n, m) => n + [...m[0].matchAll(/\[\[claim:([a-z0-9-]+)\]\]/g)].map((x) => srcOf.get(x[1])).filter((u, i, a) => i === 0 || u !== a[i - 1]).length, 0);
@@ -1475,18 +1475,91 @@ for (const w of [390, 1280]) { const cx = await browser.newContext({ viewport: {
         navVisible: navLinks.every((a) => a.offsetParent !== null && a.getBoundingClientRect().right <= innerWidth + 1), navColor: getComputedStyle(navLinks[0]).color, headerBg: hs.backgroundColor, sw: document.documentElement.scrollWidth,
         gap: Math.round(document.querySelector("#guides").getBoundingClientRect().top - document.querySelector("[data-mission]").getBoundingClientRect().bottom) }; });
     const want = [["Build Your To-Do List", "Enter the records you already have. The worksheet shows what's still missing for each generation and where to look.", "Open the Lineage Evidence Matrix", "/tools/lineage-matrix/"],
-      ["Check a Widow's Pension", "Compare a widow's marriage date and her husband's service with each federal widow pension law.", "Open the Widow Pension Law Checker", "/tools/widow-pension-checker/"],
-      ["Read the Full Plan", "A generation-by-generation roadmap for DAR and SAR applications.", "Open the Roadmap guide", "/guides/lineage-proof-roadmap/"]];
+      ["Check A Widow's Pension", "Compare a widow's marriage date and her husband's service with each federal widow pension law.", "Open the Widow Pension Law Checker", "/tools/widow-pension-checker/"],
+      ["Read The Full Plan", "A generation-by-generation roadmap for DAR and SAR applications.", "Open the Roadmap guide", "/guides/lineage-proof-roadmap/"]];
     const textOk = h.cards.length === 3 && h.cards.every((c, i) => c.title === want[i][0] && c.line === want[i][1] && c.btn === want[i][2] && c.href === want[i][3]);
     const layout = w < 760 ? h.cards.every((c, i) => i === 0 || (c.top > h.cards[i - 1].top && c.left === h.cards[0].left)) : h.cards.every((c) => c.top === h.cards[0].top) && h.cards[1].left > h.cards[0].left;
-    check(`t130 #1 (${w}px): under the heading and independent line, Tim's sentence, then the three start cards (${w < 760 ? "stacked" : "side by side"}) with his exact titles, lines and navy buttons, then 'See how the tools work', then the longer paragraphs; the 'Ready to get started?' box is gone`,
-      h.intro === "Two free tools and ten guides help you organize what you have and see what's still missing. What you type into the tools stays in your own browser." && h.order.every((x, i) => x >= 0 && (i === 0 || x > h.order[i - 1])) && textOk && layout && h.seeHow[0] === "See how the tools work" && h.seeHow[1] === "/walkthroughs/" && !h.oldBox && h.sw <= w + 1, JSON.stringify({ order: h.order, cards: h.cards.map((c) => [c.top, c.left]), seeHow: h.seeHow, oldBox: h.oldBox }));
+    check(`t130 #1 (${w}px): under the heading and independent line, Tim's sentence, then the three start cards (${w < 760 ? "stacked" : "side by side"}) with his exact titles, lines and navy buttons, then 'See How The Tools Work', then the longer paragraphs; the 'Ready to get started?' box is gone`,
+      h.intro === "Two free tools and ten guides help you organize what you have and see what's still missing. What you type into the tools stays in your own browser." && h.order.every((x, i) => x >= 0 && (i === 0 || x > h.order[i - 1])) && textOk && layout && h.seeHow[0] === "See How The Tools Work" && h.seeHow[1] === "/walkthroughs/" && !h.oldBox && h.sw <= w + 1, JSON.stringify({ order: h.order, cards: h.cards.map((c) => [c.top, c.left]), seeHow: h.seeHow, oldBox: h.oldBox }));
     check(`t130 #3 (${w}px): start cards have a soft warm background and navy buttons with white text`, h.cards.every((c) => c.bg === "rgb(19, 41, 75)" && c.color === "rgb(255, 255, 255)" && c.cardBg !== "rgba(0, 0, 0, 0)" && c.cardBg !== "rgb(255, 255, 255)"), JSON.stringify(h.cards.map((c) => [c.bg, c.color, c.cardBg])));
     check(`t130 #3 (${w}px): home guide titles are bolder and larger than their descriptions; more space between sections`, +h.guideTitle[0] >= 700 && +h.guideTitle[0] > +h.guideDesc[0] && h.guideTitle[1] > h.guideDesc[1] && h.gap >= 40, JSON.stringify({ t: h.guideTitle, d: h.guideDesc, gap: h.gap }));
     check(`t130 #3 (${w}px): the top menu is fully visible (wraps, never hidden) in white on navy`, h.navVisible && h.navColor === "rgb(255, 255, 255)" && h.headerBg === "rgb(19, 41, 75)", JSON.stringify({ nav: h.navVisible, c: h.navColor, bg: h.headerBg }));
     await pg.screenshot({ path: join(SHOTS, `t130-home-${w}.png`) }); await cx.close(); }
-  const aiLine = "Written with AI assistance and reviewed by the site's owner. Each fact is tied to a quoted official source, and software checks that the quote is still there.";
+  const aiLine = "Written with AI assistance and reviewed by the site's owner. Each fact is tied to a quoted official or institutional source, and software checks that the quote is still there.";
   check("t130: the home AI line and the locked SAR line are unchanged, word for word", hH.replace(/&#39;|&apos;/g, "'").includes(aiLine) && hH.replace(/&#39;|&apos;/g, "'").includes("SAR's local sponsor can guide you through the application.")); }
+
+// ---- t163: SAR birth-certificate wording; Sources last-retrieved from live check; "quoted official or institutional source"; every-word Title Case (390px and 1280px) ----
+{ const REL163 = join(ROOT, "qa/release-logs/t163"); mkdirSync(REL163, { recursive: true });
+  const { readdirSync: rd163 } = await import("node:fs");
+  const { chicagoLongDate: cld163 } = await import("../scripts/lib/chicago-date.mjs");
+  const apH = readFileSync(join(DIST, "guides/application-problems/index.html"), "utf8").replace(/&#39;|&apos;/g, "'").replace(/&quot;/g, '"');
+  const apText = apH.replace(/<script[\s\S]*?<\/script>/g, "").replace(/<[^>]+>/g, " ").replace(/\s+/g, " ");
+  const cause = 'SAR\'s application guide says "Birth certificate or court order is required for all new applicants that specifies his gender as male."';
+  const court = "The applicant may need a court order if the birth certificate fails to identify the applicant's gender as male.";
+  const shortf = "Short-form birth certificates that do not identify the parents are insufficient.";
+  check("t163 #1: Application Returned explanation quotes SAR verbatim on the birth-certificate-or-court-order rule, when a court order may be needed, and on short-form certificates",
+    apText.includes(cause) && apText.includes(court) && apText.includes(shortf)
+    && /data-asof="sar-apg-bc-gender"/.test(apH)
+    && apH.includes("SAR — Application Preparation Guide"),
+    apText.slice(Math.max(0, apText.indexOf("Applicant birth")), Math.max(0, apText.indexOf("Applicant birth")) + 700));
+  check("t163 #1: the suggested fix is the same two verbatim SAR sentences (court-order condition and short-form), with no Ohio maiden-name or 'order a long-form' advice",
+    apText.includes(court) && apText.includes(shortf)
+    && !/mother(?:'|’)s maiden name/.test(apH) && !/ohsar-bc-parents/.test(apH)
+    && !/Order a long-form certificate naming both parents/.test(apH));
+  const srcH = readFileSync(join(DIST, "sources/index.html"), "utf8");
+  const live163 = JSON.parse(readFileSync(join(ROOT, "manifest-live-check-report.json"), "utf8"));
+  const claims163 = JSON.parse(readFileSync(join(ROOT, "manifest/claims.json"), "utf8"));
+  const expectDate = (live163.live_source_check === "RUN" && live163.checkedAt) ? cld163(live163.checkedAt) : null;
+  const srcLine = ((srcH.match(/data-last-retrieved>([^<]+)</) || [])[1] || "");
+  const shownCount = +(srcLine.match(/Manifest: (\d+) verified claims/) || [])[1];
+  check("t163 #2: Sources 'Last retrieved' is the Central-time date of the most recent full live-source check, and the claim count equals the manifest",
+    !!expectDate && srcLine === `Manifest: ${claims163.claims.length} verified claims. Last retrieved: ${expectDate}.`
+    && shownCount === claims163.claims.length && shownCount > 0,
+    JSON.stringify({ srcLine, expectDate, shownCount, manifest: claims163.claims.length, checkedAt: live163.checkedAt }));
+  const walk163 = (d) => rd163(d, { withFileTypes: true }).flatMap((e) => e.isDirectory() ? walk163(join(d, e.name)) : e.name.endsWith(".html") ? [join(d, e.name)] : []);
+  const leftover = [];
+  for (const f of walk163(DIST)) {
+    const stripped = readFileSync(f, "utf8").replace(/quoted official or institutional source/g, "");
+    if (/quoted official source/.test(stripped)) leftover.push(f.slice(DIST.length));
+  }
+  const AI163 = "Written with AI assistance and reviewed by the site's owner. Each fact is tied to a quoted official or institutional source, and software checks that the quote is still there.";
+  const home163 = readFileSync(join(DIST, "index.html"), "utf8").replace(/&#39;|&apos;/g, "'");
+  const ai163p = readFileSync(join(DIST, "ai-disclosure/index.html"), "utf8").replace(/&#39;|&apos;/g, "'");
+  check("t163 #3: every page says 'quoted official or institutional source'; the locked AI line uses the new wording; the old phrase is gone",
+    leftover.length === 0 && home163.includes(AI163) && ai163p.includes(AI163)
+    && /every fact is tied to a quoted official or institutional source/.test(readFileSync(join(DIST, "guides/census-bridge/index.html"), "utf8")), leftover.join(", "));
+  const homeCards = ["Build Your To-Do List", "Check A Widow's Pension", "Read The Full Plan"];
+  check("t163 #4: every-word Title Case on card titles, the see-how link, glossary summaries, Era-By-Era, and the home tagline; the site name is kept; buttons stay as written",
+    homeCards.every((c) => home163.includes(`<h2 class="start-card-h">${c}</h2>`))
+    && home163.includes(">See How The Tools Work</a>")
+    && home163.includes(">See them in action</a>")
+    && /<h2 id="guides">The Guides<\/h2>/.test(home163)
+    && readFileSync(join(DIST, "guides/same-name/index.html"), "utf8").includes("<summary>Terms Used On This Page</summary>")
+    && /<h2 id="era-by-era-substitute-matrix">Era-By-Era Substitute Matrix<\/h2>/.test(readFileSync(join(DIST, "guides/substitute-evidence/index.html"), "utf8"))
+    && /For The Daughters And The Sons Of The American Revolution/.test(home163)
+    && /Patriot, In Lay Terms/.test(home163)
+    && home163.includes(">Open the Lineage Evidence Matrix</a>")
+    && home163.includes(">Open the Roadmap guide</a>")
+    && !home163.includes(">See how the tools work</a>")
+    && !home163.includes("<h2 class=\"start-card-h\">Check a Widow")
+    && !home163.includes("<h2 class=\"start-card-h\">Read the Full Plan</h2>"));
+  for (const w of [390, 1280]) {
+    const cx = await browser.newContext({ viewport: { width: w, height: 900 } });
+    const pg = await cx.newPage();
+    await pg.goto(BASE + "/guides/application-problems/");
+    await pg.locator("table").first().scrollIntoViewIfNeeded();
+    await pg.screenshot({ path: join(REL163, `application-problems-${w}.png`), fullPage: false });
+    await pg.goto(BASE + "/sources/");
+    await pg.locator("[data-last-retrieved]").scrollIntoViewIfNeeded();
+    await pg.screenshot({ path: join(REL163, `sources-${w}.png`), fullPage: false });
+    await pg.goto(BASE + "/");
+    await pg.screenshot({ path: join(REL163, `home-${w}.png`), fullPage: false });
+    const fit = await pg.evaluate(() => ({ sw: document.documentElement.scrollWidth, iw: innerWidth }));
+    check(`t163 (${w}px): home fits the screen`, fit.sw <= fit.iw + 1, JSON.stringify(fit));
+    await cx.close();
+  }
+}
+
 // ---- Cache-busting: every script/CSS reference and every module import carries ?v=<hash> that matches the file ----
 const { createHash } = await import("node:crypto");
 const htmlRefs = pagesToCheck.flatMap((p) => [...readFileSync(join(DIST, p, "index.html"), "utf8").matchAll(/(?:src|href)="(\/assets\/[^"]+\.(?:js|css)[^"]*)"/g)].map((m) => m[1]));

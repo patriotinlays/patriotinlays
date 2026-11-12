@@ -11,12 +11,12 @@ export const TITLE_BUDGET = 60;
 // path -> description. Every built HTML page must have an entry.
 export const META_DESCRIPTIONS = {
   "/": "Plain-English guides and free browser tools for documenting descent from a Revolutionary War patriot for a DAR or SAR application.",
-  "/about/": "Who this site is for, what its ten guides and two free tools can and cannot do, and how every fact is tied to a quoted official source.",
-  "/ai-disclosure/": "See how this site is written with AI assistance and reviewed by its owner, and how each fact is tied to a quoted official source that software checks.",
+  "/about/": "Who this site is for, what its ten guides and two free tools can and cannot do, and how every fact is tied to a quoted official or institutional source.",
+  "/ai-disclosure/": "See how this site is written with AI assistance and reviewed by its owner, and how each fact is tied to a quoted official or institutional source.",
   "/contact/": "Email this site with a correction or a suggestion, what to include, and why it cannot review individual lineage applications or say who will be approved.",
   "/faq/": "Plain-English answers about joining DAR or SAR, what a patriot is, which records count, how this site's tools work, and where your information goes.",
   "/privacy/": "What you type into this site's two tools stays in your own browser: how that works, how to delete it, and what the site itself collects.",
-  "/sources/": "See how every factual sentence on this site is tied to a quoted official source, and how the build fails if a quote cannot be found.",
+  "/sources/": "See how every factual sentence on this site is tied to a quoted official or institutional source, and how the build fails if a quote cannot be found.",
   "/walkthroughs/": "Step-by-step examples of the Widow Pension Law Checker and the Lineage Evidence Matrix, using a made-up family and the tools' real results.",
   "/guides/application-problems/": "Diagnose why a DAR or SAR application or a patriot's service was questioned, and how to fix it, from DAR guidance and SAR's national application rules.",
   "/guides/bounty-land-warrants/": "How federal and state Revolutionary War bounty-land files work as evidence of service, residence and family, and where they mislead.",

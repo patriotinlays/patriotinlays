@@ -17,7 +17,19 @@ import { chicagoDate, chicagoLongDate } from "./lib/chicago-date.mjs";
 const ROOT = new URL("..", import.meta.url).pathname;
 const OUT = join(ROOT, "dist");
 const SITE = "https://patriotinlays.com";
-const BUILD_DATE = "2026-10-31";
+// t163 #2: Sources page "Last retrieved" is the America/Chicago calendar date of the most recent
+// full live-source check (manifest-live-check-report.json), written at build time so it updates each run.
+// If that report is missing or was not a RUN, do not invent a date.
+function lastRetrievedFromLiveCheck() {
+  try {
+    const r = JSON.parse(readFileSync(join(ROOT, "manifest-live-check-report.json"), "utf8"));
+    if (r.live_source_check === "RUN" && r.checkedAt && !Number.isNaN(Date.parse(r.checkedAt))) {
+      return chicagoLongDate(r.checkedAt);
+    }
+  } catch {}
+  return null;
+}
+const LAST_RETRIEVED = lastRetrievedFromLiveCheck();
 rmSync(OUT, { recursive: true, force: true });
 mkdirSync(join(OUT, "assets/js"), { recursive: true });
 const manifest = JSON.parse(readFileSync(join(ROOT, "manifest/claims.json"), "utf8"));
@@ -194,7 +206,8 @@ function quoteBlock(key, text, ctx) {
 const NAV = `<header class="site"><div class="wrap"><a class="brand" href="/" aria-label="Patriot, In Lay Terms: home"><img class="logo" src="/assets/logo-horizontal-white.svg" alt="Patriot, In Lay Terms" width="161" height="44"></a><nav class="top" aria-label="Main"><a href="/guides/lineage-proof-roadmap/">Start Here</a><a href="/tools/widow-pension-checker/">Widow Pension Check</a><a href="/tools/lineage-matrix/">Worksheet</a><a href="/#guides">Guides</a><a href="/faq/">FAQ</a><a href="/about/">About</a></nav></div></header>`;
 const FOOT = `<footer class="site"><div class="wrap"><a href="/about/" data-foot-about>About</a><a href="/ai-disclosure/" data-foot-ai>AI Disclosure</a><a href="/faq/">FAQ</a><a href="/walkthroughs/">Walkthroughs</a><a href="/sources/">Sources</a><a href="/privacy/">Privacy</a><a href="/contact/">Contact</a><p>Not affiliated with DAR, SAR, NSCDA or the National Archives. Not legal or professional genealogical advice.</p></div></footer>`;
 function page({ title, description, path, body, noindex = false }) {
-  // Tim t146 #4: Title Case for the page <title> (and og:title) and every heading on the page.
+  // Tim t163 #4 (supersedes t146 small-word exceptions): Title Case for the page <title>
+  // (and og:title / twitter:title) and every heading and <summary> on the page; every word, no exceptions.
   // Tim t157: unique meta description (from page-meta.mjs, 120–155 chars); <title> keeps the
   // site-name suffix only when the full string fits in about 60 characters; complete OG and Twitter tags.
   title = titleCase(title); body = titleCaseHeadings(body);
@@ -248,7 +261,7 @@ function renderFile(dir, f) {
     const own = [...ctx.tools][0] === "widow" ? "widow" : "lineage";
     html += "\n" + md(readFileSync(join(ROOT, "src/partials", `next-steps-${own}.md`), "utf8"), ctx);
     const next = GUIDE_ORDER.find((g) => +g.cornerstone === +fm.cornerstone + 1);
-    html += `<p class="next-guide">${next ? `Next guide: <a href="/${next.slug}/">${esc(next.title)}</a> · ` : ""}<a href="/#guides">All 10 Guides</a> · <a href="/faq/">FAQ</a></p>`;
+    html += `<p class="next-guide">${next ? `Next guide: <a href="/${next.slug}/">${esc(titleCase(next.title))}</a> · ` : ""}<a href="/#guides">All 10 Guides</a> · <a href="/faq/">FAQ</a></p>`;
   }
   // t124u #9: the Roadmap's Step 0 heading was renamed; keep the old anchor working for saved links.
   html = html.replace('<h2 id="step-0-find-your-patriot-s-name">', '<span id="step-0-find-the-soldier-s-name" aria-hidden="true"></span><h2 id="step-0-find-your-patriot-s-name">');
@@ -263,7 +276,7 @@ function renderFile(dir, f) {
     oldest = ctx.sources.map((u) => ({ u, t: Date.parse(LAST_PASSED[u]) })).sort((a, b) => a.t - b.t)[0];
     guideChecked.push({ slug: fm.slug, date: oldest ? lastChecked(oldest.u) : null, source: oldest?.u || null, sources: ctx.sources.length });
   }
-  const meta = fm.cornerstone ? `<p class="meta" data-sources-checked="${oldest ? lastChecked(oldest.u) : ""}">Guide ${fm.cornerstone} of 10 · Sources last checked ${oldest ? lastChecked(oldest.u) : ""} · Written with AI; every fact is tied to a quoted official source (<a href="/ai-disclosure/">how this works</a>)</p>` : "";
+  const meta = fm.cornerstone ? `<p class="meta" data-sources-checked="${oldest ? lastChecked(oldest.u) : ""}">Guide ${fm.cornerstone} of 10 · Sources last checked ${oldest ? lastChecked(oldest.u) : ""} · Written with AI; every fact is tied to a quoted official or institutional source (<a href="/ai-disclosure/">how this works</a>)</p>` : "";
   const path = `/${fm.slug}/`;
   write(fm.slug, page({ title: fm.title, description: fm.description, path, body: meta + html + srcList }));
   if (fm.launch_setup) console.log(`LAUNCH SETUP REQUIRED (${path}): ${fm.launch_setup}`);
@@ -298,9 +311,9 @@ write("", page({ title: "Patriot, In Lay Terms: plain-English help for DAR and S
 <p class="independent" data-independent>An independent guide: not affiliated with DAR, SAR or any lineage society, and it doesn't search records for you.</p>
 <p class="home-intro" data-home-intro>Two free tools and ten guides help you organize what you have and see what's still missing. What you type into the tools stays in your own browser.</p>
 ${START_CARDS}
-<p class="see-how" data-see-how><a href="/walkthroughs/">See how the tools work</a></p>
+<p class="see-how" data-see-how><a href="/walkthroughs/">See How The Tools Work</a></p>
 <section class="home-mission" data-mission>${homeMission(HOME.body).replace(/<p>Written with AI assistance/, '<p class="ai-line" data-ai-line>Written with AI assistance')}</section>
-<h2 id="guides">The guides</h2><ol class="guide-list home-guides">${guides.map((g) => `<li><a class="guide-title" href="${g.path}">${esc(g.title)}</a><br><span class="small">${esc(g.description)}</span></li>`).join("")}</ol>
+<h2 id="guides">The guides</h2><ol class="guide-list home-guides">${guides.map((g) => `<li><a class="guide-title" href="${g.path}">${esc(titleCase(g.title))}</a><br><span class="small">${esc(g.description)}</span></li>`).join("")}</ol>
 <p class="home-help">Questions? <a href="/faq/">Questions, Answered Simply</a> · New to the tools? <a href="/walkthroughs/">See them in action</a>, with a made-up family.</p>
 ${HOME.html}
 ${HOME.sources}` }));
@@ -309,7 +322,7 @@ sitemap.unshift("/");
 const bySource = new Map(); for (const c of manifest.claims) { if (!bySource.has(c.source_url)) bySource.set(c.source_url, { t: c.source_title, n: 0 }); bySource.get(c.source_url).n++; }
 write("sources", page({ title: "Sources & Methodology", description: "How every fact on this site is tied to an official source.", path: "/sources/",
   body: `<h1>Sources &amp; Methodology</h1><p>Every factual sentence on this site carries a reference to an entry in a Source Manifest. Each entry quotes the exact passage from an official or institutional source. When the site is built, a script fetches every source and confirms that each quoted passage still appears in it. If a quote cannot be found, or a factual sentence has no entry, the build fails and the page is not published. Statements that cannot be verified this way are left out.</p>
-<p>Written with AI assistance and reviewed by the site's owner. See the <a href="/ai-disclosure/">AI disclosure</a>.</p><h2>Sources in the manifest</h2><ol class="sources">${[...bySource].map(([u, v]) => `<li><a href="${esc(u)}">${esc(v.t)}</a> (${v.n} ${v.n === 1 ? "claim" : "claims"}). <span class="source-use" data-source-use>Used for: ${esc(SOURCE_TOPICS[u].def)}.</span> <span class="url">${esc(u)}</span></li>`).join("")}</ol><p class="small">Manifest: ${manifest.claims.length} verified claims, last retrieved ${BUILD_DATE}.</p>${START_HERE}` }));
+<p>Written with AI assistance and reviewed by the site's owner. See the <a href="/ai-disclosure/">AI disclosure</a>.</p><h2>Sources in the manifest</h2><ol class="sources">${[...bySource].map(([u, v]) => `<li><a href="${esc(u)}">${esc(v.t)}</a> (${v.n} ${v.n === 1 ? "claim" : "claims"}). <span class="source-use" data-source-use>Used for: ${esc(SOURCE_TOPICS[u].def)}.</span> <span class="url">${esc(u)}</span></li>`).join("")}</ol><p class="small" data-last-retrieved>Manifest: ${manifest.claims.length} verified claims. Last retrieved: ${LAST_RETRIEVED || "not recorded (no full live-source check in this tree)"}.</p>${START_HERE}` }));
 sitemap.push("/sources/");
 // Report pages (noindex; render from localStorage only)
 write("tools/widow-pension-checker/report", page({ title: "Widow Pension Law Checker: Your Report", description: "Printable report of your last widow-pension check, rendered from this browser only.", path: "/tools/widow-pension-checker/report/", noindex: true,

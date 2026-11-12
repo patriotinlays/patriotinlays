@@ -1838,24 +1838,6 @@
       "source_scope": "national"
     },
     {
-      "claim_id": "ohsar-bc-parents",
-      "claim_text": "A 2023 Ohio Society SAR presentation said the applicant's birth certificate should name both parents, including the mother's maiden name.",
-      "source_url": "https://cincinnatisar.org/wp-content/uploads/2023/05/Presentation-How-to-Produce-Approval-Ready-Applications-and-Reduce-Turnaround-Time.pdf",
-      "source_title": "SAR presentation, OHSSAR Annual Meeting (May 5, 2023) — How to Produce Approval-Ready Applications",
-      "source_type": "official_secondary",
-      "archive_identifier": null,
-      "last_retrieved": "2026-10-31",
-      "quote_excerpt": "It should also include names of both parents, including mother’s maiden name",
-      "page_ref": null,
-      "verification_status": "verified",
-      "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
-      "used_on": [
-        "application-problems"
-      ],
-      "notes": "",
-      "source_scope": "chapter-local"
-    },
-    {
       "claim_id": "ohsar-naming",
       "claim_text": "A 2023 Ohio Society SAR presentation listed weak parent-to-child proof, including unresolved naming conflicts, as a pend reason.",
       "source_url": "https://cincinnatisar.org/wp-content/uploads/2023/05/Presentation-How-to-Produce-Approval-Ready-Applications-and-Reduce-Turnaround-Time.pdf",
@@ -1948,7 +1930,7 @@
     },
     {
       "claim_id": "sar-apg-bc-gender",
-      "claim_text": "SAR's application guide says new applicants need a birth certificate or court order that specifies the applicant's gender as male.",
+      "claim_text": "SAR's application guide says \"Birth certificate or court order is required for all new applicants that specifies his gender as male.\"",
       "source_url": "https://www.sar.org/app/uploads/APG-07-June-2026.pdf",
       "source_title": "SAR — Application Preparation Guide (NSSAR Genealogy Committee, 07 June 2026)",
       "source_type": "official_secondary",
@@ -1958,6 +1940,42 @@
       "page_ref": "Appendix B, item 3",
       "verification_status": "verified",
       "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-11-11 CT",
+      "used_on": [
+        "application-problems"
+      ],
+      "notes": "",
+      "source_scope": "national"
+    },
+    {
+      "claim_id": "sar-apg-bc-court",
+      "claim_text": "SAR's application guide says the applicant may need a court order if the birth certificate fails to identify the applicant's gender as male.",
+      "source_url": "https://www.sar.org/app/uploads/APG-07-June-2026.pdf",
+      "source_title": "SAR — Application Preparation Guide (NSSAR Genealogy Committee, 07 June 2026)",
+      "source_type": "official_secondary",
+      "archive_identifier": null,
+      "last_retrieved": "2026-11-12",
+      "quote_excerpt": "The applicant may need a court order if the birth certificate fails to identify the applicant's gender as male.",
+      "page_ref": "p. 13",
+      "verification_status": "verified",
+      "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-11-12 CT",
+      "used_on": [
+        "application-problems"
+      ],
+      "notes": "",
+      "source_scope": "national"
+    },
+    {
+      "claim_id": "sar-apg-bc-shortform",
+      "claim_text": "SAR's application guide says short-form birth certificates that do not identify the parents are insufficient.",
+      "source_url": "https://www.sar.org/app/uploads/APG-07-June-2026.pdf",
+      "source_title": "SAR — Application Preparation Guide (NSSAR Genealogy Committee, 07 June 2026)",
+      "source_type": "official_secondary",
+      "archive_identifier": null,
+      "last_retrieved": "2026-11-12",
+      "quote_excerpt": "Short-form birth certificates that do not identify the parents are insufficient.",
+      "page_ref": "p. 14",
+      "verification_status": "verified",
+      "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-11-12 CT",
       "used_on": [
         "application-problems"
       ],

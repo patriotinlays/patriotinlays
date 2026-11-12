@@ -1,8 +1,8 @@
 {
-  "ranAt": "Thu Nov 12 2026 06:04:44 GMT-0600 (Central Standard Time)",
+  "ranAt": "Thu Nov 12 2026 15:46:37 GMT-0600 (Central Standard Time)",
   "browser": "/usr/bin/google-chrome (headless) via playwright-core 1.59.1",
-  "passed": 334,
-  "total": 334,
+  "passed": 341,
+  "total": 341,
   "exampleReportPages": {
     "summaryPages": 2,
     "fullPages": 3,
@@ -34,11 +34,11 @@
   "home": {
     "ps": 7,
     "lists": 0,
-    "text": "This site helps you organize the records that connect you to a Revolutionary War patriot, see where your documented family line still has gaps, and find where to look for the missing proof. (A patriot here means someone who supported the cause of American independence, for example by fighting in its battles or serving in the Continental Congress.)[1]\nWhy This Site Exists\nSomewhere in your family's past, there may be someone who stood up for American independence. Maybe they carried a musket as a soldier, or maybe they helped in another way, such as furnishing supplies or lending money.[2] If you'd like to honor that person by joining the Daughters or Sons of the American Revolution, you'll be asked to show, with records, how you are connected to them, one generation at a time.[3][4]\nThat can be harder than it sounds. The records are often in more than one place: for militia service, for example, the National Archives sends you to the archives of the state where the patriot served.[5] Even a single pension file can arrive with its papers in no particular order.[6] And nobody hands you a map of which papers count as proof, or of what to try when the one record you need seems to have vanished.\nPatriot, In Lay Terms explains the process in everyday language, the way a patient friend who has done this before might explain it at the kitchen table. The guides walk you through the kinds of records you're likely to find, what each one can show, and where to turn when something is missing. Two free tools help you lay out what you already have. The Widow Pension Law Checker shows which federal widow pension laws a couple's marriage fits and where her pension file may be. The Lineage Evidence Matrix lists, generation by generation, what is still missing in your line and where to look for it. Every fact on the site links to an official source, so you can check it yourself.\nThis site can't do the searching for you, and it won't pretend to. You'll still visit archives, courthouses and websites to find and copy the records themselves. A DAR member helps guide you through completing and submitting the application.[4] SAR's local sponsor can guide you through the application.[7] The society, not this site, reviews what you send: at DAR, all documentation is subject to review by its genealogy staff.[3] What this site does is explain what each of those steps asks for and which records can answer it.\n\nIt's free, there's nothing to sign up for, and what you type into the tools stays in your own browser.\nWritten with AI assistance and reviewed by the site's owner. Each fact is tied to a quoted official source, and software checks that the quote is still there.",
-    "sub": "Plain-English Help With DAR and SAR Applications, for the Daughters and the Sons of the American Revolution",
-    "ai": "Written with AI assistance and reviewed by the site's owner. Each fact is tied to a quoted official source, and software checks that the quote is still there.",
+    "text": "This site helps you organize the records that connect you to a Revolutionary War patriot, see where your documented family line still has gaps, and find where to look for the missing proof. (A patriot here means someone who supported the cause of American independence, for example by fighting in its battles or serving in the Continental Congress.)[1]\nWhy This Site Exists\nSomewhere in your family's past, there may be someone who stood up for American independence. Maybe they carried a musket as a soldier, or maybe they helped in another way, such as furnishing supplies or lending money.[2] If you'd like to honor that person by joining the Daughters or Sons of the American Revolution, you'll be asked to show, with records, how you are connected to them, one generation at a time.[3][4]\nThat can be harder than it sounds. The records are often in more than one place: for militia service, for example, the National Archives sends you to the archives of the state where the patriot served.[5] Even a single pension file can arrive with its papers in no particular order.[6] And nobody hands you a map of which papers count as proof, or of what to try when the one record you need seems to have vanished.\nPatriot, In Lay Terms explains the process in everyday language, the way a patient friend who has done this before might explain it at the kitchen table. The guides walk you through the kinds of records you're likely to find, what each one can show, and where to turn when something is missing. Two free tools help you lay out what you already have. The Widow Pension Law Checker shows which federal widow pension laws a couple's marriage fits and where her pension file may be. The Lineage Evidence Matrix lists, generation by generation, what is still missing in your line and where to look for it. Every fact on the site links to an official source, so you can check it yourself.\nThis site can't do the searching for you, and it won't pretend to. You'll still visit archives, courthouses and websites to find and copy the records themselves. A DAR member helps guide you through completing and submitting the application.[4] SAR's local sponsor can guide you through the application.[7] The society, not this site, reviews what you send: at DAR, all documentation is subject to review by its genealogy staff.[3] What this site does is explain what each of those steps asks for and which records can answer it.\n\nIt's free, there's nothing to sign up for, and what you type into the tools stays in your own browser.\nWritten with AI assistance and reviewed by the site's owner. Each fact is tied to a quoted official or institutional source, and software checks that the quote is still there.",
+    "sub": "Plain-English Help With DAR And SAR Applications, For The Daughters And The Sons Of The American Revolution",
+    "ai": "Written with AI assistance and reviewed by the site's owner. Each fact is tied to a quoted official or institutional source, and software checks that the quote is still there.",
     "afterCards": true,
-    "words": 863
+    "words": 865
   },
   "results": [
     {
@@ -604,12 +604,12 @@
     {
       "name": "Home (Nov 5 lock; t130 moved the paragraphs below the start cards, unchanged): subtitle names DAR and SAR; mission in flowing paragraphs (no lists) after the cards; purpose line, both tool names, one-sentence privacy",
       "ok": true,
-      "detail": "{\"ps\":7,\"lists\":0,\"text\":\"This site helps you organize the records that connect you to a Revolutionary War\",\"sub\":\"Plain-English Help With DAR and SAR Applications, for the Daughters and the Sons of the American Revolution\",\"ai\":\"Written with AI assistance and reviewed by the site's owner. Each fact is tied to a quoted official source, and software checks that the quote is still there.\",\"afterCards\":true,\"words\":863}"
+      "detail": "{\"ps\":7,\"lists\":0,\"text\":\"This site helps you organize the records that connect you to a Revolutionary War\",\"sub\":\"Plain-English Help With DAR And SAR Applications, For The Daughters And The Sons Of The American Revolution\",\"ai\":\"Written with AI assistance and reviewed by the site's owner. Each fact is tied to a quoted official or institutional source, and software checks that the quote is still there.\",\"afterCards\":true,\"words\":865}"
     },
     {
       "name": "Home (Nov 5 lock, SAR line updated by t125u): the exact AI line, the exact SAR line (sourced), no unsourced 'most people get stuck' / 'give up' / guarantee lines",
       "ok": true,
-      "detail": "Written with AI assistance and reviewed by the site's owner. Each fact is tied to a quoted official source, and software checks that the quote is still there."
+      "detail": "Written with AI assistance and reviewed by the site's owner. Each fact is tied to a quoted official or institutional source, and software checks that the quote is still there."
     },
     {
       "name": "Home: the first links (after source notes) are the worksheet, the widow checker and the Roadmap guide",
@@ -824,10 +824,10 @@
     {
       "name": "t122u #9/#8: the home page's one visible heading is the tagline; the site name is in the h1 for screen readers and in the title; a short red rule sits under it",
       "ok": true,
-      "detail": "{\"h1s\":1,\"sr\":\"Patriot, In Lay Terms: \",\"srHidden\":true,\"vis\":\"Plain-English Help With DAR and SAR Applications, for the Daughters and the Sons of the American Revolution\",\"visH\":143.9375,\"title\":\"Patriot, In Lay Terms: Plain-English Help for DAR and SAR Applications\",\"rule\":\"rgb(178, 34, 52)\",\"ruleW\":\"56px\"}"
+      "detail": "{\"h1s\":1,\"sr\":\"Patriot, In Lay Terms: \",\"srHidden\":true,\"vis\":\"Plain-English Help With DAR And SAR Applications, For The Daughters And The Sons Of The American Revolution\",\"visH\":143.9375,\"title\":\"Patriot, In Lay Terms: Plain-English Help For DAR And SAR Applications\",\"rule\":\"rgb(178, 34, 52)\",\"ruleW\":\"56px\"}"
     },
     {
-      "name": "t122u #11: every visible text element on all 22 pages passes WCAG AA contrast (4.5:1, large text 3:1) — 3572 elements",
+      "name": "t122u #11: every visible text element on all 22 pages passes WCAG AA contrast (4.5:1, large text 3:1) — 3575 elements",
       "ok": true,
       "detail": ""
     },
@@ -1024,7 +1024,7 @@
     {
       "name": "t128u #2: the FAQ's genealogist answer has Tim's exact sentence, after the sponsor line, sourced to sar.org/how-to-apply",
       "ok": true,
-      "detail": "Do I Have to Hire a Genealogist? No. A DAR member helps guide you through completing and submitting the application.[1] SAR's local sponsor can guide you through the application.[7] SAR's national site says your sponsor is often the local chapter registrar.[7] That help comes with joining. Our guides can help you prepare: what records to gather and what questions to ask. What Does This Site Cost, "
+      "detail": "Do I Have To Hire A Genealogist? No. A DAR member helps guide you through completing and submitting the application.[1] SAR's local sponsor can guide you through the application.[7] SAR's national site says your sponsor is often the local chapter registrar.[7] That help comes with joining. Our guides can help you prepare: what records to gather and what questions to ask. "
     },
     {
       "name": "t128u #3: supplemental signatures come from SAR's national application checklist with an 'As of' date; the Ohio two-signatures line is gone",
@@ -1112,14 +1112,14 @@
       "detail": ""
     },
     {
-      "name": "t132 #1 (390px): glossary on a guide and a tool page is closed by default, opens on tap, prints expanded; home has no 'Terms Used on This Page' box (its glossary is the t152 expand, tested there)",
+      "name": "t132 #1 (390px): glossary on a guide and a tool page is closed by default, opens on tap, prints expanded; home has no 'Terms Used On This Page' box (its glossary is the t152 expand, tested there)",
       "ok": true,
-      "detail": "{\"r\":{\"/guides/read-pension-file/\":{\"closedByDefault\":true,\"opensOnTap\":true,\"printExpanded\":true,\"sum\":\"Terms Used on This Page\",\"fits\":true},\"/tools/lineage-matrix/\":{\"closedByDefault\":true,\"opensOnTap\":true,\"printExpanded\":true,\"sum\":\"Terms Used on This Page\",\"fits\":true}},\"home\":{\"inDetails\":true,\"vis\":false,\"noDefs\":true}}"
+      "detail": "{\"r\":{\"/guides/read-pension-file/\":{\"closedByDefault\":true,\"opensOnTap\":true,\"printExpanded\":true,\"sum\":\"Terms Used On This Page\",\"fits\":true},\"/tools/lineage-matrix/\":{\"closedByDefault\":true,\"opensOnTap\":true,\"printExpanded\":true,\"sum\":\"Terms Used On This Page\",\"fits\":true}},\"home\":{\"inDetails\":true,\"vis\":false,\"noDefs\":true}}"
     },
     {
-      "name": "t132 #1 (1280px): glossary on a guide and a tool page is closed by default, opens on tap, prints expanded; home has no 'Terms Used on This Page' box (its glossary is the t152 expand, tested there)",
+      "name": "t132 #1 (1280px): glossary on a guide and a tool page is closed by default, opens on tap, prints expanded; home has no 'Terms Used On This Page' box (its glossary is the t152 expand, tested there)",
       "ok": true,
-      "detail": "{\"r\":{\"/guides/read-pension-file/\":{\"closedByDefault\":true,\"opensOnTap\":true,\"printExpanded\":true,\"sum\":\"Terms Used on This Page\",\"fits\":true},\"/tools/lineage-matrix/\":{\"closedByDefault\":true,\"opensOnTap\":true,\"printExpanded\":true,\"sum\":\"Terms Used on This Page\",\"fits\":true}},\"home\":{\"inDetails\":true,\"vis\":false,\"noDefs\":true}}"
+      "detail": "{\"r\":{\"/guides/read-pension-file/\":{\"closedByDefault\":true,\"opensOnTap\":true,\"printExpanded\":true,\"sum\":\"Terms Used On This Page\",\"fits\":true},\"/tools/lineage-matrix/\":{\"closedByDefault\":true,\"opensOnTap\":true,\"printExpanded\":true,\"sum\":\"Terms Used On This Page\",\"fits\":true}},\"home\":{\"inDetails\":true,\"vis\":false,\"noDefs\":true}}"
     },
     {
       "name": "t132 #2: privacy page has Tim's exact sentence, keeps the ads line, and the old 'collects nothing' and 'Like any web host' sentences are gone",
@@ -1212,12 +1212,12 @@
       "detail": "Start Here|Widow Pension Check|Worksheet|Guides|FAQ|About || About|AI Disclosure|FAQ|Walkthroughs|Sources|Privacy|Contact"
     },
     {
-      "name": "t146 #4: named titles: 'Words You'll See Here', 'Terms Used on This Page', 'The Guides', 'Questions, Answered Simply', home card titles, 'In Short'",
+      "name": "t146 #4: named titles: 'Words You'll See Here', 'Terms Used On This Page', 'The Guides', 'Questions, Answered Simply', home card titles, 'In Short'",
       "ok": true,
       "detail": ""
     },
     {
-      "name": "t146 #4: body text, buttons and quoted text keep their case (home buttons, the AI disclosure sentence, Tim's About heading)",
+      "name": "t146 #4 / t163 #4: named section link is 'See How The Tools Work'; buttons, body and the site name keep their case",
       "ok": true,
       "detail": ""
     },
@@ -1609,7 +1609,7 @@
     {
       "name": "t162 #4: Same Name has the Ohio caveat as a paragraph directly above 'How Often This Goes Wrong' (Tim's wording, without the 'Confirm…' sentence)",
       "ok": true,
-      "detail": "h2=6822 para=<p>Points attributed to the 2023 Ohio Society SAR presentation come from that talk, not SAR's national rules.</p>"
+      "detail": "h2=6839 para=<p>Points attributed to the 2023 Ohio Society SAR presentation come from that talk, not SAR's national rules.</p>"
     },
     {
       "name": "t162 (390px): widow checker (last page visited) fits the screen",
@@ -1657,9 +1657,9 @@
       "detail": ""
     },
     {
-      "name": "t130 #1 (390px): under the heading and independent line, Tim's sentence, then the three start cards (stacked) with his exact titles, lines and navy buttons, then 'See how the tools work', then the longer paragraphs; the 'Ready to get started?' box is gone",
+      "name": "t130 #1 (390px): under the heading and independent line, Tim's sentence, then the three start cards (stacked) with his exact titles, lines and navy buttons, then 'See How The Tools Work', then the longer paragraphs; the 'Ready to get started?' box is gone",
       "ok": true,
-      "detail": "{\"order\":[0,1,2,3,4,5,6],\"cards\":[[424,16],[634,16],[863,16]],\"seeHow\":[\"See how the tools work\",\"/walkthroughs/\"],\"oldBox\":false}"
+      "detail": "{\"order\":[0,1,2,3,4,5,6],\"cards\":[[424,16],[634,16],[863,16]],\"seeHow\":[\"See How The Tools Work\",\"/walkthroughs/\"],\"oldBox\":false}"
     },
     {
       "name": "t130 #3 (390px): start cards have a soft warm background and navy buttons with white text",
@@ -1677,9 +1677,9 @@
       "detail": "{\"nav\":true,\"c\":\"rgb(255, 255, 255)\",\"bg\":\"rgb(19, 41, 75)\"}"
     },
     {
-      "name": "t130 #1 (1280px): under the heading and independent line, Tim's sentence, then the three start cards (side by side) with his exact titles, lines and navy buttons, then 'See how the tools work', then the longer paragraphs; the 'Ready to get started?' box is gone",
+      "name": "t130 #1 (1280px): under the heading and independent line, Tim's sentence, then the three start cards (side by side) with his exact titles, lines and navy buttons, then 'See How The Tools Work', then the longer paragraphs; the 'Ready to get started?' box is gone",
       "ok": true,
-      "detail": "{\"order\":[0,1,2,3,4,5,6],\"cards\":[[429,304],[429,533],[429,763]],\"seeHow\":[\"See how the tools work\",\"/walkthroughs/\"],\"oldBox\":false}"
+      "detail": "{\"order\":[0,1,2,3,4,5,6],\"cards\":[[429,304],[429,533],[429,763]],\"seeHow\":[\"See How The Tools Work\",\"/walkthroughs/\"],\"oldBox\":false}"
     },
     {
       "name": "t130 #3 (1280px): start cards have a soft warm background and navy buttons with white text",
@@ -1700,6 +1700,41 @@
       "name": "t130: the home AI line and the locked SAR line are unchanged, word for word",
       "ok": true,
       "detail": ""
+    },
+    {
+      "name": "t163 #1: Application Returned explanation quotes SAR verbatim on the birth-certificate-or-court-order rule, when a court order may be needed, and on short-form certificates",
+      "ok": true,
+      "detail": "Applicant birth certificate questioned As of November 12, 2026 , SAR's application guide says \"Birth certificate or court order is required for all new applicants that specifies his gender as male.\" [9] It says \"The applicant may need a court order if the birth certificate fails to identify the applicant's gender as male.\" [9] \"Short-form birth certificates that do not identify the parents are insufficient.\" [9] The applicant may need a court order if the birth certificate fails to identify the applicant's gender as male. [9] Short-form birth certificates that do not identify the parents are insufficient. [9] Parent-child link questioned A 2023 Ohio Society SAR presentation said inadequate p"
+    },
+    {
+      "name": "t163 #1: the suggested fix is the same two verbatim SAR sentences (court-order condition and short-form), with no Ohio maiden-name or 'order a long-form' advice",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "t163 #2: Sources 'Last retrieved' is the Central-time date of the most recent full live-source check, and the claim count equals the manifest",
+      "ok": true,
+      "detail": "{\"srcLine\":\"Manifest: 401 verified claims. Last retrieved: November 12, 2026.\",\"expectDate\":\"November 12, 2026\",\"shownCount\":401,\"manifest\":401,\"checkedAt\":\"Thu Nov 12 2026 06:01:55 GMT-0600 (Central Standard Time)\"}"
+    },
+    {
+      "name": "t163 #3: every page says 'quoted official or institutional source'; the locked AI line uses the new wording; the old phrase is gone",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "t163 #4: every-word Title Case on card titles, the see-how link, glossary summaries, Era-By-Era, and the home tagline; the site name is kept; buttons stay as written",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "t163 (390px): home fits the screen",
+      "ok": true,
+      "detail": "{\"sw\":390,\"iw\":390}"
+    },
+    {
+      "name": "t163 (1280px): home fits the screen",
+      "ok": true,
+      "detail": "{\"sw\":1280,\"iw\":1280}"
     },
     {
       "name": "Cache-busting: every page's script/CSS URL and every module import is versioned with the file's content hash",

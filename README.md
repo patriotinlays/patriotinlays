@@ -260,6 +260,12 @@ Docs: https://developers.cloudflare.com/pages/how-to/web-analytics/
 - February 28, 1855 navy-widow law cited as ch. 126, sec. 3, 10 Stat. 616 (chapter begins at 615); 10 Stat. 701 is only the March 3, 1855 bounty-land act.
 - Worksheet: step 1 is the patriot, step 2 starts the family with yourself; removing the oldest generation asks for confirmation.
 
+### t163 (Nov 12, 2026)
+- Application Returned: the birth-certificate row now quotes SAR's Application Preparation Guide verbatim on the required certificate or court order, when a court order may be needed, and that short-form certificates that do not identify the parents are insufficient. The Ohio maiden-name / "order a long-form" fix is gone.
+- Sources: "Last retrieved" is the America/Chicago date of the most recent full live-source check, written at build time from `manifest-live-check-report.json`. The claim count is the current manifest length.
+- Every "quoted official source" is now "quoted official or institutional source" (home and AI-disclosure AI line, guide footers, About/Sources/AI meta descriptions). Tim authorized the locked AI-line wording change.
+- Title Case (supersedes the t146 small-word exceptions): every word in headings, card titles, In Short titles, named section links, `<title>` tags and menu labels is capitalized, including a/an/the/and/but/or/nor/for/of/to/in/on/at/by/as, and every part of a hyphenated word. Acronyms and "Patriot, In Lay Terms" are kept. Body text, buttons, form labels, tool results and quoted source text are unchanged.
+
 ### t162 (Nov 12, 2026)
 - Home guide-list blurbs for Same Name and Application Returned now match those pages' meta descriptions. Same Name and Application Returned say "showing the patriot was living" (not "he"). The widow checker's Matrix-patriot sentence uses "your patriot's" dates, type of service, state, and service end date ("a patriot and his wife" and widow-husband wording unchanged). Same Name has the Ohio-presentation caveat directly above "How Often This Goes Wrong."
 

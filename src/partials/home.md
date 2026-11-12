@@ -10,4 +10,4 @@ This site can't do the searching for you, and it won't pretend to. You'll still 
 
 It's free, there's nothing to sign up for, and what you type into the tools stays in your own browser.
 
-Written with AI assistance and reviewed by the site's owner. Each fact is tied to a quoted official source, and software checks that the quote is still there.
+Written with AI assistance and reviewed by the site's owner. Each fact is tied to a quoted official or institutional source, and software checks that the quote is still there.
