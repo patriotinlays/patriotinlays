@@ -1,0 +1,325 @@
+
+> patriotinlays-pilot@0.1.0 test
+> node scripts/test-service-window.mjs && node scripts/test-lineage-matrix.mjs && node scripts/test-gates.mjs && node scripts/test-source-pass.mjs && node scripts/test-normalize.mjs && node scripts/test-live-status.mjs && node scripts/test-skip-for-now.mjs && node scripts/test-nysed-tls.mjs && node scripts/test-source-scope.mjs && node scripts/test-held-back.mjs && node scripts/test-page-meta.mjs
+
+PASS  # 1  Core: 18 Apr 1775 (day before Lexington)  expected=inconsistent  actual=inconsistent
+PASS  # 2  Core: 19 Apr 1775 (first day of window)  expected=consistent  actual=consistent
+PASS  # 3  Core: 18 Apr – 19 Apr 1775 (straddles start)  expected=partial  actual=partial
+PASS  # 4  Core: 26 Nov 1783 (last day of window)  expected=consistent  actual=consistent
+PASS  # 5  Core: 27 Nov 1783 (day after window)  expected=inconsistent  actual=inconsistent
+PASS  # 6  Core: 26 Nov – 27 Nov 1783 (straddles end)  expected=partial  actual=partial
+PASS  # 7  Core: year-only 1775 (imprecise, straddles start)  expected=partial  actual=partial
+PASS  # 8  Core: year-only 1783 (imprecise, straddles end)  expected=partial  actual=partial
+PASS  # 9  Core: 1774-01 to 1774-12 (entirely before window)  expected=inconsistent  actual=inconsistent
+PASS  #10  Core: 1778-06 to 1780-12 (inside window); message is the mandated sentence  expected=Your dates fit the official service period for this type of service. This is not a ruling: your society decides. Next, find the original records that show the service.  actual=Your dates fit the official service period for this type of service. This is not a ruling: your society decides. Next, find the original records that show the service.
+PASS  #11  Committee service May 1774 (DAR: from April 1774)  expected=consistent  actual=consistent
+PASS  #12  Committee service March 1774 (before April 1774)  expected=inconsistent  actual=inconsistent
+PASS  #13  Virginia Oath of Fidelity, October 1779  expected=consistent  actual=consistent
+PASS  #14  Virginia Oath of Fidelity, September 1779  expected=inconsistent  actual=inconsistent
+PASS  #15  Gálvez troops, 24 Dec 1776 (not 'after')  expected=inconsistent  actual=inconsistent
+PASS  #16  Gálvez troops, 25 Dec 1776  expected=consistent  actual=consistent
+PASS  #17  Gálvez cattle supply, 24 Dec 1776 (not 'after')  expected=inconsistent  actual=inconsistent
+PASS  #18  Gálvez cattle supply, 1779-03 to 1780-05  expected=consistent  actual=consistent
+PASS  #19  End date (1777-05-01) before start (1778-02-01)  expected=invalid  actual=invalid
+PASS  #20  Impossible calendar date 1777-02-30  expected=invalid  actual=invalid
+PASS  #21  1836 act: married 1780-05-01, last service ended 1781-10-19, 24 months of State militia service  expected=consistent  actual=consistent
+PASS  #22  1836 act: married 1785-06-01, after last service ended 1781-10-19  expected=inconsistent  actual=inconsistent
+PASS  #23  1838 act: married 1793-12-31 vs 1794-01-01 (cutoff: before 1 Jan 1794), service ended 1781 after 24 months of militia service  expected=consistent|inconsistent  actual=consistent|inconsistent
+PASS  #24  Married 1800-01-02: 1848 out; 1853 (after January 1800) too rough to tell; Feb 1855 fits a navy widow; 1853 rules out a navy widow  expected=inconsistent|partial|consistent|inconsistent  actual=inconsistent|partial|consistent|inconsistent
+PASS  #24.1  1853 act: continental, married 1800-02-01 fits; married 1799-12-31 ruled out by the dates; militia stays open (text doesn't say)  expected=consistent|inconsistent|possible  actual=consistent|inconsistent|possible
+PASS  #24.2  Feb 1855 act: navy married 1800-01-01 fits; navy 1799-12-31 out; army 1810 out; unknown kind 1810 open  expected=consistent|inconsistent|inconsistent|possible  actual=consistent|inconsistent|inconsistent|possible
+PASS  #25  1878 act & 1855 bounty land: 13 days no engagement vs 14 days  expected=inconsistent|inconsistent|consistent|consistent  actual=inconsistent|inconsistent|consistent|consistent
+PASS  #26  Committee service 31 Mar 1774 (day before April 1774)  expected=inconsistent  actual=inconsistent
+PASS  #27  Committee service 1 Apr 1774 (first day of 'from April 1774')  expected=consistent  actual=consistent
+PASS  #28  Virginia Oath of Fidelity 30 Sep 1779 (day before October 1779)  expected=inconsistent  actual=inconsistent
+PASS  #29  Virginia Oath of Fidelity 1 Oct 1779 (first day of October 1779)  expected=consistent  actual=consistent
+PASS  #30  Virginia Oath of Fidelity 26 Nov 1783 vs 27 Nov 1783 (published end)  expected=consistent|inconsistent  actual=consistent|inconsistent
+PASS  #31  Gálvez troops 26 Nov 1783 vs 27 Nov 1783  expected=consistent|inconsistent  actual=consistent|inconsistent
+PASS  #32  Gálvez cattle supply 26 Nov 1783 vs 27 Nov 1783  expected=consistent|inconsistent  actual=consistent|inconsistent
+PASS  #33  Assumed Gálvez end is disclosed: ruleNote present for troops and cattle results  expected=true|true  actual=true|true
+PASS  #34  1836 act with no kind of service given stays 'Still possible: need his kind of service' (1832 categories), with a What to do line  expected=true  actual=true
+PASS  [plain] Fitting dates say plainly that this is not a ruling
+PASS  [plain] Every 'Not checked' widow result explains why and gives a next step
+PASS  [plain] 1853 / Feb-1855 acts: read from the statute text, each with its own statute link and its 'not checked here' term
+PASS  [plain] Next-step links are all Source Manifest source URLs with verified claims
+PASS  [plain] Each widow field has a one-line 'why it matters' tied to verified claims
+PASS  [plain] Unreadable date gets a plain hint naming the month, day and 4-digit year boxes
+PASS  [plain] No 'Not evaluated' wording remains in any visible output (all statuses, all laws, plan steps, labels)
+PASS  [plain] Next steps: dates fit -> 'Find the original records' (with National Archives links), then registrar, then application
+PASS  [plain] Next steps: dates don't fit -> 'Double-check the dates and the type of service' first, no 'find records' step
+PASS  [plain] Next steps: partly inside -> 'Pin down the exact dates' then find records
+PASS  [plain] Next steps: 'Can't check here' laws get their own step naming them, with the pension-files link
+PASS  [plain] Next steps: unreadable dates -> 'Fix the dates' first
+PASS  [plain] Next steps: every link is a manifest source or a site page; every claim verified; no fees or timelines
+PASS  [plain] Widow check: a law that fits -> 'Look for the widow's pension file' step citing the W-file and widow-info sources
+PASS  [plain] Widow check: every law ruled out or uncheckable -> no pension-file step
+PASS  [plain] Widow check: empty form -> 'Fill in the form above' first
+PASS  [plain] Site link points at the widow checker, not the retired service-date page
+PASS  [plain] Audit 2: 1836 'doesn't fit' says why in plain words (her marriage date vs. the end of his service, and the rule)
+PASS  [plain] Audit 2: 1836 with under 6 months says how many months were typed, singular when 1
+PASS  [plain] Audit 2: 1838 'doesn't fit' names the typed marriage date and the cutoff
+PASS  [plain] Audit 2: 1855/1878 'ruled out' says the days typed, the battle answer and the 14-day rule
+PASS  [plain] Audit 2: 'too rough to tell' says which dates straddle the rule
+PASS  [plain] Audit 2: every 'doesn't fit' or 'too rough' result carries a reason
+PASS  [plain] Audit 2: plural() reads '1 month', '2 months', '1 evidence entry', '0 evidence entries'
+PASS  [plain] Answer line: names what fits, what the dates rule out, what is still possible and what it needs
+PASS  [plain] Answer line: asks for the one field that settles the most open laws, with the box to answer it
+PASS  [plain] Answer line: nothing settled says so plainly; everything decided asks nothing more; input errors give no answer line
+PASS  [plain] Every widow law has a short name for the answer line
+PASS  [plain] Plain terms for 'Stat.' and 'bounty land' cite verified claims
+PASS  [plain] Audit 3: married 1790, service ended 1779, no months -> 1836 'doesn't fit' with the plain reason (a decisive failure wins over a missing field)
+PASS  [plain] Audit 3: under 6 months typed fails 1836 even with no dates; a missing field alone is 'Still possible', never 'Fits'
+PASS  [plain] Audit 3: every law, every input mix: a law is never left open when a field it tests already fails it
+PASS  [plain] Dates only (audit 4): across every marriage and end-of-service date mix, no law ever fits from the dates alone (1838 and 1848 also need his service)
+PASS  [plain] Months and days that disagree are an input error, not a guess
+PASS  [plain] Dates only: married 1790, service ended 1779 -> 1836 'Ruled out by the dates'; 1855 bounty-land and 1878 'Still possible: need 14 days or a battle'; nothing else fits
+PASS  [plain] Dates only: a 1777 marriage and service ending 1778 leave the 1836 law 'Still possible' (needs 6+ months and his kind of service), never 'Fits'
+PASS  [plain] Settled answers stay settled: whatever is filled in later, a 'Fits' never turns into anything else and a 'Ruled out' never reopens
+PASS  [plain] 'Fits' wording only ever appears on a fully settled law; open laws always name what they need
+PASS  [plain] Audit 4: 1838 law rules out a marriage before his service ended (that widow falls under 1836), with a plain reason
+PASS  [plain] Audit 4: 1838 law needs 6+ months of 1832-act service: 3 months rules it out; no months leaves it open
+PASS  [plain] Audit 4: 1848 law needs his kind of service: militia settles it; 'something else' asks whether the 1848 list covers it
+PASS  [plain] Audit 4: a fitting law never reads as plain 'Fits': it says other terms aren't checked and lists them, each from the law's own text (verified claims)
+PASS  [plain] Audit 4: every ruled-out law, every input mix, says no action is needed and shows no to-do links or 'find out' advice
+PASS  [plain] Audit 4: the 14-days-or-a-battle question is two separate boxes, each named, in the plan step too
+PASS  [plain] Audit 4: every statute link is a Source Manifest URL with a verified claim
+PASS  [plain] Inputs: every typed date (widow: marriage, service end; worksheet: patriot start, end) is a memorable-date field: Month list, Day and Year on the number pad, certainty list; autocomplete, autocorrect and autocapitalize off; no hyphen hints on numeric fields
+PASS  [plain] Dates: About 1780 = Jan 1 1778 to Dec 31 1782; About May 1780 = Nov 1 1779 to Nov 30 1780; day ignored under About; ends inclusive
+PASS  [plain] Dates: Before ends the day before the year/month/day begins and starts at 1600; After starts the day after it ends and runs to 1900
+PASS  [plain] Dates: saved values (1777, 1777-05, 1777-05-04) load into Month / Day / Year as 'Exactly' and re-save unchanged
+PASS  [plain] Dates: field checks: year exactly 4 digits and 1600-1900; day 1-31 and real for the month; a day needs a month
+PASS  [plain] Dates: every Month/Day/Year/certainty combination parses to a range inside 1600-1900 whose words name both ends
+PASS  [plain] Dates: widening never moves a law closer to 'Fits' than the exact dates inside the range (every law, marriage and service-end, all certainties)
+PASS  [plain] Dates: a range straddling a law's cutoff gives 'Still possible' (About 1793 for the 1838 law's January 1, 1794; After 1799 for the 1848 law's January 2, 1800)
+PASS  [plain] Dates: no date entry alone ever gives a 'Fits' verdict (every certainty, both date boxes, nothing else typed)
+PASS  [plain] Dates: the service-window check reads the new values too (About 1780 fits; Before 1775 is outside; About 1775 straddles)
+PASS  [plain] End-before-start error is plain
+Plain-language checks: 56/56 passed.
+Wording guard ("Qualif*" never appears in any output): PASS
+
+Service Window Checker: 36/36 scenarios passed.
+PASS  complete direct cell => Evidence Entered — Review Required
+PASS  same doc type, indirect => same label, adds caution (no grade by category)
+PASS  conflict flag overrides
+PASS  1850-70 census + parentage + direct => warning, not upgraded
+PASS  1850-70 census + residence => no caution (fact matters)
+PASS  missing toggle => Needs details
+PASS  empty => No Evidence Entered
+PASS  gaps: gen 2 without death/parentage listed
+PASS  generation names: 1 You, 2 Your parent, 3 Your grandparent, 4 Your great-grandparent, 5 Your 2nd-great-grandparent, 6 Your 3rd-great-grandparent
+PASS  gap text names the generation in plain words
+PASS  no jargon: "incomplete parentage entry" is gone; missing fields read "Still needed: ..."
+PASS  direct/indirect choice has a plain explanation for both options
+PASS  isEmptyCell: blank cell is empty; any field filled is not (blocks stacking blank rows)
+PASS  Where to look: every fact has a recent and an older entry
+PASS  Where to look: every source link is a Source Manifest source_url
+PASS  Where to look: every claim behind the text is a verified manifest claim
+PASS  Where to look: every guide link points to a real page on this site
+PASS  Where to look: every listed gap carries a Where-to-look note with the registrar fallback
+PASS  Where to look: older parentage points to the National Archives census page; recent birth says to ask the registrar
+PASS  plan: the records step lists every item from the user's own gaps, each missing one with Where to look
+PASS  plan: within a generation, flagged conflicts come first
+PASS  plan: ends with 'Contact a local chapter's registrar' then 'Start the application'
+PASS  plan: chapter-finder and record links are all Source Manifest source URLs
+PASS  plan: site links point to real pages
+PASS  plan: every claim behind a step is a verified manifest claim
+PASS  plan: no fees, prices or timelines are stated
+PASS  plan: an empty worksheet gets 'Fill in the worksheet' first
+PASS  plan: nothing missing says so plainly (no false 'proven')
+PASS  blank row: never labelled 'Evidence Entered — Review Required'
+PASS  blank row: not counted (countEntries / filledCells skip it)
+PASS  blank row: adds no gap items and no labels to the gap list
+PASS  order: gap list is in generation order (never gen 2 after gen 4)
+PASS  order: each generation appears exactly once when grouped, in order
+PASS  order: grouped items drop the repeated 'Generation N' prefix
+PASS  order: action plan lists each generation once, in order
+PASS  patriot: every service type maps to a DAR date window and cites verified claims (or none)
+PASS  patriot: Virginia militia 1777-05 to 1779-10 fits the period (not a ruling); Virginia Oath in 1778 does not; committee in May 1774 does
+PASS  patriot: militia advice says the National Archives has no militia records and links the Library of Virginia guide
+PASS  patriot: Continental advice names the National Archives service records (M881)
+PASS  patriot: a state with no verified source says so honestly and falls back to the NYPL advice (no invented records)
+PASS  patriot: no patriot entered -> first plan step asks for him; date problems get their own step
+PASS  patriot: military service gets the widow-pension step (linking the checker); civil service does not
+PASS  patriot: the plan leads with his service and drops the old standalone date-check step
+PASS  patriot: every plan link is a manifest source or a site page, every claim verified
+PASS  patriot: the oldest generation is the patriot unless another is picked; groups label it
+PASS  era: an ancestor born 1820 in Virginia gets no birth-certificate advice (Virginia did not record births before 1853)
+PASS  era: Virginia 1880 birth -> county registers 1853-1896; 1900 -> the 1897-1911 gap; 1920 -> recording resumed 1912
+PASS  era: New Jersey before 1848 not filed; North Carolina before 1913 -> county Register of Deeds; Pennsylvania before 1906 -> county courthouse
+PASS  era: death with only a birth year lists just the periods it could fall in
+PASS  state: no verified source -> says so, gives the census/National Archives fallback, never claims a record exists
+PASS  state: no state picked -> a plain hint, not a guess
+PASS  census: only censuses in the lifetime are listed; the patriot alive in 1840 gets the pensioner note
+PASS  sources: every state entry cites verified claims; every link is a Source Manifest URL; every state code is real
+PASS  sources: every vital period is in year order with no overlaps
+PASS  gaps: a patriot row with no state of its own uses the patriot's state
+PASS  audit 2: Generation 1 can never be the patriot; a saved '1' falls back to the oldest generation
+PASS  audit 2: gaps never label Generation 1 as the patriot
+PASS  audit 2: a Virginia birth before 1853 says plainly there was no statewide birth recording, and links the substitute-evidence guide at that gap
+PASS  audit 2: the same link appears for New Jersey before 1848, South Carolina before 1915 and Virginia 1897-1911 (sourced 'no record' periods)
+PASS  audit 2: no 'no record' claim where the source points to county records or the state has records (NC 1900, PA 1890, VA 1880, MD, Texas), and never on deaths
+PASS  audit 2: every 'no record' period cites verified claims
+PASS  the word "Documented" never appears in output
+PASS  plain relationship names map to generations (2 father, 3 grandfather, 4 great-, 5 2nd-great, 6 3rd-great)
+PASS  ordinals: 1st 2nd 3rd 4th 11th 12th 13th 21st 22nd
+PASS  'What do you have?' items use real record kinds and facts
+PASS  checklist covers birth record, will, census, Bible record and pension file
+PASS  plan items carry the generation and fact so the report can point to 'Where to look' once
+PASS  audit 3: a ticked 'Census entry' has a real kind and is 'Needs details' (asks which census), not 'No Evidence Entered'
+PASS  audit 3: anything typed or ticked is 'Needs details' until finished, so status and the entry count agree; only a blank record is 'No Evidence Entered'
+PASS  audit 3: within a generation, the plan lists the person's own records (birth, death) before the link record
+PASS  audit 3: report records sort birth, death, marriage, residence, then link
+PASS  audit 3: missing records carry an add path; the patriot's generation (4+) asks for birth or death, as DAR's rule says
+PASS  audit 3: a state with no verified source gets a 'nosource' note tagged with the state, and the report merges its facts into one sentence
+PASS  audit 3: census notes carry their separate facts so the report prints each once
+PASS  audit 4: a patriot born in 1850 with 1777-79 service gets an 'impossible' warning (he wasn't born yet)
+PASS  audit 4: the plan opens with 'Check these dates first' when years don't add up, and has no such step when they do
+PASS  audit 4: a patriot aged about 5 at his service start is flagged as unlikely; aged 22 is not
+PASS  audit 4: a patriot who died before the service began is flagged
+PASS  audit 4: a child born before or the same year as the parent is 'impossible'; 8 years after is 'unlikely'; 75 years after is 'unusually old'
+PASS  audit 4: a death year before the birth year, or a parent dying more than a year before the child's birth, is flagged
+PASS  audit 4: sensible years (the worksheet's own example line) raise no warnings; blank years never warn
+PASS  Nov 5: age ceiling: a lifespan over 110 years, or a 'still living' person born over 110 years ago, is flagged as unlikely
+PASS  Nov 5: the patriot dying after his service began but before it ended is 'unlikely' (he may have died in service), not 'impossible'
+PASS  Nov 5: an 'unlikely'-only plan step is worded softly
+PASS  audit 4: warnings never say 'fits' or 'proven'
+PASS  audit 4: the NSCDA plain term names the society and rests on verified claims
+PASS  audit 4: the unfinished-record label is 'Needs details' (renamed from 'Entry Incomplete') and the old name is gone from the tool code
+PASS  audit 4: the substitutes panel appears only at a generation with no birth record; a blank record doesn't count as one
+PASS  audit 4: substitutes are listed in order (baptism, Bible, then estimates and affidavits); the pension-file step is offered only to generation 4 and older
+PASS  audit 4: every substitute step, and the 'use two or more' note, rests on verified manifest claims; links are manifest URLs and the guide is a real page
+PASS  audit 4: the 'Don't know your patriot's name yet?' checklist has 4 plain to-dos; any fact it states (DAR's free database) carries a verified claim
+PASS  t124u/t125u: CT, GA and MA have birth, death and marriage notes (13 states with vital guidance)
+PASS  t124u: each new note is exactly Tim's site text, and every sentence is a verified claim's own text
+PASS  t125u: Massachusetts uses only Tim's Mass.gov sentence (no 'no verified source yet' note); the failed t124u MA sentences stay out
+PASS  t124u: the worksheet page's state sentence matches the tool exactly (names and counts, vital and service)
+PASS  t124u: no 'he/his/him' or 'soldier's' left in the patriot step's own text (made-up example, husbands and veterans excepted)
+
+Lineage Evidence Matrix: 96/96 sanity checks passed.
+Mixed-gate matrix: 19,906,560 metric combinations resolved, each to exactly one outcome; 24 rules, unreachable: none.
+Gate examples: 29/29 passed.
+PASS  live 200 passes and updates last-passed
+PASS  quote mismatch always blocks, even with a fresh last-pass
+PASS  404 always blocks; no fallback
+PASS  410 always blocks; no fallback
+PASS  403 with fresh last-pass uses fallback and warns
+PASS  500 with fresh last-pass uses fallback
+PASS  502/503/504 with fresh last-pass use fallback
+PASS  timeout with fresh last-pass uses fallback
+PASS  certificate error with fresh last-pass uses fallback
+PASS  403 with no last-pass blocks
+PASS  503 with last-pass ≥ 30 days blocks
+PASS  429 (not fallback-eligible) blocks even with a fresh last-pass
+PASS  classifyFailure marks 403/5xx/timeout/certificate as fallback-eligible
+PASS  classifyFailure marks 404/410/quote mismatch as non-fallback
+PASS  lastPassAgeDays under 30 for today's seed
+PASS  lastPassAgeDays null when missing
+PASS  a new URL's pass is saved to disk immediately
+PASS  existing entries are kept when a new one is recorded
+PASS  a later failing source doesn't erase earlier passes
+PASS  a source recorded earlier in the run is fallback-eligible right after (403 within 30 days)
+PASS  every passing source in a run gets its own date
+PASS  a live match records quote, time and uses on disk
+PASS  fallback covers a claim matched before with the same quote and uses
+PASS  fallback HOLDS a new claim never matched against the page
+PASS  fallback HOLDS a claim whose quote changed since its match
+PASS  fallback HOLDS a claim moved to another source
+PASS  fallback reports new uses of a matched claim (warning)
+Source-pass rules: 27/27 passed.
+PASS  space before period (inline tag): NARA 'Search Within the series .' matches the quote
+PASS  space before period after a link: NATF Form 85 '... placing an order online .' matches
+PASS  each of , ; : ! ? also loses the whitespace before it
+PASS  the same rule applies to the quote side
+PASS  whitespace runs collapse to one space
+PASS  whitespace AFTER punctuation is kept (one space)
+PASS  other characters keep their spacing (no change to ) or quotes)
+PASS  a genuinely different quote still fails
+PASS  normJoin still rejoins hyphenated line breaks and gets the punctuation rule
+Quote normalization: 9/9 passed.
+PASS  consistency check prints 'Live-source check: NOT RUN' on its own line
+PASS  consistency check never prints 'Live-source check: RUN'
+PASS  manifest-check-report.json states live_source_check NOT RUN with the exact line
+PASS  a consistency-only run leaves the live-run report untouched
+PASS  the live-run report says 'Live-source check: RUN'
+PASS  the consistency report points to the last live run
+PASS  the link checker reports 'Live-source check: NOT RUN' (it never verifies quotes)
+Live-source status: 7/7 passed.
+PASS  the choice is labelled exactly "Skip for now" and covers all four questions (A to D)
+PASS  skipping fact clears that answer and marks it skipped
+PASS  skipping fact: the record reads "Needs details", not a conflict
+PASS  skipping fact: its note reads "Still needed (skipped for now): ..."
+PASS  skipping fact: the gap report lists it as "Still needed", never as an error
+PASS  skipping docType clears that answer and marks it skipped
+PASS  skipping docType: the record reads "Needs details", not a conflict
+PASS  skipping docType: its note reads "Still needed (skipped for now): ..."
+PASS  skipping docType: the gap report lists it as "Still needed", never as an error
+PASS  skipping mode clears that answer and marks it skipped
+PASS  skipping mode: the record reads "Needs details", not a conflict
+PASS  skipping mode: its note reads "Still needed (skipped for now): ..."
+PASS  skipping mode: the gap report lists it as "Still needed", never as an error
+PASS  skipping citation clears that answer and marks it skipped
+PASS  skipping citation: the record reads "Needs details", not a conflict
+PASS  skipping citation: its note reads "Still needed (skipped for now): ..."
+PASS  skipping citation: the gap report lists it as "Still needed", never as an error
+PASS  a record with all four questions skipped is kept (not treated as blank) and counted
+PASS  a fully skipped record lists all four answers as "Still needed" and reads "the record" (no "record record")
+PASS  a fully skipped record never produces an error or conflict anywhere in the plan
+PASS  answering a skipped question clears the skip
+PASS  fields left blank (without pressing Skip) also read "Still needed", never an error
+PASS  the worksheet offers Skip for now on A and B (menus), C (a third choice) and D (a tick box)
+PASS  no record question is marked required in the worksheet
+PASS  "Still needed" notes are styled as to-dos (amber), not in the error red
+PASS  the report table shows "Still needed" for an unanswered or skipped field (no dash)
+Skip for now: 26/26 passed.
+PASS Pinned intermediate is the GlobalSign GCC R46 OV TLS CA 2025 — C=BE, CN=GlobalSign GCC R46 OV TLS CA 2025, O=GlobalSign nv-sa
+PASS Only nysed.gov hosts get the extra CA
+PASS No verification-disabling flags in the checker
+PASS nysl.nysed.gov verifies with the pinned intermediate — HTTP 200, issuer GlobalSign GCC R46 OV TLS CA 2025
+PASS archives.nysed.gov verifies with the pinned intermediate — HTTP 301, issuer GlobalSign GCC R46 OV TLS CA 2025
+
+nysed TLS: 5/5 passed.
+PASS  every manifest claim carries a scope tag: national, state, chapter-local or third-party
+PASS  the 2023 Ohio Society SAR presentation (hosted by a chapter) is chapter-local; NSCDA's South Carolina standards are state; the SAR checklist is national
+PASS  the NSCDA South Carolina source is renamed exactly
+PASS  flags 'SAR says' backed only by the Ohio presentation
+PASS  t147: SAR's Genealogy Committee Policies are national, the Ohio replacement/withdrawal claims are gone, and 'SAR's genealogy policies say' is not flagged
+PASS  t146: SAR's application guide (APG) is national, and the re-sourced lines are not flagged
+PASS  flags 'As of <date>, SAR says' backed only by the Ohio presentation
+PASS  flags 'NSCDA lists' / 'Listed by NSCDA' / 'under NSCDA rules' backed only by the South Carolina standards
+PASS  flags 'SAR says' backed only by a DAR claim (wrong society)
+PASS  flags a third-party source worded as a DAR rule
+PASS  does not flag honest attribution: 'A 2023 Ohio Society SAR presentation said ...' and 'NSCDA's South Carolina society's standards say ...'
+PASS  does not flag 'DAR says' backed by DAR's national site, or SAR wording backed by SAR's national checklist
+PASS  'As of' is allowed only for national and state sources
+PASS  no {{asof:}} uses a chapter-local or third-party source (and none uses the Ohio presentation)
+PASS  the offline gate reports 0 rule-7 flags on the site's pages and tools
+PASS  the pre-t127u Application Returned and Substitute Evidence text gets flagged (17 lines)
+PASS  no worksheet text (25 items) is worded as a society-wide rule on a non-national source
+PASS  worksheet text never says 'NSCDA says/lists/asks/advises' without naming the South Carolina society
+PASS  societyRuleMentions ignores claim markers and finds DAR/SAR/NSCDA rule wording
+
+Source scope (rule 7): 19/19 passed.
+PASS  nothing is restored while the DAR pages are unreachable (fallback/fail)
+PASS  waiting entries name the sources they wait on
+PASS  an entry is restored automatically when every source it depends on passed live
+PASS  an entry that still depends on an unreachable source stays held
+PASS  a restored entry is marked restored with its time
+PASS  all held entries restore once all their pages pass; already-restored ones are not touched twice
+PASS  if the held text was edited by hand, it is reported and not restored blindly
+PASS  real registry: 14 held entries, each held text present exactly once in its file
+PASS  real registry includes the t129 holds (dar-each-relationship on the FAQ, dar-review-staff on the worksheet limits)
+PASS  real registry: every entry depends only on the DAR pages
+Held-back restore: 10/10 passed.
+PASS  every meta description is unique and 120–155 characters
+PASS  the map covers every built page (home, 10 guides, 2 tools, 2 reports, 6 site pages, sources, 404)
+PASS  metaFor('/') returns the home description and throws on an unknown path
+PASS  withSuffixIfFits adds the site-name suffix only when the full title is ≤ 60 characters
+PASS  a 37-character title plus the 23-character suffix lands on 60 and keeps the suffix; 38 drops it
+PASS  the existing share image is present at src/assets/og-image.png
+PASS  the share image is 1200×630 (large enough for twitter:card summary_large_image)
+PASS  lastmod is a YYYY-MM-DD Chicago date for every sitemap page (not reports or 404, which are not in the sitemap)
+PASS  lastmod dates are not in the future and are on or after the Oct 31, 2026 launch
+PASS  Same Name lastmod is 2026-11-11 (t149 content) and About is 2026-11-10 (t138 content), not a template-only date
+PASS  both tool pages lastmod on 2026-11-11 (t156 callout, a visible body change in build.mjs); FAQ stays 2026-11-10 (no tool-callout bump)
+PASS  chicagoDate converts a UTC instant to the America/Chicago calendar date
+t157 page-meta: 12/12 passed.

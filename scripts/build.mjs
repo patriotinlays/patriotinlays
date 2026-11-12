@@ -12,6 +12,8 @@ import { sourceLabel, SOURCE_TOPICS } from "./lib/source-labels.mjs";
 import { asofAllowed } from "./lib/source-scope.mjs";
 import { createHash } from "node:crypto";
 import { titleCase, titleCaseHeadings, titleCaseInner } from "./lib/title-case.mjs";
+import { metaFor, withSuffixIfFits } from "./lib/page-meta.mjs";
+import { lastmodFor } from "./lib/page-lastmod.mjs";
 const ROOT = new URL("..", import.meta.url).pathname;
 const OUT = join(ROOT, "dist");
 const SITE = "https://patriotinlays.com";
@@ -193,12 +195,18 @@ const NAV = `<header class="site"><div class="wrap"><a class="brand" href="/" ar
 const FOOT = `<footer class="site"><div class="wrap"><a href="/about/" data-foot-about>About</a><a href="/ai-disclosure/" data-foot-ai>AI Disclosure</a><a href="/faq/">FAQ</a><a href="/walkthroughs/">Walkthroughs</a><a href="/sources/">Sources</a><a href="/privacy/">Privacy</a><a href="/contact/">Contact</a><p>Not affiliated with DAR, SAR, NSCDA or the National Archives. Not legal or professional genealogical advice.</p></div></footer>`;
 function page({ title, description, path, body, noindex = false }) {
   // Tim t146 #4: Title Case for the page <title> (and og:title) and every heading on the page.
+  // Tim t157: unique meta description (from page-meta.mjs, 120–155 chars); <title> keeps the
+  // site-name suffix only when the full string fits in about 60 characters; complete OG and Twitter tags.
   title = titleCase(title); body = titleCaseHeadings(body);
+  const desc = metaFor(path);
+  const docTitle = withSuffixIfFits(title);
+  const abs = `${SITE}${path}`;
+  const img = `${SITE}/assets/og-image.png`;
   return `<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>${esc(title)} | Patriot In Lay Terms</title><meta name="description" content="${esc(description || "")}">
-<link rel="canonical" href="${SITE}${path}">${noindex ? '<meta name="robots" content="noindex">' : ""}
+<title>${esc(docTitle)}</title><meta name="description" content="${esc(desc)}">
+<link rel="canonical" href="${abs}">${noindex ? '<meta name="robots" content="noindex">' : ""}
 <link rel="icon" href="/favicon.svg" type="image/svg+xml"><link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32"><link rel="icon" href="/favicon-16.png" type="image/png" sizes="16x16"><link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180"><meta name="theme-color" content="#13294b">
-<meta property="og:type" content="website"><meta property="og:site_name" content="Patriot, In Lay Terms"><meta property="og:title" content="${esc(title)}"><meta property="og:description" content="${esc(description || "")}"><meta property="og:url" content="${SITE}${path}"><meta property="og:image" content="${SITE}/assets/og-image.png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:alt" content="Patriot, In Lay Terms logo: an open book"><meta name="twitter:card" content="summary_large_image">
+<meta property="og:type" content="website"><meta property="og:site_name" content="Patriot, In Lay Terms"><meta property="og:title" content="${esc(docTitle)}"><meta property="og:description" content="${esc(desc)}"><meta property="og:url" content="${abs}"><meta property="og:image" content="${img}"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:alt" content="Patriot, In Lay Terms logo: an open book"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="${esc(docTitle)}"><meta name="twitter:description" content="${esc(desc)}"><meta name="twitter:image" content="${img}">
 <link rel="stylesheet" href="/assets/site.css"></head><body>${NAV}<main><div class="wrap">${body}</div></main>${FOOT}<script src="/assets/js/open-details.js" defer></script></body></html>`;
 }
 function write(path, html) { const f = join(OUT, path, "index.html"); mkdirSync(dirname(f), { recursive: true }); writeFileSync(f, versionUrls(markExternal(html))); }
@@ -309,7 +317,7 @@ write("tools/widow-pension-checker/report", page({ title: "Widow Pension Law Che
 write("tools/lineage-matrix/report", page({ title: "Lineage Evidence Matrix: Your Report", description: "Printable gap report rendered from this browser only.", path: "/tools/lineage-matrix/report/", noindex: true,
   body: `<h1>Lineage Evidence Matrix: your report</h1><p>What's still missing in your line, where to look for it, and the records you've entered. <a class="small" href="/#glossary">New here? What DAR, SAR, NSCDA, "lineage society" and "patriot" mean</a></p><section class="tool" data-tool-report="lineage-matrix"><p class="report-actions"><button type="button" class="big" data-save-pdf>Save as PDF</button> <span class="small" data-page-claim data-summary-pages="2" data-full-pages="3">Saves the summary and "Where to look": in the print window, choose "Save as PDF". The made-up example takes 2 Letter pages this way. Ctrl+P (your browser's own Print) and the "Print the full report" button print every record as well: 3 pages for the example. A longer family line prints longer.</span></p><div data-report><p>Loading your saved matrix…</p></div><button type="button" data-print>Print the full report (with every record)</button><button type="button" class="secondary" data-clear="toolB">Delete all my worksheet data</button></section><p class="small">Built in your browser from what you typed on this device. Nothing is uploaded. Every label means "still needs review": only a society's genealogists decide what is proven.</p><p class="no-print"><a href="/tools/lineage-matrix/">Back to the matrix</a></p><script type="module" src="/assets/js/tool-b-ui.js"></script>` }));
 writeFileSync(join(OUT, "404.html"), versionUrls(page({ title: "Page Not Found", path: "/404.html", noindex: true, body: `<h1>Page not found</h1><p>That page doesn't exist. <a href="/">Go to the home page</a>.</p>${START_HERE}` })));
-writeFileSync(join(OUT, "sitemap.xml"), `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${sitemap.filter((p) => !p.includes("/contact/") || true).map((p) => `  <url><loc>${SITE}${p}</loc><lastmod>${BUILD_DATE}</lastmod></url>`).join("\n")}\n</urlset>\n`);
+writeFileSync(join(OUT, "sitemap.xml"), `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${sitemap.filter((p) => !p.includes("/contact/") || true).map((p) => `  <url><loc>${SITE}${p}</loc><lastmod>${lastmodFor(p)}</lastmod></url>`).join("\n")}\n</urlset>\n`);
 writeFileSync(join(OUT, "robots.txt"), `User-agent: *\nDisallow: /tools/widow-pension-checker/report/\nDisallow: /tools/lineage-matrix/report/\nSitemap: ${SITE}/sitemap.xml\n`);
 // The standalone service-date checker was folded into the worksheet's patriot step; old URLs redirect (Cloudflare Pages _redirects).
 writeFileSync(join(OUT, "_redirects"), ["/tools/service-window-checker /tools/widow-pension-checker/ 301", "/tools/service-window-checker/ /tools/widow-pension-checker/ 301",

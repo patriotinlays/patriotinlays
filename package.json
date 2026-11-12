@@ -5,7 +5,7 @@
   "type": "module",
   "description": "patriotinlays.com 90-day pilot: static site, two client-side tools, Source Manifest enforcement.",
   "scripts": {
-    "test": "node scripts/test-service-window.mjs && node scripts/test-lineage-matrix.mjs && node scripts/test-gates.mjs && node scripts/test-source-pass.mjs && node scripts/test-normalize.mjs && node scripts/test-live-status.mjs && node scripts/test-skip-for-now.mjs && node scripts/test-nysed-tls.mjs && node scripts/test-source-scope.mjs && node scripts/test-held-back.mjs",
+    "test": "node scripts/test-service-window.mjs && node scripts/test-lineage-matrix.mjs && node scripts/test-gates.mjs && node scripts/test-source-pass.mjs && node scripts/test-normalize.mjs && node scripts/test-live-status.mjs && node scripts/test-skip-for-now.mjs && node scripts/test-nysed-tls.mjs && node scripts/test-source-scope.mjs && node scripts/test-held-back.mjs && node scripts/test-page-meta.mjs",
     "check": "node scripts/check-manifest.mjs",
     "check:links": "node scripts/check-manifest.mjs --links",
     "prebuild": "npm test && npm run check:links",

@@ -260,6 +260,9 @@ Docs: https://developers.cloudflare.com/pages/how-to/web-analytics/
 - February 28, 1855 navy-widow law cited as ch. 126, sec. 3, 10 Stat. 616 (chapter begins at 615); 10 Stat. 701 is only the March 3, 1855 bounty-land act.
 - Worksheet: step 1 is the patriot, step 2 starts the family with yourself; removing the oldest generation asks for confirmation.
 
+### t157 (Nov 11, 2026)
+- Search housekeeping, no visible body changes and no new facts. Every page has a unique meta description (120–155 characters, from wording already on that page), complete Open Graph and Twitter card tags (existing 1200×630 share image), and a `<title>` that matches the visible heading in Title Case, with the site-name suffix only when the full title fits in about 60 characters. `sitemap.xml` `<lastmod>` is the America/Chicago date of each page's last content change, from git history of that page's source files (template-only and meta-only commits are ignored). Descriptions live in `scripts/lib/page-meta.mjs` so the home guide-list blurbs (`fm.description`) are unchanged.
+
 ### t156 (Nov 11, 2026) — preview only
 - Widow Pension Law Checker and Lineage Evidence Matrix: the t119 "New to this? Start with the Roadmap guide." pointer is removed. Only the t155 callout remains: "New here? Start with the Roadmap guide for the full step-by-step process.", with only "Roadmap guide" linked to `/guides/lineage-proof-roadmap/`. No other changes.
 

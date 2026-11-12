@@ -1,8 +1,8 @@
 {
-  "ranAt": "Wed Nov 11 2026 17:23:56 GMT-0600 (Central Standard Time)",
+  "ranAt": "Wed Nov 11 2026 22:12:39 GMT-0600 (Central Standard Time)",
   "browser": "/usr/bin/google-chrome (headless) via playwright-core 1.59.1",
-  "passed": 318,
-  "total": 318,
+  "passed": 325,
+  "total": 325,
   "exampleReportPages": {
     "summaryPages": 2,
     "fullPages": 3,
@@ -824,7 +824,7 @@
     {
       "name": "t122u #9/#8: the home page's one visible heading is the tagline; the site name is in the h1 for screen readers and in the title; a short red rule sits under it",
       "ok": true,
-      "detail": "{\"h1s\":1,\"sr\":\"Patriot, In Lay Terms: \",\"srHidden\":true,\"vis\":\"Plain-English Help With DAR and SAR Applications, for the Daughters and the Sons of the American Revolution\",\"visH\":143.9375,\"title\":\"Patriot, In Lay Terms: Plain-English Help for DAR and SAR Applications | Patriot In Lay Terms\",\"rule\":\"rgb(178, 34, 52)\",\"ruleW\":\"56px\"}"
+      "detail": "{\"h1s\":1,\"sr\":\"Patriot, In Lay Terms: \",\"srHidden\":true,\"vis\":\"Plain-English Help With DAR and SAR Applications, for the Daughters and the Sons of the American Revolution\",\"visH\":143.9375,\"title\":\"Patriot, In Lay Terms: Plain-English Help for DAR and SAR Applications\",\"rule\":\"rgb(178, 34, 52)\",\"ruleW\":\"56px\"}"
     },
     {
       "name": "t122u #11: every visible text element on all 22 pages passes WCAG AA contrast (4.5:1, large text 3:1) — 3571 elements",
@@ -844,7 +844,7 @@
     {
       "name": "t123u #2: each guide's 'Sources last checked' date is the oldest recorded live pass among its own listed sources (every source has a record; nothing invented)",
       "ok": true,
-      "detail": "lineage-proof-roadmap=2026-11-05 substitute-evidence=2026-11-05 read-pension-file=2026-11-11 records-by-state=2026-11-05 bounty-land-warrants=2026-11-11 census-bridge=2026-11-05 patriotic-service=2026-11-05 same-name=2026-11-11 patriot-or-loyalist=2026-11-11 application-problems=2026-11-05"
+      "detail": "lineage-proof-roadmap=2026-11-05 substitute-evidence=2026-11-05 read-pension-file=2026-11-12 records-by-state=2026-11-05 bounty-land-warrants=2026-11-12 census-bridge=2026-11-05 patriotic-service=2026-11-05 same-name=2026-11-12 patriot-or-loyalist=2026-11-12 application-problems=2026-11-05"
     },
     {
       "name": "t124u #1 (390px): every Sources entry on every page (16 pages, 291 entries) has a visible \"Used for: ...\" line of at most about 8 words, and the raw URL is hidden on screen",
@@ -1034,7 +1034,7 @@
     {
       "name": "t146 #2 / t128u #3: DAR record copies, the birth certificate and the date format are re-sourced to SAR's national Application Preparation Guide ('SAR's application guide says', As of its last pass); the Ohio wording for them is gone",
       "ok": true,
-      "detail": "November 11, 2026"
+      "detail": "November 12, 2026"
     },
     {
       "name": "t128u #1: the t127 DAR-FAQ/Step-by-step rewordings are held back (DAR pages unreachable since their Nov 5 pass); the South Carolina attributions are back",
@@ -1344,7 +1344,7 @@
     {
       "name": "t149: Same Name's 'Residence vs. Service' row keeps DAR's point and then has the SAR residency sentence ('As of' its date); 'Right Age' has only the alive-and-of-age sentence",
       "ok": true,
-      "detail": "{\"res\":\"Residence vs. serviceWhere your patriot lived and where the service was performedA residence and service location that do not match is a standard DAR review trigger. As of November 11, 2026, SAR's application guide says the patriot's residence during the Revolution must agree with the service being \",\"age\":\"Right ageBirth range vs. serviceAs of November 11, 2026, SAR's application guide says that if the patriot's birth date can't be found, you cite a proven fact showing he was living at the time of the service and of age for it\"}"
+      "detail": "{\"res\":\"Residence vs. serviceWhere your patriot lived and where the service was performedA residence and service location that do not match is a standard DAR review trigger. As of November 12, 2026, SAR's application guide says the patriot's residence during the Revolution must agree with the service being \",\"age\":\"Right ageBirth range vs. serviceAs of November 12, 2026, SAR's application guide says that if the patriot's birth date can't be found, you cite a proven fact showing he was living at the time of the service and of age for it\"}"
     },
     {
       "name": "t149 (390px): Same Name fits the screen (no sideways scroll)",
@@ -1577,6 +1577,41 @@
       "detail": "{\"vis\":true,\"text\":\"New here? Start with the Roadmap guide for the full step-by-step process.\",\"href\":\"/guides/lineage-proof-roadmap/\",\"linkText\":\"Roadmap guide\",\"n\":1,\"old\":false,\"sw\":1280,\"iw\":1280}"
     },
     {
+      "name": "t157: every page has a unique meta description, 120–155 characters, matching the t157 list and used for og:description and twitter:description",
+      "ok": true,
+      "detail": " pages=23"
+    },
+    {
+      "name": "t157: every page <title> is unique, matches its visible heading in Title Case, and keeps the site-name suffix only when the full title is ≤ 60 characters",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "t157: every page has og:type, og:title, og:description, og:url, og:image (absolute, cache-busted existing share image), twitter:card summary_large_image, twitter:title, twitter:description, twitter:image",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "t157: sitemap.xml lastmod on each URL is the Chicago date of that page's last content change (git history of its source files, ignoring template-only and meta-only commits)",
+      "ok": true,
+      "detail": "n=20 "
+    },
+    {
+      "name": "t157: /tools/widow-pension-checker/ still has the single t156 callout and no t119 pointer (visible body unchanged except we didn't touch it)",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "t157: /tools/lineage-matrix/ still has the single t156 callout and no t119 pointer (visible body unchanged except we didn't touch it)",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "t157: home page visible intro, AI line, and guide-list blurbs are unchanged (meta lives only in <head>)",
+      "ok": true,
+      "detail": ""
+    },
+    {
       "name": "t130 #1 (390px): under the heading and independent line, Tim's sentence, then the three start cards (stacked) with his exact titles, lines and navy buttons, then 'See how the tools work', then the longer paragraphs; the 'Ready to get started?' box is gone",
       "ok": true,
       "detail": "{\"order\":[0,1,2,3,4,5,6],\"cards\":[[424,16],[634,16],[863,16]],\"seeHow\":[\"See how the tools work\",\"/walkthroughs/\"],\"oldBox\":false}"
@@ -1632,7 +1667,7 @@
       "detail": ""
     }
   ],
-  "requestsTotal": 721,
+  "requestsTotal": 720,
   "externalRequests": 0,
   "interactionRequests": 0,
   "faviconLate": 25

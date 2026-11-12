@@ -1296,6 +1296,88 @@ for (const w of [390, 1280]) { const cx = await browser.newContext({ viewport: {
       await pg.locator("[data-roadmap-callout]").scrollIntoViewIfNeeded();
       await pg.screenshot({ path: join(REL16, `${shot}-${w}.png`) }); }
     await cx.close(); } }
+// ---- t157: unique meta descriptions, title suffix policy, sitemap lastmod, complete OG/Twitter tags; nothing visible changed ----
+{ const REL17 = join(ROOT, "qa/release-logs/t157"); mkdirSync(REL17, { recursive: true });
+  const { META_DESCRIPTIONS, META_MIN, META_MAX, TITLE_SUFFIX, TITLE_BUDGET, withSuffixIfFits } = await import(new URL("../scripts/lib/page-meta.mjs", import.meta.url));
+  const { lastmodFor } = await import(new URL("../scripts/lib/page-lastmod.mjs", import.meta.url));
+  const { readdirSync: rd157 } = await import("node:fs");
+  const htmlFiles17 = [];
+  const walk17 = (d) => { for (const f of rd157(d, { withFileTypes: true })) { const p = join(d, f.name); if (f.isDirectory()) walk17(p); else if (f.name.endsWith(".html")) htmlFiles17.push(p); } };
+  walk17(DIST);
+  const pathOf = (f) => { if (f.endsWith("/404.html") || f === join(DIST, "404.html")) return "/404.html"; let r = f.slice(DIST.length).replace(/\\/g, "/"); if (r.endsWith("/index.html")) r = r.slice(0, -10); if (r === "") r = "/"; if (!r.endsWith("/") && r !== "/404.html") r += "/"; return r; };
+  const descBad = [], titleBad = [], ogBad = [], visTitle = new Set(), visDesc = new Set();
+  const SUF = TITLE_SUFFIX.replace(/[|]/g, "\\|");
+  for (const f of htmlFiles17) {
+    const p = pathOf(f); const h = readFileSync(f, "utf8");
+    const desc = ((h.match(/<meta name="description" content="([^"]*)">/) || [])[1] || "").replace(/&amp;/g, "&").replace(/&quot;/g, '"').replace(/&lt;/g, "<").replace(/&gt;/g, ">");
+    const expect = META_DESCRIPTIONS[p];
+    const n = [...desc].length;
+    if (!expect || desc !== expect || n < META_MIN || n > META_MAX) descBad.push(`${p}: ${n} ${desc && desc.slice(0, 60)}`);
+    if (visDesc.has(desc)) descBad.push(`${p}: duplicate description`);
+    visDesc.add(desc);
+    const dec = (x) => x.replace(/&amp;/g, "&").replace(/&quot;/g, '"').replace(/&lt;/g, "<").replace(/&gt;/g, ">");
+    const title = dec((h.match(/<title>([\s\S]*?)<\/title>/) || [])[1] || "");
+    const h1raw = (h.match(/<h1[^>]*>([\s\S]*?)<\/h1>/) || [])[1] || "";
+    const h1 = dec(h1raw.replace(/<span class="sr-only">[\s\S]*?<\/span>/g, "").replace(/<[^>]+>/g, "").replace(/\s+/g, " ").trim());
+    const h1full = dec(h1raw.replace(/<[^>]+>/g, "").replace(/\s+/g, " ").trim());
+    const pageTitle = title.replace(new RegExp(SUF + "$"), "");
+    if (p !== "/" && pageTitle !== h1full && pageTitle !== h1) titleBad.push(`${p}: title "${title}" vs h1 "${h1full}"`);
+    const shouldSuffix = (pageTitle + TITLE_SUFFIX).length <= TITLE_BUDGET;
+    if (shouldSuffix && !title.endsWith(TITLE_SUFFIX)) titleBad.push(`${p}: missing suffix (${title.length})`);
+    if (!shouldSuffix && title.endsWith(TITLE_SUFFIX)) titleBad.push(`${p}: suffix should have been dropped (${title.length})`);
+    if (visTitle.has(title)) titleBad.push(`${p}: duplicate title "${title}"`);
+    visTitle.add(title);
+    const abs = "https://patriotinlays.com" + p;
+    const imgRe = 'https://patriotinlays\\.com/assets/og-image\\.png\\?v=[0-9a-f]{10}';
+    const escTitle = title.replace(/&/g, "&amp;");
+    const escDesc = expect.replace(/&/g, "&amp;").replace(/"/g, "&quot;");
+    const need = [
+      `<meta property="og:type" content="website">`,
+      `<meta property="og:title" content="${escTitle}">`,
+      `<meta property="og:description" content="${escDesc}">`,
+      `<meta property="og:url" content="${abs}">`,
+      new RegExp(`<meta property="og:image" content="${imgRe}">`),
+      `<meta name="twitter:card" content="summary_large_image">`,
+      `<meta name="twitter:title" content="${escTitle}">`,
+      `<meta name="twitter:description" content="${escDesc}">`,
+      new RegExp(`<meta name="twitter:image" content="${imgRe}">`),
+    ];
+    const missing = need.filter((x) => x instanceof RegExp ? !x.test(h) : !h.includes(x));
+    if (missing.length) ogBad.push(`${p}: missing ${missing.map((x) => x instanceof RegExp ? x.source : x).join(" | ")}`);
+  }
+  check("t157: every page has a unique meta description, 120–155 characters, matching the t157 list and used for og:description and twitter:description",
+    descBad.length === 0 && htmlFiles17.length === 23, descBad.join(" || ") + ` pages=${htmlFiles17.length}`);
+  check("t157: every page <title> is unique, matches its visible heading in Title Case, and keeps the site-name suffix only when the full title is ≤ 60 characters",
+    titleBad.length === 0, titleBad.join(" || "));
+  check("t157: every page has og:type, og:title, og:description, og:url, og:image (absolute, cache-busted existing share image), twitter:card summary_large_image, twitter:title, twitter:description, twitter:image",
+    ogBad.length === 0 && existsSync(join(DIST, "assets/og-image.png")), ogBad.slice(0, 6).join(" || "));
+  const sm = readFileSync(join(DIST, "sitemap.xml"), "utf8");
+  const smBad = [];
+  const urls = [...sm.matchAll(/<url><loc>https:\/\/patriotinlays\.com([^<]*)<\/loc><lastmod>([^<]*)<\/lastmod><\/url>/g)];
+  for (const [, p, d] of urls) {
+    let expect; try { expect = lastmodFor(p); } catch (e) { smBad.push(`${p}: ${e.message}`); continue; }
+    if (d !== expect) smBad.push(`${p}: sitemap ${d} != ${expect}`);
+  }
+  check("t157: sitemap.xml lastmod on each URL is the Chicago date of that page's last content change (git history of its source files, ignoring template-only and meta-only commits)",
+    urls.length === 20 && smBad.length === 0 && !sm.includes("/report/") && !sm.includes("404"), `n=${urls.length} ${smBad.join(" || ")}`);
+  // Spot-check that the visible body did not gain search-housekeeping copy: the t156 callout is still the only Roadmap line, home intro is unchanged, no new visible "meta" text.
+  for (const p of ["/tools/widow-pension-checker/", "/tools/lineage-matrix/"]) {
+    const h = readFileSync(join(DIST, p, "index.html"), "utf8");
+    check(`t157: ${p} still has the single t156 callout and no t119 pointer (visible body unchanged except we didn't touch it)`,
+      (h.match(/data-roadmap-callout/g) || []).length === 1 && !h.includes("New to this?") && !h.includes("data-roadmap-pointer"));
+  }
+  const homeH = readFileSync(join(DIST, "index.html"), "utf8");
+  check("t157: home page visible intro, AI line, and guide-list blurbs are unchanged (meta lives only in <head>)",
+    homeH.includes("Two free tools and ten guides help you organize what you have and see what's still missing. What you type into the tools stays in your own browser.")
+    && homeH.includes("A generation-by-generation plan for documenting descent from a Revolutionary War patriot, with DAR and SAR rules side by side.")
+    && !homeH.includes("data-roadmap-callout")
+    && (homeH.match(/<meta name="description"/g) || []).length === 1);
+  const shotPages = ["/", "/about/", "/tools/widow-pension-checker/", "/tools/lineage-matrix/", "/guides/lineage-proof-roadmap/", "/faq/"];
+  for (const w of [390, 1280]) { const cx = await browser.newContext({ viewport: { width: w, height: 900 } }); const pg = await cx.newPage();
+    for (const p of shotPages) { await pg.goto(BASE + (p === "/" ? "/" : p));
+      const name = (p === "/" ? "home" : p.replace(/\//g, "-").replace(/^-|-$/g, "")) + `-${w}.png`;
+      await pg.screenshot({ path: join(REL17, name), fullPage: false }); }
+    await cx.close(); } }
 // ---- t130 #1 / #3: home start cards, spacing, guide titles, menu (390px and 1280px) ----
 { const hH = readFileSync(join(DIST, "index.html"), "utf8");
   for (const w of [390, 1280]) { const cx = await browser.newContext({ viewport: { width: w, height: 900 } }); const pg = await cx.newPage(); await pg.goto(`${BASE}/`);
