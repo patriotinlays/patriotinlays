@@ -1,7 +1,7 @@
 ---
 title: "Application Returned? Fixing Common DAR and SAR Proof Problems (Including Supplementals)"
 slug: guides/application-problems
-description: "Diagnose why a DAR or SAR application or a patriot's service was questioned, and how to fix it, from DAR guidance and a 2023 Ohio Society SAR presentation."
+description: "Diagnose why a DAR or SAR application or a patriot's service was questioned, and how to fix it, from DAR guidance and SAR's national application rules."
 cornerstone: 10
 ---
 # Application Returned? Fixing Common DAR and SAR Proof Problems (Including Supplementals)
@@ -22,7 +22,7 @@ Points attributed to the 2023 Ohio Society SAR presentation come from that talk,
 |---|---|---|
 | Applicant birth certificate questioned | {{asof:sar-apg-bc-gender}} SAR's application guide says new applicants need a birth certificate or court order that specifies the applicant's gender as male [[claim:sar-apg-bc-gender]] | Order a long-form certificate naming both parents, including the mother's maiden name [[claim:ohsar-bc-parents]] |
 | Parent-child link questioned | A 2023 Ohio Society SAR presentation said inadequate proof of parent-to-child connections, including unresolved naming conflicts, gets an application pended [[claim:ohsar-naming]] | Add a record that states the relationship; see [Substitute Evidence](/guides/substitute-evidence/) |
-| Patriot generation questioned | {{asof:sar-apg-patriot-residence}} SAR's application guide says the patriot's residence during the Revolution must agree with the service being claimed. [[claim:sar-apg-patriot-residence]] {{asof:sar-apg-patriot-age}} SAR's application guide says that if the patriot's birth date can't be found, you cite a proven fact showing he was living at the time of the service and of age for it [[claim:sar-apg-patriot-age]] | Add residence and age evidence for the service years |
+| Patriot generation questioned | {{asof:sar-apg-patriot-residence}} SAR's application guide says the patriot's residence during the Revolution must agree with the service being claimed. [[claim:sar-apg-patriot-residence]] {{asof:sar-apg-patriot-age}} SAR's application guide says that if the patriot's birth date can't be found, you cite a proven fact showing the patriot was living at the time of the service and of age for it [[claim:sar-apg-patriot-age]] | Add residence and age evidence for the service years |
 | Dates rejected | {{asof:sar-apg-date-format}} SAR's application guide says all dates must be entered in the format 01 Jan 1900 [[claim:sar-apg-date-format]] | Re-enter dates in that format |
 | DAR papers used as proof rejected | {{asof:sar-apg-record-copy}} SAR's application guide says a DAR application used as proof must be an official DAR record copy, not a chapter copy [[claim:sar-apg-record-copy]] | Order the DAR record copy |
 | Review slowed | A 2023 Ohio Society SAR presentation said superfluous documentation [[claim:ohsar-superfluous]], and lineage data not supported by documents, slow review [[claim:ohsar-unsupported]] | Cut extra papers; delete any data you cannot document |

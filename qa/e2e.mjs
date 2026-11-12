@@ -1040,7 +1040,7 @@ for (const w of [390, 1280]) { const cx = await browser.newContext({ viewport: {
     ["sar-gcp-replacements-all-once", GCP, "SAR's genealogy policies say replacements were reduced to once for all applications."],
     ["sar-gcp-pended-two-years", GCP, "SAR's genealogy policies say pended applications stay on file for two years from the date they were pended, then expire and are no longer considered."],
     ["sar-apg-patriot-residence", APG, "SAR's application guide says the patriot's residence during the Revolution must agree with the service being claimed."],
-    ["sar-apg-patriot-age", APG, "SAR's application guide says that if the patriot's birth date can't be found, you cite a proven fact showing he was living at the time of the service and of age for it"]];
+    ["sar-apg-patriot-age", APG, "SAR's application guide says that if the patriot's birth date can't be found, you cite a proven fact showing the patriot was living at the time of the service and of age for it"]];
   const miss = want.filter(([id, u, t]) => !lp7[u] || !ap.includes(`As of <span data-asof="${id}">${ld7(lp7[u])}</span>, ${t}`));
   check("t147 #1/#2: Application Returned states the current SAR policy points (one replacement, replacements reduced to once, two-year expiry) and the two patriot-generation sentences, each 'As of' its source's last pass", miss.length === 0 && ap.includes(`href="${GCP}"`), miss.map((m) => m[0]).join(","));
   check("t147 #1/#2: the outdated Ohio replacement, supplemental-once, three-year and patriot-generation lines are gone from Application Returned", !/two chances to resolve|supplemental may be replaced only once|pended for three years|patriot's generation should prove/.test(apT));
@@ -1072,7 +1072,7 @@ for (const w of [390, 1280]) { const cx = await browser.newContext({ viewport: {
   check("t148 #2: the problem table starts right after the Ohio caveat", ap.slice(ap.indexOf("</h2>", at("problem-cause-and-fix")) + 5, tbl).replace(/<div class="table-wrap[^>]*>/, "").replace(/\s+/g, " ").trim() === `<p>${OH8}</p>`, ap.slice(ap.indexOf("</h2>", at("problem-cause-and-fix")) + 5, tbl).slice(0, 300));
   check("t148 #1: the Supplementals section has Tim's caveat and no Ohio point", (() => { const sec = ap.slice(at("supplementals-and-replacements-sar"), at("pre-submission-checklist")); return sec.includes("<p>These points come from SAR's national application checklist, Genealogy Committee Policies and Application Preparation Guide.</p>") && !/Ohio/.test(sec); })());
   const sn = H8("guides/same-name"); const snT = sn.replace(/<[^>]+>/g, "");
-  const two = ["SAR's application guide says the patriot's residence during the Revolution must agree with the service being claimed.", "SAR's application guide says that if the patriot's birth date can't be found, you cite a proven fact showing he was living at the time of the service and of age for it"];
+  const two = ["SAR's application guide says the patriot's residence during the Revolution must agree with the service being claimed.", "SAR's application guide says that if the patriot's birth date can't be found, you cite a proven fact showing the patriot was living at the time of the service and of age for it"];
   check("t148 #3 (t149: split across two rows): Same Name's 'Right age' row has the same two APG sentences as Application Returned (same claims, 'As of' dates), and the Ohio patriot-generation line is gone from the site",
     two.every((t) => snT.includes(t) && ap.replace(/<[^>]+>/g, "").includes(t)) && /data-asof="sar-apg-patriot-residence"/.test(sn) && /data-asof="sar-apg-patriot-age"/.test(sn) && !/patriot's generation should/.test(snT) && !JSON.stringify(JSON.parse(readFileSync(join(ROOT, "manifest/claims.json"), "utf8"))).includes('"ohsar-patriot-gen"'));
   const { mkdirSync: mk8 } = await import("node:fs"); const REL8 = join(ROOT, "qa/release-logs/t148"); mk8(REL8, { recursive: true });
@@ -1090,7 +1090,7 @@ for (const w of [390, 1280]) { const cx = await browser.newContext({ viewport: {
   const row = (label) => { const rows = [...sn.matchAll(/<tr>([\s\S]*?)<\/tr>/g)].map((m) => m[1]); const r = rows.find((x) => new RegExp(`^\\s*<td>${label}</td>`).test(x)); return r ? r.replace(/<[^>]+>/g, "").replace(/\[\d+\]/g, "") : ""; };
   const res = row("Residence vs\\. Service|Residence vs\\. service"), age = row("Right Age|Right age");
   const RES = "SAR's application guide says the patriot's residence during the Revolution must agree with the service being claimed.";
-  const AGE = "SAR's application guide says that if the patriot's birth date can't be found, you cite a proven fact showing he was living at the time of the service and of age for it";
+  const AGE = "SAR's application guide says that if the patriot's birth date can't be found, you cite a proven fact showing the patriot was living at the time of the service and of age for it";
   check("t149: Same Name's 'Residence vs. Service' row keeps DAR's point and then has the SAR residency sentence ('As of' its date); 'Right Age' has only the alive-and-of-age sentence",
     /A residence and service location that do not match is a standard DAR review trigger/.test(res) && res.indexOf("DAR review trigger") < res.indexOf(RES) && /As of [A-Z][a-z]+ \d{1,2}, \d{4}, SAR's application guide says the patriot's residence/.test(res)
     && age.includes(AGE) && !age.includes(RES) && sn.split('data-asof="sar-apg-patriot-residence"').length === 2, JSON.stringify({ res: res.slice(0, 300), age: age.slice(0, 300) }));
@@ -1322,6 +1322,61 @@ for (const w of [390, 1280]) { const cx = await browser.newContext({ viewport: {
   }
   check("t158: 'Sources last checked' and 'As of' on Same Name and Application Returned are America/Chicago dates of the recorded last-passed instants",
     asofBad.length === 0, asofBad.join(" | "));
+}
+// ---- t162: home blurbs match metas; "the patriot was living"; widow Matrix sentence; Same Name Ohio caveat above heading (390px and 1280px) ----
+{ const REL162 = join(ROOT, "qa/release-logs/t162"); mkdirSync(REL162, { recursive: true });
+  const { META_DESCRIPTIONS } = await import(new URL("../scripts/lib/page-meta.mjs", import.meta.url));
+  const H = (p) => readFileSync(join(DIST, p === "" ? "index.html" : join(p, "index.html")), "utf8").replace(/&#39;|&apos;/g, "'");
+  const home = H(""), sn = H("guides/same-name"), ap = H("guides/application-problems"), wid = H("tools/widow-pension-checker");
+  const snBlurb = META_DESCRIPTIONS["/guides/same-name/"];
+  const apBlurb = META_DESCRIPTIONS["/guides/application-problems/"];
+  const homeGuides = home.slice(home.indexOf('id="guides"'), home.indexOf("</ol>", home.indexOf('id="guides"')) + 5);
+  check("t162 #1: home Same Name and Application Returned guide blurbs match the t158 meta descriptions exactly (old endings gone)",
+    homeGuides.includes(`<span class="small">${snBlurb}</span>`)
+    && homeGuides.includes(`<span class="small">${apBlurb}</span>`)
+    && snBlurb.endsWith("not to someone else with the same name.")
+    && apBlurb.endsWith("from DAR guidance and SAR's national application rules.")
+    && !homeGuides.includes("another man of the same name")
+    && !homeGuides.includes("a 2023 Ohio Society SAR presentation."));
+  const AGE = "SAR's application guide says that if the patriot's birth date can't be found, you cite a proven fact showing the patriot was living at the time of the service and of age for it";
+  check("t162 #2: Same Name and Application Returned say 'showing the patriot was living at the time of the service'; 'showing he was living' is gone",
+    sn.includes(AGE) && ap.includes(AGE) && !/showing he was living/.test(sn) && !/showing he was living/.test(ap));
+  const WID = "There it checks your patriot's dates against the period DAR accepts for your patriot's type of service, points you to the records for your patriot's state and type of service, and can pass your patriot's service end date to this checker.";
+  const widT = wid.replace(/<[^>]+>/g, "").replace(/\[\d+\]/g, "").replace(/\s+/g, " ");
+  check("t162 #3: widow checker Matrix-patriot sentence uses 'your patriot's' for dates, type of service, state, and service end date; 'a patriot and his wife' and other widow-husband wording stay",
+    widT.includes(WID) && !/checks his dates against/.test(widT)
+    && widT.includes("Anyone whose line runs through a patriot and his wife")
+    && /what you know about his service/.test(widT));
+  const CAV = "Points attributed to the 2023 Ohio Society SAR presentation come from that talk, not SAR's national rules.";
+  const h2 = sn.indexOf('<h2 id="how-often-this-goes-wrong">How Often This Goes Wrong</h2>');
+  const before = sn.slice(0, h2);
+  const lastP = before.lastIndexOf("<p>");
+  const para = sn.slice(lastP, h2).replace(/\s+/g, " ").trim();
+  check("t162 #4: Same Name has the Ohio caveat as a paragraph directly above 'How Often This Goes Wrong' (Tim's wording, without the 'Confirm…' sentence)",
+    h2 > 0 && para === `<p>${CAV}</p>`
+    && !sn.includes("Confirm current requirements with your registrar.")
+    && (sn.split(CAV).length - 1) === 1, `h2=${h2} para=${para}`);
+  for (const w of [390, 1280]) {
+    const cx = await browser.newContext({ viewport: { width: w, height: 900 } });
+    const pg = await cx.newPage();
+    await pg.goto(BASE + "/");
+    await pg.locator("#guides").scrollIntoViewIfNeeded();
+    await pg.screenshot({ path: join(REL162, `home-guides-${w}.png`) });
+    await pg.goto(BASE + "/guides/same-name/");
+    await pg.locator("#how-often-this-goes-wrong").scrollIntoViewIfNeeded();
+    await pg.screenshot({ path: join(REL162, `same-name-ohio-caveat-${w}.png`) });
+    await pg.locator("text=Right age").first().scrollIntoViewIfNeeded();
+    await pg.screenshot({ path: join(REL162, `same-name-right-age-${w}.png`) });
+    await pg.goto(BASE + "/guides/application-problems/");
+    await pg.locator("#problem-cause-and-fix").scrollIntoViewIfNeeded();
+    await pg.screenshot({ path: join(REL162, `application-returned-table-${w}.png`) });
+    await pg.goto(BASE + "/tools/widow-pension-checker/");
+    await pg.locator("#where-did-the-service-date-check-go").scrollIntoViewIfNeeded();
+    await pg.screenshot({ path: join(REL162, `widow-matrix-sentence-${w}.png`) });
+    const fit = await pg.evaluate(() => ({ sw: document.documentElement.scrollWidth, iw: innerWidth }));
+    check(`t162 (${w}px): widow checker (last page visited) fits the screen`, fit.sw <= fit.iw, JSON.stringify(fit));
+    await cx.close();
+  }
 }
 // ---- t157: unique meta descriptions, title suffix policy, sitemap lastmod, complete OG/Twitter tags; nothing visible changed ----
 { const REL17 = join(ROOT, "qa/release-logs/t157"); mkdirSync(REL17, { recursive: true });

@@ -74,6 +74,6 @@ The checker shows what your answers allow it to check and labels what stays open
 
 ## Where did the service-date check go?
 
-Typing a patriot's service dates on their own told you little, so that check now lives in the patriot step of the [Lineage Evidence Matrix](/tools/lineage-matrix/). There it checks his dates against the period DAR accepts for his type of service [[claim:dar-window-core]], points you to the records for his state and type of service, and can pass his service end date to this checker.
+Typing a patriot's service dates on their own told you little, so that check now lives in the patriot step of the [Lineage Evidence Matrix](/tools/lineage-matrix/). There it checks your patriot's dates against the period DAR accepts for your patriot's type of service [[claim:dar-window-core]], points you to the records for your patriot's state and type of service, and can pass your patriot's service end date to this checker.
 
 Related guides: [How to Read a Pension File](/guides/read-pension-file/), [Bounty Land Warrants](/guides/bounty-land-warrants/).

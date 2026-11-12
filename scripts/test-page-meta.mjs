@@ -39,12 +39,12 @@ t("lastmod is a YYYY-MM-DD Chicago date for every sitemap page (not reports or 4
 t("lastmod dates are not in the future and are on or after the Oct 31, 2026 launch",
   sitemapPaths.every((p) => mods[p] >= "2026-10-31" && mods[p] <= chicagoDate(new Date().toISOString())));
 
-t("Same Name lastmod is 2026-11-11 (t149 content) and About is 2026-11-10 (t138 content), not a template-only date",
-  lastmodFor("/guides/same-name/") === "2026-11-11" && lastmodFor("/about/") === "2026-11-10",
+t("Same Name lastmod is 2026-11-12 (t162 content) and About is 2026-11-10 (t138 content), not a template-only date",
+  lastmodFor("/guides/same-name/") === "2026-11-12" && lastmodFor("/about/") === "2026-11-10",
   `same-name=${mods["/guides/same-name/"]} about=${mods["/about/"]}`);
 
-t("both tool pages lastmod on 2026-11-11 (t156 callout, a visible body change in build.mjs); FAQ stays 2026-11-10 (no tool-callout bump)",
-  lastmodFor("/tools/widow-pension-checker/") === "2026-11-11" && lastmodFor("/tools/lineage-matrix/") === "2026-11-11"
+t("widow-pension-checker lastmod is 2026-11-12 (t162 sentence); lineage-matrix stays 2026-11-11 (t156); FAQ stays 2026-11-10",
+  lastmodFor("/tools/widow-pension-checker/") === "2026-11-12" && lastmodFor("/tools/lineage-matrix/") === "2026-11-11"
   && lastmodFor("/faq/") === "2026-11-10",
   `widow=${mods["/tools/widow-pension-checker/"]} matrix=${mods["/tools/lineage-matrix/"]} faq=${mods["/faq/"]}`);
 

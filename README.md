@@ -260,6 +260,9 @@ Docs: https://developers.cloudflare.com/pages/how-to/web-analytics/
 - February 28, 1855 navy-widow law cited as ch. 126, sec. 3, 10 Stat. 616 (chapter begins at 615); 10 Stat. 701 is only the March 3, 1855 bounty-land act.
 - Worksheet: step 1 is the patriot, step 2 starts the family with yourself; removing the oldest generation asks for confirmation.
 
+### t162 (Nov 12, 2026)
+- Home guide-list blurbs for Same Name and Application Returned now match those pages' meta descriptions. Same Name and Application Returned say "showing the patriot was living" (not "he"). The widow checker's Matrix-patriot sentence uses "your patriot's" dates, type of service, state, and service end date ("a patriot and his wife" and widow-husband wording unchanged). Same Name has the Ohio-presentation caveat directly above "How Often This Goes Wrong."
+
 ### t158 (Nov 11, 2026)
 - Same Name meta description: "not to another man of the same name" → "not to someone else with the same name". Application Returned meta description now ends "from DAR guidance and SAR's national application rules." Both stay 120–155 characters and feed og:description and twitter:description. No visible body changes.
 - "Last checked", "As of", "Sources last checked", recorded last-passed instants, and sitemap lastmod use America/Chicago calendar dates (lastmod already did). Last-passed instants are stored with a Central offset, not a UTC "Z".
