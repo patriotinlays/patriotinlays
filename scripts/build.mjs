@@ -159,7 +159,7 @@ const TOOL_B_FULL = `<section class="tool" data-tool="lineage-matrix" aria-label
 <noscript><p>The worksheet needs JavaScript. The rules it applies are listed below.</p></noscript>
 </section><script type="module" src="/assets/js/tool-b-ui.js"></script>`;
 const TOOL_B_CARD = `<aside class="card" data-tool-card="lineage-matrix"><strong>Lineage Evidence Matrix</strong>
-<p>A free worksheet: tell it about your patriot's service, type in the records you have for each generation, and it gives you a to-do list of the records still missing and where to look for each, fitted to each person's era and state. Everything stays in your browser.</p>
+<p>A free worksheet: tell it about your patriot's service, type in the records you have for each generation, and it gives you a to-do list of the records still missing and where to look for each, based on each person's era and state. Everything stays in your browser.</p>
 <p class="small" data-card-status aria-live="polite"></p>
 <p><a href="/tools/lineage-matrix/">Open the worksheet</a> · <a href="/tools/lineage-matrix/report/">View your report</a></p></aside><script type="module" src="/assets/js/tool-b-ui.js"></script>`;
 const TOOLS = { widow: WIDOW_CARD, "widow-full": WIDOW_FULL, patriot: PATRIOT_CARD, "lineage-matrix": TOOL_B_CARD, "lineage-matrix-full": TOOL_B_FULL };

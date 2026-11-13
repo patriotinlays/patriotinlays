@@ -260,6 +260,9 @@ Docs: https://developers.cloudflare.com/pages/how-to/web-analytics/
 - February 28, 1855 navy-widow law cited as ch. 126, sec. 3, 10 Stat. 616 (chapter begins at 615); 10 Stat. 701 is only the March 3, 1855 bounty-land act.
 - Worksheet: step 1 is the patriot, step 2 starts the family with yourself; removing the oldest generation asks for confirmation.
 
+### t170 (Nov 12, 2026)
+- "fitted to each person's era and state" is now "based on each person's era and state" (worksheet tool card and the "What To Do Next" blocks on the guides). Phone footer cluster layout and glossary small-caps labels are unchanged.
+
 ### t163 (Nov 12, 2026)
 - Application Returned: the birth-certificate row now quotes SAR's Application Preparation Guide verbatim on the required certificate or court order, when a court order may be needed, and that short-form certificates that do not identify the parents are insufficient. The Ohio maiden-name / "order a long-form" fix is gone.
 - Sources: "Last retrieved" is the America/Chicago date of the most recent full live-source check, written at build time from `manifest-live-check-report.json`. The claim count is the current manifest length.

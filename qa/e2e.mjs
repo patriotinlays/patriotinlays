@@ -1560,6 +1560,84 @@ for (const w of [390, 1280]) { const cx = await browser.newContext({ viewport: {
   }
 }
 
+
+// ---- t170: "based on each person's era and state"; phone footer links do not wrap at 390px; glossary labels stay small-caps ----
+{ const REL170 = join(ROOT, "qa/release-logs/t170"); mkdirSync(REL170, { recursive: true });
+  const { readdirSync: rd170 } = await import("node:fs");
+  const walk170 = (d) => rd170(d, { withFileTypes: true }).flatMap((e) => e.isDirectory() ? walk170(join(d, e.name)) : e.name.endsWith(".html") ? [join(d, e.name)] : []);
+  const files170 = walk170(DIST);
+  const oldPhrase = "fitted to each person's era and state";
+  const newPhrase = "based on each person's era and state";
+  const hasOld = files170.filter((f) => readFileSync(f, "utf8").includes(oldPhrase)).map((f) => f.slice(DIST.length));
+  const hasNew = files170.filter((f) => readFileSync(f, "utf8").includes(newPhrase)).map((f) => f.slice(DIST.length));
+  check("t170 #3: the old phrase 'fitted to each person's era and state' is gone from every built page; the new 'based on...' wording is present",
+    hasOld.length === 0 && hasNew.length > 0, JSON.stringify({ hasOld, hasNew }));
+  // Glossary labels: still "Patriot:" in the HTML (not rewritten), still all-small-caps. Not title-cased as headings.
+  const gPages = ["/guides/same-name/", "/tools/lineage-matrix/", "/"];
+  for (const w of [390, 1280]) {
+    const cx = await browser.newContext({ viewport: { width: w, height: 900 } });
+    const pg = await cx.newPage();
+    const gBad = [];
+    for (const pth of gPages) {
+      await pg.goto(BASE + pth);
+      const g = await pg.evaluate(() => {
+        const box = document.querySelector("details.defs") || document.querySelector(".glossary, [data-home-glossary]");
+        if (!box) return { ok: false, why: "no glossary" };
+        const strong = box.querySelector("li > strong");
+        if (!strong) return { ok: false, why: "no label" };
+        const cs = getComputedStyle(strong);
+        return { ok: true, text: strong.textContent, caps: cs.fontVariantCaps, family: cs.fontFamily };
+      });
+      if (!g.ok || g.text !== "Patriot:" || g.caps !== "all-small-caps") gBad.push({ pth, g });
+    }
+    check(`t170 #2 (${w}px): glossary row labels stay 'Patriot:' with all-small-caps (the title-case rule does not apply to them)`,
+      gBad.length === 0, JSON.stringify(gBad));
+    // Footer wrap: every page, every footer link is one line at 390px. Do not change the footer if any wraps — just report.
+    if (w === 390) {
+      const pages = ["/","/about/","/ai-disclosure/","/contact/","/faq/","/privacy/","/sources/","/walkthroughs/",
+        "/guides/lineage-proof-roadmap/","/guides/substitute-evidence/","/guides/read-pension-file/","/guides/records-by-state/",
+        "/guides/bounty-land-warrants/","/guides/census-bridge/","/guides/patriotic-service/","/guides/same-name/",
+        "/guides/patriot-or-loyalist/","/guides/application-problems/","/tools/widow-pension-checker/","/tools/lineage-matrix/",
+        "/tools/widow-pension-checker/report/","/tools/lineage-matrix/report/"];
+      // 404
+      pages.push("/404.html");
+      const wrapped = [];
+      let firstShot = true;
+      for (const pth of pages) {
+        const url = pth === "/404.html" ? BASE + "/404.html" : BASE + pth;
+        await pg.goto(url);
+        const r = await pg.evaluate(() => {
+          const f = document.querySelector("footer.site");
+          if (!f) return { missing: true };
+          const links = [...f.querySelectorAll("a")];
+          const detail = links.map((a) => {
+            const rects = [...a.getClientRects()];
+            const cs = getComputedStyle(a);
+            return { text: a.textContent, nRects: rects.length, height: a.getBoundingClientRect().height, lineH: parseFloat(cs.lineHeight), nowrap: cs.whiteSpace, tops: rects.map((x) => Math.round(x.top)) };
+          });
+          const wrap = detail.filter((d) => d.nRects > 1 || (d.tops.length > 1 && new Set(d.tops).size > 1));
+          return { n: links.length, wrap, detail, sw: document.documentElement.scrollWidth, iw: innerWidth };
+        });
+        if (r.missing || (r.wrap && r.wrap.length)) wrapped.push({ pth, r });
+        if (firstShot) {
+          await pg.evaluate(() => scrollTo(0, document.body.scrollHeight));
+          await pg.screenshot({ path: join(REL170, `footer-${pth.replace(/[\\/]/g, "_") || "home"}-390.png`), fullPage: false });
+          firstShot = false;
+        }
+      }
+      await pg.goto(BASE + "/about/");
+      await pg.evaluate(() => scrollTo(0, document.body.scrollHeight));
+      await pg.screenshot({ path: join(REL170, "footer-about-390.png"), fullPage: false });
+      await pg.goto(BASE + "/guides/application-problems/");
+      await pg.evaluate(() => scrollTo(0, document.body.scrollHeight));
+      await pg.screenshot({ path: join(REL170, "footer-application-problems-390.png"), fullPage: false });
+      check("t170 #1 (390px): no footer link wraps across lines on any page (cluster layout left unchanged)",
+        wrapped.length === 0, JSON.stringify(wrapped));
+    }
+    await cx.close();
+  }
+}
+
 // ---- Cache-busting: every script/CSS reference and every module import carries ?v=<hash> that matches the file ----
 const { createHash } = await import("node:crypto");
 const htmlRefs = pagesToCheck.flatMap((p) => [...readFileSync(join(DIST, p, "index.html"), "utf8").matchAll(/(?:src|href)="(\/assets\/[^"]+\.(?:js|css)[^"]*)"/g)].map((m) => m[1]));

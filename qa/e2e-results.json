@@ -1,8 +1,8 @@
 {
-  "ranAt": "Thu Nov 12 2026 15:46:37 GMT-0600 (Central Standard Time)",
+  "ranAt": "Thu Nov 12 2026 21:43:43 GMT-0600 (Central Standard Time)",
   "browser": "/usr/bin/google-chrome (headless) via playwright-core 1.59.1",
-  "passed": 341,
-  "total": 341,
+  "passed": 345,
+  "total": 345,
   "exampleReportPages": {
     "summaryPages": 2,
     "fullPages": 3,
@@ -29,7 +29,8 @@
     "rgb(19, 41, 75) on rgb(255, 255, 255)": 14.52,
     "rgb(94, 85, 75) on rgb(255, 255, 255)": 7.3,
     "rgb(43, 38, 34) on rgb(255, 255, 255)": 14.97,
-    "rgb(107, 69, 0) on rgb(255, 253, 248)": 8.34
+    "rgb(107, 69, 0) on rgb(255, 253, 248)": 8.34,
+    "rgb(11, 26, 51) on rgb(255, 253, 248)": 17.08
   },
   "home": {
     "ps": 7,
@@ -1714,7 +1715,7 @@
     {
       "name": "t163 #2: Sources 'Last retrieved' is the Central-time date of the most recent full live-source check, and the claim count equals the manifest",
       "ok": true,
-      "detail": "{\"srcLine\":\"Manifest: 401 verified claims. Last retrieved: November 12, 2026.\",\"expectDate\":\"November 12, 2026\",\"shownCount\":401,\"manifest\":401,\"checkedAt\":\"Thu Nov 12 2026 06:01:55 GMT-0600 (Central Standard Time)\"}"
+      "detail": "{\"srcLine\":\"Manifest: 401 verified claims. Last retrieved: November 12, 2026.\",\"expectDate\":\"November 12, 2026\",\"shownCount\":401,\"manifest\":401,\"checkedAt\":\"Thu Nov 12 2026 15:49:45 GMT-0600 (Central Standard Time)\"}"
     },
     {
       "name": "t163 #3: every page says 'quoted official or institutional source'; the locked AI line uses the new wording; the old phrase is gone",
@@ -1735,6 +1736,26 @@
       "name": "t163 (1280px): home fits the screen",
       "ok": true,
       "detail": "{\"sw\":1280,\"iw\":1280}"
+    },
+    {
+      "name": "t170 #3: the old phrase 'fitted to each person's era and state' is gone from every built page; the new 'based on...' wording is present",
+      "ok": true,
+      "detail": "{\"hasOld\":[],\"hasNew\":[\"/guides/application-problems/index.html\",\"/guides/bounty-land-warrants/index.html\",\"/guides/census-bridge/index.html\",\"/guides/lineage-proof-roadmap/index.html\",\"/guides/patriot-or-loyalist/index.html\",\"/guides/patriotic-service/index.html\",\"/guides/read-pension-file/index.html\",\"/guides/records-by-state/index.html\",\"/guides/same-name/index.html\",\"/guides/substitute-evidence/index.html\"]}"
+    },
+    {
+      "name": "t170 #2 (390px): glossary row labels stay 'Patriot:' with all-small-caps (the title-case rule does not apply to them)",
+      "ok": true,
+      "detail": "[]"
+    },
+    {
+      "name": "t170 #1 (390px): no footer link wraps across lines on any page (cluster layout left unchanged)",
+      "ok": true,
+      "detail": "[]"
+    },
+    {
+      "name": "t170 #2 (1280px): glossary row labels stay 'Patriot:' with all-small-caps (the title-case rule does not apply to them)",
+      "ok": true,
+      "detail": "[]"
     },
     {
       "name": "Cache-busting: every page's script/CSS URL and every module import is versioned with the file's content hash",
