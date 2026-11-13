@@ -18,7 +18,7 @@ A free checker that compares a widow's marriage date, and what you know about he
 
 **Who it helps.** Anyone whose line runs through a patriot and his wife, and anyone wondering whether a widow's pension file might exist for their family. You don't need to know the laws first; the checker shows which ones your dates fit.
 
-**The problem it solves.** Widows could apply for pensions beginning in 1836. [[claim:nara-amrev-1836]]
+**The problem it solves.** This checker starts with the 1836 widow pension law; earlier laws and private acts of Congress are outside its scope. [[claim:nara-m804-1836-class]] [[claim:nara-m804-private-acts]]
 A widow's application may give her age, residence, maiden name, the date and place of the marriage, and the date and place of her husband's death. [[claim:m804-widow-info]]
 So her file can prove a marriage in your line. Widows' files are marked "W" followed by a file number. [[claim:m804-w]]
 Her papers can sit in the same file as her husband's: in Zebulon Applegate's file, his widow Rebecca's 1853 pension begins on page 14. [[claim:nps-applegate-widow]]
@@ -28,7 +28,7 @@ Each law had its own rules, though, and it's hard to tell from the law books whi
 
 **What you'll get.** A short "In short" summary of which laws fit, which are ruled out and which are still possible, then a row for each law with its rule and what would settle it, and a "What to do next" plan with links to the pension files. You can print the results or save them as a PDF.
 
-**Its limits.** It does not look anything up, and it never makes a decision about membership or a pension; your society does that. It never says a law simply fits, because every law has terms it can't test from dates, and it lists them. A rough date can leave a law "Still possible", and "About" is this site's rule of thumb, not part of the law. Everything you type stays in this browser.
+**Its limits.** It does not look anything up, and it doesn't decide anything. Federal officials decided the historical pension claims; DAR or SAR decides whether your evidence meets its membership rules. It never says a law simply fits, because every law has terms it can't test from dates, and it lists them. A rough date can leave a law "Still possible", and "About" is this site's rule of thumb, not part of the law. Everything you type stays in this browser.
 
 **What to do next.** When a law fits or is still possible, look for the widow's pension file. The files are online free on FamilySearch, with a login. [[claim:nara-amrev-familysearch]] Then record what the file says in the [Lineage Evidence Matrix](/tools/lineage-matrix/), and read [How to Read a Pension File](/guides/read-pension-file/) for help with the papers themselves.
 
@@ -38,7 +38,7 @@ Each law had its own rules, though, and it's hard to tell from the law books whi
 
 The 1836 act required the widow to have married the veteran before his last period of service expired. [[claim:nara-act-1836]]
 It relied on the service rules of the 1832 act, which covered veterans with at least 6 months of service. [[claim:nara-act-1832]]
-The 1832 act covered service in the Continental Line or State troops, volunteers or militia. [[claim:nara-act-1832-categories]]
+The 1832 act covered service in the Continental Line or State troops, volunteers or militia. [[claim:nara-act-1832-categories]] Naval and marine officers and enlisted men were also included. [[claim:nara-act-1832-navy]]
 The checker tests the 1836 marriage date, the 6 months and his kind of service against those categories; if you don't give his kind of service, the 1836 law stays "Still possible". [[claim:nara-act-1832-categories]]
 The 1836 act paid the widow only while she stayed unmarried. [[claim:stat-1836-unmarried]]
 The 1838 act granted 5-year pensions to widows married before January 1, 1794. [[claim:nara-act-1838]]
@@ -68,7 +68,7 @@ Terms about her later life (remarriage, other pensions) or about his muster roll
 The checker shows what your answers allow it to check and labels what stays open. It never says a law simply "fits": even when every rule it can test is settled, the law's own text has terms it can't test.
 
 - "Fits the rules checked here; other terms not checked": Your dates meet the rules this tool checks. The pension office's other requirements aren't checked here. The row lists the terms it couldn't check. Look for her pension file.
-- "Ruled out by the dates" or "Ruled out by the service you typed": Your dates fall outside this law's rules. Check your entries if this surprises you. Something you typed already breaks one of the law's rules, so the other boxes can't change it. No action is needed for that law unless you typed something wrong.
+- "Ruled out by the dates" or "Ruled out by the service you typed": Your dates fall outside this law's rules. Check your entries if this surprises you. Something you typed already breaks one of the law's rules, so the other boxes can't change it. Your dates don't meet this law's checked rules, but a rejected claim may still have left a file. Search the pension index anyway. [[claim:nara-m804-rejected-files]]
 - "Still possible: need …": Nothing rules this law out yet; the missing detail is listed. The result names what would settle it, and the answer line names the one question that settles the most laws, with a link to each box that answers it.
 - "Can't check here": This tool doesn't cover this law's rules; ask a registrar. The result says what to do next, such as reading the widow's own pension papers or asking your society's registrar.
 

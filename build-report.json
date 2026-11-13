@@ -1,77 +1,77 @@
 {
-  "builtAt": "Tue Nov 10 2026 14:45:20 GMT-0600 (Central Standard Time)",
+  "builtAt": "Fri Nov 13 2026 08:35:28 GMT-0600 (Central Standard Time)",
   "guideSourcesChecked": [
     {
       "slug": "guides/application-problems",
       "date": "2026-11-05",
       "source": "https://membership.dar.org/NSDAR/AppFormz/App_Help_Step_By_Step_1.aspx",
-      "sources": 14
+      "sources": 16
     },
     {
       "slug": "guides/bounty-land-warrants",
-      "date": "2026-11-10",
+      "date": "2026-11-12",
       "source": "https://www.sar.org/step-1/",
-      "sources": 12
+      "sources": 13
     },
     {
       "slug": "guides/census-bridge",
       "date": "2026-11-05",
       "source": "https://membership.dar.org/NSDAR/AppFormz/App_Help_Step_By_Step_1.aspx",
-      "sources": 14
+      "sources": 16
     },
     {
       "slug": "guides/lineage-proof-roadmap",
       "date": "2026-11-05",
       "source": "https://services.dar.org/Public/DAR_Research/search_revwar/?Tab_ID=14&Tab_ID_Sub=0&action=list",
-      "sources": 22
+      "sources": 24
     },
     {
       "slug": "guides/patriot-or-loyalist",
-      "date": "2026-11-10",
+      "date": "2026-11-12",
       "source": "https://blog.dar.org/2021/02/26/why-was-his-service-removed",
-      "sources": 12
+      "sources": 13
     },
     {
       "slug": "guides/patriotic-service",
       "date": "2026-11-05",
       "source": "https://membership.dar.org/NSDAR/AppFormz/FAQs.aspx",
-      "sources": 14
+      "sources": 16
     },
     {
       "slug": "guides/read-pension-file",
-      "date": "2026-11-10",
+      "date": "2026-11-12",
       "source": "https://www.sar.org/step-1/",
-      "sources": 17
+      "sources": 18
     },
     {
       "slug": "guides/records-by-state",
       "date": "2026-11-05",
       "source": "https://membership.dar.org/NSDAR/AppFormz/FAQs.aspx",
-      "sources": 18
+      "sources": 19
     },
     {
       "slug": "guides/same-name",
-      "date": "2026-11-10",
+      "date": "2026-11-12",
       "source": "https://blog.dar.org/2021/02/26/why-was-his-service-removed",
-      "sources": 14
+      "sources": 15
     },
     {
       "slug": "guides/substitute-evidence",
       "date": "2026-11-05",
       "source": "https://membership.dar.org/NSDAR/AppFormz/App_Help_Step_By_Step_1.aspx",
-      "sources": 13
+      "sources": 15
     }
   ],
   "pages": [
     {
       "title": "Application Returned? Fixing Common DAR and SAR Proof Problems (Including Supplementals)",
       "slug": "guides/application-problems",
-      "description": "Diagnose why a DAR or SAR application or a patriot's service was questioned, and how to fix it, from DAR guidance and a 2023 Ohio Society SAR presentation.",
+      "description": "Diagnose why a DAR or SAR application or a patriot's service was questioned, and how to fix it, from DAR guidance and SAR's national application rules.",
       "cornerstone": "10",
       "path": "/guides/application-problems/",
-      "words": 828,
-      "claims": 57,
-      "sources": 14,
+      "words": 965,
+      "claims": 62,
+      "sources": 16,
       "tools": [
         "lineage-matrix"
       ]
@@ -83,8 +83,8 @@
       "cornerstone": "5",
       "path": "/guides/bounty-land-warrants/",
       "words": 662,
-      "claims": 54,
-      "sources": 12,
+      "claims": 55,
+      "sources": 13,
       "tools": [
         "lineage-matrix"
       ]
@@ -95,9 +95,9 @@
       "description": "Connect an ancestor named in the 1850 census to a Revolutionary-era household listed only by its head, using age brackets, pension clues and supporting records.",
       "cornerstone": "6",
       "path": "/guides/census-bridge/",
-      "words": 822,
-      "claims": 45,
-      "sources": 14,
+      "words": 853,
+      "claims": 48,
+      "sources": 16,
       "tools": [
         "lineage-matrix"
       ]
@@ -108,9 +108,9 @@
       "description": "Organize the evidence for each generation of a DAR or SAR line in your browser, flag conflicts, and print a gap report.",
       "tool": "lineage-matrix",
       "path": "/tools/lineage-matrix/",
-      "words": 1343,
-      "claims": 58,
-      "sources": 19,
+      "words": 1426,
+      "claims": 64,
+      "sources": 21,
       "tools": [
         "lineage-matrix"
       ]
@@ -121,9 +121,9 @@
       "description": "A generation-by-generation plan for documenting descent from a Revolutionary War patriot, with DAR and SAR rules side by side.",
       "cornerstone": "1",
       "path": "/guides/lineage-proof-roadmap/",
-      "words": 1235,
-      "claims": 82,
-      "sources": 22,
+      "words": 1249,
+      "claims": 86,
+      "sources": 24,
       "tools": [
         "lineage-matrix"
       ]
@@ -135,8 +135,8 @@
       "cornerstone": "9",
       "path": "/guides/patriot-or-loyalist/",
       "words": 666,
-      "claims": 40,
-      "sources": 12,
+      "claims": 41,
+      "sources": 13,
       "tools": [
         "patriot"
       ]
@@ -147,9 +147,9 @@
       "description": "How non-military service counts for DAR and SAR, the special date windows, and what evidence to look for.",
       "cornerstone": "7",
       "path": "/guides/patriotic-service/",
-      "words": 827,
-      "claims": 63,
-      "sources": 14,
+      "words": 922,
+      "claims": 67,
+      "sources": 16,
       "tools": [
         "patriot"
       ]
@@ -161,8 +161,8 @@
       "cornerstone": "3",
       "path": "/guides/read-pension-file/",
       "words": 1056,
-      "claims": 73,
-      "sources": 17,
+      "claims": 74,
+      "sources": 18,
       "tools": [
         "widow"
       ]
@@ -174,8 +174,8 @@
       "cornerstone": "4",
       "path": "/guides/records-by-state/",
       "words": 738,
-      "claims": 63,
-      "sources": 18,
+      "claims": 64,
+      "sources": 19,
       "tools": [
         "patriot"
       ]
@@ -183,12 +183,12 @@
     {
       "title": "Same Name, Different Man: Separating Patriots Who Share a Name",
       "slug": "guides/same-name",
-      "description": "A disambiguation checklist for proving that a Revolutionary War record belongs to your ancestor and not to another man of the same name.",
+      "description": "A disambiguation checklist for proving that a Revolutionary War record belongs to your ancestor and not to someone else with the same name.",
       "cornerstone": "8",
       "path": "/guides/same-name/",
-      "words": 723,
-      "claims": 41,
-      "sources": 14,
+      "words": 766,
+      "claims": 43,
+      "sources": 15,
       "tools": [
         "lineage-matrix"
       ]
@@ -199,9 +199,9 @@
       "description": "What to use when a generation has no birth record, era by era, and how lineage societies weigh substitutes.",
       "cornerstone": "2",
       "path": "/guides/substitute-evidence/",
-      "words": 920,
-      "claims": 56,
-      "sources": 13,
+      "words": 942,
+      "claims": 58,
+      "sources": 15,
       "tools": [
         "lineage-matrix"
       ]
@@ -212,9 +212,9 @@
       "description": "See which federal Revolutionary War widow pension and bounty-land laws (1836 to 1878) a widow's marriage date and her husband's service fit, and where her pension file would be kept, so you can request it.",
       "tool": "widow",
       "path": "/tools/widow-pension-checker/",
-      "words": 1516,
-      "claims": 75,
-      "sources": 17,
+      "words": 1561,
+      "claims": 79,
+      "sources": 18,
       "tools": [
         "widow"
       ]
@@ -234,7 +234,7 @@
       "slug": "ai-disclosure",
       "description": "How AI is used to write patriotinlays.com, and how its facts are checked.",
       "path": "/ai-disclosure/",
-      "words": 62,
+      "words": 64,
       "claims": 0,
       "sources": 0,
       "tools": []

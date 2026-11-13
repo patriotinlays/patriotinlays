@@ -21,7 +21,7 @@ The 1810 census, for example, used brackets such as "of sixteen, and under twent
 NARA's guidance is that these brackets let you track a head of household from one census to the next, especially when other men share the name. [[claim:nara-census-ballpark]]
 Any family composition you infer from them has to be confirmed from other records. [[claim:nara-census-confirm]]
 
-The 1850–1870 censuses name everyone, but NSCDA's South Carolina society's standards say they do not state relationships and treat them as supporting evidence only. [[claim:nscda-census-1850-1870]]
+The 1850–1870 censuses name everyone, but NSCDA's South Carolina society's standards say they do not state relationships and treat them as supporting evidence only. [[claim:nscda-census-1850-1870]] SAR's Genealogy Committee Policies accept 1850, 1860 and 1870 census households as proof of a parent-child relationship when nothing argues against it. [[claim:sar-gcp-34001]]
 The same standards consider them case by case or as part of a body of evidence. [[claim:nscda-census-case]]
 DAR lists census records from 1850 or later as usually acceptable, evaluated in the context of the whole lineage. [[claim:dar-usually-acceptable]]
 
@@ -37,7 +37,7 @@ If your 1850 ancestor's household, or a neighbor's, held a pensioner in 1840, go
 1. Fix the anchor. Take your ancestor's earliest census entry that lists every household member by name, and write down name, stated age, birthplace and every household member.
 2. Convert age to a birth range. A census age gives an estimate, which DAR marks as "circa". [[claim:dar-circa]] Keep the range wide until another record narrows it.
 3. Walk back one census at a time. In each earlier census, find heads of household in the same county whose age brackets contain your ancestor as a child of the right sex and age.
-4. Track the candidate heads forward. A real father keeps appearing with a matching child in the right bracket. A man who shows no child in the right bracket drops off your list.
+4. Track the candidate heads forward. A real father keeps appearing with a matching child in the right bracket. A man with no child in the right age bracket is less likely, but don't rule him out yet; check other records first. [[claim:nara-census-confirm]]
 5. Test the candidates in other records. Wills, deeds, guardianships, church records and pension files are where a parent-child link gets stated. NSCDA's South Carolina society's standards list wills, probate records, inventories, deeds and court orders among primary sources. [[claim:nscda-county]]
 6. Exhaust the place. NARA's advice is to exhaust all surviving records for the place the person is known to have lived. [[claim:nara-census-exhaust]] NSCDA's South Carolina society's standards cite the genealogical proof standard: a reasonably exhaustive search. [[claim:nscda-gps]]
 7. Write down the reasoning. If no single record states the relationship, the link rests on indirect evidence, and the DAR paper application is the route for lineages that need that kind of analysis. [[claim:dar-paper-analysis]]

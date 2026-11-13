@@ -28,7 +28,7 @@ export const FIELD_HELP = Object.freeze({
   serviceMonths: { text: "Why it matters: the 1836 and 1838 laws relied on service under the 1832 law, which started at 6 months of service.", claims: ["nara-act-1832", "nara-act-1836", "stat-1838-1832-service"] },
   serviceDays: { text: "Why it matters: the 1878 law and the March 1855 bounty-land law covered service as short as 14 days, or any battle.", claims: ["nara-act-1878", "nara-bounty-1855", "stat-1855-14-days", "stat-1878-14-days-a"] },
   engagement: { text: "Why it matters: the March 1855 bounty-land law and the 1878 law accepted a battle in place of 14 days of service.", claims: ["stat-1855-14-days", "stat-1878-14-days-a", "stat-1878-14-days-b"] },
-  kind: { text: "Why it matters: the 1836 and 1838 laws relied on the 1832 law, which covered service in the Continental Line or State troops, volunteers or militia; the 1848 law named the Continental line, State troops, volunteers, militia and the naval service.", claims: ["nara-act-1832-categories", "nara-act-1836", "stat-1838-1832-service", "stat-1848-service"] },
+  kind: { text: "Why it matters: the 1836 and 1838 laws relied on the 1832 law, which covered service in the Continental Line or State troops, volunteers or militia. Naval and marine officers and enlisted men were also included. The 1848 law named the Continental line, State troops, volunteers, militia and the naval service.", claims: ["nara-act-1832-categories", "nara-act-1832-navy", "nara-act-1836", "stat-1838-1832-service", "stat-1848-service"] },
 });
 // Where "the official source" lives, for next-step links. URLs must be Source Manifest source_url values (tested).
 export const NEXT_STEP_LINKS = Object.freeze({

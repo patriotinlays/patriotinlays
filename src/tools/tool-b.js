@@ -60,7 +60,8 @@ export const genTitle = (gen) => `Generation ${gen}: ${genLabel(gen)}`;
 // Plain explanation of the "states it directly / only hints at it" choice.
 export const MODE_HELP = Object.freeze({
   direct: "Says it in words. Example: a long-form birth certificate that names the parents.",
-  indirect: "Only hints at it. Example: a child living in the household on an 1850–1870 census, which NSCDA's South Carolina society's standards say does not state relationships.",
+  indirect: "Only hints at it. Example: a child living in the household on an 1850–1870 census, which NSCDA's South Carolina society's standards say does not state relationships. SAR's Genealogy Committee Policies accept 1850, 1860 and 1870 census households as proof of a parent-child relationship when nothing argues against it.",
+  claims: ["nscda-census-1850-1870", "sar-gcp-34001"],
   claim: "nscda-census-1850-1870",
 });
 
@@ -90,7 +91,7 @@ export const CAUTIONS = [
   { doc: "birth_cert_short", facts: ["parentage"], claim: "nscda-short-form",
     text: "NSCDA's South Carolina society's standards say short-form birth certificates are not acceptable." },
   { doc: "census_1850_1870", facts: ["parentage", "marriage"], claim: "nscda-census-1850-1870",
-    text: "NSCDA's South Carolina society's standards say 1850–1870 census records do not state relationships and treat them as supporting documentation only." },
+    text: "NSCDA's South Carolina society's standards say 1850–1870 census records do not state relationships and treat them as supporting documentation only. SAR's Genealogy Committee Policies accept 1850, 1860 and 1870 census households as proof of a parent-child relationship when nothing argues against it.", claims: ["nscda-census-1850-1870", "sar-gcp-34001"] },
   { doc: "family_genealogy", facts: FACTS, claim: "dar-primary-preferred",
     text: "DAR prefers primary and original records over compiled family genealogies." },
 ];
@@ -169,7 +170,7 @@ export const WHERE_TO_LOOK = Object.freeze({
   },
   parentage: {
     recent: { text: "Look for a long-form birth certificate that names the parents.", claims: ["nscda-short-form"], links: ["darFaq"], guides: ["substitute", "census"] },
-    older: { text: "Look for wills, probate records and deeds that name children. The 1790–1840 censuses name only the head of household, and NSCDA's South Carolina society's standards say the 1850–1870 censuses don't state relationships, so treat them as clues.", claims: ["nscda-county", "nscda-census-1850-1870", "nara-census-head"], links: ["naraCensus", "naraRev"], guides: ["census", "sameName"] },
+    older: { text: "Look for wills, probate records and deeds that name children. The 1790–1840 censuses name only the head of household, and NSCDA's South Carolina society's standards say the 1850–1870 censuses don't state relationships, so treat them as clues. SAR's Genealogy Committee Policies accept 1850, 1860 and 1870 census households as proof of a parent-child relationship when nothing argues against it.", claim: "sar-gcp-34001", claims: ["nscda-county", "nscda-census-1850-1870", "nara-census-head"], links: ["naraCensus", "naraRev"], guides: ["census", "sameName"] },
   },
   residence: {
     recent: { text: "Census records, deeds and tax lists place a person in a county.", claims: ["dar-lineage-sources", "nscda-county"], links: ["darFaq"], guides: ["census"] },

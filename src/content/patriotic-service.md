@@ -17,7 +17,8 @@ Many patriots never carried a musket. They sat on committees, swore oaths, signe
 ## The date windows
 
 DAR accepts service performed between 19 April 1775 and 26 November 1783. [[claim:dar-window-core]]
-SAR uses the same period, with some exceptions. [[claim:sar-window]]
+SAR accepts patriotic service rendered between 19 April 1775 and 25 November 1783. [[claim:sar-gcp-window]]
+SAR's Step 1 page gives 26 November; this site follows SAR's Genealogy Committee Policies. [[claim:sar-window]] [[claim:sar-gcp-window]]
 A few DAR categories have their own windows:
 
 | Service | Window | Source wording |
@@ -49,14 +50,15 @@ The patriot step in the free [Lineage Evidence Matrix](/tools/lineage-matrix/) t
 
 ## Supply taxes: the detail that decides the claim
 
-Taxes are the most misunderstood category. A few rules from SAR's published policy:
+Taxes are the most misunderstood category. SAR's Genealogy Committee Policies, §2.4004, now state the current rule: "Payment of a tax to a state or a local jurisdiction during the Revolution shall be deemed Patriotic Service" by virtue of providing material aid, "provided that the taxpayer was not charged a penalty rate or fee imposed for breaking the law and/or the taxpayer was not on record for having broken a law entailing a penalty such as a higher rate, penalty fee, fine, or seizure of property." [[claim:sar-gcp-24004]] [[claim:sar-gcp-24004-penalty]]
 
-- The statute behind the tax has to address a request of the Continental Congress or support the War. [[claim:sartax-statute]]
-- Fees for breaking a law or paying late do not count. [[claim:sartax-fees]]
-- A charge that was really a license fee or a fee for a specific government service does not count. [[claim:sartax-license]]
-- The ancestor can appear on an assessment roll, a payment list, another record, or a receipt. [[claim:sartax-assessment]]
-- Unless a society report already approved the tax record, the burden is on the applicant to show the tax supported the War. [[claim:sartax-burden]]
-- SAR reports apparently no surviving South Carolina or Georgia revolutionary tax lists. [[claim:sartax-scga]]
+The stated exclusions, quoted from §2.4004:
+
+- "A record such as a tax assessment roll, payment list, or a receipt is required." [[claim:sar-gcp-24004-record]]
+- "Evidence merely that a person had a legal obligation to pay a tax is not sufficient to establish service." [[claim:sar-gcp-24004-obligation]]
+- "Payment of a tax or fee to a state or local jurisdiction shall not be deemed Patriotic Service if the payment was a license or specific governmental service for personal benefit, even if called a tax." [[claim:sar-gcp-24004-license]] "This includes, but is not limited to, marriage licenses, writs, and the inspection or storage of commodities." [[claim:sar-gcp-24004-examples]]
+
+SAR reports apparently no surviving South Carolina or Georgia revolutionary tax lists. [[claim:sartax-scga]]
 
 DAR extended qualifying taxes beyond the Pennsylvania supply taxes in 2006. [[claim:sartax-dar-2006]]
 SAR adopted its tax policy in fall 2012. [[claim:sartax-policy-2012]]

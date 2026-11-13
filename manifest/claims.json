@@ -979,7 +979,6 @@
       "verification_status": "verified",
       "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
       "used_on": [
-        "application-problems",
         "lineage-proof-roadmap",
         "patriotic-service",
         "records-by-state",
@@ -1730,96 +1729,6 @@
       "source_scope": "national"
     },
     {
-      "claim_id": "sartax-statute",
-      "claim_text": "SAR: the tax statute must address a request of Congress and/or support the War.",
-      "source_url": "https://www.sar.org/wp-content/uploads/2019/10/Revolutionary-Taxes-as-Evidence-of-Patriotic-Service.pdf",
-      "source_title": "NSSAR Genealogist General — Revolutionary Taxes as Evidence of Patriotic Service (2015)",
-      "source_type": "official_secondary",
-      "archive_identifier": null,
-      "last_retrieved": "2026-10-31",
-      "quote_excerpt": "Address a request of the Continental Congress and/or",
-      "page_ref": "p. 1",
-      "verification_status": "verified",
-      "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
-      "used_on": [
-        "patriotic-service"
-      ],
-      "notes": "",
-      "source_scope": "national"
-    },
-    {
-      "claim_id": "sartax-fees",
-      "claim_text": "SAR: paying penalty or late-payment fees is not patriotic service.",
-      "source_url": "https://www.sar.org/wp-content/uploads/2019/10/Revolutionary-Taxes-as-Evidence-of-Patriotic-Service.pdf",
-      "source_title": "NSSAR Genealogist General — Revolutionary Taxes as Evidence of Patriotic Service (2015)",
-      "source_type": "official_secondary",
-      "archive_identifier": null,
-      "last_retrieved": "2026-10-31",
-      "quote_excerpt": "Fees for breaking a law or late payment disqualify a person paying that tax from performing Patriotic service by payment",
-      "page_ref": "p. 1",
-      "verification_status": "verified",
-      "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
-      "used_on": [
-        "patriotic-service"
-      ],
-      "notes": "",
-      "source_scope": "national"
-    },
-    {
-      "claim_id": "sartax-license",
-      "claim_text": "SAR: license fees and fees for specific government services are not patriotic service.",
-      "source_url": "https://www.sar.org/wp-content/uploads/2019/10/Revolutionary-Taxes-as-Evidence-of-Patriotic-Service.pdf",
-      "source_title": "NSSAR Genealogist General — Revolutionary Taxes as Evidence of Patriotic Service (2015)",
-      "source_type": "official_secondary",
-      "archive_identifier": null,
-      "last_retrieved": "2026-10-31",
-      "quote_excerpt": "was a fee for a license or a specific government service",
-      "page_ref": "p. 1",
-      "verification_status": "verified",
-      "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
-      "used_on": [
-        "patriotic-service"
-      ],
-      "notes": "",
-      "source_scope": "national"
-    },
-    {
-      "claim_id": "sartax-burden",
-      "claim_text": "SAR puts the burden on the applicant to show the tax supported the War, unless already approved.",
-      "source_url": "https://www.sar.org/wp-content/uploads/2019/10/Revolutionary-Taxes-as-Evidence-of-Patriotic-Service.pdf",
-      "source_title": "NSSAR Genealogist General — Revolutionary Taxes as Evidence of Patriotic Service (2015)",
-      "source_type": "official_secondary",
-      "archive_identifier": null,
-      "last_retrieved": "2026-10-31",
-      "quote_excerpt": "Burden on the applicant to determine whether a tax record naming an ancestor was for a tax that supported the War.",
-      "page_ref": "p. 2",
-      "verification_status": "verified",
-      "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
-      "used_on": [
-        "patriotic-service"
-      ],
-      "notes": "",
-      "source_scope": "national"
-    },
-    {
-      "claim_id": "sartax-assessment",
-      "claim_text": "SAR accepts an assessment roll, payment list, other record or receipt naming the ancestor.",
-      "source_url": "https://www.sar.org/wp-content/uploads/2019/10/Revolutionary-Taxes-as-Evidence-of-Patriotic-Service.pdf",
-      "source_title": "NSSAR Genealogist General — Revolutionary Taxes as Evidence of Patriotic Service (2015)",
-      "source_type": "official_secondary",
-      "archive_identifier": null,
-      "last_retrieved": "2026-10-31",
-      "quote_excerpt": "Ancestor on assessment roll, payment list, other record, or there is a receipt",
-      "page_ref": "p. 1",
-      "verification_status": "verified",
-      "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
-      "used_on": [
-        "patriotic-service"
-      ],
-      "notes": "",
-      "source_scope": "national"
-    },
-    {
       "claim_id": "sartax-scga",
       "claim_text": "SAR reports apparently no extant South Carolina or Georgia revolutionary tax lists.",
       "source_url": "https://www.sar.org/wp-content/uploads/2019/10/Revolutionary-Taxes-as-Evidence-of-Patriotic-Service.pdf",
@@ -2037,6 +1946,43 @@
       "source_scope": "national"
     },
     {
+      "claim_id": "sar-apg-junior",
+      "claim_text": "SAR's application guide says a male under 18 years of age can apply for Junior Membership in SAR.",
+      "source_url": "https://www.sar.org/app/uploads/APG-07-June-2026.pdf",
+      "source_title": "SAR — Application Preparation Guide (NSSAR Genealogy Committee, 07 June 2026)",
+      "source_type": "official_secondary",
+      "archive_identifier": null,
+      "last_retrieved": "2026-11-13",
+      "quote_excerpt": "A male under 18 years of age can apply for Junior Membership in SAR.",
+      "page_ref": "Junior Members",
+      "verification_status": "verified",
+      "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-11-13 CT",
+      "used_on": [
+        "partial:glossary",
+        "partial:how-to-join"
+      ],
+      "notes": "",
+      "source_scope": "national"
+    },
+    {
+      "claim_id": "sar-apg-signatures",
+      "claim_text": "SAR's application guide lists signatures from the applicant, two sponsors, the State Registrar and the State Secretary.",
+      "source_url": "https://www.sar.org/app/uploads/APG-07-June-2026.pdf",
+      "source_title": "SAR — Application Preparation Guide (NSSAR Genealogy Committee, 07 June 2026)",
+      "source_type": "official_secondary",
+      "archive_identifier": null,
+      "last_retrieved": "2026-11-13",
+      "quote_excerpt": "The new member application must include the signatures of the applicant, two sponsors, the State Registrar, and the State Secretary.",
+      "page_ref": "Missing Signatures",
+      "verification_status": "verified",
+      "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-11-13 CT",
+      "used_on": [
+        "application-problems"
+      ],
+      "notes": "",
+      "source_scope": "national"
+    },
+    {
       "claim_id": "sar-gcp-replace-once",
       "claim_text": "SAR's genealogy policies say an applicant may replace a pended application with another patriot ancestor one time without paying an additional fee.",
       "source_url": "https://www.sar.org/app/uploads/NSSAR-Genealogy-Policy-Manual-2026-12-5.pdf",
@@ -2084,6 +2030,174 @@
       "page_ref": "Policy 6.3002a, p. 24",
       "verification_status": "verified",
       "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-11-11 CT",
+      "used_on": [
+        "application-problems"
+      ],
+      "notes": "",
+      "source_scope": "national"
+    },
+    {
+      "claim_id": "sar-gcp-window",
+      "claim_text": "SAR's Genealogy Committee Policies say acceptable service must have been rendered between 19 April 1775 and 25 November 1783.",
+      "source_url": "https://www.sar.org/app/uploads/NSSAR-Genealogy-Policy-Manual-2026-12-5.pdf",
+      "source_title": "SAR — Genealogy Committee Policies (NSSAR, reflects changes through 12 May 2026)",
+      "source_type": "official_secondary",
+      "archive_identifier": null,
+      "last_retrieved": "2026-11-13",
+      "quote_excerpt": "Service must have been rendered between 19 April 1775 and 25 November 1783 except as noted below.",
+      "page_ref": "§2.0000 / §2.3000",
+      "verification_status": "verified",
+      "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-11-13 CT",
+      "used_on": [
+        "lineage-matrix",
+        "lineage-proof-roadmap",
+        "patriotic-service"
+      ],
+      "notes": "",
+      "source_scope": "national"
+    },
+    {
+      "claim_id": "sar-gcp-34001",
+      "claim_text": "SAR's Genealogy Committee Policies accept 1850, 1860 and 1870 census households as proof of a parent-child relationship when nothing argues against it.",
+      "source_url": "https://www.sar.org/app/uploads/NSSAR-Genealogy-Policy-Manual-2026-12-5.pdf",
+      "source_title": "SAR — Genealogy Committee Policies (NSSAR, reflects changes through 12 May 2026)",
+      "source_type": "official_secondary",
+      "archive_identifier": null,
+      "last_retrieved": "2026-11-13",
+      "quote_excerpt": "1850, 1860 and 1870 Census records that show a family unit without explicitly stating the parent-to- child relationship. Unless there is information tending to argue against this assumption, it should be accepted as proof of lineage.",
+      "page_ref": "§3.4001",
+      "verification_status": "verified",
+      "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-11-13 CT",
+      "used_on": [
+        "census-bridge",
+        "lineage-matrix",
+        "substitute-evidence",
+        "tool:places.js",
+        "tool:tool-b.js"
+      ],
+      "notes": "",
+      "source_scope": "national"
+    },
+    {
+      "claim_id": "sar-gcp-24004",
+      "claim_text": "SAR's Genealogy Committee Policies say payment of a tax to a state or a local jurisdiction during the Revolution shall be deemed Patriotic Service.",
+      "source_url": "https://www.sar.org/app/uploads/NSSAR-Genealogy-Policy-Manual-2026-12-5.pdf",
+      "source_title": "SAR — Genealogy Committee Policies (NSSAR, reflects changes through 12 May 2026)",
+      "source_type": "official_secondary",
+      "archive_identifier": null,
+      "last_retrieved": "2026-11-13",
+      "quote_excerpt": "Payment of a tax to a state or a local jurisdiction during the Revolution shall be deemed Patriotic Service",
+      "page_ref": "§2.4004",
+      "verification_status": "verified",
+      "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-11-13 CT",
+      "used_on": [
+        "patriotic-service"
+      ],
+      "notes": "",
+      "source_scope": "national"
+    },
+    {
+      "claim_id": "sar-gcp-24004-penalty",
+      "claim_text": "SAR's Genealogy Committee Policies exclude a tax payment if the taxpayer was charged a penalty rate or fee for breaking the law, or was on record for having broken a law entailing a penalty such as a higher rate, penalty fee, fine, or seizure of property.",
+      "source_url": "https://www.sar.org/app/uploads/NSSAR-Genealogy-Policy-Manual-2026-12-5.pdf",
+      "source_title": "SAR — Genealogy Committee Policies (NSSAR, reflects changes through 12 May 2026)",
+      "source_type": "official_secondary",
+      "archive_identifier": null,
+      "last_retrieved": "2026-11-13",
+      "quote_excerpt": "the taxpayer was not charged a penalty rate or fee imposed for breaking the law and/or the taxpayer was not on record for having broken a law entailing a penalty such as a higher rate, penalty fee, fine, or seizure of property",
+      "page_ref": "§2.4004",
+      "verification_status": "verified",
+      "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-11-13 CT",
+      "used_on": [
+        "patriotic-service"
+      ],
+      "notes": "",
+      "source_scope": "national"
+    },
+    {
+      "claim_id": "sar-gcp-24004-record",
+      "claim_text": "SAR's Genealogy Committee Policies require a record such as a tax assessment roll, payment list, or a receipt.",
+      "source_url": "https://www.sar.org/app/uploads/NSSAR-Genealogy-Policy-Manual-2026-12-5.pdf",
+      "source_title": "SAR — Genealogy Committee Policies (NSSAR, reflects changes through 12 May 2026)",
+      "source_type": "official_secondary",
+      "archive_identifier": null,
+      "last_retrieved": "2026-11-13",
+      "quote_excerpt": "A record such as a tax assessment roll, payment list, or a receipt is required.",
+      "page_ref": "§2.4004",
+      "verification_status": "verified",
+      "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-11-13 CT",
+      "used_on": [
+        "patriotic-service"
+      ],
+      "notes": "",
+      "source_scope": "national"
+    },
+    {
+      "claim_id": "sar-gcp-24004-obligation",
+      "claim_text": "SAR's Genealogy Committee Policies say evidence merely that a person had a legal obligation to pay a tax is not sufficient to establish service.",
+      "source_url": "https://www.sar.org/app/uploads/NSSAR-Genealogy-Policy-Manual-2026-12-5.pdf",
+      "source_title": "SAR — Genealogy Committee Policies (NSSAR, reflects changes through 12 May 2026)",
+      "source_type": "official_secondary",
+      "archive_identifier": null,
+      "last_retrieved": "2026-11-13",
+      "quote_excerpt": "Evidence merely that a person had a legal obligation to pay a tax is not sufficient to establish service.",
+      "page_ref": "§2.4004",
+      "verification_status": "verified",
+      "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-11-13 CT",
+      "used_on": [
+        "patriotic-service"
+      ],
+      "notes": "",
+      "source_scope": "national"
+    },
+    {
+      "claim_id": "sar-gcp-24004-license",
+      "claim_text": "SAR's Genealogy Committee Policies say a payment that was a license or a specific governmental service for personal benefit is not Patriotic Service, even if called a tax.",
+      "source_url": "https://www.sar.org/app/uploads/NSSAR-Genealogy-Policy-Manual-2026-12-5.pdf",
+      "source_title": "SAR — Genealogy Committee Policies (NSSAR, reflects changes through 12 May 2026)",
+      "source_type": "official_secondary",
+      "archive_identifier": null,
+      "last_retrieved": "2026-11-13",
+      "quote_excerpt": "Payment of a tax or fee to a state or local jurisdiction shall not be deemed Patriotic Service if the payment was a license or specific governmental service for personal benefit, even if called a tax.",
+      "page_ref": "§2.4004",
+      "verification_status": "verified",
+      "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-11-13 CT",
+      "used_on": [
+        "patriotic-service"
+      ],
+      "notes": "",
+      "source_scope": "national"
+    },
+    {
+      "claim_id": "sar-gcp-24004-examples",
+      "claim_text": "SAR's Genealogy Committee Policies give as examples marriage licenses, writs, and the inspection or storage of commodities.",
+      "source_url": "https://www.sar.org/app/uploads/NSSAR-Genealogy-Policy-Manual-2026-12-5.pdf",
+      "source_title": "SAR — Genealogy Committee Policies (NSSAR, reflects changes through 12 May 2026)",
+      "source_type": "official_secondary",
+      "archive_identifier": null,
+      "last_retrieved": "2026-11-13",
+      "quote_excerpt": "This includes, but is not limited to, marriage licenses, writs, and the inspection or storage of commodities.",
+      "page_ref": "§2.4004",
+      "verification_status": "verified",
+      "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-11-13 CT",
+      "used_on": [
+        "patriotic-service"
+      ],
+      "notes": "",
+      "source_scope": "national"
+    },
+    {
+      "claim_id": "sar-gcp-35006-7",
+      "claim_text": "SAR's Genealogy Committee Policies do not accept unpublished transcriptions or abstracts of wills or other legal documents posted online.",
+      "source_url": "https://www.sar.org/app/uploads/NSSAR-Genealogy-Policy-Manual-2026-12-5.pdf",
+      "source_title": "SAR — Genealogy Committee Policies (NSSAR, reflects changes through 12 May 2026)",
+      "source_type": "official_secondary",
+      "archive_identifier": null,
+      "last_retrieved": "2026-11-13",
+      "quote_excerpt": "Unpublished transcriptions or abstracts of wills or other legal documents posted online.",
+      "page_ref": "§3.5006(7)",
+      "verification_status": "verified",
+      "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-11-13 CT",
       "used_on": [
         "application-problems"
       ],
@@ -2147,24 +2261,6 @@
       "source_scope": "national"
     },
     {
-      "claim_id": "sar-checklist-signatures",
-      "claim_text": "SAR's application checklist asks whether the State Registrar, State Secretary and two sponsors have signed a new-member application.",
-      "source_url": "https://members.sar.org/media/uploads/pages/334/wPXSPrcD0cuU.pdf",
-      "source_title": "SAR — Application Checklist",
-      "source_type": "official_secondary",
-      "archive_identifier": null,
-      "last_retrieved": "2026-11-09",
-      "quote_excerpt": "For new-member applications, have the State Registrar, State Secretary, and two Sponsors signed the application?",
-      "page_ref": null,
-      "verification_status": "verified",
-      "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-11-09 CT",
-      "used_on": [
-        "application-problems"
-      ],
-      "notes": "",
-      "source_scope": "national"
-    },
-    {
       "claim_id": "nara-act-1832",
       "claim_text": "Under the 1832 act, 6 months to 2 years of service earned less than full pay; 2 years earned full pay.",
       "source_url": "https://www.archives.gov/files/research/military/army/dc/m804.pdf",
@@ -2200,6 +2296,79 @@
         "tool:patriot.js",
         "tool:tool-a.js",
         "walkthroughs",
+        "widow-pension-checker"
+      ],
+      "notes": "",
+      "source_scope": "national"
+    },
+    {
+      "claim_id": "nara-act-1832-navy",
+      "claim_text": "The 1832 act also covered navy and marine officers and enlisted men.",
+      "source_url": "https://www.archives.gov/files/research/military/army/dc/m804.pdf",
+      "source_title": "NARA M804 descriptive pamphlet — Revolutionary War Pension and Bounty-Land-Warrant Application Files",
+      "source_type": "official_secondary",
+      "archive_identifier": null,
+      "last_retrieved": "2026-11-13",
+      "quote_excerpt": "Naval and marine officers and enlisted men were also included",
+      "page_ref": "PDF p. 5",
+      "verification_status": "verified",
+      "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-11-13 CT",
+      "used_on": [
+        "tool:tool-a.js",
+        "widow-pension-checker"
+      ],
+      "notes": "",
+      "source_scope": "national"
+    },
+    {
+      "claim_id": "nara-m804-1836-class",
+      "claim_text": "By the act of July 4, 1836, some widows of Revolutionary War veterans were again permitted, as a class under public law, to apply for pensions.",
+      "source_url": "https://www.archives.gov/files/research/military/army/dc/m804.pdf",
+      "source_title": "NARA M804 descriptive pamphlet — Revolutionary War Pension and Bounty-Land-Warrant Application Files",
+      "source_type": "official_secondary",
+      "archive_identifier": null,
+      "last_retrieved": "2026-11-13",
+      "quote_excerpt": "some widows of Revolutionary War veterans were again permitted, as a class under public law, to apply for pensions",
+      "page_ref": "PDF p. 5",
+      "verification_status": "verified",
+      "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-11-13 CT",
+      "used_on": [
+        "widow-pension-checker"
+      ],
+      "notes": "",
+      "source_scope": "national"
+    },
+    {
+      "claim_id": "nara-m804-private-acts",
+      "claim_text": "For many years before the 1836 act, a widow needed a private act of Congress to apply, unless she was collecting only the unpaid remainder of her husband's pension.",
+      "source_url": "https://www.archives.gov/files/research/military/army/dc/m804.pdf",
+      "source_title": "NARA M804 descriptive pamphlet — Revolutionary War Pension and Bounty-Land-Warrant Application Files",
+      "source_type": "official_secondary",
+      "archive_identifier": null,
+      "last_retrieved": "2026-11-13",
+      "quote_excerpt": "unless a private act of Congress was introduced on her behalf",
+      "page_ref": "PDF p. 5",
+      "verification_status": "verified",
+      "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-11-13 CT",
+      "used_on": [
+        "widow-pension-checker"
+      ],
+      "notes": "",
+      "source_scope": "national"
+    },
+    {
+      "claim_id": "nara-m804-rejected-files",
+      "claim_text": "Rejected pension application files of both survivors and widows were kept as their own series.",
+      "source_url": "https://www.archives.gov/files/research/military/army/dc/m804.pdf",
+      "source_title": "NARA M804 descriptive pamphlet — Revolutionary War Pension and Bounty-Land-Warrant Application Files",
+      "source_type": "official_secondary",
+      "archive_identifier": null,
+      "last_retrieved": "2026-11-13",
+      "quote_excerpt": "The third contained rejected applications of both survivors and widows",
+      "page_ref": "PDF p. 7",
+      "verification_status": "verified",
+      "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-11-13 CT",
+      "used_on": [
         "widow-pension-checker"
       ],
       "notes": "",
@@ -3399,8 +3568,7 @@
       "verification_status": "verified",
       "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
       "used_on": [
-        "tool:patriot.js",
-        "widow-pension-checker"
+        "tool:patriot.js"
       ],
       "notes": "",
       "source_scope": "national"

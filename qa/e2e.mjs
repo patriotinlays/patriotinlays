@@ -375,7 +375,7 @@ check("Report: links to the definitions", (await page.$$('main a[href="/#glossar
   await page.emulateMedia({ media: "print" }); await page.evaluate(() => document.body.classList.add("print-summary"));
   const bS = pdfPages(await page.pdf(PDF_OPTS)); await page.evaluate(() => document.body.classList.remove("print-summary")); const bF = pdfPages(await page.pdf({ ...PDF_OPTS, path: join(SHOTS, "persona-b-report-full.pdf") }));
   await page.emulateMedia({ media: "screen" }); globalThis.__reportPages = { ...(globalThis.__reportPages || {}), personaB: { summaryPages: bS, fullPages: bF } };
-  check("Audit 3 #2: the audit's longer persona-B report prints shorter than before (Save as PDF 3 -> at most 2, Ctrl+P 5 -> at most 3)", bS <= 2 && bF <= 3, `summary ${bS}, full ${bF}`);
+  check("Audit 3 #2 / t172: the persona-B full report is at most 4 pages (t172 added the SAR census-policy sentence to worksheet cautions); Save as PDF stays at most 2", bS <= 2 && bF <= 4, `summary ${bS}, full ${bF}`);
   await page.evaluate(() => localStorage.removeItem("pi.toolB.v1"));
   phase("load"); await page.goto(`${BASE}/tools/lineage-matrix/`); await page.click("[data-load-example]"); phase("interact");
 }
@@ -757,9 +757,9 @@ phase("load"); await page.goto(`${BASE}/`); phase("interact");
   const ohSentences = ["A 2023 Ohio Society SAR presentation put it in capitals: always complete an application from the documentation.", "A 2023 Ohio Society SAR presentation said a correctly prepared application can be reviewed at National in as little as 30 minutes."];
   check("t127u #1: Application Returned attributes the Ohio points to 'A 2023 Ohio Society SAR presentation', never 'SAR says' or 'SAR:', and none of them carries an 'As of' date",
     ohSentences.every((x) => ap.includes(x)) && !/\bSAR says\b|SAR: (?!the National)/.test(ap) && ![...apH.matchAll(/data-asof="([a-z0-9-]+)"/g)].some((m) => m[1].startsWith("ohsar-")), ohSentences.filter((x) => !ap.includes(x)).join(" | "));
-  check("t127u #1: SAR signatures come from SAR's national application checklist (members.sar.org), with an 'As of' date from its last pass",
-    new RegExp(`As of <span data-asof="sar-checklist-signatures">${longDate(lp["https://members.sar.org/media/uploads/pages/334/wPXSPrcD0cuU.pdf"])}</span>, SAR(?:'|&#39;)s application checklist asks whether the State Registrar, State Secretary and two sponsors have signed a new-member application\\.`).test(apH.replace(/&apos;/g, "&#39;"))
-    && apH.includes('href="https://members.sar.org/media/uploads/pages/334/wPXSPrcD0cuU.pdf"') && !/five signatures/.test(ap));
+  check("t127u #1 / t172 #6a: SAR new-member signatures come from SAR's Application Preparation Guide (Missing Signatures), with an 'As of' date from its last pass",
+    new RegExp(`As of <span data-asof="sar-apg-signatures">${longDate(lp["https://www.sar.org/app/uploads/APG-07-June-2026.pdf"])}</span>, SAR(?:'|&#39;)s application guide lists signatures from the applicant, two sponsors, the State Registrar and the State Secretary\\.`).test(apH.replace(/&apos;/g, "&#39;"))
+    && apH.includes('href="https://www.sar.org/app/uploads/APG-07-June-2026.pdf"') && !/five signatures/.test(ap) && !/application checklist asks whether the State Registrar, State Secretary and two sponsors have signed a new-member application/.test(ap));
   const se = H("guides/substitute-evidence");
   check("t127u #1: Substitute Evidence opens its matrix with Tim's sentence, and the source is renamed 'NSCDA South Carolina Society — Standards of Proof (2025)'",
     /<h2 id="era-by-era-substitute-matrix">Era-By-Era Substitute Matrix<\/h2>\s*<p>Many examples below come from one state society(?:'|&#39;)s standards \(NSCDA in South Carolina\)\. DAR and SAR apply their own standards, so ask your registrar\.<\/p>\s*(<div class="table-wrap[^>]*>)?\s*<table/.test(se.replace(/&apos;/g, "&#39;"))
@@ -1636,6 +1636,50 @@ for (const w of [390, 1280]) { const cx = await browser.newContext({ viewport: {
     }
     await cx.close();
   }
+}
+
+
+// ---- t172: accuracy batch (SAR dates, widow wording, census/tax/eligibility, small fixes) ----
+{ const REL172 = join(ROOT, "qa/release-logs/t172"); mkdirSync(REL172, { recursive: true });
+  const H = (p) => readFileSync(join(DIST, p, "index.html"), "utf8");
+  const text = (p) => H(p).replace(/<script[\s\S]*?<\/script>/g, "").replace(/<[^>]+>/g, "").replace(/&#39;|&apos;/g, "'").replace(/&amp;/g, "&").replace(/&quot;/g, '"').replace(/\s+/g, " ");
+  const pages = ["guides/patriotic-service", "guides/lineage-proof-roadmap", "tools/lineage-matrix", "tools/widow-pension-checker", "guides/census-bridge", "guides/substitute-evidence", "guides/application-problems", ""];
+  const all = pages.map((p) => text(p)).join("\n");
+  check("t172 #1: SAR's service end date is 25 November 1783 from GCP, stated separately from DAR's 26 November, with the Step 1 note",
+    text("guides/patriotic-service").includes("SAR accepts patriotic service rendered between 19 April 1775 and 25 November 1783")
+    && text("tools/lineage-matrix").includes("SAR accepts patriotic service rendered between 19 April 1775 and 25 November 1783")
+    && text("guides/lineage-proof-roadmap").includes("between 19 April 1775 and 25 November 1783")
+    && pages.every((p) => !text(p).includes("SAR uses the same period") && !text(p).includes("SAR accepts patriotic service, with some exceptions, for the same period"))
+    && text("guides/patriotic-service").includes("SAR's Step 1 page gives 26 November; this site follows SAR's Genealogy Committee Policies.")
+    && text("guides/patriotic-service").includes("DAR accepts service performed between 19 April 1775 and 26 November 1783"));
+  check("t172 #2a/#2b/#2c/#2d: widow checker wording and 1832 navy sentence; old sentences gone",
+    text("tools/widow-pension-checker").includes("This checker starts with the 1836 widow pension law; earlier laws and private acts of Congress are outside its scope.")
+    && !text("tools/widow-pension-checker").includes("Widows could apply for pensions beginning in 1836.")
+    && text("tools/widow-pension-checker").includes("it doesn't decide anything. Federal officials decided the historical pension claims; DAR or SAR decides whether your evidence meets its membership rules.")
+    && !text("tools/widow-pension-checker").includes("it never makes a decision about membership or a pension; your society does that")
+    && text("tools/widow-pension-checker").includes("Your dates don't meet this law's checked rules, but a rejected claim may still have left a file. Search the pension index anyway.")
+    && !text("tools/widow-pension-checker").includes("No action is needed for that law unless you typed something wrong.")
+    && text("tools/widow-pension-checker").includes("Naval and marine officers and enlisted men were also included."));
+  const sarCensus = "SAR's Genealogy Committee Policies accept 1850, 1860 and 1870 census households as proof of a parent-child relationship when nothing argues against it.";
+  check("t172 #3: SAR census rule sits next to each NSCDA 1850–1870 statement on Substitute Evidence, Census Bridge and the worksheet",
+    text("guides/census-bridge").includes(sarCensus) && text("guides/substitute-evidence").includes(sarCensus) && text("tools/lineage-matrix").includes(sarCensus)
+    && text("tools/lineage-matrix").includes("A 1850–1870 census used for parentage gets a caution"));
+  check("t172 #4: Patriotic Service quotes GCP §2.4004 and its exclusions; the conflicting 2015 statute and burden points are gone",
+    text("guides/patriotic-service").includes("Payment of a tax to a state or a local jurisdiction during the Revolution shall be deemed Patriotic Service")
+    && text("guides/patriotic-service").includes("Evidence merely that a person had a legal obligation to pay a tax is not sufficient to establish service.")
+    && text("guides/patriotic-service").includes("marriage licenses, writs, and the inspection or storage of commodities")
+    && !text("guides/patriotic-service").includes("The statute behind the tax has to address a request of the Continental Congress or support the War.")
+    && !text("guides/patriotic-service").includes("the burden is on the applicant to show the tax supported the War."));
+  check("t172 #5: every 'any man 18 or older' SAR line carries the junior-membership parenthetical",
+    (text("").match(/any man 18 or older who can prove he descends from a patriot of the American Revolution\./g) || []).length >= 1
+    && text("").includes("(boys under 18 can apply for junior membership)")
+    && text("guides/patriotic-service").includes("(boys under 18 can apply for junior membership)")
+    && text("guides/application-problems").includes("(boys under 18 can apply for junior membership)"));
+  check("t172 #6: Application Returned signatures and service-source wording; Census Bridge does not drop a man with no child in the bracket",
+    text("guides/application-problems").includes("SAR's application guide lists signatures from the applicant, two sponsors, the State Registrar and the State Secretary.")
+    && text("guides/application-problems").includes("Service source is an original record or a published transcription; SAR doesn't accept unpublished transcriptions or abstracts of legal documents posted online.")
+    && text("guides/census-bridge").includes("A man with no child in the right age bracket is less likely, but don't rule him out yet; check other records first.")
+    && !text("guides/census-bridge").includes("A man who shows no child in the right bracket drops off your list."));
 }
 
 // ---- Cache-busting: every script/CSS reference and every module import carries ?v=<hash> that matches the file ----
