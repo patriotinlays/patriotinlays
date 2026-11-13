@@ -28,7 +28,7 @@ Each law had its own rules, though, and it's hard to tell from the law books whi
 
 **What you'll get.** A short "In short" summary of which laws fit, which are ruled out and which are still possible, then a row for each law with its rule and what would settle it, and a "What to do next" plan with links to the pension files. You can print the results or save them as a PDF.
 
-**Its limits.** It does not look anything up, and it doesn't decide anything. Federal officials decided the historical pension claims; DAR or SAR decides whether your evidence meets its membership rules. It never says a law simply fits, because every law has terms it can't test from dates, and it lists them. A rough date can leave a law "Still possible", and "About" is this site's rule of thumb, not part of the law. Everything you type stays in this browser.
+**Its limits.** It does not look anything up, and it doesn't decide anything. DAR or SAR decides whether your evidence meets its membership rules. It never says a law simply fits, because every law has terms it can't test from dates, and it lists them. A rough date can leave a law "Still possible", and "About" is this site's rule of thumb, not part of the law. Everything you type stays in this browser.
 
 **What to do next.** When a law fits or is still possible, look for the widow's pension file. The files are online free on FamilySearch, with a login. [[claim:nara-amrev-familysearch]] Then record what the file says in the [Lineage Evidence Matrix](/tools/lineage-matrix/), and read [How to Read a Pension File](/guides/read-pension-file/) for help with the papers themselves.
 

@@ -1,5 +1,5 @@
 {
-  "ranAt": "Fri Nov 13 2026 08:39:02 GMT-0600 (Central Standard Time)",
+  "ranAt": "Fri Nov 13 2026 08:50:04 GMT-0600 (Central Standard Time)",
   "browser": "/usr/bin/google-chrome (headless) via playwright-core 1.59.1",
   "passed": 351,
   "total": 351,
@@ -29,7 +29,8 @@
     "rgb(19, 41, 75) on rgb(255, 255, 255)": 14.52,
     "rgb(94, 85, 75) on rgb(255, 255, 255)": 7.3,
     "rgb(43, 38, 34) on rgb(255, 255, 255)": 14.97,
-    "rgb(107, 69, 0) on rgb(255, 253, 248)": 8.34
+    "rgb(107, 69, 0) on rgb(255, 253, 248)": 8.34,
+    "rgb(11, 26, 51) on rgb(255, 253, 248)": 17.08
   },
   "home": {
     "ps": 7,
@@ -844,7 +845,7 @@
     {
       "name": "t123u #2: each guide's 'Sources last checked' date is the oldest recorded live pass among its own listed sources (every source has a record; nothing invented)",
       "ok": true,
-      "detail": "lineage-proof-roadmap=2026-11-05 substitute-evidence=2026-11-05 read-pension-file=2026-11-12 records-by-state=2026-11-05 bounty-land-warrants=2026-11-12 census-bridge=2026-11-05 patriotic-service=2026-11-05 same-name=2026-11-12 patriot-or-loyalist=2026-11-12 application-problems=2026-11-05"
+      "detail": "lineage-proof-roadmap=2026-11-05 substitute-evidence=2026-11-05 read-pension-file=2026-11-13 records-by-state=2026-11-05 bounty-land-warrants=2026-11-13 census-bridge=2026-11-05 patriotic-service=2026-11-05 same-name=2026-11-13 patriot-or-loyalist=2026-11-13 application-problems=2026-11-05"
     },
     {
       "name": "t124u #1 (390px): every Sources entry on every page (16 pages, 307 entries) has a visible \"Used for: ...\" line of at most about 8 words, and the raw URL is hidden on screen",
@@ -1034,7 +1035,7 @@
     {
       "name": "t146 #2 / t128u #3: DAR record copies, the birth certificate and the date format are re-sourced to SAR's national Application Preparation Guide ('SAR's application guide says', As of its last pass); the Ohio wording for them is gone",
       "ok": true,
-      "detail": "November 12, 2026"
+      "detail": "November 13, 2026"
     },
     {
       "name": "t128u #1: the t127 DAR-FAQ/Step-by-step rewordings are held back (DAR pages unreachable since their Nov 5 pass); the South Carolina attributions are back",
@@ -1344,7 +1345,7 @@
     {
       "name": "t149: Same Name's 'Residence vs. Service' row keeps DAR's point and then has the SAR residency sentence ('As of' its date); 'Right Age' has only the alive-and-of-age sentence",
       "ok": true,
-      "detail": "{\"res\":\"Residence vs. serviceWhere your patriot lived and where the service was performedA residence and service location that do not match is a standard DAR review trigger. As of November 12, 2026, SAR's application guide says the patriot's residence during the Revolution must agree with the service being \",\"age\":\"Right ageBirth range vs. serviceAs of November 12, 2026, SAR's application guide says that if the patriot's birth date can't be found, you cite a proven fact showing the patriot was living at the time of the service and of age for it\"}"
+      "detail": "{\"res\":\"Residence vs. serviceWhere your patriot lived and where the service was performedA residence and service location that do not match is a standard DAR review trigger. As of November 13, 2026, SAR's application guide says the patriot's residence during the Revolution must agree with the service being \",\"age\":\"Right ageBirth range vs. serviceAs of November 13, 2026, SAR's application guide says that if the patriot's birth date can't be found, you cite a proven fact showing the patriot was living at the time of the service and of age for it\"}"
     },
     {
       "name": "t149 (390px): Same Name fits the screen (no sideways scroll)",
@@ -1704,7 +1705,7 @@
     {
       "name": "t163 #1: Application Returned explanation quotes SAR verbatim on the birth-certificate-or-court-order rule, when a court order may be needed, and on short-form certificates",
       "ok": true,
-      "detail": "Applicant birth certificate questioned As of November 12, 2026 , SAR's application guide says \"Birth certificate or court order is required for all new applicants that specifies his gender as male.\" [4] It says \"The applicant may need a court order if the birth certificate fails to identify the applicant's gender as male.\" [4] \"Short-form birth certificates that do not identify the parents are insufficient.\" [4] The applicant may need a court order if the birth certificate fails to identify the applicant's gender as male. [4] Short-form birth certificates that do not identify the parents are insufficient. [4] Parent-child link questioned A 2023 Ohio Society SAR presentation said inadequate p"
+      "detail": "Applicant birth certificate questioned As of November 13, 2026 , SAR's application guide says \"Birth certificate or court order is required for all new applicants that specifies his gender as male.\" [4] It says \"The applicant may need a court order if the birth certificate fails to identify the applicant's gender as male.\" [4] \"Short-form birth certificates that do not identify the parents are insufficient.\" [4] The applicant may need a court order if the birth certificate fails to identify the applicant's gender as male. [4] Short-form birth certificates that do not identify the parents are insufficient. [4] Parent-child link questioned A 2023 Ohio Society SAR presentation said inadequate p"
     },
     {
       "name": "t163 #1: the suggested fix is the same two verbatim SAR sentences (court-order condition and short-form), with no Ohio maiden-name or 'order a long-form' advice",
@@ -1714,7 +1715,7 @@
     {
       "name": "t163 #2: Sources 'Last retrieved' is the Central-time date of the most recent full live-source check, and the claim count equals the manifest",
       "ok": true,
-      "detail": "{\"srcLine\":\"Manifest: 410 verified claims. Last retrieved: November 12, 2026.\",\"expectDate\":\"November 12, 2026\",\"shownCount\":410,\"manifest\":410,\"checkedAt\":\"Thu Nov 12 2026 21:46:54 GMT-0600 (Central Standard Time)\"}"
+      "detail": "{\"srcLine\":\"Manifest: 410 verified claims. Last retrieved: November 13, 2026.\",\"expectDate\":\"November 13, 2026\",\"shownCount\":410,\"manifest\":410,\"checkedAt\":\"Fri Nov 13 2026 08:42:26 GMT-0600 (Central Standard Time)\"}"
     },
     {
       "name": "t163 #3: every page says 'quoted official or institutional source'; the locked AI line uses the new wording; the old phrase is gone",

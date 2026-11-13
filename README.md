@@ -260,6 +260,9 @@ Docs: https://developers.cloudflare.com/pages/how-to/web-analytics/
 - February 28, 1855 navy-widow law cited as ch. 126, sec. 3, 10 Stat. 616 (chapter begins at 615); 10 Stat. 701 is only the March 3, 1855 bounty-land act.
 - Worksheet: step 1 is the patriot, step 2 starts the family with yourself; removing the oldest generation asks for confirmation.
 
+### t173 (Nov 13, 2026)
+- Widow Pension Law Checker 2b wording: dropped the unquoted "Federal officials decided the historical pension claims;" clause. The sentence is now "It does not look anything up, and it doesn't decide anything. DAR or SAR decides whether your evidence meets its membership rules." (limits box and the limits-widow partial). No other edits.
+
 ### t172 (Nov 13, 2026) — preview only
 - Accuracy batch from an outside audit. SAR's service window is stated separately from DAR's: SAR 19 April 1775 to 25 November 1783 (Genealogy Committee Policies §2.0000/§2.3000), with a note that SAR's Step 1 page gives 26 November. Widow Pension Law Checker wording for the 1836 starting point, who decides, ruled-out results, and the 1832 navy/marine coverage (M804). The checker does not rule out navy service under the 1836 or 1838 laws; that logic was left unchanged. SAR's census rule (GCP §3.4001) is added next to each NSCDA South Carolina 1850–1870 statement. Patriotic Service supply-tax tests now quote GCP §2.4004 and its exclusions; the conflicting 2015 "statute must support the War" and "burden on the applicant" points were removed. SAR eligibility notes junior membership. Application Returned signatures come from the Application Preparation Guide (Missing Signatures); the service-source checklist item follows GCP §3.5006(7). Census Bridge no longer drops a man with no child in the age bracket. Preview deploy only (`--branch t172-preview`); not deployed to production.
 

@@ -1655,7 +1655,7 @@ for (const w of [390, 1280]) { const cx = await browser.newContext({ viewport: {
   check("t172 #2a/#2b/#2c/#2d: widow checker wording and 1832 navy sentence; old sentences gone",
     text("tools/widow-pension-checker").includes("This checker starts with the 1836 widow pension law; earlier laws and private acts of Congress are outside its scope.")
     && !text("tools/widow-pension-checker").includes("Widows could apply for pensions beginning in 1836.")
-    && text("tools/widow-pension-checker").includes("it doesn't decide anything. Federal officials decided the historical pension claims; DAR or SAR decides whether your evidence meets its membership rules.")
+    && text("tools/widow-pension-checker").includes("it doesn't decide anything. DAR or SAR decides whether your evidence meets its membership rules.")
     && !text("tools/widow-pension-checker").includes("it never makes a decision about membership or a pension; your society does that")
     && text("tools/widow-pension-checker").includes("Your dates don't meet this law's checked rules, but a rejected claim may still have left a file. Search the pension index anyway.")
     && !text("tools/widow-pension-checker").includes("No action is needed for that law unless you typed something wrong.")
