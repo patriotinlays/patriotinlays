@@ -52,3 +52,9 @@ existing "no verified source yet" note.
 - E2E: 365/365 (was 351; 14 new t174 checks at 390px and 1280px, 3 Ohio/Texas checks updated)
 
 Screenshots: worksheet-old-data-*, worksheet-still-living-*, report-living-* (390, 1280).
+
+## Preview (not production)
+
+Code commit f6baab58c9c8f4e2e1e4133fdff0efd7c568ad46. Deployed `--branch t174-preview`: https://t174-preview.patriotinlays.pages.dev (deployment https://d293f016.patriotinlays.pages.dev).
+Checked on the preview with Playwright at 390px and 1280px: old-style saved data loads with "Still living" unticked; Texas shows the sentence with both links; ticking "Still living" removes generation 1's death gap; the report prints "Living: death details not needed."; no console errors. Screenshots: preview-where-390.png, preview-where-1280.png.
+Production NOT deployed; cache NOT purged.
