@@ -131,8 +131,10 @@ export function evaluateCell(cell = {}) {
 // Requirements per generation (DAR application help, Step-by-Step).
 // gen 1 = applicant. Generations 1–3 need complete birth and death dates/places (death unless living);
 // earlier generations need at least one documented date and place (birth or death).
+// t174 #2: a person marked "Still living" never gets a missing-death gap, in any generation.
 export function rowRequirements(gen, { living = false } = {}) {
   if (gen <= 3) return { need: living ? ["birth"] : ["birth", "death"], anyOf: null, link: gen > 1, claim: "dar-gen-1-3" };
+  if (living) return { need: ["birth"], anyOf: null, link: true, claim: "dar-gen-1-3" };
   return { need: [], anyOf: ["birth", "death"], link: true, claim: "dar-gen-1-3" };
 }
 
@@ -181,6 +183,11 @@ export const WHERE_TO_LOOK = Object.freeze({
 export const NSCDA_TERM = Object.freeze({ text: "NSCDA is The National Society of the Colonial Dames of America; notes that mention NSCDA cite its South Carolina society's standards.", claims: ["nscda-name-national", "nscda-census-1850-1870"] });
 export const START_HERE = Object.freeze({ text: "Start with your patriot in step 1, then add yourself as generation 1 and go back through your parent, grandparent and so on to the patriot. Don't know the patriot yet? Start with yourself and add the patriot later.", claims: ["dar-gen1-applicant", "dar-gen-numbering"], links: [], guides: ["roadmap"] });
 // A rough year typed by the visitor ("1820", " 1820 ") -> 1820, else null.
+// t174 #2: the report line for a person marked "Still living", and the checkbox label (Tim's wording).
+export const LIVING_LABEL = "Still living";
+export const LIVING_REPORT = "Living: death details not needed.";
+// Saved worksheets load exactly as before; a generation with no "living" value is not living.
+export const normalizeLiving = (gens) => Array.isArray(gens) ? gens.map((g) => (g && typeof g === "object" ? { ...g, living: !!g.living } : g)) : gens;
 export const yr = (v) => { const m = /^\s*(\d{4})\s*$/.exec(v == null ? "" : String(v)); return m ? +m[1] : null; };
 // Resolve a fact + generation (+ the person's rough years and state) to a ready-to-render "Where to look" entry.
 // Era: DAR's split (generations 1-3 "recent", 4+ "older") unless the state's own source says whether that state

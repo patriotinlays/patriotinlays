@@ -187,6 +187,32 @@ if (LINKS) {
   }
 }
 
+// t174: plain links in the worksheet (no claims, so no quotes): each URL must answer HTTP 200 live (Node fetch, then curl).
+// A 403/429 whose body is a bot-filter page (Incapsula / Akamai "Access Denied") is reported as BLOCKED: not verified,
+// never counted as passed or as a fallback, and listed loudly. Any other non-200 (404, 410, 5xx, errors) fails the gate.
+const plainReport = [];
+if (LINKS) {
+  const { PLAIN_LINK_URLS } = await import("../src/tools/places.js");
+  const botPage = (b) => typeof b === "string" && b.length < 5000 && /_Incapsula_Resource|Request unsuccessful\. Incapsula|<TITLE>Access Denied<\/TITLE>/i.test(b);
+  for (const u of PLAIN_LINK_URLS) {
+    let status = 0, body = "", via = "fetch", err = "";
+    try { const r = await fetch(u, { headers: { "user-agent": "Mozilla/5.0 (patriotinlays manifest checker)" }, redirect: "follow", signal: AbortSignal.timeout(60000) }); status = r.status; body = await r.text(); }
+    catch (e) { status = "error"; err = e.message || String(e); }
+    if (status !== 200) {
+      try { const out = execFileSync("curl", ["-sL", "--max-time", "45", "-A", "Mozilla/5.0 (patriotinlays manifest checker)", "-H", "Accept: text/html", "-w", "\n%{http_code}", u], { encoding: "utf8", maxBuffer: 64e6 });
+        const i = out.lastIndexOf("\n"); const st = Number(out.slice(i + 1)); if (st === 200 && !botPage(out.slice(0, i))) { status = 200; via = "curl"; } else if (botPage(out.slice(0, i)) && !botPage(body)) { body = out.slice(0, i); if (status === "error") status = st; } } catch { /* keep */ }
+    }
+    if (status === 200 && !botPage(body)) { plainReport.push({ url: u, status, via, result: "passed" }); continue; }
+    if ((status === 403 || status === 429 || status === 200) && botPage(body)) {
+      plainReport.push({ url: u, status, via, result: "blocked" });
+      warnings.push(`PLAIN LINK BLOCKED ${u}: HTTP ${status} bot-filter page to every automated read; link NOT verified this run.`);
+      continue;
+    }
+    plainReport.push({ url: u, status, via, result: "failed", error: err || null });
+    errors.push(`plain link ${u}: HTTP ${status}${err ? ` (${err})` : ""}`);
+  }
+}
+
 // t129u/t130: restore held-back claim uses automatically once every source they depend on passed live in this run.
 const HELD_PATH = join(ROOT, "manifest/held-back.json");
 let heldResult = null;
@@ -210,7 +236,7 @@ if (LINKS && !args.includes("--content") && existsSync(HELD_PATH)) {
 const LIVE_STATUS = LINKS ? "RUN" : "NOT RUN";
 const LIVE_LINE = `Live-source check: ${LIVE_STATUS}`;
 const LIVE_REPORT_PATH = join(ROOT, "manifest-live-check-report.json");
-const summary = { live_source_check: LIVE_STATUS, live_source_check_line: LIVE_LINE, checkedAt: new Date().toString(), dirs, files: files.length, perFile, sentences, markedSentences: marked, manifestClaims: byId.size, referencedClaims: referenced.size, links: LINKS ? linkReport : "not run (use --links)", heldBack: heldResult, errors, warnings };
+const summary = { live_source_check: LIVE_STATUS, live_source_check_line: LIVE_LINE, checkedAt: new Date().toString(), dirs, files: files.length, perFile, sentences, markedSentences: marked, manifestClaims: byId.size, referencedClaims: referenced.size, links: LINKS ? linkReport : "not run (use --links)", plainLinks: LINKS ? plainReport : "not run (use --links)", heldBack: heldResult, errors, warnings };
 if (LINKS) {
   summary.result = errors.length ? "FAILED" : "PASSED";
   // The live run's evidence lives in its own file; a later consistency-only run never overwrites it.
@@ -223,6 +249,7 @@ if (!args.includes("--content")) writeFileSync(join(ROOT, "manifest-check-report
 console.log(LIVE_LINE);
 console.log(`Source Manifest gate: ${files.length} page(s), ${sentences} sentence(s), ${marked} with claim markers; ${byId.size} manifest claims, ${referenced.size} referenced.`);
 if (LINKS) for (const l of linkReport) console.log(`  link ${l.status}${l.fallback ? " FALLBACK" : ""}  quotes found ${l.quotesFound ?? "-"} / missing ${l.quotesMissing ?? "-"}${l.fallback ? `  (claims covered by earlier match ${l.claimsCoveredByEarlierMatch} / held ${l.claimsHeld.length})` : ""}  ${l.url}`);
+if (LINKS) for (const l of plainReport) console.log(`  plain link ${l.status} ${l.result.toUpperCase()}${l.via === "curl" ? " (curl)" : ""}  ${l.url}`);
 warnings.forEach((w) => console.log("WARN  " + w));
 errors.forEach((e) => console.log("ERROR " + e));
 console.log(`Source scope (rule 7): ${scopeFlagged.length} flagged`);

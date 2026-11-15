@@ -154,8 +154,24 @@ export const STATE_VITAL = Object.freeze({
     death: [P(null, null, null, "The Massachusetts Archives holds the state's birth, marriage and death records from 1841 to 1920, so Revolutionary-era events need other sources.", { claims: ["ma-vital-1841-1920"] })],
     marriage: [P(null, null, null, "The Massachusetts Archives holds the state's birth, marriage and death records from 1841 to 1920, so Revolutionary-era events need other sources.", { claims: ["ma-vital-1841-1920"] })] },
 });
+// t174 #1: the 13 original states. Every other entry in STATES (37 states plus the District of Columbia) is "outside the 13".
+export const ORIGINAL_13 = Object.freeze(["CT", "DE", "GA", "MD", "MA", "NH", "NJ", "NY", "NC", "PA", "RI", "SC", "VA"]);
+export const isOutside13 = (code) => !!code && STATES.some(([c]) => c === code) && !ORIGINAL_13.includes(code);
+// Plain links (no claims) for states outside the 13. Their URLs are checked live by check-manifest.mjs --links
+// (PLAIN_LINK_URLS). FamilySearch per-state wiki pages: only a URL discovered from FamilySearch's own index page AND
+// passing the live link check may go here; none could be (t174: familysearch.org answered every automated read,
+// including headless Chrome, with HTTP 403 from its Incapsula bot filter), so every state uses the index page.
+export const PLAIN_LINKS = Object.freeze({
+  cdcW2w: { label: "CDC: Where to Write for Vital Records", url: "https://www.cdc.gov/nchs/w2w/index.htm" },
+  fsIndex: { label: "FamilySearch Research Wiki: United States Online Genealogy Records by State", url: "https://www.familysearch.org/en/wiki/United_States_Online_Genealogy_Records_by_State" },
+});
+export const FS_STATE_PAGES = Object.freeze({});
+export const familySearchLink = (code) => FS_STATE_PAGES[code] || PLAIN_LINKS.fsIndex;
+export const PLAIN_LINK_URLS = Object.freeze([...new Set([...Object.values(PLAIN_LINKS), ...Object.values(FS_STATE_PAGES)].map((l) => l.url))]);
+export const outside13Text = (name) => `For birth, death and marriage records in ${name}, start with the CDC's Where to Write for Vital Records page and the FamilySearch Research Wiki page for that state.`;
+const codeOf = (name) => (STATES.find(([, n]) => n === name) || [])[0] || "";
 // facts: one fact ("birth") or several (["birth", "death"]) when the report merges a state's notes into one block.
-export const noVitalText = (name, facts) => { const f = [].concat(facts); const list = f.length > 1 ? `${f.slice(0, -1).join(", ")} or ${f.at(-1)}` : f[0];
+export const noVitalText = (name, facts) => { if (isOutside13(codeOf(name))) return outside13Text(name); const f = [].concat(facts); const list = f.length > 1 ? `${f.slice(0, -1).join(", ")} or ${f.at(-1)}` : f[0];
   return `This site has no verified source yet on when ${name} began keeping ${list} records, so it can't say whether one exists for this person. A census entry that gives the state and approximate year of birth tells you which local office to ask, and the National Archives points to the CDC's National Center for Health Statistics for how to get records from each state's office.`; };
 const NO_VITAL = (name, fact) => ({ era: null, noSource: true, place: name, fact, text: `This site has no verified source yet on when ${name} began keeping ${fact} records, so it can't say whether one exists for this person. A census entry that gives the state and approximate year of birth tells you which local office to ask, and the National Archives points to the CDC's National Center for Health Statistics for how to get records from each state's office.`,
   claims: ["nara-vital-census", "nara-vital-states"], links: S("naraVital") });
@@ -165,6 +181,7 @@ const inP = (p, y) => (p.from == null || y >= p.from) && (p.to == null || y <= p
 // for a death or marriage). With no single matching period, every period is listed so the visitor sees the whole picture.
 export function vitalNote(state, fact, { year = null, lower = null } = {}) {
   if (!state || !["birth", "death", "marriage"].includes(fact)) return null;
+  if (isOutside13(state)) return { era: null, noSource: true, outside13: true, place: stateName(state), fact, text: outside13Text(stateName(state)), claims: [], links: [PLAIN_LINKS.cdcW2w, familySearchLink(state)] };
   const v = STATE_VITAL[state];
   if (!v || !v[fact]) return NO_VITAL(stateName(state), fact);
   const ps = v[fact];

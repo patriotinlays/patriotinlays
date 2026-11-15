@@ -1,14 +1,14 @@
 {
-  "ranAt": "Fri Nov 13 2026 08:50:04 GMT-0600 (Central Standard Time)",
+  "ranAt": "Sun Nov 15 2026 09:32:05 GMT-0600 (Central Standard Time)",
   "browser": "/usr/bin/google-chrome (headless) via playwright-core 1.59.1",
-  "passed": 351,
-  "total": 351,
+  "passed": 365,
+  "total": 365,
   "exampleReportPages": {
     "summaryPages": 2,
     "fullPages": 3,
     "personaB": {
       "summaryPages": 2,
-      "fullPages": 4
+      "fullPages": 3
     }
   },
   "contrastMinByPair": {
@@ -508,7 +508,7 @@
       "detail": ""
     },
     {
-      "name": "Audit 3 #5: the 'no verified source for Ohio' note appears in full once on the worksheet page; the gaps point to it by letter",
+      "name": "Audit 3 #5 / t174: the Ohio note appears in full once on the worksheet page; the gaps point to it by letter",
       "ok": true,
       "detail": "{\"full\":1,\"refs\":13}"
     },
@@ -533,14 +533,14 @@
       "detail": "/tools/lineage-matrix/#gen-6"
     },
     {
-      "name": "Audit 3 #5: the report prints the Ohio no-source note once, and each census fact once",
+      "name": "Audit 3 #5 / t174: the report prints the Ohio note once, and each census fact once",
       "ok": true,
       "detail": "[\"Census: NSCDA's South Carolina society's standards list the 1880–1900 censuses as primary sources.\",\"Census: NSCDA's South Carolina society's standards say the 1850–1870 censuses do not state relationships. SAR's Genealogy Committee Policies accept 1850, 1860 and 1870 census households as proof of a parent-child relationship when nothing argues against it.\",\"Census: The 1790–1840 censuses named only the head of household and counted everyone else by age group.\"]"
     },
     {
       "name": "Audit 3 #2 / t172: the persona-B full report is at most 4 pages (t172 added the SAR census-policy sentence to worksheet cautions); Save as PDF stays at most 2",
       "ok": true,
-      "detail": "summary 2, full 4"
+      "detail": "summary 2, full 3"
     },
     {
       "name": "Generation picker (audit 2): Generation 1 is not offered; the default is the oldest generation",
@@ -558,7 +558,7 @@
       "detail": "Generation 1: You — Example: Jane (made up) | Generation 2: Your parent — Example: Robert (made up) | Generation 3: Your grandparent — Example: William (made up) | Generation 4: Your great-grandparent — Example: Thomas (made up) | Generation 5: Your 2nd-great-grandparent (the patriot) — Example: John, the patriot (made up)"
     },
     {
-      "name": "Where to look: a state with no verified source says so (no invented records)",
+      "name": "Where to look (t174): Texas, outside the 13, gets Tim's one CDC/FamilySearch sentence (no invented records)",
       "ok": true,
       "detail": "Where to LookEach piece of advice appears once. The letters above and in \"What to do next\" point here. Not sure where to"
     },
@@ -828,7 +828,7 @@
       "detail": "{\"h1s\":1,\"sr\":\"Patriot, In Lay Terms: \",\"srHidden\":true,\"vis\":\"Plain-English Help With DAR And SAR Applications, For The Daughters And The Sons Of The American Revolution\",\"visH\":143.9375,\"title\":\"Patriot, In Lay Terms: Plain-English Help For DAR And SAR Applications\",\"rule\":\"rgb(178, 34, 52)\",\"ruleW\":\"56px\"}"
     },
     {
-      "name": "t122u #11: every visible text element on all 22 pages passes WCAG AA contrast (4.5:1, large text 3:1) — 3651 elements",
+      "name": "t122u #11: every visible text element on all 22 pages passes WCAG AA contrast (4.5:1, large text 3:1) — 3652 elements",
       "ok": true,
       "detail": ""
     },
@@ -875,7 +875,7 @@
     {
       "name": "t124u #13 + #11 (390px): the worksheet's \"Where to look\" shows Tim's CT, GA and MA sentences and links their sources, and its outside links open in a new tab",
       "ok": true,
-      "detail": "{\"n\":15,\"ok\":true}"
+      "detail": "{\"n\":16,\"ok\":true}"
     },
     {
       "name": "t124u #1 (1280px): every Sources entry on every page (16 pages, 307 entries) has a visible \"Used for: ...\" line of at most about 8 words, and the raw URL is hidden on screen",
@@ -905,7 +905,7 @@
     {
       "name": "t124u #13 + #11 (1280px): the worksheet's \"Where to look\" shows Tim's CT, GA and MA sentences and links their sources, and its outside links open in a new tab",
       "ok": true,
-      "detail": "{\"n\":15,\"ok\":true}"
+      "detail": "{\"n\":16,\"ok\":true}"
     },
     {
       "name": "t124u #2: a separate AI disclosure page carries the AI text unchanged; About no longer has it; guide top lines and the Sources page point to the AI disclosure",
@@ -1715,7 +1715,7 @@
     {
       "name": "t163 #2: Sources 'Last retrieved' is the Central-time date of the most recent full live-source check, and the claim count equals the manifest",
       "ok": true,
-      "detail": "{\"srcLine\":\"Manifest: 410 verified claims. Last retrieved: November 13, 2026.\",\"expectDate\":\"November 13, 2026\",\"shownCount\":410,\"manifest\":410,\"checkedAt\":\"Fri Nov 13 2026 08:42:26 GMT-0600 (Central Standard Time)\"}"
+      "detail": "{\"srcLine\":\"Manifest: 410 verified claims. Last retrieved: November 13, 2026.\",\"expectDate\":\"November 13, 2026\",\"shownCount\":410,\"manifest\":410,\"checkedAt\":\"Fri Nov 13 2026 08:53:10 GMT-0600 (Central Standard Time)\"}"
     },
     {
       "name": "t163 #3: every page says 'quoted official or institutional source'; the locked AI line uses the new wording; the old phrase is gone",
@@ -1784,6 +1784,76 @@
     },
     {
       "name": "t172 #6: Application Returned signatures and service-source wording; Census Bridge does not drop a man with no child in the bracket",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "t174 #2 (390px): old saved data loads as before (same people, years and states) and every person defaults to not living",
+      "ok": true,
+      "detail": "{\"boxes\":[{\"checked\":false,\"label\":\"Still living\"},{\"checked\":false,\"label\":\"Still living\"},{\"checked\":false,\"label\":\"Still living\"},{\"checked\":false,\"label\":\"Still living\"}],\"fields\":[{\"born\":\"1950\",\"state\":\"VA\"},{\"born\":\"1920\",\"state\":\"OH\"},{\"born\":\"1890\",\"state\":\"TX\"},{\"born\":\"1755\",\"state\":\"VA\"}],\"deathAdd\":[true,true,true]}"
+    },
+    {
+      "name": "t174 #2 (390px): each person's checkbox label is exactly 'Still living'",
+      "ok": true,
+      "detail": "[\"Still living\",\"Still living\",\"Still living\",\"Still living\"]"
+    },
+    {
+      "name": "t174 #1 (390px): Ohio and Texas (outside the 13) show Tim's one sentence, with CDC and FamilySearch plain links; Virginia keeps its own note",
+      "ok": true,
+      "detail": "[[\"https://www.cdc.gov/nchs/w2w/index.htm\",\"CDC: Where to Write for Vital Records\"],[\"https://www.familysearch.org/en/wiki/United_States_Online_Genealogy_Records_by_State\",\"FamilySearch Research Wiki: United States Online Genealogy Records by State\"],[\"https://www.cdc.gov/nchs/w2w/index.htm\",\"CDC: Where to Write for Vital Records\"],[\"https://www.familysearch.org/en/wiki/United_States_Online_Genealogy_Records_by_State\",\"FamilySearch Research Wiki: United States Online Genealogy Records by State\"]]"
+    },
+    {
+      "name": "t174 #2 (390px): ticking 'Still living' removes that person's missing-death gap (only theirs)",
+      "ok": true,
+      "detail": "[false,true,false]"
+    },
+    {
+      "name": "t174 #2 (390px): the printed report shows 'Living: death details not needed.' for each living person and no one else",
+      "ok": true,
+      "detail": "[[\"1\",\"Living: death details not needed.\"],[\"3\",\"Living: death details not needed.\"]]"
+    },
+    {
+      "name": "t174 #1 (390px): the report prints the Ohio and Texas sentences once each",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "t174 #2 (1280px): old saved data loads as before (same people, years and states) and every person defaults to not living",
+      "ok": true,
+      "detail": "{\"boxes\":[{\"checked\":false,\"label\":\"Still living\"},{\"checked\":false,\"label\":\"Still living\"},{\"checked\":false,\"label\":\"Still living\"},{\"checked\":false,\"label\":\"Still living\"}],\"fields\":[{\"born\":\"1950\",\"state\":\"VA\"},{\"born\":\"1920\",\"state\":\"OH\"},{\"born\":\"1890\",\"state\":\"TX\"},{\"born\":\"1755\",\"state\":\"VA\"}],\"deathAdd\":[true,true,true]}"
+    },
+    {
+      "name": "t174 #2 (1280px): each person's checkbox label is exactly 'Still living'",
+      "ok": true,
+      "detail": "[\"Still living\",\"Still living\",\"Still living\",\"Still living\"]"
+    },
+    {
+      "name": "t174 #1 (1280px): Ohio and Texas (outside the 13) show Tim's one sentence, with CDC and FamilySearch plain links; Virginia keeps its own note",
+      "ok": true,
+      "detail": "[[\"https://www.cdc.gov/nchs/w2w/index.htm\",\"CDC: Where to Write for Vital Records\"],[\"https://www.familysearch.org/en/wiki/United_States_Online_Genealogy_Records_by_State\",\"FamilySearch Research Wiki: United States Online Genealogy Records by State\"],[\"https://www.cdc.gov/nchs/w2w/index.htm\",\"CDC: Where to Write for Vital Records\"],[\"https://www.familysearch.org/en/wiki/United_States_Online_Genealogy_Records_by_State\",\"FamilySearch Research Wiki: United States Online Genealogy Records by State\"]]"
+    },
+    {
+      "name": "t174 #2 (1280px): ticking 'Still living' removes that person's missing-death gap (only theirs)",
+      "ok": true,
+      "detail": "[false,true,false]"
+    },
+    {
+      "name": "t174 #2 (1280px): the printed report shows 'Living: death details not needed.' for each living person and no one else",
+      "ok": true,
+      "detail": "[[\"1\",\"Living: death details not needed.\"],[\"3\",\"Living: death details not needed.\"]]"
+    },
+    {
+      "name": "t174 #1 (1280px): the report prints the Ohio and Texas sentences once each",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "t174 #2: old saved data in the report shows no 'Living' line (missing 'living' means not living)",
+      "ok": true,
+      "detail": "0"
+    },
+    {
+      "name": "t174 #2: no DAR Step by Step quote was attached (pages unreachable this run)",
       "ok": true,
       "detail": ""
     },

@@ -260,6 +260,11 @@ Docs: https://developers.cloudflare.com/pages/how-to/web-analytics/
 - February 28, 1855 navy-widow law cited as ch. 126, sec. 3, 10 Stat. 616 (chapter begins at 615); 10 Stat. 701 is only the March 3, 1855 bounty-land act.
 - Worksheet: step 1 is the patriot, step 2 starts the family with yourself; removing the oldest generation asks for confirmation.
 
+### t174 (Nov 15, 2026) — preview only
+- Lineage Evidence Matrix only. States outside the 13 original states (37 states plus DC; the 13 are CT, DE, GA, MD, MA, NH, NJ, NY, NC, PA, RI, SC, VA) now show one sentence for birth, death and marriage records: "For birth, death and marriage records in [state], start with the CDC's Where to Write for Vital Records page and the FamilySearch Research Wiki page for that state." with two plain links (CDC Where to Write; FamilySearch's United States Online Genealogy Records by State index). No FamilySearch state page is linked: FamilySearch blocked every automated read (HTTP 403, Incapsula), so no state URL could be discovered or pass the live check (`FS_STATE_PAGES` is empty). The 13 states' notes are unchanged.
+- `check-manifest.mjs --links` now also live-checks the worksheet's plain links (`PLAIN_LINK_URLS` in `src/tools/places.js`): 200 passes; a 403/429 bot-filter page is reported as BLOCKED (not verified, warning); any other failure fails the gate.
+- "Still living" checkbox (label is exactly that): no missing-death gap for that person in any generation (generations 4+ now ask for a birth record instead of "birth or death"); the report prints "Living: death details not needed." Saved worksheets load as before; a generation with no `living` value is not living. No DAR Step by Step quote was attached (the DAR pages returned 522 this run).
+
 ### t173 (Nov 13, 2026)
 - Widow Pension Law Checker 2b wording: dropped the unquoted "Federal officials decided the historical pension claims;" clause. The sentence is now "It does not look anything up, and it doesn't decide anything. DAR or SAR decides whether your evidence meets its membership rules." (limits box and the limits-widow partial). No other edits.
 

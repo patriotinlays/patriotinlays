@@ -2,7 +2,7 @@
 // State lives only in localStorage under "pi.toolB.v1"; no network requests are made.
 import { dateField } from "./date-ui.js";
 import { dateLabel } from "./dates.js";
-import { SKIP_TEXT, STILL_NEEDED, isSkipped, setSkip, relationName, HAVE_ITEMS, byFactOrder, actionPlan, evaluateCell, gaps, groupGaps, filledCells, countEntries, patriotGen, LABELS, FACTS, FACT_LABELS, DOC_TYPES, MODE_HELP, genLabel, genTitle, isEmptyCell, dateWarnings, NSCDA_TERM, birthSubstitutes, NAME_CHECKLIST } from "./tool-b.js";
+import { SKIP_TEXT, STILL_NEEDED, isSkipped, setSkip, relationName, HAVE_ITEMS, byFactOrder, actionPlan, evaluateCell, gaps, groupGaps, filledCells, countEntries, patriotGen, LABELS, FACTS, FACT_LABELS, DOC_TYPES, MODE_HELP, genLabel, genTitle, isEmptyCell, dateWarnings, NSCDA_TERM, birthSubstitutes, NAME_CHECKLIST, LIVING_LABEL, LIVING_REPORT, normalizeLiving } from "./tool-b.js";
 import { SERVICE_KINDS, PATRIOT_HELP, patriotDates, hasPatriot, kindOf } from "./patriot.js";
 import { STATES, stateName, noVitalText } from "./places.js";
 import { ns, el } from "./storage.js";
@@ -15,7 +15,7 @@ function newGen(gen) { return { gen, who: "", living: gen === 1, born: "", died:
 const MAX_PICK_GEN = 13; // up to "my 10th-great-grandfather"
 const newPatriot = () => ({ name: "", state: "", unit: "", kind: "", start: "", end: "", gen: "" });
 let uid = 0; const newCell = (o = {}) => ({ id: `c${Date.now().toString(36)}${(uid++).toString(36)}`, fact: "", docType: "", mode: "", conflict: false, citation: "", ...o });
-const load = () => { const s = store.get("v1", null); if (!s || !Array.isArray(s.generations)) return blank(); s.patriot = { ...newPatriot(), ...(s.patriot || {}) }; return s; };
+const load = () => { const s = store.get("v1", null); if (!s || !Array.isArray(s.generations)) return blank(); s.patriot = { ...newPatriot(), ...(s.patriot || {}) }; s.generations = normalizeLiving(s.generations); return s; };
 const save = (s) => { s.updated = new Date().toISOString(); store.set("v1", s); };
 const labelClass = (l) => l === LABELS.entered ? "b-entered" : l === LABELS.conflict ? "b-conflict" : l === LABELS.incomplete ? "b-incomplete" : "b-none";
 const MODE_TEXT = { direct: "Says it in words", indirect: "Only hints at it" };
@@ -254,7 +254,7 @@ function mountEditor(root) {
         `The parent of the person in generation ${g.gen - 1}, in the line that leads to the patriot.` }),
       el("label", { for: `who-${g.gen}`, text: "Name (optional, stays in this browser)" }),
       el("input", { id: `who-${g.gen}`, type: "text", value: g.who, autocomplete: "off", oninput: (e) => { g.who = e.target.value; save(state); const h = box.querySelector(`details.gen-d[data-gen="${g.gen}"] > summary h3`); if (h) h.textContent = genHeading(g, patriotGen(state.generations, state.patriot)); } }),
-      el("label", { class: "check" }, el("input", { type: "checkbox", id: `living-${g.gen}`, checked: g.living, onchange: (e) => { g.living = e.target.checked; save(state); rerender(); } }), " Still living (then no death record is needed)"),
+      el("label", { class: "check" }, el("input", { type: "checkbox", id: `living-${g.gen}`, checked: g.living, onchange: (e) => { g.living = e.target.checked; save(state); rerender(); } }), ` ${LIVING_LABEL}`),
       genFields(state, g, refresh), haveBox(state, g, rerender), birthSubsEl(g),
       ...g.cells.map((c, i) => cellEditor(state, g, c, rerender, i + 1)),
       el("button", { type: "button", "data-add-evidence": g.gen, onclick: () => addRecord(g), text: `+ Add a record for ${genLabel(g.gen).toLowerCase()}` }))));
@@ -354,6 +354,7 @@ function mountReport(root) {
   const s = store.get("v1", null); const body = root.querySelector("[data-report]");
   if (!s) { body.replaceChildren(el("p", { text: "Nothing saved in this browser yet. Open the Lineage Evidence Matrix, enter what you have (or press \"See a filled-in example\"), then come back." }),
     el("p", {}, el("a", { class: "button-link", href: "/tools/lineage-matrix/", text: "Go to the Lineage Evidence Matrix" }))); return; }
+  if (Array.isArray(s.generations)) s.generations = normalizeLiving(s.generations);
   const pg = patriotGen(s.generations, s.patriot);
   const { refFor, blocks } = whereIndex();
   // Rendering the plan first fills the "Where to look" index, so each piece of advice is printed once, below, by letter.
@@ -377,6 +378,7 @@ function mountReport(root) {
     const facts = [g.born && `born about ${g.born}`, !g.living && g.died && `died about ${g.died}`, g.state && stateName(g.state)].filter(Boolean).join(", ");
     detail.append(...[el("h3", { text: `${genTitle(g.gen)}${g.gen === pg ? " (the patriot)" : ""}${g.who ? ` — ${g.who}` : ""}${g.living ? " (living)" : ""}` }),
       facts ? el("p", { class: "small", text: facts }) : null,
+      g.living ? el("p", { class: "small", "data-living": g.gen, text: LIVING_REPORT }) : null,
       rows.length ? el("div", { class: "table-wrap" }, el("table", { class: `records${detail.querySelector("table.records") ? " records-more" : ""}` }, el("thead", {}, el("tr", {}, ...["What it shows", "Kind of record", "Says it in words?", "Where you found it", "Status"].map((h) => el("th", { text: h })))), el("tbody", {}, ...rows)))
         : el("p", { class: "small", text: "No records entered yet." })].filter(Boolean));
   }

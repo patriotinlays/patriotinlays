@@ -346,10 +346,10 @@ check("Report: links to the definitions", (await page.$$('main a[href="/#glossar
   await page.goto(`${BASE}/tools/lineage-matrix/`); phase("interact"); await openAll(page);
   await page.check('[data-have="3"] input[data-have-item="census"]');
   const g3 = await page.$eval('details.gen[data-gen="3"] .cell', (c) => ({ doc: c.querySelector("select[name=docType]").value, status: c.querySelector(".status").textContent }));
-  // Repeated notes: Ohio's no-source note is printed in full once on the worksheet page; later mentions are one-line pointers.
-  const ohio = await page.evaluate(() => ({ full: (document.querySelector("main").textContent.match(/no verified source yet on when Ohio began/g) || []).length,
+  // Repeated notes: Ohio's note (t174: Tim's CDC/FamilySearch sentence, as Ohio is outside the 13) is printed in full once on the worksheet page; later mentions are one-line pointers.
+  const ohio = await page.evaluate(() => ({ full: (document.querySelector("main").textContent.match(/For birth, death and marriage records in Ohio, start with the CDC's Where to Write for Vital Records page/g) || []).length,
     refs: [...document.querySelectorAll("[data-gaps] [data-where-ref]")].length }));
-  check("Audit 3 #5: the 'no verified source for Ohio' note appears in full once on the worksheet page; the gaps point to it by letter", ohio.full === 1 && ohio.refs >= 3, JSON.stringify(ohio));
+  check("Audit 3 #5 / t174: the Ohio note appears in full once on the worksheet page; the gaps point to it by letter", ohio.full === 1 && ohio.refs >= 3, JSON.stringify(ohio));
   // Patriot generation: a missing birth or death record has a clear way to add it.
   const addBtn = await page.$('[data-gaps] [data-add-for="6:birth"]');
   const btnText = addBtn ? await addBtn.textContent() : "";
@@ -365,13 +365,13 @@ check("Report: links to the definitions", (await page.$$('main a[href="/#glossar
     const blocks = [...document.querySelectorAll("[data-where-block] p:first-child")].map((p) => p.textContent);
     const g6 = [...document.querySelectorAll(".plan-group")].find((g) => /the patriot/.test(g.textContent))?.parentElement;
     const tables = [...document.querySelectorAll(".report-detail h3")].map((h) => h.textContent);
-    return { rows, entries: where ? +where[1] : -1, gen2: gen2 ? [...gen2].map((li) => li.firstChild.textContent) : [], ohio: blocks.filter((t) => /no verified source yet on when Ohio/.test(t)).length,
+    return { rows, entries: where ? +where[1] : -1, gen2: gen2 ? [...gen2].map((li) => li.firstChild.textContent) : [], ohio: blocks.filter((t) => /For birth, death and marriage records in Ohio, start with/.test(t)).length,
       censusBlocks: blocks.filter((t) => /^[A-Z]+\. Census:/.test(t)).map((t) => t.replace(/^[A-Z]+\. /, "")), g6add: g6?.querySelector("[data-add-link]")?.getAttribute("href") || "" }; });
   const census = rb.rows.find((r) => /Census/.test(r[1]));
   check("Audit 3 #3: a ticked 'Census entry' shows its kind and 'Needs details' in the report, and every counted entry is a row there", g3.doc === "census" && /Needs details/.test(g3.status) && census && /Census entry/.test(census[1]) && /Needs details/.test(census[4]) && rb.entries === rb.rows.length && !rb.rows.some((r) => /No Evidence Entered/.test(r[4])), JSON.stringify({ g3, census, entries: rb.entries, rows: rb.rows.length }));
   check("Audit 3 #4: within a generation, the person's own records (birth, death) come before the link record, in the plan and in the records table", /^The birth record/.test(rb.gen2[0] || "") && /^The death record/.test(rb.gen2[1] || "") && /link/.test(rb.gen2.at(-1) || "") && rb.rows.findIndex((r) => r[0] === "Birth") < rb.rows.findIndex((r) => /Parent/.test(r[0])), rb.gen2.join(" | "));
   check("Audit 3 #4: in the report, the patriot's missing birth or death record links to his generation in the worksheet", rb.g6add === "/tools/lineage-matrix/#gen-6", rb.g6add);
-  check("Audit 3 #5: the report prints the Ohio no-source note once, and each census fact once", rb.ohio === 1 && rb.censusBlocks.length === new Set(rb.censusBlocks).size && rb.censusBlocks.length >= 2, JSON.stringify(rb.censusBlocks));
+  check("Audit 3 #5 / t174: the report prints the Ohio note once, and each census fact once", rb.ohio === 1 && rb.censusBlocks.length === new Set(rb.censusBlocks).size && rb.censusBlocks.length >= 2, JSON.stringify(rb.censusBlocks));
   await page.emulateMedia({ media: "print" }); await page.evaluate(() => document.body.classList.add("print-summary"));
   const bS = pdfPages(await page.pdf(PDF_OPTS)); await page.evaluate(() => document.body.classList.remove("print-summary")); const bF = pdfPages(await page.pdf({ ...PDF_OPTS, path: join(SHOTS, "persona-b-report-full.pdf") }));
   await page.emulateMedia({ media: "screen" }); globalThis.__reportPages = { ...(globalThis.__reportPages || {}), personaB: { summaryPages: bS, fullPages: bF } };
@@ -390,7 +390,7 @@ phase("load"); await page.reload(); phase("interact");
 const heads = await page.$$eval("details.gen h3", (hs) => hs.map((h) => h.textContent));
 check("Generation picker (audit 2): an old saved 'Generation 1' shows a plain warning and the oldest generation stays the patriot", await page.isVisible("[data-gen-warn]") && /Generation 1 is you/.test(await page.textContent("[data-gen-warn]")) && !/patriot/.test(heads[0]) && /\(the patriot\)/.test(heads.at(-1)), heads.join(" | "));
 const txNote = await page.textContent("[data-gaps] [data-where-index]");
-check("Where to look: a state with no verified source says so (no invented records)", /no verified source yet on when Texas/.test(txNote), txNote.slice(0, 120));
+check("Where to look (t174): Texas, outside the 13, gets Tim's one CDC/FamilySearch sentence (no invented records)", txNote.includes("For birth, death and marriage records in Texas, start with the CDC's Where to Write for Vital Records page and the FamilySearch Research Wiki page for that state.") && !/no verified source yet on when Texas/.test(txNote), txNote.slice(0, 120));
 await page.click("[data-clear=toolB]");
 store = await ls();
 check("Tool B clear: removes pi.toolB.* only, keeps unrelated key", !Object.keys(store).some((k) => k.startsWith("pi.toolB")) && store["other.app.key"] === "keep-me", Object.keys(store).join(","));
@@ -1680,6 +1680,58 @@ for (const w of [390, 1280]) { const cx = await browser.newContext({ viewport: {
     && text("guides/application-problems").includes("Service source is an original record or a published transcription; SAR doesn't accept unpublished transcriptions or abstracts of legal documents posted online.")
     && text("guides/census-bridge").includes("A man with no child in the right age bracket is less likely, but don't rule him out yet; check other records first.")
     && !text("guides/census-bridge").includes("A man who shows no child in the right bracket drops off your list."));
+}
+
+// ---- t174: states outside the 13 (CDC + FamilySearch sentence) and "Still living" (390px and 1280px) ----
+{ const REL174 = join(ROOT, "qa/release-logs/t174"); mkdirSync(REL174, { recursive: true });
+  const CDC = "https://www.cdc.gov/nchs/w2w/index.htm", FSI = "https://www.familysearch.org/en/wiki/United_States_Online_Genealogy_Records_by_State";
+  const SENT = (s) => `For birth, death and marriage records in ${s}, start with the CDC's Where to Write for Vital Records page and the FamilySearch Research Wiki page for that state.`;
+  // Saved data from before t174: no "living" field on any generation.
+  const oldSaved = { version: 1, updated: "2026-11-01T12:00:00.000Z", patriot: { name: "", state: "VA", unit: "", kind: "militia", start: "1777", end: "1779", gen: "4" },
+    generations: [
+      { gen: 1, who: "", born: "1950", died: "", state: "VA", cells: [] },
+      { gen: 2, who: "", born: "1920", died: "", state: "OH", cells: [] },
+      { gen: 3, who: "", born: "1890", died: "", state: "TX", cells: [] },
+      { gen: 4, who: "", born: "1755", died: "1830", state: "VA", cells: [] } ] };
+  for (const w of [390, 1280]) {
+    const cx = await browser.newContext({ viewport: { width: w, height: 900 } }); const pg = await cx.newPage();
+    pg.on("console", (m) => { if (m.type() === "error") consoleErrors.push(`t174 ${w}: ${m.text()}`); });
+    await pg.goto(`${BASE}/tools/lineage-matrix/`); await pg.evaluate((d) => localStorage.setItem("pi.toolB.v1", JSON.stringify(d)), oldSaved);
+    await pg.goto(`${BASE}/tools/lineage-matrix/`); await openAll(pg);
+    const r = await pg.evaluate(() => ({ boxes: [1, 2, 3, 4].map((g) => { const b = document.getElementById(`living-${g}`); return b ? { checked: b.checked, label: b.closest("label").textContent.trim() } : null; }),
+      deathAdd: [1, 2, 3].map((g) => !!document.querySelector(`[data-gaps] [data-add-for="${g}:death"]`)),
+      fields: [1, 2, 3, 4].map((g) => { const d = document.querySelector(`details.gen[data-gen="${g}"]`); return { born: d.querySelector(`#born-${g}`)?.value ?? null, state: d.querySelector(`#state-${g}`)?.value ?? null }; }),
+      main: document.querySelector("main").textContent.replace(/\s+/g, " "),
+      links: [...document.querySelectorAll("[data-gaps] [data-where-block] a")].map((a) => [a.getAttribute("href"), a.textContent.replace(/ \(opens in new tab\)$/, "")]) }));
+    check(`t174 #2 (${w}px): old saved data loads as before (same people, years and states) and every person defaults to not living`,
+      r.boxes.every((b) => b && b.checked === false) && JSON.stringify(r.fields.map((f) => [f.born, f.state])) === JSON.stringify(oldSaved.generations.map((g) => [g.born, g.state])) && r.deathAdd.every(Boolean), JSON.stringify({ boxes: r.boxes, fields: r.fields, deathAdd: r.deathAdd }));
+    check(`t174 #2 (${w}px): each person's checkbox label is exactly 'Still living'`, r.boxes.every((b) => b.label === "Still living"), JSON.stringify(r.boxes.map((b) => b.label)));
+    check(`t174 #1 (${w}px): Ohio and Texas (outside the 13) show Tim's one sentence, with CDC and FamilySearch plain links; Virginia keeps its own note`,
+      r.main.includes(SENT("Ohio")) && r.main.includes(SENT("Texas")) && !r.main.includes(SENT("Virginia")) && !/no verified source yet on when (Ohio|Texas)/.test(r.main)
+      && r.links.some(([h, l]) => h === CDC && l === "CDC: Where to Write for Vital Records") && r.links.some(([h, l]) => h === FSI && l === "FamilySearch Research Wiki: United States Online Genealogy Records by State"), JSON.stringify(r.links.filter(([h]) => h === CDC || h === FSI)));
+    await pg.screenshot({ path: join(REL174, `worksheet-old-data-${w}.png`), fullPage: false });
+    await pg.check("#living-1"); await pg.check("#living-3");
+    const after = await pg.evaluate(() => ({ deathAdd: [1, 2, 3].map((g) => !!document.querySelector(`[data-gaps] [data-add-for="${g}:death"]`)),
+      gapText: [...document.querySelectorAll("[data-gaps] .gaps > li[data-gap-gen]")].map((li) => [li.dataset.gapGen, li.textContent]) }));
+    const g1 = after.gapText.filter(([g]) => g === "1").map(([, x]) => x).join(" "), g3 = after.gapText.filter(([g]) => g === "3").map(([, x]) => x).join(" ");
+    check(`t174 #2 (${w}px): ticking 'Still living' removes that person's missing-death gap (only theirs)`, !after.deathAdd[0] && after.deathAdd[1] && !after.deathAdd[2] && !/death/i.test(g1) && !/death/i.test(g3), JSON.stringify(after.deathAdd));
+    await pg.locator("#living-1").scrollIntoViewIfNeeded(); await pg.screenshot({ path: join(REL174, `worksheet-still-living-${w}.png`), fullPage: false });
+    await pg.goto(`${BASE}/tools/lineage-matrix/report/`);
+    const rep = await pg.evaluate(() => ({ lines: [...document.querySelectorAll("[data-living]")].map((p) => [p.dataset.living, p.textContent]), text: document.querySelector("[data-report]").textContent }));
+    check(`t174 #2 (${w}px): the printed report shows 'Living: death details not needed.' for each living person and no one else`,
+      JSON.stringify(rep.lines) === JSON.stringify([["1", "Living: death details not needed."], ["3", "Living: death details not needed."]]), JSON.stringify(rep.lines));
+    check(`t174 #1 (${w}px): the report prints the Ohio and Texas sentences once each`, rep.text.split(SENT("Ohio")).length === 2 && rep.text.split(SENT("Texas")).length === 2);
+    await pg.locator("[data-living]").first().scrollIntoViewIfNeeded(); await pg.screenshot({ path: join(REL174, `report-living-${w}.png`), fullPage: false });
+    await cx.close();
+  }
+  // Old saved data in the report (no 'living' field): nobody is shown as living.
+  { const cx = await browser.newContext(); const pg = await cx.newPage();
+    await pg.goto(`${BASE}/tools/lineage-matrix/`); await pg.evaluate((d) => localStorage.setItem("pi.toolB.v1", JSON.stringify(d)), oldSaved);
+    await pg.goto(`${BASE}/tools/lineage-matrix/report/`);
+    const n = await pg.evaluate(() => document.querySelectorAll("[data-living]").length);
+    check("t174 #2: old saved data in the report shows no 'Living' line (missing 'living' means not living)", n === 0, String(n));
+    await cx.close(); }
+  check("t174 #2: no DAR Step by Step quote was attached (pages unreachable this run)", !/leave these fields blank/i.test(readFileSync(join(DIST, "assets/js/tool-b-ui.js"), "utf8") + readFileSync(join(DIST, "tools/lineage-matrix/index.html"), "utf8")));
 }
 
 // ---- Cache-busting: every script/CSS reference and every module import carries ?v=<hash> that matches the file ----
