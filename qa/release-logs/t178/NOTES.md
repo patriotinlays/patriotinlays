@@ -32,3 +32,7 @@ b. "SAR's end date is 25 November 1783 (DAR's is 26 November)."
 - Held back: 14 still held, 0 restored. Source scope: 0 flagged.
 
 Screenshots: date-check-sar-end-*, gap-rules-line-* (390, 1280).
+
+## Preview (not production)
+Code commit 04e51b7fcc418d940662869fba395276c43e2b61. Deployed `--branch t178-preview`: https://t178-preview.patriotinlays.pages.dev (deployment https://4d792c14.patriotinlays.pages.dev).
+Playwright at 390px and 1280px: the DAR/SAR line appears once; the SAR end-date note shows in the date check with the unchanged DAR badge; no console errors. Production NOT deployed; cache NOT purged.
