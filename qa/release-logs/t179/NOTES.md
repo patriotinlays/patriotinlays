@@ -28,7 +28,7 @@ So none of Tim's Part One quotes could be verified word for word. Those changes 
 - Unit (`npm test`): all passed; Source-pass 34/34 (8 new t179).
 - Offline link check: PASSED.
 - E2E: 379/379 (t179 checks at 390 and 1280). The t124u #10 counts were updated: Practical details now has 2 dated rules, the Roadmap 4.
-- page-meta: see below.
+- page-meta (after commit): 15/15 passed (no expectation changes needed).
 
 ## Live-source check (run once): Wed Nov 18, 2026, 5:40 PM CT — Live-source check: RUN, result PASSED
 - 409 claims (409 referenced); 76 sources: 73 passed, 3 fallbacks, 0 failed.
@@ -38,3 +38,13 @@ So none of Tim's Part One quotes could be verified word for word. Those changes 
   - search_revwar: 4 claims
 - Plain links: CDC PASSED. FamilySearch BLOCKED (check by hand).
 - Held back: 14 still held, 0 restored. Source scope: 0 flagged. Node got 403 on 10 dar.org pages; all were verified with curl.
+
+## Preview (not production)
+- Code commit: d61d3deb9612e1a79e9f6b3d5bec76fecf08b68c.
+- Deployed with `--branch t179-preview`: https://t179-preview.patriotinlays.pages.dev (deployment https://e2372617.patriotinlays.pages.dev).
+- Playwright at 390px and 1280px:
+  - Roadmap: Tim's fee sentence shows; no "$75" and no "six weeks"; the GRS link goes to www.dar.org/research.
+  - Application Returned: no "six weeks".
+  - Worksheet page: the new "For any other state" line shows.
+  - No horizontal overflow and no console errors.
+- Production NOT deployed; cache NOT purged.
