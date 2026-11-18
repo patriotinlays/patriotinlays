@@ -3,7 +3,7 @@
 //  2. a marker or a tool rule references a claim_id missing from the manifest     (unmanifested claim)
 //  3. a referenced claim is not verification_status: "verified"                   (unverified claim)
 //  4. a manifest entry is missing required fields or is older than MAX_AGE_DAYS   (stale/incomplete)
-//  5. with --links: live-check every source URL; 404/410 and quote mismatches always fail; 403/5xx/timeouts/certificate errors may use a last-pass under 30 days (loud warning).
+//  5. with --links: live-check every source URL; 404/410, quote mismatches and never-passed sources always fail; 5xx/timeouts may use a last-pass under 90 days (t179 safety net), 403/certificate errors under 30 days (loud warning).
 // Policy (non-negotiable accuracy rule): a claim that cannot pass this gate is omitted from the site, never shipped.
 import { readFileSync, readdirSync, existsSync, writeFileSync, mkdtempSync } from "node:fs";
 import { join, resolve } from "node:path";
@@ -96,7 +96,7 @@ for (const t of readdirSync(join(ROOT, "src/tools")).filter((f) => f.endsWith(".
 }
 for (const id of byId.keys()) if (!referenced.has(id)) warnings.push(`manifest ${id}: not referenced by any page or tool`);
 
-// Live source verification, with the Tim-approved 30-day unreachable fallback (see scripts/lib/source-pass.mjs).
+// Live source verification, with the Tim-approved unreachable fallback: 90 days for 5xx/timeout (t179), 30 for 403/certificate errors (see scripts/lib/source-pass.mjs).
 const LAST_PASSED_PATH = join(ROOT, "manifest/source-last-passed.json");
 const lastPassedStore = loadLastPassed(LAST_PASSED_PATH);
 const CLAIM_MATCH_PATH = join(ROOT, "manifest/claim-last-matched.json");
@@ -163,7 +163,7 @@ if (LINKS) {
         const fc = checkFallbackClaims(manifest.claims.filter((c) => c.source_url === u), claimMatchStore);
         for (const h of fc.held) errors.push(`HELD ${h.claim_id}: ${u} is on fallback and this claim ${h.reason}. Hold it back until the source is reachable.`);
         for (const n of fc.newUses) warnings.push(`NEW USE ${n.claim_id}: ${u} is on fallback; quote matched ${n.matchedAt} but ${n.reason} were never read against the page. Review or hold back.`);
-        linkReport.push({ url: u, status, quotesFound: "-", quotesMissing: "-", fallback: true, lastPassed: d.lastPassedAt, failureKind: d.failureKind, claimsCoveredByEarlierMatch: fc.ok.length, claimsHeld: fc.held.map((h) => h.claim_id), newUses: fc.newUses });
+        linkReport.push({ url: u, status, quotesFound: "-", quotesMissing: "-", fallback: true, lastPassed: d.lastPassedAt, fallbackMaxDays: d.maxDays, fallbackEndsAt: d.fallbackEndsAt, failureKind: d.failureKind, claimsCoveredByEarlierMatch: fc.ok.length, claimsHeld: fc.held.map((h) => h.claim_id), newUses: fc.newUses });
         continue;
       }
       errors.push(`${u}: ${d.error || (`HTTP ${status}` + (fetchError ? ` (${fetchError})` : ""))}`);
@@ -248,7 +248,7 @@ if (LINKS) {
 if (!args.includes("--content")) writeFileSync(join(ROOT, "manifest-check-report.json"), JSON.stringify(summary, null, 2));
 console.log(LIVE_LINE);
 console.log(`Source Manifest gate: ${files.length} page(s), ${sentences} sentence(s), ${marked} with claim markers; ${byId.size} manifest claims, ${referenced.size} referenced.`);
-if (LINKS) for (const l of linkReport) console.log(`  link ${l.status}${l.fallback ? " FALLBACK" : ""}  quotes found ${l.quotesFound ?? "-"} / missing ${l.quotesMissing ?? "-"}${l.fallback ? `  (claims covered by earlier match ${l.claimsCoveredByEarlierMatch} / held ${l.claimsHeld.length})` : ""}  ${l.url}`);
+if (LINKS) for (const l of linkReport) console.log(`  link ${l.status}${l.fallback ? " FALLBACK" : ""}  quotes found ${l.quotesFound ?? "-"} / missing ${l.quotesMissing ?? "-"}${l.fallback ? `  (claims covered by earlier match ${l.claimsCoveredByEarlierMatch} / held ${l.claimsHeld.length}; last passed ${l.lastPassed}; fallback ends ${l.fallbackEndsAt} [${l.fallbackMaxDays}-day limit])` : ""}  ${l.url}`);
 if (LINKS) for (const l of plainReport) console.log(`  plain link ${l.status} ${l.result.toUpperCase()}${l.via === "curl" ? " (curl)" : ""}  ${l.url}`);
 warnings.forEach((w) => console.log("WARN  " + w));
 errors.forEach((e) => console.log("ERROR " + e));

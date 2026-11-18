@@ -260,6 +260,10 @@ Docs: https://developers.cloudflare.com/pages/how-to/web-analytics/
 - February 28, 1855 navy-widow law cited as ch. 126, sec. 3, 10 Stat. 616 (chapter begins at 615); 10 Stat. 701 is only the March 3, 1855 bounty-land act.
 - Worksheet: step 1 is the patriot, step 2 starts the family with yourself; removing the oldest generation asks for confirmation.
 
+### t179 (Nov 18, 2026) — DAR source migration, preview only
+- STANDING RULE (safety net): for sources that are unreachable (5xx/timeout), the live-check fallback lasts 90 days from the last pass (was 30). 404/410, changed quotes, or never-passed sources still block; 403 and certificate errors keep the 30-day limit. Always show the real "last checked" date. Code: `UNREACHABLE_MAX_DAYS`, `maxFallbackDays()`, `fallbackEndsAt()` in `scripts/lib/source-pass.mjs`; the live check prints and reports each fallback's last pass, end date and limit. Tests in `scripts/test-source-pass.mjs`.
+- DAR Genealogy Guidelines Parts One/Two/Three (RGG-4000/4001/4002 on www.dar.org) are behind DAR's member login, so none of them can be quoted. dar-gen-1-3 re-sourced to the Registrar General's blog post (Nov 28, 2022); dar-biological to DAR's membership FAQ. dar-six-weeks and the $75 fee (dar-fee) removed; the fee sentence is Tim's wording, citing the May 16, 2024 DAR blog (dar-fee-dues). Roadmap Step 0 "DAR Ancestor Search" points to https://www.dar.org/research while services.dar.org is down (522). Worksheet page: "For any other state" line now names the CDC and FamilySearch pages.
+
 ### t178 (Nov 18, 2026) — preview only
 - Lineage Evidence Matrix: "These checks follow DAR's application instructions. SAR's standards differ; ask your SAR registrar." added under "The gap rules" (no claim marker). "SAR's end date is 25 November 1783 (DAR's is 26 November)." added to the patriot's date-check result, citing the existing sar-gcp-window (GCP §2.0000) and dar-window-core claims. Date logic unchanged. Preview deploy only (`--branch t178-preview`).
 

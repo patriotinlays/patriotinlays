@@ -1,8 +1,15 @@
-// 30-day unreachable-source fallback for the live Source Manifest check.
+// Unreachable-source fallback for the live Source Manifest check.
 import { chicagoISO } from "./chicago-date.mjs";
-// Live check first. Quote mismatches, 404/410, never-passed, and last-pass ≥ 30 days always block.
-// Fallback (loud warning, re-check every run) only for 403, any 5xx, timeouts, and certificate errors.
+// Live check first. Quote mismatches, 404/410 and never-passed sources always block.
+// Fallback (loud warning, re-check every run) only for 403, any 5xx, timeouts, and certificate errors:
+//  - t179 safety net (Tim's standing rule): a source that is unreachable (any 5xx, or a timeout) may fall back for
+//    90 days from its last pass (was 30).
+//  - 403 and certificate errors keep the 30-day limit.
+// The real last-pass ("last checked") date is always reported, never refreshed by a fallback.
 export const FALLBACK_MAX_DAYS = 30;
+export const UNREACHABLE_MAX_DAYS = 90;
+export const maxFallbackDays = (kind) => (kind === "timeout" || /^http_5\d\d$/.test(kind) ? UNREACHABLE_MAX_DAYS : FALLBACK_MAX_DAYS);
+export const fallbackEndsAt = (lastPassedAt, kind) => { const t = Date.parse(lastPassedAt); return Number.isFinite(t) ? new Date(t + maxFallbackDays(kind) * 864e5).toISOString() : null; };
 
 export function classifyFailure({ status, errorMessage = "", quoteMissing = false } = {}) {
   if (quoteMissing) return { kind: "quote_mismatch", fallbackEligible: false };
@@ -40,16 +47,20 @@ export function decideSourceCheck({ status, errorMessage = "", quoteMissing = fa
   if (age == null) {
     return { outcome: "block", updateLastPassed: false, warning: null, error: `${fail.kind}: unreachable and no successful last-pass record`, failureKind: fail.kind };
   }
-  if (age >= FALLBACK_MAX_DAYS) {
-    return { outcome: "block", updateLastPassed: false, warning: null, error: `${fail.kind}: last pass ${lastPassedAt} is ${Math.floor(age)} day(s) old (max ${FALLBACK_MAX_DAYS - 1})`, failureKind: fail.kind };
+  const maxDays = maxFallbackDays(fail.kind);
+  if (age >= maxDays) {
+    return { outcome: "block", updateLastPassed: false, warning: null, error: `${fail.kind}: last pass ${lastPassedAt} is ${Math.floor(age)} day(s) old (max ${maxDays - 1})`, failureKind: fail.kind, lastPassedAt, maxDays };
   }
+  const endsAt = fallbackEndsAt(lastPassedAt, fail.kind);
   return {
     outcome: "fallback",
     updateLastPassed: false,
-    warning: `FALLBACK: unreachable source accepted on last successful check under ${FALLBACK_MAX_DAYS} days. URL failure=${fail.kind}; lastPassed=${lastPassedAt}; ageDays=${age.toFixed(2)}. Re-check required on every run.`,
+    warning: `FALLBACK: unreachable source accepted on last successful check under ${maxDays} days. URL failure=${fail.kind}; lastPassed=${lastPassedAt}; ageDays=${age.toFixed(2)}; fallbackEnds=${chicagoISO(new Date(endsAt))}. Re-check required on every run.`,
     error: null,
     failureKind: fail.kind,
     lastPassedAt,
+    maxDays,
+    fallbackEndsAt: endsAt,
   };
 }
 

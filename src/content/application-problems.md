@@ -38,7 +38,6 @@ Points attributed to the 2023 Ohio Society SAR presentation come from that talk,
 
 {{asof:dar-eapp-established}} DAR says its electronic application is only for ancestors already fully established with DAR. [[claim:dar-eapp-established]]
 {{asof:dar-paper-analysis}} DAR says a new ancestor, or a lineage that needs an analysis compiling indirect evidence, goes on the paper application. [[claim:dar-paper-analysis]]
-{{asof:dar-six-weeks}} DAR says that once the fee is paid and the application is sent for review, staff review generally takes about six weeks. [[claim:dar-six-weeks]]
 {{asof:dar-nbm}} DAR says a verified application is then accepted by the National Board of Management at the start of the following month. [[claim:dar-nbm]]
 
 ## Supplementals and replacements (SAR)

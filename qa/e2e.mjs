@@ -738,8 +738,8 @@ phase("load"); await page.goto(`${BASE}/`); phase("interact");
     && text("about").includes(`If you find an error, or have an idea for a tool or guide that would help, please tell us through the Contact page. ${corr}`) && text("contact").includes(corr));
   const rm = H("guides/lineage-proof-roadmap"); const asof = [...rm.matchAll(/As of <span data-asof="([a-z0-9-]+)">([^<]+)<\/span>, (DAR|SAR) says/g)];
   const prac = (rm.match(/<h2 id="practical-details-people-miss">[\s\S]*?<\/p>/) || [""])[0];
-  check("t124u #10: dated rules start 'As of <date>, DAR says' with the date of that source's last recorded pass (Roadmap 'Practical details' and the application guide)", (prac.match(/As of <span data-asof/g) || []).length === 4
-    && [...asof, ...H("guides/application-problems").matchAll(/As of <span data-asof="([a-z0-9-]+)">([^<]+)<\/span>, (DAR|SAR) says/g)].every((m) => m[2] === longDate(lp[claimsById.get(m[1]).source_url])) && asof.length >= 6);
+  check("t124u #10: dated rules start 'As of <date>, DAR says' with the date of that source's last recorded pass (Roadmap 'Practical details' and the application guide)", (prac.match(/As of <span data-asof/g) || []).length === 2 /* t179: six-weeks and $75-fee lines removed (4 -> 2) */
+    && [...asof, ...H("guides/application-problems").matchAll(/As of <span data-asof="([a-z0-9-]+)">([^<]+)<\/span>, (DAR|SAR) says/g)].every((m) => m[2] === longDate(lp[claimsById.get(m[1]).source_url])) && asof.length >= 4 /* t179: was 6 before the six-weeks and fee lines were removed */);
   check("t124u #9: Roadmap Step 0 reads 'Step 0: find your patriot's name' and 'If you don't know your patriot's name yet'; the old #step-0 link still lands there", /<h2 id="step-0-find-your-patriot-s-name">Step 0: Find Your Patriot&#39;s Name<\/h2>|<h2 id="step-0-find-your-patriot-s-name">Step 0: Find Your Patriot's Name<\/h2>/.test(rm)
     && text("guides/lineage-proof-roadmap").includes("If you don't know your patriot's name yet, start here.") && rm.includes('id="step-0-find-the-soldier-s-name"') && !/find the soldier/.test(H("")));
 }
@@ -1760,6 +1760,34 @@ for (const w of [390, 1280]) { const cx = await browser.newContext({ viewport: {
       await pg.reload(); const cls = await pg.evaluate(() => document.querySelector("[data-sar-end]")?.closest(".result")?.className || "");
       check(`t178 #b (${w}px): end ${end} still checks as '${want}' against DAR's period (no date-logic change), with the SAR note shown`, cls.includes(`r-${want}`), cls);
     }
+    await cx.close();
+  }
+}
+
+// ---- t179: DAR source migration (re-sourced claims, removed six-weeks and $75 fee), GRS link, "Where to look" wording ----
+{ const REL179 = join(ROOT, "qa/release-logs/t179"); mkdirSync(REL179, { recursive: true });
+  const H = (p) => readFileSync(join(DIST, p, "index.html"), "utf8");
+  const text = (p) => H(p).replace(/<script[\s\S]*?<\/script>/g, "").replace(/<[^>]+>/g, "").replace(/&#39;|&apos;/g, "'").replace(/&amp;/g, "&").replace(/&quot;/g, '"').replace(/\s+/g, " ");
+  const claims = JSON.parse(readFileSync(join(ROOT, "manifest/claims.json"), "utf8")).claims; const byId = new Map(claims.map((c) => [c.claim_id, c]));
+  const FEE = "DAR charges an application fee plus the first year's national dues; chapters and state societies add their own.";
+  const ASK = "Ask your chapter registrar for current amounts.";
+  const road = text("guides/lineage-proof-roadmap"), probs = text("guides/application-problems"), mat = text("tools/lineage-matrix");
+  check("t179 #3: Tim's fee wording replaces the $75 sentence on the Roadmap; no '$75' and no 'six weeks' on any page; dar-fee and dar-six-weeks are gone from the manifest",
+    road.includes(FEE) && road.includes(ASK) && !/\$75/.test(road + probs) && !/six weeks/i.test(road + probs) && !byId.has("dar-fee") && !byId.has("dar-six-weeks") && byId.get("dar-fee-dues")?.source_url === "https://blog.dar.org/2024/05/16/new-commemorative-america-250-membership-certificates");
+  check("t179 #1: dar-gen-1-3 and dar-biological are re-sourced to live DAR pages (Registrar General blog, membership FAQ)",
+    byId.get("dar-gen-1-3")?.source_url === "https://blog.dar.org/2022/11/28/be-star-dar-genealogy-updates-registrar-general" && byId.get("dar-gen-1-3").quote_excerpt === "It is a must that the first three generations of the application and supplemental have complete dates and places."
+    && byId.get("dar-biological")?.source_url === "https://www.dar.org/national-society/faq/membership" && byId.get("dar-biological").quote_excerpt === "All lineage for DAR membership must be bloodline descent.");
+  check("t179 #5: Step 0's 'DAR Ancestor Search' link points to DAR's Research page while services.dar.org is down", /<a href="https:\/\/www\.dar\.org\/research"[^>]*>DAR Ancestor Search/.test(H("guides/lineage-proof-roadmap")) && !H("guides/lineage-proof-roadmap").includes("services.dar.org/Public/DAR_Research/search/?Tab_ID=1"));
+  check("t179 #6: the worksheet page no longer says other states fall back to general advice; it names the CDC and FamilySearch pages",
+    !mat.includes("falls back to general advice") && mat.includes("For any other state it points you to the CDC's Where to Write for Vital Records page and the FamilySearch Research Wiki page for that state."));
+  for (const w of [390, 1280]) {
+    const cx = await browser.newContext({ viewport: { width: w, height: 900 } }); const pg = await cx.newPage();
+    pg.on("console", (m) => { if (m.type() === "error") consoleErrors.push(`t179 ${w}: ${m.text()}`); });
+    await pg.goto(`${BASE}/guides/lineage-proof-roadmap/`);
+    const r = await pg.evaluate((F) => { const p = [...document.querySelectorAll("main p, main li")].find((x) => x.textContent.includes(F)); return { found: !!p, text: p?.textContent.replace(/\s+/g, " ").trim() || "", grs: document.querySelector('main a[href="https://www.dar.org/research"]')?.textContent || "" }; }, FEE);
+    check(`t179 (${w}px): Roadmap shows the new fee sentence and the GRS link`, r.found && r.text.includes(ASK) && /DAR Ancestor Search/.test(r.grs), JSON.stringify(r).slice(0, 300));
+    await pg.locator('main a[href="https://www.dar.org/research"]').first().scrollIntoViewIfNeeded(); await pg.screenshot({ path: join(REL179, `roadmap-grs-link-${w}.png`), fullPage: false });
+    await pg.getByText(FEE).first().scrollIntoViewIfNeeded(); await pg.screenshot({ path: join(REL179, `roadmap-fee-${w}.png`), fullPage: false });
     await cx.close();
   }
 }

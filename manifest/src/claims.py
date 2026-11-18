@@ -21,12 +21,14 @@ C = [
 ("dar-reserves-right","DAR_SVC","The National Society reserves the right to determine the acceptability of all service and proof thereof.","DAR reserves the right to decide what service and proof are acceptable.",None),
 ("dar-age-18","DAR_SVC","Any woman 18 years or older","DAR membership is open to women 18 or older who can prove lineal descent from a patriot.",None),
 # ---- DAR application steps ----
-("dar-gen-1-3","DAR_STEP","Complete dates and places of birth and death must be entered for each individual in the first three generations","DAR requires complete birth and death dates and places for the first three generations.",None),
+# t179: re-sourced from the Step by Step page (522 since Nov 5) to the Registrar General's DAR blog post (Nov 28, 2022).
+("dar-gen-1-3","DAR_RG_BLOG_2022","It is a must that the first three generations of the application and supplemental have complete dates and places.","DAR's Registrar General says the first three generations of an application must have complete dates and places.",None),
 ("dar-gen-older","DAR_STEP","For individuals who lived prior to the advent of modern vital records, at least one date and place (of birth or death) must be documented.","For people who lived before modern vital records, DAR requires at least one documented date and place of birth or death.",None),
 ("dar-each-relationship","DAR_STEP","Each name, date, place and relationship must be supported by an acceptable form of documentation.","DAR requires documentation for each name, date, place and relationship.",None),
 ("dar-gen1-applicant","DAR_STEP","The lineage on the application form must start with You, the applicant, as the first generation.","On a DAR application the applicant is generation 1.",None),
 ("dar-gen-numbering","DAR_STEP","Your parents are generation 2, your grandparents are generation 3, your great-grandparents are generation 4, etc.","Parents are generation 2, grandparents 3, great-grandparents 4.",None),
-("dar-biological","DAR_STEP","The lineage entered should include the biological parents/ancestors in each generation.","DAR lineages list biological parents in each generation.",None),
+# t179: re-sourced to DAR's public membership FAQ (Step by Step page unreachable).
+("dar-biological","DAR_FAQ_MEMBERSHIP","All lineage for DAR membership must be bloodline descent.","DAR says all lineage for DAR membership must be bloodline descent.",None),
 ("dar-no-step","DAR_STEP","Step-parents or adoptive parents should not be included on the application form.","DAR applications exclude step-parents and adoptive parents.",None),
 ("dar-both-parents","DAR_STEP","Both the male and female in each generation must be documented.","DAR requires both the man and the woman in each generation to be documented.",None),
 ("dar-pedigree","DAR_STEP","It might be helpful to have the generations numbered on a separate pedigree chart or outline","DAR suggests numbering generations on a separate pedigree chart.",None),
@@ -63,9 +65,10 @@ C = [
 ("dar-lineage-sources","DAR_FAQ","The most common types of sources used to establish lineage include vital records (birth certificates, death certificates, marriage records), Census records, probate records, court records, land records, and church records.","DAR lists vital, census, probate, court, land and church records as the most common lineage sources.",None),
 ("dar-eapp-established","DAR_FAQ","The Electronic Application Process can only be used for Ancestors that are already fully established with the DAR.","The DAR e-application is only for ancestors already fully established with DAR.",None),
 ("dar-paper-analysis","DAR_FAQ","the lineage requires an analysis (compiling indirect evidence to show a relationship)","New ancestors, or lineages needing an indirect-evidence analysis, go on the paper application.",None),
-("dar-six-weeks","DAR_FAQ","it will generally take about six weeks for the application to be reviewed","DAR staff review generally takes about six weeks.",None),
+# t179: dar-six-weeks removed (not supported by current sources).
 ("dar-nbm","DAR_FAQ","the application will be accepted by the National Board of Management at the beginning of the following month","Verified DAR applications are accepted by the National Board of Management at the start of the following month.",None),
-("dar-fee","DAR_FAQ","includes the $75 application fee plus the first year","The DAR application cost includes a $75 fee plus first-year national dues.",None),
+# t179: the $75 fee claim (dar-fee) removed; the fee sentence now has no amount.
+("dar-fee-dues","DAR_BLOG_2024","You must submit both first-year dues and Application fees for new member submissions.","DAR's blog says new member submissions must include both first-year dues and application fees.",None),
 ("dar-unknown-parent","DAR_FAQ","In cases where one biological parent is not known AND the lineage to the patriot descends through the known biological parent, the fields for the unknown individual can be left blank.","If an unknown biological parent is not on the line of descent, DAR lets those fields stay blank.",None),
 ("dar-husband","DAR_FAQ","it might be omitted if changes to your surname can be conclusively documented without this information","An applicant's husband may be omitted if surname changes are otherwise documented.",None),
 # ---- DAR blog ----

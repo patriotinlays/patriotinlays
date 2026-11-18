@@ -19,6 +19,10 @@ export const SOURCE_TOPICS = {
     [/^dar-(eapp-established|paper-analysis)$/, "DAR paper or electronic application"], [/^dar-unknown-parent$/, "unknown parents"],
     [/^dar-service-sources$/, "DAR service sources"], [/./, "records DAR accepts"]),
   "https://blog.dar.org/2021/02/26/why-was-his-service-removed": R("why DAR questions or removes service"),
+  // t179: live DAR sources that replace parts of the unreachable membership.dar.org pages.
+  "https://blog.dar.org/2022/11/28/be-star-dar-genealogy-updates-registrar-general": R("DAR's Registrar General on the first three generations"),
+  "https://blog.dar.org/2024/05/16/new-commemorative-america-250-membership-certificates": R("DAR's note on fees and first-year dues"),
+  "https://www.dar.org/national-society/faq/membership": R("DAR's membership questions and answers"),
   "https://services.dar.org/Public/DAR_Research/search_revwar/?Tab_ID=14&Tab_ID_Sub=0&action=list": R("DAR's Revolutionary War records indexes"),
   "https://www.sar.org/step-1/": R("SAR eligibility rules",
     [/^sar-window$/, "SAR's service dates"], [/^sar-sponsors$/, "SAR sponsors"], [/^sar-(bloodline|tradition|ggp|no-prelim)$/, "what SAR accepts as proof"],
