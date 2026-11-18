@@ -183,6 +183,8 @@ export const WHERE_TO_LOOK = Object.freeze({
 export const NSCDA_TERM = Object.freeze({ text: "NSCDA is The National Society of the Colonial Dames of America; notes that mention NSCDA cite its South Carolina society's standards.", claims: ["nscda-name-national", "nscda-census-1850-1870"] });
 export const START_HERE = Object.freeze({ text: "Start with your patriot in step 1, then add yourself as generation 1 and go back through your parent, grandparent and so on to the patriot. Don't know the patriot yet? Start with yourself and add the patriot later.", claims: ["dar-gen1-applicant", "dar-gen-numbering"], links: [], guides: ["roadmap"] });
 // A rough year typed by the visitor ("1820", " 1820 ") -> 1820, else null.
+// t178 #b: SAR's end date next to the patriot's date check (Tim's wording). Display only; the date logic is unchanged.
+export const SAR_END_NOTE = Object.freeze({ text: "SAR's end date is 25 November 1783 (DAR's is 26 November).", claims: ["sar-gcp-window", "dar-window-core"] });
 // t174 #2: the report line for a person marked "Still living", and the checkbox label (Tim's wording).
 export const LIVING_LABEL = "Still living";
 export const LIVING_REPORT = "Living: death details not needed.";

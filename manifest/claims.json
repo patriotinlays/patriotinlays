@@ -19,6 +19,7 @@
         "lineage-proof-roadmap",
         "patriotic-service",
         "tool:tool-a.js",
+        "tool:tool-b.js",
         "walkthroughs",
         "widow-pension-checker"
       ],
@@ -2051,7 +2052,8 @@
       "used_on": [
         "lineage-matrix",
         "lineage-proof-roadmap",
-        "patriotic-service"
+        "patriotic-service",
+        "tool:tool-b.js"
       ],
       "notes": "",
       "source_scope": "national"

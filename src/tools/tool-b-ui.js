@@ -2,7 +2,7 @@
 // State lives only in localStorage under "pi.toolB.v1"; no network requests are made.
 import { dateField } from "./date-ui.js";
 import { dateLabel } from "./dates.js";
-import { SKIP_TEXT, STILL_NEEDED, isSkipped, setSkip, relationName, HAVE_ITEMS, byFactOrder, actionPlan, evaluateCell, gaps, groupGaps, filledCells, countEntries, patriotGen, LABELS, FACTS, FACT_LABELS, DOC_TYPES, MODE_HELP, genLabel, genTitle, isEmptyCell, dateWarnings, NSCDA_TERM, birthSubstitutes, NAME_CHECKLIST, LIVING_LABEL, LIVING_REPORT, normalizeLiving } from "./tool-b.js";
+import { SKIP_TEXT, STILL_NEEDED, isSkipped, setSkip, relationName, HAVE_ITEMS, byFactOrder, actionPlan, evaluateCell, gaps, groupGaps, filledCells, countEntries, patriotGen, LABELS, FACTS, FACT_LABELS, DOC_TYPES, MODE_HELP, genLabel, genTitle, isEmptyCell, dateWarnings, NSCDA_TERM, birthSubstitutes, NAME_CHECKLIST, LIVING_LABEL, LIVING_REPORT, normalizeLiving, SAR_END_NOTE } from "./tool-b.js";
 import { SERVICE_KINDS, PATRIOT_HELP, patriotDates, hasPatriot, kindOf } from "./patriot.js";
 import { STATES, stateName, noVitalText } from "./places.js";
 import { ns, el } from "./storage.js";
@@ -86,6 +86,7 @@ function patriotCheckEl(p, rows = null) {
   const label = { consistent: "Dates fit DAR's period for this service (not a ruling)", partial: "Partly inside the period", inconsistent: "Outside the period as typed", invalid: "Couldn't read the dates" }[d.status];
   return el("div", {}, soft, el("div", { class: `result r-${d.status}` }, el("span", { class: `badge b-${d.status}`, text: label }), el("p", { text: d.plain }),
     el("p", { class: "small", text: `Period checked: ${d.rule || ""}` }),
+    el("p", { class: "small", "data-sar-end": "", text: SAR_END_NOTE.text }),
     p.end ? el("p", { class: "small" }, "Your patriot's service end date can feed the ", el("a", { href: "/tools/widow-pension-checker/?from=worksheet", "data-to-widow": "", text: "widow-pension check" }), ".") : null));
 }
 function patriotForm(state, refresh, rerender = refresh) {

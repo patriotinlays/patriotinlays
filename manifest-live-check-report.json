@@ -1,7 +1,7 @@
 {
   "live_source_check": "RUN",
   "live_source_check_line": "Live-source check: RUN",
-  "checkedAt": "Sun Nov 15 2026 09:44:47 GMT-0600 (Central Standard Time)",
+  "checkedAt": "Wed Nov 18 2026 17:19:19 GMT-0600 (Central Standard Time)",
   "dirs": [
     "src/content",
     "src/pages",
@@ -25,7 +25,7 @@
       "unmarked": 0
     },
     "src/content/lineage-matrix.md": {
-      "units": 72,
+      "units": 74,
       "marked": 31,
       "unmarked": 0
     },
@@ -140,16 +140,31 @@
       "unmarked": 0
     }
   },
-  "sentences": 989,
+  "sentences": 991,
   "markedSentences": 488,
   "manifestClaims": 410,
   "referencedClaims": 410,
   "links": [
     {
       "url": "https://www.dar.org/national-society/accepted-revolutionary-war-service",
-      "status": 200,
-      "quotesFound": 17,
-      "quotesMissing": 0
+      "status": 403,
+      "quotesFound": "-",
+      "quotesMissing": "-",
+      "fallback": true,
+      "lastPassed": "2026-11-15T09:41:56.731-06:00",
+      "failureKind": "http_403",
+      "claimsCoveredByEarlierMatch": 17,
+      "claimsHeld": [],
+      "newUses": [
+        {
+          "claim_id": "dar-window-core",
+          "added": [
+            "tool:tool-b.js"
+          ],
+          "matchedAt": "2026-11-15T15:41:56.787Z",
+          "reason": "new use(s) since its last match (2026-11-15T15:41:56.787Z): tool:tool-b.js"
+        }
+      ]
     },
     {
       "url": "https://membership.dar.org/NSDAR/AppFormz/App_Help_Step_By_Step_1.aspx",
@@ -709,11 +724,12 @@
   },
   "errors": [],
   "warnings": [
-    "https://www.dar.org/national-society/accepted-revolutionary-war-service: Node fetch got 403/429; verified with curl instead",
-    "https://membership.dar.org/NSDAR/AppFormz/App_Help_Step_By_Step_1.aspx: FALLBACK: unreachable source accepted on last successful check under 30 days. URL failure=http_522; lastPassed=2026-11-05T16:34:49.000Z; ageDays=9.96. Re-check required on every run.",
-    "https://membership.dar.org/NSDAR/AppFormz/FAQs.aspx: FALLBACK: unreachable source accepted on last successful check under 30 days. URL failure=http_522; lastPassed=2026-11-05T16:34:49.000Z; ageDays=9.96. Re-check required on every run.",
+    "https://www.dar.org/national-society/accepted-revolutionary-war-service: FALLBACK: unreachable source accepted on last successful check under 30 days. URL failure=http_403; lastPassed=2026-11-15T09:41:56.731-06:00; ageDays=3.32. Re-check required on every run.",
+    "NEW USE dar-window-core: https://www.dar.org/national-society/accepted-revolutionary-war-service is on fallback; quote matched 2026-11-15T15:41:56.787Z but new use(s) since its last match (2026-11-15T15:41:56.787Z): tool:tool-b.js were never read against the page. Review or hold back.",
+    "https://membership.dar.org/NSDAR/AppFormz/App_Help_Step_By_Step_1.aspx: FALLBACK: unreachable source accepted on last successful check under 30 days. URL failure=http_522; lastPassed=2026-11-05T16:34:49.000Z; ageDays=13.28. Re-check required on every run.",
+    "https://membership.dar.org/NSDAR/AppFormz/FAQs.aspx: FALLBACK: unreachable source accepted on last successful check under 30 days. URL failure=http_522; lastPassed=2026-11-05T16:34:49.000Z; ageDays=13.28. Re-check required on every run.",
     "https://blog.dar.org/2021/02/26/why-was-his-service-removed: Node fetch got 403/429; verified with curl instead",
-    "https://services.dar.org/Public/DAR_Research/search_revwar/?Tab_ID=14&Tab_ID_Sub=0&action=list: FALLBACK: unreachable source accepted on last successful check under 30 days. URL failure=http_522; lastPassed=2026-11-05T16:34:49.000Z; ageDays=9.96. Re-check required on every run.",
+    "https://services.dar.org/Public/DAR_Research/search_revwar/?Tab_ID=14&Tab_ID_Sub=0&action=list: FALLBACK: unreachable source accepted on last successful check under 30 days. URL failure=http_522; lastPassed=2026-11-05T16:34:49.000Z; ageDays=13.28. Re-check required on every run.",
     "https://www.dar.org/library/search.cfm: Node fetch got 403/429; verified with curl instead",
     "https://www.dar.org/library/collections/dar-lineage-resources: Node fetch got 403/429; verified with curl instead",
     "https://www.dar.org/discover/become-member/chapter-locator: Node fetch got 403/429; verified with curl instead",

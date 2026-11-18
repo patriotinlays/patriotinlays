@@ -210,5 +210,20 @@ t("audit 4: the 'Don't know your patriot's name yet?' checklist has 4 plain to-d
   t("t174 #2: Tim's exact wording: checkbox 'Still living', report line 'Living: death details not needed.'", B.LIVING_LABEL === "Still living" && B.LIVING_REPORT === "Living: death details not needed." && /` \$\{LIVING_LABEL\}`/.test(readFileSync(new URL("../src/tools/tool-b-ui.js", import.meta.url), "utf8")));
   t("t174 #2: no DAR Step by Step quote was attached (the pages were unreachable this run)", !/leave these fields blank/i.test(readFileSync(new URL("../src/tools/tool-b-ui.js", import.meta.url), "utf8") + readFileSync(new URL("../src/tools/tool-b.js", import.meta.url), "utf8") + readFileSync(new URL("../manifest/src/claims.py", import.meta.url), "utf8")));
 }
+// ---- t178: DAR/SAR line under the gap rules; SAR end date next to the patriot's date check ----
+{ const B = await import("../src/tools/tool-b.js"); const { patriotDates } = await import("../src/tools/patriot.js");
+  const md = readFileSync(new URL("../src/content/lineage-matrix.md", import.meta.url), "utf8"); const ui = readFileSync(new URL("../src/tools/tool-b-ui.js", import.meta.url), "utf8");
+  const LINE = "These checks follow DAR's application instructions. SAR's standards differ; ask your SAR registrar.";
+  const gapSec = md.slice(md.indexOf("## The gap rules"), md.indexOf("Related guides:", md.indexOf("## The gap rules")));
+  t("t178 #a: Tim's DAR/SAR line appears exactly once on the page, in 'The gap rules' right after the three generation rules", md.split(LINE).length === 2 && gapSec.trim().endsWith(LINE) && /\[\[claim:dar-each-relationship\]\]\n/.test(gapSec));
+  t("t178 #a: the line carries no claim marker (no new use of a DAR claim whose page is on fallback)", !new RegExp(LINE.replace(/[.*+?^${}()|[\]\\]/g, "\\$&") + "\\s*\\[\\[claim").test(md));
+  const byId = new Map(manifest.claims.map((c) => [c.claim_id, c]));
+  t("t178 #b: SAR end-date note is Tim's exact wording, cites GCP §2.0000 (sar-gcp-window: '25 November 1783') and DAR's window (dar-window-core: '26 November 1783'), both verified",
+    B.SAR_END_NOTE.text === "SAR's end date is 25 November 1783 (DAR's is 26 November)." && B.SAR_END_NOTE.claims.join() === "sar-gcp-window,dar-window-core"
+    && byId.get("sar-gcp-window")?.quote_excerpt.includes("25 November 1783") && byId.get("dar-window-core")?.quote_excerpt.includes("26 November 1783") && B.SAR_END_NOTE.claims.every((c) => verified.has(c)));
+  t("t178 #b: the note is rendered in the patriot's date-check result, right after 'Period checked'", /Period checked: \$\{d\.rule \|\| ""\}` \}\),\n\s*el\("p", \{ class: "small", "data-sar-end": "", text: SAR_END_NOTE\.text \}\)/.test(ui));
+  const p = { name: "x", state: "VA", kind: "militia", start: "1777" };
+  t("t178 #b: date logic unchanged: DAR's period still ends 26 November 1783 (25 and 26 Nov fit, 27 Nov is partial)", ["1783-11-25", "1783-11-26"].every((e) => patriotDates({ ...p, end: e }).status === "consistent") && patriotDates({ ...p, end: "1783-11-27" }).status === "partial" && /\(DAR\)/.test(patriotDates({ ...p, end: "1783-11-26" }).rule));
+}
 let p = 0; for (const [n, ok] of T) { console.log(`${ok ? "PASS" : "FAIL"}  ${n}`); if (ok) p++; }
 console.log(`\nLineage Evidence Matrix: ${p}/${T.length} sanity checks passed.`); process.exit(p === T.length ? 0 : 1);

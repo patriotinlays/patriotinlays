@@ -260,6 +260,9 @@ Docs: https://developers.cloudflare.com/pages/how-to/web-analytics/
 - February 28, 1855 navy-widow law cited as ch. 126, sec. 3, 10 Stat. 616 (chapter begins at 615); 10 Stat. 701 is only the March 3, 1855 bounty-land act.
 - Worksheet: step 1 is the patriot, step 2 starts the family with yourself; removing the oldest generation asks for confirmation.
 
+### t178 (Nov 18, 2026) — preview only
+- Lineage Evidence Matrix: "These checks follow DAR's application instructions. SAR's standards differ; ask your SAR registrar." added under "The gap rules" (no claim marker). "SAR's end date is 25 November 1783 (DAR's is 26 November)." added to the patriot's date-check result, citing the existing sar-gcp-window (GCP §2.0000) and dar-window-core claims. Date logic unchanged. Preview deploy only (`--branch t178-preview`).
+
 ### t174 (Nov 15, 2026) — preview only
 - Lineage Evidence Matrix only. States outside the 13 original states (37 states plus DC; the 13 are CT, DE, GA, MD, MA, NH, NJ, NY, NC, PA, RI, SC, VA) now show one sentence for birth, death and marriage records: "For birth, death and marriage records in [state], start with the CDC's Where to Write for Vital Records page and the FamilySearch Research Wiki page for that state." with two plain links (CDC Where to Write; FamilySearch's United States Online Genealogy Records by State index). No FamilySearch state page is linked: FamilySearch blocked every automated read (HTTP 403, Incapsula), so no state URL could be discovered or pass the live check (`FS_STATE_PAGES` is empty). The 13 states' notes are unchanged.
 - `check-manifest.mjs --links` now also live-checks the worksheet's plain links (`PLAIN_LINK_URLS` in `src/tools/places.js`): 200 passes; a 403/429 bot-filter page is reported as BLOCKED (not verified, warning); any other failure fails the gate.

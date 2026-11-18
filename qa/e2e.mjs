@@ -1734,6 +1734,36 @@ for (const w of [390, 1280]) { const cx = await browser.newContext({ viewport: {
   check("t174 #2: no DAR Step by Step quote was attached (pages unreachable this run)", !/leave these fields blank/i.test(readFileSync(join(DIST, "assets/js/tool-b-ui.js"), "utf8") + readFileSync(join(DIST, "tools/lineage-matrix/index.html"), "utf8")));
 }
 
+// ---- t178: DAR/SAR line under the gap rules; SAR end date next to the patriot's date check (390px and 1280px) ----
+{ const REL178 = join(ROOT, "qa/release-logs/t178"); mkdirSync(REL178, { recursive: true });
+  const LINE = "These checks follow DAR's application instructions. SAR's standards differ; ask your SAR registrar.";
+  const NOTE = "SAR's end date is 25 November 1783 (DAR's is 26 November).";
+  const pat = { name: "", state: "VA", unit: "", kind: "militia", start: "1777", end: "1781", gen: "2" };
+  for (const w of [390, 1280]) {
+    const cx = await browser.newContext({ viewport: { width: w, height: 900 } }); const pg = await cx.newPage();
+    pg.on("console", (m) => { if (m.type() === "error") consoleErrors.push(`t178 ${w}: ${m.text()}`); });
+    await pg.goto(`${BASE}/tools/lineage-matrix/`);
+    await pg.evaluate((pt) => localStorage.setItem("pi.toolB.v1", JSON.stringify({ version: 1, patriot: pt, generations: [{ gen: 1, living: true, born: "1950", state: "VA", cells: [] }, { gen: 2, born: "1750", died: "1820", state: "VA", cells: [] }] })), pat);
+    await pg.goto(`${BASE}/tools/lineage-matrix/`);
+    const r = await pg.evaluate((L) => { const h = [...document.querySelectorAll("main h2")].find((x) => x.textContent.trim() === "The Gap Rules" || x.textContent.trim() === "The gap rules");
+      let n = h?.nextElementSibling, sec = ""; while (n && n.tagName !== "H2") { sec += n.textContent + "\n"; n = n.nextElementSibling; }
+      const main = document.querySelector("main").textContent.replace(/\s+/g, " ");
+      const note = document.querySelector("[data-sar-end]"); const box = note?.closest(".result");
+      return { inGap: sec.replace(/\s+/g, " ").includes(L), count: main.split(L).length - 1, note: note?.textContent || "", badge: box?.querySelector(".badge")?.textContent || "", prev: note?.previousElementSibling?.textContent || "" }; }, LINE);
+    check(`t178 #a (${w}px): Tim's DAR/SAR line shows once, in 'The gap rules'`, r.inGap && r.count === 1, JSON.stringify({ inGap: r.inGap, count: r.count }));
+    check(`t178 #b (${w}px): the patriot's date check shows "${NOTE}" right after 'Period checked', and the DAR period badge is unchanged`, r.note === NOTE && /^Period checked: General Revolutionary War service period \(DAR\)/.test(r.prev) && r.badge === "Dates fit DAR's period for this service (not a ruling)", JSON.stringify(r));
+    await pg.locator("[data-sar-end]").scrollIntoViewIfNeeded(); await pg.screenshot({ path: join(REL178, `date-check-sar-end-${w}.png`), fullPage: false });
+    await pg.evaluate(() => { const h = [...document.querySelectorAll("main h2")].find((x) => /gap rules/i.test(x.textContent)); h?.scrollIntoView(); }); await pg.screenshot({ path: join(REL178, `gap-rules-line-${w}.png`), fullPage: false });
+    // Date logic unchanged: 26 November 1783 still fits DAR's period; 27 November is only partly inside.
+    for (const [end, want] of [["1783-11-26", "consistent"], ["1783-11-27", "partial"]]) {
+      await pg.evaluate(([pt, e]) => { const s = JSON.parse(localStorage.getItem("pi.toolB.v1")); s.patriot = { ...pt, end: e }; localStorage.setItem("pi.toolB.v1", JSON.stringify(s)); }, [pat, end]);
+      await pg.reload(); const cls = await pg.evaluate(() => document.querySelector("[data-sar-end]")?.closest(".result")?.className || "");
+      check(`t178 #b (${w}px): end ${end} still checks as '${want}' against DAR's period (no date-logic change), with the SAR note shown`, cls.includes(`r-${want}`), cls);
+    }
+    await cx.close();
+  }
+}
+
 // ---- Cache-busting: every script/CSS reference and every module import carries ?v=<hash> that matches the file ----
 const { createHash } = await import("node:crypto");
 const htmlRefs = pagesToCheck.flatMap((p) => [...readFileSync(join(DIST, p, "index.html"), "utf8").matchAll(/(?:src|href)="(\/assets\/[^"]+\.(?:js|css)[^"]*)"/g)].map((m) => m[1]));

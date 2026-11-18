@@ -81,5 +81,6 @@ When no listed source fits, it says to ask your society's registrar.
 Generations 1 to 3 need birth and death evidence, since DAR asks for complete dates and places for those generations. [[claim:dar-gen-1-3]]
 Older generations need at least one birth or death record. [[claim:dar-gen-older]]
 Every generation after you needs evidence for the link to the next generation, because DAR asks for each relationship to be documented. [[claim:dar-each-relationship]]
+These checks follow DAR's application instructions. SAR's standards differ; ask your SAR registrar.
 
 Related guides: [The Patriot Lineage Proof Roadmap](/guides/lineage-proof-roadmap/), [No Birth Certificate?](/guides/substitute-evidence/), [Application Returned?](/guides/application-problems/).
