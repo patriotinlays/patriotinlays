@@ -1769,7 +1769,7 @@ for (const w of [390, 1280]) { const cx = await browser.newContext({ viewport: {
   const H = (p) => readFileSync(join(DIST, p, "index.html"), "utf8");
   const text = (p) => H(p).replace(/<script[\s\S]*?<\/script>/g, "").replace(/<[^>]+>/g, "").replace(/&#39;|&apos;/g, "'").replace(/&amp;/g, "&").replace(/&quot;/g, '"').replace(/\s+/g, " ");
   const claims = JSON.parse(readFileSync(join(ROOT, "manifest/claims.json"), "utf8")).claims; const byId = new Map(claims.map((c) => [c.claim_id, c]));
-  const FEE = "DAR charges an application fee plus the first year's national dues; chapters and state societies add their own.";
+  const FEE = "DAR requires an application fee plus first-year dues."; // t180: Tim's shorter fee wording
   const ASK = "Ask your chapter registrar for current amounts.";
   const road = text("guides/lineage-proof-roadmap"), probs = text("guides/application-problems"), mat = text("tools/lineage-matrix");
   check("t179 #3: Tim's fee wording replaces the $75 sentence on the Roadmap; no '$75' and no 'six weeks' on any page; dar-fee and dar-six-weeks are gone from the manifest",
@@ -1790,6 +1790,15 @@ for (const w of [390, 1280]) { const cx = await browser.newContext({ viewport: {
     await pg.getByText(FEE).first().scrollIntoViewIfNeeded(); await pg.screenshot({ path: join(REL179, `roadmap-fee-${w}.png`), fullPage: false });
     await cx.close();
   }
+}
+
+// ---- t180: dar-gen-1-3 wording says "complete dates and places" in all three places; fee sentence is Tim's t180 wording ----
+{ const T = (p) => readFileSync(join(DIST, p, "index.html"), "utf8").replace(/<script[\s\S]*?<\/script>/g, "").replace(/<[^>]+>/g," ").replace(/&#39;|&apos;/g, "'").replace(/&amp;/g, "&").replace(/\s+/g, " ");
+  const se = T("guides/substitute-evidence"), rd = T("guides/lineage-proof-roadmap"), lm = T("tools/lineage-matrix");
+  check("t180 #2: generations 1 to 3 need 'complete dates and places' on Substitute Evidence, the Roadmap table and the worksheet page; 'birth and death' wording gone from those three sentences",
+    se.includes("Generations 1 to 3 are different: DAR expects complete dates and places for you, your parents and your grandparents.") && rd.includes("Generations 1–3 Complete dates and places for each person") && lm.includes("Generations 1 to 3 need complete dates and places, since DAR asks for them for those generations.")
+    && !/birth and death dates and places|places of birth and death for each person|need birth and death evidence/.test(se + rd + lm));
+  check("t180 #1: Roadmap fee sentence is exactly Tim's t180 wording; the t179 'national dues' wording is gone", rd.includes("DAR requires an application fee plus first-year dues.") && rd.includes("Ask your chapter registrar for current amounts.") && !/national dues|add their own/.test(rd));
 }
 
 // ---- Cache-busting: every script/CSS reference and every module import carries ?v=<hash> that matches the file ----

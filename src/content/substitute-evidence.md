@@ -17,7 +17,7 @@ Most ancestors who matter for a Revolutionary War line were born long before bir
 ## First, know what the gap actually is
 
 For people who lived before modern vital records, DAR asks for at least one documented date and place of birth or death rather than a birth certificate. [[claim:dar-gen-older]]
-Generations 1 to 3 are different: DAR expects complete birth and death dates and places for you, your parents and your grandparents. [[claim:dar-gen-1-3]]
+Generations 1 to 3 are different: DAR expects complete dates and places for you, your parents and your grandparents. [[claim:dar-gen-1-3]]
 In practice, deal first with any missing record in the three most recent generations, then work on the older links.
 
 Another society's standard puts the goal plainly: NSCDA's South Carolina society's standards say existence and parentage must be proven in each generation. [[claim:nscda-existence]]

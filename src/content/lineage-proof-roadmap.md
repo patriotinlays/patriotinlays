@@ -63,7 +63,7 @@ SAR states that it requires proof of bloodline descent, whether legitimate or il
 | Question | DAR | SAR |
 |---|---|---|
 | Who counts as the patriot? | Military, civil or patriotic service between 19 April 1775 and 26 November 1783, with a few special windows [[claim:dar-window-core]] | Patriotic service, with some exceptions, between 19 April 1775 and 25 November 1783 [[claim:sar-gcp-window]] |
-| Generations 1–3 | Complete dates and places of birth and death for each person [[claim:dar-gen-1-3]] | Not stated |
+| Generations 1–3 | Complete dates and places for each person [[claim:dar-gen-1-3]] | Not stated |
 | Older generations | At least one documented date and place of birth or death for people who lived before modern vital records [[claim:dar-gen-older]] | Proof of bloodline descent from the patriot to the applicant [[claim:sar-bloodline]] |
 | Both parents? | Both the man and the woman in each generation are documented [[claim:dar-both-parents]] | Not stated |
 | What has to be proven? | Every name, date, place and relationship [[claim:dar-each-relationship]] | Family tradition about service is not proof [[claim:sar-tradition]] |
@@ -88,7 +88,7 @@ Not stated means the society's own pages don't say; ask its registrar.
 
 {{asof:dar-jpg}} DAR says e-application uploads are JPG files only, so convert PDFs and phone scans before you start. [[claim:dar-jpg]]
 {{asof:dar-4digit}} DAR says years are entered as four digits. [[claim:dar-4digit]]
-DAR charges an application fee plus the first year's national dues; chapters and state societies add their own. [[claim:dar-fee-dues]] Ask your chapter registrar for current amounts.
+DAR requires an application fee plus first-year dues. [[claim:dar-fee-dues]] Ask your chapter registrar for current amounts.
 
 ## Where to go next
 

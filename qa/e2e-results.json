@@ -1,8 +1,8 @@
 {
-  "ranAt": "Wed Nov 18 2026 17:44:37 GMT-0600 (Central Standard Time)",
+  "ranAt": "Wed Nov 18 2026 18:24:00 GMT-0600 (Central Standard Time)",
   "browser": "/usr/bin/google-chrome (headless) via playwright-core 1.59.1",
-  "passed": 379,
-  "total": 379,
+  "passed": 381,
+  "total": 381,
   "exampleReportPages": {
     "summaryPages": 2,
     "fullPages": 3,
@@ -1919,12 +1919,22 @@
     {
       "name": "t179 (390px): Roadmap shows the new fee sentence and the GRS link",
       "ok": true,
-      "detail": "{\"found\":true,\"text\":\"As of November 5, 2026, DAR says e-application uploads are JPG files only, so convert PDFs and phone scans before you start.[20] As of November 5, 2026, DAR says years are entered as four digits.[20] DAR charges an application fee plus the first year's national dues; chapters a"
+      "detail": "{\"found\":true,\"text\":\"As of November 5, 2026, DAR says e-application uploads are JPG files only, so convert PDFs and phone scans before you start.[20] As of November 5, 2026, DAR says years are entered as four digits.[20] DAR requires an application fee plus first-year dues.[26] Ask your chapter reg"
     },
     {
       "name": "t179 (1280px): Roadmap shows the new fee sentence and the GRS link",
       "ok": true,
-      "detail": "{\"found\":true,\"text\":\"As of November 5, 2026, DAR says e-application uploads are JPG files only, so convert PDFs and phone scans before you start.[20] As of November 5, 2026, DAR says years are entered as four digits.[20] DAR charges an application fee plus the first year's national dues; chapters a"
+      "detail": "{\"found\":true,\"text\":\"As of November 5, 2026, DAR says e-application uploads are JPG files only, so convert PDFs and phone scans before you start.[20] As of November 5, 2026, DAR says years are entered as four digits.[20] DAR requires an application fee plus first-year dues.[26] Ask your chapter reg"
+    },
+    {
+      "name": "t180 #2: generations 1 to 3 need 'complete dates and places' on Substitute Evidence, the Roadmap table and the worksheet page; 'birth and death' wording gone from those three sentences",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "t180 #1: Roadmap fee sentence is exactly Tim's t180 wording; the t179 'national dues' wording is gone",
+      "ok": true,
+      "detail": ""
     },
     {
       "name": "Cache-busting: every page's script/CSS URL and every module import is versioned with the file's content hash",
