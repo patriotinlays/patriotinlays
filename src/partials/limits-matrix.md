@@ -2,4 +2,4 @@
 
 **What it doesn't do.** The worksheet never grades a line.
 
-**Saved only here.** Everything you enter is saved only in this browser, and nothing is sent anywhere. Clearing your browser data or switching browsers deletes your work. Print or save your report as a backup.
+**Saved only here.** Everything you enter is saved only in this browser, and none of it is sent anywhere. Clearing your browser data or switching browsers deletes your work. Print or save your report as a backup.

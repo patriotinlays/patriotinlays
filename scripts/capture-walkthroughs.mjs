@@ -1,6 +1,7 @@
 // Refreshes the job-aid evidence: runs the real tools on the built dist/ and records exactly what they show.
 // Run after `npm run build:pages` (or any build) when a tool's wording or layout changes.
 import { createRequire } from "node:module";
+import { blockBeacon } from "../qa/lib/block-beacon.mjs";
 import { createServer } from "node:http";
 import { readFileSync, writeFileSync, existsSync, statSync, mkdirSync } from "node:fs";
 import { join, extname } from "node:path";
@@ -13,7 +14,7 @@ const sv = createServer((q, r) => { let f = join(D, decodeURIComponent(q.url.spl
   if (!existsSync(f)) { r.writeHead(404); r.end(); return; } r.writeHead(200, { "content-type": T[extname(f)] || "application/octet-stream" }); r.end(readFileSync(f)); });
 await new Promise((r) => sv.listen(8767, "127.0.0.1", r)); const B = "http://127.0.0.1:8767";
 const CHROME = process.env.CHROME_PATH || (existsSync("/usr/bin/google-chrome") ? "/usr/bin/google-chrome" : undefined);
-const b = await chromium.launch({ executablePath: CHROME, args: ["--no-sandbox"] });
+const b = blockBeacon(await chromium.launch({ executablePath: CHROME, args: ["--no-sandbox"] })); // t191 #3
 const p = await b.newPage({ viewport: { width: 1200, height: 1000 } });
 const out = {};
 await p.goto(B + "/tools/widow-pension-checker/"); await p.click("[data-load-example]");

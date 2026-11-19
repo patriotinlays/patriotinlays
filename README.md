@@ -11,7 +11,7 @@ A static website of plain-English, source-backed procedure guides for proving de
 - **Lineage Evidence Matrix** (`/tools/lineage-matrix/`): step 1 records the patriot (state, unit, type of service,
   rough dates), checks the dates against DAR's period for that type of service, and feeds the widow checker
   (`?from=worksheet`). Then a generation-by-generation evidence worksheet with direct/indirect and conflict flags;
-  every label means "review required". Every gap shows a "Where to look" note fitted to the person's era and state
+  every label means "review required". Every gap shows a "Where to look" note based on the person's era and state
   (`src/tools/places.js`: state archive guides for VA, MD, NC, NJ, PA, CT, SC, MA, and the censuses in their lifetime),
   linking only Source Manifest URLs or the site's guides. A state with no verified source says so and falls back to
   general advice plus the society's registrar.

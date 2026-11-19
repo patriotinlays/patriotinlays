@@ -26,10 +26,10 @@ Generation 1 is you, the applicant. [[claim:dar-gen1-applicant]]
 Your parents are generation 2, your grandparents generation 3, and so on back to the patriot. [[claim:dar-gen-numbering]]
 For each person, tick the records you have or add them one at a time. "See a filled-in example" shows a made-up family filled in, and the [walkthrough](/walkthroughs/) reads its results with you.
 
-**What you'll get.** A list of what is still missing for each person and where to look for it, fitted to that person's era and state; a check of the patriot's dates against the period DAR accepts for your patriot's type of service; a gentle warning when years don't add up; and a "What to do next" plan and report you can print or save as a PDF. [[claim:dar-window-core]]
+**What you'll get.** A list of what is still missing for each person and where to look for it, based on that person's era and state; a check of the patriot's dates against the period DAR accepts for your patriot's type of service; a gentle warning when years don't add up; and a "What to do next" plan and report you can print or save as a PDF. [[claim:dar-window-core]]
 
 **Its limits.** The worksheet never grades a line. The best label any entry can earn is "Evidence Entered — Review Required", because only a society's genealogists decide what is proven. [[claim:dar-review-staff]]
-For states without a verified source yet, "Where to look" gives general advice and says so. Everything you enter is saved only in this browser, and nothing is sent anywhere. Clearing your browser data or switching browsers deletes your work. Print or save your report as a backup. Use "Delete all my worksheet data" to remove it.
+For states without a verified source yet, "Where to look" gives general advice and says so. Everything you enter is saved only in this browser, and none of it is sent anywhere. Clearing your browser data or switching browsers deletes your work. Print or save your report as a backup. Use "Delete all my worksheet data" to remove it.
 
 **What to do next.** Work through the plan, starting with the records it marks as missing. If a widow's pension might help, try the [Widow Pension Law Checker](/tools/widow-pension-checker/). When you're ready, contact a local chapter's registrar; the plan links to both societies' chapter finders.
 

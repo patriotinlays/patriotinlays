@@ -37,7 +37,7 @@ No. A DAR member helps guide you through completing and submitting the applicati
 
 ## What does this site cost, and do I need an account?
 
-The guides and both tools are free, and there is no account to create. What you type into the tools stays in your own browser on the device you're using, so there's nothing uploaded to a server somewhere. The [Privacy page](/privacy/) explains exactly what's saved and how to clear it.
+The guides and both tools are free, and there is no account to create. What you type into the tools stays in your own browser on the device you're using, so none of it is uploaded to a server. The [Privacy page](/privacy/) explains exactly what's saved and how to clear it.
 
 ## Does this site search records for me, or decide whether I qualify?
 

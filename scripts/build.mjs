@@ -123,11 +123,11 @@ const WIDOW_FULL = `<section class="tool" data-tool="widow" aria-labelledby="ta-
 <h3 class="step"><span class="num">3</span> Print or save your results</h3>
 <p><a class="button-link no-print" href="/tools/widow-pension-checker/report/">Open my printable report</a></p>
 <button type="button" class="secondary" data-clear="toolA">Delete my saved checker data</button>
-<p class="small">Nothing is sent anywhere. Your entries are saved only in this browser, and that storage isn't encrypted. On a shared or public computer, use the delete button when you're done.</p>
+<p class="small">Nothing you type is sent anywhere. Your entries are saved only in this browser, and that storage isn't encrypted. On a shared or public computer, use the delete button when you're done.</p>
 <noscript><p>This checker needs JavaScript. The laws it uses are listed below.</p></noscript>
 </section><script type="module" src="/assets/js/tool-a-ui.js"></script>`;
 const WIDOW_CARD = `<aside class="card" data-tool-card="widow"><strong>Widow Pension Law Checker</strong>
-<p>Type a widow's marriage date and what you know about her husband's service. See which federal widow pension and bounty-land laws (1836 to 1878) fit, and where to look for her pension file. Free; nothing leaves your browser.</p>
+<p>Type a widow's marriage date and what you know about her husband's service. See which federal widow pension and bounty-land laws (1836 to 1878) fit, and where to look for her pension file. Free; nothing you type leaves your browser.</p>
 <p><a href="/tools/widow-pension-checker/">Open the checker</a></p></aside>`;
 const PATRIOT_CARD = `<aside class="card" data-tool-card="patriot"><strong>Record Your Patriot's Service</strong>
 <p>The free worksheet's patriot step asks for your patriot's state, unit, type of service and rough dates. It checks the dates against the period DAR accepts for that type of service and points you to the records for that state.</p>
@@ -154,7 +154,7 @@ const TOOL_B_FULL = `<section class="tool" data-tool="lineage-matrix" aria-label
 <h3 class="step"><span class="num">6</span> Print or save</h3>
 <p><a class="button-link" href="/tools/lineage-matrix/report/">Open my printable report</a></p>
 <button type="button" class="secondary" data-clear="toolB">Delete all my worksheet data</button>
-<p class="small" data-privacy-note>Saved only in this browser. Nothing is sent anywhere. Clearing your browser data or switching browsers deletes your work. Print or save your report as a backup.</p>
+<p class="small" data-privacy-note>Saved only in this browser. Nothing you type is sent anywhere. Clearing your browser data or switching browsers deletes your work. Print or save your report as a backup.</p>
 </div>
 <noscript><p>The worksheet needs JavaScript. The rules it applies are listed below.</p></noscript>
 </section><script type="module" src="/assets/js/tool-b-ui.js"></script>`;

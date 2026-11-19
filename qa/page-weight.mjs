@@ -5,6 +5,7 @@ import { readFileSync, existsSync, statSync } from "node:fs";
 import { join, extname } from "node:path";
 import { gzipSync } from "node:zlib";
 import { createRequire } from "node:module";
+import { blockBeacon } from "./lib/block-beacon.mjs";
 const require = createRequire(import.meta.url);
 const { chromium } = require("playwright-core");
 const DIST = new URL("../dist", import.meta.url).pathname;
@@ -15,7 +16,7 @@ const server = createServer((req, res) => { let f = join(DIST, decodeURIComponen
   res.writeHead(200, { "content-type": TYPES[extname(f)] || "application/octet-stream" }); res.end(readFileSync(f)); });
 await new Promise((r) => server.listen(8766, "127.0.0.1", r));
 const CHROME = existsSync("/usr/bin/google-chrome") ? "/usr/bin/google-chrome" : undefined;
-const browser = await chromium.launch({ executablePath: CHROME, args: ["--no-sandbox"] });
+const browser = blockBeacon(await chromium.launch({ executablePath: CHROME, args: ["--no-sandbox"] })); // t191 #3
 const out = { label: process.argv[2] || "", pages: {} };
 for (const p of ["/", "/tools/lineage-matrix/", "/guides/read-pension-file/"]) {
   const ctx = await browser.newContext({ viewport: { width: 1280, height: 900 } }); const pg = await ctx.newPage();

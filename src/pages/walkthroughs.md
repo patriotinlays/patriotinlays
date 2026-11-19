@@ -57,7 +57,7 @@ Then comes the part the worksheet is really for: the gaps. For this example fami
 
 ::quote worksheet-gap-3 Add at least one birth or death record.
 
-Each gap comes with a "Where to look" letter, and each letter is a short piece of advice fitted to that person's era and state. One of them, for the older generations, says that Virginia had no statewide recording of births before 1853, so there's no state birth record to find for that person. [[claim:lva-bmd-pre1853]] The idea is that you never read "something is missing" without also reading where to try next.
+Each gap comes with a "Where to look" letter, and each letter is a short piece of advice based on that person's era and state. One of them, for the older generations, says that Virginia had no statewide recording of births before 1853, so there's no state birth record to find for that person. [[claim:lva-bmd-pre1853]] The idea is that you never read "something is missing" without also reading where to try next.
 
 ::figure worksheet-gaps.png The example's gap list, with the lettered "Where to look" advice underneath.
 

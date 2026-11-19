@@ -9,6 +9,7 @@ import { readFileSync, existsSync, statSync, mkdirSync, writeFileSync } from "no
 import { join, extname } from "node:path";
 import { createRequire } from "node:module";
 import { chicagoDate, chicagoLongDate } from "../scripts/lib/chicago-date.mjs";
+import { blockBeacon, isBeacon } from "./lib/block-beacon.mjs";
 const require = createRequire(import.meta.url);
 let chromium;
 try { ({ chromium } = require("playwright-core")); }
@@ -25,7 +26,7 @@ const server = createServer((req, res) => { let p = decodeURIComponent(req.url.s
 await new Promise((r) => server.listen(8765, "127.0.0.1", r));
 const BASE = "http://127.0.0.1:8765";
 const results = []; const check = (name, ok, detail = "") => { results.push({ name, ok: !!ok, detail }); console.log(`${ok ? "PASS" : "FAIL"}  ${name}${detail ? " — " + detail : ""}`); };
-const browser = await chromium.launch({ executablePath: CHROME, args: ["--no-sandbox"] });
+const browser = blockBeacon(await chromium.launch({ executablePath: CHROME, args: ["--no-sandbox"] })); // t191 #3: no Web Analytics beacon from tests
 const ctx = await browser.newContext({ viewport: { width: 1280, height: 900 } });
 const page = await ctx.newPage();
 const requests = []; const consoleErrors = [];
@@ -725,9 +726,9 @@ phase("load"); await page.goto(`${BASE}/`); phase("interact");
   check("t125u #2: 'often the chapter registrar' is gone from the home SAR line and the glossary (and every built page)", text("").includes("SAR's local sponsor can guide you through the application.") && !rd0(DIST, { recursive: true }).filter((f) => f.endsWith(".html")).some((f) => /often the chapter registrar/i.test(readFileSync(join(DIST, f), "utf8")))
     && /At SAR, your local contact guides you through the application and can review what you've gathered, and the chapter registrar receives the finished application to begin processing\./.test(text("")));
   check("t125u #1: About says the quote check runs each time the site is updated, and on a regular schedule (FAQ wording); 'when the site is built' is gone", text("about").includes("Each time the site is updated, and on a regular schedule, software checks that each quoted passage still appears in its source.") && !/when the site is built/i.test(text("about")));
-  check("t125u #3 / t126u: the widow checker's storage note is Tim's text, preceded by 'Nothing is sent anywhere.' in the same paragraph, with no 'pi.toolA' key names", /<p class="small">Nothing is sent anywhere\. Your entries are saved only in this browser, and that storage isn't encrypted\. On a shared or public computer, use the delete button when you're done\.<\/p>/.test(H("tools/widow-pension-checker").replace(/&#39;|&apos;/g, "'")) && text("tools/widow-pension-checker").includes("Nothing is sent anywhere. Your entries are saved only in this browser, and that storage isn't encrypted. On a shared or public computer, use the delete button when you're done.") && !/pi\.tool/.test(text("tools/widow-pension-checker")));
+  check("t125u #3 / t126u: the widow checker's storage note is Tim's text, preceded by 'Nothing you type is sent anywhere.' (t191 #1b wording) in the same paragraph, with no 'pi.toolA' key names", /<p class="small">Nothing you type is sent anywhere\. Your entries are saved only in this browser, and that storage isn't encrypted\. On a shared or public computer, use the delete button when you're done\.<\/p>/.test(H("tools/widow-pension-checker").replace(/&#39;|&apos;/g, "'")) && text("tools/widow-pension-checker").includes("Nothing you type is sent anywhere. Your entries are saved only in this browser, and that storage isn't encrypted. On a shared or public computer, use the delete button when you're done.") && !/pi\.tool/.test(text("tools/widow-pension-checker")));
   const priv = text("privacy");
-  check("t124u #3/#4 / t132 #2: Privacy's 'collects' section is Tim's t132 sentence (one Cloudflare line), then the ads line, and the technical note has no storage key names", /What The Site Itself Collects\s*We don't ask for, collect or store personal information through the website\. Cloudflare, which hosts the site, processes the technical information needed to deliver and protect it, and adds two small features: a script that hides email addresses from spam robots, and a short error report if a page fails to load\.\s*There are no ads at present\./.test(priv)
+  check("t124u #3/#4 / t132 #2: Privacy's 'collects' section is Tim's t132 sentence (t191: three Cloudflare features), then Tim's t191 Web Analytics line, then the ads line, and the technical note has no storage key names", /What The Site Itself Collects\s*We don't ask for, collect or store personal information through the website\. Cloudflare, which hosts the site, processes the technical information needed to deliver and protect it, and adds three small features: a script that hides email addresses from spam robots, a short error report if a page fails to load, and a visit-counting script that loads from Cloudflare\.\s*The site uses Cloudflare Web Analytics to count page visits\.\s*There are no ads at present\./.test(priv)
     && !/pi\.tool/.test(priv) && priv.includes("Your entries are saved only in this browser, and that storage isn't encrypted. On a shared or public computer, use the delete button when you're done.") && !/network-error report|Cloudflare's servers deliver/.test(priv));
   const faq = text("faq");
   check("t124u #5/#6/#7: the FAQ's genealogist answer, trust answer and intro use Tim's wording", faq.includes("That help comes with joining. Our guides can help you prepare: what records to gather and what questions to ask.") && !/often the chapter registrar/.test(faq.slice(faq.indexOf("Do I Have To Hire"), faq.indexOf("What Does This Site Cost")))
@@ -914,7 +915,7 @@ const { readdirSync: rd132 } = await import("node:fs");
 { const all = (function walk(d) { return rd132(d, { withFileTypes: true }).flatMap((e) => e.isDirectory() ? walk(join(d, e.name)) : e.name.endsWith(".html") ? [join(d, e.name)] : []); })(DIST);
   const text = (p) => readFileSync(join(DIST, p, "index.html"), "utf8").replace(/<script[\s\S]*?<\/script>/g, "").replace(/<[^>]+>/g, "").replace(/&#39;|&apos;|&#x27;|&rsquo;/g, "'").replace(/&amp;/g, "&").replace(/&quot;/g, '"');
   const priv = text("privacy");
-  check("t132 #2: privacy page has Tim's exact sentence, keeps the ads line, and the old 'collects nothing' and 'Like any web host' sentences are gone", priv.includes("We don't ask for, collect or store personal information through the website. Cloudflare, which hosts the site, processes the technical information needed to deliver and protect it, and adds two small features: a script that hides email addresses from spam robots, and a short error report if a page fails to load.") && /There are no ads at present\./.test(priv) && !/collects nothing/i.test(priv) && !/Like any web host/.test(priv));
+  check("t132 #2: privacy page has Tim's exact sentence, keeps the ads line, and the old 'collects nothing' and 'Like any web host' sentences are gone", priv.includes("We don't ask for, collect or store personal information through the website. Cloudflare, which hosts the site, processes the technical information needed to deliver and protect it, and adds three small features: a script that hides email addresses from spam robots, a short error report if a page fails to load, and a visit-counting script that loads from Cloudflare.") && priv.includes("The site uses Cloudflare Web Analytics to count page visits.") && /There are no ads at present\./.test(priv) && !/collects nothing/i.test(priv) && !/Like any web host/.test(priv));
   const hits = all.filter((f) => /collects? nothing|collect nothing|nothing is collected/i.test(readFileSync(f, "utf8")));
   check("t132 #2: no built page says the site 'collects nothing'", hits.length === 0, hits.join(","));
   const ap = text("guides/application-problems"); const claims = JSON.parse(readFileSync(join(ROOT, "manifest/claims.json"), "utf8")); const ids = JSON.stringify(claims);
@@ -1874,6 +1875,25 @@ for (const w of [390, 1280]) { const cx = await browser.newContext({ viewport: {
   const pj = readFileSync(join(DIST, "assets/js/places.js"), "utf8");
   check("t185 #3: worksheet Virginia notes say 'did not systematically record … before 1853' and the marriage note says many pre-1853 marriage records survive",
     pj.includes("Virginia did not systematically record births statewide before 1853") && pj.includes("Virginia did not systematically record deaths statewide before 1853") && pj.includes("Virginia did not systematically record marriages statewide before 1853; many pre-1853 marriage records survive.") && !/Virginia (had no statewide recording|did not record (deaths|marriages) statewide)/.test(pj));
+}
+
+// ---- t191: analytics disclosure, accurate "nothing is sent" wording, 'based on that person's era', beacon blocked in tests ----
+{ const T = (p) => readFileSync(join(DIST, p, "index.html"), "utf8").replace(/<script[\s\S]*?<\/script>/g, "").replace(/<sup[\s\S]*?<\/sup>/g, "").replace(/<[^>]+>/g, " ").replace(/&#39;|&apos;|&rsquo;/g, "'").replace(/&amp;/g, "&").replace(/&quot;/g, '"').replace(/\s+/g, " ");
+  const priv = T("privacy");
+  check("t191 #1a: Privacy has Tim's Web Analytics line (first sentence only; no cookie/cross-site sentence without a word-for-word Cloudflare quote)", priv.includes("The site uses Cloudflare Web Analytics to count page visits.") && !/doesn't track you across other websites/.test(priv));
+  const all = ["", "faq", "privacy", "about", "tools/widow-pension-checker", "tools/lineage-matrix", "walkthroughs"].map((p) => [p, T(p)]);
+  const bad = all.filter(([, t]) => /Nothing is sent anywhere|nothing is sent anywhere|Free; nothing leaves your browser|nothing uploaded to a server|adds two small features/.test(t)).map(([p]) => p || "/");
+  check("t191 #1b: no blanket 'nothing is sent / nothing leaves' wording; the typed-data promises remain", bad.length === 0 && T("tools/widow-pension-checker").includes("Nothing you type is sent anywhere.") && T("tools/lineage-matrix").includes("Nothing you type is sent anywhere.") && T("tools/lineage-matrix").includes("none of it is sent anywhere") && T("faq").includes("so none of it is uploaded to a server.") && T("").includes("What you type into the tools stays in your own browser."), JSON.stringify(bad));
+  const walk = (d) => rd0(d, { withFileTypes: true }).flatMap((e) => e.isDirectory() ? walk(join(d, e.name)) : e.name.endsWith(".html") ? [join(d, e.name)] : []);
+  const files = walk(DIST); const old4 = files.filter((f) => readFileSync(f, "utf8").includes("fitted to that person's era and state") || readFileSync(f, "utf8").includes("fitted to that person&#39;s era and state")).map((f) => f.slice(DIST.length));
+  check("t191 #4: 'fitted to that person's era and state' is gone; worksheet page and walkthroughs say 'based on that person's era and state'", old4.length === 0 && T("tools/lineage-matrix").includes("based on that person's era and state") && T("walkthroughs").includes("based on that person's era and state"), JSON.stringify(old4));
+  // #3: a page that tries to load the beacon and post to /cdn-cgi/rum gets both requests aborted before they reach the network.
+  const cx = await browser.newContext(); const pg = await cx.newPage(); const done = [];
+  pg.on("requestfinished", (r) => { if (isBeacon(r.url())) done.push(r.url()); });
+  await pg.goto(`${BASE}/`);
+  await pg.evaluate(async () => { const s = document.createElement("script"); s.src = "https://static.cloudflareinsights.com/beacon.min.js"; document.body.append(s); try { await fetch("/cdn-cgi/rum?", { method: "POST", body: "{}" }); } catch {} await new Promise((r) => setTimeout(r, 800)); });
+  const { blocked } = await import("./lib/block-beacon.mjs"); await cx.close();
+  check("t191 #3: the test browser aborts static.cloudflareinsights.com and /cdn-cgi/rum (no beacon request completes)", done.length === 0 && blocked.some((u) => u.includes("static.cloudflareinsights.com")) && blocked.some((u) => u.includes("/cdn-cgi/rum")), JSON.stringify({ done, blocked: blocked.slice(-2) }));
 }
 
 // ---- Cache-busting: every script/CSS reference and every module import carries ?v=<hash> that matches the file ----
