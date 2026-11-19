@@ -31,3 +31,18 @@ On top of t179 (d61d3de code, 20aa639 log). Tim authorized a production deploy (
   - search_revwar: 4 claims
 - Plain links: CDC PASSED. FamilySearch BLOCKED (check by hand).
 - Held back: 14 still held, 0 restored. Source scope: 0 flagged.
+- page-meta (after commit): 15/15 passed.
+
+## Production deploy (authorized, pt180u)
+- Code commit: d5bb5b1, built from that commit. This includes all of t179 (d61d3de).
+- Deployed with `--branch main`: https://09bc10e9.patriotinlays.pages.dev (Nov 18, 2026, ~6:31 PM CT).
+- Cache purge (purge_everything, zone 68ec36681050311b61f6b66ab9171d20) was run after the deploy: success: true, errors: [].
+- Public check on https://patriotinlays.com:
+  - Cache-busted curl: all 4 pages 200.
+  - Playwright at 390px and 1280px:
+    - New fee sentence present; "$75", "six weeks" and "national dues" gone (Roadmap, Application Returned).
+    - "Complete dates and places" in all 3 places.
+    - GRS link points to https://www.dar.org/research.
+    - Worksheet "For any other state" line present.
+    - No horizontal overflow; no console errors.
+- Screenshots: public-roadmap-fee-*, public-roadmap-table-*, public-matrix-gen13-* (390, 1280).
