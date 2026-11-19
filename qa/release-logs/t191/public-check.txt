@@ -1,0 +1,18 @@
+PASS 390px / status=200 overflow=0
+PASS 390px /privacy/ status=200 overflow=0
+PASS 390px /faq/ status=200 overflow=0
+PASS 390px /tools/lineage-matrix/ status=200 overflow=0
+PASS 390px /tools/widow-pension-checker/ status=200 overflow=0
+PASS 390px /walkthroughs/ status=200 overflow=0
+PASS 390px /guides/read-pension-file/ status=200 overflow=0
+PASS 390px page errors: 0
+PASS 1280px / status=200 overflow=0
+PASS 1280px /privacy/ status=200 overflow=0
+PASS 1280px /faq/ status=200 overflow=0
+PASS 1280px /tools/lineage-matrix/ status=200 overflow=0
+PASS 1280px /tools/widow-pension-checker/ status=200 overflow=0
+PASS 1280px /walkthroughs/ status=200 overflow=0
+PASS 1280px /guides/read-pension-file/ status=200 overflow=0
+PASS 1280px page errors: 0
+Beacon: 14 request(s) aborted, 0 reached Cloudflare.
+public-check fails=0
