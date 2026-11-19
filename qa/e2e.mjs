@@ -740,8 +740,8 @@ phase("load"); await page.goto(`${BASE}/`); phase("interact");
   const prac = (rm.match(/<h2 id="practical-details-people-miss">[\s\S]*?<\/p>/) || [""])[0];
   check("t124u #10: dated rules start 'As of <date>, DAR says' with the date of that source's last recorded pass (Roadmap 'Practical details' and the application guide)", (prac.match(/As of <span data-asof/g) || []).length === 2 /* t179: six-weeks and $75-fee lines removed (4 -> 2) */
     && [...asof, ...H("guides/application-problems").matchAll(/As of <span data-asof="([a-z0-9-]+)">([^<]+)<\/span>, (DAR|SAR) says/g)].every((m) => m[2] === longDate(lp[claimsById.get(m[1]).source_url])) && asof.length >= 4 /* t179: was 6 before the six-weeks and fee lines were removed */);
-  check("t124u #9: Roadmap Step 0 reads 'Step 0: find your patriot's name' and 'If you don't know your patriot's name yet'; the old #step-0 link still lands there", /<h2 id="step-0-find-your-patriot-s-name">Step 0: Find Your Patriot&#39;s Name<\/h2>|<h2 id="step-0-find-your-patriot-s-name">Step 0: Find Your Patriot's Name<\/h2>/.test(rm)
-    && text("guides/lineage-proof-roadmap").includes("If you don't know your patriot's name yet, start here.") && rm.includes('id="step-0-find-the-soldier-s-name"') && !/find the soldier/.test(H("")));
+  check("t124u #9 / t183: Roadmap Step 0 reads 'Step 0: find your patriot's name' and 'To search for your patriot's name, use the tools below.'; the old #step-0 link still lands there", /<h2 id="step-0-find-your-patriot-s-name">Step 0: Find Your Patriot&#39;s Name<\/h2>|<h2 id="step-0-find-your-patriot-s-name">Step 0: Find Your Patriot's Name<\/h2>/.test(rm)
+    && text("guides/lineage-proof-roadmap").includes("To search for your patriot's name, use the tools below.") /* t183 wording */ && !text("guides/lineage-proof-roadmap").includes("start here.") && rm.includes('id="step-0-find-the-soldier-s-name"') && !/find the soldier/.test(H("")));
 }
 
 // ---- t127u: audit fixes (attribution, 1855 navy act, registrar phrase, About, worksheet start/confirm, Virginia scope, rule 7) ----

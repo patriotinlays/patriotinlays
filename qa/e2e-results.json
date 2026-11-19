@@ -1,5 +1,5 @@
 {
-  "ranAt": "Thu Nov 19 2026 06:44:34 GMT-0600 (Central Standard Time)",
+  "ranAt": "Thu Nov 19 2026 06:53:05 GMT-0600 (Central Standard Time)",
   "browser": "/usr/bin/google-chrome (headless) via playwright-core 1.59.1",
   "passed": 400,
   "total": 400,
@@ -29,7 +29,8 @@
     "rgb(19, 41, 75) on rgb(255, 255, 255)": 14.52,
     "rgb(94, 85, 75) on rgb(255, 255, 255)": 7.3,
     "rgb(43, 38, 34) on rgb(255, 255, 255)": 14.97,
-    "rgb(107, 69, 0) on rgb(255, 253, 248)": 8.34
+    "rgb(107, 69, 0) on rgb(255, 253, 248)": 8.34,
+    "rgb(11, 26, 51) on rgb(255, 253, 248)": 17.08
   },
   "home": {
     "ps": 7,
@@ -947,7 +948,7 @@
       "detail": ""
     },
     {
-      "name": "t124u #9: Roadmap Step 0 reads 'Step 0: find your patriot's name' and 'If you don't know your patriot's name yet'; the old #step-0 link still lands there",
+      "name": "t124u #9 / t183: Roadmap Step 0 reads 'Step 0: find your patriot's name' and 'To search for your patriot's name, use the tools below.'; the old #step-0 link still lands there",
       "ok": true,
       "detail": ""
     },

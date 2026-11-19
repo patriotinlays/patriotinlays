@@ -18,7 +18,7 @@ A lineage application is a chain. Each link is one generation, and each link hol
 
 ## Step 0: find your patriot's name
 
-If you don't know your patriot yet, start with yourself and work back one generation at a time; a name found in a patriot database is a lead until your documented line connects to it. If you don't know your patriot's name yet, start here.
+If you don't know your patriot yet, start with yourself and work back one generation at a time; a name found in a patriot database is a lead until your documented line connects to it. To search for your patriot's name, use the tools below.
 
 - **Start with what you know.** DAR's first research step is to ask what you already know about your family history and lineage. [[claim:dar-join-gather]]
 - **Search DAR's free Genealogical Research System.** DAR offers it free to help with research and with the membership process; it is linked from [DAR's How to Join page](https://www.dar.org/discover/become-member/how-join). [[claim:dar-join-grs]] [[claim:dar-grs-purpose]]
