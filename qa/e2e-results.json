@@ -1,5 +1,5 @@
 {
-  "ranAt": "Thu Nov 19 2026 09:30:33 GMT-0600 (Central Standard Time)",
+  "ranAt": "Thu Nov 19 2026 09:33:24 GMT-0600 (Central Standard Time)",
   "browser": "/usr/bin/google-chrome (headless) via playwright-core 1.59.1",
   "passed": 436,
   "total": 436,
@@ -29,7 +29,8 @@
     "rgb(19, 41, 75) on rgb(255, 255, 255)": 14.52,
     "rgb(94, 85, 75) on rgb(255, 255, 255)": 7.3,
     "rgb(43, 38, 34) on rgb(255, 255, 255)": 14.97,
-    "rgb(107, 69, 0) on rgb(255, 253, 248)": 8.34
+    "rgb(107, 69, 0) on rgb(255, 253, 248)": 8.34,
+    "rgb(11, 26, 51) on rgb(255, 253, 248)": 17.08
   },
   "home": {
     "ps": 7,
