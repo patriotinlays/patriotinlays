@@ -5,7 +5,7 @@
     "apg-2000-members": {
       "source_url": "https://www.apgen.org/about_us.php",
       "quote": "representing more than 2,000 members in forty countries",
-      "matchedAt": "2026-11-19T15:15:08.509Z",
+      "matchedAt": "2026-11-19T15:29:00.322Z",
       "used_on": [
         "hire-a-pro"
       ]
@@ -13,7 +13,7 @@
     "apg-professional-org": {
       "source_url": "https://www.apgen.org/about_us.php",
       "quote": "not-for-profit 501(c)(6) professional organization",
-      "matchedAt": "2026-11-19T15:15:08.509Z",
+      "matchedAt": "2026-11-19T15:29:00.322Z",
       "used_on": [
         "hire-a-pro"
       ]
@@ -21,7 +21,7 @@
     "bcg-award": {
       "source_url": "https://bcgcertification.org/about",
       "quote": "We award the Certified Genealogist® credential to persons whose work meets these standards.",
-      "matchedAt": "2026-11-19T15:15:08.020Z",
+      "matchedAt": "2026-11-19T15:28:59.915Z",
       "used_on": [
         "hire-a-pro"
       ]
@@ -29,7 +29,7 @@
     "bcg-find": {
       "source_url": "https://bcgcertification.org/",
       "quote": "Find a Board-Certified Genealogist",
-      "matchedAt": "2026-11-19T15:15:07.306Z",
+      "matchedAt": "2026-11-19T15:28:58.953Z",
       "used_on": [
         "hire-a-pro"
       ]
@@ -37,7 +37,7 @@
     "cf-wa-no-cookies": {
       "source_url": "https://www.cloudflare.com/web-analytics/",
       "quote": "Cloudflare Web Analytics does not use any client-side state, such as cookies or localStorage, to collect usage metrics.",
-      "matchedAt": "2026-11-19T15:15:11.511Z",
+      "matchedAt": "2026-11-19T15:29:02.487Z",
       "used_on": [
         "privacy"
       ]
@@ -45,7 +45,7 @@
     "ct-archives-indexes": {
       "source_url": "https://libguides.ctstatelibrary.org/hg/militaryrecords/revwar",
       "quote": "Also check the indexes which are linked below to the \"Connecticut Archives\" under the topics Militia and Revolutionary War.",
-      "matchedAt": "2026-11-19T15:13:09.529Z",
+      "matchedAt": "2026-11-19T15:27:09.018Z",
       "used_on": [
         "tool:places.js"
       ]
@@ -53,7 +53,7 @@
     "ct-pension-index": {
       "source_url": "https://libguides.ctstatelibrary.org/hg/militaryrecords/revwar",
       "quote": "An index to pensions held in the CT State Archives has also been created.",
-      "matchedAt": "2026-11-19T15:13:09.529Z",
+      "matchedAt": "2026-11-19T15:27:09.018Z",
       "used_on": [
         "tool:places.js"
       ]
@@ -61,7 +61,7 @@
     "ct-vital-barbour": {
       "source_url": "https://guides.loc.gov/connecticut-local-history-genealogy/vital-records",
       "quote": "serves as an index to and an abstract of most pre-1850 Connecticut vital records",
-      "matchedAt": "2026-11-19T15:14:59.306Z",
+      "matchedAt": "2026-11-19T15:28:51.919Z",
       "used_on": [
         "tool:places.js"
       ]
@@ -69,7 +69,7 @@
     "ct-vital-town-clerk": {
       "source_url": "https://guides.loc.gov/connecticut-local-history-genealogy/vital-records",
       "quote": "By 1650, registration of births, marriages, and deaths had become the town clerk's responsibility.",
-      "matchedAt": "2026-11-19T15:14:59.306Z",
+      "matchedAt": "2026-11-19T15:28:51.919Z",
       "used_on": [
         "tool:places.js"
       ]
@@ -87,7 +87,7 @@
     "dar-aid-wounded": {
       "source_url": "https://www.dar.org/national-society/accepted-revolutionary-war-service",
       "quote": "Doctors, nurses, and others rendering aid to the wounded (other than their immediate families)",
-      "matchedAt": "2026-11-19T15:11:58.049Z",
+      "matchedAt": "2026-11-19T15:25:57.090Z",
       "used_on": [
         "patriotic-service"
       ]
@@ -95,7 +95,7 @@
     "dar-ancestor-search": {
       "source_url": "https://blog.dar.org/using-ancestor-tab-grs",
       "quote": "The Ancestor Tab lets you search for established patriots in the GRS.",
-      "matchedAt": "2026-11-19T15:14:57.878Z",
+      "matchedAt": "2026-11-19T15:28:50.499Z",
       "used_on": [
         "lineage-proof-roadmap"
       ]
@@ -113,7 +113,7 @@
     "dar-biological": {
       "source_url": "https://www.dar.org/national-society/faq/membership",
       "quote": "All lineage for DAR membership must be bloodline descent.",
-      "matchedAt": "2026-11-19T15:12:18.086Z",
+      "matchedAt": "2026-11-19T15:26:16.967Z",
       "used_on": [
         "lineage-proof-roadmap"
       ]
@@ -167,7 +167,7 @@
     "dar-chapter-locator": {
       "source_url": "https://www.dar.org/discover/become-member/chapter-locator",
       "quote": "Use the Chapter Locator to find a DAR group in your area.",
-      "matchedAt": "2026-11-19T15:13:02.432Z",
+      "matchedAt": "2026-11-19T15:27:02.042Z",
       "used_on": [
         "partial:next-steps-lineage",
         "partial:next-steps-widow",
@@ -189,7 +189,7 @@
     "dar-civil-examples": {
       "source_url": "https://www.dar.org/national-society/accepted-revolutionary-war-service",
       "quote": "Town Clerk, Selectman, Juror, Town Treasurer, Judge, Sheriff, Constable, Jailer, Surveyor of Highways, Justice of the Peace",
-      "matchedAt": "2026-11-19T15:11:58.049Z",
+      "matchedAt": "2026-11-19T15:25:57.090Z",
       "used_on": [
         "patriotic-service",
         "tool:patriot.js"
@@ -198,7 +198,7 @@
     "dar-civil-service": {
       "source_url": "https://www.dar.org/national-society/accepted-revolutionary-war-service",
       "quote": "Civil Service , under authority of Provisional or new State Governments",
-      "matchedAt": "2026-11-19T15:11:58.049Z",
+      "matchedAt": "2026-11-19T15:25:57.090Z",
       "used_on": [
         "lineage-matrix",
         "patriotic-service",
@@ -208,7 +208,7 @@
     "dar-committee-1774": {
       "source_url": "https://www.dar.org/national-society/accepted-revolutionary-war-service",
       "quote": "including service on committees which furthered the cause of the Colonies from April 1774",
-      "matchedAt": "2026-11-19T15:11:58.049Z",
+      "matchedAt": "2026-11-19T15:25:57.090Z",
       "used_on": [
         "lineage-matrix",
         "patriotic-service",
@@ -282,7 +282,7 @@
     "dar-faq-other-societies": {
       "source_url": "https://www.dar.org/national-society/faq/membership",
       "quote": "No, DAR does not utilize applications of other hereditary societies.",
-      "matchedAt": "2026-11-19T15:12:18.086Z",
+      "matchedAt": "2026-11-19T15:26:16.967Z",
       "used_on": [
         "lineage-proof-roadmap"
       ]
@@ -299,7 +299,7 @@
     "dar-fee-dues": {
       "source_url": "https://blog.dar.org/2024/05/16/new-commemorative-america-250-membership-certificates",
       "quote": "You must submit both first-year dues and Application fees for new member submissions.",
-      "matchedAt": "2026-11-19T15:12:37.657Z",
+      "matchedAt": "2026-11-19T15:26:36.655Z",
       "used_on": [
         "lineage-proof-roadmap"
       ]
@@ -307,7 +307,7 @@
     "dar-forts": {
       "source_url": "https://www.dar.org/national-society/accepted-revolutionary-war-service",
       "quote": "who are documented as having actively defended the western frontiers against British forces and their allies",
-      "matchedAt": "2026-11-19T15:11:58.049Z",
+      "matchedAt": "2026-11-19T15:25:57.090Z",
       "used_on": [
         "patriotic-service"
       ]
@@ -315,7 +315,7 @@
     "dar-galvez-cattle": {
       "source_url": "https://www.dar.org/national-society/accepted-revolutionary-war-service",
       "quote": "Those who rendered material aid, in Spanish America, by supplying cattle for Galvez's forces after 24 December 1776",
-      "matchedAt": "2026-11-19T15:11:58.049Z",
+      "matchedAt": "2026-11-19T15:25:57.090Z",
       "used_on": [
         "lineage-matrix",
         "patriotic-service",
@@ -326,7 +326,7 @@
     "dar-galvez-troops": {
       "source_url": "https://www.dar.org/national-society/accepted-revolutionary-war-service",
       "quote": "Service in the Spanish Troops under Galvez or the Louisiana Militia after 24 December 1776",
-      "matchedAt": "2026-11-19T15:11:58.049Z",
+      "matchedAt": "2026-11-19T15:25:57.090Z",
       "used_on": [
         "lineage-matrix",
         "patriotic-service",
@@ -337,7 +337,7 @@
     "dar-gen-1-3": {
       "source_url": "https://blog.dar.org/2022/11/28/be-star-dar-genealogy-updates-registrar-general",
       "quote": "It is a must that the first three generations of the application and supplemental have complete dates and places.",
-      "matchedAt": "2026-11-19T15:11:58.245Z",
+      "matchedAt": "2026-11-19T15:25:57.307Z",
       "used_on": [
         "faq",
         "lineage-matrix",
@@ -395,7 +395,7 @@
     "dar-grs-only-joined": {
       "source_url": "https://blog.dar.org/using-ancestor-tab-grs",
       "quote": "the GRS contains only those patriots through whom someone has joined the DAR or has had a supplemental application verified.",
-      "matchedAt": "2026-11-19T15:14:57.878Z",
+      "matchedAt": "2026-11-19T15:28:50.499Z",
       "used_on": [
         "lineage-proof-roadmap"
       ]
@@ -403,7 +403,7 @@
     "dar-grs-purpose": {
       "source_url": "https://www.dar.org/discover/become-member/how-join",
       "quote": "to aid general genealogical research and to assist with the DAR membership process",
-      "matchedAt": "2026-11-19T15:13:02.513Z",
+      "matchedAt": "2026-11-19T15:27:02.120Z",
       "used_on": [
         "lineage-proof-roadmap"
       ]
@@ -420,7 +420,7 @@
     "dar-interest-form": {
       "source_url": "https://www.dar.org/discover/become-member/chapter-locator",
       "quote": "Fill out a Membership Interest Form to get connected to a chapter in your local area.",
-      "matchedAt": "2026-11-19T15:13:02.432Z",
+      "matchedAt": "2026-11-19T15:27:02.042Z",
       "used_on": [
         "tool:next-steps.js"
       ]
@@ -428,7 +428,7 @@
     "dar-join-docs": {
       "source_url": "https://www.dar.org/discover/become-member/how-join",
       "quote": "She must provide documentation for each statement of birth, marriage and death, as well as of the Revolutionary War service of her Patriot ancestor.",
-      "matchedAt": "2026-11-19T15:13:02.513Z",
+      "matchedAt": "2026-11-19T15:27:02.120Z",
       "used_on": [
         "faq",
         "partial:glossary",
@@ -439,7 +439,7 @@
     "dar-join-eligible": {
       "source_url": "https://www.dar.org/discover/become-member/how-join",
       "quote": "Any woman 18 years or older who can prove lineal, bloodline descent from an ancestor who aided in achieving American independence is eligible to join the DAR.",
-      "matchedAt": "2026-11-19T15:13:02.513Z",
+      "matchedAt": "2026-11-19T15:27:02.120Z",
       "used_on": [
         "faq",
         "partial:glossary",
@@ -450,7 +450,7 @@
     "dar-join-gather": {
       "source_url": "https://www.dar.org/discover/become-member/how-join",
       "quote": "What do you know about your family history and lineage.",
-      "matchedAt": "2026-11-19T15:13:02.513Z",
+      "matchedAt": "2026-11-19T15:27:02.120Z",
       "used_on": [
         "faq",
         "lineage-proof-roadmap"
@@ -459,7 +459,7 @@
     "dar-join-grs": {
       "source_url": "https://www.dar.org/discover/become-member/how-join",
       "quote": "DAR has free research resources through our Genealogical Research System",
-      "matchedAt": "2026-11-19T15:13:02.513Z",
+      "matchedAt": "2026-11-19T15:27:02.120Z",
       "used_on": [
         "lineage-proof-roadmap",
         "tool:tool-b.js"
@@ -468,7 +468,7 @@
     "dar-join-interest": {
       "source_url": "https://www.dar.org/discover/become-member/how-join",
       "quote": "This will start your DAR journey by connecting you to a chapter.",
-      "matchedAt": "2026-11-19T15:13:02.513Z",
+      "matchedAt": "2026-11-19T15:27:02.120Z",
       "used_on": [
         "lineage-proof-roadmap",
         "partial:how-to-join"
@@ -477,7 +477,7 @@
     "dar-join-locator": {
       "source_url": "https://www.dar.org/discover/become-member/how-join",
       "quote": "Utilize our chapter locator to find a chapter near you.",
-      "matchedAt": "2026-11-19T15:13:02.513Z",
+      "matchedAt": "2026-11-19T15:27:02.120Z",
       "used_on": [
         "partial:how-to-join"
       ]
@@ -494,7 +494,7 @@
     "dar-lib-record-copy-use": {
       "source_url": "https://www.dar.org/library/search.cfm",
       "quote": "Previously verified DAR membership and supplemental applications can be used as genealogical research tools as well as documentation for new applications.",
-      "matchedAt": "2026-11-19T15:13:00.150Z",
+      "matchedAt": "2026-11-19T15:26:59.442Z",
       "used_on": [
         "lineage-proof-roadmap"
       ]
@@ -513,7 +513,7 @@
     "dar-linres-little-info": {
       "source_url": "https://www.dar.org/library/collections/dar-lineage-resources",
       "quote": "some previously verified applications may include little or no information",
-      "matchedAt": "2026-11-19T15:13:00.242Z",
+      "matchedAt": "2026-11-19T15:26:59.534Z",
       "used_on": [
         "lineage-proof-roadmap"
       ]
@@ -521,7 +521,7 @@
     "dar-linres-record-copies": {
       "source_url": "https://www.dar.org/library/collections/dar-lineage-resources",
       "quote": "Copies of previously verified DAR membership applications (record copies) can be downloaded online",
-      "matchedAt": "2026-11-19T15:13:00.242Z",
+      "matchedAt": "2026-11-19T15:26:59.534Z",
       "used_on": [
         "lineage-proof-roadmap"
       ]
@@ -529,7 +529,7 @@
     "dar-material-aid": {
       "source_url": "https://www.dar.org/national-society/accepted-revolutionary-war-service",
       "quote": "furnishing supplies, with or without remuneration, loaning money and/or providing munitions",
-      "matchedAt": "2026-11-19T15:11:58.049Z",
+      "matchedAt": "2026-11-19T15:25:57.090Z",
       "used_on": [
         "faq",
         "lineage-matrix",
@@ -541,7 +541,7 @@
     "dar-member-guides": {
       "source_url": "https://www.dar.org/discover/become-member/how-join",
       "quote": "A member will help guide you through completing and submitting your DAR membership application",
-      "matchedAt": "2026-11-19T15:13:02.513Z",
+      "matchedAt": "2026-11-19T15:27:02.120Z",
       "used_on": [
         "faq",
         "hire-a-pro",
@@ -555,7 +555,7 @@
     "dar-name": {
       "source_url": "https://www.dar.org/discover/become-member/what-dar",
       "quote": "about the Daughters of the American Revolution",
-      "matchedAt": "2026-11-19T15:13:04.867Z",
+      "matchedAt": "2026-11-19T15:27:04.209Z",
       "used_on": [
         "partial:glossary"
       ]
@@ -590,7 +590,7 @@
     "dar-oaths": {
       "source_url": "https://www.dar.org/national-society/accepted-revolutionary-war-service",
       "quote": "Signer of Oath of Fidelity and Support, Oath of Allegiance, etc.",
-      "matchedAt": "2026-11-19T15:11:58.049Z",
+      "matchedAt": "2026-11-19T15:25:57.090Z",
       "used_on": [
         "lineage-matrix",
         "patriotic-service",
@@ -630,7 +630,7 @@
     "dar-petitions": {
       "source_url": "https://www.dar.org/national-society/accepted-revolutionary-war-service",
       "quote": "the content and wording of the petition must clearly demonstrate loyalty to the cause of American independence",
-      "matchedAt": "2026-11-19T15:11:58.049Z",
+      "matchedAt": "2026-11-19T15:25:57.090Z",
       "used_on": [
         "patriotic-service"
       ]
@@ -638,7 +638,7 @@
     "dar-petitions-religious": {
       "source_url": "https://www.dar.org/national-society/accepted-revolutionary-war-service",
       "quote": "Petitions regarding religious issues do not qualify.",
-      "matchedAt": "2026-11-19T15:11:58.049Z",
+      "matchedAt": "2026-11-19T15:25:57.090Z",
       "used_on": [
         "patriotic-service"
       ]
@@ -666,7 +666,7 @@
     "dar-reserves-right": {
       "source_url": "https://www.dar.org/national-society/accepted-revolutionary-war-service",
       "quote": "The National Society reserves the right to determine the acceptability of all service and proof thereof.",
-      "matchedAt": "2026-11-19T15:11:58.049Z",
+      "matchedAt": "2026-11-19T15:25:57.090Z",
       "used_on": [
         "patriotic-service"
       ]
@@ -721,7 +721,7 @@
     "dar-substitute": {
       "source_url": "https://www.dar.org/national-society/accepted-revolutionary-war-service",
       "quote": "Furnishing a substitute for military service",
-      "matchedAt": "2026-11-19T15:11:58.049Z",
+      "matchedAt": "2026-11-19T15:25:57.090Z",
       "used_on": [
         "patriotic-service"
       ]
@@ -729,7 +729,7 @@
     "dar-supply-tax": {
       "source_url": "https://www.dar.org/national-society/accepted-revolutionary-war-service",
       "quote": "Payment of these “supply” taxes is considered patriotic service.",
-      "matchedAt": "2026-11-19T15:11:58.049Z",
+      "matchedAt": "2026-11-19T15:25:57.090Z",
       "used_on": [
         "patriotic-service"
       ]
@@ -785,7 +785,7 @@
     "dar-va-land": {
       "source_url": "https://www.dar.org/national-society/accepted-revolutionary-war-service",
       "quote": "Those who applied in Virginia for Certificates of Rights to land for settlement",
-      "matchedAt": "2026-11-19T15:11:58.049Z",
+      "matchedAt": "2026-11-19T15:25:57.090Z",
       "used_on": [
         "patriotic-service"
       ]
@@ -793,7 +793,7 @@
     "dar-va-oath": {
       "source_url": "https://www.dar.org/national-society/accepted-revolutionary-war-service",
       "quote": "Oath of Fidelity to the Commonwealth of Virginia from October 1779 to 26 November 1783",
-      "matchedAt": "2026-11-19T15:11:58.049Z",
+      "matchedAt": "2026-11-19T15:25:57.090Z",
       "used_on": [
         "lineage-matrix",
         "patriotic-service",
@@ -804,7 +804,7 @@
     "dar-window-core": {
       "source_url": "https://www.dar.org/national-society/accepted-revolutionary-war-service",
       "quote": "must occur during the period between 19 April 1775 (Battle of Lexington) and 26 November 1783",
-      "matchedAt": "2026-11-19T15:11:58.049Z",
+      "matchedAt": "2026-11-19T15:25:57.090Z",
       "used_on": [
         "lineage-matrix",
         "lineage-proof-roadmap",
@@ -818,7 +818,7 @@
     "darblog-1890s": {
       "source_url": "https://blog.dar.org/2021/02/26/why-was-his-service-removed",
       "quote": "a time when DAR did not require documentation to prove Patriot service",
-      "matchedAt": "2026-11-19T15:12:37.804Z",
+      "matchedAt": "2026-11-19T15:26:36.831Z",
       "used_on": [
         "application-problems"
       ]
@@ -826,7 +826,7 @@
     "darblog-died": {
       "source_url": "https://blog.dar.org/2021/02/26/why-was-his-service-removed",
       "quote": "If a Patriot dies during the war, we add the date of his service to the service description to show he was alive at the time.",
-      "matchedAt": "2026-11-19T15:12:37.804Z",
+      "matchedAt": "2026-11-19T15:26:36.831Z",
       "used_on": [
         "same-name"
       ]
@@ -834,7 +834,7 @@
     "darblog-found-confirmed": {
       "source_url": "https://blog.dar.org/2021/02/26/why-was-his-service-removed",
       "quote": "it must be found and confirmed as accurate to meet current DAR standards",
-      "matchedAt": "2026-11-19T15:12:37.804Z",
+      "matchedAt": "2026-11-19T15:26:36.831Z",
       "used_on": [
         "application-problems"
       ]
@@ -842,7 +842,7 @@
     "darblog-gillespie": {
       "source_url": "https://blog.dar.org/2021/02/26/why-was-his-service-removed",
       "quote": "I once had to sort six men named Thomas Gillespie in South Carolina.",
-      "matchedAt": "2026-11-19T15:12:37.804Z",
+      "matchedAt": "2026-11-19T15:26:36.831Z",
       "used_on": [
         "same-name"
       ]
@@ -850,7 +850,7 @@
     "darblog-gillespie-four": {
       "source_url": "https://blog.dar.org/2021/02/26/why-was-his-service-removed",
       "quote": "only four of the men had properly sourced service",
-      "matchedAt": "2026-11-19T15:12:37.804Z",
+      "matchedAt": "2026-11-19T15:26:36.831Z",
       "used_on": [
         "same-name"
       ]
@@ -858,7 +858,7 @@
     "darblog-last-act": {
       "source_url": "https://blog.dar.org/2021/02/26/why-was-his-service-removed",
       "quote": "it was in support of the American cause, and, critically, that it was his/her last known act",
-      "matchedAt": "2026-11-19T15:12:37.804Z",
+      "matchedAt": "2026-11-19T15:26:36.831Z",
       "used_on": [
         "patriot-or-loyalist"
       ]
@@ -866,7 +866,7 @@
     "darblog-longisland": {
       "source_url": "https://blog.dar.org/2021/02/26/why-was-his-service-removed",
       "quote": "The most well-known is Long Island, New York",
-      "matchedAt": "2026-11-19T15:12:37.804Z",
+      "matchedAt": "2026-11-19T15:26:36.831Z",
       "used_on": [
         "patriot-or-loyalist"
       ]
@@ -874,7 +874,7 @@
     "darblog-loyalist": {
       "source_url": "https://blog.dar.org/2021/02/26/why-was-his-service-removed",
       "quote": "The residence is a known center for Loyalist activity.",
-      "matchedAt": "2026-11-19T15:12:37.804Z",
+      "matchedAt": "2026-11-19T15:26:36.831Z",
       "used_on": [
         "application-problems",
         "patriot-or-loyalist"
@@ -883,7 +883,7 @@
     "darblog-missing": {
       "source_url": "https://blog.dar.org/2021/02/26/why-was-his-service-removed",
       "quote": "There is missing information, such as a source of service or complete residence.",
-      "matchedAt": "2026-11-19T15:12:37.804Z",
+      "matchedAt": "2026-11-19T15:26:36.831Z",
       "used_on": [
         "application-problems"
       ]
@@ -891,7 +891,7 @@
     "darblog-multiple": {
       "source_url": "https://blog.dar.org/2021/02/26/why-was-his-service-removed",
       "quote": "There are multiple people of this name in the area, so we must connect and confirm the correct service.",
-      "matchedAt": "2026-11-19T15:12:37.804Z",
+      "matchedAt": "2026-11-19T15:26:36.831Z",
       "used_on": [
         "same-name"
       ]
@@ -899,7 +899,7 @@
     "darblog-neutral": {
       "source_url": "https://blog.dar.org/2021/02/26/why-was-his-service-removed",
       "quote": "Martha’s Vineyard and Nantucket Island signed Neutrality Agreements to support neither side.",
-      "matchedAt": "2026-11-19T15:12:37.804Z",
+      "matchedAt": "2026-11-19T15:26:36.831Z",
       "used_on": [
         "patriot-or-loyalist"
       ]
@@ -907,7 +907,7 @@
     "darblog-not-in-source": {
       "source_url": "https://blog.dar.org/2021/02/26/why-was-his-service-removed",
       "quote": "Sometimes the Patriot doesn’t appear in the source, or what the source says doesn’t qualify as service.",
-      "matchedAt": "2026-11-19T15:12:37.804Z",
+      "matchedAt": "2026-11-19T15:26:36.831Z",
       "used_on": [
         "application-problems"
       ]
@@ -915,7 +915,7 @@
     "darblog-residence": {
       "source_url": "https://blog.dar.org/2021/02/26/why-was-his-service-removed",
       "quote": "The residence and service location don’t match.",
-      "matchedAt": "2026-11-19T15:12:37.804Z",
+      "matchedAt": "2026-11-19T15:26:36.831Z",
       "used_on": [
         "application-problems",
         "patriotic-service",
@@ -925,7 +925,7 @@
     "darblog-same-name": {
       "source_url": "https://blog.dar.org/2021/02/26/why-was-his-service-removed",
       "quote": "another ancestor of the same name may have been established in the meantime, so we need to make sure there are two discrete people",
-      "matchedAt": "2026-11-19T15:12:37.804Z",
+      "matchedAt": "2026-11-19T15:26:36.831Z",
       "used_on": [
         "same-name"
       ]
@@ -933,7 +933,7 @@
     "darblog-unrecognized": {
       "source_url": "https://blog.dar.org/2021/02/26/why-was-his-service-removed",
       "quote": "We don’t recognize the service source.",
-      "matchedAt": "2026-11-19T15:12:37.804Z",
+      "matchedAt": "2026-11-19T15:26:36.831Z",
       "used_on": [
         "application-problems"
       ]
@@ -941,7 +941,7 @@
     "darblog-woburn": {
       "source_url": "https://blog.dar.org/2021/02/26/why-was-his-service-removed",
       "quote": "Woburn and Ashby are nearly 45 miles apart",
-      "matchedAt": "2026-11-19T15:12:37.804Z",
+      "matchedAt": "2026-11-19T15:26:36.831Z",
       "used_on": [
         "same-name"
       ]
@@ -949,7 +949,7 @@
     "darlib-search-member": {
       "source_url": "https://www.dar.org/library/services/search-services",
       "quote": "Fee for NSDAR members is $50.00/hour.",
-      "matchedAt": "2026-11-19T15:15:01.774Z",
+      "matchedAt": "2026-11-19T15:28:54.214Z",
       "used_on": [
         "hire-a-pro"
       ]
@@ -957,7 +957,7 @@
     "darlib-search-nonmember": {
       "source_url": "https://www.dar.org/library/services/search-services",
       "quote": "Fee for nonmembers is $75.00/hour.",
-      "matchedAt": "2026-11-19T15:15:01.774Z",
+      "matchedAt": "2026-11-19T15:28:54.214Z",
       "used_on": [
         "hire-a-pro"
       ]
@@ -965,7 +965,7 @@
     "de-oath-contents": {
       "source_url": "https://archives.delaware.gov/digital-archives/military-records-revolutionary-war-oaths-of-allegiance/",
       "quote": "The documents show the oath taken, the name of the person administering the oath",
-      "matchedAt": "2026-11-19T15:14:56.291Z",
+      "matchedAt": "2026-11-19T15:28:48.757Z",
       "used_on": [
         "tool:places.js"
       ]
@@ -973,7 +973,7 @@
     "de-oath-dates": {
       "source_url": "https://archives.delaware.gov/digital-archives/military-records-revolutionary-war-oaths-of-allegiance/",
       "quote": "sworn to the United States or the State of Delaware between 1777 and 1784",
-      "matchedAt": "2026-11-19T15:14:56.291Z",
+      "matchedAt": "2026-11-19T15:28:48.757Z",
       "used_on": [
         "tool:places.js"
       ]
@@ -981,7 +981,7 @@
     "de-oath-series": {
       "source_url": "https://archives.delaware.gov/digital-archives/military-records-revolutionary-war-oaths-of-allegiance/",
       "quote": "This series contains Oaths of Allegiance or declarations of fidelity sworn to the United States or the State of Delaware",
-      "matchedAt": "2026-11-19T15:14:56.291Z",
+      "matchedAt": "2026-11-19T15:28:48.757Z",
       "used_on": [
         "tool:places.js"
       ]
@@ -989,7 +989,7 @@
     "de-vital-1913": {
       "source_url": "https://archives.delaware.gov/digital-archives/guide-to-vital-statistics-records/",
       "quote": "since 1913, state law has required the recording of these vital records",
-      "matchedAt": "2026-11-19T15:14:56.661Z",
+      "matchedAt": "2026-11-19T15:28:48.997Z",
       "used_on": [
         "tool:places.js"
       ]
@@ -997,7 +997,7 @@
     "de-vital-birth-72": {
       "source_url": "https://archives.delaware.gov/digital-archives/guide-to-vital-statistics-records/",
       "quote": "once a birth record reaches 72 years of age",
-      "matchedAt": "2026-11-19T15:14:56.661Z",
+      "matchedAt": "2026-11-19T15:28:48.997Z",
       "used_on": [
         "tool:places.js"
       ]
@@ -1005,7 +1005,7 @@
     "de-vital-marriage-death-ages": {
       "source_url": "https://archives.delaware.gov/digital-archives/guide-to-vital-statistics-records/",
       "quote": "marriage records 50 years of age, and death records 40 years of age",
-      "matchedAt": "2026-11-19T15:14:56.661Z",
+      "matchedAt": "2026-11-19T15:28:48.997Z",
       "used_on": [
         "tool:places.js"
       ]
@@ -1013,7 +1013,7 @@
     "de-vital-public": {
       "source_url": "https://archives.delaware.gov/digital-archives/guide-to-vital-statistics-records/",
       "quote": "are only those which have become public (records)",
-      "matchedAt": "2026-11-19T15:14:56.661Z",
+      "matchedAt": "2026-11-19T15:28:48.997Z",
       "used_on": [
         "tool:places.js"
       ]
@@ -1021,7 +1021,7 @@
     "de-vital-recorders": {
       "source_url": "https://archives.delaware.gov/digital-archives/guide-to-vital-statistics-records/",
       "quote": "prior to 1913, it was the duty of each county's recorder of deeds to record the births, marriages, and deaths of the state",
-      "matchedAt": "2026-11-19T15:14:56.661Z",
+      "matchedAt": "2026-11-19T15:28:48.997Z",
       "used_on": [
         "tool:places.js"
       ]
@@ -1029,7 +1029,7 @@
     "ga-bounty-certificates": {
       "source_url": "https://www.georgiaarchives.org/research/bounty_land_grants/",
       "quote": "There were three types of certificates of service issued",
-      "matchedAt": "2026-11-19T15:14:55.219Z",
+      "matchedAt": "2026-11-19T15:28:47.068Z",
       "used_on": [
         "tool:places.js"
       ]
@@ -1037,7 +1037,7 @@
     "ga-bounty-line": {
       "source_url": "https://www.georgiaarchives.org/research/bounty_land_grants/",
       "quote": "Georgia Line (Continental Army)",
-      "matchedAt": "2026-11-19T15:14:55.219Z",
+      "matchedAt": "2026-11-19T15:28:47.068Z",
       "used_on": [
         "tool:places.js"
       ]
@@ -1045,7 +1045,7 @@
     "ga-bounty-militia": {
       "source_url": "https://www.georgiaarchives.org/research/bounty_land_grants/",
       "quote": "Georgia Militia",
-      "matchedAt": "2026-11-19T15:14:55.219Z",
+      "matchedAt": "2026-11-19T15:28:47.068Z",
       "used_on": [
         "tool:places.js"
       ]
@@ -1053,7 +1053,7 @@
     "ga-bounty-minute": {
       "source_url": "https://www.georgiaarchives.org/research/bounty_land_grants/",
       "quote": "Minute Battalion",
-      "matchedAt": "2026-11-19T15:14:55.219Z",
+      "matchedAt": "2026-11-19T15:28:47.068Z",
       "used_on": [
         "tool:places.js"
       ]
@@ -1061,7 +1061,7 @@
     "ga-bounty-private-acres": {
       "source_url": "https://www.georgiaarchives.org/research/bounty_land_grants/",
       "quote": "Amount of grant for soldiers based on rank: Privates received 250 acres",
-      "matchedAt": "2026-11-19T15:14:55.219Z",
+      "matchedAt": "2026-11-19T15:28:47.068Z",
       "used_on": [
         "tool:places.js"
       ]
@@ -1069,7 +1069,7 @@
     "ga-bounty-submit": {
       "source_url": "https://www.georgiaarchives.org/research/bounty_land_grants/",
       "quote": "Applicant must submit one of the three types of certificates of service",
-      "matchedAt": "2026-11-19T15:14:55.219Z",
+      "matchedAt": "2026-11-19T15:28:47.068Z",
       "used_on": [
         "tool:places.js"
       ]
@@ -1077,7 +1077,7 @@
     "ga-vital-1919": {
       "source_url": "https://georgiaarchives.org/research/vital_records",
       "quote": "Statewide registration of births and deaths began in Georgia in 1919.",
-      "matchedAt": "2026-11-19T15:15:00.094Z",
+      "matchedAt": "2026-11-19T15:28:52.391Z",
       "used_on": [
         "tool:places.js"
       ]
@@ -1085,7 +1085,7 @@
     "ga-vital-bride-county": {
       "source_url": "https://georgiaarchives.org/research/vital_records",
       "quote": "Generally, marriages are recorded in the county of residence of the bride.",
-      "matchedAt": "2026-11-19T15:15:00.094Z",
+      "matchedAt": "2026-11-19T15:28:52.391Z",
       "used_on": [
         "tool:places.js"
       ]
@@ -1093,7 +1093,7 @@
     "ga-vital-marriage-1805": {
       "source_url": "https://georgiaarchives.org/research/vital_records",
       "quote": "Beginning in 1805, Georgia law required marriages to be recorded in the Court of Ordinary, now known as the Probate Court.",
-      "matchedAt": "2026-11-19T15:15:00.094Z",
+      "matchedAt": "2026-11-19T15:28:52.391Z",
       "used_on": [
         "tool:places.js"
       ]
@@ -1101,7 +1101,7 @@
     "icapgen-50-200": {
       "source_url": "https://icapgen.org/what-will-it-cost/",
       "quote": "Many professional genealogists charge between $50 and $200 per hour.",
-      "matchedAt": "2026-11-19T15:15:05.786Z",
+      "matchedAt": "2026-11-19T15:28:57.562Z",
       "used_on": [
         "hire-a-pro"
       ]
@@ -1109,7 +1109,7 @@
     "icapgen-directory": {
       "source_url": "https://icapgen.org/find-a-professional/",
       "quote": "Directory of Accredited Genealogist® professionals",
-      "matchedAt": "2026-11-19T15:15:11.177Z",
+      "matchedAt": "2026-11-19T15:29:02.195Z",
       "used_on": [
         "hire-a-pro"
       ]
@@ -1117,7 +1117,7 @@
     "ll-no-guarantee": {
       "source_url": "https://lisalouisecooke.com/2017/11/18/professional-genealogist-help-apply-lineage-societies/",
       "quote": "the lineage society determines what they will and will not accept as proof, so there's never a guarantee",
-      "matchedAt": "2026-11-19T15:15:06.242Z",
+      "matchedAt": "2026-11-19T15:28:57.890Z",
       "used_on": [
         "hire-a-pro"
       ]
@@ -1125,7 +1125,7 @@
     "loc-stat-name": {
       "source_url": "https://www.loc.gov/collections/united-states-statutes-at-large/about-this-collection/",
       "quote": "A citation to the Statutes at Large",
-      "matchedAt": "2026-11-19T15:13:04.760Z",
+      "matchedAt": "2026-11-19T15:27:04.119Z",
       "used_on": [
         "partial:glossary",
         "tool:tool-a.js",
@@ -1135,7 +1135,7 @@
     "loc-stat-page": {
       "source_url": "https://www.loc.gov/collections/united-states-statutes-at-large/about-this-collection/",
       "quote": "the page number of the Volume",
-      "matchedAt": "2026-11-19T15:13:04.760Z",
+      "matchedAt": "2026-11-19T15:27:04.119Z",
       "used_on": [
         "partial:glossary",
         "tool:tool-a.js",
@@ -1145,7 +1145,7 @@
     "loc-stat-volume": {
       "source_url": "https://www.loc.gov/collections/united-states-statutes-at-large/about-this-collection/",
       "quote": "begins with the Volume number",
-      "matchedAt": "2026-11-19T15:13:04.760Z",
+      "matchedAt": "2026-11-19T15:27:04.119Z",
       "used_on": [
         "partial:glossary",
         "tool:tool-a.js",
@@ -1155,7 +1155,7 @@
     "lva-1779": {
       "source_url": "https://lva-virginia.libguides.com/bounty-claims/home",
       "quote": "Following a 1779 legislative act, the state offered bounty lands for Revolutionary War military service.",
-      "matchedAt": "2026-11-19T15:13:01.492Z",
+      "matchedAt": "2026-11-19T15:27:01.017Z",
       "used_on": [
         "bounty-land-warrants",
         "records-by-state"
@@ -1164,7 +1164,7 @@
     "lva-3yrs": {
       "source_url": "https://lva-virginia.libguides.com/bounty-claims/home",
       "quote": "To qualify, a Virginia soldier or sailor had to serve at least three years continuously in the Continental or state forces.",
-      "matchedAt": "2026-11-19T15:13:01.492Z",
+      "matchedAt": "2026-11-19T15:27:01.017Z",
       "used_on": [
         "bounty-land-warrants",
         "records-by-state"
@@ -1173,7 +1173,7 @@
     "lva-9926": {
       "source_url": "https://lva-virginia.libguides.com/bounty-claims/home",
       "quote": "issued 9,926 certificates, beginning in 1782 and ending in 1876",
-      "matchedAt": "2026-11-19T15:13:01.492Z",
+      "matchedAt": "2026-11-19T15:27:01.017Z",
       "used_on": [
         "bounty-land-warrants"
       ]
@@ -1181,7 +1181,7 @@
     "lva-acreage": {
       "source_url": "https://lva-virginia.libguides.com/bounty-claims/home",
       "quote": "from 100 acres for a soldier or sailor to 15,000 acres for a Major General",
-      "matchedAt": "2026-11-19T15:13:01.492Z",
+      "matchedAt": "2026-11-19T15:27:01.017Z",
       "used_on": [
         "bounty-land-warrants"
       ]
@@ -1189,7 +1189,7 @@
     "lva-assigned": {
       "source_url": "https://lva-virginia.libguides.com/bounty-claims/home",
       "quote": "the veteran or his heirs sold or “assigned” the certificate to land speculators or other individuals",
-      "matchedAt": "2026-11-19T15:13:01.492Z",
+      "matchedAt": "2026-11-19T15:27:01.017Z",
       "used_on": [
         "bounty-land-warrants"
       ]
@@ -1197,7 +1197,7 @@
     "lva-bmd-1853": {
       "source_url": "https://lva-virginia.libguides.com/bmd",
       "quote": "Between 1853 and 1896, counties and cities maintained birth, marriage, and death registers.",
-      "matchedAt": "2026-11-19T15:13:07.512Z",
+      "matchedAt": "2026-11-19T15:27:07.046Z",
       "used_on": [
         "tool:places.js"
       ]
@@ -1205,7 +1205,7 @@
     "lva-bmd-1912": {
       "source_url": "https://lva-virginia.libguides.com/bmd",
       "quote": "Virginia reinstituted the recording of births and deaths in 1912.",
-      "matchedAt": "2026-11-19T15:13:07.512Z",
+      "matchedAt": "2026-11-19T15:27:07.046Z",
       "used_on": [
         "tool:places.js"
       ]
@@ -1213,7 +1213,7 @@
     "lva-bmd-gap": {
       "source_url": "https://lva-virginia.libguides.com/bmd",
       "quote": "the majority of counties and cities did not record births and deaths between 1897 and 1911",
-      "matchedAt": "2026-11-19T15:13:07.512Z",
+      "matchedAt": "2026-11-19T15:27:07.046Z",
       "used_on": [
         "tool:places.js"
       ]
@@ -1221,7 +1221,7 @@
     "lva-bmd-pre1853": {
       "source_url": "https://lva-virginia.libguides.com/bmd",
       "quote": "Before 1853, systematic statewide recording of births, marriages, and deaths did not occur in Virginia.",
-      "matchedAt": "2026-11-19T15:13:07.512Z",
+      "matchedAt": "2026-11-19T15:27:07.046Z",
       "used_on": [
         "lineage-matrix",
         "tool:places.js",
@@ -1231,7 +1231,7 @@
     "lva-bmd-rare": {
       "source_url": "https://lva-virginia.libguides.com/bmd",
       "quote": "Many pre-1853 marriage records survive, but birth and death records are rare.",
-      "matchedAt": "2026-11-19T15:13:07.512Z",
+      "matchedAt": "2026-11-19T15:27:07.046Z",
       "used_on": [
         "lineage-matrix",
         "tool:places.js"
@@ -1240,7 +1240,7 @@
     "lva-certificates": {
       "source_url": "https://lva-virginia.libguides.com/bounty-claims/home",
       "quote": "Certificates verify Revolutionary War service but not necessarily land ownership",
-      "matchedAt": "2026-11-19T15:13:01.492Z",
+      "matchedAt": "2026-11-19T15:27:01.017Z",
       "used_on": [
         "bounty-land-warrants"
       ]
@@ -1256,7 +1256,7 @@
     "lva-files-online": {
       "source_url": "https://lva-virginia.libguides.com/bounty-claims/home",
       "quote": "The online collection consists of images of application files for military bounty land",
-      "matchedAt": "2026-11-19T15:13:01.492Z",
+      "matchedAt": "2026-11-19T15:27:01.017Z",
       "used_on": [
         "records-by-state"
       ]
@@ -1264,7 +1264,7 @@
     "lva-heirs": {
       "source_url": "https://lva-virginia.libguides.com/bounty-claims/home",
       "quote": "as veterans’ heirs continued to make claims",
-      "matchedAt": "2026-11-19T15:13:01.492Z",
+      "matchedAt": "2026-11-19T15:27:01.017Z",
       "used_on": [
         "bounty-land-warrants"
       ]
@@ -1272,7 +1272,7 @@
     "lva-ky-oh": {
       "source_url": "https://lva-virginia.libguides.com/bounty-claims/home",
       "quote": "Virginia bounty land was located either in present-day Kentucky or Ohio",
-      "matchedAt": "2026-11-19T15:13:01.492Z",
+      "matchedAt": "2026-11-19T15:27:01.017Z",
       "used_on": [
         "bounty-land-warrants"
       ]
@@ -1280,7 +1280,7 @@
     "lva-militia": {
       "source_url": "https://lva-virginia.libguides.com/bounty-claims/home",
       "quote": "No bounty land was given by the state for militia service.",
-      "matchedAt": "2026-11-19T15:13:01.492Z",
+      "matchedAt": "2026-11-19T15:27:01.017Z",
       "used_on": [
         "bounty-land-warrants",
         "records-by-state"
@@ -1289,7 +1289,7 @@
     "lva-not-digitized": {
       "source_url": "https://lva-virginia.libguides.com/bounty-claims/home",
       "quote": "The certificate files and registers have not been digitized, but they are available on microfilm",
-      "matchedAt": "2026-11-19T15:13:01.492Z",
+      "matchedAt": "2026-11-19T15:27:01.017Z",
       "used_on": [
         "records-by-state"
       ]
@@ -1297,7 +1297,7 @@
     "lva-proof": {
       "source_url": "https://lva-virginia.libguides.com/bounty-claims/home",
       "quote": "proof of military service, such as discharge papers or affidavits from commanding officers and fellow soldiers",
-      "matchedAt": "2026-11-19T15:13:01.492Z",
+      "matchedAt": "2026-11-19T15:27:01.017Z",
       "used_on": [
         "bounty-land-warrants"
       ]
@@ -1305,7 +1305,7 @@
     "lva-rev-continental": {
       "source_url": "https://lva-virginia.libguides.com/revolutionary-war/home",
       "quote": "Service records exist for most Continental Line soldiers in the form of payrolls and muster rolls of their units.",
-      "matchedAt": "2026-11-19T15:13:07.406Z",
+      "matchedAt": "2026-11-19T15:27:06.906Z",
       "used_on": [
         "tool:places.js"
       ]
@@ -1313,7 +1313,7 @@
     "lva-rev-few": {
       "source_url": "https://lva-virginia.libguides.com/revolutionary-war/home",
       "quote": "Unfortunately, few records of militia service exist.",
-      "matchedAt": "2026-11-19T15:13:07.406Z",
+      "matchedAt": "2026-11-19T15:27:06.906Z",
       "used_on": [
         "tool:places.js"
       ]
@@ -1321,7 +1321,7 @@
     "lva-rev-militia": {
       "source_url": "https://lva-virginia.libguides.com/revolutionary-war/home",
       "quote": "Most Virginians serving in the war did so as part of the county militia.",
-      "matchedAt": "2026-11-19T15:13:07.406Z",
+      "matchedAt": "2026-11-19T15:27:06.906Z",
       "used_on": [
         "tool:places.js"
       ]
@@ -1329,7 +1329,7 @@
     "lva-rev-orderbooks": {
       "source_url": "https://lva-virginia.libguides.com/revolutionary-war/home",
       "quote": "Militia officer appointments are often recorded in the order books for the county courts.",
-      "matchedAt": "2026-11-19T15:13:07.406Z",
+      "matchedAt": "2026-11-19T15:27:06.906Z",
       "used_on": [
         "tool:places.js"
       ]
@@ -1337,7 +1337,7 @@
     "lva-rev-pensions": {
       "source_url": "https://lva-virginia.libguides.com/revolutionary-war/home",
       "quote": "Many post-1832 federal pensions also mention militia service.",
-      "matchedAt": "2026-11-19T15:13:07.406Z",
+      "matchedAt": "2026-11-19T15:27:06.906Z",
       "used_on": [
         "tool:places.js"
       ]
@@ -1345,7 +1345,7 @@
     "lva-scrip": {
       "source_url": "https://lva-virginia.libguides.com/bounty-claims/home",
       "quote": "Warrants surrendered for scrip, along with accompanying application records, are held by the National Archives",
-      "matchedAt": "2026-11-19T15:13:01.492Z",
+      "matchedAt": "2026-11-19T15:27:01.017Z",
       "used_on": [
         "bounty-land-warrants"
       ]
@@ -1353,7 +1353,7 @@
     "m804-1818-need": {
       "source_url": "https://www.archives.gov/files/research/military/army/dc/m804.pdf",
       "quote": "Officers and enlisted men in need of assistance were eligible under the terms of the 1818 act",
-      "matchedAt": "2026-11-19T15:12:59.862Z",
+      "matchedAt": "2026-11-19T15:26:59.111Z",
       "used_on": [
         "read-pension-file"
       ]
@@ -1361,7 +1361,7 @@
     "m804-1820-schedule": {
       "source_url": "https://www.archives.gov/files/research/military/army/dc/m804.pdf",
       "quote": "to submit a certified schedule of his estate and income to the Secretary of War",
-      "matchedAt": "2026-11-19T15:12:59.862Z",
+      "matchedAt": "2026-11-19T15:26:59.111Z",
       "used_on": [
         "read-pension-file"
       ]
@@ -1369,7 +1369,7 @@
     "m804-1856": {
       "source_url": "https://www.archives.gov/files/research/military/army/dc/m804.pdf",
       "quote": "extended the benefits of the 1855 act to include Revolutionary War naval and marine officers",
-      "matchedAt": "2026-11-19T15:12:59.862Z",
+      "matchedAt": "2026-11-19T15:26:59.111Z",
       "used_on": [
         "bounty-land-warrants"
       ]
@@ -1377,7 +1377,7 @@
     "m804-55": {
       "source_url": "https://www.archives.gov/files/research/military/army/dc/m804.pdf",
       "quote": "the year 1855 (usually written \"55\") in the case of warrants issued pursuant to the bounty-land act of that year",
-      "matchedAt": "2026-11-19T15:12:59.862Z",
+      "matchedAt": "2026-11-19T15:26:59.111Z",
       "used_on": [
         "bounty-land-warrants",
         "read-pension-file"
@@ -1386,7 +1386,7 @@
     "m804-bible-pages": {
       "source_url": "https://www.archives.gov/files/research/military/army/dc/m804.pdf",
       "quote": "Family-record pages from Bibles and other books submitted by pension and bounty-land-warrant applicants give the dates of birth, marriage, and death of family members.",
-      "matchedAt": "2026-11-19T15:12:59.862Z",
+      "matchedAt": "2026-11-19T15:26:59.111Z",
       "used_on": [
         "read-pension-file",
         "substitute-evidence",
@@ -1396,7 +1396,7 @@
     "m804-bl-100": {
       "source_url": "https://www.archives.gov/files/research/military/army/dc/m804.pdf",
       "quote": "each noncommissioned officer and soldier should be entitled to 100 acres",
-      "matchedAt": "2026-11-19T15:12:59.862Z",
+      "matchedAt": "2026-11-19T15:26:59.111Z",
       "used_on": [
         "bounty-land-warrants"
       ]
@@ -1404,7 +1404,7 @@
     "m804-bl-1776": {
       "source_url": "https://www.archives.gov/files/research/military/army/dc/m804.pdf",
       "quote": "was the basic law under which Revolutionary War veterans were granted bounty-land warrants by the Federal Government until 1855",
-      "matchedAt": "2026-11-19T15:12:59.862Z",
+      "matchedAt": "2026-11-19T15:26:59.111Z",
       "used_on": [
         "bounty-land-warrants"
       ]
@@ -1412,7 +1412,7 @@
     "m804-bl-contents": {
       "source_url": "https://www.archives.gov/files/research/military/army/dc/m804.pdf",
       "quote": "Records in the files may include applications by veterans, their widows, or heirs; family-record pages from Bibles; copies of marriage records",
-      "matchedAt": "2026-11-19T15:12:59.862Z",
+      "matchedAt": "2026-11-19T15:26:59.111Z",
       "used_on": [
         "bounty-land-warrants"
       ]
@@ -1420,7 +1420,7 @@
     "m804-bl-define": {
       "source_url": "https://www.archives.gov/files/research/military/army/dc/m804.pdf",
       "quote": "rights to free land in the public domain",
-      "matchedAt": "2026-11-19T15:12:59.862Z",
+      "matchedAt": "2026-11-19T15:26:59.111Z",
       "used_on": [
         "bounty-land-warrants",
         "partial:glossary",
@@ -1431,7 +1431,7 @@
     "m804-bl-generals": {
       "source_url": "https://www.archives.gov/files/research/military/army/dc/m804.pdf",
       "quote": "850 acres for a brigadier general and 1,100 acres for a major general",
-      "matchedAt": "2026-11-19T15:12:59.862Z",
+      "matchedAt": "2026-11-19T15:26:59.111Z",
       "used_on": [
         "bounty-land-warrants"
       ]
@@ -1439,7 +1439,7 @@
     "m804-bl-reward": {
       "source_url": "https://www.archives.gov/files/research/military/army/dc/m804.pdf",
       "quote": "after the war, bounty-land grants became a form of reward",
-      "matchedAt": "2026-11-19T15:12:59.862Z",
+      "matchedAt": "2026-11-19T15:26:59.111Z",
       "used_on": [
         "bounty-land-warrants"
       ]
@@ -1447,7 +1447,7 @@
     "m804-bl-who": {
       "source_url": "https://www.archives.gov/files/research/military/army/dc/m804.pdf",
       "quote": "to veterans and to heirs of veterans for Revolutionary War service of specified periods of time",
-      "matchedAt": "2026-11-19T15:12:59.862Z",
+      "matchedAt": "2026-11-19T15:26:59.111Z",
       "used_on": [
         "bounty-land-warrants",
         "partial:glossary",
@@ -1458,7 +1458,7 @@
     "m804-blwt": {
       "source_url": "https://www.archives.gov/files/research/military/army/dc/m804.pdf",
       "quote": "the symbol \"B. L. Wt.\" for bounty-land",
-      "matchedAt": "2026-11-19T15:12:59.862Z",
+      "matchedAt": "2026-11-19T15:26:59.111Z",
       "used_on": [
         "bounty-land-warrants",
         "read-pension-file"
@@ -1467,7 +1467,7 @@
     "m804-dis": {
       "source_url": "https://www.archives.gov/files/research/military/army/dc/m804.pdf",
       "quote": "the file symbol \"Dis. No Papers.\"",
-      "matchedAt": "2026-11-19T15:12:59.862Z",
+      "matchedAt": "2026-11-19T15:26:59.111Z",
       "used_on": [
         "read-pension-file"
       ]
@@ -1475,7 +1475,7 @@
     "m804-fire": {
       "source_url": "https://www.archives.gov/files/research/military/army/dc/m804.pdf",
       "quote": "A fire in the War Department on November 8, 1800, apparently destroyed all Revolutionary War pension and bounty-land-warrant applications",
-      "matchedAt": "2026-11-19T15:12:59.862Z",
+      "matchedAt": "2026-11-19T15:26:59.111Z",
       "used_on": [
         "read-pension-file",
         "substitute-evidence"
@@ -1484,7 +1484,7 @@
     "m804-former-widow": {
       "source_url": "https://www.archives.gov/files/research/military/army/dc/m804.pdf",
       "quote": "with the notation \"Former Widow.\"",
-      "matchedAt": "2026-11-19T15:12:59.862Z",
+      "matchedAt": "2026-11-19T15:26:59.111Z",
       "used_on": [
         "read-pension-file"
       ]
@@ -1492,7 +1492,7 @@
     "m804-locate": {
       "source_url": "https://www.archives.gov/files/research/military/army/dc/m804.pdf",
       "quote": "He could then \"locate\" his warrant",
-      "matchedAt": "2026-11-19T15:12:59.862Z",
+      "matchedAt": "2026-11-19T15:26:59.111Z",
       "used_on": [
         "bounty-land-warrants"
       ]
@@ -1500,7 +1500,7 @@
     "m804-property": {
       "source_url": "https://www.archives.gov/files/research/military/army/dc/m804.pdf",
       "quote": "Property schedules often give names and ages of a veteran's wife and children.",
-      "matchedAt": "2026-11-19T15:12:59.862Z",
+      "matchedAt": "2026-11-19T15:26:59.111Z",
       "used_on": [
         "read-pension-file"
       ]
@@ -1508,7 +1508,7 @@
     "m804-r-approved": {
       "source_url": "https://www.archives.gov/files/research/military/army/dc/m804.pdf",
       "quote": "There may be one or more approved pension applications in the file, however, if they were approved before the last application was rejected.",
-      "matchedAt": "2026-11-19T15:12:59.862Z",
+      "matchedAt": "2026-11-19T15:26:59.111Z",
       "used_on": [
         "read-pension-file"
       ]
@@ -1516,7 +1516,7 @@
     "m804-r-latest": {
       "source_url": "https://www.archives.gov/files/research/military/army/dc/m804.pdf",
       "quote": "usually indicates that the latest application in the file was rejected",
-      "matchedAt": "2026-11-19T15:12:59.862Z",
+      "matchedAt": "2026-11-19T15:26:59.111Z",
       "used_on": [
         "read-pension-file"
       ]
@@ -1524,7 +1524,7 @@
     "m804-rank-unit": {
       "source_url": "https://www.archives.gov/files/research/military/army/dc/m804.pdf",
       "quote": "his former rank, unit, and period of service",
-      "matchedAt": "2026-11-19T15:12:59.862Z",
+      "matchedAt": "2026-11-19T15:26:59.111Z",
       "used_on": [
         "records-by-state",
         "same-name"
@@ -1533,7 +1533,7 @@
     "m804-s": {
       "source_url": "https://www.archives.gov/files/research/military/army/dc/m804.pdf",
       "quote": "the letter \"S\" for survivor, followed by a file number",
-      "matchedAt": "2026-11-19T15:12:59.862Z",
+      "matchedAt": "2026-11-19T15:26:59.111Z",
       "used_on": [
         "read-pension-file"
       ]
@@ -1541,7 +1541,7 @@
     "m804-same-name": {
       "source_url": "https://www.archives.gov/files/research/military/army/dc/m804.pdf",
       "quote": "When two or more veterans have the same surname and given name, the further arrangement of the files based on their service is generally alphabetical by the name of the State or organization for which a veteran served",
-      "matchedAt": "2026-11-19T15:12:59.862Z",
+      "matchedAt": "2026-11-19T15:26:59.111Z",
       "used_on": [
         "same-name"
       ]
@@ -1549,7 +1549,7 @@
     "m804-selected": {
       "source_url": "https://www.archives.gov/files/research/military/army/dc/m804.pdf",
       "quote": "documents were filmed first, preceded by a target headed \"SELECTED RECORDS.\"",
-      "matchedAt": "2026-11-19T15:12:59.862Z",
+      "matchedAt": "2026-11-19T15:26:59.111Z",
       "used_on": [
         "read-pension-file"
       ]
@@ -1557,7 +1557,7 @@
     "m804-sold": {
       "source_url": "https://www.archives.gov/files/research/military/army/dc/m804.pdf",
       "quote": "they remained in their old homes and sold the warrants",
-      "matchedAt": "2026-11-19T15:12:59.862Z",
+      "matchedAt": "2026-11-19T15:26:59.111Z",
       "used_on": [
         "bounty-land-warrants"
       ]
@@ -1565,7 +1565,7 @@
     "m804-star": {
       "source_url": "https://www.archives.gov/files/research/military/army/dc/m804.pdf",
       "quote": "these files can be recognized by a star next to the veteran's surname in the heading",
-      "matchedAt": "2026-11-19T15:12:59.862Z",
+      "matchedAt": "2026-11-19T15:26:59.111Z",
       "used_on": [
         "read-pension-file"
       ]
@@ -1573,7 +1573,7 @@
     "m804-unarranged": {
       "source_url": "https://www.archives.gov/files/research/military/army/dc/m804.pdf",
       "quote": "Within files, the records are unarranged.",
-      "matchedAt": "2026-11-19T15:12:59.862Z",
+      "matchedAt": "2026-11-19T15:26:59.111Z",
       "used_on": [
         "read-pension-file"
       ]
@@ -1581,7 +1581,7 @@
     "m804-variant": {
       "source_url": "https://www.archives.gov/files/research/military/army/dc/m804.pdf",
       "quote": "Cross-reference cards also exist for variant spellings of a veteran's name.",
-      "matchedAt": "2026-11-19T15:12:59.862Z",
+      "matchedAt": "2026-11-19T15:26:59.111Z",
       "used_on": [
         "same-name"
       ]
@@ -1589,7 +1589,7 @@
     "m804-veteran-info": {
       "source_url": "https://www.archives.gov/files/research/military/army/dc/m804.pdf",
       "quote": "his age or date of birth, his residence, and sometimes his birthplace",
-      "matchedAt": "2026-11-19T15:12:59.862Z",
+      "matchedAt": "2026-11-19T15:26:59.111Z",
       "used_on": [
         "read-pension-file"
       ]
@@ -1597,7 +1597,7 @@
     "m804-voucher": {
       "source_url": "https://www.archives.gov/files/research/military/army/dc/m804.pdf",
       "quote": "sometimes give the date and place of death of a pensioner, and names of heirs",
-      "matchedAt": "2026-11-19T15:12:59.862Z",
+      "matchedAt": "2026-11-19T15:26:59.111Z",
       "used_on": [
         "read-pension-file"
       ]
@@ -1605,7 +1605,7 @@
     "m804-w": {
       "source_url": "https://www.archives.gov/files/research/military/army/dc/m804.pdf",
       "quote": "the letter \"W\" for widow, followed by a file number",
-      "matchedAt": "2026-11-19T15:12:59.862Z",
+      "matchedAt": "2026-11-19T15:26:59.111Z",
       "used_on": [
         "read-pension-file",
         "tool:tool-a.js",
@@ -1615,7 +1615,7 @@
     "m804-widow-info": {
       "source_url": "https://www.archives.gov/files/research/military/army/dc/m804.pdf",
       "quote": "may give her age, residence, maiden name, date and place of her marriage, and date and place of death of her husband",
-      "matchedAt": "2026-11-19T15:12:59.862Z",
+      "matchedAt": "2026-11-19T15:26:59.111Z",
       "used_on": [
         "read-pension-file",
         "substitute-evidence",
@@ -1629,7 +1629,7 @@
     "m805-number": {
       "source_url": "https://www.archives.gov/files/research/military/army/dc/m804.pdf",
       "quote": "Bounty-Land-Warrant Application Files (Microcopy 805)",
-      "matchedAt": "2026-11-19T15:12:59.862Z",
+      "matchedAt": "2026-11-19T15:26:59.111Z",
       "used_on": [
         "read-pension-file"
       ]
@@ -1637,7 +1637,7 @@
     "m805-selected": {
       "source_url": "https://www.archives.gov/files/research/military/army/dc/m804.pdf",
       "quote": "microfilm publication, Selected Records From Revolutionary War Pension and",
-      "matchedAt": "2026-11-19T15:12:59.862Z",
+      "matchedAt": "2026-11-19T15:26:59.111Z",
       "used_on": [
         "read-pension-file"
       ]
@@ -1645,7 +1645,7 @@
     "ma-adjutant": {
       "source_url": "https://www.mass.gov/info-details/researching-massachusetts-soldiers-and-sailors",
       "quote": "Houses the historical military records of the Massachusetts Adjutant General.",
-      "matchedAt": "2026-11-19T15:13:10.214Z",
+      "matchedAt": "2026-11-19T15:27:10.024Z",
       "used_on": [
         "tool:places.js"
       ]
@@ -1653,7 +1653,7 @@
     "ma-complete": {
       "source_url": "https://www.mass.gov/info-details/researching-massachusetts-soldiers-and-sailors",
       "quote": "This collection is one of the most complete state records of MA servicemen and women from 1775-1940.",
-      "matchedAt": "2026-11-19T15:13:10.214Z",
+      "matchedAt": "2026-11-19T15:27:10.024Z",
       "used_on": [
         "tool:places.js"
       ]
@@ -1661,7 +1661,7 @@
     "ma-vital-1841-1920": {
       "source_url": "https://www.mass.gov/guides/guide-to-genealogical-resources-in-the-state-library",
       "quote": "The Massachusetts Archives is the repository for Massachusetts vital records (births, marriages and deaths) for the period between 1841 and 1920.",
-      "matchedAt": "2026-11-19T15:15:00.599Z",
+      "matchedAt": "2026-11-19T15:28:53.132Z",
       "used_on": [
         "tool:places.js"
       ]
@@ -1669,7 +1669,7 @@
     "mayflower-app-prep": {
       "source_url": "https://themayflowersociety.org/wp-content/uploads/2024/10/Research-Services_FAQ_Final.pdf",
       "quote": "Application Preparation, $2,500 for Members/$3,250 Non-Members",
-      "matchedAt": "2026-11-19T15:15:05.883Z",
+      "matchedAt": "2026-11-19T15:28:57.653Z",
       "used_on": [
         "hire-a-pro"
       ]
@@ -1677,7 +1677,7 @@
     "msa-birth-baltimore": {
       "source_url": "https://guide.msa.maryland.gov/pages/viewer.aspx?page=birth",
       "quote": "Baltimore City (1875 to 1925)",
-      "matchedAt": "2026-11-19T15:13:08.116Z",
+      "matchedAt": "2026-11-19T15:27:07.483Z",
       "used_on": [
         "tool:places.js"
       ]
@@ -1685,7 +1685,7 @@
     "msa-birth-counties": {
       "source_url": "https://guide.msa.maryland.gov/pages/viewer.aspx?page=birth",
       "quote": "Maryland Counties (1898 to 1925)",
-      "matchedAt": "2026-11-19T15:13:08.116Z",
+      "matchedAt": "2026-11-19T15:27:07.483Z",
       "used_on": [
         "tool:places.js"
       ]
@@ -1693,7 +1693,7 @@
     "msa-index": {
       "source_url": "https://guide.msa.maryland.gov/pages/viewer.aspx?page=military",
       "quote": "Revolutionary War Papers Index, MSA S1422",
-      "matchedAt": "2026-11-19T15:13:07.926Z",
+      "matchedAt": "2026-11-19T15:27:07.295Z",
       "used_on": [
         "tool:places.js"
       ]
@@ -1701,7 +1701,7 @@
     "msa-militia": {
       "source_url": "https://guide.msa.maryland.gov/pages/viewer.aspx?page=military",
       "quote": "Militia, organized by each County, consisting of individuals prepared for local defense",
-      "matchedAt": "2026-11-19T15:13:07.926Z",
+      "matchedAt": "2026-11-19T15:27:07.295Z",
       "used_on": [
         "tool:places.js"
       ]
@@ -1709,7 +1709,7 @@
     "msa-nara": {
       "source_url": "https://guide.msa.maryland.gov/pages/viewer.aspx?page=military",
       "quote": "Many service records are held by the National Archives",
-      "matchedAt": "2026-11-19T15:13:07.926Z",
+      "matchedAt": "2026-11-19T15:27:07.295Z",
       "used_on": [
         "tool:places.js"
       ]
@@ -1717,7 +1717,7 @@
     "nara-1850-free-names": {
       "source_url": "https://www.archives.gov/research/census/1850",
       "quote": "Name of every person whose usual place of abode on the first day of June, 1850, was in this family.",
-      "matchedAt": "2026-11-19T15:15:00.616Z",
+      "matchedAt": "2026-11-19T15:28:53.144Z",
       "used_on": [
         "census-bridge",
         "substitute-evidence"
@@ -1726,7 +1726,7 @@
     "nara-1850-slave-schedule": {
       "source_url": "https://www.archives.gov/research/census/1850",
       "quote": "Schedule 2 - Slave Inhabitants Name of slave owner Number of slaves",
-      "matchedAt": "2026-11-19T15:15:00.616Z",
+      "matchedAt": "2026-11-19T15:28:53.144Z",
       "used_on": [
         "census-bridge",
         "substitute-evidence"
@@ -1735,7 +1735,7 @@
     "nara-1860-free-names": {
       "source_url": "https://www.archives.gov/research/census/1860",
       "quote": "Name of every person whose usual place of abode on the first day of June, 1860, was in this family",
-      "matchedAt": "2026-11-19T15:15:00.628Z",
+      "matchedAt": "2026-11-19T15:28:53.156Z",
       "used_on": [
         "census-bridge",
         "substitute-evidence"
@@ -1744,7 +1744,7 @@
     "nara-1860-slave-schedule": {
       "source_url": "https://www.archives.gov/research/census/1860",
       "quote": "Schedule 2 - Slave Inhabitants Name of slave owner Number of slaves",
-      "matchedAt": "2026-11-19T15:15:00.628Z",
+      "matchedAt": "2026-11-19T15:28:53.156Z",
       "used_on": [
         "census-bridge",
         "substitute-evidence"
@@ -1753,7 +1753,7 @@
     "nara-1870-every": {
       "source_url": "https://www.archives.gov/research/census/1870",
       "quote": "Name of every person whose usual place of abode on the first day of June 1870, was in this family.",
-      "matchedAt": "2026-11-19T15:15:00.641Z",
+      "matchedAt": "2026-11-19T15:28:53.167Z",
       "used_on": [
         "census-bridge",
         "substitute-evidence"
@@ -1762,7 +1762,7 @@
     "nara-act-1832": {
       "source_url": "https://www.archives.gov/files/research/military/army/dc/m804.pdf",
       "quote": "Veterans who had served less than 2 years, but not less than 6 months, were eligible for pensions of less than full pay",
-      "matchedAt": "2026-11-19T15:12:59.862Z",
+      "matchedAt": "2026-11-19T15:26:59.111Z",
       "used_on": [
         "tool:tool-a.js",
         "widow-pension-checker"
@@ -1771,7 +1771,7 @@
     "nara-act-1832-categories": {
       "source_url": "https://www.archives.gov/files/research/military/army/dc/m804.pdf",
       "quote": "every officer or enlisted man who had served at least 2 years in the Continental Line or State troops, volunteers or militia",
-      "matchedAt": "2026-11-19T15:12:59.862Z",
+      "matchedAt": "2026-11-19T15:26:59.111Z",
       "used_on": [
         "lineage-matrix",
         "tool:patriot.js",
@@ -1783,7 +1783,7 @@
     "nara-act-1832-navy": {
       "source_url": "https://www.archives.gov/files/research/military/army/dc/m804.pdf",
       "quote": "Naval and marine officers and enlisted men were also included",
-      "matchedAt": "2026-11-19T15:12:59.862Z",
+      "matchedAt": "2026-11-19T15:26:59.111Z",
       "used_on": [
         "tool:tool-a.js",
         "widow-pension-checker"
@@ -1792,7 +1792,7 @@
     "nara-act-1836": {
       "source_url": "https://www.archives.gov/files/research/military/army/dc/m804.pdf",
       "quote": "if the widow had married the veteran before the expiration of his last period of service",
-      "matchedAt": "2026-11-19T15:12:59.862Z",
+      "matchedAt": "2026-11-19T15:26:59.111Z",
       "used_on": [
         "read-pension-file",
         "tool:tool-a.js",
@@ -1802,7 +1802,7 @@
     "nara-act-1838": {
       "source_url": "https://www.archives.gov/files/research/military/army/dc/m804.pdf",
       "quote": "granted 5-year pensions to widows whose marriages had taken place before January 1, 1794",
-      "matchedAt": "2026-11-19T15:12:59.862Z",
+      "matchedAt": "2026-11-19T15:26:59.111Z",
       "used_on": [
         "read-pension-file",
         "tool:tool-a.js",
@@ -1812,7 +1812,7 @@
     "nara-act-1848": {
       "source_url": "https://www.archives.gov/files/research/military/army/dc/m804.pdf",
       "quote": "provided life pensions for widows of veterans who were married before January 2, 1800",
-      "matchedAt": "2026-11-19T15:12:59.862Z",
+      "matchedAt": "2026-11-19T15:26:59.111Z",
       "used_on": [
         "read-pension-file",
         "tool:tool-a.js",
@@ -1822,7 +1822,7 @@
     "nara-act-1853-1855": {
       "source_url": "https://www.archives.gov/files/research/military/army/dc/m804.pdf",
       "quote": "All restrictions pertaining to the date of marriage were removed by acts of February 3, 1853",
-      "matchedAt": "2026-11-19T15:12:59.862Z",
+      "matchedAt": "2026-11-19T15:26:59.111Z",
       "used_on": [
         "read-pension-file",
         "tool:tool-a.js",
@@ -1832,7 +1832,7 @@
     "nara-act-1878": {
       "source_url": "https://www.archives.gov/files/research/military/army/dc/m804.pdf",
       "quote": "widows of Revolutionary War soldiers who had served for as few as 14 days",
-      "matchedAt": "2026-11-19T15:12:59.862Z",
+      "matchedAt": "2026-11-19T15:26:59.111Z",
       "used_on": [
         "read-pension-file",
         "tool:tool-a.js",
@@ -1843,7 +1843,7 @@
     "nara-amrev-1836": {
       "source_url": "https://www.archives.gov/research/military/american-revolution",
       "quote": "Widows of men who provided service received the right to apply for pensions beginning in 1836.",
-      "matchedAt": "2026-11-19T15:12:59.976Z",
+      "matchedAt": "2026-11-19T15:26:59.205Z",
       "used_on": [
         "tool:patriot.js"
       ]
@@ -1851,7 +1851,7 @@
     "nara-amrev-80k": {
       "source_url": "https://www.archives.gov/research/military/american-revolution",
       "quote": "The Revolutionary War pension files, numbering around eighty thousand",
-      "matchedAt": "2026-11-19T15:12:59.976Z",
+      "matchedAt": "2026-11-19T15:26:59.205Z",
       "used_on": [
         "read-pension-file"
       ]
@@ -1859,7 +1859,7 @@
     "nara-amrev-familysearch": {
       "source_url": "https://www.archives.gov/research/military/american-revolution",
       "quote": "FamilySearch.org (free with login)",
-      "matchedAt": "2026-11-19T15:12:59.976Z",
+      "matchedAt": "2026-11-19T15:26:59.205Z",
       "used_on": [
         "lineage-matrix",
         "lineage-proof-roadmap",
@@ -1872,7 +1872,7 @@
     "nara-amrev-fs-m804": {
       "source_url": "https://www.archives.gov/research/military/american-revolution",
       "quote": "Revolutionary War Pension and Bounty-Land Warrant Application Files (Microfilm Roll # M804, Record Group 15) National Archives Catalog (NAID: 300022) Ancestry.com (free from NARA computers) | Ancestry.com ($ - by subscription) FamilySearch.org (free with login)",
-      "matchedAt": "2026-11-19T15:12:59.976Z",
+      "matchedAt": "2026-11-19T15:26:59.205Z",
       "used_on": [
         "lineage-proof-roadmap"
       ]
@@ -1880,7 +1880,7 @@
     "nara-amrev-m246": {
       "source_url": "https://www.archives.gov/research/military/american-revolution",
       "quote": "National Archives Catalog (NAID: 602384)",
-      "matchedAt": "2026-11-19T15:12:59.976Z",
+      "matchedAt": "2026-11-19T15:26:59.205Z",
       "used_on": [
         "records-by-state",
         "tool:patriot.js"
@@ -1889,7 +1889,7 @@
     "nara-amrev-m804": {
       "source_url": "https://www.archives.gov/research/military/american-revolution",
       "quote": "National Archives Catalog (NAID: 300022)",
-      "matchedAt": "2026-11-19T15:12:59.976Z",
+      "matchedAt": "2026-11-19T15:26:59.205Z",
       "used_on": [
         "read-pension-file",
         "records-by-state"
@@ -1898,7 +1898,7 @@
     "nara-amrev-m881": {
       "source_url": "https://www.archives.gov/research/military/american-revolution",
       "quote": "National Archives Catalog (NAID: 570910)",
-      "matchedAt": "2026-11-19T15:12:59.976Z",
+      "matchedAt": "2026-11-19T15:26:59.205Z",
       "used_on": [
         "records-by-state",
         "tool:patriot.js"
@@ -1907,7 +1907,7 @@
     "nara-bounty-1855": {
       "source_url": "https://www.archives.gov/files/research/military/army/dc/m804.pdf",
       "quote": "Widows and minor children of such veterans were also eligible",
-      "matchedAt": "2026-11-19T15:12:59.862Z",
+      "matchedAt": "2026-11-19T15:26:59.111Z",
       "used_on": [
         "bounty-land-warrants",
         "tool:tool-a.js",
@@ -1918,7 +1918,7 @@
     "nara-bulk": {
       "source_url": "https://www.archives.gov/research/catalog/catalog-bulk-downloads/revwarpensionfiles",
       "quote": "Digitized records from the Revolutionary War Pension Files that have been transcribed by our users are available as bulk downloads.",
-      "matchedAt": "2026-11-19T15:13:01.228Z",
+      "matchedAt": "2026-11-19T15:27:00.721Z",
       "used_on": [
         "read-pension-file"
       ]
@@ -1926,7 +1926,7 @@
     "nara-census-1840": {
       "source_url": "https://www.archives.gov/research/census/1790-1840.html",
       "quote": "The 1840 census reported the name and exact age of Revolutionary War pensioners",
-      "matchedAt": "2026-11-19T15:13:01.216Z",
+      "matchedAt": "2026-11-19T15:27:00.708Z",
       "used_on": [
         "census-bridge",
         "lineage-matrix",
@@ -1936,7 +1936,7 @@
     "nara-census-ballpark": {
       "source_url": "https://www.archives.gov/research/census/1790-1840.html",
       "quote": "for tracking the head of household from one census to the next, especially if other people have the same name",
-      "matchedAt": "2026-11-19T15:13:01.216Z",
+      "matchedAt": "2026-11-19T15:27:00.708Z",
       "used_on": [
         "census-bridge",
         "same-name"
@@ -1945,7 +1945,7 @@
     "nara-census-brackets": {
       "source_url": "https://www.archives.gov/research/census/1790-1840.html",
       "quote": "Of sixteen, and under twenty-six",
-      "matchedAt": "2026-11-19T15:13:01.216Z",
+      "matchedAt": "2026-11-19T15:27:00.708Z",
       "used_on": [
         "census-bridge"
       ]
@@ -1953,7 +1953,7 @@
     "nara-census-confirm": {
       "source_url": "https://www.archives.gov/research/census/1790-1840.html",
       "quote": "which the researcher must confirm from other records",
-      "matchedAt": "2026-11-19T15:13:01.216Z",
+      "matchedAt": "2026-11-19T15:27:00.708Z",
       "used_on": [
         "census-bridge",
         "substitute-evidence"
@@ -1962,7 +1962,7 @@
     "nara-census-exhaust": {
       "source_url": "https://www.archives.gov/research/census/1790-1840.html",
       "quote": "it is always best to thoroughly exhaust all extant records for the place where the person is known to have lived",
-      "matchedAt": "2026-11-19T15:13:01.216Z",
+      "matchedAt": "2026-11-19T15:27:00.708Z",
       "used_on": [
         "census-bridge",
         "tool:tool-b.js"
@@ -1971,7 +1971,7 @@
     "nara-census-head": {
       "source_url": "https://www.archives.gov/research/census/1790-1840.html",
       "quote": "The 1790-1840 censuses generally named only the head of household but reported the age of each household member in age categories.",
-      "matchedAt": "2026-11-19T15:13:01.216Z",
+      "matchedAt": "2026-11-19T15:27:00.708Z",
       "used_on": [
         "census-bridge",
         "lineage-matrix",
@@ -1983,7 +1983,7 @@
     "nara-census-kin": {
       "source_url": "https://www.archives.gov/research/census/1790-1840.html",
       "quote": "should be a clue that the pensioner may be related to someone in the household",
-      "matchedAt": "2026-11-19T15:13:01.216Z",
+      "matchedAt": "2026-11-19T15:27:00.708Z",
       "used_on": [
         "census-bridge"
       ]
@@ -1991,7 +1991,7 @@
     "nara-census-widows": {
       "source_url": "https://www.archives.gov/research/census/1790-1840.html",
       "quote": "Pensioners included both veterans and widows.",
-      "matchedAt": "2026-11-19T15:13:01.216Z",
+      "matchedAt": "2026-11-19T15:27:00.708Z",
       "used_on": [
         "census-bridge",
         "tool:places.js"
@@ -2000,7 +2000,7 @@
     "nara-cmsr-1890s": {
       "source_url": "https://www.archives.gov/files/research/military/american-revolution/service-records.pdf",
       "quote": "In the 1890s, the Department of War used numerous sources, such as muster rolls, descriptive rolls, and pay rolls, to create compiled military service records.",
-      "matchedAt": "2026-11-19T15:12:59.948Z",
+      "matchedAt": "2026-11-19T15:26:59.179Z",
       "used_on": [
         "records-by-state"
       ]
@@ -2008,7 +2008,7 @@
     "nara-cmsr-fires": {
       "source_url": "https://www.archives.gov/files/research/military/american-revolution/service-records.pdf",
       "quote": "substitutes for records destroyed by fires in 1800 and 1814",
-      "matchedAt": "2026-11-19T15:12:59.948Z",
+      "matchedAt": "2026-11-19T15:26:59.179Z",
       "used_on": [
         "records-by-state"
       ]
@@ -2016,7 +2016,7 @@
     "nara-cmsr-missing": {
       "source_url": "https://www.archives.gov/files/research/military/american-revolution/service-records.pdf",
       "quote": "there may not be a compiled military service record for him",
-      "matchedAt": "2026-11-19T15:12:59.948Z",
+      "matchedAt": "2026-11-19T15:26:59.179Z",
       "used_on": [
         "records-by-state"
       ]
@@ -2024,7 +2024,7 @@
     "nara-gen-bl-range": {
       "source_url": "https://www.archives.gov/research/military/genealogy",
       "quote": "Bounty land warrant application files relate to claims based on wartime service between 1775 and March 3, 1855.",
-      "matchedAt": "2026-11-19T15:12:59.962Z",
+      "matchedAt": "2026-11-19T15:26:59.193Z",
       "used_on": [
         "bounty-land-warrants"
       ]
@@ -2032,7 +2032,7 @@
     "nara-gen-combined": {
       "source_url": "https://www.archives.gov/research/military/genealogy",
       "quote": "Many of the bounty land application files relating to Revolutionary War and War of 1812 service have been combined with the pension files.",
-      "matchedAt": "2026-11-19T15:12:59.962Z",
+      "matchedAt": "2026-11-19T15:26:59.193Z",
       "used_on": [
         "bounty-land-warrants"
       ]
@@ -2040,7 +2040,7 @@
     "nara-gen-nomilitia": {
       "source_url": "https://www.archives.gov/research/military/genealogy",
       "quote": "The National Archives does not hold state militia records.",
-      "matchedAt": "2026-11-19T15:12:59.962Z",
+      "matchedAt": "2026-11-19T15:26:59.193Z",
       "used_on": [
         "lineage-proof-roadmap"
       ]
@@ -2048,7 +2048,7 @@
     "nara-gen-unindexed": {
       "source_url": "https://www.archives.gov/research/military/genealogy",
       "quote": "which includes disapproved applications based on Revolutionary War service",
-      "matchedAt": "2026-11-19T15:12:59.962Z",
+      "matchedAt": "2026-11-19T15:26:59.193Z",
       "used_on": [
         "bounty-land-warrants"
       ]
@@ -2056,7 +2056,7 @@
     "nara-m1051": {
       "source_url": "https://www.archives.gov/files/research/military/american-revolution/service-records.pdf",
       "quote": "American Army in Georgia Military Organizations",
-      "matchedAt": "2026-11-19T15:12:59.948Z",
+      "matchedAt": "2026-11-19T15:26:59.179Z",
       "used_on": [
         "records-by-state"
       ]
@@ -2064,7 +2064,7 @@
     "nara-m246": {
       "source_url": "https://www.archives.gov/files/research/military/american-revolution/service-records.pdf",
       "quote": "M246, Revolutionary War Rolls, 1775–1783. 138 rolls.",
-      "matchedAt": "2026-11-19T15:12:59.948Z",
+      "matchedAt": "2026-11-19T15:26:59.179Z",
       "used_on": [
         "records-by-state"
       ]
@@ -2072,7 +2072,7 @@
     "nara-m257": {
       "source_url": "https://www.archives.gov/files/research/military/american-revolution/service-records.pdf",
       "quote": "Served During the Revolutionary War in Organizations from the State of North Carolina",
-      "matchedAt": "2026-11-19T15:12:59.948Z",
+      "matchedAt": "2026-11-19T15:26:59.179Z",
       "used_on": [
         "records-by-state"
       ]
@@ -2080,7 +2080,7 @@
     "nara-m804-1836-class": {
       "source_url": "https://www.archives.gov/files/research/military/army/dc/m804.pdf",
       "quote": "some widows of Revolutionary War veterans were again permitted, as a class under public law, to apply for pensions",
-      "matchedAt": "2026-11-19T15:12:59.862Z",
+      "matchedAt": "2026-11-19T15:26:59.111Z",
       "used_on": [
         "widow-pension-checker"
       ]
@@ -2088,7 +2088,7 @@
     "nara-m804-private-acts": {
       "source_url": "https://www.archives.gov/files/research/military/army/dc/m804.pdf",
       "quote": "unless a private act of Congress was introduced on her behalf",
-      "matchedAt": "2026-11-19T15:12:59.862Z",
+      "matchedAt": "2026-11-19T15:26:59.111Z",
       "used_on": [
         "widow-pension-checker"
       ]
@@ -2096,7 +2096,7 @@
     "nara-m804-rejected-files": {
       "source_url": "https://www.archives.gov/files/research/military/army/dc/m804.pdf",
       "quote": "The third contained rejected applications of both survivors and widows",
-      "matchedAt": "2026-11-19T15:12:59.862Z",
+      "matchedAt": "2026-11-19T15:26:59.111Z",
       "used_on": [
         "widow-pension-checker"
       ]
@@ -2104,7 +2104,7 @@
     "nara-m829": {
       "source_url": "https://www.archives.gov/files/research/military/american-revolution/service-records.pdf",
       "quote": "M829, U.S. Revolutionary War Bounty Land Warrants Used in the U.S. Military District of Ohio and Related Papers (Acts of 1788, 1803 and 1806).",
-      "matchedAt": "2026-11-19T15:12:59.948Z",
+      "matchedAt": "2026-11-19T15:26:59.179Z",
       "used_on": [
         "bounty-land-warrants",
         "records-by-state"
@@ -2113,7 +2113,7 @@
     "nara-m860": {
       "source_url": "https://www.archives.gov/files/research/military/american-revolution/service-records.pdf",
       "quote": "M860, Index to Compiled Military Service Records of Volunteers Who Served in the Revolutionary War. 58 rolls.",
-      "matchedAt": "2026-11-19T15:12:59.948Z",
+      "matchedAt": "2026-11-19T15:26:59.179Z",
       "used_on": [
         "records-by-state"
       ]
@@ -2121,7 +2121,7 @@
     "nara-m881": {
       "source_url": "https://www.archives.gov/files/research/military/american-revolution/service-records.pdf",
       "quote": "M881, Compiled Military Service Records of Volunteers Who Served in the Revolutionary War. 1096 rolls.",
-      "matchedAt": "2026-11-19T15:12:59.948Z",
+      "matchedAt": "2026-11-19T15:26:59.179Z",
       "used_on": [
         "records-by-state"
       ]
@@ -2129,7 +2129,7 @@
     "nara-m910": {
       "source_url": "https://www.archives.gov/files/research/military/american-revolution/service-records.pdf",
       "quote": "M910, Virginia Half Pay and Other Related Revolutionary War Pension Application Files.",
-      "matchedAt": "2026-11-19T15:12:59.948Z",
+      "matchedAt": "2026-11-19T15:26:59.179Z",
       "used_on": [
         "records-by-state"
       ]
@@ -2137,7 +2137,7 @@
     "nara-m920": {
       "source_url": "https://www.archives.gov/files/research/military/american-revolution/service-records.pdf",
       "quote": "Served with the American Army in Connecticut Military Organizations",
-      "matchedAt": "2026-11-19T15:12:59.948Z",
+      "matchedAt": "2026-11-19T15:26:59.179Z",
       "used_on": [
         "records-by-state"
       ]
@@ -2145,7 +2145,7 @@
     "nara-mission-search-within": {
       "source_url": "https://www.archives.gov/citizen-archivist/missions/revolutionary-war-pension-files",
       "quote": "To find a name, you can do a Search Within the series.",
-      "matchedAt": "2026-11-19T15:14:58.825Z",
+      "matchedAt": "2026-11-19T15:28:51.502Z",
       "used_on": [
         "lineage-proof-roadmap"
       ]
@@ -2153,7 +2153,7 @@
     "nara-natf85": {
       "source_url": "https://www.archives.gov/research/military/genealogy",
       "quote": "use NATF Form 85",
-      "matchedAt": "2026-11-19T15:12:59.962Z",
+      "matchedAt": "2026-11-19T15:26:59.193Z",
       "used_on": [
         "bounty-land-warrants",
         "records-by-state"
@@ -2162,7 +2162,7 @@
     "nara-natf85-order": {
       "source_url": "https://www.archives.gov/veterans/military-service-records/pre-ww-1-records",
       "quote": "to order copies of military pension application files based on Federal (not State or Confederate) service between 1775 and",
-      "matchedAt": "2026-11-19T15:14:54.475Z",
+      "matchedAt": "2026-11-19T15:28:46.784Z",
       "used_on": [
         "read-pension-file",
         "tool:tool-a.js"
@@ -2171,7 +2171,7 @@
     "nara-natf85-revwar": {
       "source_url": "https://www.archives.gov/veterans/military-service-records/pre-ww-1-records",
       "quote": "A Federal pre-Civil War military pension application based on Federal military service before the Civil War (for example, the Revolutionary War and War of 1812)",
-      "matchedAt": "2026-11-19T15:14:54.475Z",
+      "matchedAt": "2026-11-19T15:28:46.784Z",
       "used_on": [
         "read-pension-file",
         "tool:tool-a.js"
@@ -2180,7 +2180,7 @@
     "nara-natf86": {
       "source_url": "https://www.archives.gov/research/military/genealogy",
       "quote": "use NATF Form 86",
-      "matchedAt": "2026-11-19T15:12:59.962Z",
+      "matchedAt": "2026-11-19T15:26:59.193Z",
       "used_on": [
         "records-by-state"
       ]
@@ -2188,7 +2188,7 @@
     "nara-pensions-natf85-online": {
       "source_url": "https://www.archives.gov/research/military/army/pensions",
       "quote": "Researchers can order copies of pension and bounty land applications by using NATF Form 85 or placing an order online.",
-      "matchedAt": "2026-11-19T15:14:58.843Z",
+      "matchedAt": "2026-11-19T15:28:51.514Z",
       "used_on": [
         "lineage-proof-roadmap"
       ]
@@ -2196,7 +2196,7 @@
     "nara-svc-custody": {
       "source_url": "https://www.archives.gov/files/research/military/american-revolution/service-records.pdf",
       "quote": "The National Archives does not have custody of records for service in State militias.",
-      "matchedAt": "2026-11-19T15:12:59.948Z",
+      "matchedAt": "2026-11-19T15:26:59.179Z",
       "used_on": [
         "lineage-matrix",
         "records-by-state",
@@ -2206,7 +2206,7 @@
     "nara-svc-holds": {
       "source_url": "https://www.archives.gov/files/research/military/american-revolution/service-records.pdf",
       "quote": "including both Continental troops and state troops that served as Continental troops",
-      "matchedAt": "2026-11-19T15:12:59.948Z",
+      "matchedAt": "2026-11-19T15:26:59.179Z",
       "used_on": [
         "lineage-matrix",
         "records-by-state",
@@ -2217,7 +2217,7 @@
     "nara-svc-state": {
       "source_url": "https://www.archives.gov/files/research/military/american-revolution/service-records.pdf",
       "quote": "check with the State archives of the state in which the soldier served",
-      "matchedAt": "2026-11-19T15:12:59.948Z",
+      "matchedAt": "2026-11-19T15:26:59.179Z",
       "used_on": [
         "lineage-matrix",
         "partial:home",
@@ -2229,7 +2229,7 @@
     "nara-vital-census": {
       "source_url": "https://www.archives.gov/research/vital-records",
       "quote": "if you find your ancestor's state of birth and approximate year of birth are reported in the census, you can then contact that local jurisdiction regarding their birth records",
-      "matchedAt": "2026-11-19T15:13:10.333Z",
+      "matchedAt": "2026-11-19T15:27:10.069Z",
       "used_on": [
         "tool:places.js"
       ]
@@ -2237,7 +2237,7 @@
     "nara-vital-states": {
       "source_url": "https://www.archives.gov/research/vital-records",
       "quote": "The CDC's National Center for Health Statistics website tells how to obtain birth, death, marriage, and divorce records from state and territorial agencies.",
-      "matchedAt": "2026-11-19T15:13:10.333Z",
+      "matchedAt": "2026-11-19T15:27:10.069Z",
       "used_on": [
         "tool:places.js"
       ]
@@ -2245,7 +2245,7 @@
     "nc-trpr-arranged": {
       "source_url": "https://appx.archives.ncdcr.gov/findingaids/TRPR_Troop_Returns_Collection.html",
       "quote": "generally organized chronologically by year, then in order in collection by county name, name of the commanding officer organizing or commanding the unit, or by federal service unit number",
-      "matchedAt": "2026-11-19T15:13:08.498Z",
+      "matchedAt": "2026-11-19T15:27:07.753Z",
       "used_on": [
         "tool:places.js"
       ]
@@ -2253,7 +2253,7 @@
     "nc-trpr-county": {
       "source_url": "https://appx.archives.ncdcr.gov/findingaids/TRPR_Troop_Returns_Collection.html",
       "quote": "Militia records generally include the names of the officers and soldiers, and are typically organized by district or county.",
-      "matchedAt": "2026-11-19T15:13:08.498Z",
+      "matchedAt": "2026-11-19T15:27:07.753Z",
       "used_on": [
         "tool:places.js"
       ]
@@ -2261,7 +2261,7 @@
     "nc-trpr-rosters": {
       "source_url": "https://appx.archives.ncdcr.gov/findingaids/TRPR_Troop_Returns_Collection.html",
       "quote": "221 individual rosters, troop returns, and muster rolls for state and local militia, volunteers, and draftees",
-      "matchedAt": "2026-11-19T15:13:08.498Z",
+      "matchedAt": "2026-11-19T15:27:07.753Z",
       "used_on": [
         "tool:places.js"
       ]
@@ -2269,7 +2269,7 @@
     "nc-vr-birth": {
       "source_url": "https://vitalrecords.nc.gov/research.htm",
       "quote": "For births before 1913, contact the Register of Deeds office in the county where the birth occurred.",
-      "matchedAt": "2026-11-19T15:13:08.673Z",
+      "matchedAt": "2026-11-19T15:27:07.909Z",
       "used_on": [
         "tool:places.js"
       ]
@@ -2277,7 +2277,7 @@
     "nc-vr-death": {
       "source_url": "https://vitalrecords.nc.gov/research.htm",
       "quote": "For death certificates prior to 1930, contact the North Carolina State Archives",
-      "matchedAt": "2026-11-19T15:13:08.673Z",
+      "matchedAt": "2026-11-19T15:27:07.909Z",
       "used_on": [
         "tool:places.js"
       ]
@@ -2285,7 +2285,7 @@
     "nc-vr-have-birth": {
       "source_url": "https://vitalrecords.nc.gov/research.htm",
       "quote": "Birth Certificates : 1913-Present",
-      "matchedAt": "2026-11-19T15:13:08.673Z",
+      "matchedAt": "2026-11-19T15:27:07.909Z",
       "used_on": [
         "tool:places.js"
       ]
@@ -2293,7 +2293,7 @@
     "nc-vr-have-death": {
       "source_url": "https://vitalrecords.nc.gov/research.htm",
       "quote": "Death Certificates : 1930-Present",
-      "matchedAt": "2026-11-19T15:13:08.673Z",
+      "matchedAt": "2026-11-19T15:27:07.909Z",
       "used_on": [
         "tool:places.js"
       ]
@@ -2301,7 +2301,7 @@
     "nc-vr-have-marriage": {
       "source_url": "https://vitalrecords.nc.gov/research.htm",
       "quote": "Marriage Certificates : 1962-Present",
-      "matchedAt": "2026-11-19T15:13:08.673Z",
+      "matchedAt": "2026-11-19T15:27:07.909Z",
       "used_on": [
         "tool:places.js"
       ]
@@ -2309,7 +2309,7 @@
     "nc-vr-marriage": {
       "source_url": "https://vitalrecords.nc.gov/research.htm",
       "quote": "For records prior to 1962, contact the county Register of Deeds where the marriage license was issued.",
-      "matchedAt": "2026-11-19T15:13:08.673Z",
+      "matchedAt": "2026-11-19T15:27:07.909Z",
       "used_on": [
         "tool:places.js"
       ]
@@ -2317,7 +2317,7 @@
     "nh-rev-familysearch": {
       "source_url": "https://www.nhsl.dncr.nh.gov/collections/genealogical-resources/researching-your-nh-family-history",
       "quote": "Rev War records can be searched at FamilySearch.org after creating a free account",
-      "matchedAt": "2026-11-19T15:14:55.432Z",
+      "matchedAt": "2026-11-19T15:28:48.166Z",
       "used_on": [
         "tool:places.js"
       ]
@@ -2325,7 +2325,7 @@
     "nh-state-papers-rolls": {
       "source_url": "https://www.nhsl.dncr.nh.gov/collections/genealogical-resources/researching-your-nh-family-history",
       "quote": "French & Indian War & Rev War rolls",
-      "matchedAt": "2026-11-19T15:14:55.432Z",
+      "matchedAt": "2026-11-19T15:28:48.166Z",
       "used_on": [
         "tool:places.js"
       ]
@@ -2333,7 +2333,7 @@
     "nh-town-after-1937": {
       "source_url": "https://www.nhsl.dncr.nh.gov/collections/genealogical-resources/researching-your-nh-family-history",
       "quote": "After 1937, it was up to the town to include them or not",
-      "matchedAt": "2026-11-19T15:14:55.432Z",
+      "matchedAt": "2026-11-19T15:28:48.166Z",
       "used_on": [
         "tool:places.js"
       ]
@@ -2341,7 +2341,7 @@
     "nh-town-reports": {
       "source_url": "https://www.nhsl.dncr.nh.gov/collections/genealogical-resources/researching-your-nh-family-history",
       "quote": "Most towns have published an annual list of births, marriages, and deaths in the reports",
-      "matchedAt": "2026-11-19T15:14:55.432Z",
+      "matchedAt": "2026-11-19T15:28:48.166Z",
       "used_on": [
         "tool:places.js"
       ]
@@ -2349,7 +2349,7 @@
     "nj-mil-indents": {
       "source_url": "https://nj.gov/state/archives/guides/sdea0003.pdf",
       "quote": "is a county-by-county listing of New Jersey militiamen who were issued indents",
-      "matchedAt": "2026-11-19T15:13:09.020Z",
+      "matchedAt": "2026-11-19T15:27:08.384Z",
       "used_on": [
         "tool:places.js"
       ]
@@ -2357,7 +2357,7 @@
     "nj-mil-rosters": {
       "source_url": "https://nj.gov/state/archives/guides/sdea0003.pdf",
       "quote": "Compiled Rosters, New Jersey Militia and Continental Line, ca. 1776-1814",
-      "matchedAt": "2026-11-19T15:13:09.020Z",
+      "matchedAt": "2026-11-19T15:27:08.384Z",
       "used_on": [
         "tool:places.js"
       ]
@@ -2365,7 +2365,7 @@
     "nj-pre1848-birth": {
       "source_url": "https://www.nj.gov/state/archives/search-genealogical-collections.shtml",
       "quote": "Pre-1848 Birth Records Not filed at any level of New Jersey government except Records of Births of Slave Children",
-      "matchedAt": "2026-11-19T15:13:09.256Z",
+      "matchedAt": "2026-11-19T15:27:08.633Z",
       "used_on": [
         "lineage-matrix",
         "tool:places.js"
@@ -2374,7 +2374,7 @@
     "nj-pre1848-death": {
       "source_url": "https://www.nj.gov/state/archives/search-genealogical-collections.shtml",
       "quote": "Pre-1848 Death Records Not filed at any governmental level.",
-      "matchedAt": "2026-11-19T15:13:09.256Z",
+      "matchedAt": "2026-11-19T15:27:08.633Z",
       "used_on": [
         "tool:places.js"
       ]
@@ -2382,7 +2382,7 @@
     "nj-pre1848-marriage": {
       "source_url": "https://www.nj.gov/state/archives/search-genealogical-collections.shtml",
       "quote": "Required to be filed with the County Clerk starting in 1795",
-      "matchedAt": "2026-11-19T15:13:09.256Z",
+      "matchedAt": "2026-11-19T15:27:08.633Z",
       "used_on": [
         "tool:places.js"
       ]
@@ -2390,7 +2390,7 @@
     "nj-vital-1848": {
       "source_url": "https://www.nj.gov/state/archives/search-genealogical-collections.shtml",
       "quote": "New Jersey Vital Records (Births, May 1, 1848-December 31, 1925; Marriage and Death May 1, 1848",
-      "matchedAt": "2026-11-19T15:13:09.256Z",
+      "matchedAt": "2026-11-19T15:27:08.633Z",
       "used_on": [
         "tool:places.js"
       ]
@@ -2398,7 +2398,7 @@
     "nps-1818": {
       "source_url": "https://www.nps.gov/articles/000/what-might-you-find-in-the-revolutionary-war-pension-files.htm",
       "quote": "Act of 1818: Continental Line soldiers are eligible to apply for federal pensions.",
-      "matchedAt": "2026-11-19T15:13:01.285Z",
+      "matchedAt": "2026-11-19T15:27:00.785Z",
       "used_on": [
         "read-pension-file"
       ]
@@ -2414,7 +2414,7 @@
     "nps-1832": {
       "source_url": "https://www.nps.gov/articles/000/what-might-you-find-in-the-revolutionary-war-pension-files.htm",
       "quote": "Act of 1832: Eligibility was lowered to at least six months of service, making militia service eligible.",
-      "matchedAt": "2026-11-19T15:13:01.285Z",
+      "matchedAt": "2026-11-19T15:27:00.785Z",
       "used_on": [
         "read-pension-file",
         "records-by-state",
@@ -2424,7 +2424,7 @@
     "nps-1832-court": {
       "source_url": "https://www.nps.gov/articles/000/what-might-you-find-in-the-revolutionary-war-pension-files.htm",
       "quote": "required to appear before a Court of Record and provide oral testimony about their service",
-      "matchedAt": "2026-11-19T15:13:01.285Z",
+      "matchedAt": "2026-11-19T15:27:00.785Z",
       "used_on": [
         "read-pension-file"
       ]
@@ -2432,7 +2432,7 @@
     "nps-1836": {
       "source_url": "https://www.nps.gov/articles/000/what-might-you-find-in-the-revolutionary-war-pension-files.htm",
       "quote": "she had to have been married to a veteran before the war ended in 1783",
-      "matchedAt": "2026-11-19T15:13:01.285Z",
+      "matchedAt": "2026-11-19T15:27:00.785Z",
       "used_on": [
         "read-pension-file"
       ]
@@ -2440,7 +2440,7 @@
     "nps-applegate": {
       "source_url": "https://www.nps.gov/articles/000/what-might-you-find-in-the-revolutionary-war-pension-files.htm",
       "quote": "The first page of Zebulon's pension application (1832) is on page 3 of his file",
-      "matchedAt": "2026-11-19T15:13:01.285Z",
+      "matchedAt": "2026-11-19T15:27:00.785Z",
       "used_on": [
         "read-pension-file"
       ]
@@ -2448,7 +2448,7 @@
     "nps-applegate-32": {
       "source_url": "https://www.nps.gov/articles/000/what-might-you-find-in-the-revolutionary-war-pension-files.htm",
       "quote": "does not appear until page 32",
-      "matchedAt": "2026-11-19T15:13:01.285Z",
+      "matchedAt": "2026-11-19T15:27:00.785Z",
       "used_on": [
         "read-pension-file"
       ]
@@ -2456,7 +2456,7 @@
     "nps-applegate-widow": {
       "source_url": "https://www.nps.gov/articles/000/what-might-you-find-in-the-revolutionary-war-pension-files.htm",
       "quote": "His widow, Rebecca Applegate’s pension (1853) begins on page 14",
-      "matchedAt": "2026-11-19T15:13:01.285Z",
+      "matchedAt": "2026-11-19T15:27:00.785Z",
       "used_on": [
         "read-pension-file",
         "tool:tool-a.js",
@@ -2467,7 +2467,7 @@
     "nps-memory": {
       "source_url": "https://www.nps.gov/articles/000/what-might-you-find-in-the-revolutionary-war-pension-files.htm",
       "quote": "they might unintentionally mix up a date or the order of events",
-      "matchedAt": "2026-11-19T15:13:01.285Z",
+      "matchedAt": "2026-11-19T15:27:00.785Z",
       "used_on": [
         "read-pension-file"
       ]
@@ -2475,7 +2475,7 @@
     "nps-order": {
       "source_url": "https://www.nps.gov/articles/000/what-might-you-find-in-the-revolutionary-war-pension-files.htm",
       "quote": "Papers within a pension file are not arranged in any particular order",
-      "matchedAt": "2026-11-19T15:13:01.285Z",
+      "matchedAt": "2026-11-19T15:27:00.785Z",
       "used_on": [
         "partial:home",
         "read-pension-file"
@@ -2484,7 +2484,7 @@
     "nps-questions": {
       "source_url": "https://www.nps.gov/articles/000/what-might-you-find-in-the-revolutionary-war-pension-files.htm",
       "quote": "Where were you living when you were called into service",
-      "matchedAt": "2026-11-19T15:13:01.285Z",
+      "matchedAt": "2026-11-19T15:27:00.785Z",
       "used_on": [
         "read-pension-file"
       ]
@@ -2492,7 +2492,7 @@
     "nps-scale": {
       "source_url": "https://www.nps.gov/articles/000/what-might-you-find-in-the-revolutionary-war-pension-files.htm",
       "quote": "photographing more than 2.3 million documents in more than 83,000 files",
-      "matchedAt": "2026-11-19T15:13:01.285Z",
+      "matchedAt": "2026-11-19T15:27:00.785Z",
       "used_on": [
         "read-pension-file"
       ]
@@ -2500,7 +2500,7 @@
     "nps-shoemaker": {
       "source_url": "https://www.nps.gov/articles/000/what-might-you-find-in-the-revolutionary-war-pension-files.htm",
       "quote": "subsequently enlisted in a New Jersey Loyalist battalion",
-      "matchedAt": "2026-11-19T15:13:01.285Z",
+      "matchedAt": "2026-11-19T15:27:00.785Z",
       "used_on": [
         "patriot-or-loyalist"
       ]
@@ -2508,7 +2508,7 @@
     "nps-shoemaker-approved": {
       "source_url": "https://www.nps.gov/articles/000/what-might-you-find-in-the-revolutionary-war-pension-files.htm",
       "quote": "Shoemaker’s deception slipped by the clerks at the Pension Office",
-      "matchedAt": "2026-11-19T15:13:01.285Z",
+      "matchedAt": "2026-11-19T15:27:00.785Z",
       "used_on": [
         "patriot-or-loyalist"
       ]
@@ -2516,7 +2516,7 @@
     "nps-witness": {
       "source_url": "https://www.nps.gov/articles/000/what-might-you-find-in-the-revolutionary-war-pension-files.htm",
       "quote": "corroborated by at least one credible witness",
-      "matchedAt": "2026-11-19T15:13:01.285Z",
+      "matchedAt": "2026-11-19T15:27:00.785Z",
       "used_on": [
         "read-pension-file"
       ]
@@ -2524,7 +2524,7 @@
     "nscda-accumulation": {
       "source_url": "https://nscdasnc.memberclicks.net/assets/membership/Standards%20of%20Proof%202025.pdf",
       "quote": "When a primary source proof is missing, sometimes an accumulation of indirect or substitute proofs can be convincing.",
-      "matchedAt": "2026-11-19T15:13:01.865Z",
+      "matchedAt": "2026-11-19T15:27:01.453Z",
       "used_on": [
         "substitute-evidence"
       ]
@@ -2532,7 +2532,7 @@
     "nscda-affidavits": {
       "source_url": "https://nscdasnc.memberclicks.net/assets/membership/Standards%20of%20Proof%202025.pdf",
       "quote": "Affidavits – Attesting to personal knowledge of an event.",
-      "matchedAt": "2026-11-19T15:13:01.865Z",
+      "matchedAt": "2026-11-19T15:27:01.453Z",
       "used_on": [
         "substitute-evidence",
         "tool:tool-b.js"
@@ -2541,7 +2541,7 @@
     "nscda-bible-title": {
       "source_url": "https://nscdasnc.memberclicks.net/assets/membership/Standards%20of%20Proof%202025.pdf",
       "quote": "A copy of the title page showing the date of publication must accompany copies of Bible entries.",
-      "matchedAt": "2026-11-19T15:13:01.865Z",
+      "matchedAt": "2026-11-19T15:27:01.453Z",
       "used_on": [
         "substitute-evidence",
         "tool:tool-b.js"
@@ -2550,7 +2550,7 @@
     "nscda-cadwalader": {
       "source_url": "https://nscdasnc.memberclicks.net/assets/membership/Standards%20of%20Proof%202025.pdf",
       "quote": "Cadwalader Jones is the son of Peter Jones.",
-      "matchedAt": "2026-11-19T15:13:01.865Z",
+      "matchedAt": "2026-11-19T15:27:01.453Z",
       "used_on": [
         "same-name"
       ]
@@ -2558,7 +2558,7 @@
     "nscda-census-1850-1870": {
       "source_url": "https://nscdasnc.memberclicks.net/assets/membership/Standards%20of%20Proof%202025.pdf",
       "quote": "Census records from 1850-1870 do not state relationships",
-      "matchedAt": "2026-11-19T15:13:01.865Z",
+      "matchedAt": "2026-11-19T15:27:01.453Z",
       "used_on": [
         "census-bridge",
         "lineage-matrix",
@@ -2570,7 +2570,7 @@
     "nscda-census-1880": {
       "source_url": "https://nscdasnc.memberclicks.net/assets/membership/Standards%20of%20Proof%202025.pdf",
       "quote": "Census records for the period 1880-1900",
-      "matchedAt": "2026-11-19T15:13:01.865Z",
+      "matchedAt": "2026-11-19T15:27:01.453Z",
       "used_on": [
         "substitute-evidence",
         "tool:places.js"
@@ -2579,7 +2579,7 @@
     "nscda-census-case": {
       "source_url": "https://nscdasnc.memberclicks.net/assets/membership/Standards%20of%20Proof%202025.pdf",
       "quote": "Census records for 1850-1870 will be considered on a case-by-case basis or as part of a body of",
-      "matchedAt": "2026-11-19T15:13:01.865Z",
+      "matchedAt": "2026-11-19T15:27:01.453Z",
       "used_on": [
         "census-bridge"
       ]
@@ -2587,7 +2587,7 @@
     "nscda-church": {
       "source_url": "https://nscdasnc.memberclicks.net/assets/membership/Standards%20of%20Proof%202025.pdf",
       "quote": "Birth, baptism, marriage, death, or burial records.",
-      "matchedAt": "2026-11-19T15:13:01.865Z",
+      "matchedAt": "2026-11-19T15:27:01.453Z",
       "used_on": [
         "substitute-evidence",
         "tool:tool-b.js"
@@ -2596,7 +2596,7 @@
     "nscda-combine": {
       "source_url": "https://nscdasnc.memberclicks.net/assets/membership/Standards%20of%20Proof%202025.pdf",
       "quote": "Each of these substitutes should be used with one or more of the other substitutes so that a proof does not rely on only one document.",
-      "matchedAt": "2026-11-19T15:13:01.865Z",
+      "matchedAt": "2026-11-19T15:27:01.453Z",
       "used_on": [
         "substitute-evidence",
         "tool:tool-b.js"
@@ -2605,7 +2605,7 @@
     "nscda-county": {
       "source_url": "https://nscdasnc.memberclicks.net/assets/membership/Standards%20of%20Proof%202025.pdf",
       "quote": "Official records including wills, probate records, inventories, deeds, court orders, tax lists",
-      "matchedAt": "2026-11-19T15:13:01.865Z",
+      "matchedAt": "2026-11-19T15:27:01.453Z",
       "used_on": [
         "census-bridge",
         "substitute-evidence",
@@ -2615,7 +2615,7 @@
     "nscda-existence": {
       "source_url": "https://nscdasnc.memberclicks.net/assets/membership/Standards%20of%20Proof%202025.pdf",
       "quote": "Existence and parentage MUST be proven in each generation.",
-      "matchedAt": "2026-11-19T15:13:01.865Z",
+      "matchedAt": "2026-11-19T15:27:01.453Z",
       "used_on": [
         "substitute-evidence"
       ]
@@ -2623,7 +2623,7 @@
     "nscda-genealogy-citations": {
       "source_url": "https://nscdasnc.memberclicks.net/assets/membership/Standards%20of%20Proof%202025.pdf",
       "quote": "Printed family genealogies, without complete citations of documented references to primary source materials, are unacceptable.",
-      "matchedAt": "2026-11-19T15:13:01.865Z",
+      "matchedAt": "2026-11-19T15:27:01.453Z",
       "used_on": [
         "substitute-evidence"
       ]
@@ -2631,7 +2631,7 @@
     "nscda-gps": {
       "source_url": "https://nscdasnc.memberclicks.net/assets/membership/Standards%20of%20Proof%202025.pdf",
       "quote": "researchers should conduct a reasonably exhaustive search to prove relationships",
-      "matchedAt": "2026-11-19T15:13:01.865Z",
+      "matchedAt": "2026-11-19T15:27:01.453Z",
       "used_on": [
         "census-bridge"
       ]
@@ -2639,7 +2639,7 @@
     "nscda-license": {
       "source_url": "https://nscdasnc.memberclicks.net/assets/membership/Standards%20of%20Proof%202025.pdf",
       "quote": "it is not proof that the marriage took place",
-      "matchedAt": "2026-11-19T15:13:01.865Z",
+      "matchedAt": "2026-11-19T15:27:01.453Z",
       "used_on": [
         "substitute-evidence",
         "tool:tool-b.js"
@@ -2648,7 +2648,7 @@
     "nscda-marriage-cert": {
       "source_url": "https://nscdasnc.memberclicks.net/assets/membership/Standards%20of%20Proof%202025.pdf",
       "quote": "A marriage certificate is issued by the minister/Justice of the Peace/military/Clerk of Court after the service is performed",
-      "matchedAt": "2026-11-19T15:13:01.865Z",
+      "matchedAt": "2026-11-19T15:27:01.453Z",
       "used_on": [
         "substitute-evidence"
       ]
@@ -2656,7 +2656,7 @@
     "nscda-members-colonial": {
       "source_url": "https://nscda.org/about/membership/",
       "quote": "Members are descended from more than 10,000 men and women who served the American colonies prior to July 5, 1776.",
-      "matchedAt": "2026-11-19T15:13:07.122Z",
+      "matchedAt": "2026-11-19T15:27:06.538Z",
       "used_on": [
         "partial:glossary"
       ]
@@ -2664,7 +2664,7 @@
     "nscda-name-national": {
       "source_url": "https://nscda.org/about/membership/",
       "quote": "The National Society of the Colonial Dames of America is a national organization",
-      "matchedAt": "2026-11-19T15:13:07.122Z",
+      "matchedAt": "2026-11-19T15:27:06.538Z",
       "used_on": [
         "partial:glossary",
         "tool:tool-b.js"
@@ -2673,7 +2673,7 @@
     "nscda-newspapers": {
       "source_url": "https://nscdasnc.memberclicks.net/assets/membership/Standards%20of%20Proof%202025.pdf",
       "quote": "announcements MUST include the dateline and the name of the paper",
-      "matchedAt": "2026-11-19T15:13:01.865Z",
+      "matchedAt": "2026-11-19T15:27:01.453Z",
       "used_on": [
         "substitute-evidence"
       ]
@@ -2681,7 +2681,7 @@
     "nscda-not-same": {
       "source_url": "https://nscdasnc.memberclicks.net/assets/membership/Standards%20of%20Proof%202025.pdf",
       "quote": "Not all lineage societies have the exact same requirements for proofs.",
-      "matchedAt": "2026-11-19T15:13:01.865Z",
+      "matchedAt": "2026-11-19T15:27:01.453Z",
       "used_on": [
         "substitute-evidence"
       ]
@@ -2689,7 +2689,7 @@
     "nscda-other-society": {
       "source_url": "https://nscdasnc.memberclicks.net/assets/membership/Standards%20of%20Proof%202025.pdf",
       "quote": "Lineage Papers from other Genealogy Societies ARE NOT PROOFS.",
-      "matchedAt": "2026-11-19T15:13:01.865Z",
+      "matchedAt": "2026-11-19T15:27:01.453Z",
       "used_on": [
         "substitute-evidence"
       ]
@@ -2697,7 +2697,7 @@
     "nscda-same-county": {
       "source_url": "https://nscdasnc.memberclicks.net/assets/membership/Standards%20of%20Proof%202025.pdf",
       "quote": "if John Smith is mentioned in a census and a deed in the same county, as well as in a court order in the same county, then it MAY be enough",
-      "matchedAt": "2026-11-19T15:13:01.865Z",
+      "matchedAt": "2026-11-19T15:27:01.453Z",
       "used_on": [
         "same-name"
       ]
@@ -2705,7 +2705,7 @@
     "nscda-short-form": {
       "source_url": "https://nscdasnc.memberclicks.net/assets/membership/Standards%20of%20Proof%202025.pdf",
       "quote": "Short forms are NOT acceptable.",
-      "matchedAt": "2026-11-19T15:13:01.865Z",
+      "matchedAt": "2026-11-19T15:27:01.453Z",
       "used_on": [
         "lineage-matrix",
         "substitute-evidence",
@@ -2715,7 +2715,7 @@
     "nscda-will-example": {
       "source_url": "https://nscdasnc.memberclicks.net/assets/membership/Standards%20of%20Proof%202025.pdf",
       "quote": "then the will does not actually PROVE their marriage",
-      "matchedAt": "2026-11-19T15:13:01.865Z",
+      "matchedAt": "2026-11-19T15:27:01.453Z",
       "used_on": [
         "substitute-evidence"
       ]
@@ -2723,7 +2723,7 @@
     "ny-lib-capitol-fire": {
       "source_url": "https://nysl.nysed.gov/genealogy/precivil",
       "quote": "although many of those records were destroyed in the Capitol fire of 1911",
-      "matchedAt": "2026-11-19T15:14:59.106Z",
+      "matchedAt": "2026-11-19T15:28:51.678Z",
       "used_on": [
         "tool:places.js"
       ]
@@ -2731,7 +2731,7 @@
     "ny-lib-pension-not-held": {
       "source_url": "https://nysl.nysed.gov/genealogy/precivil",
       "quote": "The pension and bounty land warrant files indexed in this book are not in the New York State Library.",
-      "matchedAt": "2026-11-19T15:14:59.106Z",
+      "matchedAt": "2026-11-19T15:28:51.678Z",
       "used_on": [
         "tool:places.js"
       ]
@@ -2739,7 +2739,7 @@
     "ny-lib-roster": {
       "source_url": "https://nysl.nysed.gov/genealogy/precivil",
       "quote": "This work includes an alphabetical roster of State troops and other details extracted from muster rolls.",
-      "matchedAt": "2026-11-19T15:14:59.106Z",
+      "matchedAt": "2026-11-19T15:28:51.678Z",
       "used_on": [
         "tool:places.js"
       ]
@@ -2747,7 +2747,7 @@
     "ny-vital-1880-1881": {
       "source_url": "https://nysl.nysed.gov/genealogy/vitrec",
       "quote": "provides birth and marriage records from 1881, death records from 1880",
-      "matchedAt": "2026-11-19T15:14:59.163Z",
+      "matchedAt": "2026-11-19T15:28:51.735Z",
       "used_on": [
         "tool:places.js"
       ]
@@ -2755,7 +2755,7 @@
     "ny-vital-local-church": {
       "source_url": "https://nysl.nysed.gov/genealogy/vitrec",
       "quote": "Some information may be found in local government records offices and in church or cemetery records.",
-      "matchedAt": "2026-11-19T15:14:59.163Z",
+      "matchedAt": "2026-11-19T15:28:51.735Z",
       "used_on": [
         "tool:places.js"
       ]
@@ -2763,7 +2763,7 @@
     "ny-vital-pre1881-library": {
       "source_url": "https://nysl.nysed.gov/genealogy/vitrec",
       "quote": "Vital records for the period before 1881 may be obtained from the New York State Library's extensive collection",
-      "matchedAt": "2026-11-19T15:14:59.163Z",
+      "matchedAt": "2026-11-19T15:28:51.735Z",
       "used_on": [
         "tool:places.js"
       ]
@@ -2771,7 +2771,7 @@
     "nypl-ct": {
       "source_url": "https://libguides.nypl.org/military-genealogy/revolutionary-war",
       "quote": "Connecticut State Library -- Revolutionary War Service Records",
-      "matchedAt": "2026-11-19T15:13:01.704Z",
+      "matchedAt": "2026-11-19T15:27:01.234Z",
       "used_on": [
         "records-by-state"
       ]
@@ -2779,7 +2779,7 @@
     "nypl-de": {
       "source_url": "https://libguides.nypl.org/military-genealogy/revolutionary-war",
       "quote": "Delaware Public Archives Guide to Revolutionary War Records",
-      "matchedAt": "2026-11-19T15:13:01.704Z",
+      "matchedAt": "2026-11-19T15:27:01.234Z",
       "used_on": [
         "records-by-state"
       ]
@@ -2787,7 +2787,7 @@
     "nypl-pa": {
       "source_url": "https://libguides.nypl.org/military-genealogy/revolutionary-war",
       "quote": "Pennsylvania Historical and Museum Commission -- Revolutionary War Overview",
-      "matchedAt": "2026-11-19T15:13:01.704Z",
+      "matchedAt": "2026-11-19T15:27:01.234Z",
       "used_on": [
         "records-by-state"
       ]
@@ -2795,7 +2795,7 @@
     "nypl-representative": {
       "source_url": "https://libguides.nypl.org/military-genealogy/revolutionary-war",
       "quote": "note that this list is representative, not exhaustive",
-      "matchedAt": "2026-11-19T15:13:01.704Z",
+      "matchedAt": "2026-11-19T15:27:01.234Z",
       "used_on": [
         "records-by-state"
       ]
@@ -2803,7 +2803,7 @@
     "nypl-sc": {
       "source_url": "https://libguides.nypl.org/military-genealogy/revolutionary-war",
       "quote": "Sources for the American Revolution at the South Carolina Department of Archives and History",
-      "matchedAt": "2026-11-19T15:13:01.704Z",
+      "matchedAt": "2026-11-19T15:27:01.234Z",
       "used_on": [
         "records-by-state"
       ]
@@ -2811,7 +2811,7 @@
     "nypl-search": {
       "source_url": "https://libguides.nypl.org/military-genealogy/revolutionary-war",
       "quote": "try an internet search for the State Archives and/or State Historical Society",
-      "matchedAt": "2026-11-19T15:13:01.704Z",
+      "matchedAt": "2026-11-19T15:27:01.234Z",
       "used_on": [
         "records-by-state",
         "tool:places.js"
@@ -2820,7 +2820,7 @@
     "ohsar-30min": {
       "source_url": "https://cincinnatisar.org/wp-content/uploads/2023/05/Presentation-How-to-Produce-Approval-Ready-Applications-and-Reduce-Turnaround-Time.pdf",
       "quote": "reviews at National can be completed in as little as 30 minutes",
-      "matchedAt": "2026-11-19T15:12:58.908Z",
+      "matchedAt": "2026-11-19T15:26:58.191Z",
       "used_on": [
         "application-problems"
       ]
@@ -2836,7 +2836,7 @@
     "ohsar-from-docs": {
       "source_url": "https://cincinnatisar.org/wp-content/uploads/2023/05/Presentation-How-to-Produce-Approval-Ready-Applications-and-Reduce-Turnaround-Time.pdf",
       "quote": "ALWAYS complete an application from the documentation!",
-      "matchedAt": "2026-11-19T15:12:58.908Z",
+      "matchedAt": "2026-11-19T15:26:58.191Z",
       "used_on": [
         "application-problems"
       ]
@@ -2844,7 +2844,7 @@
     "ohsar-naming": {
       "source_url": "https://cincinnatisar.org/wp-content/uploads/2023/05/Presentation-How-to-Produce-Approval-Ready-Applications-and-Reduce-Turnaround-Time.pdf",
       "quote": "Not providing adequate proofs for parent-to-child connections, including resolution of naming conflicts.",
-      "matchedAt": "2026-11-19T15:12:58.908Z",
+      "matchedAt": "2026-11-19T15:26:58.191Z",
       "used_on": [
         "application-problems",
         "same-name"
@@ -2853,7 +2853,7 @@
     "ohsar-superfluous": {
       "source_url": "https://cincinnatisar.org/wp-content/uploads/2023/05/Presentation-How-to-Produce-Approval-Ready-Applications-and-Reduce-Turnaround-Time.pdf",
       "quote": "Superfluous documentation",
-      "matchedAt": "2026-11-19T15:12:58.908Z",
+      "matchedAt": "2026-11-19T15:26:58.191Z",
       "used_on": [
         "application-problems"
       ]
@@ -2861,7 +2861,7 @@
     "ohsar-unsupported": {
       "source_url": "https://cincinnatisar.org/wp-content/uploads/2023/05/Presentation-How-to-Produce-Approval-Ready-Applications-and-Reduce-Turnaround-Time.pdf",
       "quote": "Lineage data entered but not supported by documentation.",
-      "matchedAt": "2026-11-19T15:12:58.908Z",
+      "matchedAt": "2026-11-19T15:26:58.191Z",
       "used_on": [
         "application-problems"
       ]
@@ -2869,7 +2869,7 @@
     "pa-arch-1906": {
       "source_url": "https://www.pa.gov/services/phmc/request-a-birth-or-death-certificate",
       "quote": "hold original Pennsylvania birth certificates for 1906-1920 and death certificates for 1906-1975",
-      "matchedAt": "2026-11-19T15:13:09.352Z",
+      "matchedAt": "2026-11-19T15:27:08.817Z",
       "used_on": [
         "tool:places.js"
       ]
@@ -2877,7 +2877,7 @@
     "pa-doh-certified": {
       "source_url": "https://www.pa.gov/agencies/health/programs/vital-records/genealogy",
       "quote": "All certified copies of birth and death records are issued by the Division of Vital Records, regardless if they are public records or not.",
-      "matchedAt": "2026-11-19T15:13:09.333Z",
+      "matchedAt": "2026-11-19T15:27:08.759Z",
       "used_on": [
         "tool:places.js"
       ]
@@ -2885,7 +2885,7 @@
     "pa-doh-pre1906": {
       "source_url": "https://www.pa.gov/agencies/health/programs/vital-records/genealogy",
       "quote": "Information on birth or death records that occurred prior to 1906 can be obtained by contacting the appropriate Pennsylvania County Courthouse.",
-      "matchedAt": "2026-11-19T15:13:09.333Z",
+      "matchedAt": "2026-11-19T15:27:08.759Z",
       "used_on": [
         "tool:places.js"
       ]
@@ -2893,7 +2893,7 @@
     "pa-rev-slip": {
       "source_url": "https://www.pa.gov/agencies/phmc/pa-state-archives/research-online/research-guides/revolutionary-war-overview",
       "quote": "Thousands of militiamen returned from tours of active duty unpaid, bearing only a slip signed by a commanding officer.",
-      "matchedAt": "2026-11-19T15:13:09.309Z",
+      "matchedAt": "2026-11-19T15:27:08.711Z",
       "used_on": [
         "tool:places.js"
       ]
@@ -2901,7 +2901,7 @@
     "prologue-federal-only": {
       "source_url": "https://www.archives.gov/publications/prologue/2015/summer/rev-war-pensions.html",
       "quote": "contain only the records of pensions granted or paid by the U.S. federal government",
-      "matchedAt": "2026-11-19T15:13:01.240Z",
+      "matchedAt": "2026-11-19T15:27:00.732Z",
       "used_on": [
         "read-pension-file"
       ]
@@ -2909,7 +2909,7 @@
     "prologue-ide-affidavit": {
       "source_url": "https://www.archives.gov/publications/prologue/2015/summer/rev-war-pensions.html",
       "quote": "Daniel swore to the affidavit on March 1, 1839.",
-      "matchedAt": "2026-11-19T15:13:01.240Z",
+      "matchedAt": "2026-11-19T15:27:00.732Z",
       "used_on": [
         "census-bridge"
       ]
@@ -2917,7 +2917,7 @@
     "prologue-ide-age": {
       "source_url": "https://www.archives.gov/publications/prologue/2015/summer/rev-war-pensions.html",
       "quote": "His age of 56 years at the time gives us a birth year of 1783",
-      "matchedAt": "2026-11-19T15:13:01.240Z",
+      "matchedAt": "2026-11-19T15:27:00.732Z",
       "used_on": [
         "census-bridge"
       ]
@@ -2925,7 +2925,7 @@
     "prologue-ide-ma": {
       "source_url": "https://www.archives.gov/publications/prologue/2015/summer/rev-war-pensions.html",
       "quote": "a researcher might not consider this pension file because Israel served from Massachusetts",
-      "matchedAt": "2026-11-19T15:13:01.240Z",
+      "matchedAt": "2026-11-19T15:27:00.732Z",
       "used_on": [
         "census-bridge",
         "same-name"
@@ -2972,7 +2972,7 @@
     "ri-pres-first-regiment": {
       "source_url": "https://sosri.access.preservica.com/uncategorized/SO_6db31295-6c55-44bb-a5af-83989afb8c81/",
       "quote": "Revolutionary War Record Book, First Rhode Island Regiment",
-      "matchedAt": "2026-11-19T15:14:57.557Z",
+      "matchedAt": "2026-11-19T15:28:50.285Z",
       "used_on": [
         "tool:places.js"
       ]
@@ -2980,7 +2980,7 @@
     "ri-pres-transcripts": {
       "source_url": "https://sosri.access.preservica.com/uncategorized/SO_6db31295-6c55-44bb-a5af-83989afb8c81/",
       "quote": "Revolutionary War Military Records transcripts: Volume 1",
-      "matchedAt": "2026-11-19T15:14:57.557Z",
+      "matchedAt": "2026-11-19T15:28:50.285Z",
       "used_on": [
         "tool:places.js"
       ]
@@ -2988,7 +2988,7 @@
     "ri-vital-certify": {
       "source_url": "https://www.sos.ri.gov/divisions/state-archives/VitalRecords",
       "quote": "The State Archives can certify all open state vital records for births and marriages from 1853-1925",
-      "matchedAt": "2026-11-19T15:14:55.573Z",
+      "matchedAt": "2026-11-19T15:28:48.300Z",
       "used_on": [
         "tool:places.js"
       ]
@@ -2996,7 +2996,7 @@
     "ri-vital-closed-health": {
       "source_url": "https://www.sos.ri.gov/divisions/state-archives/VitalRecords",
       "quote": "Requests for closed vital records should be directed to the following repository: Rhode Island Department of Health",
-      "matchedAt": "2026-11-19T15:14:55.573Z",
+      "matchedAt": "2026-11-19T15:28:48.300Z",
       "used_on": [
         "tool:places.js"
       ]
@@ -3004,7 +3004,7 @@
     "ri-vital-deaths": {
       "source_url": "https://www.sos.ri.gov/divisions/state-archives/VitalRecords",
       "quote": "deaths from 1853-1975",
-      "matchedAt": "2026-11-19T15:14:55.573Z",
+      "matchedAt": "2026-11-19T15:28:48.300Z",
       "used_on": [
         "tool:places.js"
       ]
@@ -3012,7 +3012,7 @@
     "ri-vital-pre1853": {
       "source_url": "https://www.sos.ri.gov/divisions/state-archives/VitalRecords",
       "quote": "Microfilm copies of records prior to 1853 are available at the State Archives",
-      "matchedAt": "2026-11-19T15:14:55.573Z",
+      "matchedAt": "2026-11-19T15:28:48.300Z",
       "used_on": [
         "tool:places.js"
       ]
@@ -3020,7 +3020,7 @@
     "sar-about-age": {
       "source_url": "https://www.sar.org/sar-missions-and-goals/",
       "quote": "Any male 18 years or older",
-      "matchedAt": "2026-11-19T15:13:06.984Z",
+      "matchedAt": "2026-11-19T15:27:06.218Z",
       "used_on": [
         "faq",
         "partial:glossary",
@@ -3030,7 +3030,7 @@
     "sar-about-eligible": {
       "source_url": "https://www.sar.org/sar-missions-and-goals/",
       "quote": "who can prove blood lineal descent from a patriot of the American Revolution, is eligible for membership",
-      "matchedAt": "2026-11-19T15:13:06.984Z",
+      "matchedAt": "2026-11-19T15:27:06.218Z",
       "used_on": [
         "faq",
         "partial:glossary",
@@ -3041,7 +3041,7 @@
     "sar-about-patriots": {
       "source_url": "https://www.sar.org/sar-missions-and-goals/",
       "quote": "lineal descendants of the patriots who wintered at Valley Forge, signed the Declaration of Independence, fought in the battles of the American Revolution, served in the Continental Congress, or otherwise supported the cause of American Independence",
-      "matchedAt": "2026-11-19T15:13:06.984Z",
+      "matchedAt": "2026-11-19T15:27:06.218Z",
       "used_on": [
         "faq",
         "partial:glossary",
@@ -3052,7 +3052,7 @@
     "sar-apg-all-proven": {
       "source_url": "https://www.sar.org/app/uploads/APG-07-June-2026.pdf",
       "quote": "All names, dates and places on the application must be proven",
-      "matchedAt": "2026-11-19T15:12:59.192Z",
+      "matchedAt": "2026-11-19T15:26:58.468Z",
       "used_on": [
         "lineage-proof-roadmap"
       ]
@@ -3060,7 +3060,7 @@
     "sar-apg-bc-court": {
       "source_url": "https://www.sar.org/app/uploads/APG-07-June-2026.pdf",
       "quote": "The applicant may need a court order if the birth certificate fails to identify the applicant's gender as male.",
-      "matchedAt": "2026-11-19T15:12:59.192Z",
+      "matchedAt": "2026-11-19T15:26:58.468Z",
       "used_on": [
         "application-problems"
       ]
@@ -3068,7 +3068,7 @@
     "sar-apg-bc-gender": {
       "source_url": "https://www.sar.org/app/uploads/APG-07-June-2026.pdf",
       "quote": "Birth certificate or court order is required for all new applicants that specifies his gender as male.",
-      "matchedAt": "2026-11-19T15:12:59.192Z",
+      "matchedAt": "2026-11-19T15:26:58.468Z",
       "used_on": [
         "application-problems"
       ]
@@ -3076,7 +3076,7 @@
     "sar-apg-bc-shortform": {
       "source_url": "https://www.sar.org/app/uploads/APG-07-June-2026.pdf",
       "quote": "Short-form birth certificates that do not identify the parents are insufficient.",
-      "matchedAt": "2026-11-19T15:12:59.192Z",
+      "matchedAt": "2026-11-19T15:26:58.468Z",
       "used_on": [
         "application-problems"
       ]
@@ -3084,7 +3084,7 @@
     "sar-apg-date-format": {
       "source_url": "https://www.sar.org/app/uploads/APG-07-June-2026.pdf",
       "quote": "All dates must be entered using the format “01 Jan 1900,” using only the first three letters of each month",
-      "matchedAt": "2026-11-19T15:12:59.192Z",
+      "matchedAt": "2026-11-19T15:26:58.468Z",
       "used_on": [
         "application-problems"
       ]
@@ -3092,7 +3092,7 @@
     "sar-apg-fee-nonrefundable": {
       "source_url": "https://www.sar.org/app/uploads/APG-07-June-2026.pdf",
       "quote": "Moreover, his filing fee is not refundable.",
-      "matchedAt": "2026-11-19T15:12:59.192Z",
+      "matchedAt": "2026-11-19T15:26:58.468Z",
       "used_on": [
         "application-problems"
       ]
@@ -3100,7 +3100,7 @@
     "sar-apg-junior": {
       "source_url": "https://www.sar.org/app/uploads/APG-07-June-2026.pdf",
       "quote": "A male under 18 years of age can apply for Junior Membership in SAR.",
-      "matchedAt": "2026-11-19T15:12:59.192Z",
+      "matchedAt": "2026-11-19T15:26:58.468Z",
       "used_on": [
         "partial:glossary",
         "partial:how-to-join"
@@ -3109,7 +3109,7 @@
     "sar-apg-nicknames": {
       "source_url": "https://www.sar.org/app/uploads/APG-07-June-2026.pdf",
       "quote": "When entered, they are to be in quotation marks",
-      "matchedAt": "2026-11-19T15:12:59.192Z",
+      "matchedAt": "2026-11-19T15:26:58.468Z",
       "used_on": [
         "application-problems"
       ]
@@ -3117,7 +3117,7 @@
     "sar-apg-not-every": {
       "source_url": "https://www.sar.org/app/uploads/APG-07-June-2026.pdf",
       "quote": "The applicant is not required to provide every name, date, and place on the application",
-      "matchedAt": "2026-11-19T15:12:59.192Z",
+      "matchedAt": "2026-11-19T15:26:58.468Z",
       "used_on": [
         "application-problems"
       ]
@@ -3125,7 +3125,7 @@
     "sar-apg-patriot-age": {
       "source_url": "https://www.sar.org/app/uploads/APG-07-June-2026.pdf",
       "quote": "If it is impossible or impractical to ascertain the date of birth, cite some fact with proof, to show the ancestor was living at the time of the claimed service and of age for the service claimed.",
-      "matchedAt": "2026-11-19T15:12:59.192Z",
+      "matchedAt": "2026-11-19T15:26:58.468Z",
       "used_on": [
         "application-problems",
         "same-name"
@@ -3134,7 +3134,7 @@
     "sar-apg-patriot-residence": {
       "source_url": "https://www.sar.org/app/uploads/APG-07-June-2026.pdf",
       "quote": "The residency of the patriot during the time of the Revolution must agree with the service being claimed.",
-      "matchedAt": "2026-11-19T15:12:59.192Z",
+      "matchedAt": "2026-11-19T15:26:58.468Z",
       "used_on": [
         "application-problems",
         "same-name"
@@ -3143,7 +3143,7 @@
     "sar-apg-record-copy": {
       "source_url": "https://www.sar.org/app/uploads/APG-07-June-2026.pdf",
       "quote": "If using a DAR application as proof, it must: (1) be an official DAR record copy (not a chapter copy)",
-      "matchedAt": "2026-11-19T15:12:59.192Z",
+      "matchedAt": "2026-11-19T15:26:58.468Z",
       "used_on": [
         "application-problems"
       ]
@@ -3151,7 +3151,7 @@
     "sar-apg-signatures": {
       "source_url": "https://www.sar.org/app/uploads/APG-07-June-2026.pdf",
       "quote": "The new member application must include the signatures of the applicant, two sponsors, the State Registrar, and the State Secretary.",
-      "matchedAt": "2026-11-19T15:12:59.192Z",
+      "matchedAt": "2026-11-19T15:26:58.468Z",
       "used_on": [
         "application-problems"
       ]
@@ -3159,7 +3159,7 @@
     "sar-apg-slashes": {
       "source_url": "https://www.sar.org/app/uploads/APG-07-June-2026.pdf",
       "quote": "Use slashes to indicate additional spellings of the name",
-      "matchedAt": "2026-11-19T15:12:59.192Z",
+      "matchedAt": "2026-11-19T15:26:58.468Z",
       "used_on": [
         "application-problems"
       ]
@@ -3167,7 +3167,7 @@
     "sar-apg-supp-sig": {
       "source_url": "https://www.sar.org/app/uploads/APG-07-June-2026.pdf",
       "quote": "A supplemental application only requires the signatures of the applicant and the State Registrar",
-      "matchedAt": "2026-11-19T15:12:59.192Z",
+      "matchedAt": "2026-11-19T15:26:58.468Z",
       "used_on": [
         "application-problems"
       ]
@@ -3175,7 +3175,7 @@
     "sar-apply-print": {
       "source_url": "https://www.sar.org/how-to-apply/",
       "quote": "Please make sure that you print off the application and give it to your Chapter Registrar to begin processing.",
-      "matchedAt": "2026-11-19T15:13:03.481Z",
+      "matchedAt": "2026-11-19T15:27:02.975Z",
       "used_on": [
         "partial:how-to-join"
       ]
@@ -3183,7 +3183,7 @@
     "sar-apply-submit": {
       "source_url": "https://www.sar.org/how-to-apply/",
       "quote": "submit your SAR membership application (with all related documentation) to your sponsoring SAR chapter for approval",
-      "matchedAt": "2026-11-19T15:13:03.481Z",
+      "matchedAt": "2026-11-19T15:27:02.975Z",
       "used_on": [
         "partial:how-to-join"
       ]
@@ -3191,7 +3191,7 @@
     "sar-bloodline": {
       "source_url": "https://www.sar.org/step-1/",
       "quote": "Proving bloodline descent, whether legitimate or illegitimate, from a patriot ancestor to yourself is what is required for SAR membership",
-      "matchedAt": "2026-11-19T15:12:58.311Z",
+      "matchedAt": "2026-11-19T15:26:57.482Z",
       "used_on": [
         "faq",
         "lineage-proof-roadmap",
@@ -3209,7 +3209,7 @@
     "sar-checklist-supp-sig": {
       "source_url": "https://members.sar.org/media/uploads/pages/334/wPXSPrcD0cuU.pdf",
       "quote": "For supplemental applications, have the member and the State Registrar (or other designated officer) signed on the back?",
-      "matchedAt": "2026-11-19T15:12:59.646Z",
+      "matchedAt": "2026-11-19T15:26:58.879Z",
       "used_on": [
         "application-problems"
       ]
@@ -3217,7 +3217,7 @@
     "sar-clergy": {
       "source_url": "https://www.sar.org/step-1/",
       "quote": "performed overt acts of resistance to the authority of Great Britain which could only be performed by religious leaders",
-      "matchedAt": "2026-11-19T15:12:58.311Z",
+      "matchedAt": "2026-11-19T15:26:57.482Z",
       "used_on": [
         "patriotic-service"
       ]
@@ -3225,7 +3225,7 @@
     "sar-committees": {
       "source_url": "https://www.sar.org/step-1/",
       "quote": "committees of safety, observation, inspection, and correspondence",
-      "matchedAt": "2026-11-19T15:12:58.311Z",
+      "matchedAt": "2026-11-19T15:26:57.482Z",
       "used_on": [
         "patriotic-service"
       ]
@@ -3233,7 +3233,7 @@
     "sar-directed": {
       "source_url": "https://www.sar.org/step-1/",
       "quote": "persons directed to hold elections, to oversee road construction, to collect provisions",
-      "matchedAt": "2026-11-19T15:12:58.311Z",
+      "matchedAt": "2026-11-19T15:26:57.482Z",
       "used_on": [
         "patriotic-service"
       ]
@@ -3241,7 +3241,7 @@
     "sar-find-contact": {
       "source_url": "https://www.sar.org/find-your-contact/",
       "quote": "Find Your Local Society Contact",
-      "matchedAt": "2026-11-19T15:13:04.702Z",
+      "matchedAt": "2026-11-19T15:27:04.071Z",
       "used_on": [
         "tool:next-steps.js"
       ]
@@ -3249,7 +3249,7 @@
     "sar-gcp-24004": {
       "source_url": "https://www.sar.org/app/uploads/NSSAR-Genealogy-Policy-Manual-2026-12-5.pdf",
       "quote": "Payment of a tax to a state or a local jurisdiction during the Revolution shall be deemed Patriotic Service",
-      "matchedAt": "2026-11-19T15:12:59.355Z",
+      "matchedAt": "2026-11-19T15:26:58.601Z",
       "used_on": [
         "patriotic-service"
       ]
@@ -3257,7 +3257,7 @@
     "sar-gcp-24004-examples": {
       "source_url": "https://www.sar.org/app/uploads/NSSAR-Genealogy-Policy-Manual-2026-12-5.pdf",
       "quote": "This includes, but is not limited to, marriage licenses, writs, and the inspection or storage of commodities.",
-      "matchedAt": "2026-11-19T15:12:59.355Z",
+      "matchedAt": "2026-11-19T15:26:58.601Z",
       "used_on": [
         "patriotic-service"
       ]
@@ -3265,7 +3265,7 @@
     "sar-gcp-24004-license": {
       "source_url": "https://www.sar.org/app/uploads/NSSAR-Genealogy-Policy-Manual-2026-12-5.pdf",
       "quote": "Payment of a tax or fee to a state or local jurisdiction shall not be deemed Patriotic Service if the payment was a license or specific governmental service for personal benefit, even if called a tax.",
-      "matchedAt": "2026-11-19T15:12:59.355Z",
+      "matchedAt": "2026-11-19T15:26:58.601Z",
       "used_on": [
         "patriotic-service"
       ]
@@ -3273,7 +3273,7 @@
     "sar-gcp-24004-obligation": {
       "source_url": "https://www.sar.org/app/uploads/NSSAR-Genealogy-Policy-Manual-2026-12-5.pdf",
       "quote": "Evidence merely that a person had a legal obligation to pay a tax is not sufficient to establish service.",
-      "matchedAt": "2026-11-19T15:12:59.355Z",
+      "matchedAt": "2026-11-19T15:26:58.601Z",
       "used_on": [
         "patriotic-service"
       ]
@@ -3281,7 +3281,7 @@
     "sar-gcp-24004-penalty": {
       "source_url": "https://www.sar.org/app/uploads/NSSAR-Genealogy-Policy-Manual-2026-12-5.pdf",
       "quote": "the taxpayer was not charged a penalty rate or fee imposed for breaking the law and/or the taxpayer was not on record for having broken a law entailing a penalty such as a higher rate, penalty fee, fine, or seizure of property",
-      "matchedAt": "2026-11-19T15:12:59.355Z",
+      "matchedAt": "2026-11-19T15:26:58.601Z",
       "used_on": [
         "patriotic-service"
       ]
@@ -3289,7 +3289,7 @@
     "sar-gcp-24004-record": {
       "source_url": "https://www.sar.org/app/uploads/NSSAR-Genealogy-Policy-Manual-2026-12-5.pdf",
       "quote": "A record such as a tax assessment roll, payment list, or a receipt is required.",
-      "matchedAt": "2026-11-19T15:12:59.355Z",
+      "matchedAt": "2026-11-19T15:26:58.601Z",
       "used_on": [
         "patriotic-service"
       ]
@@ -3297,7 +3297,7 @@
     "sar-gcp-32001": {
       "source_url": "https://www.sar.org/app/uploads/NSSAR-Genealogy-Policy-Manual-2026-12-5.pdf",
       "quote": "the applicant must present the conflicting evidence and provide a written explanation of how to resolve the conflict",
-      "matchedAt": "2026-11-19T15:12:59.355Z",
+      "matchedAt": "2026-11-19T15:26:58.601Z",
       "used_on": [
         "application-problems"
       ]
@@ -3305,7 +3305,7 @@
     "sar-gcp-34001": {
       "source_url": "https://www.sar.org/app/uploads/NSSAR-Genealogy-Policy-Manual-2026-12-5.pdf",
       "quote": "1850, 1860 and 1870 Census records that show a family unit without explicitly stating the parent-to- child relationship. Unless there is information tending to argue against this assumption, it should be accepted as proof of lineage.",
-      "matchedAt": "2026-11-19T15:12:59.355Z",
+      "matchedAt": "2026-11-19T15:26:58.601Z",
       "used_on": [
         "census-bridge",
         "lineage-matrix",
@@ -3317,7 +3317,7 @@
     "sar-gcp-35003-drc": {
       "source_url": "https://www.sar.org/app/uploads/NSSAR-Genealogy-Policy-Manual-2026-12-5.pdf",
       "quote": "Official record copies of applications for membership in the Daughters of the American Revolution (DAR) or the Children of the American Revolution (C.A.R.) approved after 1 January 1985 shall be accepted as evidence of corresponding service, lineage and related facts on SAR applications.",
-      "matchedAt": "2026-11-19T15:12:59.355Z",
+      "matchedAt": "2026-11-19T15:26:58.601Z",
       "used_on": [
         "application-problems",
         "substitute-evidence"
@@ -3326,7 +3326,7 @@
     "sar-gcp-35004-sar": {
       "source_url": "https://www.sar.org/app/uploads/NSSAR-Genealogy-Policy-Manual-2026-12-5.pdf",
       "quote": "Official record copies of applications for membership in the Sons of the American Revolution approved after 1 January 2012 shall be accepted as evidence of corresponding service, lineage and related facts on SAR applications.",
-      "matchedAt": "2026-11-19T15:12:59.355Z",
+      "matchedAt": "2026-11-19T15:26:58.601Z",
       "used_on": [
         "substitute-evidence"
       ]
@@ -3334,7 +3334,7 @@
     "sar-gcp-35006-7": {
       "source_url": "https://www.sar.org/app/uploads/NSSAR-Genealogy-Policy-Manual-2026-12-5.pdf",
       "quote": "Unpublished transcriptions or abstracts of wills or other legal documents posted online.",
-      "matchedAt": "2026-11-19T15:12:59.355Z",
+      "matchedAt": "2026-11-19T15:26:58.601Z",
       "used_on": [
         "application-problems"
       ]
@@ -3342,7 +3342,7 @@
     "sar-gcp-45003-pub": {
       "source_url": "https://www.sar.org/app/uploads/NSSAR-Genealogy-Policy-Manual-2026-12-5.pdf",
       "quote": "Quote or abstract records of the first two types",
-      "matchedAt": "2026-11-19T15:12:59.355Z",
+      "matchedAt": "2026-11-19T15:26:58.601Z",
       "used_on": [
         "application-problems"
       ]
@@ -3350,7 +3350,7 @@
     "sar-gcp-loyalty": {
       "source_url": "https://www.sar.org/app/uploads/NSSAR-Genealogy-Policy-Manual-2026-12-5.pdf",
       "quote": "In all cases, activity disloyal to the American cause of Independence disqualifies service prior to the act of disloyalty as acceptable for membership in the SAR.",
-      "matchedAt": "2026-11-19T15:12:59.355Z",
+      "matchedAt": "2026-11-19T15:26:58.601Z",
       "used_on": [
         "patriot-or-loyalist"
       ]
@@ -3358,7 +3358,7 @@
     "sar-gcp-pended-two-years": {
       "source_url": "https://www.sar.org/app/uploads/NSSAR-Genealogy-Policy-Manual-2026-12-5.pdf",
       "quote": "Pended applications will remain on file for two years from the date the application was pended, at which time they will expire and will no longer be considered.",
-      "matchedAt": "2026-11-19T15:12:59.355Z",
+      "matchedAt": "2026-11-19T15:26:58.601Z",
       "used_on": [
         "application-problems"
       ]
@@ -3366,7 +3366,7 @@
     "sar-gcp-petitioners-authority": {
       "source_url": "https://www.sar.org/app/uploads/NSSAR-Genealogy-Policy-Manual-2026-12-5.pdf",
       "quote": "Petitioners recognizing the authority of revolutionary governments, Continental, provincial/state, or local.",
-      "matchedAt": "2026-11-19T15:12:59.355Z",
+      "matchedAt": "2026-11-19T15:26:58.601Z",
       "used_on": [
         "patriotic-service"
       ]
@@ -3374,7 +3374,7 @@
     "sar-gcp-petitions-any": {
       "source_url": "https://www.sar.org/app/uploads/NSSAR-Genealogy-Policy-Manual-2026-12-5.pdf",
       "quote": "Petitions on any subject can be accepted. This includes, but is not limited to, petitions on military processes, locations of county boundaries, and the relationship between church and state.",
-      "matchedAt": "2026-11-19T15:12:59.355Z",
+      "matchedAt": "2026-11-19T15:26:58.601Z",
       "used_on": [
         "patriotic-service"
       ]
@@ -3382,7 +3382,7 @@
     "sar-gcp-replace-once": {
       "source_url": "https://www.sar.org/app/uploads/NSSAR-Genealogy-Policy-Manual-2026-12-5.pdf",
       "quote": "An applicant has the right to replace a pended application with another patriot ancestor one time without the payment of an additional fee.",
-      "matchedAt": "2026-11-19T15:12:59.355Z",
+      "matchedAt": "2026-11-19T15:26:58.601Z",
       "used_on": [
         "application-problems"
       ]
@@ -3390,7 +3390,7 @@
     "sar-gcp-replacements-all-once": {
       "source_url": "https://www.sar.org/app/uploads/NSSAR-Genealogy-Policy-Manual-2026-12-5.pdf",
       "quote": "Reduced replacements for all applications to once",
-      "matchedAt": "2026-11-19T15:12:59.355Z",
+      "matchedAt": "2026-11-19T15:26:58.601Z",
       "used_on": [
         "application-problems"
       ]
@@ -3398,7 +3398,7 @@
     "sar-gcp-undoc-trees": {
       "source_url": "https://www.sar.org/app/uploads/NSSAR-Genealogy-Policy-Manual-2026-12-5.pdf",
       "quote": "Undocumented family trees and Genealogical Data Communications (GEDCOMS).",
-      "matchedAt": "2026-11-19T15:12:59.355Z",
+      "matchedAt": "2026-11-19T15:26:58.601Z",
       "used_on": [
         "faq"
       ]
@@ -3406,7 +3406,7 @@
     "sar-gcp-window": {
       "source_url": "https://www.sar.org/app/uploads/NSSAR-Genealogy-Policy-Manual-2026-12-5.pdf",
       "quote": "Service must have been rendered between 19 April 1775 and 25 November 1783 except as noted below.",
-      "matchedAt": "2026-11-19T15:12:59.355Z",
+      "matchedAt": "2026-11-19T15:26:58.601Z",
       "used_on": [
         "lineage-matrix",
         "lineage-proof-roadmap",
@@ -3417,7 +3417,7 @@
     "sar-ggp": {
       "source_url": "https://www.sar.org/step-1/",
       "quote": "your Revolutionary War Patriot must be a great-great grandfather or great-great grandmother of some degree",
-      "matchedAt": "2026-11-19T15:12:58.311Z",
+      "matchedAt": "2026-11-19T15:26:57.482Z",
       "used_on": [
         "lineage-proof-roadmap"
       ]
@@ -3425,7 +3425,7 @@
     "sar-loyalty": {
       "source_url": "https://www.sar.org/step-1/",
       "quote": "at all times unfailing in loyalty to and rendered acceptable service in the cause of American Independence",
-      "matchedAt": "2026-11-19T15:12:58.311Z",
+      "matchedAt": "2026-11-19T15:26:57.482Z",
       "used_on": [
         "patriot-or-loyalist"
       ]
@@ -3433,7 +3433,7 @@
     "sar-material": {
       "source_url": "https://www.sar.org/step-1/",
       "quote": "Furnishing supplies with or without remuneration; lending money to the Colonies, munitions makers, and gunsmiths",
-      "matchedAt": "2026-11-19T15:12:58.311Z",
+      "matchedAt": "2026-11-19T15:26:57.482Z",
       "used_on": [
         "patriotic-service"
       ]
@@ -3441,7 +3441,7 @@
     "sar-name": {
       "source_url": "https://www.sar.org/sar-missions-and-goals/",
       "quote": "the National Society of the Sons of the American Revolution",
-      "matchedAt": "2026-11-19T15:13:06.984Z",
+      "matchedAt": "2026-11-19T15:27:06.218Z",
       "used_on": [
         "partial:glossary"
       ]
@@ -3449,7 +3449,7 @@
     "sar-no-prelim": {
       "source_url": "https://www.sar.org/step-1/",
       "quote": "No preliminary decision will be given with respect to a line of descent, service, or whether proposed evidence is acceptable.",
-      "matchedAt": "2026-11-19T15:12:58.311Z",
+      "matchedAt": "2026-11-19T15:26:57.482Z",
       "used_on": [
         "tool:next-steps.js"
       ]
@@ -3457,7 +3457,7 @@
     "sar-oaths": {
       "source_url": "https://www.sar.org/step-1/",
       "quote": "the Oath of Fidelity and Support, the Oath of Allegiance or the Articles of Association, or the Association Test",
-      "matchedAt": "2026-11-19T15:12:58.311Z",
+      "matchedAt": "2026-11-19T15:26:57.482Z",
       "used_on": [
         "patriotic-service"
       ]
@@ -3465,7 +3465,7 @@
     "sar-point-pleasant": {
       "source_url": "https://www.sar.org/step-1/",
       "quote": "service at the Battle of Point Pleasant on 10 October 1774 (this location and date only)",
-      "matchedAt": "2026-11-19T15:12:58.311Z",
+      "matchedAt": "2026-11-19T15:26:57.482Z",
       "used_on": [
         "patriotic-service"
       ]
@@ -3473,7 +3473,7 @@
     "sar-prs-not-complete": {
       "source_url": "https://www.sar.org/patriot-research-system/",
       "quote": "not a comprehensive list of all the individuals who served in the American Revolutionary War.",
-      "matchedAt": "2026-11-19T15:14:58.777Z",
+      "matchedAt": "2026-11-19T15:28:51.456Z",
       "used_on": [
         "lineage-proof-roadmap"
       ]
@@ -3481,7 +3481,7 @@
     "sar-prs-not-proof": {
       "source_url": "https://www.sar.org/patriot-research-system/",
       "quote": "not acceptable as proof of service for an SAR application.",
-      "matchedAt": "2026-11-19T15:14:58.777Z",
+      "matchedAt": "2026-11-19T15:28:51.456Z",
       "used_on": [
         "lineage-proof-roadmap"
       ]
@@ -3489,7 +3489,7 @@
     "sar-rc-helpers": {
       "source_url": "https://www.sar.org/research-contact/",
       "quote": "State SAR Societies have genealogical helpers who assist potential members with application preparation.",
-      "matchedAt": "2026-11-19T15:15:01.586Z",
+      "matchedAt": "2026-11-19T15:28:54.064Z",
       "used_on": [
         "hire-a-pro"
       ]
@@ -3497,7 +3497,7 @@
     "sar-rc-rate": {
       "source_url": "https://www.sar.org/research-contact/",
       "quote": "The rate for professional genealogy assistance is currently $35 per hour for non-members and $30 per hour for members.",
-      "matchedAt": "2026-11-19T15:15:01.586Z",
+      "matchedAt": "2026-11-19T15:28:54.064Z",
       "used_on": [
         "hire-a-pro"
       ]
@@ -3505,7 +3505,7 @@
     "sar-record-copy": {
       "source_url": "https://www.sar.org/genealogical-copy-services/",
       "quote": "An SAR Record Copy is a verified official copy of an approved SAR membership application or supplemental application.",
-      "matchedAt": "2026-11-19T15:13:01.201Z",
+      "matchedAt": "2026-11-19T15:27:00.696Z",
       "used_on": [
         "lineage-proof-roadmap"
       ]
@@ -3513,7 +3513,7 @@
     "sar-registrar-guide": {
       "source_url": "https://www.sar.org/how-to-apply/",
       "quote": "This person will help guide you through the SAR membership application process and can help review information assembled to enter into SAR membership application forms",
-      "matchedAt": "2026-11-19T15:13:03.481Z",
+      "matchedAt": "2026-11-19T15:27:02.975Z",
       "used_on": [
         "faq",
         "hire-a-pro",
@@ -3525,7 +3525,7 @@
     "sar-registrar-process": {
       "source_url": "https://www.sar.org/how-to-apply/",
       "quote": "give it to your Chapter Registrar to begin processing",
-      "matchedAt": "2026-11-19T15:13:03.481Z",
+      "matchedAt": "2026-11-19T15:27:02.975Z",
       "used_on": [
         "partial:glossary"
       ]
@@ -3533,7 +3533,7 @@
     "sar-sponsor-guides": {
       "source_url": "https://www.sar.org/how-to-apply/",
       "quote": "This person will help guide you through the SAR membership application process",
-      "matchedAt": "2026-11-19T15:13:03.481Z",
+      "matchedAt": "2026-11-19T15:27:02.975Z",
       "used_on": [
         "partial:next-steps-lineage",
         "partial:next-steps-widow",
@@ -3543,7 +3543,7 @@
     "sar-sponsor-often-registrar": {
       "source_url": "https://www.sar.org/how-to-apply/",
       "quote": "the next step is to find a SAR sponsor in close proximity to you (often the local SAR Chapter Registrar)",
-      "matchedAt": "2026-11-19T15:13:03.481Z",
+      "matchedAt": "2026-11-19T15:27:02.975Z",
       "used_on": [
         "faq",
         "hire-a-pro"
@@ -3552,7 +3552,7 @@
     "sar-sponsor-registrar": {
       "source_url": "https://www.sar.org/how-to-apply/",
       "quote": "the next step is to find a SAR sponsor in close proximity to you (often the local SAR Chapter Registrar)",
-      "matchedAt": "2026-11-19T15:13:03.481Z",
+      "matchedAt": "2026-11-19T15:27:02.975Z",
       "used_on": [
         "partial:glossary",
         "partial:home",
@@ -3567,7 +3567,7 @@
     "sar-sponsors": {
       "source_url": "https://www.sar.org/step-1/",
       "quote": "you must be sponsored by two current SAR members",
-      "matchedAt": "2026-11-19T15:12:58.311Z",
+      "matchedAt": "2026-11-19T15:26:57.482Z",
       "used_on": [
         "faq",
         "lineage-proof-roadmap"
@@ -3576,7 +3576,7 @@
     "sar-state-residence": {
       "source_url": "https://www.sar.org/how-to-apply/",
       "quote": "Visit the link below and click on your state of residence.",
-      "matchedAt": "2026-11-19T15:13:03.481Z",
+      "matchedAt": "2026-11-19T15:27:02.975Z",
       "used_on": [
         "tool:next-steps.js"
       ]
@@ -3584,7 +3584,7 @@
     "sar-tradition": {
       "source_url": "https://www.sar.org/step-1/",
       "quote": "family tradition in regard to the services of an ancestor will not be considered proof",
-      "matchedAt": "2026-11-19T15:12:58.311Z",
+      "matchedAt": "2026-11-19T15:26:57.482Z",
       "used_on": [
         "faq",
         "lineage-proof-roadmap",
@@ -3597,7 +3597,7 @@
     "sar-window": {
       "source_url": "https://www.sar.org/step-1/",
       "quote": "The SAR accepts patriotic service rendered, with some exceptions, for the period between 19 April 1775 and 26 November 1783.",
-      "matchedAt": "2026-11-19T15:12:58.311Z",
+      "matchedAt": "2026-11-19T15:26:57.482Z",
       "used_on": [
         "lineage-matrix",
         "lineage-proof-roadmap",
@@ -3607,7 +3607,7 @@
     "sarlib-copies-15": {
       "source_url": "https://library.sar.org/research/research-services/",
       "quote": "beginning rate of $15.00 for the first 25 pages",
-      "matchedAt": "2026-11-19T15:15:02.805Z",
+      "matchedAt": "2026-11-19T15:28:55.205Z",
       "used_on": [
         "hire-a-pro"
       ]
@@ -3631,7 +3631,7 @@
     "sartax-dar-2006": {
       "source_url": "https://www.sar.org/wp-content/uploads/2019/10/Revolutionary-Taxes-as-Evidence-of-Patriotic-Service.pdf",
       "quote": "DAR extended qualifying taxes beyond the Pennsylvania supply taxes in 2006",
-      "matchedAt": "2026-11-19T15:12:58.375Z",
+      "matchedAt": "2026-11-19T15:26:57.599Z",
       "used_on": [
         "patriotic-service"
       ]
@@ -3655,7 +3655,7 @@
     "sartax-policy-2012": {
       "source_url": "https://www.sar.org/wp-content/uploads/2019/10/Revolutionary-Taxes-as-Evidence-of-Patriotic-Service.pdf",
       "quote": "Fall 2012 policy adopted",
-      "matchedAt": "2026-11-19T15:12:58.375Z",
+      "matchedAt": "2026-11-19T15:26:57.599Z",
       "used_on": [
         "patriotic-service"
       ]
@@ -3663,7 +3663,7 @@
     "sartax-scga": {
       "source_url": "https://www.sar.org/wp-content/uploads/2019/10/Revolutionary-Taxes-as-Evidence-of-Patriotic-Service.pdf",
       "quote": "Apparently no extant South Carolina and Georgia Revolutionary tax lists.",
-      "matchedAt": "2026-11-19T15:12:58.375Z",
+      "matchedAt": "2026-11-19T15:26:57.599Z",
       "used_on": [
         "patriotic-service"
       ]
@@ -3679,7 +3679,7 @@
     "sc-birth-1915": {
       "source_url": "https://scdah.sc.gov/news/2020-03/sc-birth-certificates-archives",
       "quote": "These records begin in 1915",
-      "matchedAt": "2026-11-19T15:13:09.641Z",
+      "matchedAt": "2026-11-19T15:27:09.222Z",
       "used_on": [
         "tool:places.js"
       ]
@@ -3687,7 +3687,7 @@
     "sc-birth-law": {
       "source_url": "https://scdah.sc.gov/news/2020-03/sc-birth-certificates-archives",
       "quote": "the state did not require registration of all births until the passage of a law mandating it in 1914",
-      "matchedAt": "2026-11-19T15:13:09.641Z",
+      "matchedAt": "2026-11-19T15:27:09.222Z",
       "used_on": [
         "tool:places.js"
       ]
@@ -3695,7 +3695,7 @@
     "sc-death-1915": {
       "source_url": "https://guides.statelibrary.sc.gov/genealogy/vitalrecords",
       "quote": "Death certificates were required in SC beginning January 1, 1915.",
-      "matchedAt": "2026-11-19T15:13:09.838Z",
+      "matchedAt": "2026-11-19T15:27:09.548Z",
       "used_on": [
         "tool:places.js"
       ]
@@ -3703,7 +3703,7 @@
     "sc-marriage-1911": {
       "source_url": "https://guides.statelibrary.sc.gov/genealogy/vitalrecords",
       "quote": "Marriage licenses were required in SC beginning July 1, 1911.",
-      "matchedAt": "2026-11-19T15:13:09.838Z",
+      "matchedAt": "2026-11-19T15:27:09.548Z",
       "used_on": [
         "tool:places.js"
       ]
@@ -3711,7 +3711,7 @@
     "sc-rev-audited": {
       "source_url": "https://scdah.sc.gov/sites/scdah/files/Documents/Research%20and%20Genealogy/Resources/Military%20Records/rvwr.pdf",
       "quote": "Accounts Audited of Claims Growing Out of the Revolution in South",
-      "matchedAt": "2026-11-19T15:13:09.627Z",
+      "matchedAt": "2026-11-19T15:27:09.196Z",
       "used_on": [
         "tool:places.js"
       ]
@@ -3719,7 +3719,7 @@
     "sc-rev-cardindex": {
       "source_url": "https://scdah.sc.gov/sites/scdah/files/Documents/Research%20and%20Genealogy/Resources/Military%20Records/rvwr.pdf",
       "quote": "A card file index to Revolutionary service in the Research Room",
-      "matchedAt": "2026-11-19T15:13:09.627Z",
+      "matchedAt": "2026-11-19T15:27:09.196Z",
       "used_on": [
         "tool:places.js"
       ]
@@ -3727,7 +3727,7 @@
     "stat-1836-unmarried": {
       "source_url": "https://tile.loc.gov/storage-services/service/ll/llsl/llsl-c24/llsl-c24.pdf",
       "quote": "widow shall be entitled to receive, during the time she may remain unmarried",
-      "matchedAt": "2026-11-19T15:13:19.152Z",
+      "matchedAt": "2026-11-19T15:27:18.126Z",
       "used_on": [
         "tool:tool-a.js",
         "widow-pension-checker"
@@ -3736,7 +3736,7 @@
     "stat-1838-1832-service": {
       "source_url": "https://tile.loc.gov/storage-services/service/ll/llsl/llsl-c25/llsl-c25.pdf",
       "quote": "who served in the war of the Revolution, in the manner specified in the act passed the seventh day of June, eighteen hundred and thirty-two",
-      "matchedAt": "2026-11-19T15:13:24.896Z",
+      "matchedAt": "2026-11-19T15:27:23.681Z",
       "used_on": [
         "read-pension-file",
         "tool:tool-a.js",
@@ -3746,7 +3746,7 @@
     "stat-1838-after-service": {
       "source_url": "https://tile.loc.gov/storage-services/service/ll/llsl/llsl-c25/llsl-c25.pdf",
       "quote": "whose marriage took place after the expiration of the last period of his service, and before the first day of January, seventeen hundred and ninety-four",
-      "matchedAt": "2026-11-19T15:13:24.896Z",
+      "matchedAt": "2026-11-19T15:27:23.681Z",
       "used_on": [
         "read-pension-file",
         "tool:tool-a.js",
@@ -3757,7 +3757,7 @@
     "stat-1838-remarriage": {
       "source_url": "https://tile.loc.gov/storage-services/service/ll/llsl/llsl-c25/llsl-c25.pdf",
       "quote": "in the event of the marriage of such widow, said annuity or pension shall be discontinued",
-      "matchedAt": "2026-11-19T15:13:24.896Z",
+      "matchedAt": "2026-11-19T15:27:23.681Z",
       "used_on": [
         "tool:tool-a.js",
         "widow-pension-checker"
@@ -3766,7 +3766,7 @@
     "stat-1848-cutoff": {
       "source_url": "https://tile.loc.gov/storage-services/service/ll/llsl/llsl-c30/llsl-c30.pdf",
       "quote": "no widow married after the first day of January, one thousand eight hundred, shall be entitled to receive",
-      "matchedAt": "2026-11-19T15:13:32.217Z",
+      "matchedAt": "2026-11-19T15:27:30.679Z",
       "used_on": [
         "tool:tool-a.js"
       ]
@@ -3774,7 +3774,7 @@
     "stat-1848-no-second": {
       "source_url": "https://tile.loc.gov/storage-services/service/ll/llsl/llsl-c30/llsl-c30.pdf",
       "quote": "no widow now receiving a pension shall be entitled to",
-      "matchedAt": "2026-11-19T15:13:32.217Z",
+      "matchedAt": "2026-11-19T15:27:30.679Z",
       "used_on": [
         "tool:tool-a.js",
         "widow-pension-checker"
@@ -3783,7 +3783,7 @@
     "stat-1848-service": {
       "source_url": "https://tile.loc.gov/storage-services/service/ll/llsl/llsl-c30/llsl-c30.pdf",
       "quote": "who shall have served in the Continental line, State troops, volunteers, militia, or in the naval service, in the revolutionary war with Great Britain",
-      "matchedAt": "2026-11-19T15:13:32.217Z",
+      "matchedAt": "2026-11-19T15:27:30.679Z",
       "used_on": [
         "lineage-matrix",
         "tool:patriot.js",
@@ -3794,7 +3794,7 @@
     "stat-1848-widowhood": {
       "source_url": "https://tile.loc.gov/storage-services/service/ll/llsl/llsl-c30/llsl-c30.pdf",
       "quote": "their husbands during such widowhood, of equal amount per annum",
-      "matchedAt": "2026-11-19T15:13:32.217Z",
+      "matchedAt": "2026-11-19T15:27:30.679Z",
       "used_on": [
         "tool:tool-a.js",
         "widow-pension-checker"
@@ -3803,7 +3803,7 @@
     "stat-1853-after-1800": {
       "source_url": "https://tile.loc.gov/storage-services/service/ll/llsl/llsl-c32/llsl-c32.pdf",
       "quote": "who were married subsequent to January, anno Domini eighteen",
-      "matchedAt": "2026-11-19T15:14:54.428Z",
+      "matchedAt": "2026-11-19T15:28:46.672Z",
       "used_on": [
         "read-pension-file",
         "tool:tool-a.js",
@@ -3813,7 +3813,7 @@
     "stat-1853-army": {
       "source_url": "https://tile.loc.gov/storage-services/service/ll/llsl/llsl-c32/llsl-c32.pdf",
       "quote": "non-commissioned officers, musicians, and privates of the Revolutionary",
-      "matchedAt": "2026-11-19T15:14:54.428Z",
+      "matchedAt": "2026-11-19T15:28:46.672Z",
       "used_on": [
         "tool:tool-a.js",
         "widow-pension-checker"
@@ -3822,7 +3822,7 @@
     "stat-1853-same-manner": {
       "source_url": "https://tile.loc.gov/storage-services/service/ll/llsl/llsl-c32/llsl-c32.pdf",
       "quote": "shall be entitled to a pension in the same manner as those who were married before that date",
-      "matchedAt": "2026-11-19T15:14:54.428Z",
+      "matchedAt": "2026-11-19T15:28:46.672Z",
       "used_on": [
         "tool:tool-a.js",
         "widow-pension-checker"
@@ -3831,7 +3831,7 @@
     "stat-1855-14-days": {
       "source_url": "https://tile.loc.gov/storage-services/service/ll/llsl/llsl-c33/llsl-c33.pdf",
       "quote": "in no case shall any such certificate or warrant be issued for any service less than fourteen days, except where the person shall actually have been engaged in battle",
-      "matchedAt": "2026-11-19T15:14:08.732Z",
+      "matchedAt": "2026-11-19T15:28:03.506Z",
       "used_on": [
         "tool:tool-a.js",
         "walkthroughs",
@@ -3841,7 +3841,7 @@
     "stat-1855-deserted": {
       "source_url": "https://tile.loc.gov/storage-services/service/ll/llsl/llsl-c33/llsl-c33.pdf",
       "quote": "if it shall appear by the muster-rolls of his regiment or corps that he deserted, or was dishonorably discharged from service",
-      "matchedAt": "2026-11-19T15:14:08.732Z",
+      "matchedAt": "2026-11-19T15:28:03.506Z",
       "used_on": [
         "tool:tool-a.js",
         "widow-pension-checker"
@@ -3850,7 +3850,7 @@
     "stat-1855-mustered": {
       "source_url": "https://tile.loc.gov/storage-services/service/ll/llsl/llsl-c33/llsl-c33.pdf",
       "quote": "called into military service, and regularly mustered therein, and whose services have been paid by the United States",
-      "matchedAt": "2026-11-19T15:14:08.732Z",
+      "matchedAt": "2026-11-19T15:28:03.506Z",
       "used_on": [
         "tool:tool-a.js",
         "widow-pension-checker"
@@ -3859,7 +3859,7 @@
     "stat-1855-revwar": {
       "source_url": "https://tile.loc.gov/storage-services/service/ll/llsl/llsl-c33/llsl-c33.pdf",
       "quote": "the officers and soldiers of the revolutionary war, or their widows or minor children, shall be entitled to the",
-      "matchedAt": "2026-11-19T15:14:08.732Z",
+      "matchedAt": "2026-11-19T15:28:03.506Z",
       "used_on": [
         "tool:tool-a.js",
         "widow-pension-checker"
@@ -3868,7 +3868,7 @@
     "stat-1855-widow-at-application": {
       "source_url": "https://tile.loc.gov/storage-services/service/ll/llsl/llsl-c33/llsl-c33.pdf",
       "quote": "a subsequent marriage shall not impair the right of any such widow to such warrant if she be a widow at the time of making her application",
-      "matchedAt": "2026-11-19T15:14:08.732Z",
+      "matchedAt": "2026-11-19T15:28:03.506Z",
       "used_on": [
         "tool:tool-a.js",
         "widow-pension-checker"
@@ -3877,7 +3877,7 @@
     "stat-1855feb-1800": {
       "source_url": "https://tile.loc.gov/storage-services/service/ll/llsl/llsl-c33/llsl-c33.pdf",
       "quote": "since the first day of January, eighteen hundred, shall be entitled to",
-      "matchedAt": "2026-11-19T15:14:08.732Z",
+      "matchedAt": "2026-11-19T15:28:03.506Z",
       "used_on": [
         "read-pension-file",
         "tool:tool-a.js",
@@ -3887,7 +3887,7 @@
     "stat-1855feb-navy": {
       "source_url": "https://tile.loc.gov/storage-services/service/ll/llsl/llsl-c33/llsl-c33.pdf",
       "quote": "non-commissioned officers, marines or mariners who served in the navy",
-      "matchedAt": "2026-11-19T15:14:08.732Z",
+      "matchedAt": "2026-11-19T15:28:03.506Z",
       "used_on": [
         "tool:patriot.js",
         "tool:tool-a.js",
@@ -3897,7 +3897,7 @@
     "stat-1855feb-same": {
       "source_url": "https://tile.loc.gov/storage-services/service/ll/llsl/llsl-c33/llsl-c33.pdf",
       "quote": "section of the act of February third, eighteen hundred and fifty-three",
-      "matchedAt": "2026-11-19T15:14:08.732Z",
+      "matchedAt": "2026-11-19T15:28:03.506Z",
       "used_on": [
         "tool:tool-a.js",
         "widow-pension-checker"
@@ -3906,7 +3906,7 @@
     "stat-1878-14-days-a": {
       "source_url": "https://tile.loc.gov/storage-services/service/ll/llsl/llsl-c45/llsl-c45.pdf",
       "quote": "any widow of a Revolutionary soldier who served fourteen",
-      "matchedAt": "2026-11-19T15:14:44.608Z",
+      "matchedAt": "2026-11-19T15:28:36.940Z",
       "used_on": [
         "tool:tool-a.js",
         "widow-pension-checker"
@@ -3915,7 +3915,7 @@
     "stat-1878-14-days-b": {
       "source_url": "https://tile.loc.gov/storage-services/service/ll/llsl/llsl-c45/llsl-c45.pdf",
       "quote": "days or was in any engagement shall be placed upon the pension-rolls",
-      "matchedAt": "2026-11-19T15:14:44.608Z",
+      "matchedAt": "2026-11-19T15:28:36.940Z",
       "used_on": [
         "tool:tool-a.js",
         "widow-pension-checker"
@@ -3924,7 +3924,7 @@
     "stat-1878-eight-dollars": {
       "source_url": "https://tile.loc.gov/storage-services/service/ll/llsl/llsl-c45/llsl-c45.pdf",
       "quote": "this act shall not apply to any person who is receiving a pension at the rate of eight dollars per month or more",
-      "matchedAt": "2026-11-19T15:14:44.608Z",
+      "matchedAt": "2026-11-19T15:28:36.940Z",
       "used_on": [
         "tool:tool-a.js",
         "widow-pension-checker"
@@ -3933,7 +3933,7 @@
     "stat-1878-remarriage": {
       "source_url": "https://tile.loc.gov/storage-services/service/ll/llsl/llsl-c45/llsl-c45.pdf",
       "quote": "the pensions to widows provided for in this act shall cease when they shall marry again",
-      "matchedAt": "2026-11-19T15:14:44.608Z",
+      "matchedAt": "2026-11-19T15:28:36.940Z",
       "used_on": [
         "tool:tool-a.js",
         "walkthroughs",
@@ -3943,7 +3943,7 @@
     "uelac-1789": {
       "source_url": "https://uelac.ca/loyalist-directory/help/",
       "quote": "At various times since 1789",
-      "matchedAt": "2026-11-19T15:13:02.351Z",
+      "matchedAt": "2026-11-19T15:27:01.962Z",
       "used_on": [
         "patriot-or-loyalist"
       ]
@@ -3951,7 +3951,7 @@
     "uelac-digit": {
       "source_url": "https://uelac.ca/loyalist-directory/help/",
       "quote": "If the surname and given names are the same for two or more people, a digit in this field will differentiate them.",
-      "matchedAt": "2026-11-19T15:13:02.351Z",
+      "matchedAt": "2026-11-19T15:27:01.962Z",
       "used_on": [
         "patriot-or-loyalist"
       ]
@@ -3959,7 +3959,7 @@
     "uelac-disproven": {
       "source_url": "https://uelac.ca/loyalist-directory/help/",
       "quote": "does not in fact meet the criteria",
-      "matchedAt": "2026-11-19T15:13:02.351Z",
+      "matchedAt": "2026-11-19T15:27:01.962Z",
       "used_on": [
         "patriot-or-loyalist"
       ]
@@ -3967,7 +3967,7 @@
     "uelac-enlistment": {
       "source_url": "https://uelac.ca/loyalist-directory/help/",
       "quote": "Date of first enlistment into the Loyalist military",
-      "matchedAt": "2026-11-19T15:13:02.351Z",
+      "matchedAt": "2026-11-19T15:27:01.962Z",
       "used_on": [
         "patriot-or-loyalist"
       ]
@@ -3975,7 +3975,7 @@
     "uelac-expunged": {
       "source_url": "https://uelac.ca/loyalist-directory/help/",
       "quote": "removed from the early Loyalist lists, usually by an Order in Council",
-      "matchedAt": "2026-11-19T15:13:02.351Z",
+      "matchedAt": "2026-11-19T15:27:01.962Z",
       "used_on": [
         "patriot-or-loyalist"
       ]
@@ -3983,7 +3983,7 @@
     "uelac-proven": {
       "source_url": "https://uelac.ca/loyalist-directory/help/",
       "quote": "have decided that this person is acceptably a Loyalist",
-      "matchedAt": "2026-11-19T15:13:02.351Z",
+      "matchedAt": "2026-11-19T15:27:01.962Z",
       "used_on": [
         "patriot-or-loyalist"
       ]
@@ -3991,7 +3991,7 @@
     "uelac-settled-before": {
       "source_url": "https://uelac.ca/loyalist-directory/help/",
       "quote": "Place where the Loyalist was settled immediately before or in war and from which he and/or his family was expelled",
-      "matchedAt": "2026-11-19T15:13:02.351Z",
+      "matchedAt": "2026-11-19T15:27:01.962Z",
       "used_on": [
         "patriot-or-loyalist"
       ]

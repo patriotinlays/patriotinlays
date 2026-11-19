@@ -13,7 +13,7 @@ An inlay is a piece of wood set so deep into another that it becomes part of the
 
 ## What you can do here
 
-The site has ten plain-English guides and two free tools that run in your browser. The guides explain the records you're likely to meet, such as pension files, bounty-land warrants and censuses, what each one can show, and what to try when a record is missing. The Lineage Evidence Matrix lets you list each generation from you back to the patriot and gives you a to-do list of the records still missing, with where to look. The Widow Pension Law Checker shows which federal widow pension laws a couple's marriage fits, so you can decide whether to look for her pension file. Together they list what you have, what you still need, and where to look next.
+The site has 11 plain-English guides and two free tools that run in your browser. The guides explain the records you're likely to meet, such as pension files, bounty-land warrants and censuses, what each one can show, and what to try when a record is missing. The Lineage Evidence Matrix lets you list each generation from you back to the patriot and gives you a to-do list of the records still missing, with where to look. The Widow Pension Law Checker shows which federal widow pension laws a couple's marriage fits, so you can decide whether to look for her pension file. Together they list what you have, what you still need, and where to look next.
 
 ## What this site doesn't do
 

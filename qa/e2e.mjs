@@ -1451,7 +1451,7 @@ for (const w of [390, 1280]) { const cx = await browser.newContext({ viewport: {
   }
   const homeH = readFileSync(join(DIST, "index.html"), "utf8");
   check("t157: home page visible intro, AI line, and guide-list blurbs are unchanged (meta lives only in <head>)",
-    homeH.includes("Two free tools and ten guides help you organize what you have and see what's still missing. What you type into the tools stays in your own browser.")
+    homeH.includes("Two free tools and 11 guides help you organize what you have and see what's still missing. What you type into the tools stays in your own browser.")
     && homeH.includes("A generation-by-generation plan for documenting descent from a Revolutionary War patriot, with DAR and SAR rules side by side.")
     && !homeH.includes("data-roadmap-callout")
     && (homeH.match(/<meta name="description"/g) || []).length === 1);
@@ -1481,7 +1481,7 @@ for (const w of [390, 1280]) { const cx = await browser.newContext({ viewport: {
     const textOk = h.cards.length === 3 && h.cards.every((c, i) => c.title === want[i][0] && c.line === want[i][1] && c.btn === want[i][2] && c.href === want[i][3]);
     const layout = w < 760 ? h.cards.every((c, i) => i === 0 || (c.top > h.cards[i - 1].top && c.left === h.cards[0].left)) : h.cards.every((c) => c.top === h.cards[0].top) && h.cards[1].left > h.cards[0].left;
     check(`t130 #1 (${w}px): under the heading and independent line, Tim's sentence, then the three start cards (${w < 760 ? "stacked" : "side by side"}) with his exact titles, lines and navy buttons, then 'See How The Tools Work', then the longer paragraphs; the 'Ready to get started?' box is gone`,
-      h.intro === "Two free tools and ten guides help you organize what you have and see what's still missing. What you type into the tools stays in your own browser." && h.order.every((x, i) => x >= 0 && (i === 0 || x > h.order[i - 1])) && textOk && layout && h.seeHow[0] === "See How The Tools Work" && h.seeHow[1] === "/walkthroughs/" && !h.oldBox && h.sw <= w + 1, JSON.stringify({ order: h.order, cards: h.cards.map((c) => [c.top, c.left]), seeHow: h.seeHow, oldBox: h.oldBox }));
+      h.intro === "Two free tools and 11 guides help you organize what you have and see what's still missing. What you type into the tools stays in your own browser." && h.order.every((x, i) => x >= 0 && (i === 0 || x > h.order[i - 1])) && textOk && layout && h.seeHow[0] === "See How The Tools Work" && h.seeHow[1] === "/walkthroughs/" && !h.oldBox && h.sw <= w + 1, JSON.stringify({ order: h.order, cards: h.cards.map((c) => [c.top, c.left]), seeHow: h.seeHow, oldBox: h.oldBox }));
     check(`t130 #3 (${w}px): start cards have a soft warm background and navy buttons with white text`, h.cards.every((c) => c.bg === "rgb(19, 41, 75)" && c.color === "rgb(255, 255, 255)" && c.cardBg !== "rgba(0, 0, 0, 0)" && c.cardBg !== "rgb(255, 255, 255)"), JSON.stringify(h.cards.map((c) => [c.bg, c.color, c.cardBg])));
     check(`t130 #3 (${w}px): home guide titles are bolder and larger than their descriptions; more space between sections`, +h.guideTitle[0] >= 700 && +h.guideTitle[0] > +h.guideDesc[0] && h.guideTitle[1] > h.guideDesc[1] && h.gap >= 40, JSON.stringify({ t: h.guideTitle, d: h.guideDesc, gap: h.gap }));
     check(`t130 #3 (${w}px): the top menu is fully visible (wraps, never hidden) in white on navy`, h.navVisible && h.navColor === "rgb(255, 255, 255)" && h.headerBg === "rgb(19, 41, 75)", JSON.stringify({ nav: h.navVisible, c: h.navColor, bg: h.headerBg }));

@@ -309,7 +309,7 @@ const guides = built.filter((b) => b.cornerstone).sort((a, b) => a.cornerstone -
 write("", page({ title: "Patriot, In Lay Terms: plain-English help for DAR and SAR applications", description: "Plain-English guides and free browser tools for documenting descent from a Revolutionary War patriot for a DAR or SAR application.", path: "/",
   body: `<h1 class="home-h1" data-home-h1><span class="sr-only">Patriot, In Lay Terms: </span><span class="subtitle" data-subtitle>Plain-English help with DAR and SAR applications, for the Daughters and the Sons of the American Revolution</span></h1>
 <p class="independent" data-independent>An independent guide: not affiliated with DAR, SAR or any lineage society, and it doesn't search records for you.</p>
-<p class="home-intro" data-home-intro>Two free tools and ten guides help you organize what you have and see what's still missing. What you type into the tools stays in your own browser.</p>
+<p class="home-intro" data-home-intro>Two free tools and 11 guides help you organize what you have and see what's still missing. What you type into the tools stays in your own browser.</p>
 ${START_CARDS}
 <p class="see-how" data-see-how><a href="/walkthroughs/">See How The Tools Work</a></p>
 <section class="home-mission" data-mission>${homeMission(HOME.body).replace(/<p>Written with AI assistance/, '<p class="ai-line" data-ai-line>Written with AI assistance')}</section>

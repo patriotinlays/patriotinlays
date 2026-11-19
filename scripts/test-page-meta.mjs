@@ -39,8 +39,8 @@ t("lastmod is a YYYY-MM-DD Chicago date for every sitemap page (not reports or 4
 t("lastmod dates are not in the future and are on or after the Oct 31, 2026 launch",
   sitemapPaths.every((p) => mods[p] >= "2026-10-31" && mods[p] <= chicagoDate(new Date().toISOString())));
 
-t("Same Name lastmod is 2026-11-19 (t184 named locator links) and About is 2026-11-10 (t138 content), not a template-only date",
-  lastmodFor("/guides/same-name/") === "2026-11-19" && lastmodFor("/about/") === "2026-11-10",
+t("Same Name lastmod is 2026-11-19 (t184 named locator links) and About is 2026-11-19 (t196 content: 11 guides), not a template-only date",
+  lastmodFor("/guides/same-name/") === "2026-11-19" && lastmodFor("/about/") === "2026-11-19",
   `same-name=${mods["/guides/same-name/"]} about=${mods["/about/"]}`);
 
 t("widow-pension-checker and lineage-matrix lastmod are 2026-11-19 (t184 items 6 and 7); FAQ is 2026-11-19 (t182 eligibility and family-tree lines)",

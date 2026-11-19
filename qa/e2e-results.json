@@ -1,5 +1,5 @@
 {
-  "ranAt": "Thu Nov 19 2026 09:22:07 GMT-0600 (Central Standard Time)",
+  "ranAt": "Thu Nov 19 2026 09:30:33 GMT-0600 (Central Standard Time)",
   "browser": "/usr/bin/google-chrome (headless) via playwright-core 1.59.1",
   "passed": 436,
   "total": 436,
@@ -1714,7 +1714,7 @@
     {
       "name": "t163 #2: Sources 'Last retrieved' is the Central-time date of the most recent full live-source check, and the claim count equals the manifest",
       "ok": true,
-      "detail": "{\"srcLine\":\"Manifest: 447 verified claims. Last retrieved: November 19, 2026.\",\"expectDate\":\"November 19, 2026\",\"shownCount\":447,\"manifest\":447,\"checkedAt\":\"Thu Nov 19 2026 09:15:12 GMT-0600 (Central Standard Time)\"}"
+      "detail": "{\"srcLine\":\"Manifest: 447 verified claims. Last retrieved: November 19, 2026.\",\"expectDate\":\"November 19, 2026\",\"shownCount\":447,\"manifest\":447,\"checkedAt\":\"Thu Nov 19 2026 09:29:02 GMT-0600 (Central Standard Time)\"}"
     },
     {
       "name": "t163 #3: every page says 'quoted official or institutional source'; the locked AI line uses the new wording; the old phrase is gone",

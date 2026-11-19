@@ -11,7 +11,7 @@ export const TITLE_BUDGET = 60;
 // path -> description. Every built HTML page must have an entry.
 export const META_DESCRIPTIONS = {
   "/": "Plain-English guides and free browser tools for documenting descent from a Revolutionary War patriot for a DAR or SAR application.",
-  "/about/": "Who this site is for, what its ten guides and two free tools can and cannot do, and how every fact is tied to a quoted official or institutional source.",
+  "/about/": "Who this site is for, what its 11 guides and two free tools can and cannot do, and how every fact is tied to a quoted official or institutional source.",
   "/ai-disclosure/": "See how this site is written with AI assistance and reviewed by its owner, and how each fact is tied to a quoted official or institutional source.",
   "/contact/": "Email this site with a correction or a suggestion, what to include, and why it cannot review individual lineage applications or say who will be approved.",
   "/faq/": "Plain-English answers about joining DAR or SAR, what a patriot is, which records count, how this site's tools work, and where your information goes.",
