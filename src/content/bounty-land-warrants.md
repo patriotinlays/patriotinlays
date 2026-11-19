@@ -62,7 +62,7 @@ Warrants later surrendered for federal scrip are held by the National Archives w
 1. Use it for service. Cite the file and the page that states the service.
 2. Use it for family only where an heir or widow states the relationship.
 3. Do not use the land location alone as residence. Pair it with tax, deed or census records from the same place.
-4. Log any mismatch between the land and the family's known home as a conflict in the Lineage Evidence Matrix, then resolve it.
+4. Don't assume the family moved to the bounty land; many veterans sold their warrants. [[claim:m804-sold]] Flag a conflict only if records give incompatible residences or identities.
 
 Related guides: [How to Read a Pension File](/guides/read-pension-file/), [Revolutionary War Records by State](/guides/records-by-state/).
 

@@ -44,7 +44,7 @@ Many examples below come from one state society's standards (NSCDA in South Caro
 2. Newspapers. NSCDA's South Carolina society's standards say birth, death and marriage notices must include the dateline and the name of the paper. [[claim:nscda-newspapers]]
 3. Marriage evidence. A marriage license gives permission; NSCDA's South Carolina society's standards say it is not proof that the marriage took place. [[claim:nscda-license]] The same standards say a marriage certificate is issued by the officiant or clerk after the ceremony. [[claim:nscda-marriage-cert]]
 4. Family genealogies. DAR reviews all documentation case by case. [[claim:dar-case-by-case]] A family genealogy might be acceptable for a specific individual or generation if it meets DAR standards. [[claim:dar-genealogy-may]] NSCDA's South Carolina society's standards say printed genealogies without complete citations to primary sources are unacceptable. [[claim:nscda-genealogy-citations]] DAR also lists modern local histories and index-only records as sources to use with caution. [[claim:dar-caution-genealogies]]
-5. Other societies' papers. NSCDA's South Carolina society's standards say lineage papers from other genealogy societies are not proofs. [[claim:nscda-other-society]] Use the documents they cite, not the summary.
+5. Other societies' papers. NSCDA's South Carolina society's standards say lineage papers from other genealogy societies are not proofs. [[claim:nscda-other-society]] Use the documents they cite, not the summary. For SAR, qualifying official DAR, C.A.R. and SAR record copies can be accepted as evidence. [[claim:sar-gcp-35003-drc]] [[claim:sar-gcp-35004-sar]]
 
 ## Building a proof from several weak records
 

@@ -4225,24 +4225,6 @@
       "source_scope": "state"
     },
     {
-      "claim_id": "lva-files",
-      "claim_text": "The Library of Virginia's online collection has images of state bounty-land application and certificate files.",
-      "source_url": "https://lva-virginia.libguides.com/bounty-claims/home",
-      "source_title": "Library of Virginia — Revolutionary War Bounty Land Claims",
-      "source_type": "official_secondary",
-      "archive_identifier": null,
-      "last_retrieved": "2026-10-31",
-      "quote_excerpt": "The online collection consists of images of application files for military bounty land and related military certificate files.",
-      "page_ref": null,
-      "verification_status": "verified",
-      "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
-      "used_on": [
-        "records-by-state"
-      ],
-      "notes": "",
-      "source_scope": "state"
-    },
-    {
       "claim_id": "lva-heirs",
       "claim_text": "Heirs kept claiming Virginia bounty land for decades.",
       "source_url": "https://lva-virginia.libguides.com/bounty-claims/home",
@@ -5636,6 +5618,7 @@
       "verification_status": "verified",
       "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
       "used_on": [
+        "lineage-matrix",
         "tool:places.js"
       ],
       "notes": "",
@@ -7836,7 +7819,8 @@
       "verification_status": "verified",
       "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
       "used_on": [
-        "application-problems"
+        "application-problems",
+        "substitute-evidence"
       ],
       "notes": "",
       "source_scope": "national"
@@ -7891,6 +7875,204 @@
       "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
       "used_on": [
         "partial:how-to-join"
+      ],
+      "notes": "",
+      "source_scope": "national"
+    },
+    {
+      "claim_id": "lva-files-online",
+      "claim_text": "The Library of Virginia's online collection has images of application files for military bounty land.",
+      "source_url": "https://lva-virginia.libguides.com/bounty-claims/home",
+      "source_title": "Library of Virginia — Revolutionary War Bounty Land Claims",
+      "source_type": "official_secondary",
+      "archive_identifier": null,
+      "last_retrieved": "2026-10-31",
+      "quote_excerpt": "The online collection consists of images of application files for military bounty land",
+      "page_ref": null,
+      "verification_status": "verified",
+      "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
+      "used_on": [
+        "records-by-state"
+      ],
+      "notes": "",
+      "source_scope": "state"
+    },
+    {
+      "claim_id": "lva-not-digitized",
+      "claim_text": "Virginia's bounty-land certificate files and registers are on microfilm, not digitized.",
+      "source_url": "https://lva-virginia.libguides.com/bounty-claims/home",
+      "source_title": "Library of Virginia — Revolutionary War Bounty Land Claims",
+      "source_type": "official_secondary",
+      "archive_identifier": null,
+      "last_retrieved": "2026-10-31",
+      "quote_excerpt": "The certificate files and registers have not been digitized, but they are available on microfilm",
+      "page_ref": null,
+      "verification_status": "verified",
+      "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
+      "used_on": [
+        "records-by-state"
+      ],
+      "notes": "",
+      "source_scope": "state"
+    },
+    {
+      "claim_id": "sar-gcp-35004-sar",
+      "claim_text": "SAR accepts official record copies of SAR applications approved after 1 January 2012 as evidence.",
+      "source_url": "https://www.sar.org/app/uploads/NSSAR-Genealogy-Policy-Manual-2026-12-5.pdf",
+      "source_title": "SAR — Genealogy Committee Policies (NSSAR, reflects changes through 12 May 2026)",
+      "source_type": "official_secondary",
+      "archive_identifier": null,
+      "last_retrieved": "2026-10-31",
+      "quote_excerpt": "Official record copies of applications for membership in the Sons of the American Revolution approved after 1 January 2012 shall be accepted as evidence of corresponding service, lineage and related facts on SAR applications.",
+      "page_ref": "§3.5004(1)",
+      "verification_status": "verified",
+      "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
+      "used_on": [
+        "substitute-evidence"
+      ],
+      "notes": "",
+      "source_scope": "national"
+    },
+    {
+      "claim_id": "sar-apg-slashes",
+      "claim_text": "SAR's application guide uses slashes for additional spellings of a name.",
+      "source_url": "https://www.sar.org/app/uploads/APG-07-June-2026.pdf",
+      "source_title": "SAR — Application Preparation Guide (NSSAR Genealogy Committee, 07 June 2026)",
+      "source_type": "official_secondary",
+      "archive_identifier": null,
+      "last_retrieved": "2026-10-31",
+      "quote_excerpt": "Use slashes to indicate additional spellings of the name",
+      "page_ref": "Names on the Application",
+      "verification_status": "verified",
+      "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
+      "used_on": [
+        "application-problems"
+      ],
+      "notes": "",
+      "source_scope": "national"
+    },
+    {
+      "claim_id": "sar-apg-nicknames",
+      "claim_text": "SAR's application guide puts nicknames, when entered, in quotation marks.",
+      "source_url": "https://www.sar.org/app/uploads/APG-07-June-2026.pdf",
+      "source_title": "SAR — Application Preparation Guide (NSSAR Genealogy Committee, 07 June 2026)",
+      "source_type": "official_secondary",
+      "archive_identifier": null,
+      "last_retrieved": "2026-10-31",
+      "quote_excerpt": "When entered, they are to be in quotation marks",
+      "page_ref": "Names on the Application",
+      "verification_status": "verified",
+      "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
+      "used_on": [
+        "application-problems"
+      ],
+      "notes": "",
+      "source_scope": "national"
+    },
+    {
+      "claim_id": "sar-gcp-petitions-any",
+      "claim_text": "SAR accepts petitions on any subject, including church and state.",
+      "source_url": "https://www.sar.org/app/uploads/NSSAR-Genealogy-Policy-Manual-2026-12-5.pdf",
+      "source_title": "SAR — Genealogy Committee Policies (NSSAR, reflects changes through 12 May 2026)",
+      "source_type": "official_secondary",
+      "archive_identifier": null,
+      "last_retrieved": "2026-10-31",
+      "quote_excerpt": "Petitions on any subject can be accepted. This includes, but is not limited to, petitions on military processes, locations of county boundaries, and the relationship between church and state.",
+      "page_ref": "§2.3002(3)(e)",
+      "verification_status": "verified",
+      "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
+      "used_on": [
+        "patriotic-service"
+      ],
+      "notes": "",
+      "source_scope": "national"
+    },
+    {
+      "claim_id": "sar-gcp-petitioners-authority",
+      "claim_text": "SAR counts petitioners recognizing the authority of revolutionary governments.",
+      "source_url": "https://www.sar.org/app/uploads/NSSAR-Genealogy-Policy-Manual-2026-12-5.pdf",
+      "source_title": "SAR — Genealogy Committee Policies (NSSAR, reflects changes through 12 May 2026)",
+      "source_type": "official_secondary",
+      "archive_identifier": null,
+      "last_retrieved": "2026-10-31",
+      "quote_excerpt": "Petitioners recognizing the authority of revolutionary governments, Continental, provincial/state, or local.",
+      "page_ref": "§2.3002(3)(d)",
+      "verification_status": "verified",
+      "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
+      "used_on": [
+        "patriotic-service"
+      ],
+      "notes": "",
+      "source_scope": "national"
+    },
+    {
+      "claim_id": "sar-apg-not-every",
+      "claim_text": "SAR does not require every name, date and place on the application.",
+      "source_url": "https://www.sar.org/app/uploads/APG-07-June-2026.pdf",
+      "source_title": "SAR — Application Preparation Guide (NSSAR Genealogy Committee, 07 June 2026)",
+      "source_type": "official_secondary",
+      "archive_identifier": null,
+      "last_retrieved": "2026-10-31",
+      "quote_excerpt": "The applicant is not required to provide every name, date, and place on the application",
+      "page_ref": "PDF p. 5",
+      "verification_status": "verified",
+      "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
+      "used_on": [
+        "application-problems"
+      ],
+      "notes": "",
+      "source_scope": "national"
+    },
+    {
+      "claim_id": "sar-gcp-32001",
+      "claim_text": "SAR applicants must present conflicting evidence and explain its resolution in writing.",
+      "source_url": "https://www.sar.org/app/uploads/NSSAR-Genealogy-Policy-Manual-2026-12-5.pdf",
+      "source_title": "SAR — Genealogy Committee Policies (NSSAR, reflects changes through 12 May 2026)",
+      "source_type": "official_secondary",
+      "archive_identifier": null,
+      "last_retrieved": "2026-10-31",
+      "quote_excerpt": "the applicant must present the conflicting evidence and provide a written explanation of how to resolve the conflict",
+      "page_ref": "§3.2001",
+      "verification_status": "verified",
+      "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
+      "used_on": [
+        "application-problems"
+      ],
+      "notes": "",
+      "source_scope": "national"
+    },
+    {
+      "claim_id": "darblog-found-confirmed",
+      "claim_text": "An unrecognized service source must be found and confirmed as accurate.",
+      "source_url": "https://blog.dar.org/2021/02/26/why-was-his-service-removed",
+      "source_title": "Today's DAR (DAR staff genealogist) — Why Was His Service Removed? (Feb 26, 2021)",
+      "source_type": "official_secondary",
+      "archive_identifier": null,
+      "last_retrieved": "2026-10-31",
+      "quote_excerpt": "it must be found and confirmed as accurate to meet current DAR standards",
+      "page_ref": null,
+      "verification_status": "verified",
+      "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
+      "used_on": [
+        "application-problems"
+      ],
+      "notes": "",
+      "source_scope": "national"
+    },
+    {
+      "claim_id": "darblog-not-in-source",
+      "claim_text": "Sometimes the patriot isn't in the source, or the source doesn't show qualifying service.",
+      "source_url": "https://blog.dar.org/2021/02/26/why-was-his-service-removed",
+      "source_title": "Today's DAR (DAR staff genealogist) — Why Was His Service Removed? (Feb 26, 2021)",
+      "source_type": "official_secondary",
+      "archive_identifier": null,
+      "last_retrieved": "2026-10-31",
+      "quote_excerpt": "Sometimes the Patriot doesn’t appear in the source, or what the source says doesn’t qualify as service.",
+      "page_ref": null,
+      "verification_status": "verified",
+      "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
+      "used_on": [
+        "application-problems"
       ],
       "notes": "",
       "source_scope": "national"

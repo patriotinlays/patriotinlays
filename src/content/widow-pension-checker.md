@@ -6,7 +6,7 @@ tool: widow
 ---
 # Widow Pension Law Checker
 
-A free checker that compares a widow's marriage date, and what you know about her husband's Revolutionary War service, with the rules of each federal widow pension and bounty-land law from 1836 to 1878, one law at a time. [[claim:nara-act-1836]] [[claim:nara-act-1878]]
+A free checker that compares a widow's marriage date, and what you know about her husband's Revolutionary War service, with the rules of the major federal widow pension and bounty-land laws from 1836 to 1878, one law at a time. [[claim:nara-act-1836]] [[claim:nara-act-1878]]
 
 ::partial limits-widow
 
@@ -14,7 +14,7 @@ A free checker that compares a widow's marriage date, and what you know about he
 
 ::partial tool-terms
 
-**What it is.** A free checker that compares a widow's marriage date, and what you know about her husband's Revolutionary War service, with the rules of each federal widow pension and bounty-land law from 1836 to 1878, one law at a time. [[claim:nara-act-1836]] [[claim:nara-act-1878]]
+**What it is.** A free checker that compares a widow's marriage date, and what you know about her husband's Revolutionary War service, with the rules of the major federal widow pension and bounty-land laws from 1836 to 1878, one law at a time. [[claim:nara-act-1836]] [[claim:nara-act-1878]]
 
 **Who it helps.** Anyone whose line runs through a patriot and his wife, and anyone wondering whether a widow's pension file might exist for their family. You don't need to know the laws first; the checker shows which ones your dates fit.
 

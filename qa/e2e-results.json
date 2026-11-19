@@ -1,8 +1,8 @@
 {
-  "ranAt": "Thu Nov 19 2026 06:53:05 GMT-0600 (Central Standard Time)",
+  "ranAt": "Thu Nov 19 2026 07:14:38 GMT-0600 (Central Standard Time)",
   "browser": "/usr/bin/google-chrome (headless) via playwright-core 1.59.1",
-  "passed": 400,
-  "total": 400,
+  "passed": 420,
+  "total": 420,
   "exampleReportPages": {
     "summaryPages": 2,
     "fullPages": 3,
@@ -29,8 +29,7 @@
     "rgb(19, 41, 75) on rgb(255, 255, 255)": 14.52,
     "rgb(94, 85, 75) on rgb(255, 255, 255)": 7.3,
     "rgb(43, 38, 34) on rgb(255, 255, 255)": 14.97,
-    "rgb(107, 69, 0) on rgb(255, 253, 248)": 8.34,
-    "rgb(11, 26, 51) on rgb(255, 253, 248)": 17.08
+    "rgb(107, 69, 0) on rgb(255, 253, 248)": 8.34
   },
   "home": {
     "ps": 7,
@@ -828,7 +827,7 @@
       "detail": "{\"h1s\":1,\"sr\":\"Patriot, In Lay Terms: \",\"srHidden\":true,\"vis\":\"Plain-English Help With DAR And SAR Applications, For The Daughters And The Sons Of The American Revolution\",\"visH\":143.9375,\"title\":\"Patriot, In Lay Terms: Plain-English Help For DAR And SAR Applications\",\"rule\":\"rgb(178, 34, 52)\",\"ruleW\":\"56px\"}"
     },
     {
-      "name": "t122u #11: every visible text element on all 22 pages passes WCAG AA contrast (4.5:1, large text 3:1) — 3719 elements",
+      "name": "t122u #11: every visible text element on all 22 pages passes WCAG AA contrast (4.5:1, large text 3:1) — 3729 elements",
       "ok": true,
       "detail": ""
     },
@@ -1715,7 +1714,7 @@
     {
       "name": "t163 #2: Sources 'Last retrieved' is the Central-time date of the most recent full live-source check, and the claim count equals the manifest",
       "ok": true,
-      "detail": "{\"srcLine\":\"Manifest: 423 verified claims. Last retrieved: November 19, 2026.\",\"expectDate\":\"November 19, 2026\",\"shownCount\":423,\"manifest\":423,\"checkedAt\":\"Thu Nov 19 2026 06:41:46 GMT-0600 (Central Standard Time)\"}"
+      "detail": "{\"srcLine\":\"Manifest: 433 verified claims. Last retrieved: November 19, 2026.\",\"expectDate\":\"November 19, 2026\",\"shownCount\":433,\"manifest\":433,\"checkedAt\":\"Thu Nov 19 2026 07:11:50 GMT-0600 (Central Standard Time)\"}"
     },
     {
       "name": "t163 #3: every page says 'quoted official or institutional source'; the locked AI line uses the new wording; the old phrase is gone",
@@ -2029,6 +2028,106 @@
     },
     {
       "name": "t182 (1280px): guides/read-pension-file shows the new text without horizontal overflow",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "t184 #1: Records by State says what LVA has online and that certificate files/registers are on microfilm, not online",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "t184 #2: Substitute Evidence adds Tim's SAR record-copy sentence after NSCDA's other-societies advice",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "t184 #3: the no-slashes item is DAR-only and SAR's slashes/nickname rule follows",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "t184 #4: Patriotic Service petitions row quotes SAR's GCP §2.3002",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "t184 #5: Bounty Land step 4 is Tim's wording; the old 'Log any mismatch' step is gone",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "t184 #6: widow checker says 'the major federal widow pension and bounty-land laws from 1836 to 1878' and no longer 'each federal ... law from 1836 to 1878'",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "t184 #7: worksheet page says Virginia did not systematically record … before 1853; many pre-1853 marriage records survive",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "t184 #8: Application Returned asks to review gaps with the registrar instead of clearing every gap",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "t184 #9: 'Service questioned' (unrecognized source) says the record must name your patriot and show qualifying service",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "t184 #10: every chapter-locator / SAR contact link names its destination in the visible text",
+      "ok": true,
+      "detail": "[]"
+    },
+    {
+      "name": "t184 (390px): guides/records-by-state shows the new text without horizontal overflow",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "t184 (390px): guides/application-problems shows the new text without horizontal overflow",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "t184 (390px): guides/patriotic-service shows the new text without horizontal overflow",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "t184 (390px): guides/bounty-land-warrants shows the new text without horizontal overflow",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "t184 (390px): guides/lineage-proof-roadmap shows the new text without horizontal overflow",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "t184 (1280px): guides/records-by-state shows the new text without horizontal overflow",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "t184 (1280px): guides/application-problems shows the new text without horizontal overflow",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "t184 (1280px): guides/patriotic-service shows the new text without horizontal overflow",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "t184 (1280px): guides/bounty-land-warrants shows the new text without horizontal overflow",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "t184 (1280px): guides/lineage-proof-roadmap shows the new text without horizontal overflow",
       "ok": true,
       "detail": ""
     },

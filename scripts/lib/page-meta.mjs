@@ -29,7 +29,7 @@ export const META_DESCRIPTIONS = {
   "/guides/same-name/": "A disambiguation checklist for proving that a Revolutionary War record belongs to your ancestor and not to someone else with the same name.",
   "/guides/substitute-evidence/": "Prove each generation without a birth certificate, using substitute records sorted by era, and see what those records can and cannot show.",
   "/tools/lineage-matrix/": "A free worksheet that organizes the records you already have for each generation of a DAR or SAR line, shows what's still missing, and prints a gap report.",
-  "/tools/widow-pension-checker/": "A free checker that compares a widow's marriage date and her husband's service with each federal widow pension and bounty-land law from 1836 to 1878.",
+  "/tools/widow-pension-checker/": "A free checker that compares a widow's marriage date and her husband's service with the major federal widow pension and bounty-land laws from 1836 to 1878.",
   "/tools/lineage-matrix/report/": "Print a gap report of what's still missing in your line, where to look, and the records you entered, built in this browser from this device only.",
   "/tools/widow-pension-checker/report/": "Print a report of the dates you checked in the Widow Pension Law Checker and what the published pension laws say about them, built in this browser only.",
   "/404.html": "That page doesn't exist. Go to the home page, or start with the Lineage Evidence Matrix, the Widow Pension Law Checker, or the Roadmap guide.",

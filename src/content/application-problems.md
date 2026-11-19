@@ -9,7 +9,7 @@ cornerstone: 10
 ::in-short
 This guide helps you: find why a DAR or SAR application was questioned, and how to fix it.
 Start by: assuming the problem is in the documentation, not the ancestor.
-Then: run the [Lineage Evidence Matrix](/tools/lineage-matrix/) report and clear every gap and conflict it lists.
+Then: run the [Lineage Evidence Matrix](/tools/lineage-matrix/) report and review each gap with your registrar.
 ::end
 
 Start by assuming the problem is in the documentation, not the ancestor. DAR has published what it sees most often, and a 2023 Ohio Society SAR presentation listed common SAR problems. This guide turns that guidance into a problem, cause and fix table, then a pre-submission checklist.
@@ -30,7 +30,7 @@ Points attributed to the 2023 Ohio Society SAR presentation come from that talk,
 | Service questioned | DAR: missing source of service or complete residence [[claim:darblog-missing]] | Add both |
 | Service questioned | DAR: residence and service location do not match [[claim:darblog-residence]] | See [Same Name, Different Man](/guides/same-name/) |
 | Service questioned | DAR: residence in a known Loyalist center [[claim:darblog-loyalist]] | See [Patriot or Loyalist?](/guides/patriot-or-loyalist/) |
-| Service questioned | DAR: it does not recognize the service source [[claim:darblog-unrecognized]] | Supply the original record or a transcription of it |
+| Service questioned | DAR: it does not recognize the service source [[claim:darblog-unrecognized]] | Supply the original record or a transcription of it. The record must name your patriot and show qualifying service, not just exist; DAR says the source must be found and confirmed as accurate [[claim:darblog-found-confirmed]] [[claim:darblog-not-in-source]] |
 | Review delayed | DAR: incomplete, incorrect, undocumented or mistyped information [[claim:dar-delay]] | Re-check every field against its document |
 | Name missing from certificate | DAR leaves off initials, middle names or maiden names its staff have not verified [[claim:dar-cert-names]] | Document the full name |
 
@@ -60,10 +60,10 @@ Points attributed to the 2023 Ohio Society SAR presentation come from that talk,
 2. Every name, date, place and relationship has a document behind it. [[claim:dar-each-relationship]]
 3. {{asof:dar-upload-each}} DAR says every uploaded document is cited, and every cited document is uploaded. [[claim:dar-upload-each]]
 4. {{asof:dar-4digit}} DAR says years are four digits. [[claim:dar-4digit]]
-5. {{asof:dar-symbols}} DAR says its fields take no slashes, quotation marks or ampersands. [[claim:dar-symbols]]
+5. DAR only: {{asof:dar-symbols}} DAR says its fields take no slashes, quotation marks or ampersands. [[claim:dar-symbols]] SAR's application guide differs: use slashes to show other spellings of a name [[claim:sar-apg-slashes]], and put any nickname you enter in quotation marks. [[claim:sar-apg-nicknames]]
 6. No online family trees as proof. [[claim:dar-online-trees]]
 7. Service source is an original record, an acceptable published transcription, or a qualifying official record copy; SAR doesn't accept unpublished transcriptions or abstracts of legal documents posted online. [[claim:sar-gcp-45003-pub]] [[claim:sar-gcp-35003-drc]] [[claim:sar-gcp-35006-7]]
-8. Run the Lineage Evidence Matrix report and clear every gap and conflict it lists.
+8. Run the Lineage Evidence Matrix report. Review each gap with your registrar; a blank box isn't automatically a defect. [[claim:sar-apg-not-every]] Resolve real conflicts in writing and keep the conflicting evidence. [[claim:sar-gcp-32001]]
 
 A 2023 Ohio Society SAR presentation said a correctly prepared application can be reviewed at National in as little as 30 minutes. [[claim:ohsar-30min]]
 

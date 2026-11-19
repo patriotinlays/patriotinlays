@@ -69,7 +69,7 @@ DAR's Revolutionary War Pension Index also names other people mentioned in pensi
 Virginia shows how state records add to the federal ones. After a 1779 act, Virginia offered its own bounty land for Revolutionary War service. [[claim:lva-1779]]
 Virginia's state bounty land went to soldiers or sailors with at least three years of continuous Continental or state service. [[claim:lva-3yrs]]
 Virginia gave no state bounty land for militia service. [[claim:lva-militia]]
-The Library of Virginia has put images of those state bounty-land application files and certificate files online. [[claim:lva-files]] The federal Virginia half-pay files are a separate NARA series. [[claim:nara-m910]]
+The Library of Virginia's online collection consists of images of application files for military bounty land. [[claim:lva-files-online]] The certificate files and registers have not been digitized, but they are available on microfilm. [[claim:lva-not-digitized]] The federal Virginia half-pay files are a separate NARA series. [[claim:nara-m910]]
 
 Related guides: [Bounty Land Warrants](/guides/bounty-land-warrants/), [How to Read a Pension File](/guides/read-pension-file/), [Patriotic Service Without a Musket](/guides/patriotic-service/).
 

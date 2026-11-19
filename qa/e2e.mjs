@@ -1834,6 +1834,38 @@ for (const w of [390, 1280]) { const cx = await browser.newContext({ viewport: {
   }
 }
 
+// ---- t184: accuracy batch 3 ----
+{ const REL184 = join(ROOT, "qa/release-logs/t184"); mkdirSync(REL184, { recursive: true });
+  const T = (p) => readFileSync(join(DIST, p, "index.html"), "utf8").replace(/<script[\s\S]*?<\/script>/g, "").replace(/<sup[\s\S]*?<\/sup>/g, "").replace(/<[^>]+>/g, " ").replace(/&#39;|&apos;/g, "'").replace(/&amp;/g, "&").replace(/&quot;/g, '"').replace(/\s+/g, " ").replace(/ ([.,;:)])/g, "$1");
+  const rbs = T("guides/records-by-state"), se = T("guides/substitute-evidence"), ap = T("guides/application-problems"), ps = T("guides/patriotic-service"), bl = T("guides/bounty-land-warrants"), wp = T("tools/widow-pension-checker"), lm = T("tools/lineage-matrix");
+  check("t184 #1: Records by State says what LVA has online and that certificate files/registers are on microfilm, not online", rbs.includes("The Library of Virginia's online collection consists of images of application files for military bounty land.") && rbs.includes("The certificate files and registers have not been digitized, but they are available on microfilm.") && !rbs.includes("certificate files online"));
+  check("t184 #2: Substitute Evidence adds Tim's SAR record-copy sentence after NSCDA's other-societies advice", /Use the documents they cite, not the summary\. For SAR, qualifying official DAR, C\.A\.R\. and SAR record copies can be accepted as evidence\./.test(se));
+  check("t184 #3: the no-slashes item is DAR-only and SAR's slashes/nickname rule follows", ap.includes("DAR only: As of") && ap.includes("SAR's application guide differs: use slashes to show other spellings of a name, and put any nickname you enter in quotation marks."));
+  check("t184 #4: Patriotic Service petitions row quotes SAR's GCP §2.3002", ps.includes("SAR: \"Petitions on any subject can be accepted,\" including the relationship between church and state, from petitioners recognizing the authority of revolutionary governments"));
+  check("t184 #5: Bounty Land step 4 is Tim's wording; the old 'Log any mismatch' step is gone", bl.includes("Don't assume the family moved to the bounty land; many veterans sold their warrants. Flag a conflict only if records give incompatible residences or identities.") && !bl.includes("Log any mismatch between the land and the family's known home"));
+  check("t184 #6: widow checker says 'the major federal widow pension and bounty-land laws from 1836 to 1878' and no longer 'each federal ... law from 1836 to 1878'", wp.includes("the major federal widow pension and bounty-land laws from 1836 to 1878") && !wp.includes("each federal widow pension and bounty-land law from 1836 to 1878"));
+  check("t184 #7: worksheet page says Virginia did not systematically record … before 1853; many pre-1853 marriage records survive", lm.includes("Virginia did not systematically record births, marriages and deaths statewide before 1853; many pre-1853 marriage records survive,"));
+  check("t184 #8: Application Returned asks to review gaps with the registrar instead of clearing every gap", (ap.match(/Review each gap with your registrar; a blank box isn't automatically a defect\. Resolve real conflicts in writing and keep the conflicting evidence\./g) || []).length === 1 && ap.includes("Then: run the Lineage Evidence Matrix report and review each gap with your registrar.") && !ap.includes("clear every gap and conflict it lists"));
+  check("t184 #9: 'Service questioned' (unrecognized source) says the record must name your patriot and show qualifying service", ap.includes("The record must name your patriot and show qualifying service, not just exist; DAR says the source must be found and confirmed as accurate"));
+  const links = [];
+  for (const f of ["guides/lineage-proof-roadmap", "guides/application-problems", "guides/same-name", "guides/records-by-state", "walkthroughs"]) {
+    const h = readFileSync(join(DIST, f, "index.html"), "utf8");
+    for (const m of h.matchAll(/<a [^>]*href="(https:\/\/www\.dar\.org\/discover\/become-member\/chapter-locator|https:\/\/www\.sar\.org\/find-your-contact\/)"[^>]*>([^<]*)/g)) links.push([f, m[1], m[2]]);
+  }
+  check("t184 #10: every chapter-locator / SAR contact link names its destination in the visible text", links.length > 0 && links.every(([, u, x]) => u.includes("chapter-locator") ? /DAR Chapter Locator|DAR — Chapter Locator/.test(x) : /Find Your Local Society Contact/.test(x)), JSON.stringify(links.filter(([, u, x]) => !(u.includes("chapter-locator") ? /DAR Chapter Locator|DAR — Chapter Locator/.test(x) : /Find Your Local Society Contact/.test(x)))));
+  for (const w of [390, 1280]) {
+    const cx = await browser.newContext({ viewport: { width: w, height: 900 } }); const pg = await cx.newPage();
+    pg.on("console", (m) => { if (m.type() === "error") consoleErrors.push(`t184 ${w}: ${m.text()}`); });
+    for (const [path, txt, name] of [["guides/records-by-state", "have not been digitized", "lva-microfilm"], ["guides/application-problems", "DAR only:", "returned-dar-only"], ["guides/patriotic-service", "Petitions on any subject", "petitions-sar"], ["guides/bounty-land-warrants", "many veterans sold their warrants", "bounty-step4"], ["guides/lineage-proof-roadmap", "DAR Chapter Locator", "roadmap-locator"]]) {
+      await pg.goto(`${BASE}/${path}/`); const loc = pg.getByText(txt, { exact: false }).first();
+      const ok = await loc.count() > 0; if (ok) { await loc.scrollIntoViewIfNeeded(); await pg.screenshot({ path: join(REL184, `${name}-${w}.png`) }); }
+      const ov = await pg.evaluate(() => document.documentElement.scrollWidth > innerWidth);
+      check(`t184 (${w}px): ${path} shows the new text without horizontal overflow`, ok && !ov);
+    }
+    await cx.close();
+  }
+}
+
 // ---- Cache-busting: every script/CSS reference and every module import carries ?v=<hash> that matches the file ----
 const { createHash } = await import("node:crypto");
 const htmlRefs = pagesToCheck.flatMap((p) => [...readFileSync(join(DIST, p, "index.html"), "utf8").matchAll(/(?:src|href)="(\/assets\/[^"]+\.(?:js|css)[^"]*)"/g)].map((m) => m[1]));
