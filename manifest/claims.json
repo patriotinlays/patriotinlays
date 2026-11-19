@@ -3838,24 +3838,6 @@
       "source_scope": "national"
     },
     {
-      "claim_id": "nps-1820",
-      "claim_text": "The 1820 act added proof of financial need.",
-      "source_url": "https://www.nps.gov/articles/000/what-might-you-find-in-the-revolutionary-war-pension-files.htm",
-      "source_title": "National Park Service — Revolutionary War Pension Files: Tips and a Guide for the Curious",
-      "source_type": "official_secondary",
-      "archive_identifier": null,
-      "last_retrieved": "2026-10-31",
-      "quote_excerpt": "This act added a new requirement to prove financial need.",
-      "page_ref": null,
-      "verification_status": "verified",
-      "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
-      "used_on": [
-        "read-pension-file"
-      ],
-      "notes": "",
-      "source_scope": "national"
-    },
-    {
       "claim_id": "nps-1832",
       "claim_text": "The 1832 act lowered eligibility to six months and opened it to militia service.",
       "source_url": "https://www.nps.gov/articles/000/what-might-you-find-in-the-revolutionary-war-pension-files.htm",
@@ -7637,6 +7619,281 @@
       ],
       "notes": "",
       "source_scope": "state"
+    },
+    {
+      "claim_id": "nara-1850-free-names",
+      "claim_text": "The 1850 free-population schedule names each household member.",
+      "source_url": "https://www.archives.gov/research/census/1850",
+      "source_title": "National Archives — 1850 Census Records",
+      "source_type": "official_secondary",
+      "archive_identifier": null,
+      "last_retrieved": "2026-10-31",
+      "quote_excerpt": "Name of every person whose usual place of abode on the first day of June, 1850, was in this family.",
+      "page_ref": "Schedule 1 - Free Inhabitants",
+      "verification_status": "verified",
+      "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
+      "used_on": [
+        "census-bridge",
+        "substitute-evidence"
+      ],
+      "notes": "",
+      "source_scope": "national"
+    },
+    {
+      "claim_id": "nara-1850-slave-schedule",
+      "claim_text": "The 1850 slave schedule records the slave owner's name and the number of slaves, not names of the enslaved.",
+      "source_url": "https://www.archives.gov/research/census/1850",
+      "source_title": "National Archives — 1850 Census Records",
+      "source_type": "official_secondary",
+      "archive_identifier": null,
+      "last_retrieved": "2026-10-31",
+      "quote_excerpt": "Schedule 2 - Slave Inhabitants Name of slave owner Number of slaves",
+      "page_ref": null,
+      "verification_status": "verified",
+      "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
+      "used_on": [
+        "census-bridge",
+        "substitute-evidence"
+      ],
+      "notes": "",
+      "source_scope": "national"
+    },
+    {
+      "claim_id": "nara-1860-free-names",
+      "claim_text": "The 1860 free-population schedule names each household member.",
+      "source_url": "https://www.archives.gov/research/census/1860",
+      "source_title": "National Archives — 1860 Census Records",
+      "source_type": "official_secondary",
+      "archive_identifier": null,
+      "last_retrieved": "2026-10-31",
+      "quote_excerpt": "Name of every person whose usual place of abode on the first day of June, 1860, was in this family",
+      "page_ref": "Schedule 1 - Free Inhabitants",
+      "verification_status": "verified",
+      "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
+      "used_on": [
+        "census-bridge",
+        "substitute-evidence"
+      ],
+      "notes": "",
+      "source_scope": "national"
+    },
+    {
+      "claim_id": "nara-1860-slave-schedule",
+      "claim_text": "The 1860 slave schedule records the slave owner's name and the number of slaves, not names of the enslaved.",
+      "source_url": "https://www.archives.gov/research/census/1860",
+      "source_title": "National Archives — 1860 Census Records",
+      "source_type": "official_secondary",
+      "archive_identifier": null,
+      "last_retrieved": "2026-10-31",
+      "quote_excerpt": "Schedule 2 - Slave Inhabitants Name of slave owner Number of slaves",
+      "page_ref": null,
+      "verification_status": "verified",
+      "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
+      "used_on": [
+        "census-bridge",
+        "substitute-evidence"
+      ],
+      "notes": "",
+      "source_scope": "national"
+    },
+    {
+      "claim_id": "nara-1870-every",
+      "claim_text": "The 1870 census names every household member.",
+      "source_url": "https://www.archives.gov/research/census/1870",
+      "source_title": "National Archives — 1870 Census Records",
+      "source_type": "official_secondary",
+      "archive_identifier": null,
+      "last_retrieved": "2026-10-31",
+      "quote_excerpt": "Name of every person whose usual place of abode on the first day of June 1870, was in this family.",
+      "page_ref": "Schedule 1, Inhabitants",
+      "verification_status": "verified",
+      "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
+      "used_on": [
+        "census-bridge",
+        "substitute-evidence"
+      ],
+      "notes": "",
+      "source_scope": "national"
+    },
+    {
+      "claim_id": "sar-gcp-loyalty",
+      "claim_text": "SAR: disloyal activity disqualifies service prior to the act of disloyalty.",
+      "source_url": "https://www.sar.org/app/uploads/NSSAR-Genealogy-Policy-Manual-2026-12-5.pdf",
+      "source_title": "SAR — Genealogy Committee Policies (NSSAR, reflects changes through 12 May 2026)",
+      "source_type": "official_secondary",
+      "archive_identifier": null,
+      "last_retrieved": "2026-10-31",
+      "quote_excerpt": "In all cases, activity disloyal to the American cause of Independence disqualifies service prior to the act of disloyalty as acceptable for membership in the SAR.",
+      "page_ref": "§2.5000",
+      "verification_status": "verified",
+      "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
+      "used_on": [
+        "patriot-or-loyalist"
+      ],
+      "notes": "",
+      "source_scope": "national"
+    },
+    {
+      "claim_id": "sar-apg-all-proven",
+      "claim_text": "SAR's application guide: all names, dates and places on the application must be proven.",
+      "source_url": "https://www.sar.org/app/uploads/APG-07-June-2026.pdf",
+      "source_title": "SAR — Application Preparation Guide (NSSAR Genealogy Committee, 07 June 2026)",
+      "source_type": "official_secondary",
+      "archive_identifier": null,
+      "last_retrieved": "2026-10-31",
+      "quote_excerpt": "All names, dates and places on the application must be proven",
+      "page_ref": "PDF p. 5",
+      "verification_status": "verified",
+      "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
+      "used_on": [
+        "lineage-proof-roadmap"
+      ],
+      "notes": "",
+      "source_scope": "national"
+    },
+    {
+      "claim_id": "sar-gcp-undoc-trees",
+      "claim_text": "SAR's Genealogy Committee Policies list undocumented family trees and GEDCOMs as inadmissible.",
+      "source_url": "https://www.sar.org/app/uploads/NSSAR-Genealogy-Policy-Manual-2026-12-5.pdf",
+      "source_title": "SAR — Genealogy Committee Policies (NSSAR, reflects changes through 12 May 2026)",
+      "source_type": "official_secondary",
+      "archive_identifier": null,
+      "last_retrieved": "2026-10-31",
+      "quote_excerpt": "Undocumented family trees and Genealogical Data Communications (GEDCOMS).",
+      "page_ref": "§3.5006(4)",
+      "verification_status": "verified",
+      "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
+      "used_on": [
+        "faq"
+      ],
+      "notes": "",
+      "source_scope": "national"
+    },
+    {
+      "claim_id": "m804-1820-schedule",
+      "claim_text": "The 1820 act required a certified schedule of estate and income.",
+      "source_url": "https://www.archives.gov/files/research/military/army/dc/m804.pdf",
+      "source_title": "NARA M804 descriptive pamphlet — Revolutionary War Pension and Bounty-Land-Warrant Application Files",
+      "source_type": "official_secondary",
+      "archive_identifier": null,
+      "last_retrieved": "2026-10-31",
+      "quote_excerpt": "to submit a certified schedule of his estate and income to the Secretary of War",
+      "page_ref": "PDF p. 4, Pension Legislation",
+      "verification_status": "verified",
+      "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
+      "used_on": [
+        "read-pension-file"
+      ],
+      "notes": "",
+      "source_scope": "national"
+    },
+    {
+      "claim_id": "m804-1818-need",
+      "claim_text": "The 1818 act limited pensions to veterans in need of assistance.",
+      "source_url": "https://www.archives.gov/files/research/military/army/dc/m804.pdf",
+      "source_title": "NARA M804 descriptive pamphlet — Revolutionary War Pension and Bounty-Land-Warrant Application Files",
+      "source_type": "official_secondary",
+      "archive_identifier": null,
+      "last_retrieved": "2026-10-31",
+      "quote_excerpt": "Officers and enlisted men in need of assistance were eligible under the terms of the 1818 act",
+      "page_ref": "PDF p. 4, Pension Legislation",
+      "verification_status": "verified",
+      "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
+      "used_on": [
+        "read-pension-file"
+      ],
+      "notes": "",
+      "source_scope": "national"
+    },
+    {
+      "claim_id": "sar-apg-supp-sig",
+      "claim_text": "A SAR supplemental needs only the applicant's and the State Registrar's signatures.",
+      "source_url": "https://www.sar.org/app/uploads/APG-07-June-2026.pdf",
+      "source_title": "SAR — Application Preparation Guide (NSSAR Genealogy Committee, 07 June 2026)",
+      "source_type": "official_secondary",
+      "archive_identifier": null,
+      "last_retrieved": "2026-10-31",
+      "quote_excerpt": "A supplemental application only requires the signatures of the applicant and the State Registrar",
+      "page_ref": "Missing Signatures",
+      "verification_status": "verified",
+      "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
+      "used_on": [
+        "application-problems"
+      ],
+      "notes": "",
+      "source_scope": "national"
+    },
+    {
+      "claim_id": "sar-gcp-35003-drc",
+      "claim_text": "SAR accepts official record copies of DAR or C.A.R. applications approved after 1 January 1985 as evidence.",
+      "source_url": "https://www.sar.org/app/uploads/NSSAR-Genealogy-Policy-Manual-2026-12-5.pdf",
+      "source_title": "SAR — Genealogy Committee Policies (NSSAR, reflects changes through 12 May 2026)",
+      "source_type": "official_secondary",
+      "archive_identifier": null,
+      "last_retrieved": "2026-10-31",
+      "quote_excerpt": "Official record copies of applications for membership in the Daughters of the American Revolution (DAR) or the Children of the American Revolution (C.A.R.) approved after 1 January 1985 shall be accepted as evidence of corresponding service, lineage and related facts on SAR applications.",
+      "page_ref": "§3.5003(1)",
+      "verification_status": "verified",
+      "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
+      "used_on": [
+        "application-problems"
+      ],
+      "notes": "",
+      "source_scope": "national"
+    },
+    {
+      "claim_id": "sar-gcp-45003-pub",
+      "claim_text": "SAR admits publications that quote or abstract contemporary or official service records.",
+      "source_url": "https://www.sar.org/app/uploads/NSSAR-Genealogy-Policy-Manual-2026-12-5.pdf",
+      "source_title": "SAR — Genealogy Committee Policies (NSSAR, reflects changes through 12 May 2026)",
+      "source_type": "official_secondary",
+      "archive_identifier": null,
+      "last_retrieved": "2026-10-31",
+      "quote_excerpt": "Quote or abstract records of the first two types",
+      "page_ref": "§4.5003",
+      "verification_status": "verified",
+      "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
+      "used_on": [
+        "application-problems"
+      ],
+      "notes": "",
+      "source_scope": "national"
+    },
+    {
+      "claim_id": "dar-faq-other-societies",
+      "claim_text": "DAR does not use other hereditary societies' applications.",
+      "source_url": "https://www.dar.org/national-society/faq/membership",
+      "source_title": "DAR — Membership FAQs",
+      "source_type": "official_secondary",
+      "archive_identifier": null,
+      "last_retrieved": "2026-10-31",
+      "quote_excerpt": "No, DAR does not utilize applications of other hereditary societies.",
+      "page_ref": "My brother is a SAR, can I use his application?",
+      "verification_status": "verified",
+      "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
+      "used_on": [
+        "lineage-proof-roadmap"
+      ],
+      "notes": "",
+      "source_scope": "national"
+    },
+    {
+      "claim_id": "sar-apply-print",
+      "claim_text": "For SAR's digital application, print it and give it to your chapter registrar to begin processing.",
+      "source_url": "https://www.sar.org/how-to-apply/",
+      "source_title": "SAR — Apply in 4 Easy Steps",
+      "source_type": "official_secondary",
+      "archive_identifier": null,
+      "last_retrieved": "2026-10-31",
+      "quote_excerpt": "Please make sure that you print off the application and give it to your Chapter Registrar to begin processing.",
+      "page_ref": "Option #1",
+      "verification_status": "verified",
+      "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
+      "used_on": [
+        "partial:how-to-join"
+      ],
+      "notes": "",
+      "source_scope": "national"
     }
   ]
 }

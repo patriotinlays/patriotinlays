@@ -67,7 +67,7 @@ The act behind an application decides what the applicant had to say, so it tells
 | Act | What it covered | What that means for the file |
 |---|---|---|
 | 1818 | Continental Line soldiers could apply for federal pensions [[claim:nps-1818]] | Short declarations naming unit and officers |
-| 1820 | Added proof of financial need [[claim:nps-1820]] | Property schedules, which often name the wife and children with ages [[claim:m804-property]] |
+| 1820 | Required a certified schedule of estate and income (the 1818 law already limited pensions to veterans in need) [[claim:m804-1820-schedule]] [[claim:m804-1818-need]] | Property schedules, which often name the wife and children with ages [[claim:m804-property]] |
 | 1832 | Six months of service, including militia [[claim:nps-1832]] | Testimony before a Court of Record [[claim:nps-1832-court]], backed by at least one credible witness [[claim:nps-witness]] |
 | 1836 | Widows who married the veteran before his last period of service ended (NARA's wording) [[claim:nara-act-1836]] | Proof of marriage, widow's own testimony |
 | 1838 | Five-year pensions for widows married after his last service ended and before January 1, 1794, if his service met the 1832 act [[claim:nara-act-1838]] [[claim:stat-1838-after-service]] [[claim:stat-1838-1832-service]] | Marriage date and his service |

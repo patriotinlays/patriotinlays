@@ -9,7 +9,7 @@ If you're new to this, you're in the right place. These are the questions people
 
 ## Am I eligible to join?
 
-DAR is open to women who can prove they descend from an ancestor who aided in achieving American independence. [[claim:dar-join-eligible]] SAR is open to men who can prove they descend from a patriot of the American Revolution. [[claim:sar-about-age]] [[claim:sar-about-eligible]] The word "prove" is doing the work in both sentences: the society's own genealogists review what you send, not this site. [[claim:dar-review-staff]]
+DAR is open to women 18 or older who can prove they descend from an ancestor who aided in achieving American independence. [[claim:dar-join-eligible]] SAR is open to men who can prove they descend from a patriot of the American Revolution. [[claim:sar-about-age]] [[claim:sar-about-eligible]] The word "prove" is doing the work in both sentences: the society's own genealogists review what you send, not this site. [[claim:dar-review-staff]]
 
 ## What exactly is a patriot?
 
@@ -29,7 +29,7 @@ A missing certificate is common, and you don't need to invent one. For people wh
 
 ## Can I use a family story or an old family tree as proof?
 
-Family stories are where you start looking, not where you stop. SAR does not take family tradition as proof of service. [[claim:sar-tradition]] A family genealogy may be acceptable for a particular person or generation if it meets DAR's standards, so a tree can point you to records even when it can't stand alone. [[claim:dar-genealogy-may]] And when two records disagree, the worksheet lets you mark the disagreement rather than quietly picking the date you prefer.
+Family stories are where you start looking, not where you stop. SAR does not take family tradition as proof of service. [[claim:sar-tradition]] Online or other undocumented family trees are a separate case: SAR doesn't accept undocumented family trees or GEDCOM files as evidence. [[claim:sar-gcp-undoc-trees]] A family genealogy may be acceptable for a particular person or generation if it meets DAR's standards, so a tree can point you to records even when it can't stand alone. [[claim:dar-genealogy-may]] And when two records disagree, the worksheet lets you mark the disagreement rather than quietly picking the date you prefer.
 
 ## Do I have to hire a genealogist?
 

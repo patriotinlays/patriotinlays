@@ -19,6 +19,10 @@ export const SOURCE_TOPICS = {
     [/^dar-(eapp-established|paper-analysis)$/, "DAR paper or electronic application"], [/^dar-unknown-parent$/, "unknown parents"],
     [/^dar-service-sources$/, "DAR service sources"], [/./, "records DAR accepts"]),
   "https://blog.dar.org/2021/02/26/why-was-his-service-removed": R("why DAR questions or removes service"),
+  // t182: NARA census year pages.
+  "https://www.archives.gov/research/census/1850": R("the National Archives' 1850 census page"),
+  "https://www.archives.gov/research/census/1860": R("the National Archives' 1860 census page"),
+  "https://www.archives.gov/research/census/1870": R("the National Archives' 1870 census page"),
   // t179: live DAR sources that replace parts of the unreachable membership.dar.org pages.
   "https://blog.dar.org/2022/11/28/be-star-dar-genealogy-updates-registrar-general": R("DAR's Registrar General on the first three generations"),
   "https://blog.dar.org/2024/05/16/new-commemorative-america-250-membership-certificates": R("DAR's note on fees and first-year dues"),

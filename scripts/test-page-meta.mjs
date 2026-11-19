@@ -43,9 +43,9 @@ t("Same Name lastmod is 2026-11-13 (t172 glossary junior-membership line) and Ab
   lastmodFor("/guides/same-name/") === "2026-11-13" && lastmodFor("/about/") === "2026-11-10",
   `same-name=${mods["/guides/same-name/"]} about=${mods["/about/"]}`);
 
-t("widow-pension-checker lastmod is 2026-11-13 (t172 accuracy batch); lineage-matrix is 2026-11-18 (t178 gap-rules line); FAQ stays 2026-11-10",
+t("widow-pension-checker lastmod is 2026-11-13 (t172 accuracy batch); lineage-matrix is 2026-11-18 (t178 gap-rules line); FAQ is 2026-11-19 (t182 eligibility and family-tree lines)",
   lastmodFor("/tools/widow-pension-checker/") === "2026-11-13" && lastmodFor("/tools/lineage-matrix/") === "2026-11-18"
-  && lastmodFor("/faq/") === "2026-11-10",
+  && lastmodFor("/faq/") === "2026-11-19",
   `widow=${mods["/tools/widow-pension-checker/"]} matrix=${mods["/tools/lineage-matrix/"]} faq=${mods["/faq/"]}`);
 
 t("chicagoDate converts a UTC instant to the America/Chicago calendar date",

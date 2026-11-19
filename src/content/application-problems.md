@@ -44,7 +44,8 @@ Points attributed to the 2023 Ohio Society SAR presentation come from that talk,
 
 These points come from SAR's national application checklist, Genealogy Committee Policies and Application Preparation Guide.
 
-- {{asof:sar-apg-signatures}} SAR's application guide lists signatures from the applicant, two sponsors, the State Registrar and the State Secretary. [[claim:sar-apg-signatures]]
+- **New applications:** {{asof:sar-apg-signatures}} SAR's application guide lists signatures from the applicant, two sponsors, the State Registrar and the State Secretary. [[claim:sar-apg-signatures]]
+- **Supplementals:** {{asof:sar-apg-supp-sig}} SAR's application guide says, "A supplemental application only requires the signatures of the applicant and the State Registrar." [[claim:sar-apg-supp-sig]]
 - {{asof:sar-checklist-supp-sig}} SAR's application checklist asks whether the member and the State Registrar (or another designated officer) have signed a supplemental application on the back. [[claim:sar-checklist-supp-sig]]
 - {{asof:sar-gcp-replace-once}} SAR's genealogy policies say an applicant may replace a pended application with another patriot ancestor one time without paying an additional fee. [[claim:sar-gcp-replace-once]]
 - {{asof:sar-gcp-replacements-all-once}} SAR's genealogy policies say replacements were reduced to once for all applications. [[claim:sar-gcp-replacements-all-once]]
@@ -61,7 +62,7 @@ Points attributed to the 2023 Ohio Society SAR presentation come from that talk,
 4. {{asof:dar-4digit}} DAR says years are four digits. [[claim:dar-4digit]]
 5. {{asof:dar-symbols}} DAR says its fields take no slashes, quotation marks or ampersands. [[claim:dar-symbols]]
 6. No online family trees as proof. [[claim:dar-online-trees]]
-7. Service source is an original record or a published transcription; SAR doesn't accept unpublished transcriptions or abstracts of legal documents posted online. [[claim:sar-gcp-35006-7]]
+7. Service source is an original record, an acceptable published transcription, or a qualifying official record copy; SAR doesn't accept unpublished transcriptions or abstracts of legal documents posted online. [[claim:sar-gcp-45003-pub]] [[claim:sar-gcp-35003-drc]] [[claim:sar-gcp-35006-7]]
 8. Run the Lineage Evidence Matrix report and clear every gap and conflict it lists.
 
 A 2023 Ohio Society SAR presentation said a correctly prepared application can be reviewed at National in as little as 30 minutes. [[claim:ohsar-30min]]

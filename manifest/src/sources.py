@@ -81,6 +81,10 @@ SOURCES = {
  "DAR_RG_BLOG_2022": ("https://blog.dar.org/2022/11/28/be-star-dar-genealogy-updates-registrar-general", "Today's DAR — Be a Star for DAR: Genealogy Updates from the Registrar General (Nov 28, 2022)", "dar_rg_blog_2022.html"),
  "DAR_BLOG_2024": ("https://blog.dar.org/2024/05/16/new-commemorative-america-250-membership-certificates", "Today's DAR — New Commemorative America 250 Membership Certificates! (May 16, 2024)", "dar_blog_2024.html"),
  "DAR_FAQ_MEMBERSHIP": ("https://www.dar.org/national-society/faq/membership", "DAR — Membership FAQs", "dar_faq_membership.html"),
+ # t182: NARA census year pages (fetched Nov 19, 2026).
+ "NARA_1850": ("https://www.archives.gov/research/census/1850", "National Archives — 1850 Census Records", "nara_1850.html"),
+ "NARA_1860": ("https://www.archives.gov/research/census/1860", "National Archives — 1860 Census Records", "nara_1860.html"),
+ "NARA_1870": ("https://www.archives.gov/research/census/1870", "National Archives — 1870 Census Records", "nara_1870.html"),
  "MA_SL_GEN": ("https://www.mass.gov/guides/guide-to-genealogical-resources-in-the-state-library", "Mass.gov (State Library of Massachusetts) — Guide to Genealogical Resources in the State Library", "ma_sl_gen.html"),
 }
 
@@ -93,7 +97,7 @@ SOURCES = {
 # The "As of [date]," prefix is only allowed for national and state sources.
 SCOPE = {k: "national" for k in ["DAR_SVC","DAR_STEP","DAR_FAQ","DAR_BLOG","DAR_PRP","SAR1","SAR_TAX","M804","NARA_SVC","NARA_GEN","NARA_AMREV","NARA_CENSUS","NARA_BULK",
     "PROLOGUE","NPS","DAR_LOCATOR","DAR_JOIN","SAR_APPLY","LOC_STAT","SAR_CONTACT","DAR_WHAT","SAR_ABOUT","NSCDA_MEM","NARA_VITAL","LOC_C24","LOC_C25","LOC_C30","LOC_C32",
-    "LOC_C33","LOC_C45","NARA_ORDER","DAR_ANCESTOR","SAR_PRS","NARA_MISSION","NARA_PENSIONS","DAR_LIBSEARCH","DAR_LINRES","SAR_COPY","LOC_CT_VITAL","SAR_CHECKLIST","SAR_APG","SAR_GCP","DAR_RG_BLOG_2022","DAR_BLOG_2024","DAR_FAQ_MEMBERSHIP"]}
+    "LOC_C33","LOC_C45","NARA_ORDER","DAR_ANCESTOR","SAR_PRS","NARA_MISSION","NARA_PENSIONS","DAR_LIBSEARCH","DAR_LINRES","SAR_COPY","LOC_CT_VITAL","SAR_CHECKLIST","SAR_APG","SAR_GCP","DAR_RG_BLOG_2022","DAR_BLOG_2024","DAR_FAQ_MEMBERSHIP","NARA_1850","NARA_1860","NARA_1870"]}
 SCOPE.update({k: "state" for k in ["LVA","LVA_REV","LVA_BMD","MSA_MIL","MSA_BIRTH","NC_TRPR","NC_VR","NJ_MIL","NJ_GEN","PA_REV","PA_DOH","PA_ARCH_VR","CT_REV","SC_REV",
     "SC_BIRTH","SC_SL_VR","MA_MIL","MA_SL_GEN","GA_BOUNTY","GA_VITAL","NH_FAM","RI_PRES","RI_VITAL","DE_OATH","DE_VITAL","NYSL_PRECIVIL","NYSL_VITREC",
     # NSCDA's South Carolina society: one state society's official standards, not NSCDA's national rules.

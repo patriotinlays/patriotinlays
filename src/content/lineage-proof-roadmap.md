@@ -18,7 +18,7 @@ A lineage application is a chain. Each link is one generation, and each link hol
 
 ## Step 0: find your patriot's name
 
-Everything else in this guide depends on knowing which ancestor was the patriot. If you don't know your patriot's name yet, start here.
+If you don't know your patriot yet, start with yourself and work back one generation at a time; a name found in a patriot database is a lead until your documented line connects to it. If you don't know your patriot's name yet, start here.
 
 - **Start with what you know.** DAR's first research step is to ask what you already know about your family history and lineage. [[claim:dar-join-gather]]
 - **Search DAR's free Genealogical Research System.** DAR offers it free to help with research and with the membership process; it is linked from [DAR's How to Join page](https://www.dar.org/discover/become-member/how-join). [[claim:dar-join-grs]] [[claim:dar-grs-purpose]]
@@ -44,6 +44,7 @@ Once you have a name, the free [Lineage Evidence Matrix](/tools/lineage-matrix/)
 If DAR has already accepted your patriot, an earlier member's approved application can help with your research and can also be used as documentation for your own application. [[claim:dar-lib-record-copy-use]]
 DAR calls these copies "record copies," and you can download them online. [[claim:dar-linres-record-copies]]
 Older applications may include little information, so check what each one actually proves. [[claim:dar-linres-little-info]]
+DAR doesn't accept another hereditary society's application, such as a brother's SAR application, as proof. [[claim:dar-faq-other-societies]]
 SAR also offers record copies of approved applications. [[claim:sar-record-copy]]
 Ask your chapter registrar which of your generations still need proof.
 
@@ -66,7 +67,7 @@ SAR states that it requires proof of bloodline descent, whether legitimate or il
 | Generations 1–3 | Complete dates and places for each person [[claim:dar-gen-1-3]] | Not stated |
 | Older generations | At least one documented date and place of birth or death for people who lived before modern vital records [[claim:dar-gen-older]] | Proof of bloodline descent from the patriot to the applicant [[claim:sar-bloodline]] |
 | Both parents? | Both the man and the woman in each generation are documented [[claim:dar-both-parents]] | Not stated |
-| What has to be proven? | Every name, date, place and relationship [[claim:dar-each-relationship]] | Family tradition about service is not proof [[claim:sar-tradition]] |
+| What has to be proven? | Every name, date, place and relationship [[claim:dar-each-relationship]] | All names, dates and places on the application must be proven [[claim:sar-apg-all-proven]]; family tradition about service is not proof [[claim:sar-tradition]] |
 | Sponsors | Not stated | Two current SAR members sponsor the applicant [[claim:sar-sponsors]] |
 
 SAR's Step 1 page gives 26 November; this site follows SAR's Genealogy Committee Policies. [[claim:sar-window]] [[claim:sar-gcp-window]]

@@ -768,7 +768,7 @@ phase("load"); await page.goto(`${BASE}/`); phase("interact");
   const bad = affected.filter((p) => BAD.test(text(p)));
   check("t127u #1: Application Returned, Same Name, Substitute Evidence, Census Bridge and the Lineage Evidence Matrix never word the Ohio or South Carolina points as SAR-wide or NSCDA-wide rules", bad.length === 0, bad.join(" "));
   check("t127u #1: those pages use the honest attributions", text("guides/same-name").includes("A 2023 Ohio Society SAR presentation said") && /NSCDA's South Carolina society's standards (say|give)/.test(text("guides/same-name"))
-    && text("guides/census-bridge").includes("NSCDA's South Carolina society's standards say they do not state relationships") && text("tools/lineage-matrix").includes("NSCDA's South Carolina society's standards say"));
+    && /NSCDA's South Carolina society's standards say (they|the 1850–1870 censuses) do not state relationships/.test(text("guides/census-bridge")) /* t182 #2 reworded the subject */ && text("tools/lineage-matrix").includes("NSCDA's South Carolina society's standards say"));
   const ta = H("tools/widow-pension-checker"), rp = text("guides/read-pension-file");
   check("t127u #2: the navy-widow law is cited as the Act of February 28, 1855, ch. 126, sec. 3, 10 Stat. 616 on the widow checker and the Read a Pension File guide",
     text("tools/widow-pension-checker").includes("The Act of February 28, 1855 (ch. 126, sec. 3, 10 Stat. 616) did the same for widows of navy officers") && rp.includes("navy widows (Act of February 28, 1855, ch. 126, sec. 3, 10 Stat. 616)")
@@ -1677,7 +1677,7 @@ for (const w of [390, 1280]) { const cx = await browser.newContext({ viewport: {
     && text("guides/application-problems").includes("(boys under 18 can apply for junior membership)"));
   check("t172 #6: Application Returned signatures and service-source wording; Census Bridge does not drop a man with no child in the bracket",
     text("guides/application-problems").includes("SAR's application guide lists signatures from the applicant, two sponsors, the State Registrar and the State Secretary.")
-    && text("guides/application-problems").includes("Service source is an original record or a published transcription; SAR doesn't accept unpublished transcriptions or abstracts of legal documents posted online.")
+    && text("guides/application-problems").includes("Service source is an original record, an acceptable published transcription, or a qualifying official record copy; SAR doesn't accept unpublished transcriptions or abstracts of legal documents posted online.") /* t182 #9 wording */
     && text("guides/census-bridge").includes("A man with no child in the right age bracket is less likely, but don't rule him out yet; check other records first.")
     && !text("guides/census-bridge").includes("A man who shows no child in the right bracket drops off your list."));
 }
@@ -1799,6 +1799,39 @@ for (const w of [390, 1280]) { const cx = await browser.newContext({ viewport: {
     se.includes("Generations 1 to 3 are different: DAR expects complete dates and places for you, your parents and your grandparents.") && rd.includes("Generations 1–3 Complete dates and places for each person") && lm.includes("Generations 1 to 3 need complete dates and places, since DAR asks for them for those generations.")
     && !/birth and death dates and places|places of birth and death for each person|need birth and death evidence/.test(se + rd + lm));
   check("t180 #1: Roadmap fee sentence is exactly Tim's t180 wording; the t179 'national dues' wording is gone", rd.includes("DAR requires an application fee plus first-year dues.") && rd.includes("Ask your chapter registrar for current amounts.") && !/national dues|add their own/.test(rd));
+}
+
+// ---- t182: accuracy batch 2 (census/enslaved, SAR loyalty, SAR proof, trees, DAR 18+, 1820 act, signatures, service source, bracket wording, Step 0, other societies, SAR print) ----
+{ const REL182 = join(ROOT, "qa/release-logs/t182"); mkdirSync(REL182, { recursive: true });
+  const T = (p) => readFileSync(join(DIST, p, "index.html"), "utf8").replace(/<script[\s\S]*?<\/script>/g, "").replace(/<sup[\s\S]*?<\/sup>/g, "").replace(/<[^>]+>/g, " ").replace(/&#39;|&apos;/g, "'").replace(/&amp;/g, "&").replace(/&quot;/g, '"').replace(/\s+/g, " ").replace(/ ([.,;:)])/g, "$1");
+  const claims = new Map(JSON.parse(readFileSync(join(ROOT, "manifest/claims.json"), "utf8")).claims.map((c) => [c.claim_id, c]));
+  const CEN = "The 1850 and 1860 free-population schedules name each household member; enslaved people were counted on separate schedules, generally without names.";
+  const se = T("guides/substitute-evidence"), cb = T("guides/census-bridge"), pl = T("guides/patriot-or-loyalist"), rd = T("guides/lineage-proof-roadmap"), fq = T("faq"), pf = T("guides/read-pension-file"), ap = T("guides/application-problems");
+  const all = ["", "faq", "guides/substitute-evidence", "guides/census-bridge", "guides/lineage-proof-roadmap", "tools/lineage-matrix", "guides/patriotic-service"].map(T).join(" ");
+  check("t182 #1: no page says SAR uses 'the same period'; SAR's dates (19 April 1775 to 25 November 1783) and the Step 1 note stay", !/same period/i.test(all) && T("tools/lineage-matrix").includes("SAR accepts patriotic service rendered between 19 April 1775 and 25 November 1783.") && T("tools/lineage-matrix").includes("SAR's Step 1 page gives 26 November"));
+  check("t182 #2: Substitute Evidence and Census Bridge use Tim's 1850/1860 sentence; 1870 kept (NARA); 'name everyone' and 'Names every household member' gone", se.includes(CEN) && cb.includes(CEN) && se.includes("The 1870 census names every household member.") && !/censuses name everyone|Names every household member/.test(se + cb)
+    && claims.get("nara-1850-free-names")?.source_url === "https://www.archives.gov/research/census/1850" && claims.get("nara-1870-every")?.source_url === "https://www.archives.gov/research/census/1870");
+  check("t182 #3: Patriot or Loyalist quotes SAR's GCP §2.5000 next to DAR's last-act rule; the opening no longer implies one rule", pl.includes("SAR's Genealogy Committee Policies say activity disloyal to the American cause of Independence \"disqualifies service prior to the act of disloyalty.\"") && pl.includes("Lineage societies look at which side your ancestor ended up on, not only at one act of service, and DAR and SAR each have their own rule.") && !pl.includes("A lineage society cares"));
+  check("t182 #4: Roadmap SAR 'What has to be proven?' uses the APG sentence and keeps family tradition (sourced)", rd.includes("All names, dates and places on the application must be proven; family tradition about service is not proof"));
+  check("t182 #5: FAQ separates undocumented trees (SAR GCP §3.5006(4)) from the unchanged DAR genealogy wording", fq.includes("Online or other undocumented family trees are a separate case: SAR doesn't accept undocumented family trees or GEDCOM files as evidence.") && fq.includes("A family genealogy may be acceptable for a particular person or generation if it meets DAR's standards"));
+  check("t182 #6: FAQ says DAR is open to women 18 or older", fq.includes("DAR is open to women 18 or older who can prove they descend from an ancestor who aided in achieving American independence."));
+  check("t182 #7: pension timeline 1820 row uses Tim's M804 wording; 'Added proof of financial need' gone", pf.includes("Required a certified schedule of estate and income (the 1818 law already limited pensions to veterans in need)") && !pf.includes("Added proof of financial need"));
+  check("t182 #8: Application Returned has 'New applications' (full list) and 'Supplementals' (APG sentence)", /New applications: As of [A-Z][a-z]+ \d+, \d{4}, SAR's application guide lists signatures from the applicant, two sponsors, the State Registrar and the State Secretary\./.test(ap) && ap.includes("Supplementals: As of") && ap.includes("\"A supplemental application only requires the signatures of the applicant and the State Registrar.\""));
+  check("t182 #9: service-source checklist item uses Tim's wording", ap.includes("Service source is an original record, an acceptable published transcription, or a qualifying official record copy; SAR doesn't accept unpublished transcriptions or abstracts of legal documents posted online."));
+  check("t182 #10: Census Bridge drops 'A real father keeps appearing'", cb.includes("A household that keeps showing a child of the right age stays a candidate; matching age brackets don't identify the child or prove the relationship.") && !cb.includes("A real father"));
+  check("t182 #11/#12a/#12b: Roadmap Step 0 softened; DAR other-societies sentence; SAR print-and-give sentence", rd.includes("If you don't know your patriot yet, start with yourself and work back one generation at a time; a name found in a patriot database is a lead until your documented line connects to it.") && !rd.includes("Everything else in this guide depends")
+    && rd.includes("DAR doesn't accept another hereditary society's application, such as a brother's SAR application, as proof.") && rd.includes("For SAR, completing the online form isn't submitting it: print the application and give it to your chapter registrar."));
+  for (const w of [390, 1280]) {
+    const cx = await browser.newContext({ viewport: { width: w, height: 900 } }); const pg = await cx.newPage();
+    pg.on("console", (m) => { if (m.type() === "error") consoleErrors.push(`t182 ${w}: ${m.text()}`); });
+    for (const [path, txt, name] of [["guides/substitute-evidence", CEN.slice(0, 40), "substitute-census"], ["guides/patriot-or-loyalist", "disqualifies service prior", "loyalist-sar-rule"], ["guides/application-problems", "Supplementals:", "returned-signatures"], ["guides/read-pension-file", "certified schedule of estate", "pension-1820"]]) {
+      await pg.goto(`${BASE}/${path}/`); const loc = pg.getByText(txt, { exact: false }).first();
+      const ok = await loc.count() > 0; if (ok) { await loc.scrollIntoViewIfNeeded(); await pg.screenshot({ path: join(REL182, `${name}-${w}.png`) }); }
+      const ov = await pg.evaluate(() => document.documentElement.scrollWidth > innerWidth);
+      check(`t182 (${w}px): ${path} shows the new text without horizontal overflow`, ok && !ov);
+    }
+    await cx.close();
+  }
 }
 
 // ---- Cache-busting: every script/CSS reference and every module import carries ?v=<hash> that matches the file ----

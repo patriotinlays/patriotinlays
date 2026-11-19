@@ -12,13 +12,13 @@ Start by: building the patriot timeline: every dated act of service, with its so
 Then: enter each pro- and anti-independence record in the [Lineage Evidence Matrix](/tools/lineage-matrix/) and flag conflicts.
 ::end
 
-Families changed sides, neighbors split, and some people tried to stay out of it altogether. A lineage society cares about which side your ancestor ended up on, not only about one act of service. This guide shows how to test both sides of the record before you rely on a patriot claim.
+Families changed sides, neighbors split, and some people tried to stay out of it altogether. Lineage societies look at which side your ancestor ended up on, not only at one act of service, and DAR and SAR each have their own rule. This guide shows how to test both sides of the record before you rely on a patriot claim.
 
 ## Why it matters for an application
 
 SAR's bylaws describe an eligible ancestor as one who was at all times unfailing in loyalty to, and rendered acceptable service in, the cause of American independence. [[claim:sar-loyalty]]
 DAR reviews service when a patriot's residence is a known center of Loyalist activity. [[claim:darblog-loyalist]]
-In those cases DAR checks that the service supported the American cause and that it was the ancestor's last known act. [[claim:darblog-last-act]]
+In those cases DAR checks that the service supported the American cause and that it was the ancestor's last known act. [[claim:darblog-last-act]] SAR's Genealogy Committee Policies say activity disloyal to the American cause of Independence "disqualifies service prior to the act of disloyalty." [[claim:sar-gcp-loyalty]]
 The best-known center DAR names is Long Island, New York. [[claim:darblog-longisland]]
 Martha's Vineyard and Nantucket signed neutrality agreements to support neither side. [[claim:darblog-neutral]]
 
