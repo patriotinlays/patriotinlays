@@ -18,3 +18,13 @@ On top of t182 (7ab3677 code, e2f987c log). Tim authorized a production deploy (
 - Fallbacks (all HTTP 522, 90-day rule): Step by Step 1 (26 claims), FAQs (11), search_revwar (4). Last pass Nov 5, 2026 10:34 AM CT; the fallback ends Feb 3, 2027 10:34 AM CT.
 - Plain links: CDC PASSED. FamilySearch BLOCKED (check by hand).
 - Held back: 14 still held, 0 restored. Source scope: 0 flagged.
+- page-meta (after commit): 15/15 passed.
+
+## Production deploy (authorized, pt183u)
+- Code commit: 8c35325 (t182 7ab3677 + this fix), built from that commit.
+- Deployed with `--branch main`: https://12c305c5.patriotinlays.pages.dev (Nov 19, 2026, ~7:00 AM CT).
+- Cache purge (purge_everything, zone 68ec36681050311b61f6b66ab9171d20) was run after the deploy: success: true, errors: [].
+- Public check on https://patriotinlays.com:
+  - Cache-busted curl: 8 pages 200. The new Step 0 sentence and every t182 item (2–12b) are present; the old wording is gone ("start here.", "same period", "Names every household member", "censuses name everyone", "A real father", "Added proof of financial need", "Everything else in this guide depends").
+  - Playwright at 390px and 1280px: the same spot checks pass; no horizontal overflow; no console errors.
+- Screenshots: public-step0-*, public-census-* (390, 1280).
