@@ -85,15 +85,15 @@ export const NO_STATE_SERVICE = (name) => ({ text: `This site has no verified gu
 const P = (from, to, era, text, { claims, noRecord = false }) => ({ from, to, era, text, claims, noRecord });
 export const STATE_VITAL = Object.freeze({
   VA: { links: S("lvaBmd"),
-    birth: [P(null, 1852, "none", "Virginia had no statewide recording of births before 1853, so there is no state birth record to find for this person. Birth records from before then are rare.", { claims: ["lva-bmd-pre1853", "lva-bmd-rare"], noRecord: true }),
+    birth: [P(null, 1852, "none", "Virginia did not systematically record births statewide before 1853, so there is no state birth record to find for this person. Birth records from before then are rare.", { claims: ["lva-bmd-pre1853", "lva-bmd-rare"], noRecord: true }),
       P(1853, 1896, "state", "Virginia counties and cities kept birth registers from 1853 to 1896.", { claims: ["lva-bmd-1853"] }),
       P(1897, 1911, "none", "Most Virginia counties and cities did not record births from 1897 to 1911.", { claims: ["lva-bmd-gap"], noRecord: true }),
       P(1912, null, "state", "Virginia resumed recording births in 1912.", { claims: ["lva-bmd-1912"] })],
-    death: [P(null, 1852, "none", "Virginia did not record deaths statewide before 1853, and death records from before then are rare.", { claims: ["lva-bmd-pre1853", "lva-bmd-rare"] }),
+    death: [P(null, 1852, "none", "Virginia did not systematically record deaths statewide before 1853, and death records from before then are rare.", { claims: ["lva-bmd-pre1853", "lva-bmd-rare"] }),
       P(1853, 1896, "state", "Virginia counties and cities kept death registers from 1853 to 1896.", { claims: ["lva-bmd-1853"] }),
       P(1897, 1911, "none", "Most Virginia counties and cities did not record deaths from 1897 to 1911.", { claims: ["lva-bmd-gap"] }),
       P(1912, null, "state", "Virginia resumed recording deaths in 1912.", { claims: ["lva-bmd-1912"] })],
-    marriage: [P(null, 1852, null, "Virginia did not record marriages statewide before 1853, but many earlier marriage records survive.", { claims: ["lva-bmd-pre1853", "lva-bmd-rare"] }),
+    marriage: [P(null, 1852, null, "Virginia did not systematically record marriages statewide before 1853; many pre-1853 marriage records survive.", { claims: ["lva-bmd-pre1853", "lva-bmd-rare"] }),
       P(1853, null, "state", "Virginia counties and cities kept marriage registers from 1853.", { claims: ["lva-bmd-1853"] })] },
   NC: { links: S("ncVr"),
     birth: [P(null, 1912, "none", "For North Carolina births before 1913, the state vital records office says to contact the Register of Deeds in the county where the birth happened.", { claims: ["nc-vr-birth"] }),

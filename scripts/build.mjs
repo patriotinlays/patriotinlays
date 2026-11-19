@@ -105,7 +105,7 @@ function inline(text, ctx) {
 }
 const WIDOW_FULL = `<section class="tool" data-tool="widow" aria-labelledby="ta-h">
 <h2 id="ta-h">Use the checker</h2>
-<div class="howto"><p><strong>How this works.</strong> This checker does not search any records or databases. You type the marriage date and what you know about his service. It tests them against the date rules in each federal widow pension and bounty-land law, as the National Archives describes them, and shows the result law by law. Nothing you type leaves your device; it is saved only in this browser.</p>
+<div class="howto"><p><strong>How this works.</strong> This checker does not search any records or databases. You type the marriage date and what you know about his service. It tests them against the date rules in the major federal widow pension and bounty-land laws, as the National Archives describes them, and shows the result law by law. Nothing you type leaves your device; it is saved only in this browser.</p>
 <p class="tool-actions"><button type="button" class="secondary" data-load-example>Load an example</button> <button type="button" class="secondary" data-from-worksheet>Fill in from my worksheet's patriot</button> <button type="button" class="secondary" data-clear="toolA" data-start-over>Clear the form</button></p>
 <p class="small" data-example-msg aria-live="polite">"Load an example" fills in a made-up couple so you can see a result right away. "Clear the form" empties the form and deletes this checker's saved data.</p><p class="small" data-worksheet-msg aria-live="polite"></p><p class="small saved-msg" data-saved-msg hidden></p></div>
 <h3 class="step"><span class="num">1</span> Type what you know about the widow and her husband</h3>
@@ -228,7 +228,7 @@ const GUIDE_ORDER = readdirSync(join(ROOT, "src/content")).filter((x) => x.endsW
 // Tim t130 #1: the home page "Start here" cards. Tim t133 #3: the same three cards replace the old "Ready to start?" box on every other page.
 const START_CARDS = `<section class="start-cards" aria-label="Start here" data-start-cards>
 <div class="start-card" data-start-card="matrix"><h2 class="start-card-h">Build your to-do list</h2><p>Enter the records you already have. The worksheet shows what's still missing for each generation and where to look.</p><p class="start-card-btn"><a class="button-link" href="/tools/lineage-matrix/">Open the Lineage Evidence Matrix</a></p></div>
-<div class="start-card" data-start-card="widow"><h2 class="start-card-h">Check a widow's pension</h2><p>Compare a widow's marriage date and her husband's service with each federal widow pension law.</p><p class="start-card-btn"><a class="button-link" href="/tools/widow-pension-checker/">Open the Widow Pension Law Checker</a></p></div>
+<div class="start-card" data-start-card="widow"><h2 class="start-card-h">Check a widow's pension</h2><p>Compare a widow's marriage date and her husband's service with the major federal widow pension laws.</p><p class="start-card-btn"><a class="button-link" href="/tools/widow-pension-checker/">Open the Widow Pension Law Checker</a></p></div>
 <div class="start-card" data-start-card="roadmap"><h2 class="start-card-h">Read the full plan</h2><p>A generation-by-generation roadmap for DAR and SAR applications.</p><p class="start-card-btn"><a class="button-link" href="/guides/lineage-proof-roadmap/" data-start-button>Open the Roadmap guide</a></p></div>
 </section>`;
 const START_HERE = START_CARDS.replace('class="start-cards"', 'class="start-cards start-cards-page"');

@@ -384,7 +384,7 @@ await page.selectOption("#state-3", "TX");
 const genOpts = await page.$$eval("#pat-gen option", (os) => os.map((o) => [o.value, o.textContent]));
 check("Generation picker (audit 2): Generation 1 is not offered; the default is the oldest generation", !genOpts.some(([v]) => v === "1") && genOpts[0][0] === "" && /oldest generation I've added \(now my 2nd-great-grandfather, generation 5\)/.test(genOpts[0][1]) && genOpts.some(([v, t]) => v === "6" && t === "My 3rd-great-grandfather (generation 6)"), JSON.stringify(genOpts.slice(0, 2)));
 const subst = await page.$$eval("[data-gaps] [data-where-block] a[data-substitute]", (as) => as.map((a) => [a.getAttribute("href"), a.closest(".where-block").textContent]));
-check("Birth gap (audit 2): Virginia before 1853 says there was no statewide birth recording and links the substitute-evidence guide right there", subst.some(([h, t]) => h === "/guides/substitute-evidence/" && /no statewide recording of births before 1853/.test(t)), JSON.stringify(subst).slice(0, 160));
+check("Birth gap (audit 2): Virginia before 1853 says births were not systematically recorded statewide (t185 wording) and links the substitute-evidence guide right there", subst.some(([h, t]) => h === "/guides/substitute-evidence/" && /did not systematically record births statewide before 1853/.test(t)), JSON.stringify(subst).slice(0, 160));
 await page.evaluate(() => { const s = JSON.parse(localStorage.getItem("pi.toolB.v1")); s.patriot.gen = "1"; localStorage.setItem("pi.toolB.v1", JSON.stringify(s)); });
 phase("load"); await page.reload(); phase("interact");
 const heads = await page.$$eval("details.gen h3", (hs) => hs.map((h) => h.textContent));
@@ -1475,7 +1475,7 @@ for (const w of [390, 1280]) { const cx = await browser.newContext({ viewport: {
         navVisible: navLinks.every((a) => a.offsetParent !== null && a.getBoundingClientRect().right <= innerWidth + 1), navColor: getComputedStyle(navLinks[0]).color, headerBg: hs.backgroundColor, sw: document.documentElement.scrollWidth,
         gap: Math.round(document.querySelector("#guides").getBoundingClientRect().top - document.querySelector("[data-mission]").getBoundingClientRect().bottom) }; });
     const want = [["Build Your To-Do List", "Enter the records you already have. The worksheet shows what's still missing for each generation and where to look.", "Open the Lineage Evidence Matrix", "/tools/lineage-matrix/"],
-      ["Check A Widow's Pension", "Compare a widow's marriage date and her husband's service with each federal widow pension law.", "Open the Widow Pension Law Checker", "/tools/widow-pension-checker/"],
+      ["Check A Widow's Pension", "Compare a widow's marriage date and her husband's service with the major federal widow pension laws.", "Open the Widow Pension Law Checker", "/tools/widow-pension-checker/"],
       ["Read The Full Plan", "A generation-by-generation roadmap for DAR and SAR applications.", "Open the Roadmap guide", "/guides/lineage-proof-roadmap/"]];
     const textOk = h.cards.length === 3 && h.cards.every((c, i) => c.title === want[i][0] && c.line === want[i][1] && c.btn === want[i][2] && c.href === want[i][3]);
     const layout = w < 760 ? h.cards.every((c, i) => i === 0 || (c.top > h.cards[i - 1].top && c.left === h.cards[0].left)) : h.cards.every((c) => c.top === h.cards[0].top) && h.cards[1].left > h.cards[0].left;
@@ -1864,6 +1864,16 @@ for (const w of [390, 1280]) { const cx = await browser.newContext({ viewport: {
     }
     await cx.close();
   }
+}
+
+// ---- t185: bounty-land In Short line, widow 'major laws' wording, Virginia tool notes ----
+{ const T = (p) => readFileSync(join(DIST, p, "index.html"), "utf8").replace(/<script[\s\S]*?<\/script>/g, "").replace(/<sup[\s\S]*?<\/sup>/g, "").replace(/<[^>]+>/g, " ").replace(/&#39;|&apos;/g, "'").replace(/&amp;/g, "&").replace(/\s+/g, " ").replace(/ ([.,;:)])/g, "$1");
+  check("t185 #1: Bounty Land In Short 'Then' line matches step 4", T("guides/bounty-land-warrants").includes("Then: if records give incompatible residences or identities, flag the conflict in the Lineage Evidence Matrix.") && !T("guides/bounty-land-warrants").includes("log any mismatch"));
+  const wp = T("tools/widow-pension-checker"), home = T("");
+  check("t185 #2: widow limits note and home card say 'the major federal widow pension…'; no 'each federal widow' wording left", wp.includes("the date rules in the major federal widow pension and bounty-land laws, as the National Archives describes them") && home.includes("Compare a widow's marriage date and her husband's service with the major federal widow pension laws.") && !/each federal widow/.test(wp + home));
+  const pj = readFileSync(join(DIST, "assets/js/places.js"), "utf8");
+  check("t185 #3: worksheet Virginia notes say 'did not systematically record … before 1853' and the marriage note says many pre-1853 marriage records survive",
+    pj.includes("Virginia did not systematically record births statewide before 1853") && pj.includes("Virginia did not systematically record deaths statewide before 1853") && pj.includes("Virginia did not systematically record marriages statewide before 1853; many pre-1853 marriage records survive.") && !/Virginia (had no statewide recording|did not record (deaths|marriages) statewide)/.test(pj));
 }
 
 // ---- Cache-busting: every script/CSS reference and every module import carries ?v=<hash> that matches the file ----

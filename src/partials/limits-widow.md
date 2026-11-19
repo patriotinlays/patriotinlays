@@ -1,4 +1,4 @@
-**What it does.** You type the marriage date and what you know about his service. It tests them against the date rules in each federal widow pension and bounty-land law, as the National Archives describes them, and shows the result law by law.
+**What it does.** You type the marriage date and what you know about his service. It tests them against the date rules in the major federal widow pension and bounty-land laws, as the National Archives describes them, and shows the result law by law.
 
 **What it doesn't do.** It does not look anything up, and it doesn't decide anything. DAR or SAR decides whether your evidence meets its membership rules. It never says a law simply fits, because every law has terms it can't test from dates, and it lists them.
 

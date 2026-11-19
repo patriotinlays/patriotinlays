@@ -9,7 +9,7 @@ cornerstone: 5
 ::in-short
 This guide helps you: sort out what a bounty-land file shows about service and family, and where it misleads.
 Start by: checking the proof-value table to see what the file can and cannot show.
-Then: log any mismatch between the land and the family's home in the [Lineage Evidence Matrix](/tools/lineage-matrix/).
+Then: if records give incompatible residences or identities, flag the conflict in the [Lineage Evidence Matrix](/tools/lineage-matrix/).
 ::end
 
 Bounty land was a promise of land in exchange for service. For a researcher, the files it created are evidence of service and, often, of family. They are weak evidence of where an ancestor lived, because many warrants were sold. This guide sorts out which is which.

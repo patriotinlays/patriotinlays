@@ -88,7 +88,7 @@ t("Where to look: older parentage points to the National Archives census page; r
     return patriotGen(rows, p) === 3 && patriotGen(rows, { ...p, gen: "2" }) === 2 && patriotGen(rows, null) === null && groupGaps(gaps(rows, p), 3).at(-1).title.endsWith("(the patriot)"); })());
   // Era and state
   const w = (fact, gen, ctx) => whereToLook(fact, gen, ctx);
-  t("era: an ancestor born 1820 in Virginia gets no birth-certificate advice (Virginia did not record births before 1853)", (() => { const x = w("birth", 2, { born: "1820", state: "VA" }); return x.era === "older" && !/birth certificate/i.test(x.text) && x.notes.some((n) => /before 1853/.test(n.text)) && claimsOk(x.claims); })());
+  t("era: an ancestor born 1820 in Virginia gets no birth-certificate advice (Virginia did not systematically record births before 1853)", (() => { const x = w("birth", 2, { born: "1820", state: "VA" }); return x.era === "older" && !/birth certificate/i.test(x.text) && x.notes.some((n) => /before 1853/.test(n.text)) && claimsOk(x.claims); })());
   t("era: Virginia 1880 birth -> county registers 1853-1896; 1900 -> the 1897-1911 gap; 1920 -> recording resumed 1912",
     /1853 to 1896/.test(w("birth", 5, { born: "1880", state: "VA" }).notes[0].text) && w("birth", 5, { born: "1880", state: "VA" }).era === "recent"
     && /1897 to 1911/.test(w("birth", 2, { born: "1900", state: "VA" }).notes[0].text) && w("birth", 2, { born: "1900", state: "VA" }).era === "older" && /1912/.test(w("birth", 2, { born: "1920", state: "VA" }).notes[0].text));
@@ -113,8 +113,8 @@ t("Where to look: older parentage points to the National Archives census page; r
   t("audit 2: Generation 1 can never be the patriot; a saved '1' falls back to the oldest generation", patriotGen(rows, { ...p, gen: "1" }) === 3 && patriotGen(rows, { ...p, gen: "" }) === 3 && patriotGen([{ gen: 1, cells: [] }], p) === null);
   t("audit 2: gaps never label Generation 1 as the patriot", !groupGaps(gaps(rows, { ...p, gen: "1" }), patriotGen(rows, { ...p, gen: "1" })).some((g) => g.gen === 1 && /the patriot/.test(g.title)));
   const vaOld = whereToLook("birth", 4, { born: "1810", state: "VA" }).notes[0];
-  t("audit 2: a Virginia birth before 1853 says plainly there was no statewide birth recording, and links the substitute-evidence guide at that gap",
-    /no statewide recording of births before 1853/.test(vaOld.text) && vaOld.guide?.url === "/guides/substitute-evidence/" && vaOld.claims.includes("lva-bmd-pre1853") && slugs.has(SUBSTITUTE_GUIDE.url));
+  t("audit 2: a Virginia birth before 1853 says plainly births were not systematically recorded statewide (t185 wording), and links the substitute-evidence guide at that gap",
+    /did not systematically record births statewide before 1853/.test(vaOld.text) && !/no statewide recording/.test(vaOld.text) && vaOld.guide?.url === "/guides/substitute-evidence/" && vaOld.claims.includes("lva-bmd-pre1853") && slugs.has(SUBSTITUTE_GUIDE.url));
   t("audit 2: the same link appears for New Jersey before 1848, South Carolina before 1915 and Virginia 1897-1911 (sourced 'no record' periods)",
     ["NJ:1840", "SC:1900", "VA:1900"].every((x) => { const [st, y] = x.split(":"); return whereToLook("birth", 3, { born: y, state: st }).notes[0].guide?.url === "/guides/substitute-evidence/"; }));
   t("audit 2: no 'no record' claim where the source points to county records or the state has records (NC 1900, PA 1890, VA 1880, MD, Texas), and never on deaths",
