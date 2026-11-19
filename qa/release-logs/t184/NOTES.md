@@ -108,3 +108,8 @@ Every quote below was checked word for word against the source fetched on Nov 19
 - Plain links: CDC PASSED. FamilySearch BLOCKED (check by hand).
 - Held back: 14 still held, 0 restored. Source scope: 0 flagged.
 - After the run, the In Short "Then" line on Application Returned was shortened to fit the In Short format (item 8b). That edit only removed two claim markers from that line and added no claim or source. The same claims are still cited in checklist item 8.
+
+## Preview (not production)
+- Code commit 049223b. Deployed with `--branch t184-preview`: https://t184-preview.patriotinlays.pages.dev (deployment https://f40f2288.patriotinlays.pages.dev).
+- Playwright at 390px and 1280px on 9 pages: every new sentence and link name present; no horizontal overflow; no console errors.
+- Production NOT deployed; cache NOT purged.
