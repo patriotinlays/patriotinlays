@@ -111,3 +111,8 @@ Skipped (quote not found): none.
 - Held back: 14 still held, 0 restored. Source scope: 0 flagged.
 
 Screenshots: substitute-census-*, loyalist-sar-rule-*, returned-signatures-*, pension-1820-* (390, 1280).
+
+## Preview (not production)
+- Code commit 7ab3677. Deployed with `--branch t182-preview`: https://t182-preview.patriotinlays.pages.dev (deployment https://47f12aae.patriotinlays.pages.dev).
+- Playwright at 390px and 1280px on 8 pages: every new sentence present and no "same period"; no horizontal overflow; no console errors.
+- Production NOT deployed; cache NOT purged.
