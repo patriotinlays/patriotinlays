@@ -444,14 +444,14 @@ phase("load"); await page.goto(`${BASE}/`); phase("interact");
 const glossTerms = ["DAR:", "SAR:", "NSCDA:", "Lineage society:", "Patriot:", "Bounty land:", "Stat.:"];
 check("Home glossary also explains 'Bounty land' and 'Stat.', each sourced", ["Bounty land:", "Stat.:"].every((k) => gloss.includes(k)) && /Statutes at Large/.test(gloss) && /free land in the public domain/.test(gloss));
 const defsBad = [];
-for (const gp of ["/guides/lineage-proof-roadmap/", "/guides/substitute-evidence/", "/guides/read-pension-file/", "/guides/records-by-state/", "/guides/bounty-land-warrants/", "/guides/census-bridge/", "/guides/patriotic-service/", "/guides/same-name/", "/guides/patriot-or-loyalist/", "/guides/application-problems/", "/tools/widow-pension-checker/", "/tools/lineage-matrix/"]) {
+for (const gp of ["/guides/lineage-proof-roadmap/", "/guides/substitute-evidence/", "/guides/read-pension-file/", "/guides/records-by-state/", "/guides/bounty-land-warrants/", "/guides/census-bridge/", "/guides/patriotic-service/", "/guides/same-name/", "/guides/patriot-or-loyalist/", "/guides/application-problems/", "/guides/hire-a-pro/", "/tools/widow-pension-checker/", "/tools/lineage-matrix/"]) {
   const h = readFileSync(join(DIST, gp, "index.html"), "utf8"); const d = (h.match(/<details class="defs"[\s\S]*?<\/details>/) || [""])[0];
   const isTool = gp.startsWith("/tools/");
   // Guides: defs sit right under the title (t146: after the "In Short" box). Tool pages: title, purpose, limits, then tool; glossary sits below the tool.
   const isEnd = h.indexOf("</aside>", h.indexOf("data-in-short")) + 8;
   const posOk = isTool ? (d && h.indexOf(d) > h.indexOf("data-tool=")) : (d && h.indexOf("data-in-short") > h.indexOf("</h1>") && h.indexOf(d) === isEnd && h.slice(h.indexOf("</h1>") + 5, h.indexOf("data-in-short")).trim() === '<aside class="in-short"');
   if (!d || !posOk || !glossTerms.every((k) => d.includes(`<strong>${k}</strong>`)) || !/<sup><a href="#src-/.test(d) || !d.includes('href="/#glossary"')) defsBad.push(gp); }
-check("Definitions box (DAR, SAR, NSCDA, lineage society, patriot, bounty land, Stat.) on all 10 guides (under title) and both tools (below the tool), sourced", defsBad.length === 0, defsBad.join(" "));
+check("Definitions box (DAR, SAR, NSCDA, lineage society, patriot, bounty land, Stat.) on all 11 guides (under title) and both tools (below the tool), sourced", defsBad.length === 0, defsBad.join(" "));
 { // Audit 3 #7: plain terms
   const homeHtml = readFileSync(join(DIST, "index.html"), "utf8"); const mainTxt = homeHtml.slice(homeHtml.indexOf("</h1>", homeHtml.indexOf("<main"))).replace(/<[^>]+>/g, " ").replace(/\s+/g, " ");
   const firstP = mainTxt.search(/patriot/i);
@@ -472,11 +472,11 @@ check("No doubled source markers like [1][1] on any page", htmlFiles.every((f) =
       || !/<meta property="og:image" content="https:\/\/patriotinlays\.com\/assets\/og-image\.png\?v=[0-9a-f]{10}">/.test(h) || !/<img class="logo" src="\/assets\/logo-horizontal-white\.svg\?v=[0-9a-f]{10}" alt="Patriot, In Lay Terms"/.test(h); });
   const fav = readFileSync(join(DIST, "favicon.svg"), "utf8");
   check(`Logo: all ${htmlFiles.length} pages link the new favicon (SVG + 32/16 PNG), apple-touch-icon and og:image, with the header logo, all cache-busted; the old 'PI' icon is replaced`, bad.length === 0 && !/>PI</.test(fav) && /#0f2444/.test(fav) && ["favicon-32.png", "favicon-16.png", "apple-touch-icon.png", "assets/og-image.png", "assets/logo-horizontal-white.svg"].every((f) => existsSync(join(DIST, f))), bad.map((f) => f.replace(DIST, "")).join(" ")); }
-const guidePaths = ["/guides/lineage-proof-roadmap/", "/guides/substitute-evidence/", "/guides/read-pension-file/", "/guides/records-by-state/", "/guides/bounty-land-warrants/", "/guides/census-bridge/", "/guides/patriotic-service/", "/guides/same-name/", "/guides/patriot-or-loyalist/", "/guides/application-problems/"];
+const guidePaths = ["/guides/lineage-proof-roadmap/", "/guides/substitute-evidence/", "/guides/read-pension-file/", "/guides/records-by-state/", "/guides/bounty-land-warrants/", "/guides/census-bridge/", "/guides/patriotic-service/", "/guides/same-name/", "/guides/patriot-or-loyalist/", "/guides/application-problems/", "/guides/hire-a-pro/"];
 const guideBad = [];
 for (const gp of guidePaths) { const h = readFileSync(join(DIST, gp, "index.html"), "utf8");
   if (!/<h2 id="what-to-do-next">/.test(h) || !h.includes('href="/tools/lineage-matrix/"') || !h.includes('href="/tools/widow-pension-checker/"') || !h.includes("chapter-locator") || !/class="next-guide"/.test(h)) guideBad.push(gp); }
-check("Guides: all 10 end with 'What to do next' (both tools, chapter finder) and a next-guide link", guideBad.length === 0, guideBad.join(" "));
+check("Guides: all 11 end with 'What to do next' (both tools, chapter finder) and a next-guide link", guideBad.length === 0, guideBad.join(" "));
 const toolGuideLinks = ["/tools/widow-pension-checker/", "/tools/lineage-matrix/"].every((p) => /href="\/guides\/[a-z-]+\/"/.test(readFileSync(join(DIST, p, "index.html"), "utf8")));
 check("Tools: each tool page links to matching guides", toolGuideLinks);
 const deadEnds = ["/about/", "/privacy/", "/contact/", "/sources/"].filter((p) => (readFileSync(join(DIST, p, "index.html"), "utf8").match(/data-start-card="/g) || []).length !== 3);
@@ -493,7 +493,7 @@ check("Network: zero requests while using the tools (after page load)", duringIn
 
 // ---- Mobile and desktop rendering ----
 const pagesToCheck = ["/", "/guides/lineage-proof-roadmap/", "/guides/substitute-evidence/", "/guides/read-pension-file/", "/guides/records-by-state/", "/guides/bounty-land-warrants/",
-  "/guides/census-bridge/", "/guides/patriotic-service/", "/guides/same-name/", "/guides/patriot-or-loyalist/", "/guides/application-problems/",
+  "/guides/census-bridge/", "/guides/patriotic-service/", "/guides/same-name/", "/guides/patriot-or-loyalist/", "/guides/application-problems/", "/guides/hire-a-pro/",
   "/tools/widow-pension-checker/", "/tools/lineage-matrix/", "/tools/widow-pension-checker/report/", "/tools/lineage-matrix/report/", "/about/", "/privacy/", "/contact/", "/sources/", "/faq/", "/walkthroughs/"];
 const mobile = await browser.newContext({ viewport: { width: 375, height: 812 }, deviceScaleFactor: 2, isMobile: true, hasTouch: true });
 const mp = await mobile.newPage(); const overflow = [];
@@ -660,7 +660,7 @@ phase("load"); await page.goto(`${BASE}/`); phase("interact");
   check("t123u #1: on phones the home heading is about 25% smaller (24px -> 18px) and fits in at most 4 lines at 375px and 390px; 600px and wider unchanged (28.8px)",
     sizes[375].fs === 18 && sizes[390].fs === 18 && sizes[375].lines <= 4 && sizes[390].lines <= 4 && sizes[600].fs === 28.8 && sizes[1280].fs === 28.8, JSON.stringify(sizes)); }
 { const lp = JSON.parse(readFileSync(join(ROOT, "manifest/source-last-passed.json"), "utf8")).sources; const bad = []; const seen = [];
-  for (const g of ["lineage-proof-roadmap", "substitute-evidence", "read-pension-file", "records-by-state", "bounty-land-warrants", "census-bridge", "patriotic-service", "same-name", "patriot-or-loyalist", "application-problems"]) {
+  for (const g of ["lineage-proof-roadmap", "substitute-evidence", "read-pension-file", "records-by-state", "bounty-land-warrants", "census-bridge", "patriotic-service", "same-name", "patriot-or-loyalist", "application-problems", "hire-a-pro"]) {
     const h = readFileSync(join(DIST, "guides", g, "index.html"), "utf8"); const shown = (h.match(/Sources last checked (\d{4}-\d{2}-\d{2})/) || [])[1];
     const srcs = [...(h.match(/<h2 id="sources">Sources<\/h2><ol class="sources">([\s\S]*?)<\/ol>/) || ["", ""])[1].matchAll(/<span class="url">([^<]+)<\/span>/g)].map((m) => m[1].replace(/&amp;/g, "&"));
     const missing = srcs.filter((u) => !lp[u]); const oldest = srcs.map((u) => lp[u]).filter(Boolean).sort((a, b) => Date.parse(a) - Date.parse(b))[0]; const want = oldest ? chicagoDate(oldest) : null;
@@ -728,7 +728,7 @@ phase("load"); await page.goto(`${BASE}/`); phase("interact");
   check("t125u #1: About says the quote check runs each time the site is updated, and on a regular schedule (FAQ wording); 'when the site is built' is gone", text("about").includes("Each time the site is updated, and on a regular schedule, software checks that each quoted passage still appears in its source.") && !/when the site is built/i.test(text("about")));
   check("t125u #3 / t126u: the widow checker's storage note is Tim's text, preceded by 'Nothing you type is sent anywhere.' (t191 #1b wording) in the same paragraph, with no 'pi.toolA' key names", /<p class="small">Nothing you type is sent anywhere\. Your entries are saved only in this browser, and that storage isn't encrypted\. On a shared or public computer, use the delete button when you're done\.<\/p>/.test(H("tools/widow-pension-checker").replace(/&#39;|&apos;/g, "'")) && text("tools/widow-pension-checker").includes("Nothing you type is sent anywhere. Your entries are saved only in this browser, and that storage isn't encrypted. On a shared or public computer, use the delete button when you're done.") && !/pi\.tool/.test(text("tools/widow-pension-checker")));
   const priv = text("privacy");
-  check("t124u #3/#4 / t132 #2: Privacy's 'collects' section is Tim's t132 sentence (t191: three Cloudflare features), then Tim's t191 Web Analytics line, then the ads line, and the technical note has no storage key names", /What The Site Itself Collects\s*We don't ask for, collect or store personal information through the website\. Cloudflare, which hosts the site, processes the technical information needed to deliver and protect it, and adds three small features: a script that hides email addresses from spam robots, a short error report if a page fails to load, and a visit-counting script that loads from Cloudflare\.\s*The site uses Cloudflare Web Analytics to count page visits\.\s*There are no ads at present\./.test(priv)
+  check("t124u #3/#4 / t132 #2: Privacy's 'collects' section is Tim's t132 sentence (t191: three Cloudflare features), then Tim's t191 Web Analytics line and the t193 cookie line, then the ads line, and the technical note has no storage key names", /What The Site Itself Collects\s*We don't ask for, collect or store personal information through the website\. Cloudflare, which hosts the site, processes the technical information needed to deliver and protect it, and adds three small features: a script that hides email addresses from spam robots, a short error report if a page fails to load, and a visit-counting script that loads from Cloudflare\.\s*The site uses Cloudflare Web Analytics to count page visits\. Cloudflare Web Analytics doesn't use cookies to collect usage metrics\.(?:\s*\[\d+\])?\s*There are no ads at present\./.test(priv)
     && !/pi\.tool/.test(priv) && priv.includes("Your entries are saved only in this browser, and that storage isn't encrypted. On a shared or public computer, use the delete button when you're done.") && !/network-error report|Cloudflare's servers deliver/.test(priv));
   const faq = text("faq");
   check("t124u #5/#6/#7: the FAQ's genealogist answer, trust answer and intro use Tim's wording", faq.includes("That help comes with joining. Our guides can help you prepare: what records to gather and what questions to ask.") && !/often the chapter registrar/.test(faq.slice(faq.indexOf("Do I Have To Hire"), faq.indexOf("What Does This Site Cost")))
@@ -973,7 +973,7 @@ for (const w of [390, 1280]) { const cx = await browser.newContext({ viewport: {
   const walk146 = (d) => rd146(d, { withFileTypes: true }).flatMap((e) => e.isDirectory() ? walk146(join(d, e.name)) : e.name.endsWith(".html") ? [join(d, e.name)] : []);
   const files = walk146(DIST); const rel = (f) => f.slice(DIST.length);
   const txt146 = (s) => s.replace(/<[^>]+>/g, "").replace(/&#39;|&apos;/g, "'").replace(/&amp;/g, "&").replace(/&quot;/g, '"').trim();
-  const GUIDES = ["lineage-proof-roadmap", "substitute-evidence", "read-pension-file", "records-by-state", "bounty-land-warrants", "census-bridge", "patriotic-service", "same-name", "patriot-or-loyalist", "application-problems"];
+  const GUIDES = ["lineage-proof-roadmap", "substitute-evidence", "read-pension-file", "records-by-state", "bounty-land-warrants", "census-bridge", "patriotic-service", "same-name", "patriot-or-loyalist", "application-problems", "hire-a-pro"];
   // #3: one "In Short" box on each guide, under the title and before the glossary, three labelled lines, a working Then-link.
   const isBad = []; const linkBad = []; const boxes = {};
   for (const g of GUIDES) { const h = readFileSync(join(DIST, "guides", g, "index.html"), "utf8");
@@ -987,7 +987,7 @@ for (const w of [390, 1280]) { const cx = await browser.newContext({ viewport: {
     for (const u of thenA) { const [path, hash] = u.split("#"); const f = join(DIST, path, "index.html");
       if (!/^\/(tools|guides)\//.test(path) || !existsSync(f)) linkBad.push(`${g}: ${u}`); else if (hash && !readFileSync(f, "utf8").includes(`id="${hash}"`)) linkBad.push(`${g}: ${u} (no #${hash})`); } }
   writeFileSync(join(REL, "in-short-boxes.json"), JSON.stringify(boxes, null, 2));
-  check("t146 #3: all 10 guides have one 'In Short' box right under the title and right before the glossary, with 'This guide helps you / Start by / Then' lines of about 20 words or fewer", isBad.length === 0, isBad.join(","));
+  check("t146 #3: all 11 guides have one 'In Short' box right under the title and right before the glossary, with 'This guide helps you / Start by / Then' lines of about 20 words or fewer", isBad.length === 0, isBad.join(","));
   check("t146 #3: every In Short 'Then' line links to a tool or guide page that exists (and its #anchor, if any)", linkBad.length === 0, linkBad.join(" | "));
   // #4: Title Case for every heading in the built pages, page titles, the menu and the named section links.
   const tcBad = [];
@@ -1429,7 +1429,7 @@ for (const w of [390, 1280]) { const cx = await browser.newContext({ viewport: {
     if (missing.length) ogBad.push(`${p}: missing ${missing.map((x) => x instanceof RegExp ? x.source : x).join(" | ")}`);
   }
   check("t157: every page has a unique meta description, 120–155 characters, matching the t157 list and used for og:description and twitter:description",
-    descBad.length === 0 && htmlFiles17.length === 23, descBad.join(" || ") + ` pages=${htmlFiles17.length}`);
+    descBad.length === 0 && htmlFiles17.length === 24, descBad.join(" || ") + ` pages=${htmlFiles17.length}`);
   check("t157: every page <title> is unique, matches its visible heading in Title Case, and keeps the site-name suffix only when the full title is ≤ 60 characters",
     titleBad.length === 0, titleBad.join(" || "));
   check("t157: every page has og:type, og:title, og:description, og:url, og:image (absolute, cache-busted existing share image), twitter:card summary_large_image, twitter:title, twitter:description, twitter:image",
@@ -1442,7 +1442,7 @@ for (const w of [390, 1280]) { const cx = await browser.newContext({ viewport: {
     if (d !== expect) smBad.push(`${p}: sitemap ${d} != ${expect}`);
   }
   check("t157: sitemap.xml lastmod on each URL is the Chicago date of that page's last content change (git history of its source files, ignoring template-only and meta-only commits)",
-    urls.length === 20 && smBad.length === 0 && !sm.includes("/report/") && !sm.includes("404"), `n=${urls.length} ${smBad.join(" || ")}`);
+    urls.length === 21 && smBad.length === 0 && !sm.includes("/report/") && !sm.includes("404"), `n=${urls.length} ${smBad.join(" || ")}`);
   // Spot-check that the visible body did not gain search-housekeeping copy: the t156 callout is still the only Roadmap line, home intro is unchanged, no new visible "meta" text.
   for (const p of ["/tools/widow-pension-checker/", "/tools/lineage-matrix/"]) {
     const h = readFileSync(join(DIST, p, "index.html"), "utf8");
@@ -1598,7 +1598,7 @@ for (const w of [390, 1280]) { const cx = await browser.newContext({ viewport: {
       const pages = ["/","/about/","/ai-disclosure/","/contact/","/faq/","/privacy/","/sources/","/walkthroughs/",
         "/guides/lineage-proof-roadmap/","/guides/substitute-evidence/","/guides/read-pension-file/","/guides/records-by-state/",
         "/guides/bounty-land-warrants/","/guides/census-bridge/","/guides/patriotic-service/","/guides/same-name/",
-        "/guides/patriot-or-loyalist/","/guides/application-problems/","/tools/widow-pension-checker/","/tools/lineage-matrix/",
+        "/guides/patriot-or-loyalist/","/guides/application-problems/","/guides/hire-a-pro/","/tools/widow-pension-checker/","/tools/lineage-matrix/",
         "/tools/widow-pension-checker/report/","/tools/lineage-matrix/report/"];
       // 404
       pages.push("/404.html");
@@ -1894,6 +1894,41 @@ for (const w of [390, 1280]) { const cx = await browser.newContext({ viewport: {
   await pg.evaluate(async () => { const s = document.createElement("script"); s.src = "https://static.cloudflareinsights.com/beacon.min.js"; document.body.append(s); try { await fetch("/cdn-cgi/rum?", { method: "POST", body: "{}" }); } catch {} await new Promise((r) => setTimeout(r, 800)); });
   const { blocked } = await import("./lib/block-beacon.mjs"); await cx.close();
   check("t191 #3: the test browser aborts static.cloudflareinsights.com and /cdn-cgi/rum (no beacon request completes)", done.length === 0 && blocked.some((u) => u.includes("static.cloudflareinsights.com")) && blocked.some((u) => u.includes("/cdn-cgi/rum")), JSON.stringify({ done, blocked: blocked.slice(-2) }));
+}
+
+// ---- t193 (Tim "t192"): new guide "Should You Hire A Pro?" and the Privacy cookie line ----
+{ const REL193 = join(ROOT, "qa/release-logs/t193"); mkdirSync(REL193, { recursive: true });
+  const raw = (p) => readFileSync(join(DIST, p, "index.html"), "utf8");
+  const T = (p) => raw(p).replace(/<script[\s\S]*?<\/script>/g, "").replace(/<sup[\s\S]*?<\/sup>/g, "").replace(/<span class="sr-only">[^<]*<\/span>/g, "").replace(/<[^>]+>/g, " ").replace(/&#39;|&apos;|&rsquo;/g, "'").replace(/&amp;/g, "&").replace(/&quot;/g, '"').replace(/\s+/g, " ").replace(/ ([.,;:])/g, "$1");
+  const h = raw("guides/hire-a-pro"), t = T("guides/hire-a-pro");
+  check("t193: /guides/hire-a-pro/ is built with the guide layout (h1, Guide 11 of 11, In Short, glossary, What to do next, Sources with Last checked)",
+    /<h1[^>]*>Should You Hire A Pro\?<\/h1>/.test(h) && /Guide 11 of 11 · Sources last checked \d{4}-\d{2}-\d{2}/.test(h) && h.includes('data-in-short') && h.includes('<details class="defs"') && /<h2 id="what-to-do-next">/.test(h) && /<h2 id="sources">Sources<\/h2>/.test(h) && (h.match(/Last checked \d{4}-\d{2}-\d{2}/g) || []).length >= 10);
+  check("t193: every section heading is Tim's, in Title Case", ["The Short Answer", "Start With The Societies' Own Help", "Signs A Pro Might Be Worth It", "What A Pro Can And Can't Do", "What It Costs", "How To Find A Qualified Pro", "The Smart Order: Free First, Paid When Stuck", "Bring Your Work With You", "Suggestions Welcome"].every((x) => new RegExp(`<h2 id="[^"]+">${x.replace(/[?:.]/g, "\\$&").replace(/'/g, "(?:'|&#39;)")}</h2>`).test(h)));
+  check("t193: 'Questions to ask before you hire:' stays a list lead-in paragraph (not a heading), followed by its five questions", /<p>Questions to ask before you hire:<\/p>\s*<ul>/.test(h) && ["Have you worked on DAR or SAR applications?", "Do you know the records in my patriot's state?", "What will it cost, and is there a limit on hours?"].every((q) => t.includes(q)));
+  check("t193: Tim's key sentences are on the page word for word, each [S#] rendered as a source marker (no raw [S#] left)", [
+    "You may not need to pay anyone.", 'DAR: DAR says, "A member will help guide you through completing and submitting your DAR membership application."',
+    "SAR: the chapter registrar is often your local contact, who guides you through the application and can review what you've gathered.",
+    'SAR also says: "State SAR Societies have genealogical helpers who assist potential members with application preparation."',
+    "About $15: copies from the SAR Library start at a $15 donation for the first 25 pages.", "the DAR Library's search service charges $50 an hour for DAR members and $75 for non-members.",
+    "A genealogy accrediting body says many charge between $50 and $200 per hour.", "the Mayflower Society charged $2,500 for members and $3,250 for non-members for application preparation.",
+    "Board for Certification of Genealogists (BCG): awards the Certified Genealogist credential; its directory lists Board-Certified Genealogists.",
+    "Association of Professional Genealogists (APG): a professional organization representing more than 2,000 members, with a searchable directory. Membership is not the same as a credential.",
+    "Three organizations keep directories, and they mean different things:", 'The worksheet\'s best label is "Evidence Entered — Review Required."',
+    "the society decides what it will and won't accept as proof, \"so there's never a guarantee.\""].every((x) => t.includes(x)) && !/\[S\d+\]|\[\[claim:/.test(h));
+  check("t193: APG's directory is linked, and contact@patriotinlays.com is a mailto link like the Contact page", h.includes('href="https://www.apgen.org/directory"') && /<a href="mailto:contact@patriotinlays\.com">contact@patriotinlays\.com<\/a>/.test(h) && /<a href="mailto:contact@patriotinlays\.com">/.test(raw("contact")));
+  check("t193: listed with the other guides (home list, worksheet Related guides, guide 10's Next guide, sitemap); canonical is the apex",
+    raw("").includes('<a class="guide-title" href="/guides/hire-a-pro/">Should You Hire A Pro?</a>') && /Related guides:[\s\S]{0,600}href="\/guides\/hire-a-pro\/"/.test(raw("tools/lineage-matrix"))
+    && /Next guide: <a href="\/guides\/hire-a-pro\/">/.test(raw("guides/application-problems")) && readFileSync(join(DIST, "sitemap.xml"), "utf8").includes("<loc>https://patriotinlays.com/guides/hire-a-pro/</loc>")
+    && h.includes('<link rel="canonical" href="https://patriotinlays.com/guides/hire-a-pro/">') && (raw("").match(/class="guide-title"/g) || []).length === 11);
+  const priv = T("privacy"), pH = raw("privacy");
+  check("t193 #2: Privacy says 'Cloudflare Web Analytics doesn't use cookies to collect usage metrics.' right after the page-visits line, sourced to Cloudflare's Web Analytics page",
+    priv.includes("The site uses Cloudflare Web Analytics to count page visits. Cloudflare Web Analytics doesn't use cookies to collect usage metrics.") && pH.includes('href="https://www.cloudflare.com/web-analytics/"') && !/the site doesn't use cookies/i.test(priv));
+  for (const w of [390, 1280]) { const cx = await browser.newContext({ viewport: { width: w, height: 900 } }); const pg = await cx.newPage(); const errs = []; pg.on("pageerror", (e) => errs.push(e.message));
+    await pg.goto(`${BASE}/guides/hire-a-pro/`); const ov = await pg.evaluate(() => document.documentElement.scrollWidth > innerWidth);
+    await pg.screenshot({ path: join(REL193, `hire-a-pro-top-${w}.png`) });
+    await pg.locator("#what-it-costs").scrollIntoViewIfNeeded(); await pg.screenshot({ path: join(REL193, `hire-a-pro-costs-${w}.png`) });
+    await pg.goto(`${BASE}/privacy/`); await pg.getByText("doesn't use cookies to collect usage metrics").first().scrollIntoViewIfNeeded(); await pg.screenshot({ path: join(REL193, `privacy-cookie-line-${w}.png`) });
+    check(`t193 (${w}px): the new guide renders without horizontal overflow or page errors`, !ov && errs.length === 0, errs.join(" | ")); await cx.close(); }
 }
 
 // ---- Cache-busting: every script/CSS reference and every module import carries ?v=<hash> that matches the file ----

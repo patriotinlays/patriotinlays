@@ -261,7 +261,7 @@ function renderFile(dir, f) {
     const own = [...ctx.tools][0] === "widow" ? "widow" : "lineage";
     html += "\n" + md(readFileSync(join(ROOT, "src/partials", `next-steps-${own}.md`), "utf8"), ctx);
     const next = GUIDE_ORDER.find((g) => +g.cornerstone === +fm.cornerstone + 1);
-    html += `<p class="next-guide">${next ? `Next guide: <a href="/${next.slug}/">${esc(titleCase(next.title))}</a> · ` : ""}<a href="/#guides">All 10 Guides</a> · <a href="/faq/">FAQ</a></p>`;
+    html += `<p class="next-guide">${next ? `Next guide: <a href="/${next.slug}/">${esc(titleCase(next.title))}</a> · ` : ""}<a href="/#guides">All ${GUIDE_ORDER.length} Guides</a> · <a href="/faq/">FAQ</a></p>`;
   }
   // t124u #9: the Roadmap's Step 0 heading was renamed; keep the old anchor working for saved links.
   html = html.replace('<h2 id="step-0-find-your-patriot-s-name">', '<span id="step-0-find-the-soldier-s-name" aria-hidden="true"></span><h2 id="step-0-find-your-patriot-s-name">');
@@ -276,7 +276,7 @@ function renderFile(dir, f) {
     oldest = ctx.sources.map((u) => ({ u, t: Date.parse(LAST_PASSED[u]) })).sort((a, b) => a.t - b.t)[0];
     guideChecked.push({ slug: fm.slug, date: oldest ? lastChecked(oldest.u) : null, source: oldest?.u || null, sources: ctx.sources.length });
   }
-  const meta = fm.cornerstone ? `<p class="meta" data-sources-checked="${oldest ? lastChecked(oldest.u) : ""}">Guide ${fm.cornerstone} of 10 · Sources last checked ${oldest ? lastChecked(oldest.u) : ""} · Written with AI; every fact is tied to a quoted official or institutional source (<a href="/ai-disclosure/">how this works</a>)</p>` : "";
+  const meta = fm.cornerstone ? `<p class="meta" data-sources-checked="${oldest ? lastChecked(oldest.u) : ""}">Guide ${fm.cornerstone} of ${GUIDE_ORDER.length} · Sources last checked ${oldest ? lastChecked(oldest.u) : ""} · Written with AI; every fact is tied to a quoted official or institutional source (<a href="/ai-disclosure/">how this works</a>)</p>` : "";
   const path = `/${fm.slug}/`;
   write(fm.slug, page({ title: fm.title, description: fm.description, path, body: meta + html + srcList }));
   if (fm.launch_setup) console.log(`LAUNCH SETUP REQUIRED (${path}): ${fm.launch_setup}`);

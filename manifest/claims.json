@@ -4958,6 +4958,7 @@
       "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
       "used_on": [
         "faq",
+        "hire-a-pro",
         "partial:home",
         "partial:how-to-join",
         "partial:next-steps-lineage",
@@ -5026,7 +5027,8 @@
       "verification_status": "verified",
       "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-11-10 CT",
       "used_on": [
-        "faq"
+        "faq",
+        "hire-a-pro"
       ],
       "notes": "",
       "source_scope": "national"
@@ -5045,6 +5047,7 @@
       "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-10-31 CT",
       "used_on": [
         "faq",
+        "hire-a-pro",
         "partial:glossary",
         "partial:home",
         "partial:tool-terms"
@@ -8076,6 +8079,258 @@
       ],
       "notes": "",
       "source_scope": "national"
+    },
+    {
+      "claim_id": "sar-rc-helpers",
+      "claim_text": "SAR says state societies have genealogical helpers who assist potential members with application preparation.",
+      "source_url": "https://www.sar.org/research-contact/",
+      "source_title": "SAR — Genealogy Contact (research help)",
+      "source_type": "official_secondary",
+      "archive_identifier": null,
+      "last_retrieved": "2026-11-19",
+      "quote_excerpt": "State SAR Societies have genealogical helpers who assist potential members with application preparation.",
+      "page_ref": null,
+      "verification_status": "verified",
+      "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-11-19 CT",
+      "used_on": [
+        "hire-a-pro"
+      ],
+      "notes": "",
+      "source_scope": "national"
+    },
+    {
+      "claim_id": "sar-rc-rate",
+      "claim_text": "SAR's professional genealogy assistance costs $30 an hour for members and $35 for non-members.",
+      "source_url": "https://www.sar.org/research-contact/",
+      "source_title": "SAR — Genealogy Contact (research help)",
+      "source_type": "official_secondary",
+      "archive_identifier": null,
+      "last_retrieved": "2026-11-19",
+      "quote_excerpt": "The rate for professional genealogy assistance is currently $35 per hour for non-members and $30 per hour for members.",
+      "page_ref": null,
+      "verification_status": "verified",
+      "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-11-19 CT",
+      "used_on": [
+        "hire-a-pro"
+      ],
+      "notes": "",
+      "source_scope": "national"
+    },
+    {
+      "claim_id": "darlib-search-member",
+      "claim_text": "The DAR Library's search service charges DAR members $50 an hour.",
+      "source_url": "https://www.dar.org/library/services/search-services",
+      "source_title": "DAR Library — Search Services (fees)",
+      "source_type": "official_secondary",
+      "archive_identifier": null,
+      "last_retrieved": "2026-11-19",
+      "quote_excerpt": "Fee for NSDAR members is $50.00/hour.",
+      "page_ref": null,
+      "verification_status": "verified",
+      "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-11-19 CT",
+      "used_on": [
+        "hire-a-pro"
+      ],
+      "notes": "",
+      "source_scope": "national"
+    },
+    {
+      "claim_id": "darlib-search-nonmember",
+      "claim_text": "The DAR Library's search service charges non-members $75 an hour.",
+      "source_url": "https://www.dar.org/library/services/search-services",
+      "source_title": "DAR Library — Search Services (fees)",
+      "source_type": "official_secondary",
+      "archive_identifier": null,
+      "last_retrieved": "2026-11-19",
+      "quote_excerpt": "Fee for nonmembers is $75.00/hour.",
+      "page_ref": null,
+      "verification_status": "verified",
+      "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-11-19 CT",
+      "used_on": [
+        "hire-a-pro"
+      ],
+      "notes": "",
+      "source_scope": "national"
+    },
+    {
+      "claim_id": "sarlib-copies-15",
+      "claim_text": "SAR Library copies start at $15 for the first 25 pages.",
+      "source_url": "https://library.sar.org/research/research-services/",
+      "source_title": "SAR Genealogical Research Library — Research Services",
+      "source_type": "official_secondary",
+      "archive_identifier": null,
+      "last_retrieved": "2026-11-19",
+      "quote_excerpt": "beginning rate of $15.00 for the first 25 pages",
+      "page_ref": null,
+      "verification_status": "verified",
+      "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-11-19 CT",
+      "used_on": [
+        "hire-a-pro"
+      ],
+      "notes": "",
+      "source_scope": "national"
+    },
+    {
+      "claim_id": "icapgen-50-200",
+      "claim_text": "ICAPGen says many professional genealogists charge $50 to $200 an hour.",
+      "source_url": "https://icapgen.org/what-will-it-cost/",
+      "source_title": "ICAPGen — What Will It Cost?",
+      "source_type": "official_secondary",
+      "archive_identifier": null,
+      "last_retrieved": "2026-11-19",
+      "quote_excerpt": "Many professional genealogists charge between $50 and $200 per hour.",
+      "page_ref": null,
+      "verification_status": "verified",
+      "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-11-19 CT",
+      "used_on": [
+        "hire-a-pro"
+      ],
+      "notes": "",
+      "source_scope": "third-party"
+    },
+    {
+      "claim_id": "mayflower-app-prep",
+      "claim_text": "The Mayflower Society's October 2024 price list charged $2,500 (members) and $3,250 (non-members) for application preparation.",
+      "source_url": "https://themayflowersociety.org/wp-content/uploads/2024/10/Research-Services_FAQ_Final.pdf",
+      "source_title": "General Society of Mayflower Descendants — Research Services FAQ (October 2024)",
+      "source_type": "official_secondary",
+      "archive_identifier": null,
+      "last_retrieved": "2026-11-19",
+      "quote_excerpt": "Application Preparation, $2,500 for Members/$3,250 Non-Members",
+      "page_ref": "PDF",
+      "verification_status": "verified",
+      "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-11-19 CT",
+      "used_on": [
+        "hire-a-pro"
+      ],
+      "notes": "",
+      "source_scope": "third-party"
+    },
+    {
+      "claim_id": "ll-no-guarantee",
+      "claim_text": "A lineage society decides what it accepts as proof, so a paid genealogist can't guarantee acceptance.",
+      "source_url": "https://lisalouisecooke.com/2017/11/18/professional-genealogist-help-apply-lineage-societies/",
+      "source_title": "Lisa Louise Cooke, Genealogy Gems (Legacy Tree Genealogists guest post) — Professional Genealogist Help to Apply to Lineage Societies",
+      "source_type": "official_secondary",
+      "archive_identifier": null,
+      "last_retrieved": "2026-11-19",
+      "quote_excerpt": "the lineage society determines what they will and will not accept as proof, so there's never a guarantee",
+      "page_ref": null,
+      "verification_status": "verified",
+      "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-11-19 CT",
+      "used_on": [
+        "hire-a-pro"
+      ],
+      "notes": "",
+      "source_scope": "third-party"
+    },
+    {
+      "claim_id": "bcg-find",
+      "claim_text": "BCG's site offers a directory to find a Board-Certified Genealogist.",
+      "source_url": "https://bcgcertification.org/",
+      "source_title": "Board for Certification of Genealogists — Home",
+      "source_type": "official_secondary",
+      "archive_identifier": null,
+      "last_retrieved": "2026-11-19",
+      "quote_excerpt": "Find a Board-Certified Genealogist",
+      "page_ref": null,
+      "verification_status": "verified",
+      "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-11-19 CT",
+      "used_on": [
+        "hire-a-pro"
+      ],
+      "notes": "",
+      "source_scope": "third-party"
+    },
+    {
+      "claim_id": "bcg-award",
+      "claim_text": "BCG awards the Certified Genealogist credential.",
+      "source_url": "https://bcgcertification.org/about",
+      "source_title": "Board for Certification of Genealogists — About",
+      "source_type": "official_secondary",
+      "archive_identifier": null,
+      "last_retrieved": "2026-11-19",
+      "quote_excerpt": "We award the Certified Genealogist® credential to persons whose work meets these standards.",
+      "page_ref": null,
+      "verification_status": "verified",
+      "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-11-19 CT",
+      "used_on": [
+        "hire-a-pro"
+      ],
+      "notes": "",
+      "source_scope": "third-party"
+    },
+    {
+      "claim_id": "apg-professional-org",
+      "claim_text": "APG is a not-for-profit professional organization.",
+      "source_url": "https://www.apgen.org/about_us.php",
+      "source_title": "Association of Professional Genealogists — About Us",
+      "source_type": "official_secondary",
+      "archive_identifier": null,
+      "last_retrieved": "2026-11-19",
+      "quote_excerpt": "not-for-profit 501(c)(6) professional organization",
+      "page_ref": null,
+      "verification_status": "verified",
+      "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-11-19 CT",
+      "used_on": [
+        "hire-a-pro"
+      ],
+      "notes": "",
+      "source_scope": "third-party"
+    },
+    {
+      "claim_id": "apg-2000-members",
+      "claim_text": "APG represents more than 2,000 members.",
+      "source_url": "https://www.apgen.org/about_us.php",
+      "source_title": "Association of Professional Genealogists — About Us",
+      "source_type": "official_secondary",
+      "archive_identifier": null,
+      "last_retrieved": "2026-11-19",
+      "quote_excerpt": "representing more than 2,000 members in forty countries",
+      "page_ref": null,
+      "verification_status": "verified",
+      "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-11-19 CT",
+      "used_on": [
+        "hire-a-pro"
+      ],
+      "notes": "",
+      "source_scope": "third-party"
+    },
+    {
+      "claim_id": "icapgen-directory",
+      "claim_text": "ICAPGen keeps a directory of Accredited Genealogist professionals.",
+      "source_url": "https://icapgen.org/find-a-professional/",
+      "source_title": "ICAPGen — Find a Professional",
+      "source_type": "official_secondary",
+      "archive_identifier": null,
+      "last_retrieved": "2026-11-19",
+      "quote_excerpt": "Directory of Accredited Genealogist® professionals",
+      "page_ref": null,
+      "verification_status": "verified",
+      "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-11-19 CT",
+      "used_on": [
+        "hire-a-pro"
+      ],
+      "notes": "",
+      "source_scope": "third-party"
+    },
+    {
+      "claim_id": "cf-wa-no-cookies",
+      "claim_text": "Cloudflare Web Analytics doesn't use cookies to collect usage metrics.",
+      "source_url": "https://www.cloudflare.com/web-analytics/",
+      "source_title": "Cloudflare — Web Analytics",
+      "source_type": "official_secondary",
+      "archive_identifier": null,
+      "last_retrieved": "2026-11-19",
+      "quote_excerpt": "Cloudflare Web Analytics does not use any client-side state, such as cookies or localStorage, to collect usage metrics.",
+      "page_ref": null,
+      "verification_status": "verified",
+      "verified_by": "bot:R3-verify — quote matched in source text fetched 2026-11-19 CT",
+      "used_on": [
+        "privacy"
+      ],
+      "notes": "",
+      "source_scope": "third-party"
     }
   ]
 }

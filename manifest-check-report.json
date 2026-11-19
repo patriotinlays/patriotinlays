@@ -1,13 +1,13 @@
 {
   "live_source_check": "RUN",
   "live_source_check_line": "Live-source check: RUN",
-  "checkedAt": "Thu Nov 19 2026 08:18:06 GMT-0600 (Central Standard Time)",
+  "checkedAt": "Thu Nov 19 2026 09:15:12 GMT-0600 (Central Standard Time)",
   "dirs": [
     "src/content",
     "src/pages",
     "src/partials"
   ],
-  "files": 26,
+  "files": 27,
   "perFile": {
     "src/content/application-problems.md": {
       "units": 54,
@@ -22,6 +22,11 @@
     "src/content/census-bridge.md": {
       "units": 60,
       "marked": 28,
+      "unmarked": 0
+    },
+    "src/content/hire-a-pro.md": {
+      "units": 62,
+      "marked": 16,
       "unmarked": 0
     },
     "src/content/lineage-matrix.md": {
@@ -90,8 +95,8 @@
       "unmarked": 0
     },
     "src/pages/privacy.md": {
-      "units": 21,
-      "marked": 0,
+      "units": 22,
+      "marked": 1,
       "unmarked": 0
     },
     "src/pages/walkthroughs.md": {
@@ -140,10 +145,10 @@
       "unmarked": 0
     }
   },
-  "sentences": 1011,
-  "markedSentences": 505,
-  "manifestClaims": 433,
-  "referencedClaims": 433,
+  "sentences": 1074,
+  "markedSentences": 522,
+  "manifestClaims": 447,
+  "referencedClaims": 447,
   "links": [
     {
       "url": "https://www.dar.org/national-society/accepted-revolutionary-war-service",
@@ -642,6 +647,72 @@
       "status": 200,
       "quotesFound": 1,
       "quotesMissing": 0
+    },
+    {
+      "url": "https://www.sar.org/research-contact/",
+      "status": 200,
+      "quotesFound": 2,
+      "quotesMissing": 0
+    },
+    {
+      "url": "https://www.dar.org/library/services/search-services",
+      "status": 200,
+      "quotesFound": 2,
+      "quotesMissing": 0
+    },
+    {
+      "url": "https://library.sar.org/research/research-services/",
+      "status": 200,
+      "quotesFound": 1,
+      "quotesMissing": 0
+    },
+    {
+      "url": "https://icapgen.org/what-will-it-cost/",
+      "status": 200,
+      "quotesFound": 1,
+      "quotesMissing": 0
+    },
+    {
+      "url": "https://themayflowersociety.org/wp-content/uploads/2024/10/Research-Services_FAQ_Final.pdf",
+      "status": 200,
+      "quotesFound": 1,
+      "quotesMissing": 0
+    },
+    {
+      "url": "https://lisalouisecooke.com/2017/11/18/professional-genealogist-help-apply-lineage-societies/",
+      "status": 200,
+      "quotesFound": 1,
+      "quotesMissing": 0
+    },
+    {
+      "url": "https://bcgcertification.org/",
+      "status": 200,
+      "quotesFound": 1,
+      "quotesMissing": 0
+    },
+    {
+      "url": "https://bcgcertification.org/about",
+      "status": 200,
+      "quotesFound": 1,
+      "quotesMissing": 0
+    },
+    {
+      "url": "https://www.apgen.org/about_us.php",
+      "status": 200,
+      "quotesFound": 2,
+      "quotesMissing": 0
+    },
+    {
+      "url": "https://icapgen.org/find-a-professional/",
+      "status": 200,
+      "quotesFound": 1,
+      "quotesMissing": 0
+    },
+    {
+      "url": "https://www.cloudflare.com/web-analytics/",
+      "status": 200,
+      "quotesFound": 1,
+      "quotesMissing": 0
     }
   ],
   "plainLinks": [
@@ -753,12 +824,12 @@
   "warnings": [
     "https://www.dar.org/national-society/accepted-revolutionary-war-service: Node fetch got 403/429; verified with curl instead",
     "https://blog.dar.org/2022/11/28/be-star-dar-genealogy-updates-registrar-general: Node fetch got 403/429; verified with curl instead",
-    "https://membership.dar.org/NSDAR/AppFormz/App_Help_Step_By_Step_1.aspx: FALLBACK: unreachable source accepted on last successful check under 90 days. URL failure=http_522; lastPassed=2026-11-05T16:34:49.000Z; ageDays=13.90; fallbackEnds=2027-02-03T10:34:49.000-06:00. Re-check required on every run.",
+    "https://membership.dar.org/NSDAR/AppFormz/App_Help_Step_By_Step_1.aspx: FALLBACK: unreachable source accepted on last successful check under 90 days. URL failure=http_522; lastPassed=2026-11-05T16:34:49.000Z; ageDays=13.94; fallbackEnds=2027-02-03T10:34:49.000-06:00. Re-check required on every run.",
     "https://www.dar.org/national-society/faq/membership: Node fetch got 403/429; verified with curl instead",
-    "https://membership.dar.org/NSDAR/AppFormz/FAQs.aspx: FALLBACK: unreachable source accepted on last successful check under 90 days. URL failure=http_522; lastPassed=2026-11-05T16:34:49.000Z; ageDays=13.90; fallbackEnds=2027-02-03T10:34:49.000-06:00. Re-check required on every run.",
+    "https://membership.dar.org/NSDAR/AppFormz/FAQs.aspx: FALLBACK: unreachable source accepted on last successful check under 90 days. URL failure=http_522; lastPassed=2026-11-05T16:34:49.000Z; ageDays=13.94; fallbackEnds=2027-02-03T10:34:49.000-06:00. Re-check required on every run.",
     "https://blog.dar.org/2024/05/16/new-commemorative-america-250-membership-certificates: Node fetch got 403/429; verified with curl instead",
     "https://blog.dar.org/2021/02/26/why-was-his-service-removed: Node fetch got 403/429; verified with curl instead",
-    "https://services.dar.org/Public/DAR_Research/search_revwar/?Tab_ID=14&Tab_ID_Sub=0&action=list: FALLBACK: unreachable source accepted on last successful check under 90 days. URL failure=http_522; lastPassed=2026-11-05T16:34:49.000Z; ageDays=13.90; fallbackEnds=2027-02-03T10:34:49.000-06:00. Re-check required on every run.",
+    "https://services.dar.org/Public/DAR_Research/search_revwar/?Tab_ID=14&Tab_ID_Sub=0&action=list: FALLBACK: unreachable source accepted on last successful check under 90 days. URL failure=http_522; lastPassed=2026-11-05T16:34:49.000Z; ageDays=13.94; fallbackEnds=2027-02-03T10:34:49.000-06:00. Re-check required on every run.",
     "https://www.dar.org/library/search.cfm: Node fetch got 403/429; verified with curl instead",
     "https://www.dar.org/library/collections/dar-lineage-resources: Node fetch got 403/429; verified with curl instead",
     "https://www.dar.org/discover/become-member/chapter-locator: Node fetch got 403/429; verified with curl instead",
@@ -767,6 +838,7 @@
     "https://blog.dar.org/using-ancestor-tab-grs: Node fetch got 403/429; verified with curl instead",
     "https://nysl.nysed.gov/genealogy/precivil: verified with the official GlobalSign intermediate for nysed.gov (their server omits it)",
     "https://nysl.nysed.gov/genealogy/vitrec: verified with the official GlobalSign intermediate for nysed.gov (their server omits it)",
+    "https://www.dar.org/library/services/search-services: Node fetch got 403/429; verified with curl instead",
     "PLAIN LINK BLOCKED https://www.familysearch.org/en/wiki/United_States_Online_Genealogy_Records_by_State: HTTP 403 bot-filter page to every automated read; link NOT verified this run."
   ],
   "result": "PASSED"

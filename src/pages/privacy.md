@@ -21,7 +21,7 @@ Each tool has its own button for this. On the Widow Pension Law Checker, press "
 
 We don't ask for, collect or store personal information through the website. Cloudflare, which hosts the site, processes the technical information needed to deliver and protect it, and adds three small features: a script that hides email addresses from spam robots, a short error report if a page fails to load, and a visit-counting script that loads from Cloudflare.
 
-The site uses Cloudflare Web Analytics to count page visits.
+The site uses Cloudflare Web Analytics to count page visits. Cloudflare Web Analytics doesn't use cookies to collect usage metrics. [[claim:cf-wa-no-cookies]]
 
 There are no ads at present. If advertising is ever added, this page will be updated first to describe the advertising provider, its use of cookies, and how to opt out.
 

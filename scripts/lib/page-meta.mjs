@@ -26,6 +26,7 @@ export const META_DESCRIPTIONS = {
   "/guides/patriotic-service/": "Prove non-military service for DAR or SAR: committees, oaths, petitions, town office, supply taxes or furnished goods, and each type's date window.",
   "/guides/read-pension-file/": "Find a Revolutionary War pension file, decode its envelope, and read declarations, affidavits and widow's papers in the right order.",
   "/guides/records-by-state/": "Work out whether an ancestor's service records sit at the National Archives or a state archive, then search the right place.",
+  "/guides/hire-a-pro/": "When a paid genealogist is worth it for a DAR or SAR application, what research help costs, how to find a qualified pro, and what to bring.",
   "/guides/same-name/": "A disambiguation checklist for proving that a Revolutionary War record belongs to your ancestor and not to someone else with the same name.",
   "/guides/substitute-evidence/": "Prove each generation without a birth certificate, using substitute records sorted by era, and see what those records can and cannot show.",
   "/tools/lineage-matrix/": "A free worksheet that organizes the records you already have for each generation of a DAR or SAR line, shows what's still missing, and prints a gap report.",

@@ -83,4 +83,4 @@ Older generations need at least one birth or death record. [[claim:dar-gen-older
 Every generation after you needs evidence for the link to the next generation, because DAR asks for each relationship to be documented. [[claim:dar-each-relationship]]
 These checks follow DAR's application instructions. SAR's standards differ; ask your SAR registrar.
 
-Related guides: [The Patriot Lineage Proof Roadmap](/guides/lineage-proof-roadmap/), [No Birth Certificate?](/guides/substitute-evidence/), [Application Returned?](/guides/application-problems/).
+Related guides: [The Patriot Lineage Proof Roadmap](/guides/lineage-proof-roadmap/), [No Birth Certificate?](/guides/substitute-evidence/), [Application Returned?](/guides/application-problems/), [Should You Hire A Pro?](/guides/hire-a-pro/).

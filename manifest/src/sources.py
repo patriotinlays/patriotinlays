@@ -86,6 +86,18 @@ SOURCES = {
  "NARA_1860": ("https://www.archives.gov/research/census/1860", "National Archives — 1860 Census Records", "nara_1860.html"),
  "NARA_1870": ("https://www.archives.gov/research/census/1870", "National Archives — 1870 Census Records", "nara_1870.html"),
  "MA_SL_GEN": ("https://www.mass.gov/guides/guide-to-genealogical-resources-in-the-state-library", "Mass.gov (State Library of Massachusetts) — Guide to Genealogical Resources in the State Library", "ma_sl_gen.html"),
+ # t193 (Tim "t192"): Should You Hire A Pro? guide and the Privacy analytics line.
+ "SAR_RESEARCH_CONTACT": ("https://www.sar.org/research-contact/", "SAR — Genealogy Contact (research help)", "sar_research_contact.html"),
+ "DAR_LIB_SEARCHSVC": ("https://www.dar.org/library/services/search-services", "DAR Library — Search Services (fees)", "dar_lib_searchsvc.html"),
+ "SAR_LIB_RESEARCH": ("https://library.sar.org/research/research-services/", "SAR Genealogical Research Library — Research Services", "sar_lib_research.html"),
+ "ICAPGEN_COST": ("https://icapgen.org/what-will-it-cost/", "ICAPGen — What Will It Cost?", "icapgen_cost.html"),
+ "MAYFLOWER_RS": ("https://themayflowersociety.org/wp-content/uploads/2024/10/Research-Services_FAQ_Final.pdf", "General Society of Mayflower Descendants — Research Services FAQ (October 2024)", "mayflower_rs.pdf"),
+ "LLC_LINEAGE": ("https://lisalouisecooke.com/2017/11/18/professional-genealogist-help-apply-lineage-societies/", "Lisa Louise Cooke, Genealogy Gems (Legacy Tree Genealogists guest post) — Professional Genealogist Help to Apply to Lineage Societies", "llc_lineage.html"),
+ "BCG_HOME": ("https://bcgcertification.org/", "Board for Certification of Genealogists — Home", "bcg_home.html"),
+ "BCG_ABOUT": ("https://bcgcertification.org/about", "Board for Certification of Genealogists — About", "bcg_about.html"),
+ "APG_ABOUT": ("https://www.apgen.org/about_us.php", "Association of Professional Genealogists — About Us", "apg_about.html"),
+ "ICAPGEN_FIND": ("https://icapgen.org/find-a-professional/", "ICAPGen — Find a Professional", "icapgen_find.html"),
+ "CF_WA": ("https://www.cloudflare.com/web-analytics/", "Cloudflare — Web Analytics", "cf_wa.html"),
 }
 
 # ---- t127u standing rule: every source is tagged by who publishes it. ----
@@ -106,4 +118,7 @@ SCOPE.update({
     # Slides from a talk at the Ohio Society SAR's 2023 annual meeting, hosted on the Cincinnati Chapter's website:
     # not an official SAR (national or state) publication of rules.
     "OH_SAR": "chapter-local",
-    "NYPL": "third-party", "UELAC": "third-party", "FOLD3_PENSION": "third-party"})
+    "NYPL": "third-party", "UELAC": "third-party", "FOLD3_PENSION": "third-party",
+    # t193: SAR/DAR national pages; everything else on the hire-a-pro guide and the Cloudflare page is third-party.
+    "SAR_RESEARCH_CONTACT": "national", "DAR_LIB_SEARCHSVC": "national", "SAR_LIB_RESEARCH": "national",
+    "ICAPGEN_COST": "third-party", "MAYFLOWER_RS": "third-party", "LLC_LINEAGE": "third-party", "BCG_HOME": "third-party", "BCG_ABOUT": "third-party", "APG_ABOUT": "third-party", "ICAPGEN_FIND": "third-party", "CF_WA": "third-party"})

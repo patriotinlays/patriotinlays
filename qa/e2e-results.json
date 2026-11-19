@@ -1,8 +1,8 @@
 {
-  "ranAt": "Thu Nov 19 2026 08:19:33 GMT-0600 (Central Standard Time)",
+  "ranAt": "Thu Nov 19 2026 09:22:07 GMT-0600 (Central Standard Time)",
   "browser": "/usr/bin/google-chrome (headless) via playwright-core 1.59.1",
-  "passed": 427,
-  "total": 427,
+  "passed": 436,
+  "total": 436,
   "exampleReportPages": {
     "summaryPages": 2,
     "fullPages": 3,
@@ -38,7 +38,7 @@
     "sub": "Plain-English Help With DAR And SAR Applications, For The Daughters And The Sons Of The American Revolution",
     "ai": "Written with AI assistance and reviewed by the site's owner. Each fact is tied to a quoted official or institutional source, and software checks that the quote is still there.",
     "afterCards": true,
-    "words": 890
+    "words": 922
   },
   "results": [
     {
@@ -604,7 +604,7 @@
     {
       "name": "Home (Nov 5 lock; t130 moved the paragraphs below the start cards, unchanged): subtitle names DAR and SAR; mission in flowing paragraphs (no lists) after the cards; purpose line, both tool names, one-sentence privacy",
       "ok": true,
-      "detail": "{\"ps\":7,\"lists\":0,\"text\":\"This site helps you organize the records that connect you to a Revolutionary War\",\"sub\":\"Plain-English Help With DAR And SAR Applications, For The Daughters And The Sons Of The American Revolution\",\"ai\":\"Written with AI assistance and reviewed by the site's owner. Each fact is tied to a quoted official or institutional source, and software checks that the quote is still there.\",\"afterCards\":true,\"words\":890}"
+      "detail": "{\"ps\":7,\"lists\":0,\"text\":\"This site helps you organize the records that connect you to a Revolutionary War\",\"sub\":\"Plain-English Help With DAR And SAR Applications, For The Daughters And The Sons Of The American Revolution\",\"ai\":\"Written with AI assistance and reviewed by the site's owner. Each fact is tied to a quoted official or institutional source, and software checks that the quote is still there.\",\"afterCards\":true,\"words\":922}"
     },
     {
       "name": "Home (Nov 5 lock, SAR line updated by t125u): the exact AI line, the exact SAR line (sourced), no unsourced 'most people get stuck' / 'give up' / guarantee lines",
@@ -642,7 +642,7 @@
       "detail": ""
     },
     {
-      "name": "Definitions box (DAR, SAR, NSCDA, lineage society, patriot, bounty land, Stat.) on all 10 guides (under title) and both tools (below the tool), sourced",
+      "name": "Definitions box (DAR, SAR, NSCDA, lineage society, patriot, bounty land, Stat.) on all 11 guides (under title) and both tools (below the tool), sourced",
       "ok": true,
       "detail": ""
     },
@@ -677,12 +677,12 @@
       "detail": ""
     },
     {
-      "name": "Logo: all 23 pages link the new favicon (SVG + 32/16 PNG), apple-touch-icon and og:image, with the header logo, all cache-busted; the old 'PI' icon is replaced",
+      "name": "Logo: all 24 pages link the new favicon (SVG + 32/16 PNG), apple-touch-icon and og:image, with the header logo, all cache-busted; the old 'PI' icon is replaced",
       "ok": true,
       "detail": ""
     },
     {
-      "name": "Guides: all 10 end with 'What to do next' (both tools, chapter finder) and a next-guide link",
+      "name": "Guides: all 11 end with 'What to do next' (both tools, chapter finder) and a next-guide link",
       "ok": true,
       "detail": ""
     },
@@ -707,7 +707,7 @@
       "detail": ""
     },
     {
-      "name": "Mobile 375px: no horizontal page overflow on 21 pages",
+      "name": "Mobile 375px: no horizontal page overflow on 22 pages",
       "ok": true,
       "detail": ""
     },
@@ -827,7 +827,7 @@
       "detail": "{\"h1s\":1,\"sr\":\"Patriot, In Lay Terms: \",\"srHidden\":true,\"vis\":\"Plain-English Help With DAR And SAR Applications, For The Daughters And The Sons Of The American Revolution\",\"visH\":143.9375,\"title\":\"Patriot, In Lay Terms: Plain-English Help For DAR And SAR Applications\",\"rule\":\"rgb(178, 34, 52)\",\"ruleW\":\"56px\"}"
     },
     {
-      "name": "t122u #11: every visible text element on all 22 pages passes WCAG AA contrast (4.5:1, large text 3:1) — 3730 elements",
+      "name": "t122u #11: every visible text element on all 23 pages passes WCAG AA contrast (4.5:1, large text 3:1) — 3965 elements",
       "ok": true,
       "detail": ""
     },
@@ -844,10 +844,10 @@
     {
       "name": "t123u #2: each guide's 'Sources last checked' date is the oldest recorded live pass among its own listed sources (every source has a record; nothing invented)",
       "ok": true,
-      "detail": "lineage-proof-roadmap=2026-11-05 substitute-evidence=2026-11-05 read-pension-file=2026-11-19 records-by-state=2026-11-05 bounty-land-warrants=2026-11-19 census-bridge=2026-11-05 patriotic-service=2026-11-05 same-name=2026-11-19 patriot-or-loyalist=2026-11-19 application-problems=2026-11-05"
+      "detail": "lineage-proof-roadmap=2026-11-05 substitute-evidence=2026-11-05 read-pension-file=2026-11-19 records-by-state=2026-11-05 bounty-land-warrants=2026-11-19 census-bridge=2026-11-05 patriotic-service=2026-11-05 same-name=2026-11-19 patriot-or-loyalist=2026-11-19 application-problems=2026-11-05 hire-a-pro=2026-11-19"
     },
     {
-      "name": "t124u #1 (390px): every Sources entry on every page (16 pages, 326 entries) has a visible \"Used for: ...\" line of at most about 8 words, and the raw URL is hidden on screen",
+      "name": "t124u #1 (390px): every Sources entry on every page (18 pages, 358 entries) has a visible \"Used for: ...\" line of at most about 8 words, and the raw URL is hidden on screen",
       "ok": true,
       "detail": ""
     },
@@ -857,7 +857,7 @@
       "detail": "{\"urls\":true,\"icons\":true}"
     },
     {
-      "name": "t124u #11 (390px): every link that leaves the site (364) opens in a new tab with rel=\"noopener noreferrer\", a small icon and \"(opens in new tab)\" for screen readers; no internal or email link does",
+      "name": "t124u #11 (390px): every link that leaves the site (399) opens in a new tab with rel=\"noopener noreferrer\", a small icon and \"(opens in new tab)\" for screen readers; no internal or email link does",
       "ok": true,
       "detail": ""
     },
@@ -877,7 +877,7 @@
       "detail": "{\"n\":16,\"ok\":true}"
     },
     {
-      "name": "t124u #1 (1280px): every Sources entry on every page (16 pages, 326 entries) has a visible \"Used for: ...\" line of at most about 8 words, and the raw URL is hidden on screen",
+      "name": "t124u #1 (1280px): every Sources entry on every page (18 pages, 358 entries) has a visible \"Used for: ...\" line of at most about 8 words, and the raw URL is hidden on screen",
       "ok": true,
       "detail": ""
     },
@@ -887,7 +887,7 @@
       "detail": "{\"urls\":true,\"icons\":true}"
     },
     {
-      "name": "t124u #11 (1280px): every link that leaves the site (364) opens in a new tab with rel=\"noopener noreferrer\", a small icon and \"(opens in new tab)\" for screen readers; no internal or email link does",
+      "name": "t124u #11 (1280px): every link that leaves the site (399) opens in a new tab with rel=\"noopener noreferrer\", a small icon and \"(opens in new tab)\" for screen readers; no internal or email link does",
       "ok": true,
       "detail": ""
     },
@@ -927,7 +927,7 @@
       "detail": ""
     },
     {
-      "name": "t124u #3/#4 / t132 #2: Privacy's 'collects' section is Tim's t132 sentence (t191: three Cloudflare features), then Tim's t191 Web Analytics line, then the ads line, and the technical note has no storage key names",
+      "name": "t124u #3/#4 / t132 #2: Privacy's 'collects' section is Tim's t132 sentence (t191: three Cloudflare features), then Tim's t191 Web Analytics line and the t193 cookie line, then the ads line, and the technical note has no storage key names",
       "ok": true,
       "detail": ""
     },
@@ -1107,7 +1107,7 @@
       "detail": "{\"imgBytes\":118944,\"src\":\"/assets/archives/m804-w14734-daniels-brief.jpg?v=95fa55bd19\",\"nat\":700,\"alt\":375,\"cap\":\"A real page: the pension brief from Revolutionary War Pension and Bounty Land Warrant Application File W. 14,734, Jacob Daniels, N.H., microfilm publication M804 (National Archives Identifier 54368689, image file 4156793_00373.jpg). Downloaded from the National Archives Catalog, which lists its use as unrestricted; cropped and compressed for this page.\",\"keys\":[\"Names: \\\"Dolly Foss, formerly widow of Jacob Daniels\\\".\",\"Dates: the year he died. The dates her pension was to commence and its certificate was issued are lower on the form.\",\"Service: his rank (lieutenant), his captain, his colonel, the New Hampshire line, and how long he served.\"],\"marks\":[true,true,true],\"sw\":1280,\"iw\":1280,\"afterList\":true}"
     },
     {
-      "name": "t132 #1: every guide and tool page (12) has exactly one closed 'Terms used on this page' glossary",
+      "name": "t132 #1: every guide and tool page (13) has exactly one closed 'Terms used on this page' glossary",
       "ok": true,
       "detail": ""
     },
@@ -1169,7 +1169,7 @@
     {
       "name": "t133 #4 (390px): the empty space between the last content and the footer is at most 48px (was 77-126px)",
       "ok": true,
-      "detail": "{\"/about/\":43,\"/privacy/\":43,\"/guides/read-pension-file/\":28,\"/tools/lineage-matrix/\":28,\"/\":28}"
+      "detail": "{\"/about/\":43,\"/privacy/\":28,\"/guides/read-pension-file/\":28,\"/tools/lineage-matrix/\":28,\"/\":28}"
     },
     {
       "name": "t133 #3 (390px): the three cards are stacked on the inner pages",
@@ -1197,7 +1197,7 @@
       "detail": "{\"h\":\"Why 'Patriot, In Lay Terms'?\",\"tag\":\"H2\",\"sameStyle\":true,\"p\":\"An inlay is a piece of wood set so deep into another that it becomes part of the grain. The patriots of the Revolution did something like that with the idea of a free country, and it's still part of the grain today. This site's job is smaller: it explains, in lay terms, how to trace your own family line back to one of them. Inlays, and lay terms: that's the name.\",\"afterIntro\":true,\"next\":\"What You Can Do Here\",\"sw\":1280,\"iw\":1280}"
     },
     {
-      "name": "t146 #3: all 10 guides have one 'In Short' box right under the title and right before the glossary, with 'This guide helps you / Start by / Then' lines of about 20 words or fewer",
+      "name": "t146 #3: all 11 guides have one 'In Short' box right under the title and right before the glossary, with 'This guide helps you / Start by / Then' lines of about 20 words or fewer",
       "ok": true,
       "detail": ""
     },
@@ -1624,7 +1624,7 @@
     {
       "name": "t157: every page has a unique meta description, 120–155 characters, matching the t157 list and used for og:description and twitter:description",
       "ok": true,
-      "detail": " pages=23"
+      "detail": " pages=24"
     },
     {
       "name": "t157: every page <title> is unique, matches its visible heading in Title Case, and keeps the site-name suffix only when the full title is ≤ 60 characters",
@@ -1639,7 +1639,7 @@
     {
       "name": "t157: sitemap.xml lastmod on each URL is the Chicago date of that page's last content change (git history of its source files, ignoring template-only and meta-only commits)",
       "ok": true,
-      "detail": "n=20 "
+      "detail": "n=21 "
     },
     {
       "name": "t157: /tools/widow-pension-checker/ still has the single t156 callout and no t119 pointer (visible body unchanged except we didn't touch it)",
@@ -1714,7 +1714,7 @@
     {
       "name": "t163 #2: Sources 'Last retrieved' is the Central-time date of the most recent full live-source check, and the claim count equals the manifest",
       "ok": true,
-      "detail": "{\"srcLine\":\"Manifest: 433 verified claims. Last retrieved: November 19, 2026.\",\"expectDate\":\"November 19, 2026\",\"shownCount\":433,\"manifest\":433,\"checkedAt\":\"Thu Nov 19 2026 08:18:06 GMT-0600 (Central Standard Time)\"}"
+      "detail": "{\"srcLine\":\"Manifest: 447 verified claims. Last retrieved: November 19, 2026.\",\"expectDate\":\"November 19, 2026\",\"shownCount\":447,\"manifest\":447,\"checkedAt\":\"Thu Nov 19 2026 09:15:12 GMT-0600 (Central Standard Time)\"}"
     },
     {
       "name": "t163 #3: every page says 'quoted official or institutional source'; the locked AI line uses the new wording; the old phrase is gone",
@@ -1739,7 +1739,7 @@
     {
       "name": "t170 #3: the old phrase 'fitted to each person's era and state' is gone from every built page; the new 'based on...' wording is present",
       "ok": true,
-      "detail": "{\"hasOld\":[],\"hasNew\":[\"/guides/application-problems/index.html\",\"/guides/bounty-land-warrants/index.html\",\"/guides/census-bridge/index.html\",\"/guides/lineage-proof-roadmap/index.html\",\"/guides/patriot-or-loyalist/index.html\",\"/guides/patriotic-service/index.html\",\"/guides/read-pension-file/index.html\",\"/guides/records-by-state/index.html\",\"/guides/same-name/index.html\",\"/guides/substitute-evidence/index.html\"]}"
+      "detail": "{\"hasOld\":[],\"hasNew\":[\"/guides/application-problems/index.html\",\"/guides/bounty-land-warrants/index.html\",\"/guides/census-bridge/index.html\",\"/guides/hire-a-pro/index.html\",\"/guides/lineage-proof-roadmap/index.html\",\"/guides/patriot-or-loyalist/index.html\",\"/guides/patriotic-service/index.html\",\"/guides/read-pension-file/index.html\",\"/guides/records-by-state/index.html\",\"/guides/same-name/index.html\",\"/guides/substitute-evidence/index.html\"]}"
     },
     {
       "name": "t170 #2 (390px): glossary row labels stay 'Patriot:' with all-small-caps (the title-case rule does not apply to them)",
@@ -2167,6 +2167,51 @@
       "detail": "{\"done\":[],\"blocked\":[\"https://static.cloudflareinsights.com/beacon.min.js\",\"http://127.0.0.1:8765/cdn-cgi/rum?\"]}"
     },
     {
+      "name": "t193: /guides/hire-a-pro/ is built with the guide layout (h1, Guide 11 of 11, In Short, glossary, What to do next, Sources with Last checked)",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "t193: every section heading is Tim's, in Title Case",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "t193: 'Questions to ask before you hire:' stays a list lead-in paragraph (not a heading), followed by its five questions",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "t193: Tim's key sentences are on the page word for word, each [S#] rendered as a source marker (no raw [S#] left)",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "t193: APG's directory is linked, and contact@patriotinlays.com is a mailto link like the Contact page",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "t193: listed with the other guides (home list, worksheet Related guides, guide 10's Next guide, sitemap); canonical is the apex",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "t193 #2: Privacy says 'Cloudflare Web Analytics doesn't use cookies to collect usage metrics.' right after the page-visits line, sourced to Cloudflare's Web Analytics page",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "t193 (390px): the new guide renders without horizontal overflow or page errors",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "t193 (1280px): the new guide renders without horizontal overflow or page errors",
+      "ok": true,
+      "detail": ""
+    },
+    {
       "name": "Cache-busting: every page's script/CSS URL and every module import is versioned with the file's content hash",
       "ok": true,
       "detail": ""
@@ -2177,7 +2222,7 @@
       "detail": ""
     }
   ],
-  "requestsTotal": 721,
+  "requestsTotal": 726,
   "externalRequests": 0,
   "interactionRequests": 0,
   "faviconLate": 25

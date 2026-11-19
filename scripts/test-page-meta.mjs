@@ -11,7 +11,7 @@ const t = (name, cond, extra = "") => { const p = !!cond; p ? ok++ : fail++; con
 
 const problems = validateMeta();
 t("every meta description is unique and 120–155 characters", problems.length === 0, problems.join("; "));
-t("the map covers every built page (home, 10 guides, 2 tools, 2 reports, 6 site pages, sources, 404)", Object.keys(META_DESCRIPTIONS).length === 23);
+t("the map covers every built page (home, 11 guides, 2 tools, 2 reports, 6 site pages, sources, 404)", Object.keys(META_DESCRIPTIONS).length === 24);
 
 const lens = Object.entries(META_DESCRIPTIONS).map(([p, d]) => `${p}:${[...d].length}`);
 t("metaFor('/') returns the home description and throws on an unknown path", metaFor("/") === META_DESCRIPTIONS["/"] && (() => { try { metaFor("/no-such/"); return false; } catch { return true; } })());
